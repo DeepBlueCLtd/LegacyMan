@@ -4,7 +4,6 @@ from os.path import dirname
 
 def greet():
     greeting = 'Hello, world!'
-    print(greeting)
     return greeting
 
 
