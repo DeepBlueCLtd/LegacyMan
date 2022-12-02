@@ -17,11 +17,15 @@ pip install -r requirements.txt
 ```
 
 ## Running tests
-The following command will run the tests.
+Execute the following command from inside the `test` directory to run the tests.
 ```
-pip install -r requirements.txt
+python -m unittest test_hello
 ```
 
 ## Running LegacyMan parser program
+Execute the following command from inside the `src` directory to run program.
+```
+python hello
+```
 ### Generate discrepancy reports
 ### Generate DITA content
