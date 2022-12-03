@@ -1,7 +1,3 @@
-import sys
-from os.path import dirname
-
-
 def greet():
     greeting = 'Hello, world!'
     return greeting
