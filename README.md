@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ## Running tests
 
-Execute the following command from inside the `test` directory to run the tests.
+Execute the following command from the root directory to run the tests.
 
 ```
 python -m unittest discover
@@ -30,7 +30,7 @@ python -m unittest discover
 
 ## Running LegacyMan parser program
 
-Execute the following command from inside the `src` directory to run program.
+Execute the following command from the root directory to run program.
 
 ```
 python -m legacyman_parser.hello
