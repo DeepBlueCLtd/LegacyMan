@@ -12,7 +12,7 @@ See the original mock data [here](https://deepbluecltd.github.io/LegacyMan/data/
 
 ### Install dependencies
 
-Python dependencies are specified in `requiremnts.txt` in the root directory.
+Python dependencies are specified in `requirements.txt` in the root directory.
 
 Install these automatically using the below `pip` command from the same directory.
 
