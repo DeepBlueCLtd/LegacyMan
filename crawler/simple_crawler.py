@@ -31,19 +31,34 @@ class SimpleCrawler:
         self.unreachable_child_resources[resource.id] = resource
         return True
 
+    def retrieve_resource(self, resource):
+        return self.visited_child_resources[resource.id]
+
     def crawl(self, url=None, parent_url=None, resource_processor_callback=None):
         if url is None:
             url = self.start_page
         parsed_url = url
         resource = self.Resources(parsed_url, parent_url)
         page = requests.get(parsed_url)
-        crawl_resource = False
+
+        crawl_child_resource = False
+        child_resource_already_accessed = False
+
         if page.status_code == 200:
-            crawl_resource = self.add_visited_child_resource(resource)
+            child_resource_already_accessed = not self.add_visited_child_resource(resource)
+            crawl_child_resource = True
         else:
             print("Reference {} not found in {}".format(parsed_url, parent_url))
             self.add_unreachable_child_resource(resource)
-        if not crawl_resource:
+
+        if child_resource_already_accessed:
+            print("-")
+            print("Duplicate reference {} detected and avoided from {}".format(parsed_url, parent_url))
+            print("Reference already accessed from {}".format(self.retrieve_resource(resource).parent_url))
+            print("--")
+            return
+
+        if not crawl_child_resource:
             return
 
         soup = BeautifulSoup(page.text, features="lxml")
