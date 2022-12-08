@@ -1,8 +1,40 @@
 import hashlib
+import logging
+import os
 from urllib.parse import urlparse, urljoin
 
-import requests
 from bs4 import BeautifulSoup
+
+logger = logging.getLogger('SimpleCrawler')
+
+
+class Response:
+    def __init__(self, status_code, reason):
+        self.status_code = status_code
+        self.reason = reason
+
+
+def open_file(url):
+    # path = os.path.normcase(os.path.normpath(url))
+
+    status_code, reason = check_path(url)
+    response = Response(status_code, reason)
+    if response.status_code == 200:
+        with open(url, 'rb') as f:
+            response.text = f.read()
+    return response
+
+
+def check_path(path):
+    """Return an HTTP status for the given filesystem path."""
+    if os.path.isdir(path):
+        return 400, "Path Not A File"
+    elif not os.path.isfile(path):
+        return 404, "File Not Found"
+    elif not os.access(path, os.R_OK):
+        return 403, "Access Denied"
+    else:
+        return 200, "OK"
 
 
 class SimpleCrawler:
@@ -35,11 +67,12 @@ class SimpleCrawler:
         return self.visited_child_resources[resource.id]
 
     def crawl(self, url=None, parent_url=None, resource_processor_callback=None):
+        logger.info("Checking {}".format(url))
         if url is None:
             url = self.start_page
         parsed_url = url
         resource = self.Resources(parsed_url, parent_url)
-        page = requests.get(parsed_url)
+        page = open_file(parsed_url)
 
         crawl_child_resource = False
         child_resource_already_accessed = False
@@ -48,14 +81,14 @@ class SimpleCrawler:
             child_resource_already_accessed = not self.add_visited_child_resource(resource)
             crawl_child_resource = True
         else:
-            print("Reference {} not found in {}".format(parsed_url, parent_url))
+            logger.error("Reference {} not found in {}".format(parsed_url, parent_url))
             self.add_unreachable_child_resource(resource)
 
         if child_resource_already_accessed:
-            print("-")
-            print("Duplicate reference {} detected and avoided from {}".format(parsed_url, parent_url))
-            print("Reference already accessed from {}".format(self.retrieve_resource(resource).parent_url))
-            print("--")
+            logger.warning("-")
+            logger.warning("Duplicate reference {} detected and avoided from {}".format(parsed_url, parent_url))
+            logger.warning("Reference already accessed from {}".format(self.retrieve_resource(resource).parent_url))
+            logger.warning("--")
             return
 
         if not crawl_child_resource:
@@ -63,7 +96,7 @@ class SimpleCrawler:
 
         soup = BeautifulSoup(page.text, features="lxml")
         for link in soup.find_all('a'):
-            child_parsed_url = urlparse(link.get('href')).geturl()
+            child_parsed_url = urlparse(link.get('href')).path
             if 'http' not in child_parsed_url[0:4]:
                 child_parsed_url = urlparse(
                     urljoin(parsed_url, child_parsed_url)).geturl()
