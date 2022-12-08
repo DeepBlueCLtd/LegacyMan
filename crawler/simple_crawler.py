@@ -90,6 +90,9 @@ class SimpleCrawler:
             logger.warning("Duplicate reference {} detected and avoided from {}".format(parsed_url, parent_url))
             logger.warning("Reference already accessed from {}".format(self.retrieve_resource(resource).parent_url))
             logger.warning("--")
+            if resource_processor_callback is not None:
+                already_access_soup = BeautifulSoup(page.text, features="lxml")
+                resource_processor_callback(already_access_soup, parsed_url, parent_url)
             return
 
         if not crawl_child_resource:
