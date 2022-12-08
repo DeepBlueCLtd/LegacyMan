@@ -50,18 +50,6 @@ class SimpleCrawler:
             self.url = url
             self.parent_url = parent_url
 
-    def add_visited_child_resource(self, resource):
-        if resource.id in self.visited_child_resources:
-            return False
-        self.visited_child_resources[resource.id] = resource
-        return True
-
-    def add_unreachable_child_resource(self, resource):
-        if resource.id in self.unreachable_child_resources:
-            return False
-        self.unreachable_child_resources[resource.id] = resource
-        return True
-
     def retrieve_resource(self, resource):
         return self.visited_child_resources[resource.id]
 
@@ -77,11 +65,13 @@ class SimpleCrawler:
         child_resource_already_accessed = False
 
         if page.status_code == 200:
-            child_resource_already_accessed = not self.add_visited_child_resource(resource)
+            child_resource_already_accessed = resource.id in self.visited_child_resources
+            if not child_resource_already_accessed:
+                self.visited_child_resources[resource.id] = resource
             crawl_child_resource = True
         else:
             self.logger.error("Reference {} not found in {}".format(parsed_url, parent_url))
-            self.add_unreachable_child_resource(resource)
+            self.unreachable_child_resources[resource.id] = resource
 
         if child_resource_already_accessed:
             self.logger.warning(("\n-\nDuplicate reference {} detected and avoided from {}." +
