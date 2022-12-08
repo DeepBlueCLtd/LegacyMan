@@ -10,6 +10,7 @@ logger = logging.getLogger('SimpleCrawler')
 
 class Response:
     def __init__(self, status_code, reason):
+        self.text = None
         self.status_code = status_code
         self.reason = reason
 
@@ -95,6 +96,8 @@ class SimpleCrawler:
             return
 
         soup = BeautifulSoup(page.text, features="lxml")
+        if resource_processor_callback is not None:
+            resource_processor_callback(soup)
         for link in soup.find_all('a'):
             child_parsed_url = urlparse(
                     urljoin(parsed_url, urlparse(link.get('href')).path)).geturl()
