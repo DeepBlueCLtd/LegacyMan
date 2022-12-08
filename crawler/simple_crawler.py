@@ -97,7 +97,7 @@ class SimpleCrawler:
 
         soup = BeautifulSoup(page.text, features="lxml")
         if resource_processor_callback is not None:
-            resource_processor_callback(soup)
+            resource_processor_callback(soup, parsed_url, parent_url)
         for link in soup.find_all('a'):
             child_parsed_url = urlparse(
                     urljoin(parsed_url, urlparse(link.get('href')).path)).geturl()
