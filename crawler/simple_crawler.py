@@ -14,8 +14,6 @@ class Response:
 
 
 def open_file(url):
-    # path = os.path.normcase(os.path.normpath(url))
-
     status_code, reason = check_path(url)
     response = Response(status_code, reason)
     if response.status_code == 200:
