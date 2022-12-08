@@ -84,10 +84,11 @@ class SimpleCrawler:
             self.add_unreachable_child_resource(resource)
 
         if child_resource_already_accessed:
-            self.logger.warning("-")
-            self.logger.warning("Duplicate reference {} detected and avoided from {}".format(parsed_url, parent_url))
-            self.logger.warning("Reference already accessed from {}".format(self.retrieve_resource(resource).parent_url))
-            self.logger.warning("--")
+            self.logger.warning(("\n-\nDuplicate reference {} detected and avoided from {}." +
+                                 "\nReference already accessed from {}." +
+                                 "\n--").format(parsed_url,
+                                                parent_url,
+                                                self.retrieve_resource(resource).parent_url))
             if resource_processor_callback is not None:
                 already_access_soup = BeautifulSoup(page.text, features="lxml")
                 resource_processor_callback(already_access_soup, parsed_url, parent_url)
