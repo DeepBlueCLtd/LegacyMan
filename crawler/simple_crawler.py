@@ -96,10 +96,10 @@ class SimpleCrawler:
 
         soup = BeautifulSoup(page.text, features="lxml")
         for link in soup.find_all('a'):
-            child_parsed_url = urlparse(link.get('href')).path
-            if 'http' not in child_parsed_url[0:4]:
-                child_parsed_url = urlparse(
-                    urljoin(parsed_url, child_parsed_url)).geturl()
+            child_parsed_url = urlparse(
+                    urljoin(parsed_url, urlparse(link.get('href')).path)).geturl()
+            if child_parsed_url.startswith('/'):
+                logger.warning("Absolute path {} referenced".format(child_parsed_url))
             self.crawl(child_parsed_url,
                        parsed_url,
                        resource_processor_callback)
