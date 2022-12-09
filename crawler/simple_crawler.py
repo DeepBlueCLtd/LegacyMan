@@ -53,7 +53,11 @@ class SimpleCrawler:
     def retrieve_resource(self, resource):
         return self.visited_child_resources[resource.id]
 
-    def crawl(self, url=None, parent_url=None, resource_processor_callback=None):
+    def crawl(self,
+              url=None,
+              parent_url=None,
+              resource_processor_callback=None,
+              crawl_recursively=None):
         self.logger.info("Checking {}".format(url))
         if url is None:
             url = self.start_page
@@ -90,6 +94,9 @@ class SimpleCrawler:
         soup = BeautifulSoup(page.text, features="lxml")
         if resource_processor_callback is not None:
             resource_processor_callback(soup, parsed_url, parent_url)
+
+        if not crawl_recursively:
+            return
         for link in soup.find_all('a'):
             child_parsed_url = urlparse(
                 urljoin(parsed_url, urlparse(link.get('href')).path)).geturl()
