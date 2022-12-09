@@ -4,9 +4,9 @@ from crawler.simple_crawler import SimpleCrawler
 
 
 def process_soup(returned_soup: BeautifulSoup, url: str, parent_url: str):
-    """This regions are processed from the map"""
-    for rows in returned_soup.find_all('area'):
-        print(rows)
+    """The regions are processed from map"""
+    for area_element in returned_soup.find_all('area'):
+        print(area_element.get('alt'))
 
 
 craw = SimpleCrawler("data/PlatformData/PD_1.html", True)
