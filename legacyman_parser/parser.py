@@ -21,7 +21,8 @@ def parse_from_root():
         The regions are processed from map"""
         if region.url.endswith('Britain1.html'):
             continue
-        region_spidey = SimpleCrawler(url=region.url, disable_crawler_log=True)
+        reg_dict = {"region": region.region}
+        region_spidey = SimpleCrawler(url=region.url, disable_crawler_log=True, userland_dict=reg_dict)
         region_spidey.crawl(resource_processor_callback=extract_countries_in_region, crawl_recursively=False)
         print("parser/Region: ", region)
 

@@ -35,12 +35,13 @@ def check_path(path):
 
 
 class SimpleCrawler:
-    def __init__(self, url, disable_crawler_log):
+    def __init__(self, url=None, disable_crawler_log=None, userland_dict=None):
         self.start_page = url
         self.visited_child_resources = {}
         self.unreachable_child_resources = {}
         self.logger = logging.getLogger('SimpleCrawler')
         self.logger.disabled = disable_crawler_log
+        self.userland_dict = userland_dict
 
     class Resources:
         def __init__(self, url, parent_url):
@@ -85,7 +86,10 @@ class SimpleCrawler:
                                                 self.retrieve_resource(resource).parent_url))
             if resource_processor_callback is not None:
                 already_access_soup = BeautifulSoup(page.text, features="lxml")
-                resource_processor_callback(already_access_soup, parsed_url, parent_url)
+                resource_processor_callback(soup=already_access_soup,
+                                            parsed_url=parsed_url,
+                                            parent_url=parent_url,
+                                            userland_dict=self.userland_dict)
             return
 
         if not crawl_child_resource:
@@ -93,7 +97,10 @@ class SimpleCrawler:
 
         soup = BeautifulSoup(page.text, features="lxml")
         if resource_processor_callback is not None:
-            resource_processor_callback(soup, parsed_url, parent_url)
+            resource_processor_callback(soup=soup,
+                                        parsed_url=parsed_url,
+                                        parent_url=parent_url,
+                                        userland_dict=self.userland_dict)
 
         if not crawl_recursively:
             return
