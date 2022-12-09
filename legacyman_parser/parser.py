@@ -3,6 +3,7 @@ import sys
 from crawler.simple_crawler import SimpleCrawler
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
+from legacyman_parser.parse_units_and_tonals_of_country import extract_units_tonals_of_country, UNIT_COLLECTION
 
 
 def parse_from_root():
@@ -27,7 +28,16 @@ def parse_from_root():
         print("parser/Region: ", region)
 
     for country in COUNTRY_COLLECTION:
+        """Parsing class in each country and their units"""
         print("parser/Country: ", country)
+        if country.url is None:
+            continue
+        country_dict = {"country": country.country}
+        country_spidey = SimpleCrawler(url=country.url, disable_crawler_log=True, userland_dict=country_dict)
+        country_spidey.crawl(resource_processor_callback=extract_units_tonals_of_country, crawl_recursively=False)
+
+    for unit in UNIT_COLLECTION:
+        print(unit)
 
 
 if __name__ == "__main__":
