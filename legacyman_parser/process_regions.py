@@ -4,9 +4,8 @@ from crawler.simple_crawler import SimpleCrawler
 
 
 def process_soup(returned_soup: BeautifulSoup, url: str, parent_url: str):
-    """This assumes that there's going to be only
-    one table of regions in this page"""
-    for rows in returned_soup.find_all('td'):
+    """This regions are processed from the map"""
+    for rows in returned_soup.find_all('area'):
         print(rows)
 
 
