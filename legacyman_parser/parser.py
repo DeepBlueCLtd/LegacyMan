@@ -19,6 +19,7 @@ def parse_from_root():
     root_spidey_to_extract_regions = SimpleCrawler(url=arg[1], disable_crawler_log=True)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
 
+    print("\n\nRegions:")
     for region in REGION_COLLECTION:
         """Parsing Countries from extracted regions
         The regions are processed from map"""
@@ -32,6 +33,7 @@ def parse_from_root():
                                                  crawl_recursively=False)
         print("parser/Region: ", region)
 
+    print("\n\nCountries:")
     for country in COUNTRY_COLLECTION:
         """Parsing class in each country and their units"""
         print("parser/Country: ", country)
@@ -49,9 +51,11 @@ def parse_from_root():
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                          "url": country.url})
 
+    print("\n\nUnits:")
     for unit in UNIT_COLLECTION:
-        print("UCC", len(str(unit)))
+        print(unit)
 
+    print("\n\nDiscrepancies:")
     for invalid_country_href in INVALID_COUNTRY_HREFS:
         print("Not able to reach href `{}` of `{}` in country_spidey".format(
             invalid_country_href["url"],
