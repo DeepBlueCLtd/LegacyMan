@@ -4,6 +4,7 @@ from crawler.simple_crawler import SimpleCrawler
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, UNIT_COLLECTION
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
+from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION
 
 INVALID_COUNTRY_HREFS = []
 
@@ -21,8 +22,7 @@ def parse_from_root():
 
     print("\n\nRegions:")
     for region in REGION_COLLECTION:
-        """Parsing Countries from extracted regions
-        The regions are processed from map"""
+        """Parsing Countries from extracted regions"""
         if region.url.endswith('Britain1.html'):
             continue
         reg_dict = {"region": region.region}
@@ -42,18 +42,32 @@ def parse_from_root():
                                           "url": country.url})
             continue
         country_dict = {"country": country.country}
-        country_spidey_to_extract_units = SimpleCrawler(url=country.url,
-                                                        disable_crawler_log=True,
-                                                        userland_dict=country_dict)
-        country_spidey_to_extract_units.crawl(resource_processor_callback=extract_classes_of_country,
-                                              crawl_recursively=False)
-        if len(country_spidey_to_extract_units.unreachable_child_resources) > 0:
+        country_spidey_to_extract_classes = SimpleCrawler(url=country.url,
+                                                          disable_crawler_log=True,
+                                                          userland_dict=country_dict)
+        country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_classes_of_country,
+                                                crawl_recursively=False)
+        if len(country_spidey_to_extract_classes.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
 
     print("\n\nUnits:")
     for unit in UNIT_COLLECTION:
         print(unit)
+
+    print("\n\nTonals:")
+    for unit_with_tonals in filter(lambda unit_in_coll: unit_in_coll.has_tonal is True, UNIT_COLLECTION):
+        unit_dict = {"unit": unit_with_tonals}
+        tonal_spidey = SimpleCrawler(url=unit_with_tonals.tonal_href,
+                                     disable_crawler_log=True,
+                                     userland_dict=unit_dict)
+        tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
+                           crawl_recursively=False)
+
+    for unit in filter(lambda unit_coll: unit_coll.has_tonal is True, UNIT_COLLECTION):
+        print(unit, ":")
+        for tonal in filter(lambda tonal_collection: tonal_collection.unit == unit, TONAL_COLLECTION):
+            print(tonal)
 
     print("\n\nDiscrepancies:")
     for invalid_country_href in INVALID_COUNTRY_HREFS:
