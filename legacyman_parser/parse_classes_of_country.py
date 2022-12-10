@@ -12,19 +12,41 @@ _current_subtype = None
 
 
 class Unit:
-    def __init__(self, unit, sub_category, country, power, has_tonal, tonal_href):
+    def __init__(self,
+                 unit,
+                 sub_category,
+                 country,
+                 designator,
+                 power,
+                 shaft_blade,
+                 bhp,
+                 av_temp,
+                 reduction_ratio,
+                 has_tonal,
+                 tonal_href):
         self.unit = unit
         self.sub_category = sub_category
         self.country = country
+        self.designator = designator
         self.power = power
+        self.shaft_blade = shaft_blade
+        self.bhp = bhp
+        self.av_temp = av_temp
+        self.reduction_ratio = reduction_ratio
         self.has_tonal = has_tonal
         self.tonal_href = tonal_href
 
     def __str__(self):
-        return "{} [{}] of {} is powered by {}{}".format(self.unit,
+        return "{} [{}] of {} is powered by {} " \
+               "and has {}, {}, {}, {}, and {}{}".format(self.unit,
                                                          self.sub_category,
                                                          self.country,
                                                          self.power,
+                                                         self.designator,
+                                                         self.shaft_blade,
+                                                         self.bhp,
+                                                         self.av_temp,
+                                                         self.reduction_ratio,
                                                          (". Tonal ==> " + self.tonal_href) if
                                                          self.has_tonal else "")
 
@@ -108,7 +130,17 @@ def create_new_unit_with_extracted_subcategory(row: PageElement, country: str, c
     has_tonal = does_class_contain_tonal(columns[0])
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
-    UNIT_COLLECTION.append(Unit(columns[0].text, current_subtype, country, columns[2].text, has_tonal, tonal_href))
+    UNIT_COLLECTION.append(Unit(columns[0].text,
+                                current_subtype,
+                                country,
+                                columns[1].text,
+                                columns[2].text,
+                                columns[3].text,
+                                columns[4].text,
+                                columns[5].text,
+                                columns[6].text,
+                                has_tonal,
+                                tonal_href))
 
 
 def does_class_contain_tonal(table_data: PageElement):
