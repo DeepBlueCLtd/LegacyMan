@@ -75,7 +75,9 @@ class SimpleCrawler:
                 self.visited_child_resources[resource.id] = resource
             crawl_child_resource = True
         else:
-            self.logger.error("Reference {} not found in {}".format(parsed_url, parent_url))
+            self.logger.error("Reference {} not found. Referred from {}"
+                              .format(parsed_url,
+                                      "user input" if parent_url is None else parent_url))
             self.unreachable_child_resources[resource.id] = resource
 
         if child_resource_already_accessed:
