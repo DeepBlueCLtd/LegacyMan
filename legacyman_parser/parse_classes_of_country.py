@@ -2,18 +2,18 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, PageElement
 
-"""Independent unit testable parse_units module
-to process unit data
+"""Independent testable parse_classes module
+to process class data
 """
-UNIT_COLLECTION = []
+CLASS_COLLECTION = []
 
 _class_table_header_is_identified = False
 _current_subtype = None
 
 
-class Unit:
+class ClassU:
     def __init__(self,
-                 unit,
+                 class_u,
                  sub_category,
                  country,
                  designator,
@@ -24,7 +24,7 @@ class Unit:
                  reduction_ratio,
                  has_tonal,
                  tonal_href):
-        self.unit = unit
+        self.class_u = class_u
         self.sub_category = sub_category
         self.country = country
         self.designator = designator
@@ -38,7 +38,7 @@ class Unit:
 
     def __str__(self):
         return "{} [{}] of {} is powered by {} " \
-               "and has {}, {}, {}, {}, and {}{}".format(self.unit,
+               "and has {}, {}, {}, {}, and {}{}".format(self.class_u,
                                                          self.sub_category,
                                                          self.country,
                                                          self.power,
@@ -80,7 +80,7 @@ def process_class_row(row: PageElement, country: str, parsed_url: str):
     if not is_this_class_record(row):
         return
     # Extract information and map against _current_subtype
-    create_new_unit_with_extracted_subcategory(row, country, _current_subtype, parsed_url)
+    create_new_class_with_extracted_subcategory(row, country, _current_subtype, parsed_url)
 
 
 def is_this_class_header(row: PageElement):
@@ -124,23 +124,23 @@ def is_this_class_record(row: PageElement):
     return False
 
 
-def create_new_unit_with_extracted_subcategory(row: PageElement, country: str, current_subtype: str, parsed_url: str):
+def create_new_class_with_extracted_subcategory(row: PageElement, country: str, current_subtype: str, parsed_url: str):
     columns = row.find_all('td')
     tonal_href = None
     has_tonal = does_class_contain_tonal(columns[0])
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
-    UNIT_COLLECTION.append(Unit(columns[0].text,
-                                current_subtype,
-                                country,
-                                columns[1].text,
-                                columns[2].text,
-                                columns[3].text,
-                                columns[4].text,
-                                columns[5].text,
-                                columns[6].text,
-                                has_tonal,
-                                tonal_href))
+    CLASS_COLLECTION.append(ClassU(columns[0].text,
+                                   current_subtype,
+                                   country,
+                                   columns[1].text,
+                                   columns[2].text,
+                                   columns[3].text,
+                                   columns[4].text,
+                                   columns[5].text,
+                                   columns[6].text,
+                                   has_tonal,
+                                   tonal_href))
 
 
 def does_class_contain_tonal(table_data: PageElement):

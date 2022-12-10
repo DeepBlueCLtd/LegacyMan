@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup, PageElement
 
-"""Independent unit testable parse_tonals module
+"""Independent testable parse_tonals module
 to process tonals data
 """
 TONAL_COLLECTION = []
@@ -10,8 +10,8 @@ _current_tonal_type = None
 
 
 class Tonal:
-    def __init__(self, unit, source, ratio_freq, harmonics, frequency, tonal_type):
-        self.unit = unit
+    def __init__(self, class_u, source, ratio_freq, harmonics, frequency, tonal_type):
+        self.class_u = class_u
         self.source = source
         self.ratio_freq = ratio_freq
         self.harmonics = harmonics
@@ -32,10 +32,10 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
     for row in soup.find('div', {"id": "PageLayer"}).find('table').find_all('tr'):
-        process_tonal_row(row, userland_dict['unit'])
+        process_tonal_row(row, userland_dict['class'])
 
 
-def process_tonal_row(row: PageElement, unit: any):
+def process_tonal_row(row: PageElement, class_u: any):
     """Check if not _tonal_table_header_is_identified"""
     global _tonal_table_header_is_identified, _current_tonal_type
     if not _tonal_table_header_is_identified:
@@ -55,7 +55,7 @@ def process_tonal_row(row: PageElement, unit: any):
     if not is_this_tonal_record(row):
         return
     # Extract information and map against _current_tonal_type
-    create_new_tonal_with_extracted_tonal_type(row, unit, _current_tonal_type)
+    create_new_tonal_with_extracted_tonal_type(row, class_u, _current_tonal_type)
 
 
 def is_this_tonal_header(row: PageElement):
@@ -102,7 +102,7 @@ def is_this_tonal_record(row: PageElement):
     return False
 
 
-def create_new_tonal_with_extracted_tonal_type(row: PageElement, unit: any, current_tonal_type: str):
+def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, current_tonal_type: str):
     columns = row.find_all('td')
     TONAL_COLLECTION.append(
-        Tonal(unit, columns[0].text, columns[1].text, columns[2].text, columns[3].text, current_tonal_type))
+        Tonal(class_u, columns[0].text, columns[1].text, columns[2].text, columns[3].text, current_tonal_type))

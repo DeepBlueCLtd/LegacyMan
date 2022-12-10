@@ -1,7 +1,7 @@
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
-from legacyman_parser.parse_classes_of_country import extract_classes_of_country, UNIT_COLLECTION
+from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION
@@ -35,7 +35,7 @@ def parse_from_root():
 
     print("\n\nCountries:")
     for country in COUNTRY_COLLECTION:
-        """Parsing class in each country and their units"""
+        """Parsing classes in each country"""
         print(country)
         if country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
@@ -51,22 +51,22 @@ def parse_from_root():
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
 
-    print("\n\nUnits:")
-    for unit in UNIT_COLLECTION:
-        print(unit)
+    print("\n\nClasses:")
+    for class_u in CLASS_COLLECTION:
+        print(class_u)
 
     print("\n\nTonals:")
-    for unit_with_tonals in filter(lambda unit_in_coll: unit_in_coll.has_tonal is True, UNIT_COLLECTION):
-        unit_dict = {"unit": unit_with_tonals}
-        tonal_spidey = SimpleCrawler(url=unit_with_tonals.tonal_href,
+    for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
+        class_dict = {"class": class_with_tonals}
+        tonal_spidey = SimpleCrawler(url=class_with_tonals.tonal_href,
                                      disable_crawler_log=True,
-                                     userland_dict=unit_dict)
+                                     userland_dict=class_dict)
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
                            crawl_recursively=False)
 
-    for unit in filter(lambda unit_coll: unit_coll.has_tonal is True, UNIT_COLLECTION):
-        print(unit, ":")
-        for tonal in filter(lambda tonal_collection: tonal_collection.unit == unit, TONAL_COLLECTION):
+    for class_u in filter(lambda class_coll: class_coll.has_tonal is True, CLASS_COLLECTION):
+        print(class_u, ":")
+        for tonal in filter(lambda tonal_collection: tonal_collection.class_u == class_u, TONAL_COLLECTION):
             print(tonal)
 
     print("\n\nDiscrepancies:")
