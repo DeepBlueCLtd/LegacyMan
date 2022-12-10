@@ -23,6 +23,5 @@ def extract_units_tonals_of_country(soup: BeautifulSoup = None,
                                 parsed_url: str = None,
                                 parent_url: str = None,
                                 userland_dict: dict = None) -> []:
-    for units in soup.find_all('div', {"id": "PageLayer"}):
-        UNIT_COLLECTION.append(UnitMap(str(units.find('table')), userland_dict.get("country"), parsed_url))
-    return UNIT_COLLECTION
+    for units in soup.find('div', {"id": "PageLayer"}):
+        pass #UNIT_COLLECTION.append(UnitMap(str(units.find('table')), userland_dict.get("country"), parsed_url))

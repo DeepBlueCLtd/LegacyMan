@@ -24,7 +24,6 @@ def extract_countries_in_region(soup: BeautifulSoup = None,
                                 userland_dict: dict = None) -> []:
     for country in soup.find_all('td'):
         COUNTRY_COLLECTION.append(create_country(country, userland_dict.get("region"), parsed_url))
-    return COUNTRY_COLLECTION
 
 
 def create_country(country, region, url):

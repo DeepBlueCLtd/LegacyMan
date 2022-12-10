@@ -24,4 +24,3 @@ def extract_regions(soup: BeautifulSoup = None,
     for area_element in soup.find_all('area'):
         parsed_region_url = urljoin(parsed_url, area_element.get('href'))
         REGION_COLLECTION.append(RegionMap(area_element.get('alt'), parsed_region_url))
-    return REGION_COLLECTION
