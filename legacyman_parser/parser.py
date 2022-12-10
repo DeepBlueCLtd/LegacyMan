@@ -1,9 +1,9 @@
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
+from legacyman_parser.parse_classes_of_country import extract_classes_of_country, UNIT_COLLECTION
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
-from legacyman_parser.parse_units_of_country import extract_units_tonals_of_country, UNIT_COLLECTION
 
 INVALID_COUNTRY_HREFS = []
 
@@ -31,25 +31,25 @@ def parse_from_root():
                                                            userland_dict=reg_dict)
         region_spidey_to_extract_countries.crawl(resource_processor_callback=extract_countries_in_region,
                                                  crawl_recursively=False)
-        print("parser/Region: ", region)
+        print(region)
 
     print("\n\nCountries:")
     for country in COUNTRY_COLLECTION:
         """Parsing class in each country and their units"""
-        print("parser/Country: ", country)
+        print(country)
         if country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
-                                         "url": country.url})
+                                          "url": country.url})
             continue
         country_dict = {"country": country.country}
         country_spidey_to_extract_units = SimpleCrawler(url=country.url,
                                                         disable_crawler_log=True,
                                                         userland_dict=country_dict)
-        country_spidey_to_extract_units.crawl(resource_processor_callback=extract_units_tonals_of_country,
+        country_spidey_to_extract_units.crawl(resource_processor_callback=extract_classes_of_country,
                                               crawl_recursively=False)
         if len(country_spidey_to_extract_units.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
-                                         "url": country.url})
+                                          "url": country.url})
 
     print("\n\nUnits:")
     for unit in UNIT_COLLECTION:
