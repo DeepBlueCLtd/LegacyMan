@@ -3,7 +3,7 @@ import sys
 from crawler.simple_crawler import SimpleCrawler
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
-from legacyman_parser.parse_units_and_tonals_of_country import extract_units_tonals_of_country, UNIT_COLLECTION
+from legacyman_parser.parse_units_of_country import extract_units_tonals_of_country, UNIT_COLLECTION
 
 INVALID_COUNTRY_HREFS = []
 
