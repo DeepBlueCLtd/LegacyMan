@@ -1,6 +1,7 @@
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
+from legacy_publisher import json_publisher
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
@@ -74,6 +75,11 @@ def parse_from_root():
         print("Not able to reach href `{}` of `{}` in country_spidey".format(
             invalid_country_href["url"],
             invalid_country_href["country"]))
+
+    json_publisher.publish(parsed_regions=REGION_COLLECTION,
+                           parsed_countries=COUNTRY_COLLECTION,
+                           parsed_classes=CLASS_COLLECTION,
+                           parsed_tonals=TONAL_COLLECTION)
 
 
 if __name__ == "__main__":
