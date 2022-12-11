@@ -1,4 +1,6 @@
-import jsonpickle
+import operator
+
+import simplejson as json
 
 from legacy_publisher.json_templates import PlatformType, PlatformSubType, Region, Country, ClassU, TonalType, Tonal
 
@@ -62,10 +64,9 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
                  "countries": countries, "classes": classes, "tonal_types": tonal_types, "tonals": tonals}
 
     # Dump the wrapper to the text file passed as argument
-    jsonpickle.set_encoder_options('json', sort_keys=False, indent=2)
     with open(EXPORT_FILE, 'r+') as f:
         print("Clearing json file")
         f.truncate(0)
         print("Writing json file")
         f.write("var publicationJsonData=")
-        f.write(jsonpickle.encode(json_data, unpicklable=False))
+        f.write(json.dumps(json_data, default=operator.attrgetter('__dict__'), indent=2 * ' '))
