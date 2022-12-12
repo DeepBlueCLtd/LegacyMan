@@ -1,6 +1,6 @@
-from urllib.parse import urljoin
-
 from bs4 import BeautifulSoup, PageElement
+
+from crawler.url_join import urljoin2
 
 """Independent testable parse_classes module
 to process class data
@@ -138,7 +138,7 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: str, 
     tonal_href = None
     has_tonal = does_class_contain_tonal(columns[0])
     if has_tonal:
-        tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
+        tonal_href = urljoin2(parsed_url, extract_tonal_href(columns[0]))
     CLASS_COLLECTION.append(ClassU(columns[0].text,
                                    current_subtype,
                                    country,

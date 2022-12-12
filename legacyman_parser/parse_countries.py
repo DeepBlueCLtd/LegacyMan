@@ -1,6 +1,6 @@
-from urllib.parse import urljoin
-
 from bs4 import BeautifulSoup
+
+from crawler.url_join import urljoin2
 
 """Independent unit testable parse_countries module 
 to process country data
@@ -35,5 +35,5 @@ def create_country(seq, country, region, url):
     parsed_url = None
     if url_tag is not None:
         url_str = url_tag.get('href')
-        parsed_url = urljoin(url, url_str)
+        parsed_url = urljoin2(url, url_str)
     return CountryMap(seq, country.getText(), region, parsed_url)

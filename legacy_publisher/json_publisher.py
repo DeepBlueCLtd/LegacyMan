@@ -1,6 +1,6 @@
 import operator
 
-import simplejson as json
+import json
 
 from legacy_publisher.json_templates import PlatformType, PlatformSubType, Region, Country, ClassU, TonalType, Tonal
 
