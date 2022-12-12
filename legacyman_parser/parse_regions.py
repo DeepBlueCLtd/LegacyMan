@@ -1,6 +1,6 @@
-from urllib.parse import urljoin
-
 from bs4 import BeautifulSoup
+
+from crawler.url_join import urljoin2
 
 """Independent unit testable parse_region module 
 to process region data
@@ -25,5 +25,5 @@ def extract_regions(soup: BeautifulSoup = None,
     seq = 0
     for area_element in soup.find_all('area'):
         seq = seq + 1
-        parsed_region_url = urljoin(parsed_url, area_element.get('href'))
+        parsed_region_url = urljoin2(parsed_url, area_element.get('href'))
         REGION_COLLECTION.append(RegionMap(seq, area_element.get('alt'), parsed_region_url))
