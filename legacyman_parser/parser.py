@@ -26,7 +26,7 @@ def parse_from_root():
         """Parsing Countries from extracted regions"""
         if region.url.endswith('Britain1.html'):
             continue
-        reg_dict = {"region": region.region}
+        reg_dict = {"region": region}
         region_spidey_to_extract_countries = SimpleCrawler(url=region.url,
                                                            disable_crawler_log=True,
                                                            userland_dict=reg_dict)
