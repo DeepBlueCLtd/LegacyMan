@@ -6,9 +6,10 @@ from bs4 import BeautifulSoup, PageElement
 to process class data
 """
 CLASS_COLLECTION = []
+SUBTYPE_COLLECTION = {}
 
 _class_table_header_is_identified = False
-_current_subtype = None
+_current_subtype_id = None
 
 
 class ClassU:
@@ -53,16 +54,16 @@ class ClassU:
 
 def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                                userland_dict: dict = None) -> []:
-    global _class_table_header_is_identified, _current_subtype
+    global _class_table_header_is_identified, _current_subtype_id
     _class_table_header_is_identified = False
-    _current_subtype = None
+    _current_subtype_id = None
     for row in soup.find('div', {"id": "PageLayer"}).find('table').find_all('tr'):
         process_class_row(row, userland_dict['country'], parsed_url)
 
 
 def process_class_row(row: PageElement, country: str, parsed_url: str):
     """Check if not _class_table_header_is_identified"""
-    global _class_table_header_is_identified, _current_subtype
+    global _class_table_header_is_identified, _current_subtype_id
     if not _class_table_header_is_identified:
         """See if this is the header, and set 
         _class_table_header_is_identified accordingly 
@@ -72,15 +73,23 @@ def process_class_row(row: PageElement, country: str, parsed_url: str):
 
     # Check if record is a subtype, as at this point table header is identified
     if is_this_subcategory_data(row):
-        # Add to set and set _current_subtype flag and return
-        _current_subtype = extract_subcategory(row)
+        # Add to set and set _current_subtype_id flag and return
+        _current_subtype_id = identify_or_create_sub_type_id(extract_subcategory(row))
         return
 
     # Normal record
     if not is_this_class_record(row):
         return
-    # Extract information and map against _current_subtype
-    create_new_class_with_extracted_subcategory(row, country, _current_subtype, parsed_url)
+    # Extract information and map against _current_subtype_id
+    create_new_class_with_extracted_subcategory(row, country, _current_subtype_id, parsed_url)
+
+
+def identify_or_create_sub_type_id(sub_type: str):
+    if sub_type in SUBTYPE_COLLECTION:
+        return sub_type, SUBTYPE_COLLECTION[sub_type]
+    new_id = len(SUBTYPE_COLLECTION) + 1
+    SUBTYPE_COLLECTION[sub_type] = new_id
+    return sub_type, new_id
 
 
 def is_this_class_header(row: PageElement):
