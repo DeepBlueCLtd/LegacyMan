@@ -1,11 +1,9 @@
 import hashlib
 import logging
 import os
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 
 from bs4 import BeautifulSoup
-
-from crawler.url_join import urljoin2
 
 
 class Response:
@@ -110,7 +108,7 @@ class SimpleCrawler:
             return
         for link in soup.find_all('a'):
             child_parsed_url = urlparse(
-                urljoin2(parsed_url, urlparse(link.get('href')).path)).geturl()
+                urljoin(parsed_url, urlparse(link.get('href')).path)).geturl()
             if child_parsed_url.startswith('/'):
                 self.logger.warning("Absolute path {} referenced".format(child_parsed_url))
             self.crawl(child_parsed_url,
