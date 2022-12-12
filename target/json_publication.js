@@ -8,12 +8,18 @@ var publicationJsonData={
   "platform_sub_types": [
     {
       "id": 1,
-      "platform_sub_type": "Composite",
+      "platform_sub_type": [
+        "Composite",
+        1
+      ],
       "platform_type_id": 1
     },
     {
       "id": 2,
-      "platform_sub_type": "Legacy",
+      "platform_sub_type": [
+        "Legacy",
+        2
+      ],
       "platform_type_id": 1
     }
   ],
@@ -73,7 +79,10 @@ var publicationJsonData={
       "id": 1,
       "bookmarked": false,
       "title": "Unit_a",
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "country_id": "Narnia",
       "remarks": null,
       "engine": "2 * V8 Diesel",
@@ -89,7 +98,10 @@ var publicationJsonData={
       "id": 2,
       "bookmarked": false,
       "title": "Unit_b",
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "country_id": "Narnia",
       "remarks": null,
       "engine": "2 * V6 Diesel",
@@ -105,7 +117,10 @@ var publicationJsonData={
       "id": 3,
       "bookmarked": false,
       "title": "Unit_c",
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "country_id": "Narnia",
       "remarks": null,
       "engine": "5 * V8 Diesel",
@@ -121,7 +136,10 @@ var publicationJsonData={
       "id": 4,
       "bookmarked": false,
       "title": "*Unit_d",
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "country_id": "Narnia",
       "remarks": null,
       "engine": "2 * V6 Diesel",
@@ -137,7 +155,10 @@ var publicationJsonData={
       "id": 5,
       "bookmarked": false,
       "title": " Unit_a",
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "country_id": "France",
       "remarks": null,
       "engine": "2 * V8 Diesel",
@@ -153,7 +174,10 @@ var publicationJsonData={
       "id": 6,
       "bookmarked": false,
       "title": "Unit_b",
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "country_id": "France",
       "remarks": null,
       "engine": "2 * V6 Diesel",
@@ -169,7 +193,10 @@ var publicationJsonData={
       "id": 7,
       "bookmarked": false,
       "title": "Unit_c",
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "country_id": "France",
       "remarks": null,
       "engine": "5 * V8 Diesel",
@@ -185,7 +212,10 @@ var publicationJsonData={
       "id": 8,
       "bookmarked": false,
       "title": "Unit_d",
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "country_id": "France",
       "remarks": null,
       "engine": "2 * V6 Diesel",
@@ -201,7 +231,10 @@ var publicationJsonData={
       "id": 9,
       "bookmarked": false,
       "title": "Unit_a",
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "country_id": "Spain",
       "remarks": null,
       "engine": "2 * V8 Diesel",
@@ -217,7 +250,10 @@ var publicationJsonData={
       "id": 10,
       "bookmarked": false,
       "title": "Unit_b",
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "country_id": "Spain",
       "remarks": null,
       "engine": "2 * V6 Diesel",
@@ -233,7 +269,10 @@ var publicationJsonData={
       "id": 11,
       "bookmarked": false,
       "title": "Unit_c",
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "country_id": "Spain",
       "remarks": null,
       "engine": "5 * V8 Diesel",
@@ -249,7 +288,10 @@ var publicationJsonData={
       "id": 12,
       "bookmarked": false,
       "title": "*Unit_db",
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "country_id": "Spain",
       "remarks": null,
       "engine": "2 * V6 Diesel",
@@ -269,11 +311,11 @@ var publicationJsonData={
     },
     {
       "id": 2,
-      "tonal_type": "Power Related"
+      "tonal_type": "Transient Sources"
     },
     {
       "id": 3,
-      "tonal_type": "Transient Sources"
+      "tonal_type": "Power Related"
     }
   ],
   "tonals": [
@@ -287,7 +329,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Narnia",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -302,7 +347,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Narnia",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -317,7 +365,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Narnia",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -332,7 +383,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Narnia",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -347,7 +401,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Narnia",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -362,7 +419,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -377,7 +437,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -392,7 +455,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -407,7 +473,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -422,7 +491,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Composite",
+      "platform_sub_type_id": [
+        "Composite",
+        1
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -437,7 +509,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -452,7 +527,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -467,7 +545,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -482,7 +563,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -497,7 +581,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "France",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -512,7 +599,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Spain",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -527,7 +617,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Spain",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -542,7 +635,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Spain",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -557,7 +653,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Spain",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
@@ -572,7 +671,10 @@ var publicationJsonData={
       "remarks": null,
       "country_id": "Spain",
       "platform_type_id": 1,
-      "platform_sub_type_id": "Legacy",
+      "platform_sub_type_id": [
+        "Legacy",
+        2
+      ],
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
