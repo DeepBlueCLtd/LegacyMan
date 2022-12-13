@@ -25,7 +25,7 @@ def path_has_back_slash(path: str):
 
 
 def change_to_drive_root_directory(path: str):
-    os.chdir(os.path.splitdrive(path)[0] + ":\\")
+    os.chdir(os.path.splitdrive(path)[0] + "\\")
 
 
 def get_cleansed_path(path: str):
