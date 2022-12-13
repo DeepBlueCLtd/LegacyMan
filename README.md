@@ -8,7 +8,6 @@ See the original mock data [here](https://deepbluecltd.github.io/LegacyMan/data/
 
 - python >= 3.9
 - beautifulsoup4
-- simplejson
 
 ## Initial Setup
 
