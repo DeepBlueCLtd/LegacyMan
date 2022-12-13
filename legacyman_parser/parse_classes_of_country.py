@@ -141,18 +141,21 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: str, 
     has_tonal = does_class_contain_tonal(columns[0])
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
-    CLASS_COLLECTION.append(ClassU(columns[0].text,
-                                   current_subtype,
-                                   country,
-                                   columns[1].text,
-                                   columns[2].text,
-                                   columns[3].text,
-                                   columns[4].text,
-                                   columns[5].text,
-                                   columns[6].text,
-                                   has_tonal,
-                                   tonal_href))
-
+    # filter for columns that have 7 cells
+    if (len(columns) == 7):
+        CLASS_COLLECTION.append(ClassU(columns[0].text,
+                                    current_subtype,
+                                    country,
+                                    columns[1].text,
+                                    columns[2].text,
+                                    columns[3].text,
+                                    columns[4].text,
+                                    columns[5].text,
+                                    columns[6].text,
+                                    has_tonal,
+                                    tonal_href))
+    else:
+        print('Warning: encounterd class with too few columns', parsed_url)
 
 def does_class_contain_tonal(table_data: PageElement):
     if table_data.find('a') is not None:
