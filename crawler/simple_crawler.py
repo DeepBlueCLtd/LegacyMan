@@ -35,12 +35,13 @@ def check_path(path):
 
 
 class SimpleCrawler:
-    def __init__(self, url, disable_crawler_log):
+    def __init__(self, url=None, disable_crawler_log=None, userland_dict=None):
         self.start_page = url
         self.visited_child_resources = {}
         self.unreachable_child_resources = {}
         self.logger = logging.getLogger('SimpleCrawler')
         self.logger.disabled = disable_crawler_log
+        self.userland_dict = userland_dict
 
     class Resources:
         def __init__(self, url, parent_url):
@@ -53,7 +54,11 @@ class SimpleCrawler:
     def retrieve_resource(self, resource):
         return self.visited_child_resources[resource.id]
 
-    def crawl(self, url=None, parent_url=None, resource_processor_callback=None):
+    def crawl(self,
+              url=None,
+              parent_url=None,
+              resource_processor_callback=None,
+              crawl_recursively=None):
         self.logger.info("Checking {}".format(url))
         if url is None:
             url = self.start_page
@@ -70,7 +75,9 @@ class SimpleCrawler:
                 self.visited_child_resources[resource.id] = resource
             crawl_child_resource = True
         else:
-            self.logger.error("Reference {} not found in {}".format(parsed_url, parent_url))
+            self.logger.error("Reference {} not found. Referred from {}"
+                              .format(parsed_url,
+                                      "user input" if parent_url is None else parent_url))
             self.unreachable_child_resources[resource.id] = resource
 
         if child_resource_already_accessed:
@@ -80,16 +87,25 @@ class SimpleCrawler:
                                                 parent_url,
                                                 self.retrieve_resource(resource).parent_url))
             if resource_processor_callback is not None:
-                already_access_soup = BeautifulSoup(page.text, features="lxml")
-                resource_processor_callback(already_access_soup, parsed_url, parent_url)
+                already_access_soup = BeautifulSoup(page.text, "html.parser")
+                resource_processor_callback(soup=already_access_soup,
+                                            parsed_url=parsed_url,
+                                            parent_url=parent_url,
+                                            userland_dict=self.userland_dict)
             return
 
         if not crawl_child_resource:
             return
 
-        soup = BeautifulSoup(page.text, features="lxml")
+        soup = BeautifulSoup(page.text, "html.parser")
         if resource_processor_callback is not None:
-            resource_processor_callback(soup, parsed_url, parent_url)
+            resource_processor_callback(soup=soup,
+                                        parsed_url=parsed_url,
+                                        parent_url=parent_url,
+                                        userland_dict=self.userland_dict)
+
+        if not crawl_recursively:
+            return
         for link in soup.find_all('a'):
             child_parsed_url = urlparse(
                 urljoin(parsed_url, urlparse(link.get('href')).path)).geturl()
