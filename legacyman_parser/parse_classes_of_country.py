@@ -57,8 +57,10 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     global _class_table_header_is_identified, _current_subtype_id
     _class_table_header_is_identified = False
     _current_subtype_id = None
-    for row in soup.find('div', {"id": "PageLayer"}).find('table').find_all('tr'):
-        process_class_row(row, userland_dict['country'], parsed_url)
+    classList = soup.find('div', {"id": "PageLayer"})
+    if (classList):
+        for row in classList.find('table').find_all('tr'):
+            process_class_row(row, userland_dict['country'], parsed_url)
 
 
 def process_class_row(row: PageElement, country: str, parsed_url: str):
