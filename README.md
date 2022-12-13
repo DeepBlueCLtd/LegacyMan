@@ -39,7 +39,7 @@ python -m legacyman_parser.parser data/PlatformData/PD_1.html
 
 This will
 * generate the json file to be imported into the Data Browser application
-* generate a discrepancy report of inaccessible urls
+* generate a discrepancy report
 
 ### Generate DITA content
 
