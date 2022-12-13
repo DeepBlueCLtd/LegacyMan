@@ -87,7 +87,7 @@ class SimpleCrawler:
                                                 parent_url,
                                                 self.retrieve_resource(resource).parent_url))
             if resource_processor_callback is not None:
-                already_access_soup = BeautifulSoup(page.text, features="lxml")
+                already_access_soup = BeautifulSoup(page.text, "html.parser")
                 resource_processor_callback(soup=already_access_soup,
                                             parsed_url=parsed_url,
                                             parent_url=parent_url,
@@ -97,7 +97,7 @@ class SimpleCrawler:
         if not crawl_child_resource:
             return
 
-        soup = BeautifulSoup(page.text, features="lxml")
+        soup = BeautifulSoup(page.text, "html.parser")
         if resource_processor_callback is not None:
             resource_processor_callback(soup=soup,
                                         parsed_url=parsed_url,
