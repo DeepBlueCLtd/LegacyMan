@@ -1,3 +1,4 @@
+import os
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
@@ -10,15 +11,45 @@ from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONA
 INVALID_COUNTRY_HREFS = []
 
 
+def path_has_drive_component(path):
+    if os.path.splitdrive(path)[0]:
+        return True
+    return False
+
+
+def path_has_back_slash(path: str):
+    # Check if it has backslash
+    if '\\' in path:
+        return True
+    return False
+
+
+def change_to_drive_root_directory(path: str):
+    os.chdir(os.path.splitdrive(path)[0] + ":\\")
+
+
+def get_cleansed_path(path: str):
+    return os.path.splitdrive(path)[1].replace("\\", "/")
+
+
 def parse_from_root():
     arg = sys.argv[0:]
     if len(arg) < 2:
         print("Url empty. Exiting")
         return
 
+    # Url hardening
+    arg_url = arg[1]
+    cleansed_url = arg_url
+    if path_has_drive_component(arg_url):
+        change_to_drive_root_directory(arg_url)
+
+    if path_has_back_slash(arg_url) or path_has_drive_component(arg_url):
+        cleansed_url = get_cleansed_path(arg_url)
+
     """Parsing Region
     The regions are processed from map"""
-    root_spidey_to_extract_regions = SimpleCrawler(url=arg[1], disable_crawler_log=True)
+    root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url, disable_crawler_log=True)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
 
     print("\n\nRegions:")
