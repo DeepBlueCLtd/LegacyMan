@@ -9,7 +9,7 @@ from legacy_publisher.json_templates import PlatformType, PropulsionType, Platfo
 EXPORT_FILE = 'target/json_publication.js'
 
 
-def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None):
+def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None):
     # Hardcode Generic Platform Type
     platform_type = PlatformType(1, "Generic")
 
@@ -20,12 +20,9 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     tonal_source = TonalSource(1, "Generic")
 
     # Extract platform subtypes
-    seq = 0
-    distinct_subtypes = [*set(map(lambda class_in_coll: class_in_coll.sub_category, parsed_classes))]
     platform_sub_types = []
-    for subtype in distinct_subtypes:
-        seq = seq + 1
-        platform_sub_types.append(PlatformSubType(seq, 1, subtype))
+    for subtype_value, subtype_id in parsed_subtypes.items():
+        platform_sub_types.append(PlatformSubType(subtype_id, 1, subtype_value))
 
     # Extract regions
     seq = 0

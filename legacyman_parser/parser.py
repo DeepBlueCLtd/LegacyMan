@@ -3,7 +3,8 @@ import sys
 
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
-from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, TOO_FEW_PROPERTIES
+from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
+    TOO_FEW_PROPERTIES
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION
@@ -108,7 +109,8 @@ def parse_from_root():
     json_publisher.publish(parsed_regions=REGION_COLLECTION,
                            parsed_countries=COUNTRY_COLLECTION,
                            parsed_classes=CLASS_COLLECTION,
-                           parsed_tonals=TONAL_COLLECTION)
+                           parsed_tonals=TONAL_COLLECTION,
+                           parsed_subtypes=SUBTYPE_COLLECTION)
 
 
 if __name__ == "__main__":
