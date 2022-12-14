@@ -3,7 +3,7 @@ import sys
 
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
-from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION
+from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, TOO_FEW_PROPERTIES
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION
@@ -95,11 +95,15 @@ def parse_from_root():
                            crawl_recursively=False)
     print("Done.")
 
-    print("\n\nOther Discrepancies:\n")
+    print("\n\nDiscrepancy: Unreachable or undefined country hrefs\n")
     for invalid_country_href in INVALID_COUNTRY_HREFS:
-        print("Not able to reach href `{}` of `{}` in country_spidey".format(
+        print("    Href `{}` of `{}`.".format(
             invalid_country_href["url"],
             invalid_country_href["country"]))
+
+    print("\n\nDiscrepancy: Some classes in the below files had too few properties than expected\n")
+    for too_few_props in TOO_FEW_PROPERTIES:
+        print("    " + too_few_props)
 
     json_publisher.publish(parsed_regions=REGION_COLLECTION,
                            parsed_countries=COUNTRY_COLLECTION,

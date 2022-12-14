@@ -7,6 +7,7 @@ to process class data
 """
 CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
+TOO_FEW_PROPERTIES = []
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
@@ -142,20 +143,20 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: str, 
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
     # filter for columns that have 7 cells
-    if len(columns) == 7:
-        CLASS_COLLECTION.append(ClassU(columns[0].text,
-                                       current_subtype,
-                                       country,
-                                       columns[1].text,
-                                       columns[2].text,
-                                       columns[3].text,
-                                       columns[4].text,
-                                       columns[5].text,
-                                       columns[6].text,
-                                       has_tonal,
-                                       tonal_href))
-    else:
-        print('\nWarning: encountered class with too few columns. url: {}\n'.format(parsed_url))
+    if len(columns) != 7:
+        log_row_as_containing_too_few_class_properties(parsed_url)
+        return
+    CLASS_COLLECTION.append(ClassU(columns[0].text,
+                                   current_subtype,
+                                   country,
+                                   columns[1].text,
+                                   columns[2].text,
+                                   columns[3].text,
+                                   columns[4].text,
+                                   columns[5].text,
+                                   columns[6].text,
+                                   has_tonal,
+                                   tonal_href))
 
 
 def does_class_contain_tonal(table_data: PageElement):
@@ -166,3 +167,7 @@ def does_class_contain_tonal(table_data: PageElement):
 
 def extract_tonal_href(table_data: PageElement):
     return table_data.find('a').get('href')
+
+
+def log_row_as_containing_too_few_class_properties(parsed_url: str):
+    TOO_FEW_PROPERTIES.append(parsed_url)
