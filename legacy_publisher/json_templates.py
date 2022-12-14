@@ -20,7 +20,7 @@ class TonalType:
 class TonalSource:
     def __init__(self, id, name):
         self.id = id
-        self.tonal_source = name
+        self.name = name
 
 
 class PropulsionType:
