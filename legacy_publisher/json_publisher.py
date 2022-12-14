@@ -57,8 +57,8 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     for tonal in parsed_tonals:
         seq = seq + 1
         tonals.append(
-            Tonal(seq, tonal.class_u.class_u, tonal.tonal_type, tonal.source, tonal.ratio_freq, tonal.harmonics,
-                  None, tonal.class_u.country, 1, tonal.class_u.sub_category, None, None, None))
+            Tonal(seq, tonal.class_u.class_u, tonal.tonal_type[1], tonal.source, tonal.ratio_freq, tonal.harmonics,
+                  None, tonal.class_u.country, 1, tonal.class_u.sub_category[1], None, None, None))
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types,
                  "propulsion_types": propulsion_type, "regions": regions, "tonal_source": tonal_source,
