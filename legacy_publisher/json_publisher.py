@@ -36,7 +36,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     countries = []
     for country in parsed_countries:
         seq = seq + 1
-        countries.append(Country(seq, country.region, country.country))
+        countries.append(Country(seq, country.region.id, country.country))
 
     # Extract classes
     seq = 0
