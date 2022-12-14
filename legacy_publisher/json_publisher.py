@@ -65,7 +65,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types,
                  "propulsion_types": propulsion_type, "regions": regions, "tonal_source": tonal_source,
-                 "countries": countries, "classes": classes, "tonal_types": tonal_types, "tonals": tonals}
+                 "countries": countries, "units": classes, "tonal_types": tonal_types, "tonals": tonals}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:
