@@ -75,7 +75,7 @@ def parse_from_root():
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
             continue
-        country_dict = {"country": country.country}
+        country_dict = {"country": country}
         country_spidey_to_extract_classes = SimpleCrawler(url=country.url,
                                                           disable_crawler_log=True,
                                                           userland_dict=country_dict)

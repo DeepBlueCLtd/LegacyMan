@@ -68,7 +68,7 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
             process_class_row(row, userland_dict['country'], parsed_url, seq)
 
 
-def process_class_row(row: PageElement, country: str, parsed_url: str, seq: int):
+def process_class_row(row: PageElement, country: dict, parsed_url: str, seq: int):
     """Check if not _class_table_header_is_identified"""
     global _class_table_header_is_identified, _current_subtype_id
     if not _class_table_header_is_identified:
@@ -140,7 +140,7 @@ def is_this_class_record(row: PageElement):
     return False
 
 
-def create_new_class_with_extracted_subcategory(seq: int, row: PageElement, country: str, current_subtype: str,
+def create_new_class_with_extracted_subcategory(seq: int, row: PageElement, country: dict, current_subtype: str,
                                                 parsed_url: str):
     columns = row.find_all('td')
     tonal_href = None
