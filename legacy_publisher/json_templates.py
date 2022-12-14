@@ -66,6 +66,7 @@ class ClassU:
         self.max_speed = max_speed
         self.tpk = tpk
         self.max_rpm = max_rpm
+        self.images = []
 
 
 class Tonal:
