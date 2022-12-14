@@ -62,13 +62,11 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     _current_subtype_id = None
     class_list = soup.find('div', {"id": "PageLayer"})
     if class_list:
-        seq = len(CLASS_COLLECTION)
         for row in class_list.find('table').find_all('tr'):
-            seq = seq + 1
-            process_class_row(row, userland_dict['country'], parsed_url, seq)
+            process_class_row(row, userland_dict['country'], parsed_url)
 
 
-def process_class_row(row: PageElement, country: dict, parsed_url: str, seq: int):
+def process_class_row(row: PageElement, country: dict, parsed_url: str):
     """Check if not _class_table_header_is_identified"""
     global _class_table_header_is_identified, _current_subtype_id
     if not _class_table_header_is_identified:
@@ -88,7 +86,7 @@ def process_class_row(row: PageElement, country: dict, parsed_url: str, seq: int
     if not is_this_class_record(row):
         return
     # Extract information and map against _current_subtype_id
-    create_new_class_with_extracted_subcategory(seq, row, country, _current_subtype_id, parsed_url)
+    create_new_class_with_extracted_subcategory(row, country, _current_subtype_id, parsed_url)
 
 
 def identify_or_create_sub_type_id(sub_type: str):
@@ -140,7 +138,7 @@ def is_this_class_record(row: PageElement):
     return False
 
 
-def create_new_class_with_extracted_subcategory(seq: int, row: PageElement, country: dict, current_subtype: str,
+def create_new_class_with_extracted_subcategory(row: PageElement, country: dict, current_subtype: str,
                                                 parsed_url: str):
     columns = row.find_all('td')
     tonal_href = None
@@ -151,6 +149,7 @@ def create_new_class_with_extracted_subcategory(seq: int, row: PageElement, coun
     if len(columns) != 7:
         log_row_as_containing_too_few_class_properties(parsed_url)
         return
+    seq = len(CLASS_COLLECTION) + 1
     CLASS_COLLECTION.append(ClassU(seq,
                                    columns[0].text,
                                    current_subtype,
