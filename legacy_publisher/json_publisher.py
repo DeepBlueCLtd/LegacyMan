@@ -61,7 +61,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
                   None, tonal.class_u.country, 1, tonal.class_u.sub_category[1], None, None, None))
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types,
-                 "propulsion_types": propulsion_type, "regions": regions, "tonal_source": tonal_source,
+                 "propulsion_types": [propulsion_type], "regions": regions, "tonal_sources": [tonal_source],
                  "countries": countries, "units": classes, "tonal_types": tonal_types, "tonals": tonals}
 
     # Dump the wrapper to the text file passed as argument
