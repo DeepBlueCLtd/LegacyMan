@@ -49,10 +49,12 @@ def parse_from_root():
 
     """Parsing Region
     The regions are processed from map"""
+    print("\n\nParsing Regions:")
     root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url, disable_crawler_log=True)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
+    print("Done.")
 
-    print("\n\nRegions:")
+    print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
         """Parsing Countries from extracted regions"""
         if region.url.endswith('Britain1.html'):
@@ -63,12 +65,11 @@ def parse_from_root():
                                                            userland_dict=reg_dict)
         region_spidey_to_extract_countries.crawl(resource_processor_callback=extract_countries_in_region,
                                                  crawl_recursively=False)
-        print(region)
+    print("Done.")
 
-    print("\n\nCountries:")
+    print("\n\nParsing Classes:")
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
-        print(country)
         if country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
@@ -82,12 +83,9 @@ def parse_from_root():
         if len(country_spidey_to_extract_classes.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
+    print("Done.")
 
-    print("\n\nClasses:")
-    for class_u in CLASS_COLLECTION:
-        print(class_u)
-
-    print("\n\nTonals:")
+    print("\n\nParsing Tonals:")
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
         class_dict = {"class": class_with_tonals}
         tonal_spidey = SimpleCrawler(url=class_with_tonals.tonal_href,
@@ -95,13 +93,9 @@ def parse_from_root():
                                      userland_dict=class_dict)
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
                            crawl_recursively=False)
+    print("Done.")
 
-    for class_u in filter(lambda class_coll: class_coll.has_tonal is True, CLASS_COLLECTION):
-        print(class_u, ":")
-        for tonal in filter(lambda tonal_collection: tonal_collection.class_u == class_u, TONAL_COLLECTION):
-            print(tonal)
-
-    print("\n\nDiscrepancies:")
+    print("\n\nOther Discrepancies:\n")
     for invalid_country_href in INVALID_COUNTRY_HREFS:
         print("Not able to reach href `{}` of `{}` in country_spidey".format(
             invalid_country_href["url"],
