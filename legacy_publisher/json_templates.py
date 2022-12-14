@@ -26,7 +26,7 @@ class TonalSource:
 class PropulsionType:
     def __init__(self, id, name):
         self.id = id
-        self.propulsion_type = name
+        self.name = name
 
 
 class PlatformType:
