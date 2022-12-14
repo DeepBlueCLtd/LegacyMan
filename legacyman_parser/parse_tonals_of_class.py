@@ -31,8 +31,16 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     global _tonal_table_header_is_identified, _current_tonal_type
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
-    for row in soup.find('div', {"id": "PageLayer"}).find('table').find_all('tr'):
-        process_tonal_row(row, userland_dict['class'])
+    tonal_header = soup.find("td", string="Commonly Detected Sources")
+    if tonal_header:
+        tonal_table = tonal_header.find_parent("table")
+        if tonal_table:
+            for row in tonal_table.find_all('tr'):
+                process_tonal_row(row, userland_dict['class'])
+        else:
+            print("Tonal table not found for", parsed_url)
+    else:
+        print("Tonal Header not found for", parsed_url)
 
 
 def process_tonal_row(row: PageElement, class_u: any):
