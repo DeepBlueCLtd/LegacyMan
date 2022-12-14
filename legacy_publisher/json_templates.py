@@ -14,7 +14,7 @@ class Region:
 class TonalType:
     def __init__(self, id, tonal_type):
         self.id = id
-        self.tonal_type = tonal_type
+        self.name = tonal_type
 
 
 class TonalSource:
