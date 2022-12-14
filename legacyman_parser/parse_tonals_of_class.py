@@ -68,8 +68,8 @@ def is_this_tonal_header(row: PageElement):
     # For fields that don't have tonal headers
     if len(header) != 4:
         return False
-    if (header[0].text, header[1].text, header[2].text, header[3].text) == (
-            "Source", "Ratio/Freq", "Harmonics", "Remarks"):
+    if (header[0].text, header[3].text) == (
+            "Source", "Remarks"):
         return True
     return False
 
