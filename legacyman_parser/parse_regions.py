@@ -25,5 +25,7 @@ def extract_regions(soup: BeautifulSoup = None,
     seq = 0
     for area_element in soup.find_all('area'):
         seq = seq + 1
-        parsed_region_url = urljoin(parsed_url, area_element.get('href'))
-        REGION_COLLECTION.append(RegionMap(seq, area_element.get('alt'), parsed_region_url))
+        href = area_element.get('href')
+        if not href.startswith('..'):
+            parsed_region_url = urljoin(parsed_url, href)
+            REGION_COLLECTION.append(RegionMap(seq, area_element.get('alt'), parsed_region_url))
