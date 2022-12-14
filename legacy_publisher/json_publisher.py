@@ -39,11 +39,9 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
         countries.append(Country(seq, country.region.id, country.country))
 
     # Extract classes
-    seq = 0
     classes = []
     for class_u in parsed_classes:
-        seq = seq + 1
-        classes.append(ClassU(seq, class_u.class_u, class_u.sub_category, class_u.country, None, class_u.power,
+        classes.append(ClassU(class_u.id, class_u.class_u, class_u.sub_category, class_u.country, None, class_u.power,
                               None, None, None, None, None, None, None))
 
     # Extract tonal types
