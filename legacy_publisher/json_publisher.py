@@ -9,7 +9,8 @@ from legacy_publisher.json_templates import PlatformType, PropulsionType, Platfo
 EXPORT_FILE = 'target/json_publication.js'
 
 
-def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None):
+def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
+            parsed_tonal_types=None):
     # Hardcode Generic Platform Type
     platform_type = PlatformType(1, "Generic")
 
@@ -41,16 +42,14 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     # Extract classes
     classes = []
     for class_u in parsed_classes:
-        classes.append(ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country, None, class_u.power,
-                              None, None, None, None, None, None, None))
+        classes.append(
+            ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country, None, class_u.power,
+                   None, None, None, None, None, None, None))
 
     # Extract tonal types
-    seq = 0
-    distinct_tonal_types = [*set(map(lambda tonal_in_coll: tonal_in_coll.tonal_type, parsed_tonals))]
     tonal_types = []
-    for tonal_type in distinct_tonal_types:
-        seq = seq + 1
-        tonal_types.append(TonalType(seq, tonal_type))
+    for tonal_type_value, tonal_type_id in parsed_tonal_types.items():
+        tonal_types.append(TonalType(tonal_type_id, tonal_type_value))
 
     # Extract tonals
     seq = 0
