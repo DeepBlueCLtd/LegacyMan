@@ -27,9 +27,9 @@ def extract_countries_in_region(soup: BeautifulSoup = None,
     # get the heading
     heading = soup.find('h1')
     # get the first table after the heading
-    countryTable = heading.find_next('table')
+    country_table = heading.find_next('table')
     # loop through URLs in the table
-    for country in countryTable.find_all('td'):
+    for country in country_table.find_all('td'):
         seq = seq + 1
         COUNTRY_COLLECTION.append(create_country(seq, country, userland_dict['region'], parsed_url))
 

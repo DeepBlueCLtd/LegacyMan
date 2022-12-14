@@ -57,9 +57,9 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     global _class_table_header_is_identified, _current_subtype_id
     _class_table_header_is_identified = False
     _current_subtype_id = None
-    classList = soup.find('div', {"id": "PageLayer"})
-    if (classList):
-        for row in classList.find('table').find_all('tr'):
+    class_list = soup.find('div', {"id": "PageLayer"})
+    if class_list:
+        for row in class_list.find('table').find_all('tr'):
             process_class_row(row, userland_dict['country'], parsed_url)
 
 
@@ -142,20 +142,21 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: str, 
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
     # filter for columns that have 7 cells
-    if (len(columns) == 7):
+    if len(columns) == 7:
         CLASS_COLLECTION.append(ClassU(columns[0].text,
-                                    current_subtype,
-                                    country,
-                                    columns[1].text,
-                                    columns[2].text,
-                                    columns[3].text,
-                                    columns[4].text,
-                                    columns[5].text,
-                                    columns[6].text,
-                                    has_tonal,
-                                    tonal_href))
+                                       current_subtype,
+                                       country,
+                                       columns[1].text,
+                                       columns[2].text,
+                                       columns[3].text,
+                                       columns[4].text,
+                                       columns[5].text,
+                                       columns[6].text,
+                                       has_tonal,
+                                       tonal_href))
     else:
-        print('Warning: encounterd class with too few columns', parsed_url)
+        print('\nWarning: encountered class with too few columns. url: {}\n'.format(parsed_url))
+
 
 def does_class_contain_tonal(table_data: PageElement):
     if table_data.find('a') is not None:

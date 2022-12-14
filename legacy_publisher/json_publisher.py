@@ -65,8 +65,9 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:
-        print("Clearing json file")
+        print("\n\n\nJson file: {}".format(EXPORT_FILE))
         f.truncate(0)
-        print("Writing json file")
+        print("Cleared existing contents.")
         f.write("var publicationJsonData=")
         f.write(json.dumps(json_data, default=operator.attrgetter('__dict__'), indent=2 * ' '))
+        print("Dumped new content.")
