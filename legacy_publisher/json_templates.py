@@ -17,6 +17,12 @@ class TonalType:
         self.tonal_type = tonal_type
 
 
+class TonalSource:
+    def __init__(self, id, name):
+        self.id = id
+        self.tonal_source = name
+
+
 class PropulsionType:
     def __init__(self, id, name):
         self.id = id

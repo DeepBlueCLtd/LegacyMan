@@ -2,7 +2,7 @@ import json
 import operator
 
 from legacy_publisher.json_templates import PlatformType, PropulsionType, PlatformSubType, Region, Country, ClassU, \
-    TonalType, Tonal
+    TonalType, Tonal, TonalSource
 
 """This module will handle post parsing enhancements for publishing"""
 
@@ -15,6 +15,9 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
 
     # Hardcode Generic Propulsion Type
     propulsion_type = PropulsionType(1, "Generic")
+
+    # Hardcode Generic Tonal Source
+    tonal_source = TonalSource(1, "Generic")
 
     # Extract platform subtypes
     seq = 0
@@ -64,7 +67,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
                   None, tonal.class_u.country, 1, tonal.class_u.sub_category, None, None, None))
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types,
-                 "propulsion_types": propulsion_type, "regions": regions,
+                 "propulsion_types": propulsion_type, "regions": regions, "tonal_source": tonal_source,
                  "countries": countries, "classes": classes, "tonal_types": tonal_types, "tonals": tonals}
 
     # Dump the wrapper to the text file passed as argument
