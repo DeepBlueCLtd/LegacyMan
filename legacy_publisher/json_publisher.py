@@ -10,15 +10,17 @@ EXPORT_FILE = 'target/json_publication.js'
 
 
 def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
-            parsed_tonal_types=None):
+            parsed_tonal_types=None, parsed_tonal_sources=None):
     # Hardcode Generic Platform Type
     platform_type = PlatformType(1, "Generic Platform Type")
 
     # Hardcode Generic Propulsion Type
     propulsion_type = PropulsionType(1, "Generic Propulsion Type")
 
-    # Hardcode Generic Tonal Source
-    tonal_source = TonalSource(1, "Generic Tonal Source")
+    # Extract tonal sources
+    tonal_sources = []
+    for source_value, source_id in parsed_tonal_sources.items():
+        tonal_sources.append(TonalSource(source_id, source_value))
 
     # Extract platform subtypes
     platform_sub_types = []
@@ -26,18 +28,14 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
         platform_sub_types.append(PlatformSubType(subtype_id, 1, subtype_value))
 
     # Extract regions
-    seq = 0
     regions = []
     for region in parsed_regions:
-        seq = seq + 1
-        regions.append(Region(seq, region.region))
+        regions.append(Region(region.id, region.region))
 
     # Extract countries
-    seq = 0
     countries = []
     for country in parsed_countries:
-        seq = seq + 1
-        countries.append(Country(seq, country.region.id, country.country))
+        countries.append(Country(country.id, country.region.id, country.country))
 
     # Extract classes
     classes = []
@@ -57,12 +55,12 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     for tonal in parsed_tonals:
         seq = seq + 1
         tonals.append(
-            Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], 1, 12.8, tonal.harmonics,
+            Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], tonal.source[1], 1, tonal.harmonics,
                   None, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1], None, None, None))
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
-                 "tonal_sources": [tonal_source], "tonal_types": tonal_types, "tonals": tonals}
+                 "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:

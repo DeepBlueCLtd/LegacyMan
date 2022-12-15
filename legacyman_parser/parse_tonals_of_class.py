@@ -5,6 +5,7 @@ to process tonals data
 """
 TONAL_COLLECTION = []
 TONAL_TYPE_COLLECTION = {}
+TONAL_SOURCE_COLLECTION = {}
 
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
@@ -121,5 +122,14 @@ def is_this_tonal_record(row: PageElement):
 
 def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, current_tonal_type: str):
     columns = row.find_all('td')
+    tonal_source = identify_or_create_tonal_source_id(columns[0].text)
     TONAL_COLLECTION.append(
-        Tonal(class_u, columns[0].text, columns[1].text, columns[2].text, columns[3].text, current_tonal_type))
+        Tonal(class_u, tonal_source, columns[1].text, columns[2].text, columns[3].text, current_tonal_type))
+
+
+def identify_or_create_tonal_source_id(tonal_source: str):
+    if tonal_source in TONAL_SOURCE_COLLECTION:
+        return tonal_source, TONAL_SOURCE_COLLECTION[tonal_source]
+    new_id = len(TONAL_SOURCE_COLLECTION) + 1
+    TONAL_SOURCE_COLLECTION[tonal_source] = new_id
+    return tonal_source, new_id
