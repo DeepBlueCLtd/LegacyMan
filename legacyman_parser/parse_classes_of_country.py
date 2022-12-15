@@ -8,6 +8,7 @@ to process class data
 CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
 TOO_FEW_PROPERTIES = []
+NON_STANDARD_COUNTRY = []
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
@@ -64,6 +65,9 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     if class_list:
         for row in class_list.find('table').find_all('tr'):
             process_class_row(row, userland_dict['country'], parsed_url)
+    else:
+        NON_STANDARD_COUNTRY.append(parsed_url)
+
 
 
 def process_class_row(row: PageElement, country: dict, parsed_url: str):

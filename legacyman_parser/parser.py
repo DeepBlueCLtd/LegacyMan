@@ -4,7 +4,7 @@ import sys
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
-    TOO_FEW_PROPERTIES
+    TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
@@ -104,6 +104,10 @@ def parse_from_root():
         print("    Href `{}` of `{}`.".format(
             invalid_country_href["url"],
             invalid_country_href["country"]))
+
+    print("\n\nDiscrepancy: Below urls contain non-standard countries where classes couldn't be identified\n")
+    for non_standard_countries in NON_STANDARD_COUNTRY:
+        print("    " + non_standard_countries)
 
     print("\n\nDiscrepancy: Some classes in the below files had too few properties than expected\n")
     for too_few_props in TOO_FEW_PROPERTIES:
