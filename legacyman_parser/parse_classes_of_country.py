@@ -15,6 +15,7 @@ _current_subtype_id = None
 
 class ClassU:
     def __init__(self,
+                 id,
                  class_u,
                  sub_category,
                  country,
@@ -26,6 +27,7 @@ class ClassU:
                  reduction_ratio,
                  has_tonal,
                  tonal_href):
+        self.id = id
         self.class_u = class_u
         self.sub_category = sub_category
         self.country = country
@@ -64,7 +66,7 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
             process_class_row(row, userland_dict['country'], parsed_url)
 
 
-def process_class_row(row: PageElement, country: str, parsed_url: str):
+def process_class_row(row: PageElement, country: dict, parsed_url: str):
     """Check if not _class_table_header_is_identified"""
     global _class_table_header_is_identified, _current_subtype_id
     if not _class_table_header_is_identified:
@@ -136,7 +138,8 @@ def is_this_class_record(row: PageElement):
     return False
 
 
-def create_new_class_with_extracted_subcategory(row: PageElement, country: str, current_subtype: str, parsed_url: str):
+def create_new_class_with_extracted_subcategory(row: PageElement, country: dict, current_subtype: str,
+                                                parsed_url: str):
     columns = row.find_all('td')
     tonal_href = None
     has_tonal = does_class_contain_tonal(columns[0])
@@ -146,7 +149,9 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: str, 
     if len(columns) != 7:
         log_row_as_containing_too_few_class_properties(parsed_url)
         return
-    CLASS_COLLECTION.append(ClassU(columns[0].text,
+    seq = len(CLASS_COLLECTION) + 1
+    CLASS_COLLECTION.append(ClassU(seq,
+                                   columns[0].text,
                                    current_subtype,
                                    country,
                                    columns[1].text,

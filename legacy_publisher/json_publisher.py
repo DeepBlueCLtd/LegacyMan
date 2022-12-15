@@ -1,55 +1,54 @@
-import operator
-
 import json
+import operator
+import random
 
-from legacy_publisher.json_templates import PlatformType, PlatformSubType, Region, Country, ClassU, TonalType, Tonal
+from legacy_publisher.json_templates import PlatformType, PropulsionType, PlatformSubType, Region, Country, ClassU, \
+    TonalType, Tonal, TonalSource
 
 """This module will handle post parsing enhancements for publishing"""
 
 EXPORT_FILE = 'target/json_publication.js'
 
 
-def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None):
+def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
+            parsed_tonal_types=None, parsed_tonal_sources=None):
     # Hardcode Generic Platform Type
-    platform_type = PlatformType(1, "Generic")
+    platform_type = PlatformType(1, "Generic Platform Type")
+
+    # Hardcode Generic Propulsion Type
+    propulsion_type = PropulsionType(1, "Generic Propulsion Type")
+
+    # Extract tonal sources
+    tonal_sources = []
+    for source_value, source_id in parsed_tonal_sources.items():
+        tonal_sources.append(TonalSource(source_id, source_value))
 
     # Extract platform subtypes
-    seq = 0
-    distinct_subtypes = [*set(map(lambda class_in_coll: class_in_coll.sub_category, parsed_classes))]
     platform_sub_types = []
-    for subtype in distinct_subtypes:
-        seq = seq + 1
-        platform_sub_types.append(PlatformSubType(seq, 1, subtype))
+    for subtype_value, subtype_id in parsed_subtypes.items():
+        platform_sub_types.append(PlatformSubType(subtype_id, 1, subtype_value))
 
     # Extract regions
-    seq = 0
     regions = []
     for region in parsed_regions:
-        seq = seq + 1
-        regions.append(Region(seq, region.region))
+        regions.append(Region(region.id, region.region))
 
     # Extract countries
-    seq = 0
     countries = []
     for country in parsed_countries:
-        seq = seq + 1
-        countries.append(Country(seq, country.region, country.country))
+        countries.append(Country(country.id, country.region.id, country.country))
 
     # Extract classes
-    seq = 0
     classes = []
     for class_u in parsed_classes:
-        seq = seq + 1
-        classes.append(ClassU(seq, class_u.class_u, class_u.sub_category, class_u.country, None, class_u.power,
-                              None, None, None, None, None, None, None))
+        classes.append(
+            ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
+                   None, None, None, None, None, None, None))
 
     # Extract tonal types
-    seq = 0
-    distinct_tonal_types = [*set(map(lambda tonal_in_coll: tonal_in_coll.tonal_type, parsed_tonals))]
     tonal_types = []
-    for tonal_type in distinct_tonal_types:
-        seq = seq + 1
-        tonal_types.append(TonalType(seq, tonal_type))
+    for tonal_type_value, tonal_type_id in parsed_tonal_types.items():
+        tonal_types.append(TonalType(tonal_type_id, tonal_type_value))
 
     # Extract tonals
     seq = 0
@@ -57,11 +56,14 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     for tonal in parsed_tonals:
         seq = seq + 1
         tonals.append(
-            Tonal(seq, tonal.class_u.class_u, tonal.tonal_type, tonal.source, tonal.ratio_freq, tonal.harmonics,
-                  None, tonal.class_u.country, 1, tonal.class_u.sub_category, None, None, None))
+            Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], tonal.source[1], round(random.uniform(1, 50),
+                                                                                     random.choice(range(2, 5))),
+                  tonal.harmonics, None, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1],
+                  None, None, None))
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
-                 "countries": countries, "classes": classes, "tonal_types": tonal_types, "tonals": tonals}
+                 "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
+                 "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:

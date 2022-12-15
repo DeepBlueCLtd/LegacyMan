@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup, PageElement
 to process tonals data
 """
 TONAL_COLLECTION = []
+TONAL_TYPE_COLLECTION = {}
+TONAL_SOURCE_COLLECTION = {}
 
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
@@ -56,7 +58,7 @@ def process_tonal_row(row: PageElement, class_u: any):
     # Check if record is a tonal type, as at this point table header is identified
     if is_this_tonal_type_data(row):
         # Add to set and set _current_tonal_type flag and return
-        _current_tonal_type = extract_tonal_type(row)
+        _current_tonal_type = identify_or_create_tonal_type_id(extract_tonal_type(row))
         return
 
     # Normal record
@@ -64,6 +66,14 @@ def process_tonal_row(row: PageElement, class_u: any):
         return
     # Extract information and map against _current_tonal_type
     create_new_tonal_with_extracted_tonal_type(row, class_u, _current_tonal_type)
+
+
+def identify_or_create_tonal_type_id(tonal_type: str):
+    if tonal_type in TONAL_TYPE_COLLECTION:
+        return tonal_type, TONAL_TYPE_COLLECTION[tonal_type]
+    new_id = len(TONAL_TYPE_COLLECTION) + 1
+    TONAL_TYPE_COLLECTION[tonal_type] = new_id
+    return tonal_type, new_id
 
 
 def is_this_tonal_header(row: PageElement):
@@ -112,5 +122,14 @@ def is_this_tonal_record(row: PageElement):
 
 def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, current_tonal_type: str):
     columns = row.find_all('td')
+    tonal_source = identify_or_create_tonal_source_id(columns[0].text)
     TONAL_COLLECTION.append(
-        Tonal(class_u, columns[0].text, columns[1].text, columns[2].text, columns[3].text, current_tonal_type))
+        Tonal(class_u, tonal_source, columns[1].text, columns[2].text, columns[3].text, current_tonal_type))
+
+
+def identify_or_create_tonal_source_id(tonal_source: str):
+    if tonal_source in TONAL_SOURCE_COLLECTION:
+        return tonal_source, TONAL_SOURCE_COLLECTION[tonal_source]
+    new_id = len(TONAL_SOURCE_COLLECTION) + 1
+    TONAL_SOURCE_COLLECTION[tonal_source] = new_id
+    return tonal_source, new_id

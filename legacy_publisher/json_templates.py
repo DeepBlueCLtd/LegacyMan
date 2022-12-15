@@ -8,13 +8,25 @@ class GenericFields:
 class Region:
     def __init__(self, id, region):
         self.id = id
-        self.region = region
+        self.name = region
 
 
 class TonalType:
     def __init__(self, id, tonal_type):
         self.id = id
-        self.tonal_type = tonal_type
+        self.name = tonal_type
+
+
+class TonalSource:
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+
+class PropulsionType:
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
 
 
 class PlatformType:
@@ -54,13 +66,14 @@ class ClassU:
         self.max_speed = max_speed
         self.tpk = tpk
         self.max_rpm = max_rpm
+        self.images = []
 
 
 class Tonal:
     def __init__(self, id, class_id, tonal_type_id, source, ratio, harmonics, remarks, country_id, platform_type_id,
                  platform_sub_type_id, max_speed, tpk, max_rpm):
         self.id = id
-        self.class_id = class_id
+        self.unit_id = class_id
         self.tonal_type_id = tonal_type_id
         self.source = source
         self.ratio = ratio
