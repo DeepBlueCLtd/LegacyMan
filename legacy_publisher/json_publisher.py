@@ -1,5 +1,6 @@
 import json
 import operator
+import random
 
 from legacy_publisher.json_templates import PlatformType, PropulsionType, PlatformSubType, Region, Country, ClassU, \
     TonalType, Tonal, TonalSource
@@ -55,8 +56,10 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     for tonal in parsed_tonals:
         seq = seq + 1
         tonals.append(
-            Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], tonal.source[1], 1, tonal.harmonics,
-                  None, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1], None, None, None))
+            Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], tonal.source[1], round(random.uniform(1, 50),
+                                                                                     random.choice(range(2, 5))),
+                  tonal.harmonics, None, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1],
+                  None, None, None))
 
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
