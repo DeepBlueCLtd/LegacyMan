@@ -7,6 +7,9 @@ TONAL_COLLECTION = []
 TONAL_TYPE_COLLECTION = {}
 TONAL_SOURCE_COLLECTION = {}
 
+TONAL_TABLE_NOT_FOUND = []
+TONAL_HEADER_NOT_FOUND = []
+
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
 
@@ -40,9 +43,9 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
             for row in tonal_table.find_all('tr'):
                 process_tonal_row(row, userland_dict['class'])
         else:
-            print("Tonal table not found for", parsed_url)
+            TONAL_TABLE_NOT_FOUND.append(parsed_url)
     else:
-        print("Tonal Header not found for", parsed_url)
+        TONAL_HEADER_NOT_FOUND.append(parsed_url)
 
 
 def process_tonal_row(row: PageElement, class_u: any):

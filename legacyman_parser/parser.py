@@ -8,7 +8,7 @@ from legacyman_parser.parse_classes_of_country import extract_classes_of_country
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
-    TONAL_SOURCE_COLLECTION
+    TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
 
 INVALID_COUNTRY_HREFS = []
 
@@ -104,6 +104,14 @@ def parse_from_root():
     print("\n\nDiscrepancy: Some classes in the below files had too few properties than expected\n")
     for too_few_props in TOO_FEW_PROPERTIES:
         print("    " + too_few_props)
+
+    print("\n\nDiscrepancy: Tonal header was not found in these urls\n")
+    for no_tonal_header in TONAL_HEADER_NOT_FOUND:
+        print("    " + no_tonal_header)
+
+    print("\n\nDiscrepancy: Tonal table was not found in these urls\n")
+    for no_tonal_table in TONAL_TABLE_NOT_FOUND:
+        print("    " + no_tonal_table)
 
     json_publisher.publish(parsed_regions=REGION_COLLECTION,
                            parsed_countries=COUNTRY_COLLECTION,
