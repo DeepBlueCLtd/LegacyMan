@@ -12,13 +12,13 @@ EXPORT_FILE = 'target/json_publication.js'
 def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
             parsed_tonal_types=None):
     # Hardcode Generic Platform Type
-    platform_type = PlatformType(1, "Generic")
+    platform_type = PlatformType(1, "Generic Platform Type")
 
     # Hardcode Generic Propulsion Type
-    propulsion_type = PropulsionType(1, "Generic")
+    propulsion_type = PropulsionType(1, "Generic Propulsion Type")
 
     # Hardcode Generic Tonal Source
-    tonal_source = TonalSource(1, "Generic")
+    tonal_source = TonalSource(1, "Generic Tonal Source")
 
     # Extract platform subtypes
     platform_sub_types = []

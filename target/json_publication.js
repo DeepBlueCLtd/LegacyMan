@@ -2,7 +2,7 @@ var publicationJsonData={
   "platform_types": [
     {
       "id": 1,
-      "platform_type": "Generic"
+      "platform_type": "Generic Platform Type"
     }
   ],
   "platform_sub_types": [
@@ -72,7 +72,7 @@ var publicationJsonData={
   "propulsion_types": [
     {
       "id": 1,
-      "name": "Generic"
+      "name": "Generic Propulsion Type"
     }
   ],
   "units": [
@@ -267,7 +267,7 @@ var publicationJsonData={
   "tonal_sources": [
     {
       "id": 1,
-      "name": "Generic"
+      "name": "Generic Tonal Source"
     }
   ],
   "tonal_types": [
