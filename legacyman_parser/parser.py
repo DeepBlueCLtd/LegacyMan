@@ -59,8 +59,6 @@ def parse_from_root():
     print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
         """Parsing Countries from extracted regions"""
-        if region.url.endswith('Britain1.html'):
-            continue
         reg_dict = {"region": region}
         region_spidey_to_extract_countries = SimpleCrawler(url=region.url,
                                                            disable_crawler_log=True,
