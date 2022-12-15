@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 to process country data
 """
 COUNTRY_COLLECTION = []
+COUNTRY_TABLE_NOT_FOUND = []
 
 
 class CountryMap:
@@ -27,7 +28,11 @@ def extract_countries_in_region(soup: BeautifulSoup = None,
     # get the heading
     heading = soup.find('h1')
     # get the first table after the heading
-    country_table = heading.find_next('table')
+    country_table = heading.find_next('table') if heading is not None else None
+    # Log discrepancy if no table found.
+    if country_table is None:
+        COUNTRY_TABLE_NOT_FOUND.append(parsed_url)
+        return
     # loop through URLs in the table
     for country in country_table.find_all('td'):
         seq = seq + 1

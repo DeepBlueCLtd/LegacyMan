@@ -5,7 +5,7 @@ from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES
-from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION
+from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
@@ -94,6 +94,10 @@ def parse_from_root():
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
                            crawl_recursively=False)
     print("Done.")
+
+    print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
+    for country_table_not_found_url in COUNTRY_TABLE_NOT_FOUND:
+        print("    " + country_table_not_found_url)
 
     print("\n\nDiscrepancy: Unreachable or undefined country hrefs\n")
     for invalid_country_href in INVALID_COUNTRY_HREFS:
