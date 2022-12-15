@@ -69,7 +69,6 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
         NON_STANDARD_COUNTRY.append(parsed_url)
 
 
-
 def process_class_row(row: PageElement, country: dict, parsed_url: str):
     """Check if not _class_table_header_is_identified"""
     global _class_table_header_is_identified, _current_subtype_id

@@ -54,7 +54,7 @@ def parse_from_root():
     print("\n\nParsing Regions:")
     root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url, disable_crawler_log=True)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
-    print("Done.")
+    print("Done. Parsed {} regions.".format(len(REGION_COLLECTION)))
 
     print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
@@ -65,7 +65,7 @@ def parse_from_root():
                                                            userland_dict=reg_dict)
         region_spidey_to_extract_countries.crawl(resource_processor_callback=extract_countries_in_region,
                                                  crawl_recursively=False)
-    print("Done.")
+    print("Done. Parsed {} countries.".format(len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing Classes:")
     for country in COUNTRY_COLLECTION:
@@ -83,7 +83,7 @@ def parse_from_root():
         if len(country_spidey_to_extract_classes.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
-    print("Done.")
+    print("Done. Parsed {} classes.".format(len(CLASS_COLLECTION)))
 
     print("\n\nParsing Tonals:")
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
@@ -93,7 +93,7 @@ def parse_from_root():
                                      userland_dict=class_dict)
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
                            crawl_recursively=False)
-    print("Done.")
+    print("Done. Parsed {} tonals.".format(len(TONAL_COLLECTION)))
 
     if COUNTRY_TABLE_NOT_FOUND:
         print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
