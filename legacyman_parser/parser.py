@@ -95,31 +95,37 @@ def parse_from_root():
                            crawl_recursively=False)
     print("Done.")
 
-    print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
-    for country_table_not_found_url in COUNTRY_TABLE_NOT_FOUND:
-        print("    " + country_table_not_found_url)
+    if COUNTRY_TABLE_NOT_FOUND:
+        print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
+        for country_table_not_found_url in COUNTRY_TABLE_NOT_FOUND:
+            print("    " + country_table_not_found_url)
 
-    print("\n\nDiscrepancy: Unreachable or undefined country hrefs\n")
-    for invalid_country_href in INVALID_COUNTRY_HREFS:
-        print("    Href `{}` of `{}`.".format(
-            invalid_country_href["url"],
-            invalid_country_href["country"]))
+    if INVALID_COUNTRY_HREFS:
+        print("\n\nDiscrepancy: Unreachable or undefined country hrefs\n")
+        for invalid_country_href in INVALID_COUNTRY_HREFS:
+            print("    Href `{}` of `{}`.".format(
+                invalid_country_href["url"],
+                invalid_country_href["country"]))
 
-    print("\n\nDiscrepancy: Below urls contain non-standard countries where classes couldn't be identified\n")
-    for non_standard_countries in NON_STANDARD_COUNTRY:
-        print("    " + non_standard_countries)
+    if NON_STANDARD_COUNTRY:
+        print("\n\nDiscrepancy: Below urls contain non-standard countries where classes couldn't be identified\n")
+        for non_standard_countries in NON_STANDARD_COUNTRY:
+            print("    " + non_standard_countries)
 
-    print("\n\nDiscrepancy: Some classes in the below files had too few properties than expected\n")
-    for too_few_props in TOO_FEW_PROPERTIES:
-        print("    " + too_few_props)
+    if TOO_FEW_PROPERTIES:
+        print("\n\nDiscrepancy: Some classes in the below files had too few properties than expected\n")
+        for too_few_props in TOO_FEW_PROPERTIES:
+            print("    " + too_few_props)
 
-    print("\n\nDiscrepancy: Tonal header was not found in these urls\n")
-    for no_tonal_header in TONAL_HEADER_NOT_FOUND:
-        print("    " + no_tonal_header)
+    if TONAL_HEADER_NOT_FOUND:
+        print("\n\nDiscrepancy: Tonal header was not found in these urls\n")
+        for no_tonal_header in TONAL_HEADER_NOT_FOUND:
+            print("    " + no_tonal_header)
 
-    print("\n\nDiscrepancy: Tonal table was not found in these urls\n")
-    for no_tonal_table in TONAL_TABLE_NOT_FOUND:
-        print("    " + no_tonal_table)
+    if TONAL_TABLE_NOT_FOUND:
+        print("\n\nDiscrepancy: Tonal table was not found in these urls\n")
+        for no_tonal_table in TONAL_TABLE_NOT_FOUND:
+            print("    " + no_tonal_table)
 
     json_publisher.publish(parsed_regions=REGION_COLLECTION,
                            parsed_countries=COUNTRY_COLLECTION,
