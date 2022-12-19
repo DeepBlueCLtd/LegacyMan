@@ -3,6 +3,7 @@ import sys
 
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
+from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
@@ -48,6 +49,15 @@ def parse_from_root():
 
     if path_has_back_slash(arg_url) or path_has_drive_component(arg_url):
         cleansed_url = get_cleansed_path(arg_url)
+
+    # test_payload_for_parsed_json
+    kw_args = dict(arg.split('=') for arg in sys.argv[2:])
+    test_payload_json = None
+    if 'test_payload_for_parsed_json' in kw_args:
+        test_payload_json = kw_args['test_payload_for_parsed_json']
+        if not os.path.isfile(test_payload_json):
+            print("Cannot find json test payload at {}".format(test_payload_json))
+            return
 
     """Parsing Region
     The regions are processed from map"""
@@ -127,13 +137,17 @@ def parse_from_root():
         for no_tonal_table in TONAL_TABLE_NOT_FOUND:
             print("    " + no_tonal_table)
 
-    json_publisher.publish(parsed_regions=REGION_COLLECTION,
-                           parsed_countries=COUNTRY_COLLECTION,
-                           parsed_classes=CLASS_COLLECTION,
-                           parsed_tonals=TONAL_COLLECTION,
-                           parsed_subtypes=SUBTYPE_COLLECTION,
-                           parsed_tonal_types=TONAL_TYPE_COLLECTION,
-                           parsed_tonal_sources=TONAL_SOURCE_COLLECTION)
+    published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
+                                            parsed_countries=COUNTRY_COLLECTION,
+                                            parsed_classes=CLASS_COLLECTION,
+                                            parsed_tonals=TONAL_COLLECTION,
+                                            parsed_subtypes=SUBTYPE_COLLECTION,
+                                            parsed_tonal_types=TONAL_TYPE_COLLECTION,
+                                            parsed_tonal_sources=TONAL_SOURCE_COLLECTION)
+
+    print("\n\nTest results:\n")
+    if test_payload_json is not None:
+        parsed_json_tester(published_json, test_payload_json)
 
 
 if __name__ == "__main__":

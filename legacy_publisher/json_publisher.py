@@ -73,3 +73,5 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
         f.write("var publicationJsonData=")
         f.write(json.dumps(json_data, default=operator.attrgetter('__dict__'), indent=2 * ' '))
         print("Dumped new content.")
+
+    return json_data
