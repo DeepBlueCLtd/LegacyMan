@@ -52,12 +52,10 @@ def parse_from_root():
 
     # test_payload_for_parsed_json
     kw_args = dict(arg.split('=') for arg in sys.argv[2:])
-    test_payload_json = None
-    if 'test_payload_for_parsed_json' in kw_args:
-        test_payload_json = kw_args['test_payload_for_parsed_json']
-        if not os.path.isfile(test_payload_json):
-            print("Cannot find json test payload at {}".format(test_payload_json))
-            return
+    test_payload_json = kw_args.get('test_payload_for_parsed_json', None)
+    if test_payload_json is not None and not os.path.isfile(test_payload_json):
+        print("Cannot find json test payload at {}".format(test_payload_json))
+        return
 
     """Parsing Region
     The regions are processed from map"""
