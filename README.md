@@ -31,10 +31,10 @@ python -m unittest discover
 
 ## Running LegacyMan parser program (against mock data)
 
-Execute the following command from the project root directory to run program.
+Execute the following command from the project root directory to run program. The test_payload_for_parsed_json is optional parameter.
 
 ```
-python -m legacyman_parser.parser data/PlatformData/PD_1.html
+python -m legacyman_parser.parser data/PlatformData/PD_1.html test_payload_for_parsed_json=legacy_tester/test_payload/mock_data_test_payload.json
 ```
 
 This will
