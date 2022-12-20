@@ -12,6 +12,6 @@ def parsed_json_tester(published_json, test_payload):
         print("Payload is empty")
         return
 
-    for test_method, test_payload in test_json.items():
+    for test_method, test_payload_val in test_json.items():
         print("Testing {}".format(test_method))
-        getattr(test_defs, test_method)(published_json, test_payload)
+        getattr(test_defs, test_method)(published_json, test_payload_val)
