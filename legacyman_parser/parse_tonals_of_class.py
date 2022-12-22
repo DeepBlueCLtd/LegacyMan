@@ -35,12 +35,12 @@ def set_current_merged_remarks_flags(applicable_rows: int, remarks: str):
 
 
 class Tonal:
-    def __init__(self, class_u, source, ratio_freq, harmonics, frequency, tonal_type):
+    def __init__(self, class_u, source, ratio_freq, harmonics, remarks, tonal_type):
         self.class_u = class_u
         self.source = source
         self.ratio_freq = ratio_freq
         self.harmonics = harmonics
-        self.frequency = frequency
+        self.remarks = remarks
         self.tonal_type = tonal_type
 
     def __str__(self):
@@ -48,7 +48,7 @@ class Tonal:
                                                          self.source,
                                                          self.ratio_freq,
                                                          self.harmonics,
-                                                         self.frequency)
+                                                         self.remarks)
 
 
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
