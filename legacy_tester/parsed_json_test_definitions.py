@@ -7,7 +7,7 @@ def phase_one_regions_parse_not_included_countries(published_json, test_payload)
     return True
 
 
-def unit_of_subtype_of_country_should_contain_exactly_x_tonals_remarks_ending_with_y(published_json, test_payload):
+def unit_of_subtype_of_country_should_contain_exactly_x_tonals_remarks_containing_y(published_json, test_payload):
     for unit_payload in test_payload:
         country_id_to_check = next(filter(lambda a: a.country == unit_payload['country'],
                                           published_json['countries'])).id
