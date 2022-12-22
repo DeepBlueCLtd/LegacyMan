@@ -143,9 +143,10 @@ def parse_from_root():
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION)
 
-    print("\n\nTest results:\n")
     if test_payload_json is not None:
-        parsed_json_tester(published_json, test_payload_json)
+        print("\n\nTest results:")
+        if parsed_json_tester(published_json, test_payload_json):
+            print("All tests successful.")
 
 
 if __name__ == "__main__":
