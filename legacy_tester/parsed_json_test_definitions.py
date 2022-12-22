@@ -8,6 +8,9 @@ def phase_one_regions_parse_not_included_countries(published_json, test_payload)
 
 
 def count_of_tonal_remarks_containing_test_string(published_json, test_payload):
+    """test for issue #77
+    This is to test whether merged remarks are extracted successfully.
+    """
     for unit_payload in test_payload:
         tonals_with_required_remarks = filter(lambda a: unit_payload['test_string'] in a.remarks,
                                               published_json['tonals'])
