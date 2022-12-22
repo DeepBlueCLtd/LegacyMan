@@ -18,7 +18,7 @@ def unit_of_subtype_of_country_should_contain_exactly_x_tonals_remarks_ending_wi
                                                  a.country_id == country_id_to_check,
                                        published_json['units'])).id
         tonals_to_check = filter(lambda a: a.unit_id == unit_id_to_check, published_json['tonals'])
-        tonals_with_required_remarks = filter(lambda a: a.remarks.endswith(unit_payload['remarks_suffix']),
+        tonals_with_required_remarks = filter(lambda a: a.remarks.find(unit_payload['remarks_suffix']) >= 0,
                                               tonals_to_check)
         if len(list(tonals_with_required_remarks)) != unit_payload['count']:
             print('Error: {} failed to identify {} tonals with {} remarks suffix'.format(unit_payload,
