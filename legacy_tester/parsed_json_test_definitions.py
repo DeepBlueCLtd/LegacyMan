@@ -7,22 +7,13 @@ def phase_one_regions_parse_not_included_countries(published_json, test_payload)
     return True
 
 
-def unit_of_subtype_of_country_should_contain_exactly_x_tonals_remarks_containing_y(published_json, test_payload):
+def count_of_tonal_remarks_containing_test_string(published_json, test_payload):
     for unit_payload in test_payload:
-        country_id_to_check = next(filter(lambda a: a.country == unit_payload['country'],
-                                          published_json['countries'])).id
-        subtype_id_to_check = next(filter(lambda a: a.platform_sub_type == unit_payload['sub'],
-                                          published_json['platform_sub_types'])).id
-        unit_id_to_check = next(filter(lambda a: a.title == unit_payload['unit'] and
-                                                 a.platform_sub_type_id == subtype_id_to_check and
-                                                 a.country_id == country_id_to_check,
-                                       published_json['units'])).id
-        tonals_to_check = filter(lambda a: a.unit_id == unit_id_to_check, published_json['tonals'])
-        tonals_with_required_remarks = filter(lambda a: a.remarks.find(unit_payload['remarks_suffix']) >= 0,
-                                              tonals_to_check)
+        tonals_with_required_remarks = filter(lambda a: a.remarks.find(unit_payload['test_string']) >= 0,
+                                              published_json['tonals'])
         if len(list(tonals_with_required_remarks)) != unit_payload['count']:
-            print('Error: {} failed to identify {} tonals with {} remarks suffix'.format(unit_payload,
+            print('Error: {} failed to identify {} tonals with "{}" in remarks'.format(unit_payload,
                                                                                          unit_payload['count'],
-                                                                                         unit_payload['remarks_suffix']))
+                                                                                         unit_payload['test_string']))
             return False
     return True

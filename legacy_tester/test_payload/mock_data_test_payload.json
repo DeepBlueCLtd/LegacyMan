@@ -1,10 +1,7 @@
 {
   "phase_one_regions_parse_not_included_countries": ["Britain1"],
-  "unit_of_subtype_of_country_should_contain_exactly_x_tonals_remarks_containing_y": [{
-                                                                                        "unit": "*Unit_d",
-                                                                                        "country": "Narnia",
-                                                                                        "sub": "Legacy",
-                                                                                        "count": 3,
-                                                                                        "remarks_suffix": "%TEST-77%"
-                                                                                      }]
+  "count_of_tonal_remarks_containing_test_string": [{
+                                                      "count": 3,
+                                                      "test_string": "%TEST-77%"
+                                                    }]
 }
