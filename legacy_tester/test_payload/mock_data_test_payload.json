@@ -3,5 +3,6 @@
   "count_of_tonal_remarks_containing_test_string": [{
                                                       "count": 3,
                                                       "test_string": "%TEST-77%"
-                                                    }]
+                                                    }],
+  "subtypes_should_not_have_string": ["%TEST-76%"]
 }
