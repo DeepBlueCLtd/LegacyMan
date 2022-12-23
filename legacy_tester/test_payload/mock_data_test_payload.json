@@ -1,3 +1,7 @@
 {
-  "phase_one_regions_parse_not_included_countries": ["Britain"]
+  "phase_one_regions_parse_not_included_countries": ["Britain1"],
+  "count_of_tonal_remarks_containing_test_string": [{
+                                                      "count": 3,
+                                                      "test_string": "%TEST-77%"
+                                                    }]
 }
