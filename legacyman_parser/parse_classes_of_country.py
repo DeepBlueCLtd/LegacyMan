@@ -120,9 +120,15 @@ def is_this_subcategory_data(row: PageElement):
     < td > indicating the sub-category,
     say `SC1` or `Composite` or `Legacy`"""
     columns = row.find_all('td')
-    if len(columns) <= 1:
-        return True
-    return False
+    if len(columns) != 1:
+        return False
+    colspan_val = columns[0].get('colspan', 0)
+    if int(colspan_val) != 7:
+        return False
+    bgcolor_val = columns[0].get('bgcolor', "")
+    if bgcolor_val != "#CCCCCC":
+        return False
+    return True
 
 
 def extract_subcategory(row: PageElement):

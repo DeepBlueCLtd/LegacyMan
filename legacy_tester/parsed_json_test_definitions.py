@@ -20,3 +20,17 @@ def count_of_tonal_remarks_containing_test_string(published_json, test_payload):
                                                                                          unit_payload['test_string']))
             return False
     return True
+
+
+def subtypes_should_not_have_string(published_json, test_payload):
+    """Test for issue #76
+    This is to test if the parser has successfully ignored <td> blocks that don't
+    contain attributes pertaining to platform sub type <td>
+    """
+    for test_string in test_payload:
+        plat_sub_types_with_test_string = filter(lambda a: test_string in a.platform_sub_type,
+                                              published_json['platform_sub_types'])
+        if len(list(plat_sub_types_with_test_string)) != 0:
+            print('Error: Test string "{}" identified in one of the platform subtypes'.format(test_string))
+            return False
+    return True
