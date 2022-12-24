@@ -7,11 +7,32 @@ to process class data
 """
 CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
-TOO_FEW_PROPERTIES = []
 NON_STANDARD_COUNTRY = []
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
+
+_content_of_current_merged_row_of_column = {}
+_no_of_rows_for_which_current_merged_row_of_column_is_applicable_now = {}
+
+
+def decrement_and_possibly_reset_current_merged_row_of_column_flags(column: int):
+    global _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now
+    global _content_of_current_merged_row_of_column
+
+    # Decrement the applicable rows by one each time we consume the row
+    _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] -= 1
+
+    if _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] == 0:
+        _content_of_current_merged_row_of_column.pop(column, None)
+
+
+def set_current_merged_row_of_column_flags(column: int, applicable_rows: int, content: str):
+    global _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now
+    global _content_of_current_merged_row_of_column
+
+    _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] = applicable_rows
+    _content_of_current_merged_row_of_column[column] = content
 
 
 class ClassU:
@@ -142,9 +163,15 @@ def extract_subcategory(row: PageElement):
 def is_this_class_record(row: PageElement):
     """ This should have more than one < td >"""
     columns = row.find_all('td')
-    if len(columns) > 1:
+    if len(columns) == 7:
+        return True
+    if effective_length_of(columns) == 7:
         return True
     return False
+
+
+def effective_length_of(columns):
+    return len(columns) + len(_no_of_rows_for_which_current_merged_row_of_column_is_applicable_now)
 
 
 def create_new_class_with_extracted_subcategory(row: PageElement, country: dict, current_subtype: str,
@@ -154,21 +181,91 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: dict,
     has_tonal = does_class_contain_tonal(columns[0])
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
-    # filter for columns that have 7 cells
-    if len(columns) != 7:
-        log_row_as_containing_too_few_class_properties(parsed_url)
-        return
+    # Declare contents of a class
+    class_name, designator, power, shaft, bhp, temp, rr = None, None, None, None, None, None, None
+    if len(columns) == 7:
+        class_name = columns[0].text
+        if 'rowspan' in columns[0].attrs:
+            set_current_merged_row_of_column_flags(0, int(columns[0]['rowspan']) - 1, class_name)
+        designator = columns[1].text
+        if 'rowspan' in columns[1].attrs:
+            set_current_merged_row_of_column_flags(1, int(columns[1]['rowspan']) - 1, designator)
+        power = columns[2].text
+        if 'rowspan' in columns[2].attrs:
+            set_current_merged_row_of_column_flags(2, int(columns[2]['rowspan']) - 1, power)
+        shaft = columns[3].text
+        if 'rowspan' in columns[3].attrs:
+            set_current_merged_row_of_column_flags(3, int(columns[3]['rowspan']) - 1, shaft)
+        bhp = columns[4].text
+        if 'rowspan' in columns[4].attrs:
+            set_current_merged_row_of_column_flags(4, int(columns[4]['rowspan']) - 1, bhp)
+        temp = columns[5].text
+        if 'rowspan' in columns[5].attrs:
+            set_current_merged_row_of_column_flags(5, int(columns[5]['rowspan']) - 1, temp)
+        rr = columns[6].text
+        if 'rowspan' in columns[6].attrs:
+            set_current_merged_row_of_column_flags(6, int(columns[6]['rowspan']) - 1, rr)
+    else:
+        tracked_index = 0
+        if _content_of_current_merged_row_of_column.get(0, None) is not None:
+            class_name = _content_of_current_merged_row_of_column.get(0)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(0)
+        else:
+            class_name = columns[tracked_index].text
+            tracked_index += 1
+
+        if _content_of_current_merged_row_of_column.get(1, None) is not None:
+            designator = _content_of_current_merged_row_of_column.get(1)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(1)
+        else:
+            designator = columns[tracked_index].text
+            tracked_index += 1
+
+        if _content_of_current_merged_row_of_column.get(2, None) is not None:
+            power = _content_of_current_merged_row_of_column.get(2)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(2)
+        else:
+            power = columns[tracked_index].text
+            tracked_index += 1
+
+        if _content_of_current_merged_row_of_column.get(3, None) is not None:
+            shaft = _content_of_current_merged_row_of_column.get(3)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(3)
+        else:
+            shaft = columns[tracked_index].text
+            tracked_index += 1
+
+        if _content_of_current_merged_row_of_column.get(4, None) is not None:
+            bhp = _content_of_current_merged_row_of_column.get(4)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(4)
+        else:
+            bhp = columns[tracked_index].text
+            tracked_index += 1
+
+        if _content_of_current_merged_row_of_column.get(5, None) is not None:
+            temp = _content_of_current_merged_row_of_column.get(5)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(5)
+        else:
+            temp = columns[tracked_index].text
+            tracked_index += 1
+
+        if _content_of_current_merged_row_of_column.get(6, None) is not None:
+            rr = _content_of_current_merged_row_of_column.get(6)
+            decrement_and_possibly_reset_current_merged_row_of_column_flags(6)
+        else:
+            rr = columns[tracked_index].text
+
     seq = len(CLASS_COLLECTION) + 1
     CLASS_COLLECTION.append(ClassU(seq,
-                                   columns[0].text,
+                                   class_name,
                                    current_subtype,
                                    country,
-                                   columns[1].text,
-                                   columns[2].text,
-                                   columns[3].text,
-                                   columns[4].text,
-                                   columns[5].text,
-                                   columns[6].text,
+                                   designator,
+                                   power,
+                                   shaft,
+                                   bhp,
+                                   temp,
+                                   rr,
                                    has_tonal,
                                    tonal_href))
 
@@ -181,7 +278,3 @@ def does_class_contain_tonal(table_data: PageElement):
 
 def extract_tonal_href(table_data: PageElement):
     return table_data.find('a').get('href')
-
-
-def log_row_as_containing_too_few_class_properties(parsed_url: str):
-    TOO_FEW_PROPERTIES.append(parsed_url)
