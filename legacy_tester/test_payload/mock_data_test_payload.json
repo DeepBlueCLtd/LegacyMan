@@ -4,5 +4,9 @@
                                                       "count": 6,
                                                       "test_string": "%TEST-77%"
                                                     }],
-  "subtypes_should_not_have_string": ["%TEST-76%"]
+  "subtypes_should_not_have_string": ["%TEST-76%"],
+  "count_of_class_containing_test_string_in_power_attribute": [{
+                                                                "count": 2,
+                                                                "test_string": "%TEST-85%"
+                                                              }]
 }
