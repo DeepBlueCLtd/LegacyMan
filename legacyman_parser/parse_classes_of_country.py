@@ -25,6 +25,7 @@ def decrement_and_possibly_reset_current_merged_row_of_column_flags(column: int)
 
     if _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] == 0:
         _content_of_current_merged_row_of_column.pop(column, None)
+        _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now.pop(column, None)
 
 
 def set_current_merged_row_of_column_flags(column: int, applicable_rows: int, content: str):
@@ -207,53 +208,75 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: dict,
             set_current_merged_row_of_column_flags(6, int(columns[6]['rowspan']) - 1, rr)
     else:
         tracked_index = 0
+
+        # Column 0
         if _content_of_current_merged_row_of_column.get(0, None) is not None:
             class_name = _content_of_current_merged_row_of_column.get(0)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(0)
         else:
             class_name = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(0, int(columns[tracked_index]['rowspan']) - 1, class_name)
             tracked_index += 1
 
+        # Column 1
         if _content_of_current_merged_row_of_column.get(1, None) is not None:
             designator = _content_of_current_merged_row_of_column.get(1)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(1)
         else:
             designator = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(1, int(columns[tracked_index]['rowspan']) - 1, designator)
             tracked_index += 1
 
+        # Column 2
         if _content_of_current_merged_row_of_column.get(2, None) is not None:
             power = _content_of_current_merged_row_of_column.get(2)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(2)
         else:
             power = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(2, int(columns[tracked_index]['rowspan']) - 1, power)
             tracked_index += 1
 
+        # Column 3
         if _content_of_current_merged_row_of_column.get(3, None) is not None:
             shaft = _content_of_current_merged_row_of_column.get(3)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(3)
         else:
             shaft = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(3, int(columns[tracked_index]['rowspan']) - 1, shaft)
             tracked_index += 1
 
+        # Column 4
         if _content_of_current_merged_row_of_column.get(4, None) is not None:
             bhp = _content_of_current_merged_row_of_column.get(4)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(4)
         else:
             bhp = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(4, int(columns[tracked_index]['rowspan']) - 1, bhp)
             tracked_index += 1
 
+        # Column 5
         if _content_of_current_merged_row_of_column.get(5, None) is not None:
             temp = _content_of_current_merged_row_of_column.get(5)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(5)
         else:
             temp = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(5, int(columns[tracked_index]['rowspan']) - 1, temp)
             tracked_index += 1
 
+        # Column 6
         if _content_of_current_merged_row_of_column.get(6, None) is not None:
             rr = _content_of_current_merged_row_of_column.get(6)
             decrement_and_possibly_reset_current_merged_row_of_column_flags(6)
         else:
             rr = columns[tracked_index].text
+            if 'rowspan' in columns[tracked_index].attrs:
+                set_current_merged_row_of_column_flags(6, int(columns[tracked_index]['rowspan']) - 1, rr)
 
     seq = len(CLASS_COLLECTION) + 1
     CLASS_COLLECTION.append(ClassU(seq,

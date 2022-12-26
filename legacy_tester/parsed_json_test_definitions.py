@@ -15,9 +15,10 @@ def count_of_tonal_remarks_containing_test_string(published_json, test_payload):
         tonals_with_required_remarks = filter(lambda a: unit_payload['test_string'] in a.remarks,
                                               published_json['tonals'])
         if len(list(tonals_with_required_remarks)) != unit_payload['count']:
-            print('Error: {} failed to identify {} tonals with "{}" in remarks'.format(unit_payload,
-                                                                                       unit_payload['count'],
-                                                                                       unit_payload['test_string']))
+            print('Error: {} failed to identify exactly {} tonals '
+                  'with "{}" in remarks'.format(unit_payload,
+                                                unit_payload['count'],
+                                                unit_payload['test_string']))
             return False
     return True
 
@@ -44,10 +45,9 @@ def count_of_class_containing_test_string_in_power_attribute(published_json, tes
         class_with_required_power_attributes = filter(lambda a: unit_payload['test_string'] in a.engine,
                                                       published_json['units'])
         if len(list(class_with_required_power_attributes)) != unit_payload['count']:
-            print('Error: {} failed to identify {} classes with '
+            print('Error: {} failed to identify exactly {} classes with '
                   '"{}" in engine/power'.format(unit_payload,
                                                 unit_payload['count'],
                                                 unit_payload['test_string']))
             return False
     return True
-
