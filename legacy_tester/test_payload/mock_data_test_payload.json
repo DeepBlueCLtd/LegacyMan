@@ -8,5 +8,6 @@
   "count_of_class_containing_test_string_in_power_attribute": [{
                                                                 "count": 2,
                                                                 "test_string": "%TEST-85%"
-                                                              }]
+                                                              }],
+  "check_classes_for_presence_of": ["Unit_eww"]
 }

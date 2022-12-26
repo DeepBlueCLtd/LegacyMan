@@ -51,3 +51,17 @@ def count_of_class_containing_test_string_in_power_attribute(published_json, tes
                                                 unit_payload['test_string']))
             return False
     return True
+
+
+
+def check_classes_for_presence_of(published_json, test_payload):
+    """test for issue #85
+    This is to test whether merged column between two running merged columns is parsed successfully
+    """
+    for unit_payload in test_payload:
+        class_with_required_name = filter(lambda a: unit_payload in a.title,
+                                                      published_json['units'])
+        if len(list(class_with_required_name)) < 1:
+            print('Error: {} failed to identify classes with name"{}"'.format(unit_payload,))
+            return False
+    return True
