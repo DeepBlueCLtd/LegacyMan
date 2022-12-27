@@ -2,6 +2,8 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, PageElement
 
+from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
+
 """Independent testable parse_classes module
 to process class data
 """
@@ -12,28 +14,7 @@ NON_STANDARD_COUNTRY = []
 _class_table_header_is_identified = False
 _current_subtype_id = None
 
-_content_of_current_merged_row_of_column = {}
-_no_of_rows_for_which_current_merged_row_of_column_is_applicable_now = {}
-
-
-def decrement_and_possibly_reset_current_merged_row_of_column_flags(column: int):
-    global _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now
-    global _content_of_current_merged_row_of_column
-
-    # Decrement the applicable rows by one each time we consume the row
-    _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] -= 1
-
-    if _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] == 0:
-        _content_of_current_merged_row_of_column.pop(column, None)
-        _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now.pop(column, None)
-
-
-def set_current_merged_row_of_column_flags(column: int, applicable_rows: int, content: str):
-    global _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now
-    global _content_of_current_merged_row_of_column
-
-    _no_of_rows_for_which_current_merged_row_of_column_is_applicable_now[column] = applicable_rows
-    _content_of_current_merged_row_of_column[column] = content
+classRowExtractor = None
 
 
 class ClassU:
@@ -80,9 +61,10 @@ class ClassU:
 
 def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                                userland_dict: dict = None) -> []:
-    global _class_table_header_is_identified, _current_subtype_id
+    global _class_table_header_is_identified, _current_subtype_id, classRowExtractor
     _class_table_header_is_identified = False
     _current_subtype_id = None
+    classRowExtractor = MergedRowsExtractor(7)
     class_list = soup.find('div', {"id": "PageLayer"})
     if class_list:
         for row in class_list.find('table').find_all('tr'):
@@ -166,13 +148,9 @@ def is_this_class_record(row: PageElement):
     columns = row.find_all('td')
     if len(columns) == 7:
         return True
-    if effective_length_of(columns) == 7:
+    if classRowExtractor.effective_length_of(columns) == 7:
         return True
     return False
-
-
-def effective_length_of(columns):
-    return len(columns) + len(_no_of_rows_for_which_current_merged_row_of_column_is_applicable_now)
 
 
 def create_new_class_with_extracted_subcategory(row: PageElement, country: dict, current_subtype: str,
@@ -183,100 +161,7 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: dict,
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
     # Declare contents of a class
-    class_name, designator, power, shaft, bhp, temp, rr = None, None, None, None, None, None, None
-    if len(columns) == 7:
-        class_name = columns[0].text
-        if 'rowspan' in columns[0].attrs:
-            set_current_merged_row_of_column_flags(0, int(columns[0]['rowspan']) - 1, class_name)
-        designator = columns[1].text
-        if 'rowspan' in columns[1].attrs:
-            set_current_merged_row_of_column_flags(1, int(columns[1]['rowspan']) - 1, designator)
-        power = columns[2].text
-        if 'rowspan' in columns[2].attrs:
-            set_current_merged_row_of_column_flags(2, int(columns[2]['rowspan']) - 1, power)
-        shaft = columns[3].text
-        if 'rowspan' in columns[3].attrs:
-            set_current_merged_row_of_column_flags(3, int(columns[3]['rowspan']) - 1, shaft)
-        bhp = columns[4].text
-        if 'rowspan' in columns[4].attrs:
-            set_current_merged_row_of_column_flags(4, int(columns[4]['rowspan']) - 1, bhp)
-        temp = columns[5].text
-        if 'rowspan' in columns[5].attrs:
-            set_current_merged_row_of_column_flags(5, int(columns[5]['rowspan']) - 1, temp)
-        rr = columns[6].text
-        if 'rowspan' in columns[6].attrs:
-            set_current_merged_row_of_column_flags(6, int(columns[6]['rowspan']) - 1, rr)
-    else:
-        tracked_index = 0
-
-        # Column 0
-        if _content_of_current_merged_row_of_column.get(0, None) is not None:
-            class_name = _content_of_current_merged_row_of_column.get(0)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(0)
-        else:
-            class_name = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(0, int(columns[tracked_index]['rowspan']) - 1, class_name)
-            tracked_index += 1
-
-        # Column 1
-        if _content_of_current_merged_row_of_column.get(1, None) is not None:
-            designator = _content_of_current_merged_row_of_column.get(1)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(1)
-        else:
-            designator = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(1, int(columns[tracked_index]['rowspan']) - 1, designator)
-            tracked_index += 1
-
-        # Column 2
-        if _content_of_current_merged_row_of_column.get(2, None) is not None:
-            power = _content_of_current_merged_row_of_column.get(2)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(2)
-        else:
-            power = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(2, int(columns[tracked_index]['rowspan']) - 1, power)
-            tracked_index += 1
-
-        # Column 3
-        if _content_of_current_merged_row_of_column.get(3, None) is not None:
-            shaft = _content_of_current_merged_row_of_column.get(3)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(3)
-        else:
-            shaft = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(3, int(columns[tracked_index]['rowspan']) - 1, shaft)
-            tracked_index += 1
-
-        # Column 4
-        if _content_of_current_merged_row_of_column.get(4, None) is not None:
-            bhp = _content_of_current_merged_row_of_column.get(4)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(4)
-        else:
-            bhp = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(4, int(columns[tracked_index]['rowspan']) - 1, bhp)
-            tracked_index += 1
-
-        # Column 5
-        if _content_of_current_merged_row_of_column.get(5, None) is not None:
-            temp = _content_of_current_merged_row_of_column.get(5)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(5)
-        else:
-            temp = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(5, int(columns[tracked_index]['rowspan']) - 1, temp)
-            tracked_index += 1
-
-        # Column 6
-        if _content_of_current_merged_row_of_column.get(6, None) is not None:
-            rr = _content_of_current_merged_row_of_column.get(6)
-            decrement_and_possibly_reset_current_merged_row_of_column_flags(6)
-        else:
-            rr = columns[tracked_index].text
-            if 'rowspan' in columns[tracked_index].attrs:
-                set_current_merged_row_of_column_flags(6, int(columns[tracked_index]['rowspan']) - 1, rr)
+    class_name, designator, power, shaft, bhp, temp, rr = classRowExtractor.retrieve_row(columns)
 
     seq = len(CLASS_COLLECTION) + 1
     CLASS_COLLECTION.append(ClassU(seq,
