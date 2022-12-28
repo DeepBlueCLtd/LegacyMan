@@ -4,5 +4,9 @@
                                                       "count": 3,
                                                       "test_string": "%TEST-77%"
                                                     }],
-  "subtypes_should_not_have_string": ["%TEST-76%"]
+  "subtypes_should_not_have_string": ["%TEST-76%"],
+  "abbreviation_should_have_string": [{
+                                        "count": 1,
+                                        "test_string": "%TEST-30%"
+                                      }]
 }

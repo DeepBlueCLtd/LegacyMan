@@ -34,3 +34,17 @@ def subtypes_should_not_have_string(published_json, test_payload):
             print('Error: Test string "{}" identified in one of the platform subtypes'.format(test_string))
             return False
     return True
+
+
+def abbreviation_should_have_string(published_json, test_payload):
+    """Test for issue #30
+    This is to test if abbreviations are parsed properly
+    """
+    for unit_payload in test_payload:
+        abbreviations_with_test_string = filter(lambda a: unit_payload['test_string'] in a.full_form,
+                                                published_json['abbreviations'])
+        if len(list(abbreviations_with_test_string)) != 1:
+            print('Error: Unable to identify exactly {} instance of {}'
+                  ' in abbreviations'.format(unit_payload['count'], unit_payload['test_string']))
+            return False
+    return True
