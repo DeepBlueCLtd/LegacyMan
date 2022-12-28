@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup, PageElement
 
-from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
-
 """Independent testable parse_tonals module
 to process tonals data
 """
@@ -40,7 +38,7 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
-    tonalRowExtractor = MergedRowsExtractor(4)
+    tonalRowExtractor = userland_dict.get('tonal_extractor')
     tonal_header = soup.find("td", string="Commonly Detected Sources")
     if tonal_header:
         tonal_table = tonal_header.find_parent("table")

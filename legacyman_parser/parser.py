@@ -10,6 +10,7 @@ from legacyman_parser.parse_countries import extract_countries_in_region, COUNTR
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
+from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 
 INVALID_COUNTRY_HREFS = []
 
@@ -76,13 +77,14 @@ def parse_from_root():
     print("Done. Parsed {} countries.".format(len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing Classes:")
+    class_row_extractor = MergedRowsExtractor(7)
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
         if country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
             continue
-        country_dict = {"country": country}
+        country_dict = {"country": country, "class_extractor": class_row_extractor}
         country_spidey_to_extract_classes = SimpleCrawler(url=country.url,
                                                           disable_crawler_log=True,
                                                           userland_dict=country_dict)
@@ -94,8 +96,9 @@ def parse_from_root():
     print("Done. Parsed {} classes.".format(len(CLASS_COLLECTION)))
 
     print("\n\nParsing Tonals:")
+    tonal_row_extractor = MergedRowsExtractor(4)
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
-        class_dict = {"class": class_with_tonals}
+        class_dict = {"class": class_with_tonals, "tonal_extractor": tonal_row_extractor}
         tonal_spidey = SimpleCrawler(url=class_with_tonals.tonal_href,
                                      disable_crawler_log=True,
                                      userland_dict=class_dict)

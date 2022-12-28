@@ -2,8 +2,6 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, PageElement
 
-from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
-
 """Independent testable parse_classes module
 to process class data
 """
@@ -64,7 +62,7 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     global _class_table_header_is_identified, _current_subtype_id, classRowExtractor
     _class_table_header_is_identified = False
     _current_subtype_id = None
-    classRowExtractor = MergedRowsExtractor(7)
+    classRowExtractor = userland_dict.get('class_extractor')
     class_list = soup.find('div', {"id": "PageLayer"})
     if class_list:
         for row in class_list.find('table').find_all('tr'):
