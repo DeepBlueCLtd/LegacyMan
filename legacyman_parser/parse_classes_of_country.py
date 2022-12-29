@@ -8,6 +8,7 @@ to process class data
 CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
 NON_STANDARD_COUNTRY = []
+TOO_FEW_PROPERTIES = []
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
@@ -89,6 +90,7 @@ def process_class_row(row: PageElement, country: dict, parsed_url: str):
 
     # Normal record
     if not is_this_class_record(row):
+        log_row_as_containing_too_few_class_properties(parsed_url)
         return
     # Extract information and map against _current_subtype_id
     create_new_class_with_extracted_subcategory(row, country, _current_subtype_id, parsed_url)
@@ -184,3 +186,7 @@ def does_class_contain_tonal(table_data: PageElement):
 
 def extract_tonal_href(table_data: PageElement):
     return table_data.find('a').get('href')
+
+
+def log_row_as_containing_too_few_class_properties(parsed_url: str):
+    TOO_FEW_PROPERTIES.append(parsed_url)
