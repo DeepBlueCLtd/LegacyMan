@@ -77,13 +77,13 @@ def parse_from_root():
     print("Done. Parsed {} countries.".format(len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing Classes:")
-    class_row_extractor = MergedRowsExtractor(7)
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
         if country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
             continue
+        class_row_extractor = MergedRowsExtractor(7)
         country_dict = {"country": country, "class_extractor": class_row_extractor}
         country_spidey_to_extract_classes = SimpleCrawler(url=country.url,
                                                           disable_crawler_log=True,
@@ -96,8 +96,8 @@ def parse_from_root():
     print("Done. Parsed {} classes.".format(len(CLASS_COLLECTION)))
 
     print("\n\nParsing Tonals:")
-    tonal_row_extractor = MergedRowsExtractor(4)
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
+        tonal_row_extractor = MergedRowsExtractor(4)
         class_dict = {"class": class_with_tonals, "tonal_extractor": tonal_row_extractor}
         tonal_spidey = SimpleCrawler(url=class_with_tonals.tonal_href,
                                      disable_crawler_log=True,
