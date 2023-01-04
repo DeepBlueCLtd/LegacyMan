@@ -106,8 +106,8 @@ def parse_from_root():
     print("Done. Parsed {} tonals.".format(len(TONAL_COLLECTION)))
 
     print("\n\nParsing Abbreviations:")
-    root_spidey_to_extract_abbreviations = SimpleCrawler(url=cleansed_url + "/QuickLinksData/Abbreviations.html",
-                                                         disable_crawler_log=True)
+    abbreviations_url = cleansed_url + "/QuickLinksData/Abbreviations.html"
+    root_spidey_to_extract_abbreviations = SimpleCrawler(url=abbreviations_url, disable_crawler_log=True)
     root_spidey_to_extract_abbreviations.crawl(resource_processor_callback=parse_abbreviations, crawl_recursively=False)
     print("Done. Parsed {} abbreviations.".format(len(ABBREVIATIONS)))
 
@@ -152,9 +152,12 @@ def parse_from_root():
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS)
 
+    misc_details = {}
+    misc_details['abbreviations_url'] = abbreviations_url
+
     if test_payload_json is not None:
         print("\n\nTest results:")
-        if parsed_json_tester(published_json, test_payload_json):
+        if parsed_json_tester(published_json, test_payload_json, misc_details):
             print("All tests successful.")
 
 
