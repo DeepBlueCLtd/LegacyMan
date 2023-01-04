@@ -9,7 +9,7 @@ from legacy_publisher.json_templates import PlatformType, PropulsionType, Platfo
 
 EXPORT_FILE = 'target/json_publication.js'
 
-
+random.seed(100)
 def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
             parsed_tonal_types=None, parsed_tonal_sources=None, parsed_abbreviations=None):
     # Hardcode Generic Platform Type
