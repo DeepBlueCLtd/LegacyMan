@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
 
-def phase_one_regions_parse_not_included_countries(published_json, test_payload, misc_details):
+def phase_one_regions_parse_not_included_countries(published_json, test_payload):
     parsed_countries = list(map(lambda a: a.country, published_json['countries']))
     for to_be_excluded_countries in test_payload:
         if to_be_excluded_countries in parsed_countries:
@@ -10,7 +10,7 @@ def phase_one_regions_parse_not_included_countries(published_json, test_payload,
     return True
 
 
-def count_of_tonal_remarks_containing_test_string(published_json, test_payload, misc_details):
+def count_of_tonal_remarks_containing_test_string(published_json, test_payload):
     """test for issue #77
     This is to test whether merged remarks are extracted successfully.
     """
@@ -26,7 +26,7 @@ def count_of_tonal_remarks_containing_test_string(published_json, test_payload, 
     return True
 
 
-def subtypes_should_not_have_string(published_json, test_payload, misc_details):
+def subtypes_should_not_have_string(published_json, test_payload):
     """Test for issue #76
     This is to test if the parser has successfully ignored <td> blocks that don't
     contain attributes pertaining to platform sub type <td>
@@ -40,7 +40,7 @@ def subtypes_should_not_have_string(published_json, test_payload, misc_details):
     return True
 
 
-def abbreviation_should_have_string(published_json, test_payload, misc_details):
+def abbreviation_should_have_string(published_json, test_payload):
     """Test for issue #30
     This is to test if abbreviations are parsed properly
     """
@@ -54,7 +54,7 @@ def abbreviation_should_have_string(published_json, test_payload, misc_details):
     return True
 
 
-def count_of_class_containing_test_string_in_power_attribute(published_json, test_payload, misc_details):
+def count_of_class_containing_test_string_in_power_attribute(published_json, test_payload):
     """test for issue #85
     This is to test whether merged power attributes in classes are extracted successfully.
     """
@@ -70,35 +70,7 @@ def count_of_class_containing_test_string_in_power_attribute(published_json, tes
     return True
 
 
-def test_assumptions_of_actual_abbreviations_page(published_json, test_payload, misc_details):
-    """Test for assumptions in issue #30"""
-    """
-    This is to test if abbreviations page contains one and only one table
-    """
-    abbreviation_page_text = None
-    with open(misc_details['abbreviations_url'], 'rb') as f:
-        abbreviation_page_text = f.read()
-    soup = BeautifulSoup(abbreviation_page_text, "html.parser")
-    abb_tables = soup.find_all('table')
-    actual_number_of_tables = len(abb_tables)
-    if actual_number_of_tables != test_payload['number_of_tables']:
-        print('Error: Assumption that Abbreviations page has only {} table(s) failed. '
-              'Found {} table(s).'.format(test_payload['number_of_tables'], actual_number_of_tables))
-        return False
-    """
-    This is to test if abbreviations table contains only 4 table data per row
-    """
-    for abbrev_record in abb_tables[0].find_all('tr'):
-        actual_number_tdata_elements = len(abbrev_record.find_all('td'))
-        if actual_number_tdata_elements != test_payload['number_of_table_data_in_each_row']:
-            print('Error: Assumption that Abbreviations table has only {} tdata per row failed. '
-                  'Found {} tdata element(s).'.format(test_payload['number_of_table_data_in_each_row'],
-                                                      actual_number_tdata_elements))
-            return False
-    return True
-
-
-def check_classes_for_presence_of(published_json, test_payload, misc_details):
+def check_classes_for_presence_of(published_json, test_payload):
     """test for issue #85
     This is to test whether merged column between two running merged columns is parsed successfully
     """

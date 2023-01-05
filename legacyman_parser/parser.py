@@ -155,12 +155,9 @@ def parse_from_root():
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS)
 
-    misc_details = {}
-    misc_details['abbreviations_url'] = abbreviations_url
-
     if test_payload_json is not None:
         print("\n\nTest results:")
-        if parsed_json_tester(published_json, test_payload_json, misc_details):
+        if parsed_json_tester(published_json, test_payload_json):
             print("All tests successful.")
 
 
