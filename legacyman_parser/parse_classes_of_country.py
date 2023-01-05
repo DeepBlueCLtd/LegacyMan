@@ -7,11 +7,13 @@ to process class data
 """
 CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
-TOO_FEW_PROPERTIES = []
 NON_STANDARD_COUNTRY = []
+TOO_FEW_PROPERTIES = []
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
+
+classRowExtractor = None
 
 
 class ClassU:
@@ -58,9 +60,10 @@ class ClassU:
 
 def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                                userland_dict: dict = None) -> []:
-    global _class_table_header_is_identified, _current_subtype_id
+    global _class_table_header_is_identified, _current_subtype_id, classRowExtractor
     _class_table_header_is_identified = False
     _current_subtype_id = None
+    classRowExtractor = userland_dict.get('class_extractor')
     class_list = soup.find('div', {"id": "PageLayer"})
     if class_list:
         for row in class_list.find('table').find_all('tr'):
@@ -87,6 +90,7 @@ def process_class_row(row: PageElement, country: dict, parsed_url: str):
 
     # Normal record
     if not is_this_class_record(row):
+        log_row_as_containing_too_few_class_properties(parsed_url)
         return
     # Extract information and map against _current_subtype_id
     create_new_class_with_extracted_subcategory(row, country, _current_subtype_id, parsed_url)
@@ -142,7 +146,9 @@ def extract_subcategory(row: PageElement):
 def is_this_class_record(row: PageElement):
     """ This should have more than one < td >"""
     columns = row.find_all('td')
-    if len(columns) > 1:
+    if len(columns) == 7:
+        return True
+    if classRowExtractor.effective_length_of(columns) == 7:
         return True
     return False
 
@@ -154,21 +160,20 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: dict,
     has_tonal = does_class_contain_tonal(columns[0])
     if has_tonal:
         tonal_href = urljoin(parsed_url, extract_tonal_href(columns[0]))
-    # filter for columns that have 7 cells
-    if len(columns) != 7:
-        log_row_as_containing_too_few_class_properties(parsed_url)
-        return
+    # Declare contents of a class
+    class_name, designator, power, shaft, bhp, temp, rr = classRowExtractor.retrieve_row(columns)
+
     seq = len(CLASS_COLLECTION) + 1
     CLASS_COLLECTION.append(ClassU(seq,
-                                   columns[0].text,
+                                   class_name,
                                    current_subtype,
                                    country,
-                                   columns[1].text,
-                                   columns[2].text,
-                                   columns[3].text,
-                                   columns[4].text,
-                                   columns[5].text,
-                                   columns[6].text,
+                                   designator,
+                                   power,
+                                   shaft,
+                                   bhp,
+                                   temp,
+                                   rr,
                                    has_tonal,
                                    tonal_href))
 

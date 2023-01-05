@@ -1,7 +1,7 @@
 {
   "phase_one_regions_parse_not_included_countries": ["Britain1"],
   "count_of_tonal_remarks_containing_test_string": [{
-                                                      "count": 3,
+                                                      "count": 6,
                                                       "test_string": "%TEST-77%"
                                                     }],
   "subtypes_should_not_have_string": ["%TEST-76%"],
@@ -10,5 +10,10 @@
                                         "test_string": "%TEST-30%"
                                       }],
   "test_assumptions_of_actual_abbreviations_page": {"number_of_tables": 1,
-                                                    "number_of_table_data_in_each_row": 4}
+                                                    "number_of_table_data_in_each_row": 4},
+  "count_of_class_containing_test_string_in_power_attribute": [{
+                                                                "count": 2,
+                                                                "test_string": "%TEST-85%"
+                                                              }],
+  "check_classes_for_presence_of": ["Unit_eww"]
 }

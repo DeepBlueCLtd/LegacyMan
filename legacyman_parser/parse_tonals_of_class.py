@@ -13,25 +13,7 @@ TONAL_HEADER_NOT_FOUND = []
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
 
-_current_merged_remarks = None
-_no_of_rows_for_which_current_merged_remarks_is_applicable_now = 0
-
-
-def decrement_and_possibly_reset_current_merged_remarks_flags():
-    global _no_of_rows_for_which_current_merged_remarks_is_applicable_now, _current_merged_remarks
-
-    # Decrement the applicable rows by one each time we consume the row
-    _no_of_rows_for_which_current_merged_remarks_is_applicable_now -= 1
-
-    if _no_of_rows_for_which_current_merged_remarks_is_applicable_now == 0:
-        _current_merged_remarks = None
-
-
-def set_current_merged_remarks_flags(applicable_rows: int, remarks: str):
-    global _no_of_rows_for_which_current_merged_remarks_is_applicable_now, _current_merged_remarks
-
-    _no_of_rows_for_which_current_merged_remarks_is_applicable_now = applicable_rows
-    _current_merged_remarks = remarks
+tonalRowExtractor = None
 
 
 class Tonal:
@@ -53,9 +35,10 @@ class Tonal:
 
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                             userland_dict: dict = None) -> []:
-    global _tonal_table_header_is_identified, _current_tonal_type
+    global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
+    tonalRowExtractor = userland_dict.get('tonal_extractor')
     tonal_header = soup.find("td", string="Commonly Detected Sources")
     if tonal_header:
         tonal_table = tonal_header.find_parent("table")
@@ -142,36 +125,18 @@ def is_this_tonal_record(row: PageElement):
         return True
 
     # Some tonals have merged remarks
-    if has_effective_number_of_columns(columns):
+    if tonalRowExtractor.effective_length_of(columns) == 4:
         return True
 
-    return False
-
-
-def has_effective_number_of_columns(columns: PageElement):
-    if len(columns) == 3 and _no_of_rows_for_which_current_merged_remarks_is_applicable_now >= 1:
-        return True
     return False
 
 
 def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, current_tonal_type: str):
     columns = row.find_all('td')
-    tonal_source = identify_or_create_tonal_source_id(columns[0].text)
-
-    current_remarks = None
-    # Check if remarks exist
-    if len(columns) == 4:
-        # If exists, check if it's merged for subsequent rows and set _current_merged* flags
-        current_remarks = columns[3].text
-        if 'rowspan' in columns[3].attrs:
-            set_current_merged_remarks_flags(int(columns[3]['rowspan']) - 1, current_remarks)
-    else:
-        # If it doesn't exist, fetch from _current_merged_remarks and call decrement function
-        current_remarks = _current_merged_remarks
-        decrement_and_possibly_reset_current_merged_remarks_flags()
-
+    tonal_source_text, ratio_freq, harmonics, current_remarks = tonalRowExtractor.retrieve_row(columns)
+    tonal_source = identify_or_create_tonal_source_id(tonal_source_text)
     TONAL_COLLECTION.append(
-        Tonal(class_u, tonal_source, columns[1].text, columns[2].text, current_remarks, current_tonal_type))
+        Tonal(class_u, tonal_source, ratio_freq, harmonics, current_remarks, current_tonal_type))
 
 
 def identify_or_create_tonal_source_id(tonal_source: str):
