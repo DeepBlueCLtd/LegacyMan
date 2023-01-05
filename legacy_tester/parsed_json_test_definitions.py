@@ -15,9 +15,10 @@ def count_of_tonal_remarks_containing_test_string(published_json, test_payload):
         tonals_with_required_remarks = filter(lambda a: unit_payload['test_string'] in a.remarks,
                                               published_json['tonals'])
         if len(list(tonals_with_required_remarks)) != unit_payload['count']:
-            print('Error: {} failed to identify {} tonals with "{}" in remarks'.format(unit_payload,
-                                                                                         unit_payload['count'],
-                                                                                         unit_payload['test_string']))
+            print('Error: {} failed to identify exactly {} tonals '
+                  'with "{}" in remarks'.format(unit_payload,
+                                                unit_payload['count'],
+                                                unit_payload['test_string']))
             return False
     return True
 
@@ -29,8 +30,38 @@ def subtypes_should_not_have_string(published_json, test_payload):
     """
     for test_string in test_payload:
         plat_sub_types_with_test_string = filter(lambda a: test_string in a.platform_sub_type,
-                                              published_json['platform_sub_types'])
+                                                 published_json['platform_sub_types'])
         if len(list(plat_sub_types_with_test_string)) != 0:
             print('Error: Test string "{}" identified in one of the platform subtypes'.format(test_string))
+            return False
+    return True
+
+
+def count_of_class_containing_test_string_in_power_attribute(published_json, test_payload):
+    """test for issue #85
+    This is to test whether merged power attributes in classes are extracted successfully.
+    """
+    for unit_payload in test_payload:
+        class_with_required_power_attributes = filter(lambda a: unit_payload['test_string'] in a.engine,
+                                                      published_json['units'])
+        if len(list(class_with_required_power_attributes)) != unit_payload['count']:
+            print('Error: {} failed to identify exactly {} classes with '
+                  '"{}" in engine/power'.format(unit_payload,
+                                                unit_payload['count'],
+                                                unit_payload['test_string']))
+            return False
+    return True
+
+
+
+def check_classes_for_presence_of(published_json, test_payload):
+    """test for issue #85
+    This is to test whether merged column between two running merged columns is parsed successfully
+    """
+    for unit_payload in test_payload:
+        class_with_required_name = filter(lambda a: unit_payload in a.title,
+                                                      published_json['units'])
+        if len(list(class_with_required_name)) < 1:
+            print('Error: {} failed to identify classes with name"{}"'.format(unit_payload,))
             return False
     return True
