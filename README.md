@@ -46,7 +46,7 @@ The < data directory > placeholder is to be replaced by a valid path containing 
 - PlatformData (as in < data directory >/PlatformData/PD_1.html)
 - QuickLinksData (as in < data directory >/QuickLinksData/Abbreviations.html)
 ```
-python -m legacyman_parser.parser < data directory > test_payload_for_parsed_json=legacy_tester/test_payload/mock_data_test_payload.json
+python -m legacyman_parser.parser < data directory >
 ```
 
 ## Parser outcomes
