@@ -9,8 +9,6 @@
                                         "count": 1,
                                         "test_string": "%TEST-30%"
                                       }],
-  "test_assumptions_of_actual_abbreviations_page": {"number_of_tables": 1,
-                                                    "number_of_table_data_in_each_row": 4},
   "count_of_class_containing_test_string_in_power_attribute": [{
                                                                 "count": 2,
                                                                 "test_string": "%TEST-85%"
