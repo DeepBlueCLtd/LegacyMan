@@ -1,3 +1,6 @@
+from bs4 import BeautifulSoup
+
+
 def phase_one_regions_parse_not_included_countries(published_json, test_payload):
     parsed_countries = list(map(lambda a: a.country, published_json['countries']))
     for to_be_excluded_countries in test_payload:
@@ -37,6 +40,20 @@ def subtypes_should_not_have_string(published_json, test_payload):
     return True
 
 
+def abbreviation_should_have_string(published_json, test_payload):
+    """Test for issue #30
+    This is to test if abbreviations are parsed properly
+    """
+    for unit_payload in test_payload:
+        abbreviations_with_test_string = filter(lambda a: unit_payload['test_string'] in a.full_form,
+                                                published_json['abbreviations'])
+        if len(list(abbreviations_with_test_string)) != 1:
+            print('Error: Unable to identify exactly {} instance of {}'
+                  ' in abbreviations'.format(unit_payload['count'], unit_payload['test_string']))
+            return False
+    return True
+
+
 def count_of_class_containing_test_string_in_power_attribute(published_json, test_payload):
     """test for issue #85
     This is to test whether merged power attributes in classes are extracted successfully.
@@ -51,7 +68,6 @@ def count_of_class_containing_test_string_in_power_attribute(published_json, tes
                                                 unit_payload['test_string']))
             return False
     return True
-
 
 
 def check_classes_for_presence_of(published_json, test_payload):

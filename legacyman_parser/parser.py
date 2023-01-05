@@ -4,6 +4,7 @@ import sys
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
+from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
@@ -61,7 +62,8 @@ def parse_from_root():
     """Parsing Region
     The regions are processed from map"""
     print("\n\nParsing Regions:")
-    root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url, disable_crawler_log=True)
+    root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url + "/PlatformData/PD_1.html",
+                                                   disable_crawler_log=True)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
     print("Done. Parsed {} regions.".format(len(REGION_COLLECTION)))
 
@@ -106,6 +108,12 @@ def parse_from_root():
                            crawl_recursively=False)
     print("Done. Parsed {} tonals.".format(len(TONAL_COLLECTION)))
 
+    print("\n\nParsing Abbreviations:")
+    abbreviations_url = cleansed_url + "/QuickLinksData/Abbreviations.html"
+    root_spidey_to_extract_abbreviations = SimpleCrawler(url=abbreviations_url, disable_crawler_log=True)
+    root_spidey_to_extract_abbreviations.crawl(resource_processor_callback=parse_abbreviations, crawl_recursively=False)
+    print("Done. Parsed {} abbreviations.".format(len(ABBREVIATIONS)))
+
     if COUNTRY_TABLE_NOT_FOUND:
         print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
         for country_table_not_found_url in COUNTRY_TABLE_NOT_FOUND:
@@ -144,7 +152,8 @@ def parse_from_root():
                                             parsed_tonals=TONAL_COLLECTION,
                                             parsed_subtypes=SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
-                                            parsed_tonal_sources=TONAL_SOURCE_COLLECTION)
+                                            parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
+                                            parsed_abbreviations=ABBREVIATIONS)
 
     if test_payload_json is not None:
         print("\n\nTest results:")
