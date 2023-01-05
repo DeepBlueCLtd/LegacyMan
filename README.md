@@ -37,8 +37,23 @@ Execute the following command from the project root directory to run program. Th
 python -m legacyman_parser.parser data test_payload_for_parsed_json=legacy_tester/test_payload/mock_data_test_payload.json
 ```
 
+## Running LegacyMan parser program (against REAL data)
+
+Execute the following command from the project root directory to run program.
+The test_payload_for_parsed_json is optional parameter.
+
+The < data directory > placeholder is to be replaced by a valid path containing the following directories:
+- PlatformData (as in < data directory >/PlatformData/PD_1.html)
+- QuickLinksData (as in < data directory >/QuickLinksData/Abbreviations.html)
+```
+python -m legacyman_parser.parser < data directory >
+```
+
+## Parser outcomes
+
 This will
 * generate the json file to be imported into the Data Browser application
+* validate assumptions about the html structure with *assert*
 * generate a discrepancy report
 
 ### Generate DITA content
