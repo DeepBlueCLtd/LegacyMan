@@ -75,6 +75,8 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
             process_class_row(row, userland_dict['country'], parsed_url)
     else:
         NON_STANDARD_COUNTRY.append(parsed_url)
+    assert _class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with " \
+                                              "its first column header as text Class (case sensitive)"
 
 
 def process_class_row(row: PageElement, country: dict, parsed_url: str):
