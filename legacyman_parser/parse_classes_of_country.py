@@ -64,9 +64,14 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     _class_table_header_is_identified = False
     _current_subtype_id = None
     classRowExtractor = userland_dict.get('class_extractor')
-    class_list = soup.find('div', {"id": "PageLayer"})
+    class_list_all = soup.find_all('div', {"id": "PageLayer"})
+    assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
+                                     " that lists classes."
+    class_list = class_list_all[0]
     if class_list:
-        for row in class_list.find('table').find_all('tr'):
+        table_list = class_list.find_all('table')
+        assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes"
+        for row in table_list[0].find_all('tr'):
             process_class_row(row, userland_dict['country'], parsed_url)
     else:
         NON_STANDARD_COUNTRY.append(parsed_url)
