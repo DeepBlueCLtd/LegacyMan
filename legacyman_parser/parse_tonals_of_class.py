@@ -9,6 +9,7 @@ TONAL_SOURCE_COLLECTION = {}
 
 TONAL_TABLE_NOT_FOUND = []
 TONAL_HEADER_NOT_FOUND = []
+TONAL_FOUND_FOR_CLASS = {}
 
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
@@ -49,6 +50,9 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
             TONAL_TABLE_NOT_FOUND.append(parsed_url)
     else:
         TONAL_HEADER_NOT_FOUND.append(parsed_url)
+    assert TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False), "InvalidAssumption: Class ({}) page will " \
+                                                                     "have at least one tonal."\
+        .format(userland_dict['class'])
 
 
 def process_tonal_row(row: PageElement, class_u: any):
@@ -137,6 +141,7 @@ def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, c
     tonal_source = identify_or_create_tonal_source_id(tonal_source_text)
     TONAL_COLLECTION.append(
         Tonal(class_u, tonal_source, ratio_freq, harmonics, current_remarks, current_tonal_type))
+    TONAL_FOUND_FOR_CLASS[class_u] = True
 
 
 def identify_or_create_tonal_source_id(tonal_source: str):

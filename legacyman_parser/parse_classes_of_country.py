@@ -78,8 +78,9 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
         NON_STANDARD_COUNTRY.append(parsed_url)
     assert _class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with " \
                                               "its first column header as text Class (case sensitive)"
-    assert CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'], False), "InvalidAssumption: Country page will have " \
-                                                                         "at least one class. "
+    assert CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'], False), "InvalidAssumption: Country ({}) page will " \
+                                                                         "have at least one class."\
+        .format(userland_dict['country'])
 
 
 def process_class_row(row: PageElement, country: dict, parsed_url: str):
