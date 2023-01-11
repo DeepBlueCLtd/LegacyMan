@@ -9,6 +9,7 @@ CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
 NON_STANDARD_COUNTRY = []
 TOO_FEW_PROPERTIES = []
+CLASS_FOUND_FOR_COUNTRY = {}
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
@@ -77,7 +78,8 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
         NON_STANDARD_COUNTRY.append(parsed_url)
     assert _class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with " \
                                               "its first column header as text Class (case sensitive)"
-    assert len(CLASS_COLLECTION) > 0, "InvalidAssumption: Country page will have at least one class."
+    assert CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'], False), "InvalidAssumption: Country page will have " \
+                                                                         "at least one class. "
 
 
 def process_class_row(row: PageElement, country: dict, parsed_url: str):
@@ -184,6 +186,7 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: dict,
                                    rr,
                                    has_tonal,
                                    tonal_href))
+    CLASS_FOUND_FOR_COUNTRY[country] = True
 
 
 def does_class_contain_tonal(table_data: PageElement):
