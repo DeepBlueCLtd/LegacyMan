@@ -158,12 +158,11 @@ def parse_from_root():
 
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category
-    # Going with itertools.groupby as data is pre-sorted
-    grouping_key = lambda x: str(x.country) + str(x.sub_category) + str(x.class_u)
-    assert 1 == max(list(map(lambda grouped_values: len(list(grouped_values[1])),
-                             itertools.groupby(CLASS_COLLECTION, grouping_key)))), "InvalidAssumption: " \
-                                                                                   "Classes are unique for a given " \
-                                                                                   "country and sub category"
+    assert 1 == max(list(map(lambda grouped_values: len(list(grouped_values[1])), itertools.groupby(sorted(
+                                 list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
+                                          CLASS_COLLECTION))), lambda a: a)))), "InvalidAssumption: " \
+                                                                                "Classes are unique for a given " \
+                                                                                "country and sub category"
 
     if test_payload_json is not None:
         print("\n\nTest results:")
