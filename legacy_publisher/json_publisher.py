@@ -4,14 +4,17 @@ import random
 
 from legacy_publisher.json_templates import PlatformType, PropulsionType, PlatformSubType, Region, Country, ClassU, \
     TonalType, Tonal, TonalSource
+from legacyman_parser.utils.constants import JSON_EXPORT_FILE
 
 """This module will handle post parsing enhancements for publishing"""
 
-EXPORT_FILE = 'target/json_publication.js'
+EXPORT_FILE = JSON_EXPORT_FILE
 
 random.seed(100)
+
+
 def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
-            parsed_tonal_types=None, parsed_tonal_sources=None, parsed_abbreviations=None):
+            parsed_tonal_types=None, parsed_tonal_sources=None, parsed_abbreviations=None, parsed_flags=None):
     # Hardcode Generic Platform Type
     platform_type = PlatformType(1, "Generic Platform Type")
 
@@ -64,7 +67,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
                  "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals,
-                 "abbreviations": parsed_abbreviations}
+                 "abbreviations": parsed_abbreviations, "flags": parsed_flags}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:

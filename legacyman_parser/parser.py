@@ -8,6 +8,7 @@ from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATI
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
+from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
@@ -92,10 +93,12 @@ def parse_from_root():
                                                           userland_dict=country_dict)
         country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_classes_of_country,
                                                 crawl_recursively=False)
+        country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_flag_of_country,
+                                                crawl_recursively=False)
         if len(country_spidey_to_extract_classes.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
-    print("Done. Parsed {} classes.".format(len(CLASS_COLLECTION)))
+    print("Done. Parsed {} classes and {} flags.".format(len(CLASS_COLLECTION), len(COUNTRY_FLAG_COLLECTION)))
 
     print("\n\nParsing Tonals:")
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
@@ -153,7 +156,8 @@ def parse_from_root():
                                             parsed_subtypes=SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
-                                            parsed_abbreviations=ABBREVIATIONS)
+                                            parsed_abbreviations=ABBREVIATIONS,
+                                            parsed_flags=COUNTRY_FLAG_COLLECTION)
 
     if test_payload_json is not None:
         print("\n\nTest results:")

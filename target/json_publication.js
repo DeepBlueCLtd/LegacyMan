@@ -754,5 +754,46 @@ var publicationJsonData={
       "abbreviation": "M/M",
       "full_form": "Master Musician"
     }
+  ],
+  "flags": [
+    {
+      "country": {
+        "id": 1,
+        "country": "Narnia",
+        "region": {
+          "id": 2,
+          "region": "Europe",
+          "url": "data/PlatformData/Europe.html"
+        },
+        "url": "data/Narnia/Narnia1.html"
+      },
+      "file_location": "target/flags/Narnia.jpg"
+    },
+    {
+      "country": {
+        "id": 4,
+        "country": "France",
+        "region": {
+          "id": 2,
+          "region": "Europe",
+          "url": "data/PlatformData/Europe.html"
+        },
+        "url": "data/France/France1.html"
+      },
+      "file_location": "target/flags/France.jpg"
+    },
+    {
+      "country": {
+        "id": 5,
+        "country": "Spain",
+        "region": {
+          "id": 2,
+          "region": "Europe",
+          "url": "data/PlatformData/Europe.html"
+        },
+        "url": "data/Spain1/Spain.html"
+      },
+      "file_location": "target/flags/Spain.jpg"
+    }
   ]
 }
