@@ -79,6 +79,13 @@ def parse_from_root():
                                                  crawl_recursively=False)
     print("Done. Parsed {} countries.".format(len(COUNTRY_COLLECTION)))
 
+    # Assert to ensure case-insensitive (as we're dealing with Win systems) country names are unique.
+    # This is required as we'll be using country names to store Flag images
+    sorted_list_of_countries = sorted(list(map(lambda a: a.country.upper(), COUNTRY_COLLECTION)))
+    assert len(sorted_list_of_countries) \
+           == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive country names " \
+                                                  "are unique. The list {} has duplicates.".format(sorted_list_of_countries)
+
     print("\n\nParsing Classes:")
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
@@ -98,7 +105,9 @@ def parse_from_root():
         if len(country_spidey_to_extract_classes.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
-    print("Done. Parsed {} classes and {} flags.".format(len(CLASS_COLLECTION), len(COUNTRY_FLAG_COLLECTION)))
+    print("Done. Parsed {} classes and {} flags from {} countries.".format(len(CLASS_COLLECTION),
+                                                                           len(COUNTRY_FLAG_COLLECTION),
+                                                                           len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing Tonals:")
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
