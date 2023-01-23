@@ -9,6 +9,7 @@ from legacyman_parser.parse_classes_of_country import extract_classes_of_country
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
 from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION
+from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
@@ -109,7 +110,7 @@ def parse_from_root():
                                                                            len(COUNTRY_FLAG_COLLECTION),
                                                                            len(COUNTRY_COLLECTION)))
 
-    print("\n\nParsing Tonals:")
+    print("\n\nParsing tonals and class images:")
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
         tonal_row_extractor = MergedRowsExtractor(4)
         class_dict = {"class": class_with_tonals, "tonal_extractor": tonal_row_extractor}
@@ -118,7 +119,11 @@ def parse_from_root():
                                      userland_dict=class_dict)
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
                            crawl_recursively=False)
-    print("Done. Parsed {} tonals.".format(len(TONAL_COLLECTION)))
+        tonal_spidey.crawl(resource_processor_callback=extract_class_images,
+                           crawl_recursively=False)
+    print("Done. Parsed {} tonals and {} class images from {} classes.".format(len(TONAL_COLLECTION),
+                                                                               len(CLASS_IMAGES_COLLECTION),
+                                                                               len(CLASS_COLLECTION)))
 
     print("\n\nParsing Abbreviations:")
     abbreviations_url = cleansed_url + "/QuickLinksData/Abbreviations.html"
@@ -166,7 +171,8 @@ def parse_from_root():
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS,
-                                            parsed_flags=COUNTRY_FLAG_COLLECTION)
+                                            parsed_flags=COUNTRY_FLAG_COLLECTION,
+                                            parsed_class_images=CLASS_IMAGES_COLLECTION)
 
     if test_payload_json is not None:
         print("\n\nTest results:")

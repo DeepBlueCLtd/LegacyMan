@@ -795,5 +795,133 @@ var publicationJsonData={
       },
       "file_location": "target/flags/Spain.jpg"
     }
+  ],
+  "class_images": [
+    {
+      "class_u": {
+        "id": 4,
+        "class_u": "*Unit_d",
+        "sub_category": [
+          "Legacy",
+          2
+        ],
+        "country": {
+          "id": 1,
+          "country": "Narnia",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/Narnia/Narnia1.html"
+        },
+        "designator": "PBF",
+        "power": "2 * V6 Diesel",
+        "shaft_blade": "2 * 4 (FPP)",
+        "bhp": "16.6",
+        "av_temp": "Est 1000",
+        "reduction_ratio": "BWW",
+        "has_tonal": true,
+        "tonal_href": "data/France_Legacy/unit_d.html"
+      },
+      "class_images": [
+        "target/class_images/Narnia/Generic/Legacy/oscill_d.jpg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 5,
+        "class_u": " Unit_a",
+        "sub_category": [
+          "Composite",
+          1
+        ],
+        "country": {
+          "id": 4,
+          "country": "France",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/France/France1.html"
+        },
+        "designator": "PB",
+        "power": "2 * V8 Diesel",
+        "shaft_blade": "3 x 3",
+        "bhp": "34 Hz",
+        "av_temp": "Unk",
+        "reduction_ratio": "Unk",
+        "has_tonal": true,
+        "tonal_href": "data/France_Composites/unit_a.html"
+      },
+      "class_images": [
+        "target/class_images/France/Generic/Composite/unit_a1.jpg",
+        "target/class_images/France/Generic/Composite/unit_a2.jpeg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 8,
+        "class_u": "Unit_d",
+        "sub_category": [
+          "Legacy",
+          2
+        ],
+        "country": {
+          "id": 4,
+          "country": "France",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/France/France1.html"
+        },
+        "designator": "PBF",
+        "power": "5 * V8 Diesel%TEST-85%",
+        "shaft_blade": "2 * 4 (FPP)%TEST-85%",
+        "bhp": "16.6",
+        "av_temp": "Est 1000",
+        "reduction_ratio": "Unk%TEST-85%",
+        "has_tonal": true,
+        "tonal_href": "data/France_Legacy/unit_d.html"
+      },
+      "class_images": [
+        "target/class_images/France/Generic/Legacy/oscill_d.jpg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 13,
+        "class_u": "*Unit_db",
+        "sub_category": [
+          "Legacy",
+          2
+        ],
+        "country": {
+          "id": 5,
+          "country": "Spain",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/Spain1/Spain.html"
+        },
+        "designator": "PBF",
+        "power": "2 * V6 Diesel",
+        "shaft_blade": "2 * 4 (FPP)",
+        "bhp": "16.6",
+        "av_temp": "Est 1000",
+        "reduction_ratio": "BWW",
+        "has_tonal": true,
+        "tonal_href": "data/Spain1/unit_db.html"
+      },
+      "class_images": [
+        "target/class_images/Spain/Generic/Legacy/unit_db_2.jpg",
+        "target/class_images/Spain/Generic/Legacy/unit_db.jpg"
+      ]
+    }
   ]
 }

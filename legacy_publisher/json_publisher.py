@@ -14,7 +14,8 @@ random.seed(100)
 
 
 def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
-            parsed_tonal_types=None, parsed_tonal_sources=None, parsed_abbreviations=None, parsed_flags=None):
+            parsed_tonal_types=None, parsed_tonal_sources=None, parsed_abbreviations=None, parsed_flags=None,
+            parsed_class_images=None):
     # Hardcode Generic Platform Type
     platform_type = PlatformType(1, "Generic Platform Type")
 
@@ -67,7 +68,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
                  "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals,
-                 "abbreviations": parsed_abbreviations, "flags": parsed_flags}
+                 "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": parsed_class_images}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:
