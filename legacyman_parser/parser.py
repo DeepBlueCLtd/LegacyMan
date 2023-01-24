@@ -1,4 +1,5 @@
 import os
+import shutil
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
@@ -13,6 +14,7 @@ from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_I
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
+from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 
 INVALID_COUNTRY_HREFS = []
@@ -111,6 +113,8 @@ def parse_from_root():
                                                                            len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing tonals and class images:")
+    # Delete existing folder
+    shutil.rmtree(COPY_CLASS_IMAGES_TO_DIRECTORY)
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
         tonal_row_extractor = MergedRowsExtractor(4)
         class_dict = {"class": class_with_tonals, "tonal_extractor": tonal_row_extractor}

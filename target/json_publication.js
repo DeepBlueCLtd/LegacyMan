@@ -825,7 +825,8 @@ var publicationJsonData={
         "tonal_href": "data/France_Legacy/unit_d.html"
       },
       "class_images": [
-        "target/class_images/Narnia/Generic/Legacy/oscill_d.jpg"
+        "target/class_images/Narnia/Generic/Legacy/oscill_d.jpg",
+        "target/class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
       ]
     },
     {
@@ -888,7 +889,8 @@ var publicationJsonData={
         "tonal_href": "data/France_Legacy/unit_d.html"
       },
       "class_images": [
-        "target/class_images/France/Generic/Legacy/oscill_d.jpg"
+        "target/class_images/France/Generic/Legacy/oscill_d.jpg",
+        "target/class_images/France/Generic/Legacy/NEW-TEST-48.jpg"
       ]
     },
     {
@@ -920,7 +922,9 @@ var publicationJsonData={
       },
       "class_images": [
         "target/class_images/Spain/Generic/Legacy/unit_db_2.jpg",
-        "target/class_images/Spain/Generic/Legacy/unit_db.jpg"
+        "target/class_images/Spain/Generic/Legacy/unit_db.jpg",
+        "target/class_images/Spain/Generic/Legacy/TEST-48.jpg",
+        "target/class_images/Spain/Generic/Legacy/TEST-48_1674582046836.jpg"
       ]
     }
   ]

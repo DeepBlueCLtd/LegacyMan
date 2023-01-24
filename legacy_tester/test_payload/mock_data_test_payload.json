@@ -13,5 +13,14 @@
                                                                 "count": 2,
                                                                 "test_string": "%TEST-85%"
                                                               }],
-  "check_classes_for_presence_of": ["Unit_eww"]
+  "check_classes_for_presence_of": ["Unit_eww"],
+  "check_class_images_name": [{
+                                "country": "Spain",
+                                "image_name_contains": "TEST-48",
+                                "expected_count": 2
+                              }],
+  "check_presence_of_common_class_images_in_different_class_folder": [{
+                                                                        "unit_ids": [8, 4],
+                                                                        "image_name_contains": "NEW-TEST-48"
+                                                                      }]
 }

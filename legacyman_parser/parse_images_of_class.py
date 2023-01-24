@@ -39,7 +39,7 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
                                             "img attribute. {} not found as specified " \
                                             "in {}.".format(class_image, parsed_url)
 
-        # Track already parsed images to reference them in other classes, if required, instead of copying new.
+        # Track already parsed images in destination, instead of copying again.
         new_destination_of_img_src = os.path.join(COPY_CLASS_IMAGES_TO_DIRECTORY,
                                                   userland_dict['class'].country.country,
                                                   'Generic',
@@ -57,8 +57,7 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
                 if os.path.exists(new_destination_of_img_src):
                     new_destination_of_img_src = os.path.splitext(new_destination_of_img_src)[0] \
                                                  + "_" \
-                                                 + round(time.time()*1000) \
-                                                 + "." \
+                                                 + str(round(time.time() * 1000)) \
                                                  + os.path.splitext(new_destination_of_img_src)[1]
                 shutil.copy2(class_image, new_destination_of_img_src)
         class_images_obj.class_images.append(new_destination_of_img_src)
