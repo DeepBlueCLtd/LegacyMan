@@ -8,6 +8,7 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
+from legacyman_parser.utils.stateful_suffix_generator import StatefulSuffixGenerator
 
 """
 Independent testable parse class image module
@@ -15,6 +16,7 @@ Independent testable parse class image module
 
 CLASS_IMAGES_COLLECTION = []
 already_processed_html_img_sources = {}
+folder_specific_suffix_generator = {}
 
 
 class ClassImages:
@@ -26,6 +28,14 @@ class ClassImages:
 
     def __str__(self):
         return "{} has the following images: {}.".format(self.class_u.id, self.class_images)
+
+
+def instantiate_or_retrieve_cached_generator(file_name):
+    dir_name = os.path.dirname(file_name).upper()
+    if dir_name not in folder_specific_suffix_generator:
+        suffix_gen = StatefulSuffixGenerator()
+        folder_specific_suffix_generator[dir_name] = suffix_gen
+    return folder_specific_suffix_generator[dir_name]
 
 
 def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
@@ -55,9 +65,10 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
             if class_image.upper() not in already_processed_html_img_sources[new_destination_of_img_src.upper()]:
                 already_processed_html_img_sources[new_destination_of_img_src.upper()].append(class_image.upper())
                 if os.path.exists(new_destination_of_img_src):
+                    suffix_gen = instantiate_or_retrieve_cached_generator(new_destination_of_img_src)
                     new_destination_of_img_src = os.path.splitext(new_destination_of_img_src)[0] \
                                                  + "_" \
-                                                 + str(round(time.time() * 1000)) \
+                                                 + suffix_gen.next_value() \
                                                  + os.path.splitext(new_destination_of_img_src)[1]
                 shutil.copy2(class_image, new_destination_of_img_src)
         class_images_obj.class_images.append(new_destination_of_img_src)

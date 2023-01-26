@@ -924,7 +924,7 @@ var publicationJsonData={
         "target/class_images/Spain/Generic/Legacy/unit_db_2.jpg",
         "target/class_images/Spain/Generic/Legacy/unit_db.jpg",
         "target/class_images/Spain/Generic/Legacy/TEST-48.jpg",
-        "target/class_images/Spain/Generic/Legacy/TEST-48_1674582046836.jpg"
+        "target/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
       ]
     }
   ]
