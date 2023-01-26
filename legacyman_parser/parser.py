@@ -5,6 +5,7 @@ from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
+from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
@@ -105,6 +106,8 @@ def parse_from_root():
                                      disable_crawler_log=True,
                                      userland_dict=class_dict)
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
+                           crawl_recursively=False)
+        tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
                            crawl_recursively=False)
     print("Done. Parsed {} tonals.".format(len(TONAL_COLLECTION)))
 
