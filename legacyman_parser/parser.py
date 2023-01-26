@@ -113,8 +113,9 @@ def parse_from_root():
                                                                            len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing tonals and class images:")
-    # Delete existing folder
-    shutil.rmtree(COPY_CLASS_IMAGES_TO_DIRECTORY)
+    # Check and delete existing folder, if exists
+    if os.path.exists(COPY_CLASS_IMAGES_TO_DIRECTORY):
+        shutil.rmtree(COPY_CLASS_IMAGES_TO_DIRECTORY)
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
         tonal_row_extractor = MergedRowsExtractor(4)
         class_dict = {"class": class_with_tonals, "tonal_extractor": tonal_row_extractor}
