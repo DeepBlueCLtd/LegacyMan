@@ -59,9 +59,9 @@ def count_of_class_containing_test_string_in_power_attribute(published_json, tes
     This is to test whether merged power attributes in classes are extracted successfully.
     """
     for unit_payload in test_payload:
-        class_with_required_power_attributes = filter(lambda a: unit_payload['test_string'] in a.engine,
-                                                      published_json['units'])
-        if len(list(class_with_required_power_attributes)) != unit_payload['count']:
+        class_with_required_power_attributes = list(filter(lambda a: unit_payload['test_string'] in a.engine,
+                                                           published_json['units']))
+        if len(class_with_required_power_attributes) != unit_payload['count']:
             print('Error: {} failed to identify exactly {} classes with '
                   '"{}" in engine/power'.format(unit_payload,
                                                 unit_payload['count'],
@@ -76,8 +76,8 @@ def check_classes_for_presence_of(published_json, test_payload):
     """
     for unit_payload in test_payload:
         class_with_required_name = filter(lambda a: unit_payload in a.title,
-                                                      published_json['units'])
+                                          published_json['units'])
         if len(list(class_with_required_name)) < 1:
-            print('Error: {} failed to identify classes with name"{}"'.format(unit_payload,))
+            print('Error: failed to identify classes with name"{}"'.format(unit_payload))
             return False
     return True
