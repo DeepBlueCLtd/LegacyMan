@@ -9,6 +9,7 @@ CLASS_COLLECTION = []
 SUBTYPE_COLLECTION = {}
 NON_STANDARD_COUNTRY = []
 TOO_FEW_PROPERTIES = []
+CLASS_FOUND_FOR_COUNTRY = {}
 
 _class_table_header_is_identified = False
 _current_subtype_id = None
@@ -64,12 +65,22 @@ def extract_classes_of_country(soup: BeautifulSoup = None, parsed_url: str = Non
     _class_table_header_is_identified = False
     _current_subtype_id = None
     classRowExtractor = userland_dict.get('class_extractor')
-    class_list = soup.find('div', {"id": "PageLayer"})
+    class_list_all = soup.find_all('div', {"id": "PageLayer"})
+    assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
+                                     " that lists classes."
+    class_list = class_list_all[0]
     if class_list:
-        for row in class_list.find('table').find_all('tr'):
+        table_list = class_list.find_all('table')
+        assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes"
+        for row in table_list[0].find_all('tr'):
             process_class_row(row, userland_dict['country'], parsed_url)
     else:
         NON_STANDARD_COUNTRY.append(parsed_url)
+    assert _class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with " \
+                                              "its first column header as text Class (case sensitive)"
+    assert CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'], False), "InvalidAssumption: Country ({}) page will " \
+                                                                         "have at least one class."\
+        .format(userland_dict['country'])
 
 
 def process_class_row(row: PageElement, country: dict, parsed_url: str):
@@ -176,6 +187,7 @@ def create_new_class_with_extracted_subcategory(row: PageElement, country: dict,
                                    rr,
                                    has_tonal,
                                    tonal_href))
+    CLASS_FOUND_FOR_COUNTRY[country] = True
 
 
 def does_class_contain_tonal(table_data: PageElement):
