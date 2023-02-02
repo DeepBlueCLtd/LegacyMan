@@ -1,5 +1,6 @@
 import itertools
 import os
+import shutil
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
@@ -10,9 +11,12 @@ from legacyman_parser.parse_class_attributes_from_tonals import extract_class_at
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
+from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION
+from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
+from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 
 INVALID_COUNTRY_HREFS = []
@@ -80,6 +84,13 @@ def parse_from_root():
                                                  crawl_recursively=False)
     print("Done. Parsed {} countries.".format(len(COUNTRY_COLLECTION)))
 
+    # Assert to ensure case-insensitive (as we're dealing with Win systems) country names are unique.
+    # This is required as we'll be using country names to store Flag images
+    sorted_list_of_countries = sorted(list(map(lambda a: a.country.upper(), COUNTRY_COLLECTION)))
+    assert len(sorted_list_of_countries) \
+           == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive country names " \
+                                                  "are unique. The list {} has duplicates.".format(sorted_list_of_countries)
+
     print("\n\nParsing Classes:")
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
@@ -94,12 +105,19 @@ def parse_from_root():
                                                           userland_dict=country_dict)
         country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_classes_of_country,
                                                 crawl_recursively=False)
+        country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_flag_of_country,
+                                                crawl_recursively=False)
         if len(country_spidey_to_extract_classes.unreachable_child_resources) > 0:
             INVALID_COUNTRY_HREFS.append({"country": country.country,
                                           "url": country.url})
-    print("Done. Parsed {} classes.".format(len(CLASS_COLLECTION)))
+    print("Done. Parsed {} classes and {} flags from {} countries.".format(len(CLASS_COLLECTION),
+                                                                           len(COUNTRY_FLAG_COLLECTION),
+                                                                           len(COUNTRY_COLLECTION)))
 
-    print("\n\nParsing Tonals:")
+    print("\n\nParsing tonals and class images:")
+    # Check and delete existing folder, if exists
+    if os.path.exists(COPY_CLASS_IMAGES_TO_DIRECTORY):
+        shutil.rmtree(COPY_CLASS_IMAGES_TO_DIRECTORY)
     for class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True, CLASS_COLLECTION):
         tonal_row_extractor = MergedRowsExtractor(4)
         class_dict = {"class": class_with_tonals, "tonal_extractor": tonal_row_extractor}
@@ -108,9 +126,13 @@ def parse_from_root():
                                      userland_dict=class_dict)
         tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
                            crawl_recursively=False)
+        tonal_spidey.crawl(resource_processor_callback=extract_class_images,
+                           crawl_recursively=False)
         tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
                            crawl_recursively=False)
-    print("Done. Parsed {} tonals.".format(len(TONAL_COLLECTION)))
+    print("Done. Parsed {} tonals and {} class images from {} classes.".format(len(TONAL_COLLECTION),
+                                                                               len(CLASS_IMAGES_COLLECTION),
+                                                                               len(CLASS_COLLECTION)))
 
     print("\n\nParsing Abbreviations:")
     abbreviations_url = cleansed_url + "/QuickLinksData/Abbreviations.html"
@@ -157,7 +179,9 @@ def parse_from_root():
                                             parsed_subtypes=SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
-                                            parsed_abbreviations=ABBREVIATIONS)
+                                            parsed_abbreviations=ABBREVIATIONS,
+                                            parsed_flags=COUNTRY_FLAG_COLLECTION,
+                                            parsed_class_images=CLASS_IMAGES_COLLECTION)
 
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category

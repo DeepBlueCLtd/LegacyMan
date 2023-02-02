@@ -1,3 +1,5 @@
+import os
+
 from bs4 import BeautifulSoup
 
 
@@ -80,4 +82,44 @@ def check_classes_for_presence_of(published_json, test_payload):
         if len(list(class_with_required_name)) < 1:
             print('Error: failed to identify classes with name"{}"'.format(unit_payload))
             return False
+    return True
+
+
+def check_class_images_name(published_json, test_payload):
+    """test for issue #48
+    This is to test automatic renaming of similarly named image files during extraction
+    """
+    for unit_payload in test_payload:
+        actual_images = list(filter(lambda a: unit_payload['image_name_contains'] in a,
+                                    list(filter(lambda a: unit_payload['country'] in a.class_u.country.country,
+                                                published_json['class_images']))[0].class_images))
+        if len(actual_images) != unit_payload['expected_count']:
+            print('Class images not renamed as expected. Failed test payload: {}'.format(unit_payload))
+            return False
+        for image_path in actual_images:
+            if not os.path.exists(image_path):
+                print('{} image file not found'.format(image_path))
+                return False
+    return True
+
+
+def check_presence_of_common_class_images_in_different_class_folder(published_json, test_payload):
+    """test for issue #48
+    This is to commonly referenced images across classes are extracted and stored individually for
+    different classes
+    """
+    for unit_payload in test_payload:
+        for unit_id in unit_payload['unit_ids']:
+            actual_images = list(filter(lambda a: unit_payload['image_name_contains'] in a,
+                                        list(filter(lambda a: unit_id == a.class_u.id,
+                                                    published_json['class_images']))[0].class_images))
+            if len(actual_images) != 1:
+                print('Image with name {} not found for {}. Test payload: {}'.format(
+                    unit_payload['image_name_contains'], unit_id, unit_payload))
+                print(actual_images)
+                return False
+            for image_path in actual_images:
+                if not os.path.exists(image_path):
+                    print('{} image file not found'.format(image_path))
+                    return False
     return True

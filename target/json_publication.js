@@ -754,5 +754,178 @@ var publicationJsonData={
       "abbreviation": "M/M",
       "full_form": "Master Musician"
     }
+  ],
+  "flags": [
+    {
+      "country": {
+        "id": 1,
+        "country": "Narnia",
+        "region": {
+          "id": 2,
+          "region": "Europe",
+          "url": "data/PlatformData/Europe.html"
+        },
+        "url": "data/Narnia/Narnia1.html"
+      },
+      "file_location": "target/flags/Narnia.jpg"
+    },
+    {
+      "country": {
+        "id": 4,
+        "country": "France",
+        "region": {
+          "id": 2,
+          "region": "Europe",
+          "url": "data/PlatformData/Europe.html"
+        },
+        "url": "data/France/France1.html"
+      },
+      "file_location": "target/flags/France.jpg"
+    },
+    {
+      "country": {
+        "id": 5,
+        "country": "Spain",
+        "region": {
+          "id": 2,
+          "region": "Europe",
+          "url": "data/PlatformData/Europe.html"
+        },
+        "url": "data/Spain1/Spain.html"
+      },
+      "file_location": "target/flags/Spain.jpg"
+    }
+  ],
+  "class_images": [
+    {
+      "class_u": {
+        "id": 4,
+        "class_u": "*Unit_d",
+        "sub_category": [
+          "Legacy",
+          2
+        ],
+        "country": {
+          "id": 1,
+          "country": "Narnia",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/Narnia/Narnia1.html"
+        },
+        "designator": "PBF",
+        "power": "4 * PR32 Diesel Engines",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400 hrs",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/France_Legacy/unit_d.html"
+      },
+      "class_images": [
+        "target/class_images/Narnia/Generic/Legacy/oscill_d.jpg",
+        "target/class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 5,
+        "class_u": " Unit_a",
+        "sub_category": [
+          "Composite",
+          1
+        ],
+        "country": {
+          "id": 4,
+          "country": "France",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/France/France1.html"
+        },
+        "designator": "PB",
+        "power": "4 * PR32 Diesel Engines",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400 hrs",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/France_Composites/unit_a.html"
+      },
+      "class_images": [
+        "target/class_images/France/Generic/Composite/unit_a1.jpg",
+        "target/class_images/France/Generic/Composite/unit_a2.jpeg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 8,
+        "class_u": "Unit_d",
+        "sub_category": [
+          "Legacy",
+          2
+        ],
+        "country": {
+          "id": 4,
+          "country": "France",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/France/France1.html"
+        },
+        "designator": "PBF",
+        "power": "4 * PR32 Diesel Engines",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400 hrs",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/France_Legacy/unit_d.html"
+      },
+      "class_images": [
+        "target/class_images/France/Generic/Legacy/oscill_d.jpg",
+        "target/class_images/France/Generic/Legacy/NEW-TEST-48.jpg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 13,
+        "class_u": "*Unit_db",
+        "sub_category": [
+          "Legacy",
+          2
+        ],
+        "country": {
+          "id": 5,
+          "country": "Spain",
+          "region": {
+            "id": 2,
+            "region": "Europe",
+            "url": "data/PlatformData/Europe.html"
+          },
+          "url": "data/Spain1/Spain.html"
+        },
+        "designator": "PBF",
+        "power": "4 * PR32 Diesel Engines%TEST-96%",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400 hrs",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/Spain1/unit_db.html"
+      },
+      "class_images": [
+        "target/class_images/Spain/Generic/Legacy/unit_db_2.jpg",
+        "target/class_images/Spain/Generic/Legacy/unit_db.jpg",
+        "target/class_images/Spain/Generic/Legacy/TEST-48.jpg",
+        "target/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
+      ]
+    }
   ]
 }
