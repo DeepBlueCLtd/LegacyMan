@@ -1,3 +1,4 @@
+import itertools
 import os
 import shutil
 import sys
@@ -6,6 +7,7 @@ from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
+from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
 from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
     TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
@@ -126,6 +128,8 @@ def parse_from_root():
                            crawl_recursively=False)
         tonal_spidey.crawl(resource_processor_callback=extract_class_images,
                            crawl_recursively=False)
+        tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                           crawl_recursively=False)
     print("Done. Parsed {} tonals and {} class images from {} classes.".format(len(TONAL_COLLECTION),
                                                                                len(CLASS_IMAGES_COLLECTION),
                                                                                len(CLASS_COLLECTION)))
@@ -178,6 +182,14 @@ def parse_from_root():
                                             parsed_abbreviations=ABBREVIATIONS,
                                             parsed_flags=COUNTRY_FLAG_COLLECTION,
                                             parsed_class_images=CLASS_IMAGES_COLLECTION)
+
+    # Assert assumptions on extracted data
+    # Data assumption 1: Classes are unique for a given country and sub category
+    assert 1 == max(list(map(lambda grouped_values: len(list(grouped_values[1])), itertools.groupby(sorted(
+                                 list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
+                                          CLASS_COLLECTION))), lambda a: a)))), "InvalidAssumption: " \
+                                                                                "Classes are unique for a given " \
+                                                                                "country and sub category"
 
     if test_payload_json is not None:
         print("\n\nTest results:")
