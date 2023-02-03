@@ -46,6 +46,9 @@ python -O -m legacyman_parser.parser data test_payload_for_parsed_json=legacy_te
 
 ## Running LegacyMan parser program (against REAL data)
 
+Apply the version controlled (checked into Git) **HTML discrepancy corrections** available at client site.
+Checking out the applicable branch and replacing the files in the project location should do.
+
 Execute the following command from the project root directory to run program.
 The test_payload_for_parsed_json is optional parameter.
 
