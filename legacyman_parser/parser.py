@@ -8,11 +8,14 @@ from legacy_publisher import json_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
-from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, SUBTYPE_COLLECTION, \
-    TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
+from legacyman_parser.parse_classes_of_country import extract_classes_of_country, CLASS_COLLECTION, \
+    SUBTYPE_COLLECTION, TOO_FEW_PROPERTIES, NON_STANDARD_COUNTRY
+from legacyman_parser.parse_classes_of_ns_country import extract_classes_of_ns_country, NS_CLASS_COLLECTION
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
 from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
+from legacyman_parser.parse_non_standard_countries import extract_non_standard_countries_in_region, \
+    NON_STANDARD_COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
@@ -71,7 +74,10 @@ def parse_from_root():
     root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url + "/PlatformData/PD_1.html",
                                                    disable_crawler_log=True)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
-    print("Done. Parsed {} regions.".format(len(REGION_COLLECTION)))
+    root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_non_standard_countries_in_region,
+                                         crawl_recursively=False)
+    print("Done. Parsed {} regions and {} non-standard countries.".format(len(REGION_COLLECTION),
+                                                                          len(NON_STANDARD_COUNTRY_COLLECTION)))
 
     print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
@@ -88,8 +94,9 @@ def parse_from_root():
     # This is required as we'll be using country names to store Flag images
     sorted_list_of_countries = sorted(list(map(lambda a: a.country.upper(), COUNTRY_COLLECTION)))
     assert len(sorted_list_of_countries) \
-           == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive country names " \
-                                                  "are unique. The list {} has duplicates.".format(sorted_list_of_countries)
+           == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive " \
+                                                  "country names are unique. The list " \
+                                                  "{} has duplicates.".format(sorted_list_of_countries)
 
     print("\n\nParsing Classes:")
     for country in COUNTRY_COLLECTION:
@@ -113,6 +120,23 @@ def parse_from_root():
     print("Done. Parsed {} classes and {} flags from {} countries.".format(len(CLASS_COLLECTION),
                                                                            len(COUNTRY_FLAG_COLLECTION),
                                                                            len(COUNTRY_COLLECTION)))
+
+    print("\n\nParsing Classes from non-standard countries:")
+    for ns_country in NON_STANDARD_COUNTRY_COLLECTION:
+        if ns_country.url is None:
+            INVALID_COUNTRY_HREFS.append({"country": ns_country.country,
+                                          "url": ns_country.url})
+            continue
+        ns_class_row_extractor = MergedRowsExtractor(7)
+        ns_country_dict = {"country": ns_country, "class_extractor": ns_class_row_extractor}
+        ns_country_spidey_to_extract_classes = SimpleCrawler(url=ns_country.url,
+                                                             disable_crawler_log=True,
+                                                             userland_dict=ns_country_dict)
+        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_classes_of_ns_country,
+                                                   crawl_recursively=False)
+    print("Done. Parsed {} classes from {} "
+          "non-standard countries.".format(len(NS_CLASS_COLLECTION),
+                                           len(NON_STANDARD_COUNTRY_COLLECTION)))
 
     print("\n\nParsing tonals and class images:")
     # Check and delete existing folder, if exists
@@ -186,10 +210,10 @@ def parse_from_root():
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category
     assert 1 == max(list(map(lambda grouped_values: len(list(grouped_values[1])), itertools.groupby(sorted(
-                                 list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
-                                          CLASS_COLLECTION))), lambda a: a)))), "InvalidAssumption: " \
-                                                                                "Classes are unique for a given " \
-                                                                                "country and sub category"
+        list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
+                 CLASS_COLLECTION))), lambda a: a)))), "InvalidAssumption: " \
+                                                       "Classes are unique for a given " \
+                                                       "country and sub category"
 
     if test_payload_json is not None:
         print("\n\nTest results:")
