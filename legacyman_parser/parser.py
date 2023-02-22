@@ -212,15 +212,16 @@ def parse_from_root():
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS,
                                             parsed_flags=COUNTRY_FLAG_COLLECTION,
-                                            parsed_class_images=CLASS_IMAGES_COLLECTION)
+                                            parsed_class_images=CLASS_IMAGES_COLLECTION,
+                                            parsed_class_ns_countries=ns_class_parser.CLASS_COLLECTION)
 
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category
     assert 1 == max(list(map(lambda grouped_values: len(list(grouped_values[1])), itertools.groupby(sorted(
         list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
                  standard_class_parser.CLASS_COLLECTION))), lambda a: a)))), "InvalidAssumption: " \
-                                                                           "Classes are unique for a given " \
-                                                                           "country and sub category"
+                                                                             "Classes are unique for a given " \
+                                                                             "country and sub category"
 
     if test_payload_json is not None:
         print("\n\nTest results:")
