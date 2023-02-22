@@ -1068,7 +1068,7 @@ var publicationJsonData={
     {
       "id": 9,
       "bookmarked": false,
-      "title": "Unit_a",
+      "title": "Unit_a%TEST-106 Icelandic Complex%",
       "platform_sub_type_id": 1,
       "country_id": 4,
       "remarks": null,
@@ -1102,7 +1102,7 @@ var publicationJsonData={
     {
       "id": 11,
       "bookmarked": false,
-      "title": "Unit_ab",
+      "title": "Unit_ab%TEST-106 Icelandic Composite%",
       "platform_sub_type_id": 3,
       "country_id": 4,
       "remarks": null,

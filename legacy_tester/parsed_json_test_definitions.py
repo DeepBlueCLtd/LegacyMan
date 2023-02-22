@@ -123,3 +123,27 @@ def check_presence_of_common_class_images_in_different_class_folder(published_js
                     print('{} image file not found'.format(image_path))
                     return False
     return True
+
+
+def check_presence_of_classes_of_non_standard_countries(published_json, test_payload):
+    """test for issue #106
+    This is to check if the parser has parsed the classes of a newly added non-standard country
+    """
+    class_with_required_name = list(filter(lambda a: test_payload['name'] in a.title,
+                                           published_json['ns_country_classes']))
+    if len(class_with_required_name) != test_payload['count']:
+        print('Error: failed to identify exactly {} classes'
+              ' with name containing"{}"'.format(test_payload['count'], test_payload['name']))
+        return False
+    return True
+
+
+def check_count_of_classes_of_non_standard_countries(published_json, test_payload):
+    """test for issue #106
+    This is to check if the parser has parsed the classes of all non-standard countries
+    """
+    if len(published_json['ns_country_classes']) != test_payload:
+        print('Error: failed to identify parse exactly {} classes of non-standard '
+              'countries'.format(test_payload))
+        return False
+    return True
