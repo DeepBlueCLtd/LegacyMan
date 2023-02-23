@@ -147,3 +147,15 @@ def check_count_of_classes_of_non_standard_countries(published_json, test_payloa
               'countries'.format(test_payload))
         return False
     return True
+
+
+def check_for_presence_flags_of_non_standard_countries(published_json, test_payload):
+    """test for issue #107
+    This is to check if the parser has copied flags of non-standard countries
+    """
+    flags_array = set(map(lambda a: a.file_location.split("/")[2], published_json['flags']))
+    if not set(test_payload).issubset(flags_array):
+        print('Error: failed to extract one or more flags of non-standard '
+              'countries. {}'.format(test_payload))
+        return False
+    return True
