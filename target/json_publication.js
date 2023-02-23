@@ -794,6 +794,32 @@ var publicationJsonData={
         "url": "data/Spain1/Spain.html"
       },
       "file_location": "target/flags/Spain.jpg"
+    },
+    {
+      "country": {
+        "id": 1,
+        "country": "Britain",
+        "region": {
+          "id": "SPL",
+          "region": "Britain",
+          "url": null
+        },
+        "url": "data/Britain/Britain1.html"
+      },
+      "file_location": "target/flags/Britain.jpg"
+    },
+    {
+      "country": {
+        "id": 4,
+        "country": "Iceland",
+        "region": {
+          "id": "SPL",
+          "region": "Iceland",
+          "url": null
+        },
+        "url": "data/Iceland/Iceland1.html"
+      },
+      "file_location": "target/flags/Iceland.png"
     }
   ],
   "class_images": [

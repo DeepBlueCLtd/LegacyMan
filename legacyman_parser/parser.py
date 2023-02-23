@@ -9,7 +9,8 @@ from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
-from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION
+from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION, \
+    extract_flag_of_ns_country
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
 from legacyman_parser.parse_non_standard_countries import extract_non_standard_countries_in_region, \
     NON_STANDARD_COUNTRY_COLLECTION
@@ -138,6 +139,8 @@ def parse_from_root():
                                                              userland_dict=ns_country_dict)
         ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=ns_class_parser
                                                    .extract_classes_of_ns_country,
+                                                   crawl_recursively=False)
+        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_flag_of_ns_country,
                                                    crawl_recursively=False)
     print("Done. Parsed {} classes from {} "
           "non-standard countries.".format(len(ns_class_parser.CLASS_COLLECTION),
