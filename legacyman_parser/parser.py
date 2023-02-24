@@ -9,7 +9,8 @@ from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
 from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
-from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION
+from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION, \
+    extract_flag_of_ns_country
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
 from legacyman_parser.parse_non_standard_countries import extract_non_standard_countries_in_region, \
     NON_STANDARD_COUNTRY_COLLECTION
@@ -139,6 +140,8 @@ def parse_from_root():
         ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=ns_class_parser
                                                    .extract_classes_of_ns_country,
                                                    crawl_recursively=False)
+        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_flag_of_ns_country,
+                                                   crawl_recursively=False)
     print("Done. Parsed {} classes from {} "
           "non-standard countries.".format(len(ns_class_parser.CLASS_COLLECTION),
                                            len(NON_STANDARD_COUNTRY_COLLECTION)))
@@ -160,10 +163,33 @@ def parse_from_root():
                            crawl_recursively=False)
         tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
                            crawl_recursively=False)
-    print("Done. Parsed {} tonals and {} class images from {} classes.".format(len(TONAL_COLLECTION),
-                                                                               len(CLASS_IMAGES_COLLECTION),
+    standard_tonals = len(TONAL_COLLECTION)
+    standard_class_images = sum(list(map(lambda a: len(a.class_images), CLASS_IMAGES_COLLECTION)))
+    print("Done. Parsed {} tonals and {} class images from {} classes.".format(standard_tonals,
+                                                                               standard_class_images,
                                                                                len(standard_class_parser
                                                                                    .CLASS_COLLECTION)))
+
+    print("\n\nParsing tonals and class images of classes of non-standard countries:")
+    for ns_class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True,
+                                       ns_class_parser.CLASS_COLLECTION):
+        ns_tonal_row_extractor = MergedRowsExtractor(4)
+        class_dict = {"class": ns_class_with_tonals, "tonal_extractor": ns_tonal_row_extractor}
+        ns_class_tonal_spidey = SimpleCrawler(url=ns_class_with_tonals.tonal_href,
+                                              disable_crawler_log=True,
+                                              userland_dict=class_dict)
+        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
+                                    crawl_recursively=False)
+        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_images,
+                                    crawl_recursively=False)
+        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                                    crawl_recursively=False)
+    ns_class_images = sum(list(map(lambda a: len(a.class_images), CLASS_IMAGES_COLLECTION))) - standard_class_images
+    print("Done. Parsed {} tonals and {} class images from {} "
+          "classes of non-standard countries.".format(len(TONAL_COLLECTION) - standard_tonals,
+                                                      ns_class_images,
+                                                      len(ns_class_parser
+                                                          .CLASS_COLLECTION)))
 
     print("\n\nParsing Abbreviations:")
     abbreviations_url = cleansed_url + "/QuickLinksData/Abbreviations.html"
