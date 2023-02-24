@@ -1427,7 +1427,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "country_id": 4,
       "remarks": null,
-      "engine": "2 * V8 Diesel",
+      "engine": "2 * V8 Diesel%TEST-107 Icelandic Complex Power%",
       "main_propulsion_type_id": null,
       "backup_propulsion_type_id": null,
       "propulsion": null,
