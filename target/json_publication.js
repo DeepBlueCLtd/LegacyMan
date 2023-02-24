@@ -339,6 +339,10 @@ var publicationJsonData={
     {
       "id": 4,
       "name": "Transient Sources"
+    },
+    {
+      "id": 5,
+      "name": "Speed related sources"
     }
   ],
   "tonals": [
@@ -731,6 +735,231 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
+    },
+    {
+      "id": 27,
+      "unit_id": 4,
+      "tonal_type_id": 1,
+      "source": 1,
+      "ratio": 30.8459,
+      "harmonics": "H1-4",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 2,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 28,
+      "unit_id": 4,
+      "tonal_type_id": 1,
+      "source": 2,
+      "ratio": 31.3229,
+      "harmonics": "H1",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 2,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 29,
+      "unit_id": 4,
+      "tonal_type_id": 4,
+      "source": 3,
+      "ratio": 35.9832,
+      "harmonics": "H2, 4, 21, 145",
+      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 2,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 30,
+      "unit_id": 4,
+      "tonal_type_id": 4,
+      "source": 4,
+      "ratio": 29.9284,
+      "harmonics": "H1",
+      "remarks": "CBR 34",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 2,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 31,
+      "unit_id": 4,
+      "tonal_type_id": 5,
+      "source": 4,
+      "ratio": 34.4088,
+      "harmonics": "H1 & 2",
+      "remarks": "CBR 54334",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 2,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 32,
+      "unit_id": 5,
+      "tonal_type_id": 1,
+      "source": 1,
+      "ratio": 42.854,
+      "harmonics": "H1-4",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 33,
+      "unit_id": 5,
+      "tonal_type_id": 1,
+      "source": 2,
+      "ratio": 49.924,
+      "harmonics": "H1",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 34,
+      "unit_id": 5,
+      "tonal_type_id": 3,
+      "source": 3,
+      "ratio": 38.31,
+      "harmonics": "H2, 4, 21, 145",
+      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 35,
+      "unit_id": 5,
+      "tonal_type_id": 3,
+      "source": 4,
+      "ratio": 44.6324,
+      "harmonics": "H1",
+      "remarks": "CBR 34",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 36,
+      "unit_id": 5,
+      "tonal_type_id": 4,
+      "source": 4,
+      "ratio": 22.29,
+      "harmonics": "H1 & 2",
+      "remarks": "CBR 54334",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 37,
+      "unit_id": 11,
+      "tonal_type_id": 1,
+      "source": 1,
+      "ratio": 42.5213,
+      "harmonics": "H1-4",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 38,
+      "unit_id": 11,
+      "tonal_type_id": 1,
+      "source": 2,
+      "ratio": 36.0224,
+      "harmonics": "H1",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 39,
+      "unit_id": 11,
+      "tonal_type_id": 3,
+      "source": 3,
+      "ratio": 40.2543,
+      "harmonics": "H2, 4, 21, 145",
+      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 40,
+      "unit_id": 11,
+      "tonal_type_id": 3,
+      "source": 4,
+      "ratio": 13.46,
+      "harmonics": "H1",
+      "remarks": "CBR 34",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 41,
+      "unit_id": 11,
+      "tonal_type_id": 4,
+      "source": 4,
+      "ratio": 34.123,
+      "harmonics": "H1 & 2",
+      "remarks": "CBR 54334",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 3,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
     }
   ],
   "abbreviations": [
@@ -952,6 +1181,106 @@ var publicationJsonData={
         "target/class_images/Spain/Generic/Legacy/TEST-48.jpg",
         "target/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
       ]
+    },
+    {
+      "class_u": {
+        "id": 4,
+        "class_u": "Unit_da",
+        "sub_category": [
+          "Standalones",
+          2
+        ],
+        "country": {
+          "id": 1,
+          "country": "Britain",
+          "region": {
+            "id": "SPL",
+            "region": "Britain",
+            "url": null
+          },
+          "url": "data/Britain/Britain1.html"
+        },
+        "designator": "PBF",
+        "power": "4 * PR32 Diesel Engines",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/Britain_Standalones/britain_1a.html"
+      },
+      "class_images": [
+        "target/class_images/Britain/Generic/Standalones/oscill_c.jpg",
+        "target/class_images/Britain/Generic/Standalones/oscill_d.jpg",
+        "target/class_images/Britain/Generic/Standalones/oscill_e.jpg",
+        "target/class_images/Britain/Generic/Standalones/oscill_c.jpg",
+        "target/class_images/Britain/Generic/Standalones/oscill_c.jpg",
+        "target/class_images/Britain/Generic/Standalones/oscill_d.jpg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 5,
+        "class_u": "Unit_ab",
+        "sub_category": [
+          "Composite",
+          3
+        ],
+        "country": {
+          "id": 1,
+          "country": "Britain",
+          "region": {
+            "id": "SPL",
+            "region": "Britain",
+            "url": null
+          },
+          "url": "data/Britain/Britain1.html"
+        },
+        "designator": "PB",
+        "power": "4 * PR32 Diesel Engines",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400 hrs",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/Britain_Composite/unit_ab.html"
+      },
+      "class_images": [
+        "target/class_images/Britain/Generic/Composite/unit_a1.jpg",
+        "target/class_images/Britain/Generic/Composite/unit_a2.jpeg"
+      ]
+    },
+    {
+      "class_u": {
+        "id": 11,
+        "class_u": "Unit_ab%TEST-106 Icelandic Composite%",
+        "sub_category": [
+          "Composite",
+          3
+        ],
+        "country": {
+          "id": 4,
+          "country": "Iceland",
+          "region": {
+            "id": "SPL",
+            "region": "Iceland",
+            "url": null
+          },
+          "url": "data/Iceland/Iceland1.html"
+        },
+        "designator": "PB",
+        "power": "4 * PR32 Diesel Engines",
+        "shaft_blade": "2 * 4 (GRR)",
+        "bhp": "400 hrs",
+        "av_temp": "~14",
+        "reduction_ratio": "412.8:1",
+        "has_tonal": true,
+        "tonal_href": "data/Iceland_Composite/unit_ab.html"
+      },
+      "class_images": [
+        "target/class_images/Iceland/Generic/Composite/unit_a1.jpg",
+        "target/class_images/Iceland/Generic/Composite/unit_a2.jpeg"
+      ]
     }
   ],
   "ns_country_classes": [
@@ -1013,7 +1342,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "country_id": 1,
       "remarks": null,
-      "engine": "2 * V6 Diesel",
+      "engine": "4 * PR32 Diesel Engines",
       "main_propulsion_type_id": null,
       "backup_propulsion_type_id": null,
       "propulsion": null,
@@ -1030,7 +1359,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "country_id": 1,
       "remarks": null,
-      "engine": "2 * V8 Diesel",
+      "engine": "4 * PR32 Diesel Engines",
       "main_propulsion_type_id": null,
       "backup_propulsion_type_id": null,
       "propulsion": null,
@@ -1132,7 +1461,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "country_id": 4,
       "remarks": null,
-      "engine": "2 * V8 Diesel",
+      "engine": "4 * PR32 Diesel Engines",
       "main_propulsion_type_id": null,
       "backup_propulsion_type_id": null,
       "propulsion": null,

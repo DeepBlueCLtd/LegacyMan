@@ -163,10 +163,33 @@ def parse_from_root():
                            crawl_recursively=False)
         tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
                            crawl_recursively=False)
-    print("Done. Parsed {} tonals and {} class images from {} classes.".format(len(TONAL_COLLECTION),
-                                                                               len(CLASS_IMAGES_COLLECTION),
+    standard_tonals = len(TONAL_COLLECTION)
+    standard_class_images = sum(list(map(lambda a: len(a.class_images), CLASS_IMAGES_COLLECTION)))
+    print("Done. Parsed {} tonals and {} class images from {} classes.".format(standard_tonals,
+                                                                               standard_class_images,
                                                                                len(standard_class_parser
                                                                                    .CLASS_COLLECTION)))
+
+    print("\n\nParsing tonals and class images of classes of non-standard countries:")
+    for ns_class_with_tonals in filter(lambda class_in_coll: class_in_coll.has_tonal is True,
+                                       ns_class_parser.CLASS_COLLECTION):
+        ns_tonal_row_extractor = MergedRowsExtractor(4)
+        class_dict = {"class": ns_class_with_tonals, "tonal_extractor": ns_tonal_row_extractor}
+        ns_class_tonal_spidey = SimpleCrawler(url=ns_class_with_tonals.tonal_href,
+                                              disable_crawler_log=True,
+                                              userland_dict=class_dict)
+        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_tonals_of_class,
+                                    crawl_recursively=False)
+        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_images,
+                                    crawl_recursively=False)
+        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                                    crawl_recursively=False)
+    ns_class_images = sum(list(map(lambda a: len(a.class_images), CLASS_IMAGES_COLLECTION))) - standard_class_images
+    print("Done. Parsed {} tonals and {} class images from {} "
+          "classes of non-standard countries.".format(len(TONAL_COLLECTION) - standard_tonals,
+                                                      ns_class_images,
+                                                      len(ns_class_parser
+                                                          .CLASS_COLLECTION)))
 
     print("\n\nParsing Abbreviations:")
     abbreviations_url = cleansed_url + "/QuickLinksData/Abbreviations.html"
