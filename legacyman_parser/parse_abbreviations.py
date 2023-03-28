@@ -21,13 +21,13 @@ def parse_abbreviations(soup: BeautifulSoup = None,
                     parent_url: str = None,
                     userland_dict: dict = None) -> []:
     assert len(soup.find_all('table')) == 1, "InvalidAssumption: There's going to be only one table in " \
-                                             "QuickLinksData/Abbreviations.html"
+                                             "QuickLinksData/Abbreviations.html => {}".format(parsed_url)
 
     compactor = []
     for abbrev_record in soup.find('table').find_all('tr'):
 
         assert len(abbrev_record.find_all('td')) == 4, "InvalidAssumption: Each row in this table contains " \
-                                                       "two key-value pairs, side-by-side"
+                                                       "two key-value pairs, side-by-side => {}".format(parsed_url)
 
         for abbr_data in abbrev_record.find_all('td'):
             compactor.append(abbr_data.text)
