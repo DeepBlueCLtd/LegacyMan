@@ -20,7 +20,7 @@ def parse_abbreviations(soup: BeautifulSoup = None,
                     parsed_url: str = None,
                     parent_url: str = None,
                     userland_dict: dict = None) -> []:
-    assert len(soup.find_all('table')) == 1, "InvalidAssumption: There's going to be only one table in " \
+    assert len(soup.find_all('table')) == 2, "InvalidAssumption: There's going to be only two tables in " \
                                              "QuickLinksData/Abbreviations.html => {}".format(parsed_url)
 
     compactor = []
