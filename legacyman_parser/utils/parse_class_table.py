@@ -25,9 +25,9 @@ class ClassParser:
         self._current_subtype_id = None
         self.classRowExtractor = userland_dict.get('class_extractor')
         class_h1 = soup.find_all('h1')
-        assert len(class_h1) == 1, "InvalidAssumption: Each ns country page contains only 1 h1 header"
+        assert len(class_h1) == 1, "InvalidAssumption: Each ns country page contains only 1 h1 header => {}".format(parsed_url)
         class_subtypes_list = class_h1[0].find_next_siblings('div')
-        assert len(class_subtypes_list) >= 1, "InvalidAssumption: Each ns class listing has one or more entries"
+        assert len(class_subtypes_list) >= 1, "InvalidAssumption: Each ns class listing has one or more entries => {}".format(parsed_url)
         for ns_sub_type in class_subtypes_list:
             sub_type_url = urljoin(parsed_url, ns_sub_type.find('a')['href'])
             ns_country_spidey_to_extract_classes = SimpleCrawler(url=sub_type_url,
@@ -45,24 +45,24 @@ class ClassParser:
         self._current_subtype_id = None
         class_list_all = soup.find_all('div', {"id": "PageLayer"})
         assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
-                                         " that lists classes."
+                                         " that lists classes. => {}".format(parsed_url)
         class_list = class_list_all[0]
         if class_list:
             table_list = class_list.find_all('table')
-            assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes"
+            assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes => {}".format(parsed_url)
             rows = table_list[0].find_all('tr')
             self._current_subtype_id = self.create_sub_type_id_of_ns_class(rows[0],
-                                                                           userland_dict.get('country').country)
+                                                                           userland_dict.get('country').country, parsed_url)
             for row in rows[1:]:
                 self.process_class_row(row, userland_dict['country'], parsed_url)
         else:
             self.NON_STANDARD_COUNTRY.append(parsed_url)
         assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with " \
-                                                       "its first column header as text Class (case sensitive)"
+                                                       "its first column header as text Class (case sensitive) => {}".format(parsed_url)
         assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
                                                 False), "InvalidAssumption: Country ({}) page will " \
-                                                        "have at least one class." \
-            .format(userland_dict['country'])
+                                                        "have at least one class. => {}" \
+            .format(userland_dict['country'], parsed_url)
 
     def extract_classes_of_country(self, soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                                    userland_dict: dict = None) -> []:
@@ -71,22 +71,22 @@ class ClassParser:
         self.classRowExtractor = userland_dict.get('class_extractor')
         class_list_all = soup.find_all('div', {"id": "PageLayer"})
         assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
-                                         " that lists classes."
+                                         " that lists classes. => {}".format(parsed_url)
         class_list = class_list_all[0]
         if class_list:
             table_list = class_list.find_all('table')
-            assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes"
+            assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes => {}".format(parsed_url)
             for row in table_list[0].find_all('tr'):
                 self.process_class_row(row, userland_dict['country'], parsed_url)
         else:
             self.NON_STANDARD_COUNTRY.append(parsed_url)
         assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have " \
                                                        "table header with its first column header as text " \
-                                                       "Class (case sensitive)"
+                                                       "Class (case sensitive) => {}".format(parsed_url)
         assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
                                                 False), "InvalidAssumption: Country ({}) page will " \
-                                                        "have at least one class." \
-            .format(userland_dict['country'])
+                                                        "have at least one class. => {}" \
+            .format(userland_dict['country'], parsed_url)
 
     def process_class_row(self, row: PageElement, country: dict, parsed_url: str):
         """Check if not _class_table_header_is_identified"""
@@ -117,15 +117,15 @@ class ClassParser:
         self.SUBTYPE_COLLECTION[sub_type] = new_id
         return sub_type, new_id
 
-    def create_sub_type_id_of_ns_class(self, sub_type_str: str, country):
+    def create_sub_type_id_of_ns_class(self, sub_type_str: str, country, parsed_url):
         beginswith = "Overview of "
         endswith = " in " + country
         assert sub_type_str.text.strip().startswith(beginswith), "InvalidAssumption: Subtype identification " \
                                                                  "of classes of non-standard countries does not" \
-                                                                 "begin with 'Overview of'"
+                                                                 "begin with 'Overview of' => {}".format(parsed_url)
         assert sub_type_str.text.strip().endswith(endswith), "InvalidAssumption: Subtype identification " \
                                                              "of classes of non-standard countries does not" \
-                                                             "end with ' in Country'"
+                                                             "end with ' in Country' => {}".format(parsed_url)
         sub_type = sub_type_str.text.strip().replace(beginswith, "").replace(endswith, "")
         if sub_type in self.SUBTYPE_COLLECTION:
             return sub_type, self.SUBTYPE_COLLECTION[sub_type]
