@@ -71,7 +71,7 @@ class ClassParser:
         self.classRowExtractor = userland_dict.get('class_extractor')
         class_list_all = soup.find_all('div', {"id": "PageLayer"})
         assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
-                                         " that lists classes. => {}".format(parsed_url)
+                                         " that lists classes. => {}. Found {}".format(parsed_url, len(class_list_all))
         class_list = class_list_all[0]
         if class_list:
             table_list = class_list.find_all('table')
