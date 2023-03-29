@@ -55,6 +55,9 @@ The test_payload_for_parsed_json is optional parameter.
 The < data directory > placeholder is to be replaced by a valid path containing the following directories:
 - PlatformData (as in < data directory >/PlatformData/PD_1.html)
 - QuickLinksData (as in < data directory >/QuickLinksData/Abbreviations.html)
+
+From tests, an absolute path `c:\real_data` works more reliably than using a relative path `..\..\real_data`.
+
 ```
 python -m legacyman_parser.parser < data directory >
 ```
