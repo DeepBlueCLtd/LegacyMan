@@ -39,8 +39,9 @@ def in_content_images_filter(tag):
 
 
 def not_blacklisted_filter(tag):
-    black_list = ['image020.jpg', 'Yellow3.jpg', 'Yellow4.jpg']
-    in_black_list = filter(lambda item: item in tag.get('src'), black_list)
+    black_list = ['image020.jpg', 'yellow3.jpg', 'yellow4.jpg']
+    in_black_list = filter(
+        lambda item: item in tag.get('src').lower(), black_list)
     in_black_list_item = list(in_black_list)
     return len(list(in_black_list_item)) == 0
 
