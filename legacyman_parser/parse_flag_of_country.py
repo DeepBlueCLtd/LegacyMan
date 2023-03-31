@@ -24,21 +24,19 @@ class CountryFlag:
     def __str__(self):
         return "{}'s flag is located at {}.".format(self.country.country, self.file_location)
 
-    ######################################################
-    # filter functions, to help with filtering flag images
-    ######################################################
-
-# filter for images where src is in images sub-folder
+######################################################
+# filter functions, to help with filtering flag images
+######################################################
 
 
 def in_content_images_filter(tag):
+    # filter for images where src is in images sub-folder
     src = tag.get('src')
     return src.lower().startswith('./content/images')
 
-# filter for images that aren't in black-listed images
-
 
 def not_blacklisted_filter(tag):
+    # filter for images that aren't in black-listed images
     black_list = ['image020.jpg', 'yellow3.jpg', 'yellow4.jpg']
     in_black_list = filter(
         lambda item: item in tag.get('src').lower(), black_list)
