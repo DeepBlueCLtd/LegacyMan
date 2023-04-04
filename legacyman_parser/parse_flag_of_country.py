@@ -35,6 +35,12 @@ def in_content_images_filter(tag):
     return 'content/images' in src.lower()
 
 
+def has_flag_in_name(tag):
+    # filter for images where src is in images sub-folder
+    src = tag.get('src')
+    return 'flag' in src.lower()
+
+
 def not_blacklisted_filter(tag):
     # filter for images that aren't in black-listed images
     black_list = ['image020.jpg', 'yellow3.jpg', 'yellow4.jpg']
@@ -52,7 +58,12 @@ def extract_flag_of_country(soup: BeautifulSoup = None, parsed_url: str = None, 
     # apply our filters
     in_content_images = list(filter(in_content_images_filter, images))
     non_blacklisted = list(filter(not_blacklisted_filter, in_content_images))
-    flag_images = non_blacklisted
+    if len(non_blacklisted) > 2:
+        # still too many. Possibly a ns country, since they have images on the page
+        # filter for image that contains term `flag`
+        flag_images = list(filter(has_flag_in_name, non_blacklisted))
+    else:
+        flag_images = non_blacklisted
 
     if len(flag_images) == 1 or len(flag_images) == 2:
         # assert len(flag_images) == 1 or len(flag_images) == 2, "InvalidAssumption: Only 1 or 2 flags " \
