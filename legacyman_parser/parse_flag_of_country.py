@@ -36,7 +36,7 @@ def in_content_images_filter(tag):
 
 
 def has_flag_in_name(tag):
-    # filter for images where src is in images sub-folder
+    # filter for images that include `flag` in src attribute
     src = tag.get('src')
     return 'flag' in src.lower()
 
