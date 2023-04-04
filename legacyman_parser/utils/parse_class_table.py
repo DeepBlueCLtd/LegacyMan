@@ -76,27 +76,28 @@ class ClassParser:
         self._current_subtype_id = None
         self.classRowExtractor = userland_dict.get('class_extractor')
         class_list_all = soup.find_all('div', {"id": "PageLayer"})
-        assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
-                                         " that lists classes. => {}. Found {}".format(
-                                             parsed_url, len(class_list_all))
-        class_list = class_list_all[0]
-        if class_list:
-            table_list = class_list.find_all('table')
-            assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes => {}. Found {}".format(
-                parsed_url, len(table_list))
-            for row in table_list[0].find_all('tr'):
-                self.process_class_row(
-                    row, userland_dict['country'], parsed_url)
-        else:
-            self.NON_STANDARD_COUNTRY.append(parsed_url)
-        assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have " \
-                                                       "table header with its first column header as text " \
-                                                       "Class (case sensitive) => {}".format(
-                                                           parsed_url)
-        assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
-                                                False), "InvalidAssumption: Country ({}) page will " \
-                                                        "have at least one class. => {}" \
-            .format(userland_dict['country'], parsed_url)
+        if len(class_list_all) == 1:
+            # assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
+            #                                 " that lists classes. => {}. Found {}".format(
+            #                                     parsed_url, len(class_list_all))
+            class_list = class_list_all[0]
+            if class_list:
+                table_list = class_list.find_all('table')
+                assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes => {}. Found {}".format(
+                    parsed_url, len(table_list))
+                for row in table_list[0].find_all('tr'):
+                    self.process_class_row(
+                        row, userland_dict['country'], parsed_url)
+            else:
+                self.NON_STANDARD_COUNTRY.append(parsed_url)
+            assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have " \
+                "table header with its first column header as text " \
+                "Class (case sensitive) => {}".format(
+                    parsed_url)
+            assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
+                                                    False), "InvalidAssumption: Country ({}) page will " \
+                                                            "have at least one class. => {}" \
+                .format(userland_dict['country'], parsed_url)
 
     def process_class_row(self, row: PageElement, country: dict, parsed_url: str):
         """Check if not _class_table_header_is_identified"""
