@@ -32,7 +32,7 @@ class CountryFlag:
 def in_content_images_filter(tag):
     # filter for images where src is in images sub-folder
     src = tag.get('src')
-    return src.lower().startswith('./content/images')
+    return 'content/images' in src.lower()
 
 
 def not_blacklisted_filter(tag):
@@ -54,23 +54,28 @@ def extract_flag_of_country(soup: BeautifulSoup = None, parsed_url: str = None, 
     non_blacklisted = list(filter(not_blacklisted_filter, in_content_images))
     flag_images = non_blacklisted
 
-    assert len(flag_images) == 1 or len(flag_images) == 2, "InvalidAssumption: Only 1 or 2 flags " \
-                                                           "are there for any given country." \
-                                                           " Failed for {}. Found {}".format(
-                                                               parsed_url, len(flag_images))
-    # Always take the last flag
-    flag_image = urljoin(parsed_url, flag_images[len(flag_images) - 1]['src'])
-    assert Path(flag_image).is_file(), "InvalidAssumption: Flag file exists if provided in img attribute. " \
-                                       "{} not found as specified in {}.".format(
-                                           flag_image, parsed_url)
+    if len(flag_images) == 1 or len(flag_images) == 2:
+        # assert len(flag_images) == 1 or len(flag_images) == 2, "InvalidAssumption: Only 1 or 2 flags " \
+        #                                                     "are there for any given country." \
+        #                                                     " Failed for {}. Found {}".format(
+        #                                                         parsed_url, len(flag_images))
+        # Always take the last flag
+        flag_image = urljoin(
+            parsed_url, flag_images[len(flag_images) - 1]['src'])
+        assert Path(flag_image).is_file(), "InvalidAssumption: Flag file exists if provided in img attribute. " \
+            "{} not found as specified in {}.".format(
+            flag_image, parsed_url)
 
-    # Copy to target directory
-    destination_file = COPY_FLAGS_TO_DIRECTORY + \
-        userland_dict['country'].country + os.path.splitext(flag_image)[1]
-    shutil.copy2(flag_image, destination_file)
+        # Copy to target directory
+        destination_file = COPY_FLAGS_TO_DIRECTORY + \
+            userland_dict['country'].country + os.path.splitext(flag_image)[1]
+        shutil.copy2(flag_image, destination_file)
 
-    COUNTRY_FLAG_COLLECTION.append(CountryFlag(
-        userland_dict['country'], destination_file))
+        COUNTRY_FLAG_COLLECTION.append(CountryFlag(
+            userland_dict['country'], destination_file))
+    else:
+        print('Parse flags. Wrong number of images',
+              parsed_url, len(flag_images))
 
 
 def extract_flag_of_ns_country(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
