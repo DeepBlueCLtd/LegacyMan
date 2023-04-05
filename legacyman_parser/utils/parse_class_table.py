@@ -79,7 +79,7 @@ class ClassParser:
         def has_correct_first_row_filter(tag):
             # filter for tables with more than one row, that is a colspan 7
             rows = tag.find_all('tr')
-            assert len(rows) > 0, "Table has more than one row => {}".format(
+            assert len(rows) > 0, "InvalidAssumption: Table has more than one row => {}".format(
                 parsed_url)
             first_row = rows[0]
             cells = first_row.find_all('td')
@@ -90,7 +90,7 @@ class ClassParser:
                 return False
 
         class_tables = list(filter(has_correct_first_row_filter, tables))
-        assert len(class_tables) == 1, "Should just have found one table of classes => {} Found: {}".format(
+        assert len(class_tables) == 1, "InvalidAssumption: Should just have found one table of classes => {} Found: {}".format(
             parsed_url, len(class_tables))
         rows = class_tables[0].find_all('tr')
 
