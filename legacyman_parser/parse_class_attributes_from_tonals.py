@@ -23,19 +23,20 @@ def extract_class_attributes_from_tonals_page(soup: BeautifulSoup = None, parsed
                                               parent_url: str = None, userland_dict: dict = None) -> []:
     # Find all tables on page
     all_tables = soup.find_all('table')
-    propulsion_system_table = None
-    for potential_propulsion_table in all_tables:
+
+    def four_col_table_filter(tag):
         # Find first table data and its colspan
-        tdata = potential_propulsion_table.find('td')
-        if tdata.get('colspan', None) is None:
-            continue
-        if tdata['colspan'] == '4':
-            propulsion_system_table = potential_propulsion_table
-            break
-    assert propulsion_system_table is not None, "InvalidAssumption: There's always a Tonal Propulsion table with " \
-                                                "colspan 4 "
+        tdata = tag.find('td')
+        colspan = tdata.get('colspan')
+        return colspan and colspan == '4'
+    propulsion_system_tables = list(filter(four_col_table_filter, all_tables))
+    assert len(propulsion_system_tables) == 1, "InvalidAssumption: There's always a Tonal Propulsion table with " \
+        "colspan 4 => {}. Found {}".found(
+            parsed_url, len(propulsion_system_tables))
+    propulsion_system_table = propulsion_system_tables[0]
     assert len(propulsion_system_table) % 2 == 1, "InvalidAssumption: Propulsion table is in" \
-                                                  " Key, Value format, with header : {}".format(parsed_url)
+                                                  " Key, Value format, with header : {}".format(
+                                                      parsed_url)
     propulsion_system_table_data = propulsion_system_table.find_all('td')
     # Extracting class properties from tonals page
     userland_dict['class'].power = propulsion_system_table_data[2].text.strip()
