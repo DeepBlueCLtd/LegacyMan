@@ -18,6 +18,7 @@ from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
+from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 
@@ -96,6 +97,23 @@ def parse_from_root():
            == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive " \
                                                   "country names are unique. The list " \
                                                   "{} has duplicates.".format(sorted_list_of_countries)
+
+    # Extract non-standard countries within region
+    for country in COUNTRY_COLLECTION:
+        """Extract non-standard countries within region"""
+        if country.url is None:
+            continue
+        country_dict = {"country": country}
+        spidey_to_extract_ns_country_in_region_countries = SimpleCrawler(url=country.url,
+                                                                         disable_crawler_log=True,
+                                                                         userland_dict=country_dict)
+        spidey_to_extract_ns_country_in_region_countries.crawl(resource_processor_callback=filter_ns_countries,
+                                                               crawl_recursively=False)
+
+    # Move identified ns countries from standard countries collection to ns countries collection
+    for nsv in NS_COUNTRY_IN_REGION_COLLECTION:
+        COUNTRY_COLLECTION.remove(nsv)
+        NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
     print("\n\nParsing Classes:")
     standard_class_parser = ClassParser()
@@ -246,12 +264,12 @@ def parse_from_root():
     count_extractor = lambda grouped_values: len(list(grouped_values[1]))
     max_class_for_given_country_subcat = sorted(list(map(lambda a: (a[0], len(list(a[1]))), itertools.groupby(sorted(
         list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
-                 standard_class_parser.CLASS_COLLECTION))), lambda a: a))), key=lambda a:a[1], reverse=True)[0]
+                 standard_class_parser.CLASS_COLLECTION))), lambda a: a))), key=lambda a: a[1], reverse=True)[0]
     assert 1 == max_class_for_given_country_subcat[1], "InvalidAssumption: " \
-                                                                             "Classes are unique for a given " \
-                                                                             "country and sub category => {} has {} units"\
-                                                                             .format(max_class_for_given_country_subcat[0],
-                                                                                     max_class_for_given_country_subcat[1])
+                                                       "Classes are unique for a given " \
+                                                       "country and sub category => {} has {} units" \
+        .format(max_class_for_given_country_subcat[0],
+                max_class_for_given_country_subcat[1])
 
     if test_payload_json is not None:
         print("\n\nTest results:")
