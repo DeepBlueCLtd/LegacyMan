@@ -24,14 +24,34 @@ class ClassParser:
         self._class_table_header_is_identified = False
         self._current_subtype_id = None
         self.classRowExtractor = userland_dict.get('class_extractor')
-        class_h1 = soup.find_all('h1')
-        assert len(class_h1) == 1, "InvalidAssumption: Each ns country page contains only 1 h1 header => {}".format(
-            parsed_url)
-        class_subtypes_list = class_h1[0].find_next_siblings('div')
-        assert len(class_subtypes_list) >= 1, "InvalidAssumption: Each ns class listing has one or more entries => {}".format(
-            parsed_url)
+
+        links = soup.find_all('a')
+
+        def has_img_child_filter(tag):
+            # filter for links that have image child
+            return tag.find('img')
+
+        def src_is_parent_folder_filter(tag):
+            # filter for links that start with parent folder
+            href = tag.get('href')
+            return href.startswith('../')
+
+        def src_is_correct_folder_type_filter(tag):
+            # filter for links with relevant folder
+            href = tag.get('href')
+            bad_titles = ['quicklinksdata', 'platformdata', '_noise']
+            return not any([x in href.lower() for x in bad_titles])
+
+        has_img_child = list(filter(has_img_child_filter, links))
+        src_is_parent_folder = list(
+            filter(src_is_parent_folder_filter, has_img_child))
+        class_subtypes_list = list(
+            filter(src_is_correct_folder_type_filter, src_is_parent_folder))
+
+        assert len(class_subtypes_list) >= 1, "InvalidAssumption: Each ns class listing has one or more entries => {} Found {}".format(
+            parsed_url, len(class_subtypes_list))
         for ns_sub_type in class_subtypes_list:
-            sub_type_url = urljoin(parsed_url, ns_sub_type.find('a')['href'])
+            sub_type_url = urljoin(parsed_url, ns_sub_type.get('href'))
             ns_country_spidey_to_extract_classes = SimpleCrawler(url=sub_type_url,
                                                                  disable_crawler_log=False,
                                                                  userland_dict=userland_dict)
@@ -62,13 +82,10 @@ class ClassParser:
                     row, userland_dict['country'], parsed_url)
         else:
             self.NON_STANDARD_COUNTRY.append(parsed_url)
-        assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with " \
-                                                       "its first column header as text Class (case sensitive) => {}".format(
-                                                           parsed_url)
+        assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with its first column header as text Class (case sensitive) => {}".format(
+            parsed_url)
         assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
-                                                False), "InvalidAssumption: Country ({}) page will " \
-                                                        "have at least one class. => {}" \
-            .format(userland_dict['country'], parsed_url)
+                                                False), "InvalidAssumption: Country ({}) page will have at least one class. => {}".format(userland_dict['country'], parsed_url)
 
     def extract_classes_of_country(self, soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                                    userland_dict: dict = None) -> []:
@@ -76,9 +93,9 @@ class ClassParser:
         self._current_subtype_id = None
         self.classRowExtractor = userland_dict.get('class_extractor')
         class_list_all = soup.find_all('div', {"id": "PageLayer"})
-        assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
-                                         " that lists classes. => {}. Found {}".format(
-                                             parsed_url, len(class_list_all))
+        assert len(
+            class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div that lists classes. => {}. Found {}".format(
+            parsed_url, len(class_list_all))
         class_list = class_list_all[0]
         if class_list:
             table_list = class_list.find_all('table')
@@ -101,8 +118,8 @@ class ClassParser:
     def process_class_row(self, row: PageElement, country: dict, parsed_url: str):
         """Check if not _class_table_header_is_identified"""
         if not self._class_table_header_is_identified:
-            """See if this is the header, and set 
-            _class_table_header_is_identified accordingly 
+            """See if this is the header, and set
+            _class_table_header_is_identified accordingly
             and return"""
             self._class_table_header_is_identified = self.is_this_class_header(
                 row)
@@ -149,7 +166,7 @@ class ClassParser:
         self.SUBTYPE_COLLECTION[sub_type] = new_id
         return sub_type, new_id
 
-    @staticmethod
+    @ staticmethod
     def is_this_class_header(row: PageElement):
         """Identify the table header:
         first < tr > which contains < td > element with innerHTML
@@ -162,7 +179,7 @@ class ClassParser:
             return True
         return False
 
-    @staticmethod
+    @ staticmethod
     def is_this_subcategory_data(row: PageElement):
         """Identify the `Sub-Category` header:
         first < tr > following table header will be the
@@ -180,7 +197,7 @@ class ClassParser:
             return False
         return True
 
-    @staticmethod
+    @ staticmethod
     def extract_subcategory(row: PageElement):
         """It might also have < strong > attribute"""
         columns = row.find_all('td')
@@ -224,13 +241,13 @@ class ClassParser:
                                             tonal_href))
         self.CLASS_FOUND_FOR_COUNTRY[country] = True
 
-    @staticmethod
+    @ staticmethod
     def does_class_contain_tonal(table_data: PageElement):
         if table_data.find('a') is not None:
             return True
         return False
 
-    @staticmethod
+    @ staticmethod
     def extract_tonal_href(table_data: PageElement):
         return table_data.find('a').get('href')
 
