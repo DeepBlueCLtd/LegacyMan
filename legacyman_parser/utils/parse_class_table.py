@@ -165,6 +165,7 @@ class ClassParser:
         return sub_type, new_id
 
     def create_sub_type_id_of_ns_class(self, sub_type_str: str, country, parsed_url):
+        # note: the sub_type_str is expected to look like `Britain - Composites`
         parts = sub_type_str.split(' - ')
         assert len(
             parts) == 2, "InvalidAssumption: h2 contains two elements, separated by '-' => {}. Found {}".format(parsed_url, parts)
