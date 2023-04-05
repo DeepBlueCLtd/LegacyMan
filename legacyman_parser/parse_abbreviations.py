@@ -17,19 +17,18 @@ class AbbreviationMap:
 
 
 def parse_abbreviations(soup: BeautifulSoup = None,
-                    parsed_url: str = None,
-                    parent_url: str = None,
-                    userland_dict: dict = None) -> []:
+                        parsed_url: str = None,
+                        parent_url: str = None,
+                        userland_dict: dict = None) -> []:
     assert len(soup.find_all('table')) == 2, "InvalidAssumption: There's going to be only two tables in " \
-                                             "QuickLinksData/Abbreviations.html => {}".format(parsed_url)
+                                             "QuickLinksData/Abbreviations.html => {}".format(
+                                                 parsed_url)
 
     compactor = []
     for abbrev_record in soup.find('table').find_all('tr'):
-
-        assert len(abbrev_record.find_all('td')) == 4, "InvalidAssumption: Each row in this table contains " \
-                                                       "two key-value pairs, side-by-side => {}".format(parsed_url)
-
-        for abbr_data in abbrev_record.find_all('td'):
-            compactor.append(abbr_data.text)
+        if len(abbrev_record.find_all('td')) == 4:
+            for abbr_data in abbrev_record.find_all('td'):
+                compactor.append(abbr_data.text)
     for idx in range(0, len(compactor)//2):
-        ABBREVIATIONS.append(AbbreviationMap(idx + 1, compactor[2*idx], compactor[(2*idx)+1]))
+        ABBREVIATIONS.append(AbbreviationMap(
+            idx + 1, compactor[2*idx], compactor[(2*idx)+1]))
