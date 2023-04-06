@@ -50,9 +50,8 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
             TONAL_TABLE_NOT_FOUND.append(parsed_url)
     else:
         TONAL_HEADER_NOT_FOUND.append(parsed_url)
-    assert TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False), "InvalidAssumption: Class ({}) page will " \
-                                                                     "have at least one tonal in page {}."\
-        .format(userland_dict['class'], parsed_url)
+    if not TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False):
+        print('Failed to find tonals for', parsed_url)
 
 
 def process_tonal_row(row: PageElement, class_u: any):
@@ -68,14 +67,16 @@ def process_tonal_row(row: PageElement, class_u: any):
     # Check if record is a tonal type, as at this point table header is identified
     if is_this_tonal_type_data(row):
         # Add to set and set _current_tonal_type flag and return
-        _current_tonal_type = identify_or_create_tonal_type_id(extract_tonal_type(row))
+        _current_tonal_type = identify_or_create_tonal_type_id(
+            extract_tonal_type(row))
         return
 
     # Normal record
     if not is_this_tonal_record(row):
         return
     # Extract information and map against _current_tonal_type
-    create_new_tonal_with_extracted_tonal_type(row, class_u, _current_tonal_type)
+    create_new_tonal_with_extracted_tonal_type(
+        row, class_u, _current_tonal_type)
 
 
 def identify_or_create_tonal_type_id(tonal_type: str):
@@ -137,7 +138,8 @@ def is_this_tonal_record(row: PageElement):
 
 def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, current_tonal_type: str):
     columns = row.find_all('td')
-    tonal_source_text, ratio_freq, harmonics, current_remarks = tonalRowExtractor.retrieve_row(columns)
+    tonal_source_text, ratio_freq, harmonics, current_remarks = tonalRowExtractor.retrieve_row(
+        columns)
     tonal_source = identify_or_create_tonal_source_id(tonal_source_text)
     TONAL_COLLECTION.append(
         Tonal(class_u, tonal_source, ratio_freq, harmonics, current_remarks, current_tonal_type))
