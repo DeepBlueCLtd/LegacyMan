@@ -40,12 +40,23 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
     tonalRowExtractor = userland_dict.get('tonal_extractor')
-    tonal_header = soup.find("td", string="Commonly Detected Sources")
-    if tonal_header:
-        tonal_table = tonal_header.find_parent("table")
-        if tonal_table:
-            for row in tonal_table.find_all('tr'):
-                process_tonal_row(row, userland_dict['class'])
+    # issue here.  Sometimes the Commonly Detected Sources includes a <span>*</span> marker.
+    # so, start by finding all `strong` blocks, then find one that contains our selected
+    # text, but without looking inside child blocks (recursive=False)
+    strong_blocks = soup.find_all("strong")
+
+    def common_block(tag):
+        return tag.find(string="Commonly Detected Sources", recursive=False)
+    tonal_texts = list(filter(common_block, strong_blocks))
+    if len(tonal_texts) == 1:
+        tonal_text = tonal_texts[0]
+        if tonal_text:
+            tonal_table = tonal_text.find_parent("table")
+            if tonal_table:
+                for row in tonal_table.find_all('tr'):
+                    process_tonal_row(row, userland_dict['class'])
+            else:
+                TONAL_TABLE_NOT_FOUND.append(parsed_url)
         else:
             TONAL_TABLE_NOT_FOUND.append(parsed_url)
     else:
@@ -68,14 +79,16 @@ def process_tonal_row(row: PageElement, class_u: any):
     # Check if record is a tonal type, as at this point table header is identified
     if is_this_tonal_type_data(row):
         # Add to set and set _current_tonal_type flag and return
-        _current_tonal_type = identify_or_create_tonal_type_id(extract_tonal_type(row))
+        _current_tonal_type = identify_or_create_tonal_type_id(
+            extract_tonal_type(row))
         return
 
     # Normal record
     if not is_this_tonal_record(row):
         return
     # Extract information and map against _current_tonal_type
-    create_new_tonal_with_extracted_tonal_type(row, class_u, _current_tonal_type)
+    create_new_tonal_with_extracted_tonal_type(
+        row, class_u, _current_tonal_type)
 
 
 def identify_or_create_tonal_type_id(tonal_type: str):
@@ -137,7 +150,8 @@ def is_this_tonal_record(row: PageElement):
 
 def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, current_tonal_type: str):
     columns = row.find_all('td')
-    tonal_source_text, ratio_freq, harmonics, current_remarks = tonalRowExtractor.retrieve_row(columns)
+    tonal_source_text, ratio_freq, harmonics, current_remarks = tonalRowExtractor.retrieve_row(
+        columns)
     tonal_source = identify_or_create_tonal_source_id(tonal_source_text)
     TONAL_COLLECTION.append(
         Tonal(class_u, tonal_source, ratio_freq, harmonics, current_remarks, current_tonal_type))
