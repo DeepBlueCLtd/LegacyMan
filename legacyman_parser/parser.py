@@ -18,6 +18,7 @@ from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
+from legacyman_parser.utils import constants
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
@@ -51,6 +52,10 @@ def parse_from_root():
     if len(arg) < 2:
         print("Url empty. Exiting")
         return
+
+    # Set target value based on cwd
+    if path_has_drive_component(os.getcwd()):
+        constants.TARGET_DIRECTORY = os.path.splitdrive(os.getcwd())[0] + "//" + constants.TARGET_DIRECTORY
 
     # Url hardening
     arg_url = arg[1]
