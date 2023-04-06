@@ -47,29 +47,35 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
         class_image = urljoin(parsed_url, class_image_attr['src'])
         assert Path(class_image).is_file(), "InvalidAssumption: Class image file exists if provided in " \
                                             "img attribute. {} not found as specified " \
-                                            "in {}.".format(class_image, parsed_url)
+                                            "in {}.".format(
+                                                class_image, parsed_url)
 
         # Track already parsed images in destination, instead of copying again.
+        clean_sub_category = userland_dict['class'].sub_category[0].replace(
+            '/', '_')
         new_destination_of_img_src = os.path.join(COPY_CLASS_IMAGES_TO_DIRECTORY,
                                                   userland_dict['class'].country.country,
                                                   'Generic',
-                                                  userland_dict['class'].sub_category[0],
+                                                  clean_sub_category,
                                                   basename(class_image))
 
         if new_destination_of_img_src.upper() not in already_processed_html_img_sources:
-            already_processed_html_img_sources[new_destination_of_img_src.upper()] = [class_image.upper()]
+            already_processed_html_img_sources[new_destination_of_img_src.upper()] = [
+                class_image.upper()]
             if not os.path.exists(os.path.dirname(new_destination_of_img_src)):
                 os.makedirs(os.path.dirname(new_destination_of_img_src))
             shutil.copy2(class_image, new_destination_of_img_src)
         else:
             if class_image.upper() not in already_processed_html_img_sources[new_destination_of_img_src.upper()]:
-                already_processed_html_img_sources[new_destination_of_img_src.upper()].append(class_image.upper())
+                already_processed_html_img_sources[new_destination_of_img_src.upper()].append(
+                    class_image.upper())
                 if os.path.exists(new_destination_of_img_src):
-                    suffix_gen = instantiate_or_retrieve_cached_generator(new_destination_of_img_src)
+                    suffix_gen = instantiate_or_retrieve_cached_generator(
+                        new_destination_of_img_src)
                     new_destination_of_img_src = os.path.splitext(new_destination_of_img_src)[0] \
-                                                 + "_" \
-                                                 + suffix_gen.next_value() \
-                                                 + os.path.splitext(new_destination_of_img_src)[1]
+                        + "_" \
+                        + suffix_gen.next_value() \
+                        + os.path.splitext(new_destination_of_img_src)[1]
                 shutil.copy2(class_image, new_destination_of_img_src)
         class_images_obj.class_images.append(new_destination_of_img_src)
     CLASS_IMAGES_COLLECTION.append(class_images_obj)
