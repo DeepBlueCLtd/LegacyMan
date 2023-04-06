@@ -52,10 +52,6 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
         TONAL_HEADER_NOT_FOUND.append(parsed_url)
     if not TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False):
         print('Failed to find tonals for', parsed_url)
-    # this assertion is no longer valid, since we have files with zero tonals
-    # assert TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False), "InvalidAssumption: Class ({}) page will " \
-    #                                                                 "have at least one tonal in page {}."\
-    #    .format(userland_dict['class'], parsed_url)
 
 
 def process_tonal_row(row: PageElement, class_u: any):
