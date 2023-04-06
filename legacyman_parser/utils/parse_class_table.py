@@ -65,21 +65,38 @@ class ClassParser:
                                                  userland_dict: dict = None) -> []:
         self._class_table_header_is_identified = False
         self._current_subtype_id = None
-        class_list_all = soup.find_all('div', {"id": "PageLayer"})
-        assert len(class_list_all) == 1, "InvalidAssumption: Each country page contains only 1 PageLayer div" \
-                                         " that lists classes. => {}".format(
-                                             parsed_url)
-        class_list = class_list_all[0]
-        if class_list:
-            table_list = class_list.find_all('table')
-            assert len(table_list) == 1, "InvalidAssumption: PageLayer div contains only 1 table of classes => {}. Found {}".format(
-                parsed_url, len(table_list))
-            rows = table_list[0].find_all('tr')
-            self._current_subtype_id = self.create_sub_type_id_of_ns_class(rows[0],
-                                                                           userland_dict.get('country').country, parsed_url)
-            for row in rows[1:]:
-                self.process_class_row(
-                    row, userland_dict['country'], parsed_url)
+
+        headings = soup.find_all('h2')
+        assert len(headings) == 1, "InvalidAssumption: Each country page contains only one h2. => {} Found {}".format(
+            parsed_url, len(headings))
+
+        self._current_subtype_id = self.create_sub_type_id_of_ns_class(headings[0].contents[0],
+                                                                       userland_dict.get('country').country, parsed_url)
+
+        # now find the table of classes
+        tables = soup.find_all('table')
+
+        def has_correct_first_row_filter(tag):
+            # filter for tables with more than one row, that is a colspan 7
+            rows = tag.find_all('tr')
+            assert len(rows) > 0, "InvalidAssumption: Table has more than one row => {}".format(
+                parsed_url)
+            first_row = rows[0]
+            cells = first_row.find_all('td')
+            if len(cells) == 1:
+                colspan = cells[0].get('colspan')
+                return colspan and colspan == "7"
+            else:
+                return False
+
+        class_tables = list(filter(has_correct_first_row_filter, tables))
+        assert len(class_tables) == 1, "InvalidAssumption: Should just have found one table of classes => {} Found: {}".format(
+            parsed_url, len(class_tables))
+        rows = class_tables[0].find_all('tr')
+
+        for row in rows[1:]:
+            self.process_class_row(
+                row, userland_dict['country'], parsed_url)
         else:
             self.NON_STANDARD_COUNTRY.append(parsed_url)
         assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with its first column header as text Class (case sensitive) => {}".format(
@@ -148,18 +165,11 @@ class ClassParser:
         return sub_type, new_id
 
     def create_sub_type_id_of_ns_class(self, sub_type_str: str, country, parsed_url):
-        beginswith = "Overview of "
-        endswith = " in " + country
-        assert sub_type_str.text.strip().startswith(beginswith), "InvalidAssumption: Subtype identification " \
-                                                                 "of classes of non-standard countries does not" \
-                                                                 "begin with 'Overview of' => {}".format(
-                                                                     parsed_url)
-        assert sub_type_str.text.strip().endswith(endswith), "InvalidAssumption: Subtype identification " \
-                                                             "of classes of non-standard countries does not" \
-                                                             "end with ' in Country' => {}".format(
-                                                                 parsed_url)
-        sub_type = sub_type_str.text.strip().replace(
-            beginswith, "").replace(endswith, "")
+        # note: the sub_type_str is expected to look like `Britain - Composites`
+        parts = sub_type_str.split(' - ')
+        assert len(
+            parts) == 2, "InvalidAssumption: h2 contains two elements, separated by '-' => {}. Found {}".format(parsed_url, parts)
+        sub_type = parts[1].strip()
         if sub_type in self.SUBTYPE_COLLECTION:
             return sub_type, self.SUBTYPE_COLLECTION[sub_type]
         new_id = len(self.SUBTYPE_COLLECTION) + 1
