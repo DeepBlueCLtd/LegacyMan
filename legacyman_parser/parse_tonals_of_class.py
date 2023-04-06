@@ -50,13 +50,10 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     tonal_texts = list(filter(common_block, strong_blocks))
     if len(tonal_texts) == 1:
         tonal_text = tonal_texts[0]
-        if tonal_text:
-            tonal_table = tonal_text.find_parent("table")
-            if tonal_table:
-                for row in tonal_table.find_all('tr'):
-                    process_tonal_row(row, userland_dict['class'])
-            else:
-                TONAL_TABLE_NOT_FOUND.append(parsed_url)
+        tonal_table = tonal_text.find_parent("table")
+        if tonal_table:
+            for row in tonal_table.find_all('tr'):
+                process_tonal_row(row, userland_dict['class'])
         else:
             TONAL_TABLE_NOT_FOUND.append(parsed_url)
     else:
