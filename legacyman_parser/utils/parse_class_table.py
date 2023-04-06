@@ -90,19 +90,24 @@ class ClassParser:
                 return False
 
         class_tables = list(filter(has_correct_first_row_filter, tables))
-        assert len(class_tables) == 1, "InvalidAssumption: Should just have found one table of classes => {} Found: {}".format(
-            parsed_url, len(class_tables))
-        rows = class_tables[0].find_all('tr')
 
-        for row in rows[1:]:
-            self.process_class_row(
-                row, userland_dict['country'], parsed_url)
-        else:
-            self.NON_STANDARD_COUNTRY.append(parsed_url)
-        assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with its first column header as text Class (case sensitive) => {}".format(
-            parsed_url)
-        assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
-                                                False), "InvalidAssumption: Country ({}) page will have at least one class. => {}".format(userland_dict['country'], parsed_url)
+        # note: it is acceptable for zero class tables to be found, since one legitimate class table has 8 cols.  We
+        # don't (yet) support it, but the code shouldn't fail.
+        assert len(class_tables) <= 1, "InvalidAssumption: Should just have found one table of classes => {} Found: {}".format(
+            parsed_url, len(class_tables))
+
+        if len(class_tables) == 1:
+            rows = class_tables[0].find_all('tr')
+
+            for row in rows[1:]:
+                self.process_class_row(
+                    row, userland_dict['country'], parsed_url)
+            else:
+                self.NON_STANDARD_COUNTRY.append(parsed_url)
+            assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with its first column header as text Class (case sensitive) => {}".format(
+                parsed_url)
+            assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
+                                                    False), "InvalidAssumption: Country ({}) page will have at least one class. => {}".format(userland_dict['country'], parsed_url)
 
     def extract_classes_of_country(self, soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                                    userland_dict: dict = None) -> []:
