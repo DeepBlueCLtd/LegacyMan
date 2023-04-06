@@ -31,7 +31,7 @@ def extract_class_attributes_from_tonals_page(soup: BeautifulSoup = None, parsed
         return colspan and colspan == '4'
     propulsion_system_tables = list(filter(four_col_table_filter, all_tables))
     assert len(propulsion_system_tables) == 1, "InvalidAssumption: There's always a Tonal Propulsion table with " \
-        "colspan 4 => {}. Found {}".found(
+        "colspan 4 => {}. Found {}".format(
             parsed_url, len(propulsion_system_tables))
     propulsion_system_table = propulsion_system_tables[0]
     assert len(propulsion_system_table) % 2 == 1, "InvalidAssumption: Propulsion table is in" \
