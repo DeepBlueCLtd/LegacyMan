@@ -17,7 +17,7 @@ from legacyman_parser.parse_non_standard_countries import extract_non_standard_c
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
-from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY, path_has_drive_component
+from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
@@ -38,6 +38,12 @@ def change_to_drive_root_directory(path: str):
 
 def get_cleansed_path(path: str):
     return os.path.splitdrive(path)[1].replace("\\", "/")
+
+
+def path_has_drive_component(path):
+    if os.path.splitdrive(path)[0]:
+        return True
+    return False
 
 
 def parse_from_root():
