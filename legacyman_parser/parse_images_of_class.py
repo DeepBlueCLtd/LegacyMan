@@ -51,12 +51,10 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
                                                 class_image, parsed_url)
 
         # Track already parsed images in destination, instead of copying again.
-        clean_sub_category = userland_dict['class'].sub_category[0].replace(
-            '/', '_')
         new_destination_of_img_src = os.path.join(COPY_CLASS_IMAGES_TO_DIRECTORY,
                                                   userland_dict['class'].country.country,
                                                   'Generic',
-                                                  clean_sub_category,
+                                                  userland_dict['class'].sub_category[0],
                                                   basename(class_image))
 
         if new_destination_of_img_src.upper() not in already_processed_html_img_sources:
