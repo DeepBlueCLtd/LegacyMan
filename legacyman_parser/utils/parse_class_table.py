@@ -162,7 +162,8 @@ class ClassParser:
         self.create_new_class_with_extracted_subcategory(
             row, country, self._current_subtype_id, parsed_url)
 
-    def identify_or_create_sub_type_id(self, sub_type: str):
+    def identify_or_create_sub_type_id(self, sub_type_str: str):
+        sub_type = sub_type_str.replace('/', '-')
         if sub_type in self.SUBTYPE_COLLECTION:
             return sub_type, self.SUBTYPE_COLLECTION[sub_type]
         new_id = len(self.SUBTYPE_COLLECTION) + 1
@@ -171,7 +172,7 @@ class ClassParser:
 
     def create_sub_type_id_of_ns_class(self, sub_type_str: str, country, parsed_url):
         # note: the sub_type_str is expected to look like `Britain - Composites`
-        parts = sub_type_str.split(' - ')
+        parts = sub_type_str.replace('/', '-').split(' - ')
         assert len(
             parts) == 2, "InvalidAssumption: h2 contains two elements, separated by '-' => {}. Found {}".format(parsed_url, parts)
         sub_type = parts[1].strip()
