@@ -40,9 +40,17 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
     tonalRowExtractor = userland_dict.get('tonal_extractor')
-    tonal_header = soup.find("td", string="Commonly Detected Sources")
-    if tonal_header:
-        tonal_table = tonal_header.find_parent("table")
+    # issue here.  Sometimes the Commonly Detected Sources includes a <span>*</span> marker.
+    # so, start by finding all `strong` blocks, then find one that contains our selected
+    # text, but without looking inside child blocks (recursive=False)
+    strong_blocks = soup.find_all("strong")
+
+    def common_block(tag):
+        return tag.find(string="Commonly Detected Sources", recursive=False)
+    tonal_texts = list(filter(common_block, strong_blocks))
+    if len(tonal_texts) == 1:
+        tonal_text = tonal_texts[0]
+        tonal_table = tonal_text.find_parent("table")
         if tonal_table:
             for row in tonal_table.find_all('tr'):
                 process_tonal_row(row, userland_dict['class'])
@@ -51,7 +59,10 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     else:
         TONAL_HEADER_NOT_FOUND.append(parsed_url)
     if not TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False):
-        print('Failed to find tonals for', parsed_url)
+        print("Extract tonals. No tonals found for {}".format(parsed_url))
+        # assert TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False), "InvalidAssumption: Class ({}) page will " \
+        #                                                                  "have at least one tonal in page {}."\
+        #     .format(userland_dict['class'], parsed_url)
 
 
 def process_tonal_row(row: PageElement, class_u: any):
