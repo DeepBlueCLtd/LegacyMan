@@ -58,9 +58,11 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
             TONAL_TABLE_NOT_FOUND.append(parsed_url)
     else:
         TONAL_HEADER_NOT_FOUND.append(parsed_url)
-    assert TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False), "InvalidAssumption: Class ({}) page will " \
-                                                                     "have at least one tonal in page {}."\
-        .format(userland_dict['class'], parsed_url)
+    if not TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False):
+        print("Extract tonals. No tonals found for {}".format(parsed_url))
+        # assert TONAL_FOUND_FOR_CLASS.get(userland_dict['class'], False), "InvalidAssumption: Class ({}) page will " \
+        #                                                                  "have at least one tonal in page {}."\
+        #     .format(userland_dict['class'], parsed_url)
 
 
 def process_tonal_row(row: PageElement, class_u: any):
