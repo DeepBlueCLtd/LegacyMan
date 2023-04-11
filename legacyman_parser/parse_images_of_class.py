@@ -41,7 +41,19 @@ def instantiate_or_retrieve_cached_generator(file_name):
 def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                          userland_dict: dict = None) -> []:
     # This parser will handle class image extraction for only non-Britain like countries.
-    class_images = soup.find_all('img')
+    all_class_images = soup.find_all('img')
+
+    def not_blacklisted_filter(tag):
+        # filter for images that aren't in black-listed images
+        black_list = ['image020.jpg', 'check_db.gif', 'pref_db.gif', 'Rtn2Map_db.gif']
+        in_black_list = filter(
+            lambda item: item in tag.get('src').lower(), black_list)
+        in_black_list_item = list(in_black_list)
+        return len(list(in_black_list_item)) == 0
+
+    # only include images that have not been blacklisted
+    class_images = list(filter(not_blacklisted_filter, all_class_images))
+
     class_images_obj = ClassImages(userland_dict['class'], [])
     for class_image_attr in class_images:
         class_image = urljoin(parsed_url, class_image_attr['src'])
