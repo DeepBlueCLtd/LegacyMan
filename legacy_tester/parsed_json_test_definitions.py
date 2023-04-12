@@ -199,3 +199,16 @@ def check_for_presence_of_tonals_of_cds_decorated_with_star(published_json, test
               ' with harmonics containing"{}"'.format(test_payload['count'], test_payload['name']))
         return False
     return True
+
+
+def tally_tonal_counts_for_standard_and_non_standard_classes(published_json, test_payload):
+    """test for issue #162
+    This is to tally the count of tonals of standard and non-standard classes
+    """
+    if test_payload['ns_tonals'] + test_payload['standard_tonals'] != len(published_json['tonals']):
+        print('Error: Could not tally counts of tonals from standard and non-standard classes. '
+              'Defined ns_tonals count: {}, Defined standard tonals: {}, Found total tonals: {}'
+              .format(test_payload['ns_tonals'], test_payload['standard_tonals'],
+                      len(published_json['tonals'])))
+        return False
+    return True
