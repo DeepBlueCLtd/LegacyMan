@@ -234,8 +234,8 @@ class ClassParser:
                                                     parsed_url: str):
         columns = row.find_all('td')
         tonal_href = None
-        has_tonal = self.does_class_contain_tonal(columns[0])
-        if has_tonal:
+        has_link = self.does_have_a_link(columns[0])
+        if has_link:
             tonal_href = urljoin(
                 parsed_url, self.extract_tonal_href(columns[0]))
         # Declare contents of a class
@@ -253,14 +253,17 @@ class ClassParser:
                                             bhp,
                                             temp,
                                             rr,
-                                            has_tonal,
+                                            has_link,
                                             tonal_href))
         self.CLASS_FOUND_FOR_COUNTRY[country] = True
 
     @ staticmethod
-    def does_class_contain_tonal(table_data: PageElement):
-        if table_data.find('a') is not None:
-            return True
+    def does_have_a_link(table_data: PageElement):
+        link = table_data.find('a')
+        if link is not None:
+            href = link.get('href')
+            if href is not None:
+                return True
         return False
 
     @ staticmethod
