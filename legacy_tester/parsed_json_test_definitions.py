@@ -153,7 +153,7 @@ def check_for_presence_flags_of_non_standard_countries(published_json, test_payl
     """test for issue #107
     This is to check if the parser has copied flags of non-standard countries
     """
-    flags_array = set(map(lambda a: a.file_location.split("/")[2], published_json['flags']))
+    flags_array = set(map(lambda a: a.file_location.split("/")[-1], published_json['flags']))
     if not set(test_payload).issubset(flags_array):
         print('Error: failed to extract one or more flags of non-standard '
               'countries. {}'.format(test_payload))
@@ -170,5 +170,45 @@ def check_for_presence_of_tonals_of_classes_of_ns_countries(published_json, test
     if len(class_with_required_property) != test_payload['count']:
         print('Error: failed to identify exactly {} classes'
               ' with tonal property containing"{}"'.format(test_payload['count'], test_payload['name']))
+        return False
+    return True
+
+
+def check_for_presence_of_tonals_of_classes_of_standard_countries(published_json, test_payload):
+    """test for issue #162
+    This is to check if the parser has processed tonals of standard countries
+    """
+    class_with_required_property = list(filter(lambda a: test_payload['name'] in a.engine,
+                                               published_json['units']))
+    if len(class_with_required_property) != test_payload['count']:
+        print('Error: failed to identify exactly {} classes'
+              ' with tonal property containing"{}"'.format(test_payload['count'], test_payload['name']))
+        return False
+    return True
+
+
+def check_for_presence_of_tonals_of_cds_decorated_with_star(published_json, test_payload):
+    """test for issue #162
+    This is to check if the parser has processed tonals of standard countries
+    where Commonly Detected Sources is with a star
+    """
+    class_with_required_property = list(filter(lambda a: test_payload['name'] in a.harmonics,
+                                               published_json['tonals']))
+    if len(class_with_required_property) != test_payload['count']:
+        print('Error: failed to identify exactly {} tonals'
+              ' with harmonics containing"{}"'.format(test_payload['count'], test_payload['name']))
+        return False
+    return True
+
+
+def tally_tonal_counts_for_standard_and_non_standard_classes(published_json, test_payload):
+    """test for issue #162
+    This is to tally the count of tonals of standard and non-standard classes
+    """
+    if test_payload['ns_tonals'] + test_payload['standard_tonals'] != len(published_json['tonals']):
+        print('Error: Could not tally counts of tonals from standard and non-standard classes. '
+              'Defined ns_tonals count: {}, Defined standard tonals: {}, Found total tonals: {}'
+              .format(test_payload['ns_tonals'], test_payload['standard_tonals'],
+                      len(published_json['tonals'])))
         return False
     return True
