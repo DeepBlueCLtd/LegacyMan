@@ -45,7 +45,7 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
 
     def not_blacklisted_filter(tag):
         # filter for images that aren't in black-listed images
-        black_list = ['image020.jpg', 'check_db.gif', 'pref_db.gif', 'Rtn2Map_db.gif']
+        black_list = ['image020.jpg', 'check_db.gif', 'prev_db.gif', 'rtn2map_db.gif']
         in_black_list = filter(
             lambda item: item in tag.get('src').lower(), black_list)
         in_black_list_item = list(in_black_list)
