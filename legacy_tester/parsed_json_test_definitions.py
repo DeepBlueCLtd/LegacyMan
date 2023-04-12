@@ -185,3 +185,17 @@ def check_for_presence_of_tonals_of_classes_of_standard_countries(published_json
               ' with tonal property containing"{}"'.format(test_payload['count'], test_payload['name']))
         return False
     return True
+
+
+def check_for_presence_of_tonals_of_CDS_decorated_with_star(published_json, test_payload):
+    """test for issue #162
+    This is to check if the parser has processed tonals of standard countries
+    where Commonly Detected Sources is with a star
+    """
+    class_with_required_property = list(filter(lambda a: test_payload['name'] in a.harmonics,
+                                               published_json['tonals']))
+    if len(class_with_required_property) != test_payload['count']:
+        print('Error: failed to identify exactly {} tonals'
+              ' with harmonics containing"{}"'.format(test_payload['count'], test_payload['name']))
+        return False
+    return True
