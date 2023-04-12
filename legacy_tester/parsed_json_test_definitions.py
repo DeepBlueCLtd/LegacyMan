@@ -187,7 +187,7 @@ def check_for_presence_of_tonals_of_classes_of_standard_countries(published_json
     return True
 
 
-def check_for_presence_of_tonals_of_CDS_decorated_with_star(published_json, test_payload):
+def check_for_presence_of_tonals_of_cds_decorated_with_star(published_json, test_payload):
     """test for issue #162
     This is to check if the parser has processed tonals of standard countries
     where Commonly Detected Sources is with a star
