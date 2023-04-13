@@ -21,6 +21,7 @@ from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
+from legacyman_parser.utils.stateful_suffix_generator import SequenceGenerator
 
 INVALID_COUNTRY_HREFS = []
 
@@ -68,11 +69,14 @@ def parse_from_root():
         print("Cannot find json test payload at {}".format(test_payload_json))
         return
 
+    uniq_id_gen_country = SequenceGenerator()
+    sequence_dict = {'seq': uniq_id_gen_country}
     """Parsing Region
     The regions are processed from map"""
     print("\n\nParsing Regions:")
     root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url + "/PlatformData/PD_1.html",
-                                                   disable_crawler_log=True)
+                                                   disable_crawler_log=True,
+                                                   userland_dict=sequence_dict)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_non_standard_countries_in_region,
                                          crawl_recursively=False)
@@ -82,7 +86,7 @@ def parse_from_root():
     print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
         """Parsing Countries from extracted regions"""
-        reg_dict = {"region": region}
+        reg_dict = {"region": region, "seq": uniq_id_gen_country}
         region_spidey_to_extract_countries = SimpleCrawler(url=region.url,
                                                            disable_crawler_log=True,
                                                            userland_dict=reg_dict)
