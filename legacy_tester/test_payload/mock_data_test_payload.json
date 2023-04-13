@@ -27,7 +27,7 @@
                                                                         "image_name_contains": "NEW-TEST-48"
                                                                       }],
   "check_presence_of_classes_of_non_standard_countries": {"name": "%TEST-106 Icelandic Comp", "count": 2},
-  "check_count_of_classes_of_non_standard_countries": 20,
+  "tally_count_of_classes_of_non_standard_and_standard_countries": {"ns_classes": 20, "s_classes": 13},
   "check_for_presence_flags_of_non_standard_countries": ["Britain.jpg", "Iceland.png"],
   "check_for_presence_of_tonals_of_classes_of_ns_countries": {"name": "%TEST-107 Icelandic Complex Power%", "count": 1},
   "check_for_presence_of_tonals_of_classes_of_standard_countries": {"name": "%TEST-162%", "count": 2},
