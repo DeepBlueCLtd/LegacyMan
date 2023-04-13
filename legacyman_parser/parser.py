@@ -116,7 +116,7 @@ def parse_from_root():
         NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
     print("\n\nParsing Classes:")
-    standard_class_parser = ClassParser(0)
+    standard_class_parser = ClassParser(0, {})
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
         if country.url is None:
@@ -142,7 +142,7 @@ def parse_from_root():
                                                                            len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing Classes from non-standard countries:")
-    ns_class_parser = ClassParser(len(standard_class_parser.CLASS_COLLECTION))
+    ns_class_parser = ClassParser(len(standard_class_parser.CLASS_COLLECTION), standard_class_parser.SUBTYPE_COLLECTION)
     for ns_country in NON_STANDARD_COUNTRY_COLLECTION:
         if ns_country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": ns_country.country,
