@@ -248,10 +248,10 @@ def parse_from_root():
             print("    " + no_tonal_table)
 
     published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
-                                            parsed_countries=COUNTRY_COLLECTION,
+                                            parsed_countries=COUNTRY_COLLECTION + NON_STANDARD_COUNTRY_COLLECTION,
                                             parsed_classes=standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION,
                                             parsed_tonals=TONAL_COLLECTION,
-                                            parsed_subtypes=standard_class_parser.SUBTYPE_COLLECTION,
+                                            parsed_subtypes=ns_class_parser.SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS,
