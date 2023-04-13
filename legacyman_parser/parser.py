@@ -249,22 +249,21 @@ def parse_from_root():
 
     published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
                                             parsed_countries=COUNTRY_COLLECTION,
-                                            parsed_classes=standard_class_parser.CLASS_COLLECTION,
+                                            parsed_classes=standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION,
                                             parsed_tonals=TONAL_COLLECTION,
                                             parsed_subtypes=standard_class_parser.SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS,
                                             parsed_flags=COUNTRY_FLAG_COLLECTION,
-                                            parsed_class_images=CLASS_IMAGES_COLLECTION,
-                                            parsed_class_ns_countries=ns_class_parser.CLASS_COLLECTION)
+                                            parsed_class_images=CLASS_IMAGES_COLLECTION)
 
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category
     count_extractor = lambda grouped_values: len(list(grouped_values[1]))
     max_class_for_given_country_subcat = sorted(list(map(lambda a: (a[0], len(list(a[1]))), itertools.groupby(sorted(
         list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
-                 standard_class_parser.CLASS_COLLECTION))), lambda a: a))), key=lambda a: a[1], reverse=True)[0]
+                 standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION))), lambda a: a))), key=lambda a: a[1], reverse=True)[0]
     assert 1 == max_class_for_given_country_subcat[1], "InvalidAssumption: " \
                                                        "Classes are unique for a given " \
                                                        "country and sub category => {} has {} units" \

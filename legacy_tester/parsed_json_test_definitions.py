@@ -130,7 +130,7 @@ def check_presence_of_classes_of_non_standard_countries(published_json, test_pay
     This is to check if the parser has parsed the classes of a newly added non-standard country
     """
     class_with_required_name = list(filter(lambda a: test_payload['name'] in a.title,
-                                           published_json['ns_country_classes']))
+                                           published_json['units']))
     if len(class_with_required_name) != test_payload['count']:
         print('Error: failed to identify exactly {} classes'
               ' with name containing"{}"'.format(test_payload['count'], test_payload['name']))
@@ -138,13 +138,15 @@ def check_presence_of_classes_of_non_standard_countries(published_json, test_pay
     return True
 
 
-def check_count_of_classes_of_non_standard_countries(published_json, test_payload):
+def tally_count_of_classes_of_non_standard_and_standard_countries(published_json, test_payload):
     """test for issue #106
-    This is to check if the parser has parsed the classes of all non-standard countries
+    This is to tally the count of classes of all non-standard and standard countries
     """
-    if len(published_json['ns_country_classes']) != test_payload:
-        print('Error: failed to identify parse exactly {} classes of non-standard '
-              'countries'.format(test_payload))
+    if test_payload['ns_classes'] + test_payload['s_classes'] != len(published_json['units']):
+        print('Error: Could not tally counts of classes from standard and non-standard countries. '
+              'Defined ns_classes count: {}, Defined standard classes: {}, Found total classes/units: {}'
+              .format(test_payload['ns_classes'], test_payload['s_classes'],
+                      len(published_json['units'])))
         return False
     return True
 
@@ -166,7 +168,7 @@ def check_for_presence_of_tonals_of_classes_of_ns_countries(published_json, test
     This is to check if the parser has processed tonals of non-standard countries
     """
     class_with_required_property = list(filter(lambda a: test_payload['name'] in a.engine,
-                                               published_json['ns_country_classes']))
+                                               published_json['units']))
     if len(class_with_required_property) != test_payload['count']:
         print('Error: failed to identify exactly {} classes'
               ' with tonal property containing"{}"'.format(test_payload['count'], test_payload['name']))

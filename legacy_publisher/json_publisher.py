@@ -15,7 +15,7 @@ random.seed(100)
 
 def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, parsed_tonals=None, parsed_subtypes=None,
             parsed_tonal_types=None, parsed_tonal_sources=None, parsed_abbreviations=None, parsed_flags=None,
-            parsed_class_images=None, parsed_class_ns_countries=None):
+            parsed_class_images=None):
     # Hardcode Generic Platform Type
     platform_type = PlatformType(1, "Generic Platform Type")
 
@@ -49,13 +49,6 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
             ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
                    None, None, None, None, None, None, None))
 
-    # Extract classes of non-standard countries
-    ns_country_classes = []
-    for class_u in parsed_class_ns_countries:
-        ns_country_classes.append(
-            ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
-                   None, None, None, None, None, None, None))
-
     # Extract tonal types
     tonal_types = []
     for tonal_type_value, tonal_type_id in parsed_tonal_types.items():
@@ -75,8 +68,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
                  "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals,
-                 "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": parsed_class_images,
-                 "ns_country_classes": ns_country_classes}
+                 "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": parsed_class_images}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:
