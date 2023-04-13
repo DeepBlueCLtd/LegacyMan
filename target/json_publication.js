@@ -668,7 +668,7 @@ var publicationJsonData={
     },
     {
       "id": 22,
-      "unit_id": 4,
+      "unit_id": 17,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 42.2176,
@@ -683,7 +683,7 @@ var publicationJsonData={
     },
     {
       "id": 23,
-      "unit_id": 4,
+      "unit_id": 17,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 12.624,
@@ -698,7 +698,7 @@ var publicationJsonData={
     },
     {
       "id": 24,
-      "unit_id": 4,
+      "unit_id": 17,
       "tonal_type_id": 4,
       "source": 3,
       "ratio": 40.171,
@@ -713,7 +713,7 @@ var publicationJsonData={
     },
     {
       "id": 25,
-      "unit_id": 4,
+      "unit_id": 17,
       "tonal_type_id": 4,
       "source": 4,
       "ratio": 7.2041,
@@ -728,7 +728,7 @@ var publicationJsonData={
     },
     {
       "id": 26,
-      "unit_id": 4,
+      "unit_id": 17,
       "tonal_type_id": 5,
       "source": 4,
       "ratio": 38.09,
@@ -743,7 +743,7 @@ var publicationJsonData={
     },
     {
       "id": 27,
-      "unit_id": 5,
+      "unit_id": 18,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 30.8459,
@@ -758,7 +758,7 @@ var publicationJsonData={
     },
     {
       "id": 28,
-      "unit_id": 5,
+      "unit_id": 18,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 31.3229,
@@ -773,7 +773,7 @@ var publicationJsonData={
     },
     {
       "id": 29,
-      "unit_id": 5,
+      "unit_id": 18,
       "tonal_type_id": 3,
       "source": 3,
       "ratio": 35.9832,
@@ -788,7 +788,7 @@ var publicationJsonData={
     },
     {
       "id": 30,
-      "unit_id": 5,
+      "unit_id": 18,
       "tonal_type_id": 3,
       "source": 4,
       "ratio": 29.9284,
@@ -803,7 +803,7 @@ var publicationJsonData={
     },
     {
       "id": 31,
-      "unit_id": 5,
+      "unit_id": 18,
       "tonal_type_id": 4,
       "source": 4,
       "ratio": 34.4088,
@@ -818,7 +818,7 @@ var publicationJsonData={
     },
     {
       "id": 32,
-      "unit_id": 11,
+      "unit_id": 24,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 42.854,
@@ -833,7 +833,7 @@ var publicationJsonData={
     },
     {
       "id": 33,
-      "unit_id": 11,
+      "unit_id": 24,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 49.924,
@@ -848,7 +848,7 @@ var publicationJsonData={
     },
     {
       "id": 34,
-      "unit_id": 11,
+      "unit_id": 24,
       "tonal_type_id": 3,
       "source": 3,
       "ratio": 38.31,
@@ -863,7 +863,7 @@ var publicationJsonData={
     },
     {
       "id": 35,
-      "unit_id": 11,
+      "unit_id": 24,
       "tonal_type_id": 3,
       "source": 4,
       "ratio": 44.6324,
@@ -878,7 +878,7 @@ var publicationJsonData={
     },
     {
       "id": 36,
-      "unit_id": 11,
+      "unit_id": 24,
       "tonal_type_id": 4,
       "source": 4,
       "ratio": 22.29,
@@ -893,7 +893,7 @@ var publicationJsonData={
     },
     {
       "id": 37,
-      "unit_id": 16,
+      "unit_id": 29,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 42.5213,
@@ -908,7 +908,7 @@ var publicationJsonData={
     },
     {
       "id": 38,
-      "unit_id": 16,
+      "unit_id": 29,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 36.0224,
@@ -923,7 +923,7 @@ var publicationJsonData={
     },
     {
       "id": 39,
-      "unit_id": 16,
+      "unit_id": 29,
       "tonal_type_id": 4,
       "source": 3,
       "ratio": 40.2543,
@@ -938,7 +938,7 @@ var publicationJsonData={
     },
     {
       "id": 40,
-      "unit_id": 16,
+      "unit_id": 29,
       "tonal_type_id": 4,
       "source": 4,
       "ratio": 13.46,
@@ -953,7 +953,7 @@ var publicationJsonData={
     },
     {
       "id": 41,
-      "unit_id": 16,
+      "unit_id": 29,
       "tonal_type_id": 5,
       "source": 4,
       "ratio": 34.123,
@@ -968,7 +968,7 @@ var publicationJsonData={
     },
     {
       "id": 42,
-      "unit_id": 17,
+      "unit_id": 30,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 9.071,
@@ -983,7 +983,7 @@ var publicationJsonData={
     },
     {
       "id": 43,
-      "unit_id": 17,
+      "unit_id": 30,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 35.6,
@@ -998,7 +998,7 @@ var publicationJsonData={
     },
     {
       "id": 44,
-      "unit_id": 17,
+      "unit_id": 30,
       "tonal_type_id": 3,
       "source": 3,
       "ratio": 36.1724,
@@ -1013,7 +1013,7 @@ var publicationJsonData={
     },
     {
       "id": 45,
-      "unit_id": 17,
+      "unit_id": 30,
       "tonal_type_id": 3,
       "source": 4,
       "ratio": 44.433,
@@ -1028,7 +1028,7 @@ var publicationJsonData={
     },
     {
       "id": 46,
-      "unit_id": 17,
+      "unit_id": 30,
       "tonal_type_id": 4,
       "source": 4,
       "ratio": 26.7,
@@ -1277,7 +1277,7 @@ var publicationJsonData={
     },
     {
       "class_u": {
-        "id": 4,
+        "id": 17,
         "class_u": "Unit_da",
         "sub_category": [
           "Standalones",
@@ -1313,7 +1313,7 @@ var publicationJsonData={
     },
     {
       "class_u": {
-        "id": 5,
+        "id": 18,
         "class_u": "Unit_ab",
         "sub_category": [
           "Composite",
@@ -1345,7 +1345,7 @@ var publicationJsonData={
     },
     {
       "class_u": {
-        "id": 11,
+        "id": 24,
         "class_u": "Unit_ab%TEST-106 Icelandic Composite%",
         "sub_category": [
           "Composite",
@@ -1377,7 +1377,7 @@ var publicationJsonData={
     },
     {
       "class_u": {
-        "id": 16,
+        "id": 29,
         "class_u": "Unit_da",
         "sub_category": [
           "Standalones",
@@ -1413,7 +1413,7 @@ var publicationJsonData={
     },
     {
       "class_u": {
-        "id": 17,
+        "id": 30,
         "class_u": "Unit_ab",
         "sub_category": [
           "Composite",
@@ -1446,7 +1446,7 @@ var publicationJsonData={
   ],
   "ns_country_classes": [
     {
-      "id": 1,
+      "id": 14,
       "bookmarked": false,
       "title": "Unit_a",
       "platform_sub_type_id": 1,
@@ -1463,7 +1463,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 2,
+      "id": 15,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 1,
@@ -1480,7 +1480,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 3,
+      "id": 16,
       "bookmarked": false,
       "title": "Unit_c",
       "platform_sub_type_id": 2,
@@ -1497,7 +1497,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 4,
+      "id": 17,
       "bookmarked": false,
       "title": "Unit_da",
       "platform_sub_type_id": 2,
@@ -1514,7 +1514,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 5,
+      "id": 18,
       "bookmarked": false,
       "title": "Unit_ab",
       "platform_sub_type_id": 3,
@@ -1531,7 +1531,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 6,
+      "id": 19,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 3,
@@ -1548,7 +1548,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 7,
+      "id": 20,
       "bookmarked": false,
       "title": "Unit_a",
       "platform_sub_type_id": 4,
@@ -1565,7 +1565,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 8,
+      "id": 21,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 4,
@@ -1582,7 +1582,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 9,
+      "id": 22,
       "bookmarked": false,
       "title": "Unit_a%TEST-106 Icelandic Complex%",
       "platform_sub_type_id": 1,
@@ -1599,7 +1599,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 10,
+      "id": 23,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 1,
@@ -1616,7 +1616,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 11,
+      "id": 24,
       "bookmarked": false,
       "title": "Unit_ab%TEST-106 Icelandic Composite%",
       "platform_sub_type_id": 3,
@@ -1633,7 +1633,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 12,
+      "id": 25,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 3,
@@ -1650,7 +1650,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 13,
+      "id": 26,
       "bookmarked": false,
       "title": "Unit_a",
       "platform_sub_type_id": 1,
@@ -1667,7 +1667,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 14,
+      "id": 27,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 1,
@@ -1684,7 +1684,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 15,
+      "id": 28,
       "bookmarked": false,
       "title": "Unit_c",
       "platform_sub_type_id": 2,
@@ -1701,7 +1701,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 16,
+      "id": 29,
       "bookmarked": false,
       "title": "Unit_da",
       "platform_sub_type_id": 2,
@@ -1718,7 +1718,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 17,
+      "id": 30,
       "bookmarked": false,
       "title": "Unit_ab",
       "platform_sub_type_id": 3,
@@ -1735,7 +1735,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 18,
+      "id": 31,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 3,
@@ -1752,7 +1752,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 19,
+      "id": 32,
       "bookmarked": false,
       "title": "Unit_a",
       "platform_sub_type_id": 4,
@@ -1769,7 +1769,7 @@ var publicationJsonData={
       "images": []
     },
     {
-      "id": 20,
+      "id": 33,
       "bookmarked": false,
       "title": "Unit_b",
       "platform_sub_type_id": 4,
