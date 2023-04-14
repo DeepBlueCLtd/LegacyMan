@@ -8,9 +8,9 @@ from legacyman_parser.utils.class_html_template import ClassU
 
 class ClassParser:
 
-    def __init__(self, seq_start):
+    def __init__(self, seq_start, sub_type_maps):
         self.CLASS_COLLECTION = []
-        self.SUBTYPE_COLLECTION = {}
+        self.SUBTYPE_COLLECTION = sub_type_maps
         self.NON_STANDARD_COUNTRY = []
         self.TOO_FEW_PROPERTIES = []
         self.CLASS_FOUND_FOR_COUNTRY = {}
