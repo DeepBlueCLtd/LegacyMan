@@ -21,6 +21,7 @@ from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
+from legacyman_parser.utils.stateful_suffix_generator import SequenceGenerator
 
 INVALID_COUNTRY_HREFS = []
 
@@ -68,11 +69,14 @@ def parse_from_root():
         print("Cannot find json test payload at {}".format(test_payload_json))
         return
 
+    uniq_id_gen_country = SequenceGenerator()
+    sequence_dict = {'seq': uniq_id_gen_country}
     """Parsing Region
     The regions are processed from map"""
     print("\n\nParsing Regions:")
     root_spidey_to_extract_regions = SimpleCrawler(url=cleansed_url + "/PlatformData/PD_1.html",
-                                                   disable_crawler_log=True)
+                                                   disable_crawler_log=True,
+                                                   userland_dict=sequence_dict)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_regions, crawl_recursively=False)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_non_standard_countries_in_region,
                                          crawl_recursively=False)
@@ -82,7 +86,7 @@ def parse_from_root():
     print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
         """Parsing Countries from extracted regions"""
-        reg_dict = {"region": region}
+        reg_dict = {"region": region, "seq": uniq_id_gen_country}
         region_spidey_to_extract_countries = SimpleCrawler(url=region.url,
                                                            disable_crawler_log=True,
                                                            userland_dict=reg_dict)
@@ -116,7 +120,7 @@ def parse_from_root():
         NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
     print("\n\nParsing Classes:")
-    standard_class_parser = ClassParser(0)
+    standard_class_parser = ClassParser(0, {})
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
         if country.url is None:
@@ -142,7 +146,7 @@ def parse_from_root():
                                                                            len(COUNTRY_COLLECTION)))
 
     print("\n\nParsing Classes from non-standard countries:")
-    ns_class_parser = ClassParser(len(standard_class_parser.CLASS_COLLECTION))
+    ns_class_parser = ClassParser(len(standard_class_parser.CLASS_COLLECTION), standard_class_parser.SUBTYPE_COLLECTION)
     for ns_country in NON_STANDARD_COUNTRY_COLLECTION:
         if ns_country.url is None:
             INVALID_COUNTRY_HREFS.append({"country": ns_country.country,
@@ -248,10 +252,10 @@ def parse_from_root():
             print("    " + no_tonal_table)
 
     published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
-                                            parsed_countries=COUNTRY_COLLECTION,
+                                            parsed_countries=COUNTRY_COLLECTION + NON_STANDARD_COUNTRY_COLLECTION,
                                             parsed_classes=standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION,
                                             parsed_tonals=TONAL_COLLECTION,
-                                            parsed_subtypes=standard_class_parser.SUBTYPE_COLLECTION,
+                                            parsed_subtypes=ns_class_parser.SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
                                             parsed_tonal_sources=TONAL_SOURCE_COLLECTION,
                                             parsed_abbreviations=ABBREVIATIONS,
