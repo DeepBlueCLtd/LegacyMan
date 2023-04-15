@@ -2,6 +2,8 @@ import os
 
 from bs4 import BeautifulSoup
 
+from legacyman_parser.utils.constants import TARGET_DIRECTORY
+
 
 def phase_one_regions_parse_not_included_countries(published_json, test_payload):
     parsed_countries = list(map(lambda a: a.country, published_json['countries']))
@@ -90,14 +92,16 @@ def check_class_images_name(published_json, test_payload):
     This is to test automatic renaming of similarly named image files during extraction
     """
     for unit_payload in test_payload:
-        actual_images = list(filter(lambda a: unit_payload['image_name_contains'] in a,
-                                    list(filter(lambda a: unit_payload['country'] in a.class_u.country.country,
-                                                published_json['class_images']))[0].class_images))
-        if len(actual_images) != unit_payload['expected_count']:
-            print('Class images not renamed as expected. Failed test payload: {}'.format(unit_payload))
+        country_id = list(filter(lambda a: unit_payload['country'] in a.country, published_json['countries']))[0].id
+        class_images = list(
+            map(lambda b: b.images, list(filter(lambda a: a.country_id == country_id, published_json['units']))))
+        actual_images = [url['url'] for item in class_images for url in item]
+        actual_images_with_expected_name = list(filter(lambda a: unit_payload['image_name_contains'] in a, actual_images))
+        if len(actual_images_with_expected_name) != unit_payload['expected_count']:
+            print('Class images not renamed as expected. Failed test payload: {} actual {}'.format(unit_payload, actual_images))
             return False
         for image_path in actual_images:
-            if not os.path.exists(image_path):
+            if not os.path.exists(TARGET_DIRECTORY + image_path):
                 print('{} image file not found'.format(image_path))
                 return False
     return True
@@ -110,16 +114,17 @@ def check_presence_of_common_class_images_in_different_class_folder(published_js
     """
     for unit_payload in test_payload:
         for unit_id in unit_payload['unit_ids']:
-            actual_images = list(filter(lambda a: unit_payload['image_name_contains'] in a,
-                                        list(filter(lambda a: unit_id == a.class_u.id,
-                                                    published_json['class_images']))[0].class_images))
-            if len(actual_images) != 1:
+            class_images = list(
+                map(lambda b: b.images, list(filter(lambda a: a.id == unit_id, published_json['units']))))
+            actual_images = [url['url'] for item in class_images for url in item]
+            actual_images_with_expected_name = list(filter(lambda a: unit_payload['image_name_contains'] in a, actual_images))
+            if len(actual_images_with_expected_name) != 1:
                 print('Image with name {} not found for {}. Test payload: {}'.format(
                     unit_payload['image_name_contains'], unit_id, unit_payload))
-                print(actual_images)
+                print(actual_images_with_expected_name)
                 return False
             for image_path in actual_images:
-                if not os.path.exists(image_path):
+                if not os.path.exists(TARGET_DIRECTORY + image_path):
                     print('{} image file not found'.format(image_path))
                     return False
     return True
@@ -155,7 +160,7 @@ def check_for_presence_flags_of_non_standard_countries(published_json, test_payl
     """test for issue #107
     This is to check if the parser has copied flags of non-standard countries
     """
-    flags_array = set(map(lambda a: a.file_location.split("/")[-1], published_json['flags']))
+    flags_array = set(map(lambda a: a['url'].split("/")[-1], published_json['flags']))
     if not set(test_payload).issubset(flags_array):
         print('Error: failed to extract one or more flags of non-standard '
               'countries. {}'.format(test_payload))
