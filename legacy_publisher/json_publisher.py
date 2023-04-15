@@ -45,13 +45,15 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     # Extract classes
     classes = []
     for class_u in parsed_classes:
-        image_array = []
+        image_array_react_image_gallery = []
         image_array_filtered_list = list(filter(lambda a: a.class_u.id == class_u.id, parsed_class_images))
         if image_array_filtered_list:
-            image_array = image_array_filtered_list[0].class_images
+            image_urls_array = image_array_filtered_list[0].class_images
+            image_array_react_image_gallery = list(
+                map(lambda b: {"name": class_u.class_u, "url": b}, image_urls_array))
         classes.append(
             ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
-                   None, None, None, None, None, None, None, image_array))
+                   None, None, None, None, None, None, None, image_array_react_image_gallery))
 
     # Extract tonal types
     tonal_types = []
