@@ -45,9 +45,13 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     # Extract classes
     classes = []
     for class_u in parsed_classes:
+        image_array = []
+        image_array_filtered_list = list(filter(lambda a: a.class_u.id == class_u.id, parsed_class_images))
+        if image_array_filtered_list:
+            image_array = image_array_filtered_list[0].class_images
         classes.append(
             ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
-                   None, None, None, None, None, None, None))
+                   None, None, None, None, None, None, None, image_array))
 
     # Extract tonal types
     tonal_types = []
@@ -68,7 +72,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
                  "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals,
-                 "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": parsed_class_images}
+                 "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": []}
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'r+') as f:
