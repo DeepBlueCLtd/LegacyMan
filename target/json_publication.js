@@ -157,7 +157,16 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "*Unit_d",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Narnia/Generic/Legacy/oscill_d.jpg"
+        },
+        {
+          "name": "*Unit_d",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
+        }
+      ]
     },
     {
       "id": 5,
@@ -174,7 +183,16 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": " Unit_a",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Composite/unit_a1.jpg"
+        },
+        {
+          "name": " Unit_a",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Composite/unit_a2.jpeg"
+        }
+      ]
     },
     {
       "id": 6,
@@ -225,7 +243,16 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_d",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Legacy - Traditional/oscill_d.jpg"
+        },
+        {
+          "name": "Unit_d",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Legacy - Traditional/NEW-TEST-48.jpg"
+        }
+      ]
     },
     {
       "id": 9,
@@ -310,7 +337,24 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "*Unit_db",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/unit_db_2.jpg"
+        },
+        {
+          "name": "*Unit_db",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/unit_db.jpg"
+        },
+        {
+          "name": "*Unit_db",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/TEST-48.jpg"
+        },
+        {
+          "name": "*Unit_db",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
+        }
+      ]
     },
     {
       "id": 14,
@@ -378,7 +422,32 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_d.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_e.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_d.jpg"
+        }
+      ]
     },
     {
       "id": 18,
@@ -497,7 +566,16 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_ab%TEST-106 Icelandic Composite%",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Iceland/Generic/Composite/unit_a1.jpg"
+        },
+        {
+          "name": "Unit_ab%TEST-106 Icelandic Composite%",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Iceland/Generic/Composite/unit_a2.jpeg"
+        }
+      ]
     },
     {
       "id": 25,
@@ -582,7 +660,32 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_d.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_e.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg"
+        },
+        {
+          "name": "Unit_da",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_d.jpg"
+        }
+      ]
     },
     {
       "id": 30,
@@ -599,7 +702,16 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_ab",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Composite/unit_a1.jpg"
+        },
+        {
+          "name": "Unit_ab",
+          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Composite/unit_a2.jpeg"
+        }
+      ]
     },
     {
       "id": 31,
@@ -1499,301 +1611,5 @@ var publicationJsonData={
       "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/Wales.jpg"
     }
   ],
-  "class_images": [
-    {
-      "class_u": {
-        "id": 4,
-        "class_u": "*Unit_d",
-        "sub_category": [
-          "Legacy",
-          2
-        ],
-        "country": {
-          "id": 3,
-          "country": "Narnia",
-          "region": {
-            "id": 2,
-            "region": "Europe",
-            "url": "data/PlatformData/Europe.html"
-          },
-          "url": "data/Narnia/Narnia1.html"
-        },
-        "designator": "PBF",
-        "power": "4 * PR32 Diesel Engines %TEST-162%",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400 hrs",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/France_Legacy/unit_d_star.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Narnia/Generic/Legacy/oscill_d.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 5,
-        "class_u": " Unit_a",
-        "sub_category": [
-          "Composite",
-          1
-        ],
-        "country": {
-          "id": 5,
-          "country": "France",
-          "region": {
-            "id": 2,
-            "region": "Europe",
-            "url": "data/PlatformData/Europe.html"
-          },
-          "url": "data/France/France1.html"
-        },
-        "designator": "PB",
-        "power": "4 * PR32 Diesel Engines",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400 hrs",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/France_Composites/unit_a.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Composite/unit_a1.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Composite/unit_a2.jpeg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 8,
-        "class_u": "Unit_d",
-        "sub_category": [
-          "Legacy - Traditional",
-          3
-        ],
-        "country": {
-          "id": 5,
-          "country": "France",
-          "region": {
-            "id": 2,
-            "region": "Europe",
-            "url": "data/PlatformData/Europe.html"
-          },
-          "url": "data/France/France1.html"
-        },
-        "designator": "PBF",
-        "power": "4 * PR32 Diesel Engines %TEST-162%",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400 hrs",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/France_Legacy/unit_d_star.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Legacy - Traditional/oscill_d.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Legacy - Traditional/NEW-TEST-48.jpg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 13,
-        "class_u": "*Unit_db",
-        "sub_category": [
-          "Legacy",
-          2
-        ],
-        "country": {
-          "id": 6,
-          "country": "Spain",
-          "region": {
-            "id": 2,
-            "region": "Europe",
-            "url": "data/PlatformData/Europe.html"
-          },
-          "url": "data/Spain1/Spain.html"
-        },
-        "designator": "PBF",
-        "power": "4 * PR32 Diesel Engines%TEST-96%",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400 hrs",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/Spain1/unit_db.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/unit_db_2.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/unit_db.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/TEST-48.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 17,
-        "class_u": "Unit_da",
-        "sub_category": [
-          "Standalones",
-          5
-        ],
-        "country": {
-          "id": 1,
-          "country": "Britain",
-          "region": {
-            "id": "SPL",
-            "region": "Britain",
-            "url": null
-          },
-          "url": "data/Britain/Britain1.html"
-        },
-        "designator": "PBF",
-        "power": "4 * PR32 Diesel Engines",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/Britain_Standalones/britain_1a.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_d.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_e.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_d.jpg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 18,
-        "class_u": "Unit_ab",
-        "sub_category": [
-          "Composite",
-          1
-        ],
-        "country": {
-          "id": 1,
-          "country": "Britain",
-          "region": {
-            "id": "SPL",
-            "region": "Britain",
-            "url": null
-          },
-          "url": "data/Britain/Britain1.html"
-        },
-        "designator": "PB",
-        "power": "2 * V8 Diesel",
-        "shaft_blade": "3 x 3",
-        "bhp": "34 Hz",
-        "av_temp": "Unk",
-        "reduction_ratio": "Unk",
-        "has_tonal": true,
-        "tonal_href": "data/Britain_Composite/unit_split_a.html"
-      },
-      "class_images": []
-    },
-    {
-      "class_u": {
-        "id": 24,
-        "class_u": "Unit_ab%TEST-106 Icelandic Composite%",
-        "sub_category": [
-          "Composite",
-          1
-        ],
-        "country": {
-          "id": 2,
-          "country": "Iceland",
-          "region": {
-            "id": "SPL",
-            "region": "Iceland",
-            "url": null
-          },
-          "url": "data/Iceland/Iceland1.html"
-        },
-        "designator": "PB",
-        "power": "4 * PR32 Diesel Engines",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400 hrs",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/Iceland_Composite/unit_ab.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Iceland/Generic/Composite/unit_a1.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Iceland/Generic/Composite/unit_a2.jpeg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 29,
-        "class_u": "Unit_da",
-        "sub_category": [
-          "Standalones",
-          5
-        ],
-        "country": {
-          "id": 4,
-          "country": "Wales",
-          "region": {
-            "id": 2,
-            "region": "Europe",
-            "url": "data/PlatformData/Europe.html"
-          },
-          "url": "data/Wales/Wales1.html"
-        },
-        "designator": "PBF",
-        "power": "4 * PR32 Diesel Engines",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/Wales_Standalones/Wales_1a.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_d.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_e.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_d.jpg"
-      ]
-    },
-    {
-      "class_u": {
-        "id": 30,
-        "class_u": "Unit_ab",
-        "sub_category": [
-          "Composite",
-          1
-        ],
-        "country": {
-          "id": 4,
-          "country": "Wales",
-          "region": {
-            "id": 2,
-            "region": "Europe",
-            "url": "data/PlatformData/Europe.html"
-          },
-          "url": "data/Wales/Wales1.html"
-        },
-        "designator": "PB",
-        "power": "4 * PR32 Diesel Engines",
-        "shaft_blade": "2 * 4 (GRR)",
-        "bhp": "400 hrs",
-        "av_temp": "~14",
-        "reduction_ratio": "412.8:1",
-        "has_tonal": true,
-        "tonal_href": "data/Wales_Composite/unit_ab.html"
-      },
-      "class_images": [
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Composite/unit_a1.jpg",
-        "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Composite/unit_a2.jpeg"
-      ]
-    }
-  ]
+  "class_images": []
 }
