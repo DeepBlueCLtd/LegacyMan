@@ -160,11 +160,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "*Unit_d",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Narnia/Generic/Legacy/oscill_d.jpg"
+          "url": "class_images/Narnia/Generic/Legacy/oscill_d.jpg"
         },
         {
           "name": "*Unit_d",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
+          "url": "class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
         }
       ]
     },
@@ -186,11 +186,11 @@ var publicationJsonData={
       "images": [
         {
           "name": " Unit_a",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Composite/unit_a1.jpg"
+          "url": "class_images/France/Generic/Composite/unit_a1.jpg"
         },
         {
           "name": " Unit_a",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Composite/unit_a2.jpeg"
+          "url": "class_images/France/Generic/Composite/unit_a2.jpeg"
         }
       ]
     },
@@ -246,11 +246,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_d",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Legacy - Traditional/oscill_d.jpg"
+          "url": "class_images/France/Generic/Legacy - Traditional/oscill_d.jpg"
         },
         {
           "name": "Unit_d",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/France/Generic/Legacy - Traditional/NEW-TEST-48.jpg"
+          "url": "class_images/France/Generic/Legacy - Traditional/NEW-TEST-48.jpg"
         }
       ]
     },
@@ -340,19 +340,19 @@ var publicationJsonData={
       "images": [
         {
           "name": "*Unit_db",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/unit_db_2.jpg"
+          "url": "class_images/Spain/Generic/Legacy/unit_db_2.jpg"
         },
         {
           "name": "*Unit_db",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/unit_db.jpg"
+          "url": "class_images/Spain/Generic/Legacy/unit_db.jpg"
         },
         {
           "name": "*Unit_db",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/TEST-48.jpg"
+          "url": "class_images/Spain/Generic/Legacy/TEST-48.jpg"
         },
         {
           "name": "*Unit_db",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
+          "url": "class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
         }
       ]
     },
@@ -425,27 +425,27 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg"
+          "url": "class_images/Britain/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_d.jpg"
+          "url": "class_images/Britain/Generic/Standalones/oscill_d.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_e.jpg"
+          "url": "class_images/Britain/Generic/Standalones/oscill_e.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg"
+          "url": "class_images/Britain/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_c.jpg"
+          "url": "class_images/Britain/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Britain/Generic/Standalones/oscill_d.jpg"
+          "url": "class_images/Britain/Generic/Standalones/oscill_d.jpg"
         }
       ]
     },
@@ -569,11 +569,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_ab%TEST-106 Icelandic Composite%",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Iceland/Generic/Composite/unit_a1.jpg"
+          "url": "class_images/Iceland/Generic/Composite/unit_a1.jpg"
         },
         {
           "name": "Unit_ab%TEST-106 Icelandic Composite%",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Iceland/Generic/Composite/unit_a2.jpeg"
+          "url": "class_images/Iceland/Generic/Composite/unit_a2.jpeg"
         }
       ]
     },
@@ -663,27 +663,27 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg"
+          "url": "class_images/Wales/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_d.jpg"
+          "url": "class_images/Wales/Generic/Standalones/oscill_d.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_e.jpg"
+          "url": "class_images/Wales/Generic/Standalones/oscill_e.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg"
+          "url": "class_images/Wales/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_c.jpg"
+          "url": "class_images/Wales/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Standalones/oscill_d.jpg"
+          "url": "class_images/Wales/Generic/Standalones/oscill_d.jpg"
         }
       ]
     },
@@ -705,11 +705,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_ab",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Composite/unit_a1.jpg"
+          "url": "class_images/Wales/Generic/Composite/unit_a1.jpg"
         },
         {
           "name": "Unit_ab",
-          "url": "/home/vega/dev/marine/LegacyMan/target/class_images/Wales/Generic/Composite/unit_a2.jpeg"
+          "url": "class_images/Wales/Generic/Composite/unit_a2.jpeg"
         }
       ]
     },
@@ -1533,82 +1533,28 @@ var publicationJsonData={
   ],
   "flags": [
     {
-      "country": {
-        "id": 3,
-        "country": "Narnia",
-        "region": {
-          "id": 2,
-          "region": "Europe",
-          "url": "data/PlatformData/Europe.html"
-        },
-        "url": "data/Narnia/Narnia1.html"
-      },
-      "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/Narnia.jpg"
+      "country_id": 3,
+      "url": "flags/Narnia.jpg"
     },
     {
-      "country": {
-        "id": 5,
-        "country": "France",
-        "region": {
-          "id": 2,
-          "region": "Europe",
-          "url": "data/PlatformData/Europe.html"
-        },
-        "url": "data/France/France1.html"
-      },
-      "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/France.jpg"
+      "country_id": 5,
+      "url": "flags/France.jpg"
     },
     {
-      "country": {
-        "id": 6,
-        "country": "Spain",
-        "region": {
-          "id": 2,
-          "region": "Europe",
-          "url": "data/PlatformData/Europe.html"
-        },
-        "url": "data/Spain1/Spain.html"
-      },
-      "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/Spain.jpg"
+      "country_id": 6,
+      "url": "flags/Spain.jpg"
     },
     {
-      "country": {
-        "id": 1,
-        "country": "Britain",
-        "region": {
-          "id": "SPL",
-          "region": "Britain",
-          "url": null
-        },
-        "url": "data/Britain/Britain1.html"
-      },
-      "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/Britain.jpg"
+      "country_id": 1,
+      "url": "flags/Britain.jpg"
     },
     {
-      "country": {
-        "id": 2,
-        "country": "Iceland",
-        "region": {
-          "id": "SPL",
-          "region": "Iceland",
-          "url": null
-        },
-        "url": "data/Iceland/Iceland1.html"
-      },
-      "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/Iceland.png"
+      "country_id": 2,
+      "url": "flags/Iceland.png"
     },
     {
-      "country": {
-        "id": 4,
-        "country": "Wales",
-        "region": {
-          "id": 2,
-          "region": "Europe",
-          "url": "data/PlatformData/Europe.html"
-        },
-        "url": "data/Wales/Wales1.html"
-      },
-      "file_location": "/home/vega/dev/marine/LegacyMan/target/flags/Wales.jpg"
+      "country_id": 4,
+      "url": "flags/Wales.jpg"
     }
   ],
   "class_images": []
