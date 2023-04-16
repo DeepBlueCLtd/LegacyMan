@@ -71,7 +71,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
                  "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": parsed_class_images}
 
     # Dump the wrapper to the text file passed as argument
-    with open(EXPORT_FILE, 'r+') as f:
+    with open(EXPORT_FILE, 'w') as f:
         print("\n\n\nJson file: {}".format(EXPORT_FILE))
         f.truncate(0)
         print("Cleared existing contents.")
