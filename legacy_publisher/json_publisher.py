@@ -45,9 +45,15 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     # Extract classes
     classes = []
     for class_u in parsed_classes:
+        image_array_react_image_gallery = []
+        image_array_filtered_list = list(filter(lambda a: a.class_u.id == class_u.id, parsed_class_images))
+        if image_array_filtered_list:
+            image_urls_array = image_array_filtered_list[0].class_images
+            image_array_react_image_gallery = list(
+                map(lambda b: {"name": class_u.class_u, "url": b.split('target')[1][1:]}, image_urls_array))
         classes.append(
             ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
-                   None, None, None, None, None, None, None))
+                   None, None, None, None, None, None, None, image_array_react_image_gallery))
 
     # Extract tonal types
     tonal_types = []
@@ -65,13 +71,18 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
                   tonal.harmonics, tonal.remarks, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1],
                   None, None, None))
 
+    def url_cleanser(flag_element):
+        url = flag_element.file_location.split('target')[1][1:] if flag_element.file_location is not None else None
+        return {"country_id": flag_element.country.id, "url": url}
+
+    cleansed_flags = list(map(url_cleanser, parsed_flags))
     json_data = {"platform_types": [platform_type], "platform_sub_types": platform_sub_types, "regions": regions,
                  "countries": countries, "propulsion_types": [propulsion_type], "units": classes,
                  "tonal_sources": tonal_sources, "tonal_types": tonal_types, "tonals": tonals,
-                 "abbreviations": parsed_abbreviations, "flags": parsed_flags, "class_images": parsed_class_images}
+                 "abbreviations": parsed_abbreviations, "flags": cleansed_flags, "class_images": []}
 
     # Dump the wrapper to the text file passed as argument
-    with open(EXPORT_FILE, 'r+') as f:
+    with open(EXPORT_FILE, 'w') as f:
         print("\n\n\nJson file: {}".format(EXPORT_FILE))
         f.truncate(0)
         print("Cleared existing contents.")
