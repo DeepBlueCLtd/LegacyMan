@@ -7,6 +7,41 @@ from legacyman_parser.utils.class_html_template import ClassU
 
 
 class ClassParser:
+    """A generic parser class that contains methods and state attributes to handle parsing of classes for
+    Standard and non-Standard countries.
+
+    Here non-Standard countries are the ones which have a welcome page that breaks the platforms down by type,
+    each referencing to its own HTML page.
+    They are mostly found at the same level as "Region", and some instances of also occur within "Region"
+
+    Standard countries are the ones which list all the sub-categories and corresponding  classes in the
+    same HTML page. They are always found only within a "Region"
+
+
+
+
+    Attributes:
+
+    CLASS_COLLECTION                     An array that captures all the classes parsed by this instance of ClassParser
+                                         Used to generate publication data
+    SUBTYPE_COLLECTION                   Contains a global collection of SubCategory type id and names.
+                                         Passed as constructor argument, and used to generate publication data
+    NON_STANDARD_COUNTRY                 List of HTML pages parsed by this instance of ClassParser where no table rows
+                                         were found but were expected. The "NON_STANDARD" in this attribute does not
+                                         have anything to do with the non-Standard countries described earlier in the
+                                         doc string. Used for discrepancy reporting.
+    TOO_FEW_PROPERTIES                   List of HTML pages parsed by this instance of ClassParser where one or more
+                                         class row has fewer property columns than expected. Used for discrepancy reporting.
+    CLASS_FOUND_FOR_COUNTRY              Used for assert operations, this dict marks a country immediately once it's
+                                         able to parse one class for this country. The assumption is that countries
+                                         have at least one class.
+    _class_table_header_is_identified    A state variable which marks the current header in the table being processed
+                                         currently by this instance of ClassParser
+    _current_subtype_id                  A state variable which marks the current sub category in the table being processed
+                                         currently by this instance of ClassParser
+    classRowExtractor                    Instance of MergedRowsExtractor to process merged rows
+    seq                                  Id to be assigned to the next class parsed. Passed as constructor argument.
+    """
 
     def __init__(self, seq_start, sub_type_maps):
         self.CLASS_COLLECTION = []
