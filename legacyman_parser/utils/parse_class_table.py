@@ -260,6 +260,8 @@ class ClassParser:
         combination_key = country.country.lower()+"|"+current_subtype[0].lower()+"|"+class_name.lower()
         if combination_key in userland_dict["ucc_comb_discrepancy_collection"]:
             userland_dict["ucc_comb_discrepancy_collection"][combination_key].append(parsed_url)
+        else:
+            userland_dict["ucc_comb_discrepancy_collection"][combination_key] = [parsed_url]
 
     @ staticmethod
     def does_have_a_link(table_data: PageElement):

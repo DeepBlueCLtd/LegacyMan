@@ -18,7 +18,6 @@ from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
-from legacyman_parser.utils.discrepancy_watcher import country_category_unit_combination_watcher
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
@@ -124,8 +123,6 @@ def parse_from_root():
         NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
     watched_unit_category_country_combination_discrepancy_collector = {}
-    for ucc_combination in country_category_unit_combination_watcher:
-        watched_unit_category_country_combination_discrepancy_collector[ucc_combination] = []
     print("\n\nParsing Classes:")
     standard_class_parser = ClassParser(0, {})
     for country in COUNTRY_COLLECTION:
@@ -295,13 +292,10 @@ def parse_from_root():
         print("InvalidAssumption: Classes are unique for a given country and sub category")
         print("The following combinations have more than 1 items")
         for item in max_class_for_given_country_subcat:
-            print("   Combination: {}, Count = {}"
+            print("   Combination: {}, Count = {}, Referenced from {}"
                   .format(item[0],
-                          item[1]))
-        print("==")
-        print("Printing logs for watched combinations")
-        for combination, files in watched_unit_category_country_combination_discrepancy_collector.items():
-            print("Combination {} found in the following list of files: {}".format(combination, files))
+                          item[1],
+                          watched_unit_category_country_combination_discrepancy_collector[item[0]]))
 
     if test_payload_json is not None:
         print("\n\nTest results:")
