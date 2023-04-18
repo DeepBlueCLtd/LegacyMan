@@ -102,7 +102,7 @@ class ClassParser:
 
             for row in rows[1:]:
                 self.process_class_row(
-                    row, userland_dict['country'], parsed_url)
+                    row, userland_dict['country'], parsed_url, userland_dict)
             else:
                 self.NON_STANDARD_COUNTRY.append(parsed_url)
             assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with its first column header as text Class (case sensitive) => {}".format(
@@ -126,7 +126,7 @@ class ClassParser:
                 parsed_url, len(table_list))
             for row in table_list[0].find_all('tr'):
                 self.process_class_row(
-                    row, userland_dict['country'], parsed_url)
+                    row, userland_dict['country'], parsed_url, userland_dict)
         else:
             self.NON_STANDARD_COUNTRY.append(parsed_url)
         assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have " \
@@ -138,7 +138,7 @@ class ClassParser:
                                                         "have at least one class. => {}" \
             .format(userland_dict['country'], parsed_url)
 
-    def process_class_row(self, row: PageElement, country: dict, parsed_url: str):
+    def process_class_row(self, row: PageElement, country: dict, parsed_url: str, userland_dict: dict):
         """Check if not _class_table_header_is_identified"""
         if not self._class_table_header_is_identified:
             """See if this is the header, and set
@@ -161,7 +161,7 @@ class ClassParser:
             return
         # Extract information and map against _current_subtype_id
         self.create_new_class_with_extracted_subcategory(
-            row, country, self._current_subtype_id, parsed_url)
+            row, country, self._current_subtype_id, parsed_url, userland_dict)
 
     def identify_or_create_sub_type_id(self, sub_type_str: str):
         sub_type = sub_type_str.replace('/', '-')
@@ -232,7 +232,7 @@ class ClassParser:
         return False
 
     def create_new_class_with_extracted_subcategory(self, row: PageElement, country: dict, current_subtype: str,
-                                                    parsed_url: str):
+                                                    parsed_url: str, userland_dict: dict):
         columns = row.find_all('td')
         tonal_href = None
         has_link = self.does_have_a_link(columns[0])
@@ -257,6 +257,11 @@ class ClassParser:
                                             has_link,
                                             tonal_href))
         self.CLASS_FOUND_FOR_COUNTRY[country] = True
+        combination_key = country.country.lower()+"|"+current_subtype[0].lower()+"|"+class_name.lower()
+        if combination_key in userland_dict["ucc_comb_discrepancy_collection"]:
+            userland_dict["ucc_comb_discrepancy_collection"][combination_key].append(parsed_url)
+        else:
+            userland_dict["ucc_comb_discrepancy_collection"][combination_key] = [parsed_url]
 
     @ staticmethod
     def does_have_a_link(table_data: PageElement):

@@ -100,9 +100,9 @@ def parse_from_root():
     sorted_list_of_countries = sorted(
         list(map(lambda a: a.country.upper(), COUNTRY_COLLECTION)))
     assert len(sorted_list_of_countries) \
-        == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive " \
-        "country names are unique. The list " \
-        "{} has duplicates.".format(
+           == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive " \
+                                                  "country names are unique. The list " \
+                                                  "{} has duplicates.".format(
         sorted_list_of_countries)
 
     # Extract non-standard countries within region
@@ -122,6 +122,7 @@ def parse_from_root():
         COUNTRY_COLLECTION.remove(nsv)
         NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
+    watched_unit_category_country_combination_discrepancy_collector = {}
     print("\n\nParsing Classes:")
     standard_class_parser = ClassParser(0, {})
     for country in COUNTRY_COLLECTION:
@@ -132,7 +133,8 @@ def parse_from_root():
             continue
         class_row_extractor = MergedRowsExtractor(7)
         country_dict = {"country": country,
-                        "class_extractor": class_row_extractor}
+                        "class_extractor": class_row_extractor,
+                        "ucc_comb_discrepancy_collection": watched_unit_category_country_combination_discrepancy_collector}
         country_spidey_to_extract_classes = SimpleCrawler(url=country.url,
                                                           disable_crawler_log=True,
                                                           userland_dict=country_dict)
@@ -160,7 +162,8 @@ def parse_from_root():
         ns_class_row_extractor = MergedRowsExtractor(7)
         ns_country_dict = {"country": ns_country,
                            "class_extractor": ns_class_row_extractor,
-                           "ns_class_parser": ns_class_parser}
+                           "ns_class_parser": ns_class_parser,
+                           "ucc_comb_discrepancy_collection": watched_unit_category_country_combination_discrepancy_collector}
         ns_country_spidey_to_extract_classes = SimpleCrawler(url=ns_country.url,
                                                              disable_crawler_log=True,
                                                              userland_dict=ns_country_dict)
@@ -265,7 +268,7 @@ def parse_from_root():
     published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
                                             parsed_countries=COUNTRY_COLLECTION + NON_STANDARD_COUNTRY_COLLECTION,
                                             parsed_classes=standard_class_parser.CLASS_COLLECTION +
-                                            ns_class_parser.CLASS_COLLECTION,
+                                                           ns_class_parser.CLASS_COLLECTION,
                                             parsed_tonals=TONAL_COLLECTION,
                                             parsed_subtypes=ns_class_parser.SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
@@ -276,15 +279,23 @@ def parse_from_root():
 
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category
-    # count_extractor = lambda grouped_values: len(list(grouped_values[1]))
-    # max_class_for_given_country_subcat = sorted(list(map(lambda a: (a[0], len(list(a[1]))), itertools.groupby(sorted(
-    #     list(map(lambda a: a.country.country + "|" + a.sub_category[0] + "|" + a.class_u,
-    #              standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION))), lambda a: a))), key=lambda a: a[1], reverse=True)[0]
-    # assert 1 == max_class_for_given_country_subcat[1], "InvalidAssumption: " \
-    #                                                    "Classes are unique for a given " \
-    #                                                    "country and sub category => {} has {} units" \
-    #     .format(max_class_for_given_country_subcat[0],
-    #             max_class_for_given_country_subcat[1])
+    max_class_for_given_country_subcat = list(filter(lambda a: a[1] > 1, list(map(lambda a: (a[0], len(list(a[1]))),
+                                                                                  itertools.groupby(sorted(
+                                                                                      list(map(lambda a: (
+                                                                                              a.country.country + "|" +
+                                                                                              a.sub_category[
+                                                                                                  0] + "|" + a.class_u).lower(),
+                                                                                               standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION))),
+                                                                                      lambda a: a)))))
+    if max_class_for_given_country_subcat:
+        print("====")
+        print("InvalidAssumption: Classes are unique for a given country and sub category")
+        print("The following combinations have more than 1 items")
+        for item in max_class_for_given_country_subcat:
+            print("   Combination: {}, Count = {}, Referenced from {}"
+                  .format(item[0],
+                          item[1],
+                          watched_unit_category_country_combination_discrepancy_collector[item[0]]))
 
     if test_payload_json is not None:
         print("\n\nTest results:")
