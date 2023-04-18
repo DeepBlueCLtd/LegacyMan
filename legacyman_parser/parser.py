@@ -18,6 +18,7 @@ from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
+from legacyman_parser.utils.discrepancy_watcher import country_category_unit_combination_watcher
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
@@ -100,9 +101,9 @@ def parse_from_root():
     sorted_list_of_countries = sorted(
         list(map(lambda a: a.country.upper(), COUNTRY_COLLECTION)))
     assert len(sorted_list_of_countries) \
-        == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive " \
-        "country names are unique. The list " \
-        "{} has duplicates.".format(
+           == len(set(sorted_list_of_countries)), "InvalidAssumption: Case-insensitive " \
+                                                  "country names are unique. The list " \
+                                                  "{} has duplicates.".format(
         sorted_list_of_countries)
 
     # Extract non-standard countries within region
@@ -122,6 +123,9 @@ def parse_from_root():
         COUNTRY_COLLECTION.remove(nsv)
         NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
+    watched_unit_category_country_combination_discrepancy_collector = {}
+    for ucc_combination in country_category_unit_combination_watcher:
+        watched_unit_category_country_combination_discrepancy_collector[ucc_combination] = []
     print("\n\nParsing Classes:")
     standard_class_parser = ClassParser(0, {})
     for country in COUNTRY_COLLECTION:
@@ -132,7 +136,8 @@ def parse_from_root():
             continue
         class_row_extractor = MergedRowsExtractor(7)
         country_dict = {"country": country,
-                        "class_extractor": class_row_extractor}
+                        "class_extractor": class_row_extractor,
+                        "ucc_comb_discrepancy_collection": watched_unit_category_country_combination_discrepancy_collector}
         country_spidey_to_extract_classes = SimpleCrawler(url=country.url,
                                                           disable_crawler_log=True,
                                                           userland_dict=country_dict)
@@ -160,7 +165,8 @@ def parse_from_root():
         ns_class_row_extractor = MergedRowsExtractor(7)
         ns_country_dict = {"country": ns_country,
                            "class_extractor": ns_class_row_extractor,
-                           "ns_class_parser": ns_class_parser}
+                           "ns_class_parser": ns_class_parser,
+                           "ucc_comb_discrepancy_collection": watched_unit_category_country_combination_discrepancy_collector}
         ns_country_spidey_to_extract_classes = SimpleCrawler(url=ns_country.url,
                                                              disable_crawler_log=True,
                                                              userland_dict=ns_country_dict)
@@ -265,7 +271,7 @@ def parse_from_root():
     published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
                                             parsed_countries=COUNTRY_COLLECTION + NON_STANDARD_COUNTRY_COLLECTION,
                                             parsed_classes=standard_class_parser.CLASS_COLLECTION +
-                                            ns_class_parser.CLASS_COLLECTION,
+                                                           ns_class_parser.CLASS_COLLECTION,
                                             parsed_tonals=TONAL_COLLECTION,
                                             parsed_subtypes=ns_class_parser.SUBTYPE_COLLECTION,
                                             parsed_tonal_types=TONAL_TYPE_COLLECTION,
@@ -276,16 +282,26 @@ def parse_from_root():
 
     # Assert assumptions on extracted data
     # Data assumption 1: Classes are unique for a given country and sub category
-    max_class_for_given_country_subcat = sorted(list(map(lambda a: (a[0], len(list(a[1]))), itertools.groupby(sorted(
-        list(map(lambda a: (a.country.country + "|" + a.sub_category[0] + "|" + a.class_u).lower(),
-                 standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION))), lambda a: a))),
-                                                key=lambda a: a[1], reverse=True)[0]
-    if max_class_for_given_country_subcat[1] > 1:
-        print("InvalidAssumption: "
-              "Classes are unique for a given "
-              "country and sub category => {} has {} units"
-              .format(max_class_for_given_country_subcat[0],
-                      max_class_for_given_country_subcat[1]))
+    max_class_for_given_country_subcat = list(filter(lambda a: a[1] > 1, list(map(lambda a: (a[0], len(list(a[1]))),
+                                                                                  itertools.groupby(sorted(
+                                                                                      list(map(lambda a: (
+                                                                                              a.country.country + "|" +
+                                                                                              a.sub_category[
+                                                                                                  0] + "|" + a.class_u).lower(),
+                                                                                               standard_class_parser.CLASS_COLLECTION + ns_class_parser.CLASS_COLLECTION))),
+                                                                                      lambda a: a)))))
+    if max_class_for_given_country_subcat:
+        print("====")
+        print("InvalidAssumption: Classes are unique for a given country and sub category")
+        print("The following combinations have more than 1 items")
+        for item in max_class_for_given_country_subcat:
+            print("   Combination: {}, Count = {}"
+                  .format(item[0],
+                          item[1]))
+        print("==")
+        print("Printing logs for watched combinations")
+        for combination, files in watched_unit_category_country_combination_discrepancy_collector.items():
+            print("Combination {} found in the following list of files: {}".format(combination, files))
 
     if test_payload_json is not None:
         print("\n\nTest results:")
