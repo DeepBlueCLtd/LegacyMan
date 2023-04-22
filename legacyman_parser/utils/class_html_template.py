@@ -11,8 +11,7 @@ class ClassU:
                  av_temp,
                  reduction_ratio,
                  has_tonal,
-                 tonal_href,
-                 propulsion_href):
+                 tonal_href):
         self.id = id
         self.class_u = class_u
         self.sub_category = sub_category
@@ -25,7 +24,7 @@ class ClassU:
         self.reduction_ratio = reduction_ratio
         self.has_tonal = has_tonal
         self.tonal_href = tonal_href
-        self.propulsion_href = propulsion_href
+        self.propulsion_href = None
 
     def __str__(self):
         return "{} [{}] of {} is powered by {} " \
