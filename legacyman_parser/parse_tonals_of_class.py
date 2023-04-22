@@ -37,10 +37,12 @@ class Tonal:
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                             userland_dict: dict = None) -> []:
 
-    quicklink_tables = soup.find_all(id='QuickLinksTable')
     userland_dict['class'].propulsion_href = parsed_url
-    if quicklink_tables:
-        print("ASDFASDFASF: Quicklink tables found for {}".format(parsed_url))
+    quicklink_div = soup.find_all('div', id='QuickLinksTable')
+    if quicklink_div:
+        quicklink_tables = quicklink_div[0].find_all('table')
+        assert len(quicklink_tables) > 0, "InvalidAssumption: If quicklink div is found, there'll at least one " \
+                                          "QuickLink table ==> {}".format(parsed_url)
         # Assert: If quicklink table is found, there'll always be a reference to Propulsion
         # Assert: There'll be only one quicklink table
         # Extract and set the propulsion href from the table
