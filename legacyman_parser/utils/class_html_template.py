@@ -40,4 +40,6 @@ class ClassU:
                                                            self.reduction_ratio,
                                                            (". Tonal ==> " + self.tonal_href) if
                                                            self.has_tonal else "",
-                                                           ". Propulsion href ==> " + self.propulsion_href)
+                                                           (". Propulsion href ==> " + self.propulsion_href) if
+                                                           self.propulsion_href else ""
+                                                           )

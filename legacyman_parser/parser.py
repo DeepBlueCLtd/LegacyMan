@@ -192,8 +192,11 @@ def parse_from_root():
                            crawl_recursively=False)
         tonal_spidey.crawl(resource_processor_callback=extract_class_images,
                            crawl_recursively=False)
-        tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
-                           crawl_recursively=False)
+        propulsion_spidey = SimpleCrawler(url=class_dict['class'].propulsion_href,
+                                          disable_crawler_log=True,
+                                          userland_dict=class_dict)
+        propulsion_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                                crawl_recursively=False)
     standard_tonals = len(TONAL_COLLECTION)
     standard_class_images = sum(
         list(map(lambda a: len(a.class_images), CLASS_IMAGES_COLLECTION)))
@@ -215,8 +218,11 @@ def parse_from_root():
                                     crawl_recursively=False)
         ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_images,
                                     crawl_recursively=False)
-        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
-                                    crawl_recursively=False)
+        ns_class_propulsion_spidey = SimpleCrawler(url=ns_class_with_tonals.propulsion_href,
+                                                   disable_crawler_log=True,
+                                                   userland_dict=class_dict)
+        ns_class_propulsion_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                                         crawl_recursively=False)
     ns_class_images = sum(list(map(lambda a: len(
         a.class_images), CLASS_IMAGES_COLLECTION))) - standard_class_images
     print("Done. Parsed {} tonals and {} class images from {} "
