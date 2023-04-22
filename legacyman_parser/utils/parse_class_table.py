@@ -290,7 +290,8 @@ class ClassParser:
                                             temp,
                                             rr,
                                             has_link,
-                                            tonal_href))
+                                            tonal_href,
+                                            None))
         self.CLASS_FOUND_FOR_COUNTRY[country] = True
         combination_key = country.country.lower()+"|"+current_subtype[0].lower()+"|"+class_name.lower()
         if combination_key in userland_dict["ucc_comb_discrepancy_collection"]:
