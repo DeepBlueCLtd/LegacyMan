@@ -219,3 +219,19 @@ def tally_tonal_counts_for_standard_and_non_standard_classes(published_json, tes
                       len(published_json['tonals'])))
         return False
     return True
+
+
+def check_for_presence_of_class_attributes_from_split_tonal_page(published_json, test_payload):
+    """test for issue #150
+    This is to check attributes of class updated from split tonals page
+    """
+    for unit_payload in test_payload:
+        classes = list(filter(lambda a: unit_payload['attr_val_contains'] in getattr(a, unit_payload['attr']), published_json['units']))
+        if unit_payload['count'] != len(classes):
+            print('Error: Could not find {} classes with {} attribute containing text {}'.format(
+                unit_payload['count'],
+                unit_payload['attr'],
+                unit_payload['attr_val_contains']
+            ))
+            return False
+    return True
