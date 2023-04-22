@@ -34,6 +34,10 @@ class Tonal:
                                                          self.remarks)
 
 
+def find_propulsion_tag(tag):
+    return tag.name == 'td' and "propulsion" in tag.text.lower()
+
+
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                             userland_dict: dict = None) -> []:
 
@@ -44,6 +48,10 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
         assert len(quicklink_tables) > 0, "InvalidAssumption: If quicklink div is found, there'll at least one " \
                                           "QuickLink table ==> {}".format(parsed_url)
         # Assert: If quicklink table is found, there'll always be a reference to Propulsion
+        propulsion_rows = quicklink_tables[0].find_all(find_propulsion_tag)
+        assert len(propulsion_rows) > 0, "InvalidAssumption: If quicklink table is found, there'll at least one " \
+                                         "cell to indicate Propulsion ==> {}".format(parsed_url)
+        print(propulsion_rows)
         # Assert: There'll be only one quicklink table
         # Extract and set the propulsion href from the table
         userland_dict['class'].propulsion_href = parsed_url
