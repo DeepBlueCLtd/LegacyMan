@@ -1,3 +1,5 @@
+from urllib.parse import urljoin
+
 from bs4 import BeautifulSoup, PageElement
 
 """Independent testable parse_tonals module
@@ -47,14 +49,12 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
         quicklink_tables = quicklink_div[0].find_all('table')
         assert len(quicklink_tables) > 0, "InvalidAssumption: If quicklink div is found, there'll at least one " \
                                           "QuickLink table ==> {}".format(parsed_url)
-        # Assert: If quicklink table is found, there'll always be a reference to Propulsion
         propulsion_rows = quicklink_tables[0].find_all(find_propulsion_tag)
         assert len(propulsion_rows) > 0, "InvalidAssumption: If quicklink table is found, there'll at least one " \
                                          "cell to indicate Propulsion ==> {}".format(parsed_url)
-        print(propulsion_rows)
-        # Assert: There'll be only one quicklink table
+        propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')['href']).split("#")[0]
         # Extract and set the propulsion href from the table
-        userland_dict['class'].propulsion_href = parsed_url
+        userland_dict['class'].propulsion_href = propulsion_href
 
     global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
