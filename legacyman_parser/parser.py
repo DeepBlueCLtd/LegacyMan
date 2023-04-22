@@ -245,9 +245,9 @@ def parse_from_root():
                 invalid_country_href["url"],
                 invalid_country_href["country"]))
 
-    if standard_class_parser.NON_STANDARD_COUNTRY:
+    if standard_class_parser.COUNTRIES_WITHOUT_CLASS_TABLE:
         print("\n\nDiscrepancy: Below urls contain non-standard countries where classes couldn't be identified\n")
-        for non_standard_countries in standard_class_parser.NON_STANDARD_COUNTRY:
+        for non_standard_countries in standard_class_parser.COUNTRIES_WITHOUT_CLASS_TABLE:
             print("    " + non_standard_countries)
 
     if standard_class_parser.TOO_FEW_PROPERTIES:

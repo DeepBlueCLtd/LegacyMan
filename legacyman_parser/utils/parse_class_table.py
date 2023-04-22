@@ -26,7 +26,7 @@ class ClassParser:
                                          Used to generate publication data
     SUBTYPE_COLLECTION                   Contains a global collection of SubCategory type id and names.
                                          Passed as constructor argument, and used to generate publication data
-    NON_STANDARD_COUNTRY                 List of HTML pages parsed by this instance of ClassParser where no table rows
+    COUNTRIES_WITHOUT_CLASS_TABLE        List of HTML pages parsed by this instance of ClassParser where no table rows
                                          were found but were expected. The "NON_STANDARD" in this attribute does not
                                          have anything to do with the non-Standard countries described earlier in the
                                          doc string. Used for discrepancy reporting.
@@ -46,7 +46,7 @@ class ClassParser:
     def __init__(self, seq_start, sub_type_maps):
         self.CLASS_COLLECTION = []
         self.SUBTYPE_COLLECTION = sub_type_maps
-        self.NON_STANDARD_COUNTRY = []
+        self.COUNTRIES_WITHOUT_CLASS_TABLE = []
         self.TOO_FEW_PROPERTIES = []
         self.CLASS_FOUND_FOR_COUNTRY = {}
         self._class_table_header_is_identified = False
@@ -139,7 +139,7 @@ class ClassParser:
                 self.process_class_row(
                     row, userland_dict['country'], parsed_url, userland_dict)
             else:
-                self.NON_STANDARD_COUNTRY.append(parsed_url)
+                self.COUNTRIES_WITHOUT_CLASS_TABLE.append(parsed_url)
             assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have table header with its first column header as text Class (case sensitive) => {}".format(
                 parsed_url)
             assert self.CLASS_FOUND_FOR_COUNTRY.get(userland_dict['country'],
@@ -163,7 +163,7 @@ class ClassParser:
                 self.process_class_row(
                     row, userland_dict['country'], parsed_url, userland_dict)
         else:
-            self.NON_STANDARD_COUNTRY.append(parsed_url)
+            self.COUNTRIES_WITHOUT_CLASS_TABLE.append(parsed_url)
         assert self._class_table_header_is_identified, "InvalidAssumption: Class Table will mandatorily have " \
                                                        "table header with its first column header as text " \
                                                        "Class (case sensitive) => {}".format(
