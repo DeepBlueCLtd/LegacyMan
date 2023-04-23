@@ -54,7 +54,8 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
                                          "cell to indicate Propulsion ==> {}".format(parsed_url)
         propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')['href']).split("#")[0]
         # Extract and set the propulsion href from the table
-        userland_dict['class'].propulsion_href = propulsion_href
+        if propulsion_href != parsed_url:
+            userland_dict['class'].propulsion_href = propulsion_href
 
     global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
