@@ -24,7 +24,7 @@ def open_file(url):
         response = Response(status_code, reason)
     if response.status_code == 200:
         if response.text is None:
-            with open(url, 'rb') as f:
+            with open(url, 'r') as f:
                 content = f.read()
                 response.text = set_and_return_html_cache(url, content)
     return response
