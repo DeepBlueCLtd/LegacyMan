@@ -273,6 +273,7 @@ def parse_from_root():
 
     if DIAGNOSTICS_FOR_SPLIT_TONALS:
         print("\n\nDiagnostics: Tonal pages with Propulsion in a different page\n")
+        print("    There are a total of {} split references\n".format(len(DIAGNOSTICS_FOR_SPLIT_TONALS)))
         for tonal_page, propulsion_href in DIAGNOSTICS_FOR_SPLIT_TONALS.items():
             print("    ", tonal_page, " ==> ", propulsion_href)
 
