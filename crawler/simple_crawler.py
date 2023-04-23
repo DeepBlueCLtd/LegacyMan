@@ -5,6 +5,8 @@ from urllib.parse import urlparse, urljoin
 
 from bs4 import BeautifulSoup
 
+from legacyman_parser.utils.html_cacher import check_if_html_cached, get_html_cache, set_and_return_html_cache
+
 
 class Response:
     def __init__(self, status_code, reason):
@@ -14,11 +16,17 @@ class Response:
 
 
 def open_file(url):
-    status_code, reason = check_path(url)
-    response = Response(status_code, reason)
+    if check_if_html_cached(url):
+        response = Response(200, 'OK')
+        response.text = get_html_cache(url)
+    else:
+        status_code, reason = check_path(url)
+        response = Response(status_code, reason)
     if response.status_code == 200:
-        with open(url, 'rb') as f:
-            response.text = f.read()
+        if response.text is None:
+            with open(url, 'rb') as f:
+                content = f.read()
+                response.text = set_and_return_html_cache(url, content)
     return response
 
 
