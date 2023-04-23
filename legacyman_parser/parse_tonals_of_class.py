@@ -12,6 +12,7 @@ TONAL_SOURCE_COLLECTION = {}
 TONAL_TABLE_NOT_FOUND = []
 TONAL_HEADER_NOT_FOUND = []
 TONAL_FOUND_FOR_CLASS = {}
+DIAGNOSTICS_FOR_SPLIT_TONALS = {}
 
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
@@ -56,6 +57,7 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
         # Extract and set the propulsion href from the table
         if propulsion_href != parsed_url:
             userland_dict['class'].propulsion_href = propulsion_href
+            DIAGNOSTICS_FOR_SPLIT_TONALS[parsed_url] = propulsion_href
 
     global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
