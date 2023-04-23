@@ -16,7 +16,7 @@ from legacyman_parser.parse_non_standard_countries import extract_non_standard_c
     NON_STANDARD_COUNTRY_COLLECTION
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
-    TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND
+    TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND, DIAGNOSTICS_FOR_SPLIT_TONALS
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
@@ -192,8 +192,11 @@ def parse_from_root():
                            crawl_recursively=False)
         tonal_spidey.crawl(resource_processor_callback=extract_class_images,
                            crawl_recursively=False)
-        tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
-                           crawl_recursively=False)
+        propulsion_spidey = SimpleCrawler(url=class_dict['class'].propulsion_href,
+                                          disable_crawler_log=True,
+                                          userland_dict=class_dict)
+        propulsion_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                                crawl_recursively=False)
     standard_tonals = len(TONAL_COLLECTION)
     standard_class_images = sum(
         list(map(lambda a: len(a.class_images), CLASS_IMAGES_COLLECTION)))
@@ -215,8 +218,11 @@ def parse_from_root():
                                     crawl_recursively=False)
         ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_images,
                                     crawl_recursively=False)
-        ns_class_tonal_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
-                                    crawl_recursively=False)
+        ns_class_propulsion_spidey = SimpleCrawler(url=ns_class_with_tonals.propulsion_href,
+                                                   disable_crawler_log=True,
+                                                   userland_dict=class_dict)
+        ns_class_propulsion_spidey.crawl(resource_processor_callback=extract_class_attributes_from_tonals_page,
+                                         crawl_recursively=False)
     ns_class_images = sum(list(map(lambda a: len(
         a.class_images), CLASS_IMAGES_COLLECTION))) - standard_class_images
     print("Done. Parsed {} tonals and {} class images from {} "
@@ -264,6 +270,12 @@ def parse_from_root():
         print("\n\nDiscrepancy: Tonal table was not found in these urls\n")
         for no_tonal_table in TONAL_TABLE_NOT_FOUND:
             print("    " + no_tonal_table)
+
+    if DIAGNOSTICS_FOR_SPLIT_TONALS:
+        print("\n\nDiagnostics: Tonal pages with Propulsion in a different page\n")
+        print("    There are a total of {} split references\n".format(len(DIAGNOSTICS_FOR_SPLIT_TONALS)))
+        for tonal_page, propulsion_href in DIAGNOSTICS_FOR_SPLIT_TONALS.items():
+            print("    ", tonal_page, " ==> ", propulsion_href)
 
     published_json = json_publisher.publish(parsed_regions=REGION_COLLECTION,
                                             parsed_countries=COUNTRY_COLLECTION + NON_STANDARD_COUNTRY_COLLECTION,

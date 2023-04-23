@@ -1,4 +1,3 @@
-
 class ClassU:
     def __init__(self,
                  id,
@@ -25,17 +24,21 @@ class ClassU:
         self.reduction_ratio = reduction_ratio
         self.has_tonal = has_tonal
         self.tonal_href = tonal_href
+        self.propulsion_href = None
 
     def __str__(self):
         return "{} [{}] of {} is powered by {} " \
-               "and has {}, {}, {}, {}, and {}{}".format(self.class_u,
-                                                         self.sub_category,
-                                                         self.country,
-                                                         self.power,
-                                                         self.designator,
-                                                         self.shaft_blade,
-                                                         self.bhp,
-                                                         self.av_temp,
-                                                         self.reduction_ratio,
-                                                         (". Tonal ==> " + self.tonal_href) if
-                                                         self.has_tonal else "")
+               "and has {}, {}, {}, {}, and {}{}{}".format(self.class_u,
+                                                           self.sub_category,
+                                                           self.country,
+                                                           self.power,
+                                                           self.designator,
+                                                           self.shaft_blade,
+                                                           self.bhp,
+                                                           self.av_temp,
+                                                           self.reduction_ratio,
+                                                           (". Tonal ==> " + self.tonal_href) if
+                                                           self.has_tonal else "",
+                                                           (". Propulsion href ==> " + self.propulsion_href) if
+                                                           self.propulsion_href else ""
+                                                           )
