@@ -1,3 +1,5 @@
+from urllib.parse import urljoin
+
 from bs4 import BeautifulSoup, PageElement
 
 """Independent testable parse_tonals module
@@ -10,6 +12,7 @@ TONAL_SOURCE_COLLECTION = {}
 TONAL_TABLE_NOT_FOUND = []
 TONAL_HEADER_NOT_FOUND = []
 TONAL_FOUND_FOR_CLASS = {}
+DIAGNOSTICS_FOR_SPLIT_TONALS = {}
 
 _tonal_table_header_is_identified = False
 _current_tonal_type = None
@@ -34,8 +37,28 @@ class Tonal:
                                                          self.remarks)
 
 
+def find_propulsion_tag(tag):
+    return tag.name == 'td' and "propulsion" in tag.text.lower()
+
+
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                             userland_dict: dict = None) -> []:
+
+    userland_dict['class'].propulsion_href = parsed_url
+    quicklink_div = soup.find_all('div', id='QuickLinksTable')
+    if quicklink_div:
+        quicklink_tables = quicklink_div[0].find_all('table')
+        assert len(quicklink_tables) > 0, "InvalidAssumption: If quicklink div is found, there'll at least one " \
+                                          "QuickLink table ==> {}".format(parsed_url)
+        propulsion_rows = quicklink_tables[0].find_all(find_propulsion_tag)
+        assert len(propulsion_rows) > 0, "InvalidAssumption: If quicklink table is found, there'll at least one " \
+                                         "cell to indicate Propulsion ==> {}".format(parsed_url)
+        propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')['href']).split("#")[0]
+        # Extract and set the propulsion href from the table
+        if propulsion_href != parsed_url:
+            userland_dict['class'].propulsion_href = propulsion_href
+            DIAGNOSTICS_FOR_SPLIT_TONALS[parsed_url] = propulsion_href
+
     global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
     _current_tonal_type = None
