@@ -59,6 +59,9 @@ def extract_class_attributes_from_tonals_page(soup: BeautifulSoup = None, parsed
         propulsion_system_table_data = propulsion_system_table.find('td', text=html_key)
         if propulsion_system_table_data is not None:
             setattr(userland_dict['class'], class_attribute, propulsion_system_table_data.find_next('td').text.strip())
-    # Print attributes not found as per lookup
+        # Print attributes not found as per lookup
+        else:
+            print("TONAL ATTRIBUTE PARSE DISCREPANCY: {} not found as tonal attribute in {}".format(html_key, parsed_url))
     # TODO A generic attribute parser that can take an expression and assign
     #  (to handle cases where there are two values)
+    # TODO Find all mappings and replace None attributes (possibly as part of #100)
