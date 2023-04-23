@@ -46,12 +46,6 @@ def extract_class_attributes_from_tonals_page(soup: BeautifulSoup = None, parsed
                                                "Found {}".format(parsed_url, len(propulsion_system_tables))
 
     propulsion_system_table = propulsion_system_tables[0]
-    # Extracting class properties from tonals page
-    # userland_dict['class'].power = propulsion_system_table_data[2].text.strip()
-    # userland_dict['class'].shaft_blade = propulsion_system_table_data[4].text.strip()
-    # userland_dict['class'].bhp = propulsion_system_table_data[10].text.strip()
-    # userland_dict['class'].reduction_ratio = propulsion_system_table_data[12].text.strip()
-    # userland_dict['class'].av_temp = propulsion_system_table_data[14].text.strip()
     # Extract lookup values and assign to class
     for html_key, class_attribute in PROPULSION_ATTRIBUTES_HTML_PUB5_MAPPING.items():
         if class_attribute is None:
