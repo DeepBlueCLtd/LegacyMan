@@ -46,8 +46,6 @@ def extract_class_attributes_from_tonals_page(soup: BeautifulSoup = None, parsed
                                                "Found {}".format(parsed_url, len(propulsion_system_tables))
 
     propulsion_system_table = propulsion_system_tables[0]
-    assert len(propulsion_system_table) % 2 == 1, "InvalidAssumption: Propulsion table is in" \
-                                                  " Key, Value format, with header => {}".format(parsed_url)
     propulsion_system_table_data = propulsion_system_table.find_all('td')
     # Extracting class properties from tonals page
     userland_dict['class'].power = propulsion_system_table_data[2].text.strip()
