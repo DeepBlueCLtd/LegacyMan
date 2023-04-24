@@ -38,7 +38,10 @@ class Tonal:
 
 
 def find_propulsion_tag(tag):
-    return tag.name == 'td' and "propulsion" in tag.text.lower()
+    # note: in at least one class the QuickLinksTable includes a `propulsion calculator` link.
+    # we need to avoid returning cells like that.  But, we cannot check for
+    # precisely `propulsion` since valid instances do include other text
+    return tag.name == 'td' and "propulsion" in tag.text.lower() and not "calculator" in tag.text.lower()
 
 
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
@@ -49,11 +52,14 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
     if quicklink_div:
         quicklink_tables = quicklink_div[0].find_all('table')
         assert len(quicklink_tables) > 0, "InvalidAssumption: If quicklink div is found, there'll at least one " \
-                                          "QuickLink table ==> {}".format(parsed_url)
+                                          "QuickLink table ==> {}".format(
+                                              parsed_url)
         propulsion_rows = quicklink_tables[0].find_all(find_propulsion_tag)
         assert len(propulsion_rows) > 0, "InvalidAssumption: If quicklink table is found, there'll at least one " \
-                                         "cell to indicate Propulsion ==> {}".format(parsed_url)
-        propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')['href']).split("#")[0]
+                                         "cell to indicate Propulsion ==> {}".format(
+                                             parsed_url)
+        propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')[
+                                  'href']).split("#")[0]
         # Extract and set the propulsion href from the table
         if propulsion_href != parsed_url:
             userland_dict['class'].propulsion_href = propulsion_href
