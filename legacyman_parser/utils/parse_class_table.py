@@ -274,6 +274,10 @@ class ClassParser:
         if has_link:
             tonal_href = urljoin(
                 parsed_url, self.extract_tonal_href(columns[0]))
+            # strip fragment id from URL (when present), since when present we try to extract
+            # data from the URL, and it breaks if its just an anchor. Note: this code still
+            # works if a fragment id isn't present in the URL
+            tonal_href = tonal_href.split('#')[0]
         # Declare contents of a class
         class_name, designator, power, shaft, bhp, temp, rr = self.classRowExtractor.retrieve_row(
             columns)
@@ -292,11 +296,14 @@ class ClassParser:
                                             has_link,
                                             tonal_href))
         self.CLASS_FOUND_FOR_COUNTRY[country] = True
-        combination_key = country.country.lower()+"|"+current_subtype[0].lower()+"|"+class_name.lower()
+        combination_key = country.country.lower(
+        )+"|"+current_subtype[0].lower()+"|"+class_name.lower()
         if combination_key in userland_dict["ucc_comb_discrepancy_collection"]:
-            userland_dict["ucc_comb_discrepancy_collection"][combination_key].append(parsed_url)
+            userland_dict["ucc_comb_discrepancy_collection"][combination_key].append(
+                parsed_url)
         else:
-            userland_dict["ucc_comb_discrepancy_collection"][combination_key] = [parsed_url]
+            userland_dict["ucc_comb_discrepancy_collection"][combination_key] = [
+                parsed_url]
 
     @ staticmethod
     def does_have_a_link(table_data: PageElement):
