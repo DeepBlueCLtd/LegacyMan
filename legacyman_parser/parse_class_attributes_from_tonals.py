@@ -19,7 +19,7 @@ PROPULSION_ATTRIBUTES_HTML_PUB5_MAPPING = {
 }
 
 
-def max_four_column_table_filter_outside_quicklinks(tag):
+def table_leading_with_4_colspan(tag):
     first_row = tag.find('tr')
     first_cell = first_row.find('td')
     return first_cell and first_cell.get('colspan') == "4"
@@ -31,7 +31,7 @@ def extract_class_attributes_from_tonals_page(soup: BeautifulSoup = None, parsed
     all_tables = soup.find_all('table')
     #   There should be only maximum of 4 columns (<td>'s in <tr>) in the table
     propulsion_system_tables = list(
-        filter(max_four_column_table_filter_outside_quicklinks, all_tables))
+        filter(table_leading_with_4_colspan, all_tables))
     #   Assert that there's only such table
     if len(propulsion_system_tables) == 1:
         propulsion_system_table = propulsion_system_tables[0]
