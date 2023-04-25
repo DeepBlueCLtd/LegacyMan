@@ -1170,7 +1170,7 @@ var publicationJsonData={
       "source": 3,
       "ratio": 40.171,
       "harmonics": "H2, 4, 21, 145",
-      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "remarks": "\n            The quick brown fox does something similar\n            Tool screenshot aTool screenshot b\n",
       "country_id": 1,
       "platform_type_id": 1,
       "platform_sub_type_id": 5,
