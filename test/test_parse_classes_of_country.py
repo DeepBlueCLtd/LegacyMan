@@ -29,7 +29,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>Power</td>
                     <td>Shaft x Blade</td>
                     <td>Max Speed</td>
-                    <td>Av TPK</td>
+                    <td >Av TPK</td>
                     <td>Reduction Ratio</td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PB</td>
                     <td>2 * V8 Diesel</td>
                     <td>3 x 3</td>
-                    <td>13 Kts</td>
+                    <td>34 Kts</td>
                     <td>Unk</td>
                     <td>Unk</td>
                 </tr>
@@ -61,7 +61,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PBA</td>
                     <td rowspan="3">5 * V8 Diesel%TEST-85%</td>
                     <td>1 x 3</td>
-                    <td>300 Hz</td>
+                    <td>34 Kts</td>
                     <td>JR</td>
                     <td rowspan="2">Unk%TEST-85%</td>
                 </tr>
@@ -111,7 +111,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>Power</td>
                     <td>Shaft x Blade</td>
                     <td>Max Speed</td>
-                    <td>Av TPK</td>
+                    <td >Av TPK</td>
                     <td>Reduction Ratio</td>
                 </tr>
                 <tr>
@@ -122,7 +122,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PB</td>
                     <td>2 * V8 Diesel</td>
                     <td>3 x 3</td>
-                    <td>13 Kts</td>
+                    <td>34 Kts</td>
                     <td>Unk</td>
                     <td>Unk</td>
                 </tr>
@@ -151,7 +151,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>Power</td>
                     <td>Shaft x Blade</td>
                     <td>Max Speed</td>
-                    <td>Av TPK</td>
+                    <td >Av TPK</td>
                     <td>Reduction Ratio</td>
                 </tr>
                 <tr>
@@ -162,7 +162,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PB</td>
                     <td>2 * V8 Diesel</td>
                     <td>3 x 3</td>
-                    <td>13 Kts</td>
+                    <td>34 Kts</td>
                     <td>Unk</td>
                     <td>Unk</td>
                 </tr>
