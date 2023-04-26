@@ -13,7 +13,8 @@ def get_soup(html_input: str):
 class TestParseClassesOfCountry(unittest.TestCase):
     def test_extraction_of_merged_class_properties(self):
         class_row_extractor = MergedRowsExtractor(7)
-        country_dict = {"country": "country", "class_extractor": class_row_extractor}
+        country_dict = {"country": "country",
+                        "class_extractor": class_row_extractor}
         CLASS_COLLECTION.clear()
         soup = get_soup("""
 <div id="PageLayer">
@@ -27,8 +28,8 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>Designator</td>
                     <td>Power</td>
                     <td>Shaft x Blade</td>
-                    <td>BHP</td>
-                    <td>Av Temp</td>
+                    <td>Max Speed</td>
+                    <td>Av TPK</td>
                     <td>Reduction Ratio</td>
                 </tr>
                 <tr>
@@ -39,7 +40,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PB</td>
                     <td>2 * V8 Diesel</td>
                     <td>3 x 3</td>
-                    <td>34 Hz</td>
+                    <td>13 Kts</td>
                     <td>Unk</td>
                     <td>Unk</td>
                 </tr>
@@ -86,13 +87,16 @@ class TestParseClassesOfCountry(unittest.TestCase):
         print("\nExtract classes with merged properties 1 - There should be 5 classes: ", end="")
         self.assertEqual(len(CLASS_COLLECTION), 5)
         print("\nExtract classes with merged properties 1 - There should be 3 v8 diesel TEST 85: ", end="")
-        self.assertEqual(len(list(filter(lambda a: '%TEST-85%' in a.power, CLASS_COLLECTION))), 3)
+        self.assertEqual(
+            len(list(filter(lambda a: '%TEST-85%' in a.power, CLASS_COLLECTION))), 3)
         print("\nExtract classes with merged properties 1 - There should be 2 Unk%TEST-85%: ", end="")
-        self.assertEqual(len(list(filter(lambda a: '%TEST-85%' in a.reduction_ratio, CLASS_COLLECTION))), 2)
+        self.assertEqual(len(
+            list(filter(lambda a: '%TEST-85%' in a.reduction_ratio, CLASS_COLLECTION))), 2)
 
     def test_extraction_of_unmerged_class_properties(self):
         class_row_extractor = MergedRowsExtractor(7)
-        country_dict = {"country": "country", "class_extractor": class_row_extractor}
+        country_dict = {"country": "country",
+                        "class_extractor": class_row_extractor}
         CLASS_COLLECTION.clear()
         soup = get_soup("""
 <div id="PageLayer">
@@ -106,8 +110,8 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>Designator</td>
                     <td>Power</td>
                     <td>Shaft x Blade</td>
-                    <td>BHP</td>
-                    <td>Av Temp</td>
+                    <td>Max Speed</td>
+                    <td>Av TPK</td>
                     <td>Reduction Ratio</td>
                 </tr>
                 <tr>
@@ -118,7 +122,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PB</td>
                     <td>2 * V8 Diesel</td>
                     <td>3 x 3</td>
-                    <td>34 Hz</td>
+                    <td>13 Kts</td>
                     <td>Unk</td>
                     <td>Unk</td>
                 </tr>
@@ -131,7 +135,8 @@ class TestParseClassesOfCountry(unittest.TestCase):
 
     def test_extraction_of_classes_not_under_pagelayer(self):
         class_row_extractor = MergedRowsExtractor(7)
-        country_dict = {"country": "country", "class_extractor": class_row_extractor}
+        country_dict = {"country": "country",
+                        "class_extractor": class_row_extractor}
         CLASS_COLLECTION.clear()
         soup = get_soup("""
 <div id="dd">
@@ -145,8 +150,8 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>Designator</td>
                     <td>Power</td>
                     <td>Shaft x Blade</td>
-                    <td>BHP</td>
-                    <td>Av Temp</td>
+                    <td>Max Speed</td>
+                    <td>Av TPK</td>
                     <td>Reduction Ratio</td>
                 </tr>
                 <tr>
@@ -157,7 +162,7 @@ class TestParseClassesOfCountry(unittest.TestCase):
                     <td>PB</td>
                     <td>2 * V8 Diesel</td>
                     <td>3 x 3</td>
-                    <td>34 Hz</td>
+                    <td>13 Kts</td>
                     <td>Unk</td>
                     <td>Unk</td>
                 </tr>
