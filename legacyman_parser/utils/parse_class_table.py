@@ -284,7 +284,7 @@ class ClassParser:
 
         self.seq = self.seq + 1
         self.CLASS_COLLECTION.append(ClassU(self.seq,
-                                            class_name,
+                                            class_name.replace('\r', '').replace('\n', ''),
                                             current_subtype,
                                             country,
                                             designator,
