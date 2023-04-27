@@ -1,3 +1,4 @@
+import re
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, PageElement
@@ -44,26 +45,49 @@ def find_propulsion_tag(tag):
     return tag.name == 'td' and "propulsion" in tag.text.lower() and not "calculator" in tag.text.lower()
 
 
+def select_tables_with_valid_propulsion_data(table_tag):
+    table_data = table_tag.find_all('td')
+    if len(table_data) == 0:
+        return False
+    # Filter td with propulsion
+    propulsion_tds = list(filter(lambda a: "propulsion" in a.text.lower() and not "calculator" in a.text.lower(),
+                                 table_data))
+    if len(propulsion_tds) == 0:
+        return False
+    propulsion_tds_with_anchor = list(filter(lambda a: a.find('a') is not None, propulsion_tds))
+    if len(propulsion_tds_with_anchor) == 0:
+        return False
+    propulsion_td_anchors_with_href = list(filter(lambda a: a.find('a')['href'] is not None, propulsion_tds_with_anchor))
+    if len(propulsion_td_anchors_with_href) == 0:
+        return False
+    return True
+
+
+def identify_propulsion_href_if_applicable(soup, parsed_url):
+    propulsion_href = parsed_url
+    quicklink_divs = soup.find_all('div', id=re.compile("QuickLinksTable*"))
+    if len(quicklink_divs) == 0:
+        return propulsion_href
+    # Filter out divs without table
+    quicklink_tables = list(
+        map(lambda a: a.find('table'), list(filter(lambda a: a.find('table') is not None, quicklink_divs))))
+    # Filter out tables without "propulsion" td
+    propulsion_tables = list(filter(select_tables_with_valid_propulsion_data, quicklink_tables))
+    if propulsion_tables:
+        propulsion_rows = propulsion_tables[0].find_all(find_propulsion_tag)
+        propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')[
+            'href']).split("#")[0]
+    return propulsion_href
+
+
 def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, parent_url: str = None,
                             userland_dict: dict = None) -> []:
-
     userland_dict['class'].propulsion_href = parsed_url
-    quicklink_div = soup.find_all('div', id='QuickLinksTable')
-    if quicklink_div:
-        quicklink_tables = quicklink_div[0].find_all('table')
-        assert len(quicklink_tables) > 0, "InvalidAssumption: If quicklink div is found, there'll at least one " \
-                                          "QuickLink table ==> {}".format(
-                                              parsed_url)
-        propulsion_rows = quicklink_tables[0].find_all(find_propulsion_tag)
-        assert len(propulsion_rows) > 0, "InvalidAssumption: If quicklink table is found, there'll at least one " \
-                                         "cell to indicate Propulsion ==> {}".format(
-                                             parsed_url)
-        propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')[
-                                  'href']).split("#")[0]
-        # Extract and set the propulsion href from the table
-        if propulsion_href != parsed_url:
-            userland_dict['class'].propulsion_href = propulsion_href
-            DIAGNOSTICS_FOR_SPLIT_TONALS[parsed_url] = propulsion_href
+    propulsion_href = identify_propulsion_href_if_applicable(soup, parsed_url)
+    # Extract and set the propulsion href from the table
+    if propulsion_href != parsed_url:
+        userland_dict['class'].propulsion_href = propulsion_href
+        DIAGNOSTICS_FOR_SPLIT_TONALS[parsed_url] = propulsion_href
 
     global _tonal_table_header_is_identified, _current_tonal_type, tonalRowExtractor
     _tonal_table_header_is_identified = False
@@ -76,6 +100,7 @@ def extract_tonals_of_class(soup: BeautifulSoup = None, parsed_url: str = None, 
 
     def common_block(tag):
         return tag.find(string="Commonly Detected Sources", recursive=False)
+
     tonal_texts = list(filter(common_block, strong_blocks))
     if len(tonal_texts) == 1:
         tonal_text = tonal_texts[0]
