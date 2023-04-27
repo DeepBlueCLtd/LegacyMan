@@ -199,7 +199,7 @@ class ClassParser:
             row, country, self._current_subtype_id, parsed_url, userland_dict)
 
     def identify_or_create_sub_type_id(self, sub_type_str: str):
-        sub_type = sub_type_str.replace('/', '-')
+        sub_type = sub_type_str.replace('/', '-').replace('\r', '').replace('\n', '')
         if sub_type in self.SUBTYPE_COLLECTION:
             return sub_type, self.SUBTYPE_COLLECTION[sub_type]
         new_id = len(self.SUBTYPE_COLLECTION) + 1
