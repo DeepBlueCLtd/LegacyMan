@@ -54,10 +54,12 @@ def select_tables_with_valid_propulsion_data(table_tag):
                                  table_data))
     if len(propulsion_tds) == 0:
         return False
-    propulsion_tds_with_anchor = list(filter(lambda a: a.find('a') is not None, propulsion_tds))
+    propulsion_tds_with_anchor = list(
+        filter(lambda a: a.find('a') is not None, propulsion_tds))
     if len(propulsion_tds_with_anchor) == 0:
         return False
-    propulsion_td_anchors_with_href = list(filter(lambda a: a.find('a')['href'] is not None, propulsion_tds_with_anchor))
+    propulsion_td_anchors_with_href = list(
+        filter(lambda a: a.find('a')['href'] is not None, propulsion_tds_with_anchor))
     if len(propulsion_td_anchors_with_href) == 0:
         return False
     return True
@@ -72,7 +74,8 @@ def identify_propulsion_href_if_applicable(soup, parsed_url):
     quicklink_tables = list(
         map(lambda a: a.find('table'), list(filter(lambda a: a.find('table') is not None, quicklink_divs))))
     # Filter out tables without "propulsion" td
-    propulsion_tables = list(filter(select_tables_with_valid_propulsion_data, quicklink_tables))
+    propulsion_tables = list(
+        filter(select_tables_with_valid_propulsion_data, quicklink_tables))
     if propulsion_tables:
         propulsion_rows = propulsion_tables[0].find_all(find_propulsion_tag)
         propulsion_href = urljoin(parsed_url, propulsion_rows[0].find('a')[
@@ -172,7 +175,7 @@ def is_this_tonal_type_data(row: PageElement):
     """Identify the `Tonal-Type` header:
     first < tr > following tonal header will be the first `Tonal-Type` < tr >
     which might have optional < td > indicating the tonal-type,
-    say `Power Related` or `Auxiliary Sources` or `Transient Sources`.
+    say `Propulsion Related` or `Auxiliary Sources` or `Transient Sources`.
     It MAY also have < strong > attribute"""
     columns = row.find_all('td')
     if len(columns) <= 1:

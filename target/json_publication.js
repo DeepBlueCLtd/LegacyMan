@@ -798,7 +798,7 @@ var publicationJsonData={
   "tonal_types": [
     {
       "id": 1,
-      "name": "Power Related"
+      "name": "Propulsion Related"
     },
     {
       "id": 2,
