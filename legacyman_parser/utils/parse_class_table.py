@@ -1,3 +1,4 @@
+from random import random
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, PageElement
@@ -40,10 +41,9 @@ class ClassParser:
     _current_subtype_id                  A state variable which marks the current sub category in the table being processed
                                          currently by this instance of ClassParser
     classRowExtractor                    Instance of MergedRowsExtractor to process merged rows
-    seq                                  Id to be assigned to the next class parsed. Passed as constructor argument.
     """
 
-    def __init__(self, seq_start, sub_type_maps):
+    def __init__(self, sub_type_maps):
         self.CLASS_COLLECTION = []
         self.SUBTYPE_COLLECTION = sub_type_maps
         self.COUNTRIES_WITHOUT_CLASS_TABLE = []
@@ -52,7 +52,6 @@ class ClassParser:
         self._class_table_header_is_identified = False
         self._current_subtype_id = None
         self.classRowExtractor = None
-        self.seq = seq_start
 
     def extract_classes_of_ns_country(self, soup: BeautifulSoup = None, parsed_url: str = None,
                                       parent_url: str = None,
@@ -282,8 +281,7 @@ class ClassParser:
         class_name, designator, power, shaft, bhp, temp, rr = self.classRowExtractor.retrieve_row(
             columns)
 
-        self.seq = self.seq + 1
-        self.CLASS_COLLECTION.append(ClassU(self.seq,
+        self.CLASS_COLLECTION.append(ClassU(class_name + current_subtype[0] + country.country,
                                             class_name,
                                             current_subtype,
                                             country,
