@@ -23,7 +23,10 @@
                                 "expected_count": 2
                               }],
   "check_presence_of_common_class_images_in_different_class_folder": [{
-                                                                        "unit_ids": [8, 4],
+                                                                        "unit_ids": [
+                                                                                      "*Unit_dLegacyNarnia",
+                                                                                      "Unit_dLegacy - TraditionalFrance"
+                                                                                    ],
                                                                         "image_name_contains": "NEW-TEST-48"
                                                                       }],
   "check_presence_of_classes_of_non_standard_countries": {"name": "%TEST-106 Icelandic Comp", "count": 2},
