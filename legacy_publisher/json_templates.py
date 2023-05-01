@@ -47,6 +47,7 @@ class Country:
         self.id = id
         self.country = name
         self.region_id = regionId
+        self.flag_url = None
 
 
 class ClassU:

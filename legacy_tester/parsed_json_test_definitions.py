@@ -101,8 +101,9 @@ def check_class_images_name(published_json, test_payload):
             print('Class images not renamed as expected. Failed test payload: {} actual {}'.format(unit_payload, actual_images))
             return False
         for image_path in actual_images:
-            if not os.path.exists(TARGET_DIRECTORY + image_path):
-                print('{} image file not found'.format(image_path))
+            image_path_modified = image_path.replace("images/", "", 1)
+            if not os.path.exists(TARGET_DIRECTORY + image_path_modified):
+                print('{} image file not found'.format(TARGET_DIRECTORY + image_path_modified))
                 return False
     return True
 
@@ -124,8 +125,9 @@ def check_presence_of_common_class_images_in_different_class_folder(published_js
                 print(actual_images_with_expected_name)
                 return False
             for image_path in actual_images:
-                if not os.path.exists(TARGET_DIRECTORY + image_path):
-                    print('{} image file not found'.format(image_path))
+                image_path_modified = image_path.replace("images/", "", 1)
+                if not os.path.exists(TARGET_DIRECTORY + image_path_modified):
+                    print('{} image file not found'.format(image_path_modified))
                     return False
     return True
 
@@ -160,7 +162,7 @@ def check_for_presence_flags_of_non_standard_countries(published_json, test_payl
     """test for issue #107
     This is to check if the parser has copied flags of non-standard countries
     """
-    flags_array = set(map(lambda a: a['url'].split("/")[-1], published_json['flags']))
+    flags_array = set(map(lambda a: a.flag_url.split("/")[-1], list(filter(lambda a: a.flag_url is not None, published_json['countries']))))
     if not set(test_payload).issubset(flags_array):
         print('Error: failed to extract one or more flags of non-standard '
               'countries. {}'.format(test_payload))
