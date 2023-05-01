@@ -3,6 +3,8 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, PageElement
 
+from legacyman_parser.utils.text_cleanser import cleanse
+
 """Independent testable parse_tonals module
 to process tonals data
 """
@@ -210,7 +212,7 @@ def create_new_tonal_with_extracted_tonal_type(row: PageElement, class_u: any, c
         columns)
     tonal_source = identify_or_create_tonal_source_id(tonal_source_text)
     TONAL_COLLECTION.append(
-        Tonal(class_u, tonal_source, ratio_freq, harmonics, current_remarks, current_tonal_type))
+        Tonal(class_u, tonal_source, ratio_freq, cleanse(harmonics), cleanse(current_remarks), current_tonal_type))
     TONAL_FOUND_FOR_CLASS[class_u] = True
 
 
