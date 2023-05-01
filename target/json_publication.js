@@ -46,42 +46,50 @@ var publicationJsonData={
     {
       "id": 3,
       "country": "Narnia",
-      "region_id": 2
+      "region_id": 2,
+      "flag_url": "images/flags/Narnia.jpg"
     },
     {
       "id": 5,
       "country": "France",
-      "region_id": 2
+      "region_id": 2,
+      "flag_url": "images/flags/France.jpg"
     },
     {
       "id": 6,
       "country": "Spain",
-      "region_id": 2
+      "region_id": 2,
+      "flag_url": "images/flags/Spain.jpg"
     },
     {
       "id": 7,
       "country": "Namibia",
-      "region_id": 3
+      "region_id": 3,
+      "flag_url": null
     },
     {
       "id": 8,
       "country": "Zimbabwee",
-      "region_id": 3
+      "region_id": 3,
+      "flag_url": null
     },
     {
       "id": 1,
       "country": "Britain",
-      "region_id": "SPL"
+      "region_id": "SPL",
+      "flag_url": "images/flags/Britain.jpg"
     },
     {
       "id": 2,
       "country": "Iceland",
-      "region_id": "SPL"
+      "region_id": "SPL",
+      "flag_url": "images/flags/Iceland.png"
     },
     {
       "id": 4,
       "country": "Wales",
-      "region_id": 2
+      "region_id": 2,
+      "flag_url": "images/flags/Wales.jpg"
     }
   ],
   "propulsion_types": [
@@ -160,11 +168,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "*Unit_d",
-          "url": "class_images/Narnia/Generic/Legacy/oscill_d.jpg"
+          "url": "images/class_images/Narnia/Generic/Legacy/oscill_d.jpg"
         },
         {
           "name": "*Unit_d",
-          "url": "class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
+          "url": "images/class_images/Narnia/Generic/Legacy/NEW-TEST-48.jpg"
         }
       ]
     },
@@ -186,11 +194,11 @@ var publicationJsonData={
       "images": [
         {
           "name": " Unit_a",
-          "url": "class_images/France/Generic/Composite/unit_a1.jpg"
+          "url": "images/class_images/France/Generic/Composite/unit_a1.jpg"
         },
         {
           "name": " Unit_a",
-          "url": "class_images/France/Generic/Composite/unit_a2.jpeg"
+          "url": "images/class_images/France/Generic/Composite/unit_a2.jpeg"
         }
       ]
     },
@@ -246,11 +254,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_d",
-          "url": "class_images/France/Generic/Legacy - Traditional/oscill_d.jpg"
+          "url": "images/class_images/France/Generic/Legacy - Traditional/oscill_d.jpg"
         },
         {
           "name": "Unit_d",
-          "url": "class_images/France/Generic/Legacy - Traditional/NEW-TEST-48.jpg"
+          "url": "images/class_images/France/Generic/Legacy - Traditional/NEW-TEST-48.jpg"
         }
       ]
     },
@@ -340,19 +348,19 @@ var publicationJsonData={
       "images": [
         {
           "name": "*Unit_db",
-          "url": "class_images/Spain/Generic/Legacy/unit_db_2.jpg"
+          "url": "images/class_images/Spain/Generic/Legacy/unit_db_2.jpg"
         },
         {
           "name": "*Unit_db",
-          "url": "class_images/Spain/Generic/Legacy/unit_db.jpg"
+          "url": "images/class_images/Spain/Generic/Legacy/unit_db.jpg"
         },
         {
           "name": "*Unit_db",
-          "url": "class_images/Spain/Generic/Legacy/TEST-48.jpg"
+          "url": "images/class_images/Spain/Generic/Legacy/TEST-48.jpg"
         },
         {
           "name": "*Unit_db",
-          "url": "class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
+          "url": "images/class_images/Spain/Generic/Legacy/TEST-48_1.jpg"
         }
       ]
     },
@@ -425,27 +433,27 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_da",
-          "url": "class_images/Britain/Generic/Standalones/oscill_c.jpg"
+          "url": "images/class_images/Britain/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Britain/Generic/Standalones/oscill_d.jpg"
+          "url": "images/class_images/Britain/Generic/Standalones/oscill_d.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Britain/Generic/Standalones/oscill_e.jpg"
+          "url": "images/class_images/Britain/Generic/Standalones/oscill_e.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Britain/Generic/Standalones/oscill_c.jpg"
+          "url": "images/class_images/Britain/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Britain/Generic/Standalones/oscill_c.jpg"
+          "url": "images/class_images/Britain/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Britain/Generic/Standalones/oscill_d.jpg"
+          "url": "images/class_images/Britain/Generic/Standalones/oscill_d.jpg"
         }
       ]
     },
@@ -569,11 +577,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_ab%TEST-106 Icelandic Composite%",
-          "url": "class_images/Iceland/Generic/Composite/unit_a1.jpg"
+          "url": "images/class_images/Iceland/Generic/Composite/unit_a1.jpg"
         },
         {
           "name": "Unit_ab%TEST-106 Icelandic Composite%",
-          "url": "class_images/Iceland/Generic/Composite/unit_a2.jpeg"
+          "url": "images/class_images/Iceland/Generic/Composite/unit_a2.jpeg"
         }
       ]
     },
@@ -663,27 +671,27 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_da",
-          "url": "class_images/Wales/Generic/Standalones/oscill_c.jpg"
+          "url": "images/class_images/Wales/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Wales/Generic/Standalones/oscill_d.jpg"
+          "url": "images/class_images/Wales/Generic/Standalones/oscill_d.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Wales/Generic/Standalones/oscill_e.jpg"
+          "url": "images/class_images/Wales/Generic/Standalones/oscill_e.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Wales/Generic/Standalones/oscill_c.jpg"
+          "url": "images/class_images/Wales/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Wales/Generic/Standalones/oscill_c.jpg"
+          "url": "images/class_images/Wales/Generic/Standalones/oscill_c.jpg"
         },
         {
           "name": "Unit_da",
-          "url": "class_images/Wales/Generic/Standalones/oscill_d.jpg"
+          "url": "images/class_images/Wales/Generic/Standalones/oscill_d.jpg"
         }
       ]
     },
@@ -705,11 +713,11 @@ var publicationJsonData={
       "images": [
         {
           "name": "Unit_ab",
-          "url": "class_images/Wales/Generic/Composite/unit_a1.jpg"
+          "url": "images/class_images/Wales/Generic/Composite/unit_a1.jpg"
         },
         {
           "name": "Unit_ab",
-          "url": "class_images/Wales/Generic/Composite/unit_a2.jpeg"
+          "url": "images/class_images/Wales/Generic/Composite/unit_a2.jpeg"
         }
       ]
     },
@@ -1531,31 +1539,6 @@ var publicationJsonData={
       "full_form": "Master Musician"
     }
   ],
-  "flags": [
-    {
-      "country_id": 3,
-      "url": "flags/Narnia.jpg"
-    },
-    {
-      "country_id": 5,
-      "url": "flags/France.jpg"
-    },
-    {
-      "country_id": 6,
-      "url": "flags/Spain.jpg"
-    },
-    {
-      "country_id": 1,
-      "url": "flags/Britain.jpg"
-    },
-    {
-      "country_id": 2,
-      "url": "flags/Iceland.png"
-    },
-    {
-      "country_id": 4,
-      "url": "flags/Wales.jpg"
-    }
-  ],
+  "flags": [],
   "class_images": []
 }
