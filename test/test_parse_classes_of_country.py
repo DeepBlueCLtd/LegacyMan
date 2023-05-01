@@ -2,7 +2,8 @@ import unittest
 
 from bs4 import BeautifulSoup
 
-from legacyman_parser.parse_classes_of_country import CLASS_COLLECTION, extract_classes_of_country
+from legacy_publisher.json_templates import Country
+from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 
 
@@ -13,8 +14,8 @@ def get_soup(html_input: str):
 class TestParseClassesOfCountry(unittest.TestCase):
     def test_extraction_of_merged_class_properties(self):
         class_row_extractor = MergedRowsExtractor(7)
-        country_dict = {"country": "country", "class_extractor": class_row_extractor}
-        CLASS_COLLECTION.clear()
+        country = Country(1, 1, "Country")
+        country_dict = {"country": country, "class_extractor": class_row_extractor, "ucc_comb_discrepancy_collection": {}}
         soup = get_soup("""
 <div id="PageLayer">
         <div>
@@ -82,18 +83,19 @@ class TestParseClassesOfCountry(unittest.TestCase):
         </div>
     </div>
 """)
-        extract_classes_of_country(soup, None, None, country_dict)
+        standard_class_parser = ClassParser(0, {})
+        standard_class_parser.extract_classes_of_country(soup, None, None, country_dict)
         print("\nExtract classes with merged properties 1 - There should be 5 classes: ", end="")
-        self.assertEqual(len(CLASS_COLLECTION), 5)
+        self.assertEqual(len(standard_class_parser.CLASS_COLLECTION), 5)
         print("\nExtract classes with merged properties 1 - There should be 3 v8 diesel TEST 85: ", end="")
-        self.assertEqual(len(list(filter(lambda a: '%TEST-85%' in a.power, CLASS_COLLECTION))), 3)
+        self.assertEqual(len(list(filter(lambda a: '%TEST-85%' in a.power, standard_class_parser.CLASS_COLLECTION))), 3)
         print("\nExtract classes with merged properties 1 - There should be 2 Unk%TEST-85%: ", end="")
-        self.assertEqual(len(list(filter(lambda a: '%TEST-85%' in a.reduction_ratio, CLASS_COLLECTION))), 2)
+        self.assertEqual(len(list(filter(lambda a: '%TEST-85%' in a.reduction_ratio, standard_class_parser.CLASS_COLLECTION))), 2)
 
     def test_extraction_of_unmerged_class_properties(self):
         class_row_extractor = MergedRowsExtractor(7)
-        country_dict = {"country": "country", "class_extractor": class_row_extractor}
-        CLASS_COLLECTION.clear()
+        country = Country(1, 1, "Country")
+        country_dict = {"country": country, "class_extractor": class_row_extractor, "ucc_comb_discrepancy_collection": {}}
         soup = get_soup("""
 <div id="PageLayer">
         <div>
@@ -126,15 +128,16 @@ class TestParseClassesOfCountry(unittest.TestCase):
         </div>
     </div>
 """)
-        extract_classes_of_country(soup, None, None, country_dict)
+        standard_class_parser = ClassParser(0, {})
+        standard_class_parser.extract_classes_of_country(soup, None, None, country_dict)
         print("\nExtract classes with unmerged properties 1 - There should be 1 class: ", end="")
 
     def test_extraction_of_classes_not_under_pagelayer(self):
         class_row_extractor = MergedRowsExtractor(7)
-        country_dict = {"country": "country", "class_extractor": class_row_extractor}
-        CLASS_COLLECTION.clear()
+        country = Country(1, 1, "Country")
+        country_dict = {"country": country, "class_extractor": class_row_extractor, "ucc_comb_discrepancy_collection": {}}
         soup = get_soup("""
-<div id="dd">
+<div id="PageLayer">
         <div>
             <table border="1">
                 <tr>
@@ -165,7 +168,8 @@ class TestParseClassesOfCountry(unittest.TestCase):
         </div>
     </div>
 """)
-        extract_classes_of_country(soup, None, None, country_dict)
+        standard_class_parser = ClassParser(0, {})
+        standard_class_parser.extract_classes_of_country(soup, None, None, country_dict)
         print("\nExtract classes not under page layer - There should not be any class: ", end="")
 
 
