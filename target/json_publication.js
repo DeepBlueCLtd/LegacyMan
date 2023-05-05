@@ -183,7 +183,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "country_id": 5,
       "remarks": null,
-      "engine": "2 * V8 Diesel",
+      "engine": "4 * PR32 Diesel Engines",
       "main_propulsion_type_id": null,
       "backup_propulsion_type_id": null,
       "propulsion": null,
