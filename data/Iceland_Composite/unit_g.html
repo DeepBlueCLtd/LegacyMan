@@ -1,3 +1,4 @@
+<!-- class file with examples of tonal ratios-->
 <div id="BottomLayer3">
   <div id="PageLayer3">
     <h1>PROPULSION SYSTEM</h1>
@@ -79,7 +80,7 @@
         </tr>
         <tr>
           <td>SR</td>
-          <td>S12</td>
+          <td>S1</td>
           <td colspan="2">H1-4</td>
           <td colspan="2">Discrete. Doublets common</td>
         </tr>
@@ -90,7 +91,51 @@
           <td colspan="2">Discrete. Doublets common</td>
         </tr>
         <tr>
+          <td>BR</td>
+          <!-- this is S4 since it's 4 blades-->
+          <td>S4</td>
+          <td colspan="2">H1 - 3</td>
+          <td colspan="2">Discrete. Doublets common</td>
+        </tr>
+        <tr>
+          <td>EKG</td>
+          <td>13 x CSR</td>
+          <td colspan="2">H1 - 3</td>
+          <td colspan="2">Some EKG descriptor</td>
+        </tr>
+        <tr>
+          <td>EKJ</td>
+          <td>12 x CFR</td>
+          <td colspan="2">H1</td>
+          <td colspan="2">Some EKJ descriptor</td>
+        </tr>
+        <tr>
+          <td>EKW</td>
+          <td>124 x CSR</td>
+          <td colspan="2">H1, 3</td>
+          <td colspan="2">Some EKW descriptor</td>
+        </tr>
+        <!-- note: this is an absolute freq, not a ratio-->
+        <!-- this is because the ratio/freq doesn't look like `S3` or `45 x CFR` -->
+        <!-- we need to know it's a CFR with a label (somewhere) that it's the -->
+        <!-- the propulsion diesel CFR -->
+        <tr>
+          <td>Propulsion Diesel Engine CFR</td>
+          <td>16 - 17 (Common)</td>
+          <td colspan="2">H2, H4</td>
+          <td colspan="2">Some EKL descriptor</td>
+        </tr>
+        <tr>
           <td colspan="6">Auxiliary Sources</td>
+        </tr>
+        <!-- note: this is a different CFR. Somehow we need to -->
+        <!-- we need to know it's a CFR with a label (somewhere) that it's the -->
+        <!-- the propulsion diesel CFR -->
+        <tr>
+          <td>DG CFR</td>
+          <td>17.2</td>
+          <td colspan="2">H1 - 17</td>
+          <td colspan="2">Some DG CFR descriptor</td>
         </tr>
         <tr>
           <td>Cat b Engine R</td>
