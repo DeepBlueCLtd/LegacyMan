@@ -177,7 +177,7 @@ def is_this_tonal_type_data(row: PageElement):
     """Identify the `Tonal-Type` header:
     first < tr > following tonal header will be the first `Tonal-Type` < tr >
     which might have optional < td > indicating the tonal-type,
-    say `Propulsion Related` or `Auxiliary Sources` or `Transient Sources`.
+    say `Propulsion Related` or `Auxiliary Machinery` or `Transient Sources`.
     It MAY also have < strong > attribute"""
     columns = row.find_all('td')
     if len(columns) <= 1:
