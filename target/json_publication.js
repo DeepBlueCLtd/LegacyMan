@@ -1765,7 +1765,7 @@ var publicationJsonData={
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 2.905,
-      "harmonics": "H1-4",
+      "harmonics": "H1-4%TEST-212 - Test for 7 col tonals%",
       "remarks": "Discrete. Doublets common",
       "country_id": 4,
       "platform_type_id": 1,
