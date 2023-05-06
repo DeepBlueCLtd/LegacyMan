@@ -47,19 +47,19 @@ var publicationJsonData={
       "id": 3,
       "country": "Narnia",
       "region_id": 2,
-      "flag_url": "images/flags/Narnia.jpg"
+      "flag_url": "images/flags/narnia.jpg"
     },
     {
       "id": 5,
       "country": "France",
       "region_id": 2,
-      "flag_url": "images/flags/France.jpg"
+      "flag_url": "images/flags/france.jpg"
     },
     {
       "id": 6,
       "country": "Spain",
       "region_id": 2,
-      "flag_url": "images/flags/Spain.jpg"
+      "flag_url": "images/flags/spain.jpg"
     },
     {
       "id": 7,
