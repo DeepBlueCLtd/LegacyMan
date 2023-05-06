@@ -237,3 +237,25 @@ def check_for_presence_of_class_attributes_from_split_tonal_page(published_json,
             ))
             return False
     return True
+
+
+
+def check_for_presence_of_attribute_values_in_given_collection_and_attribute(published_json, test_payload):
+    """
+    This is a generic test that'll extract an defined attribute from the specified collection and searches for the
+    specified term
+    Currently, this tests for
+    #212: To check 7 colspan tonals are extracted
+    """
+    for unit_payload in test_payload:
+        classes = list(filter(lambda a: unit_payload['attr_val_contains'] in getattr(a, unit_payload['attr']),
+                              published_json[unit_payload['collection']]))
+        if unit_payload['count'] != len(classes):
+            print('Error: Could not find {} {} with {} attribute containing text {}'.format(
+                unit_payload['count'],
+                unit_payload['collection'],
+                unit_payload['attr'],
+                unit_payload['attr_val_contains']
+            ))
+            return False
+    return True
