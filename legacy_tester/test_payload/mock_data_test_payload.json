@@ -32,6 +32,14 @@
   "check_for_presence_of_tonals_of_classes_of_ns_countries": {"name": "%TEST-107 Icelandic Complex Power%", "count": 1},
   "check_for_presence_of_tonals_of_classes_of_standard_countries": {"name": "%TEST-162%", "count": 2},
   "check_for_presence_of_tonals_of_cds_decorated_with_star": {"name": "%162-Special Harmonics within *Commonly Detected Sources%", "count": 2},
-  "tally_tonal_counts_for_standard_and_non_standard_classes": {"ns_tonals": 25, "standard_tonals": 21},
-  "check_for_presence_of_class_attributes_from_split_tonal_page": [{"attr": "engine", "attr_val_contains": "%TEST#150 - Update values from tonal split page%", "count":  1}]
+  "tally_tonal_counts_for_standard_and_non_standard_classes": {"ns_tonals": 45, "standard_tonals": 21},
+  "check_for_presence_of_class_attributes_from_split_tonal_page": [{"attr": "engine", "attr_val_contains": "%TEST#150 - Update values from tonal split page%", "count":  1}],
+  "check_for_presence_of_attribute_values_in_given_collection_and_attribute": [
+                                                                                {
+                                                                                  "collection": "tonals",
+                                                                                  "attr": "harmonics",
+                                                                                  "attr_val_contains": "%TEST-212 - Test for 7 col tonals%",
+                                                                                  "count":  1
+                                                                                }
+                                                                              ]
 }

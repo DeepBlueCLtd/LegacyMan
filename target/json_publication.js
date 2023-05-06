@@ -384,11 +384,11 @@ var publicationJsonData={
     {
       "id": 15,
       "bookmarked": false,
-      "title": "Unit_b",
+      "title": "Unit_daf",
       "platform_sub_type_id": 4,
       "country_id": 1,
       "remarks": null,
-      "engine": "2 * V6 Diesel",
+      "engine": "4 * PR32 Diesel Engines",
       "main_propulsion_type_id": null,
       "backup_propulsion_type_id": null,
       "propulsion": null,
@@ -396,7 +396,24 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_daf",
+          "url": "images/class_images/Britain/Generic/Complex/FlagS.jpg"
+        },
+        {
+          "name": "Unit_daf",
+          "url": "images/class_images/Britain/Generic/Complex/unit_da.jpg"
+        },
+        {
+          "name": "Unit_daf",
+          "url": "images/class_images/Britain/Generic/Complex/FlagS.jpg"
+        },
+        {
+          "name": "Unit_daf",
+          "url": "images/class_images/Britain/Generic/Complex/unit_da.jpg"
+        }
+      ]
     },
     {
       "id": 16,
@@ -588,7 +605,7 @@ var publicationJsonData={
     {
       "id": 25,
       "bookmarked": false,
-      "title": "Unit_b",
+      "title": "Unit_g",
       "platform_sub_type_id": 1,
       "country_id": 2,
       "remarks": null,
@@ -600,7 +617,16 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [
+        {
+          "name": "Unit_g",
+          "url": "images/class_images/Iceland/Generic/Composite/unit_a1.jpg"
+        },
+        {
+          "name": "Unit_g",
+          "url": "images/class_images/Iceland/Generic/Composite/unit_a2.jpeg"
+        }
+      ]
     },
     {
       "id": 26,
@@ -698,7 +724,7 @@ var publicationJsonData={
     {
       "id": 30,
       "bookmarked": false,
-      "title": "Unit_ab",
+      "title": "Unit_aw",
       "platform_sub_type_id": 1,
       "country_id": 4,
       "remarks": null,
@@ -712,11 +738,11 @@ var publicationJsonData={
       "max_rpm": null,
       "images": [
         {
-          "name": "Unit_ab",
+          "name": "Unit_aw",
           "url": "images/class_images/Wales/Generic/Composite/unit_a1.jpg"
         },
         {
-          "name": "Unit_ab",
+          "name": "Unit_aw",
           "url": "images/class_images/Wales/Generic/Composite/unit_a2.jpeg"
         }
       ]
@@ -801,6 +827,42 @@ var publicationJsonData={
     {
       "id": 7,
       "name": "SB"
+    },
+    {
+      "id": 8,
+      "name": "EKG"
+    },
+    {
+      "id": 9,
+      "name": "EKJ"
+    },
+    {
+      "id": 10,
+      "name": "EKW"
+    },
+    {
+      "id": 11,
+      "name": "Propulsion Diesel Engine CFR"
+    },
+    {
+      "id": 12,
+      "name": "DG CFR"
+    },
+    {
+      "id": 13,
+      "name": "CFR"
+    },
+    {
+      "id": 14,
+      "name": "CSR"
+    },
+    {
+      "id": 15,
+      "name": "Unk POW"
+    },
+    {
+      "id": 16,
+      "name": "JJRW"
     }
   ],
   "tonal_types": [
@@ -814,7 +876,7 @@ var publicationJsonData={
     },
     {
       "id": 3,
-      "name": "Auxiliary Sources"
+      "name": "Auxiliary Machinery"
     },
     {
       "id": 4,
@@ -822,7 +884,23 @@ var publicationJsonData={
     },
     {
       "id": 5,
+      "name": "Intermittent Sources"
+    },
+    {
+      "id": 6,
       "name": "Speed related sources"
+    },
+    {
+      "id": 7,
+      "name": "Speed-related Sources"
+    },
+    {
+      "id": 8,
+      "name": "Power Related"
+    },
+    {
+      "id": 9,
+      "name": "*"
     }
   ],
   "tonals": [
@@ -1143,7 +1221,7 @@ var publicationJsonData={
     },
     {
       "id": 22,
-      "unit_id": 17,
+      "unit_id": 15,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 42.2176,
@@ -1151,14 +1229,14 @@ var publicationJsonData={
       "remarks": "Discrete. Doublets common",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 5,
+      "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 23,
-      "unit_id": 17,
+      "unit_id": 15,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 12.624,
@@ -1166,59 +1244,59 @@ var publicationJsonData={
       "remarks": "Discrete. Doublets common",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 5,
+      "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 24,
-      "unit_id": 17,
-      "tonal_type_id": 4,
+      "unit_id": 15,
+      "tonal_type_id": 1,
       "source": 3,
       "ratio": 40.171,
-      "harmonics": "H2, 4, 21, 145",
-      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "harmonics": "H1, 3, 21 - 45, 55",
+      "remarks": "The quick brown fox does something similar Tool screenshot a, Tool screenshot b",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 5,
+      "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 25,
-      "unit_id": 17,
-      "tonal_type_id": 4,
+      "unit_id": 15,
+      "tonal_type_id": 1,
       "source": 4,
       "ratio": 7.2041,
       "harmonics": "H1",
       "remarks": "CBR 34",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 5,
+      "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 26,
-      "unit_id": 17,
-      "tonal_type_id": 5,
+      "unit_id": 15,
+      "tonal_type_id": 1,
       "source": 4,
       "ratio": 38.09,
       "harmonics": "H1 & 2",
       "remarks": "CBR 54334",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 5,
+      "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 27,
-      "unit_id": 18,
+      "unit_id": 17,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 30.8459,
@@ -1226,14 +1304,14 @@ var publicationJsonData={
       "remarks": "Discrete. Doublets common",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 1,
+      "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 28,
-      "unit_id": 18,
+      "unit_id": 17,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 31.3229,
@@ -1241,65 +1319,65 @@ var publicationJsonData={
       "remarks": "Discrete. Doublets common",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 1,
+      "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 29,
-      "unit_id": 18,
-      "tonal_type_id": 3,
+      "unit_id": 17,
+      "tonal_type_id": 5,
       "source": 3,
       "ratio": 35.9832,
       "harmonics": "H2, 4, 21, 145",
       "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 1,
+      "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 30,
-      "unit_id": 18,
-      "tonal_type_id": 3,
+      "unit_id": 17,
+      "tonal_type_id": 5,
       "source": 4,
       "ratio": 29.9284,
       "harmonics": "H1",
       "remarks": "CBR 34",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 1,
+      "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 31,
-      "unit_id": 18,
-      "tonal_type_id": 4,
+      "unit_id": 17,
+      "tonal_type_id": 6,
       "source": 4,
       "ratio": 34.4088,
       "harmonics": "H1 & 2",
       "remarks": "CBR 54334",
       "country_id": 1,
       "platform_type_id": 1,
-      "platform_sub_type_id": 1,
+      "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
       "max_rpm": null
     },
     {
       "id": 32,
-      "unit_id": 24,
+      "unit_id": 18,
       "tonal_type_id": 1,
       "source": 1,
       "ratio": 42.854,
       "harmonics": "H1-4",
       "remarks": "Discrete. Doublets common",
-      "country_id": 2,
+      "country_id": 1,
       "platform_type_id": 1,
       "platform_sub_type_id": 1,
       "max_speed": null,
@@ -1308,13 +1386,13 @@ var publicationJsonData={
     },
     {
       "id": 33,
-      "unit_id": 24,
+      "unit_id": 18,
       "tonal_type_id": 1,
       "source": 2,
       "ratio": 49.924,
       "harmonics": "H1",
       "remarks": "Discrete. Doublets common",
-      "country_id": 2,
+      "country_id": 1,
       "platform_type_id": 1,
       "platform_sub_type_id": 1,
       "max_speed": null,
@@ -1323,13 +1401,13 @@ var publicationJsonData={
     },
     {
       "id": 34,
-      "unit_id": 24,
+      "unit_id": 18,
       "tonal_type_id": 3,
       "source": 3,
       "ratio": 38.31,
       "harmonics": "H2, 4, 21, 145",
       "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
-      "country_id": 2,
+      "country_id": 1,
       "platform_type_id": 1,
       "platform_sub_type_id": 1,
       "max_speed": null,
@@ -1338,13 +1416,13 @@ var publicationJsonData={
     },
     {
       "id": 35,
-      "unit_id": 24,
+      "unit_id": 18,
       "tonal_type_id": 3,
       "source": 4,
       "ratio": 44.6324,
       "harmonics": "H1",
       "remarks": "CBR 34",
-      "country_id": 2,
+      "country_id": 1,
       "platform_type_id": 1,
       "platform_sub_type_id": 1,
       "max_speed": null,
@@ -1353,10 +1431,85 @@ var publicationJsonData={
     },
     {
       "id": 36,
-      "unit_id": 24,
+      "unit_id": 18,
       "tonal_type_id": 4,
       "source": 4,
       "ratio": 22.29,
+      "harmonics": "H1 & 2",
+      "remarks": "CBR 54334",
+      "country_id": 1,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 37,
+      "unit_id": 24,
+      "tonal_type_id": 1,
+      "source": 1,
+      "ratio": 42.5213,
+      "harmonics": "H1-4",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 38,
+      "unit_id": 24,
+      "tonal_type_id": 1,
+      "source": 2,
+      "ratio": 36.0224,
+      "harmonics": "H1",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 39,
+      "unit_id": 24,
+      "tonal_type_id": 3,
+      "source": 3,
+      "ratio": 40.2543,
+      "harmonics": "H2, 4, 21, 145",
+      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 40,
+      "unit_id": 24,
+      "tonal_type_id": 3,
+      "source": 4,
+      "ratio": 13.46,
+      "harmonics": "H1",
+      "remarks": "CBR 34",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 41,
+      "unit_id": 24,
+      "tonal_type_id": 7,
+      "source": 4,
+      "ratio": 34.123,
       "harmonics": "H1 & 2",
       "remarks": "CBR 54334",
       "country_id": 2,
@@ -1367,11 +1520,176 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 37,
+      "id": 42,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 1,
+      "ratio": 9.071,
+      "harmonics": "H1-4",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 43,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 2,
+      "ratio": 35.6,
+      "harmonics": "H1",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 44,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 2,
+      "ratio": 36.1724,
+      "harmonics": "H1 - 3",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 45,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 8,
+      "ratio": 44.433,
+      "harmonics": "H1 - 3",
+      "remarks": "Some EKG descriptor",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 46,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 9,
+      "ratio": 26.7,
+      "harmonics": "H1",
+      "remarks": "Some EKJ descriptor",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 47,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 10,
+      "ratio": 32.8907,
+      "harmonics": "H1, 3",
+      "remarks": "Some EKW descriptor",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 48,
+      "unit_id": 25,
+      "tonal_type_id": 8,
+      "source": 11,
+      "ratio": 36.634,
+      "harmonics": "H2, H4",
+      "remarks": "Some EKL descriptor",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 49,
+      "unit_id": 25,
+      "tonal_type_id": 3,
+      "source": 12,
+      "ratio": 17.35,
+      "harmonics": "H1 - 17",
+      "remarks": "Some DG CFR descriptor",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 50,
+      "unit_id": 25,
+      "tonal_type_id": 3,
+      "source": 3,
+      "ratio": 34.789,
+      "harmonics": "H2, 4, 21, 145",
+      "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 51,
+      "unit_id": 25,
+      "tonal_type_id": 3,
+      "source": 4,
+      "ratio": 10.4486,
+      "harmonics": "H1",
+      "remarks": "CBR 34",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 52,
+      "unit_id": 25,
+      "tonal_type_id": 4,
+      "source": 4,
+      "ratio": 6.8352,
+      "harmonics": "H1 & 2",
+      "remarks": "CBR 54334",
+      "country_id": 2,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 53,
       "unit_id": 29,
       "tonal_type_id": 1,
       "source": 1,
-      "ratio": 42.5213,
+      "ratio": 11.248,
       "harmonics": "H1-4",
       "remarks": "Discrete. Doublets common",
       "country_id": 4,
@@ -1382,11 +1700,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 38,
+      "id": 54,
       "unit_id": 29,
       "tonal_type_id": 1,
       "source": 2,
-      "ratio": 36.0224,
+      "ratio": 36.52,
       "harmonics": "H1",
       "remarks": "Discrete. Doublets common",
       "country_id": 4,
@@ -1397,11 +1715,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 39,
+      "id": 55,
       "unit_id": 29,
       "tonal_type_id": 4,
       "source": 3,
-      "ratio": 40.2543,
+      "ratio": 20.6299,
       "harmonics": "H2, 4, 21, 145",
       "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
       "country_id": 4,
@@ -1412,11 +1730,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 40,
+      "id": 56,
       "unit_id": 29,
       "tonal_type_id": 4,
       "source": 4,
-      "ratio": 13.46,
+      "ratio": 8.4233,
       "harmonics": "H1",
       "remarks": "CBR 34",
       "country_id": 4,
@@ -1427,11 +1745,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 41,
+      "id": 57,
       "unit_id": 29,
-      "tonal_type_id": 5,
+      "tonal_type_id": 6,
       "source": 4,
-      "ratio": 34.123,
+      "ratio": 32.5282,
       "harmonics": "H1 & 2",
       "remarks": "CBR 54334",
       "country_id": 4,
@@ -1442,12 +1760,12 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 42,
+      "id": 58,
       "unit_id": 30,
       "tonal_type_id": 1,
       "source": 1,
-      "ratio": 9.071,
-      "harmonics": "H1-4",
+      "ratio": 2.905,
+      "harmonics": "H1-4%TEST-212 - Test for 7 col tonals%",
       "remarks": "Discrete. Doublets common",
       "country_id": 4,
       "platform_type_id": 1,
@@ -1457,11 +1775,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 43,
+      "id": 59,
       "unit_id": 30,
       "tonal_type_id": 1,
       "source": 2,
-      "ratio": 35.6,
+      "ratio": 8.895,
       "harmonics": "H1",
       "remarks": "Discrete. Doublets common",
       "country_id": 4,
@@ -1472,11 +1790,71 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 44,
+      "id": 60,
+      "unit_id": 30,
+      "tonal_type_id": 1,
+      "source": 13,
+      "ratio": 43.77,
+      "harmonics": "H3, 6, 13, 15 + numerous",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 61,
+      "unit_id": 30,
+      "tonal_type_id": 1,
+      "source": 14,
+      "ratio": 49.78,
+      "harmonics": "H3, 6, 13, 15 + numerous",
+      "remarks": "Discrete. Doublets common",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 62,
+      "unit_id": 30,
+      "tonal_type_id": 1,
+      "source": 15,
+      "ratio": 8.72,
+      "harmonics": "H1 - 19",
+      "remarks": "H5 may be predominant",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 63,
+      "unit_id": 30,
+      "tonal_type_id": 1,
+      "source": 16,
+      "ratio": 7.859,
+      "harmonics": "H1 - 3",
+      "remarks": "H3 may be predominant",
+      "country_id": 4,
+      "platform_type_id": 1,
+      "platform_sub_type_id": 1,
+      "max_speed": null,
+      "tpk": null,
+      "max_rpm": null
+    },
+    {
+      "id": 64,
       "unit_id": 30,
       "tonal_type_id": 3,
       "source": 3,
-      "ratio": 36.1724,
+      "ratio": 5.419,
       "harmonics": "H2, 4, 21, 145",
       "remarks": "The quick brown fox does something similar Tool screenshot aTool screenshot b",
       "country_id": 4,
@@ -1487,11 +1865,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 45,
+      "id": 65,
       "unit_id": 30,
       "tonal_type_id": 3,
       "source": 4,
-      "ratio": 44.433,
+      "ratio": 4.2732,
       "harmonics": "H1",
       "remarks": "CBR 34",
       "country_id": 4,
@@ -1502,11 +1880,11 @@ var publicationJsonData={
       "max_rpm": null
     },
     {
-      "id": 46,
+      "id": 66,
       "unit_id": 30,
       "tonal_type_id": 4,
       "source": 4,
-      "ratio": 26.7,
+      "ratio": 20.6991,
       "harmonics": "H1 & 2",
       "remarks": "CBR 54334",
       "country_id": 4,
