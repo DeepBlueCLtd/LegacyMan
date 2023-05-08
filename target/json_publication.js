@@ -77,19 +77,19 @@ var publicationJsonData={
       "id": 1,
       "country": "Britain",
       "region_id": "SPL",
-      "flag_url": "images/flags/Britain.jpg"
+      "flag_url": "images/flags/britain.jpg"
     },
     {
       "id": 2,
       "country": "Iceland",
       "region_id": "SPL",
-      "flag_url": "images/flags/Iceland.png"
+      "flag_url": "images/flags/iceland.png"
     },
     {
       "id": 4,
       "country": "Wales",
       "region_id": 2,
-      "flag_url": "images/flags/Wales.jpg"
+      "flag_url": "images/flags/wales.jpg"
     }
   ],
   "propulsion_types": [
