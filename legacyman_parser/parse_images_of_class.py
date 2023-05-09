@@ -69,20 +69,20 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
 
         # Track already parsed images in destination, instead of copying again.
         new_destination_of_img_src = os.path.join(COPY_CLASS_IMAGES_TO_DIRECTORY,
-                                                  userland_dict['class'].country.country,
-                                                  'Generic',
-                                                  userland_dict['class'].sub_category[0],
-                                                  basename(class_image))
+                                                  userland_dict['class'].country.country.lower(),
+                                                  'Generic'.lower(),
+                                                  userland_dict['class'].sub_category[0].lower(),
+                                                  basename(class_image).lower())
 
-        if new_destination_of_img_src.upper() not in already_processed_html_img_sources:
-            already_processed_html_img_sources[new_destination_of_img_src.upper()] = [
+        if new_destination_of_img_src not in already_processed_html_img_sources:
+            already_processed_html_img_sources[new_destination_of_img_src] = [
                 class_image.upper()]
             if not os.path.exists(os.path.dirname(new_destination_of_img_src)):
                 os.makedirs(os.path.dirname(new_destination_of_img_src))
             shutil.copy2(class_image, new_destination_of_img_src)
         else:
-            if class_image.upper() not in already_processed_html_img_sources[new_destination_of_img_src.upper()]:
-                already_processed_html_img_sources[new_destination_of_img_src.upper()].append(
+            if class_image.upper() not in already_processed_html_img_sources[new_destination_of_img_src]:
+                already_processed_html_img_sources[new_destination_of_img_src].append(
                     class_image.upper())
                 if os.path.exists(new_destination_of_img_src):
                     suffix_gen = instantiate_or_retrieve_cached_generator(
