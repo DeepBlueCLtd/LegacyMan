@@ -55,12 +55,17 @@ def extract_class_images(soup: BeautifulSoup = None, parsed_url: str = None, par
     class_images = list(filter(not_blacklisted_filter, all_class_images))
 
     class_images_obj = ClassImages(userland_dict['class'], [])
+    already_referenced_image_in_class = set()
     for class_image_attr in class_images:
         class_image = urljoin(parsed_url, class_image_attr['src'])
         assert Path(class_image).is_file(), "InvalidAssumption: Class image file exists if provided in " \
                                             "img attribute. {} not found as specified " \
                                             "in {}.".format(
                                                 class_image, parsed_url)
+        # Track already processed images in source, don't copy duplicate images
+        if class_image.upper() in already_referenced_image_in_class:
+            continue
+        already_referenced_image_in_class.add(class_image.upper())
 
         # Track already parsed images in destination, instead of copying again.
         new_destination_of_img_src = os.path.join(COPY_CLASS_IMAGES_TO_DIRECTORY,
