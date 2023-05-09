@@ -404,14 +404,6 @@ var publicationJsonData={
         {
           "name": "Unit_daf",
           "url": "images/class_images/Britain/Generic/Complex/unit_da.jpg"
-        },
-        {
-          "name": "Unit_daf",
-          "url": "images/class_images/Britain/Generic/Complex/FlagS.jpg"
-        },
-        {
-          "name": "Unit_daf",
-          "url": "images/class_images/Britain/Generic/Complex/unit_da.jpg"
         }
       ]
     },
@@ -459,18 +451,6 @@ var publicationJsonData={
         {
           "name": "Unit_da",
           "url": "images/class_images/Britain/Generic/Standalones/oscill_e.jpg"
-        },
-        {
-          "name": "Unit_da",
-          "url": "images/class_images/Britain/Generic/Standalones/oscill_c.jpg"
-        },
-        {
-          "name": "Unit_da",
-          "url": "images/class_images/Britain/Generic/Standalones/oscill_c.jpg"
-        },
-        {
-          "name": "Unit_da",
-          "url": "images/class_images/Britain/Generic/Standalones/oscill_d.jpg"
         }
       ]
     },
@@ -706,18 +686,6 @@ var publicationJsonData={
         {
           "name": "Unit_da",
           "url": "images/class_images/Wales/Generic/Standalones/oscill_e.jpg"
-        },
-        {
-          "name": "Unit_da",
-          "url": "images/class_images/Wales/Generic/Standalones/oscill_c.jpg"
-        },
-        {
-          "name": "Unit_da",
-          "url": "images/class_images/Wales/Generic/Standalones/oscill_c.jpg"
-        },
-        {
-          "name": "Unit_da",
-          "url": "images/class_images/Wales/Generic/Standalones/oscill_d.jpg"
         }
       ]
     },
