@@ -19,16 +19,16 @@
   "check_classes_for_presence_of": ["Unit_eww"],
   "check_class_images_name": [{
                                 "country": "Spain",
-                                "image_name_contains": "TEST-48",
+                                "image_name_contains": "test-48",
                                 "expected_count": 2
                               }],
   "check_presence_of_common_class_images_in_different_class_folder": [{
                                                                         "unit_ids": [8, 4],
-                                                                        "image_name_contains": "NEW-TEST-48"
+                                                                        "image_name_contains": "new-test-48"
                                                                       }],
   "check_presence_of_classes_of_non_standard_countries": {"name": "%TEST-106 Icelandic Comp", "count": 2},
   "tally_count_of_classes_of_non_standard_and_standard_countries": {"ns_classes": 20, "s_classes": 13},
-  "check_for_presence_flags_of_non_standard_countries": ["Britain.jpg", "Iceland.png"],
+  "check_for_presence_flags_of_non_standard_countries": ["britain.jpg", "iceland.png"],
   "check_for_presence_of_tonals_of_classes_of_ns_countries": {"name": "%TEST-107 Icelandic Complex Power%", "count": 1},
   "check_for_presence_of_tonals_of_classes_of_standard_countries": {"name": "%TEST-162%", "count": 2},
   "check_for_presence_of_tonals_of_cds_decorated_with_star": {"name": "%162-Special Harmonics within *Commonly Detected Sources%", "count": 2},

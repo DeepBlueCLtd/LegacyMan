@@ -17,7 +17,7 @@ from legacyman_parser.parse_non_standard_countries import extract_non_standard_c
 from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND, DIAGNOSTICS_FOR_SPLIT_TONALS
-from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY
+from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY, COPY_FLAGS_TO_DIRECTORY
 from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_countries, NS_COUNTRY_IN_REGION_COLLECTION
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
@@ -117,6 +117,10 @@ def parse_from_root():
         spidey_to_extract_ns_country_in_region_countries.crawl(resource_processor_callback=filter_ns_countries,
                                                                crawl_recursively=False)
 
+    # Check and delete existing flags folder, if exists
+    if os.path.exists(COPY_FLAGS_TO_DIRECTORY):
+        shutil.rmtree(COPY_FLAGS_TO_DIRECTORY)
+    os.makedirs(COPY_FLAGS_TO_DIRECTORY)
     # Move identified ns countries from standard countries collection to ns countries collection
     for nsv in NS_COUNTRY_IN_REGION_COLLECTION:
         COUNTRY_COLLECTION.remove(nsv)
