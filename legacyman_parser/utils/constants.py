@@ -2,6 +2,6 @@ import os
 from urllib.parse import urljoin
 
 TARGET_DIRECTORY = os.getcwd()+ "/target/"
-JSON_EXPORT_FILE = TARGET_DIRECTORY + "data/json_publication.js"
-COPY_FLAGS_TO_DIRECTORY = TARGET_DIRECTORY + "flags/"
-COPY_CLASS_IMAGES_TO_DIRECTORY = TARGET_DIRECTORY + "class_images/"
+JSON_EXPORT_FILE = TARGET_DIRECTORY + "data/publication.js"
+COPY_FLAGS_TO_DIRECTORY = TARGET_DIRECTORY + "images/flags/"
+COPY_CLASS_IMAGES_TO_DIRECTORY = TARGET_DIRECTORY + "images/class_images/"
