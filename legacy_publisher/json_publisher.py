@@ -5,6 +5,7 @@ import random
 from legacy_publisher.json_templates import PlatformType, PropulsionType, PlatformSubType, Region, Country, ClassU, \
     TonalType, Tonal, TonalSource
 from legacyman_parser.utils.constants import JSON_EXPORT_FILE
+from legacyman_parser.utils.ref_id_generator import get_ref_id_for_class, get_ref_id_for_tonal
 
 """This module will handle post parsing enhancements for publishing"""
 
@@ -53,7 +54,8 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
                 map(lambda b: {"name": class_u.class_u, "url": b.split('target')[1][1:]}, image_urls_array))
         classes.append(
             ClassU(class_u.id, class_u.class_u, class_u.sub_category[1], class_u.country.id, None, class_u.power,
-                   None, None, None, None, None, None, None, image_array_react_image_gallery))
+                   None, None, None, None, None, None, None, image_array_react_image_gallery,
+                   get_ref_id_for_class(class_u)))
 
     # Extract tonal types
     tonal_types = []
@@ -69,7 +71,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
             Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], tonal.source[1], round(random.uniform(1, 50),
                                                                                      random.choice(range(2, 5))),
                   tonal.harmonics, tonal.remarks, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1],
-                  None, None, None))
+                  None, None, None, get_ref_id_for_tonal(tonal)))
 
     def url_cleanser(flag_element):
         url = flag_element.file_location.split('target')[1][1:] if flag_element.file_location is not None else None
