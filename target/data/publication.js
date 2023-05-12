@@ -918,8 +918,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 2,
@@ -934,8 +933,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 3,
@@ -950,8 +948,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 4,
@@ -966,8 +963,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 5,
@@ -982,8 +978,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-unkbba-2"
+      "max_rpm": null
     },
     {
       "id": 6,
@@ -998,8 +993,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-ss-1"
+      "max_rpm": null
     },
     {
       "id": 7,
@@ -1014,8 +1008,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-sa-1"
+      "max_rpm": null
     },
     {
       "id": 8,
@@ -1030,8 +1023,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "narnia-legacy-*unit_d-propulsionrelated-sb-1"
+      "max_rpm": null
     },
     {
       "id": 9,
@@ -1046,8 +1038,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 10,
@@ -1062,8 +1053,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 11,
@@ -1078,8 +1068,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 12,
@@ -1094,8 +1083,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 13,
@@ -1110,8 +1098,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-unkbba-2"
+      "max_rpm": null
     },
     {
       "id": 14,
@@ -1126,8 +1113,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-ss-1"
+      "max_rpm": null
     },
     {
       "id": 15,
@@ -1142,8 +1128,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-sa-1"
+      "max_rpm": null
     },
     {
       "id": 16,
@@ -1158,8 +1143,7 @@ var publicationJsonData={
       "platform_sub_type_id": 3,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "france-legacytraditional-unit_d-propulsionrelated-sb-1"
+      "max_rpm": null
     },
     {
       "id": 17,
@@ -1174,8 +1158,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "spain-legacy-*unit_db-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 18,
@@ -1190,8 +1173,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "spain-legacy-*unit_db-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 19,
@@ -1206,8 +1188,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "spain-legacy-*unit_db-propulsionrelated-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 20,
@@ -1222,8 +1203,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "spain-legacy-*unit_db-propulsionrelated-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 21,
@@ -1238,8 +1218,7 @@ var publicationJsonData={
       "platform_sub_type_id": 2,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "spain-legacy-*unit_db-propulsionrelated-unkbba-2"
+      "max_rpm": null
     },
     {
       "id": 22,
@@ -1254,8 +1233,7 @@ var publicationJsonData={
       "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-complex-unit_daf-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 23,
@@ -1270,8 +1248,7 @@ var publicationJsonData={
       "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-complex-unit_daf-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 24,
@@ -1286,8 +1263,7 @@ var publicationJsonData={
       "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-complex-unit_daf-propulsionrelated-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 25,
@@ -1302,8 +1278,7 @@ var publicationJsonData={
       "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-complex-unit_daf-propulsionrelated-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 26,
@@ -1318,8 +1293,7 @@ var publicationJsonData={
       "platform_sub_type_id": 4,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-complex-unit_daf-propulsionrelated-unkbba-2"
+      "max_rpm": null
     },
     {
       "id": 27,
@@ -1334,8 +1308,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-standalones-unit_da-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 28,
@@ -1350,8 +1323,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-standalones-unit_da-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 29,
@@ -1366,8 +1338,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-standalones-unit_da-intermittentsources-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 30,
@@ -1382,8 +1353,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-standalones-unit_da-intermittentsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 31,
@@ -1398,8 +1368,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-standalones-unit_da-speedrelatedsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 32,
@@ -1414,8 +1383,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-composite-unit_ab-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 33,
@@ -1430,8 +1398,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-composite-unit_ab-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 34,
@@ -1446,8 +1413,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-composite-unit_ab-auxiliarymachinery-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 35,
@@ -1462,8 +1428,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-composite-unit_ab-auxiliarymachinery-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 36,
@@ -1478,8 +1443,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "britain-composite-unit_ab-transientsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 37,
@@ -1494,8 +1458,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_ab%test106icelandiccomposite%-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 38,
@@ -1510,8 +1473,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_ab%test106icelandiccomposite%-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 39,
@@ -1526,8 +1488,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_ab%test106icelandiccomposite%-auxiliarymachinery-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 40,
@@ -1542,8 +1503,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_ab%test106icelandiccomposite%-auxiliarymachinery-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 41,
@@ -1558,8 +1518,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_ab%test106icelandiccomposite%-speedrelatedsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 42,
@@ -1574,8 +1533,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 43,
@@ -1590,8 +1548,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 44,
@@ -1606,8 +1563,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-br-2"
+      "max_rpm": null
     },
     {
       "id": 45,
@@ -1622,8 +1578,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-ekg-1"
+      "max_rpm": null
     },
     {
       "id": 46,
@@ -1638,8 +1593,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-ekj-1"
+      "max_rpm": null
     },
     {
       "id": 47,
@@ -1654,8 +1608,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-ekw-1"
+      "max_rpm": null
     },
     {
       "id": 48,
@@ -1670,8 +1623,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-powerrelated-propulsiondieselenginecfr-1"
+      "max_rpm": null
     },
     {
       "id": 49,
@@ -1686,8 +1638,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-auxiliarymachinery-dgcfr-1"
+      "max_rpm": null
     },
     {
       "id": 50,
@@ -1702,8 +1653,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-auxiliarymachinery-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 51,
@@ -1718,8 +1668,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-auxiliarymachinery-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 52,
@@ -1734,8 +1683,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "iceland-composite-unit_g-transientsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 53,
@@ -1750,8 +1698,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-standalones-unit_da-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 54,
@@ -1766,8 +1713,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-standalones-unit_da-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 55,
@@ -1782,8 +1728,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-standalones-unit_da-transientsources-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 56,
@@ -1798,8 +1743,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-standalones-unit_da-transientsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 57,
@@ -1814,8 +1758,7 @@ var publicationJsonData={
       "platform_sub_type_id": 5,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-standalones-unit_da-speedrelatedsources-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 58,
@@ -1830,8 +1773,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-propulsionrelated-sr-1"
+      "max_rpm": null
     },
     {
       "id": 59,
@@ -1846,8 +1788,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-propulsionrelated-br-1"
+      "max_rpm": null
     },
     {
       "id": 60,
@@ -1862,8 +1803,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-propulsionrelated-cfr-1"
+      "max_rpm": null
     },
     {
       "id": 61,
@@ -1878,8 +1818,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-propulsionrelated-csr-1"
+      "max_rpm": null
     },
     {
       "id": 62,
@@ -1894,8 +1833,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-propulsionrelated-unkpow-1"
+      "max_rpm": null
     },
     {
       "id": 63,
@@ -1910,8 +1848,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-propulsionrelated-jjrw-1"
+      "max_rpm": null
     },
     {
       "id": 64,
@@ -1926,8 +1863,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-auxiliarymachinery-catbenginer-1"
+      "max_rpm": null
     },
     {
       "id": 65,
@@ -1942,8 +1878,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-auxiliarymachinery-unkbba-1"
+      "max_rpm": null
     },
     {
       "id": 66,
@@ -1958,8 +1893,7 @@ var publicationJsonData={
       "platform_sub_type_id": 1,
       "max_speed": null,
       "tpk": null,
-      "max_rpm": null,
-      "ref_id": "wales-composite-unit_aw-transientsources-unkbba-1"
+      "max_rpm": null
     }
   ],
   "abbreviations": [
