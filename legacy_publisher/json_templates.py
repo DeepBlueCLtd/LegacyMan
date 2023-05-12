@@ -74,7 +74,7 @@ class ClassU:
 
 class Tonal:
     def __init__(self, id, class_id, tonal_type_id, source, ratio, harmonics, remarks, country_id, platform_type_id,
-                 platform_sub_type_id, max_speed, tpk, max_rpm, ref_id):
+                 platform_sub_type_id, max_speed, tpk, max_rpm):
         self.id = id
         self.unit_id = class_id
         self.tonal_type_id = tonal_type_id
@@ -88,4 +88,3 @@ class Tonal:
         self.max_speed = max_speed
         self.tpk = tpk
         self.max_rpm = max_rpm
-        self.ref_id = ref_id

@@ -6,7 +6,7 @@ from legacy_publisher.json_templates import PlatformType, PropulsionType, Platfo
     TonalType, Tonal, TonalSource
 from legacyman_parser.utils.constants import JSON_EXPORT_FILE
 from legacyman_parser.utils.ref_id_generator import classes_with_illegal_reference_id_characters, \
-    get_audited_ref_id_for_class, get_audited_ref_id_for_tonal, tonals_with_illegal_reference_id_characters
+    get_audited_ref_id_for_class
 
 """This module will handle post parsing enhancements for publishing"""
 
@@ -72,7 +72,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
             Tonal(seq, tonal.class_u.id, tonal.tonal_type[1], tonal.source[1], round(random.uniform(1, 50),
                                                                                      random.choice(range(2, 5))),
                   tonal.harmonics, tonal.remarks, tonal.class_u.country.id, 1, tonal.class_u.sub_category[1],
-                  None, None, None, get_audited_ref_id_for_tonal(tonal)))
+                  None, None, None))
 
     def url_cleanser(flag_element):
         url = flag_element.file_location.split('target')[1][1:] if flag_element.file_location is not None else None
@@ -92,11 +92,6 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
         print("\n\n\nThe following classes were found with illegal characters")
         for class_ref_id in classes_with_illegal_reference_id_characters:
             print("  ", class_ref_id)
-
-    if len(tonals_with_illegal_reference_id_characters) > 0:
-        print("\n\n\nThe following tonals were found with illegal characters")
-        for tonal_ref_id in tonals_with_illegal_reference_id_characters:
-            print("  ", tonal_ref_id)
 
     # Dump the wrapper to the text file passed as argument
     with open(EXPORT_FILE, 'w') as f:
