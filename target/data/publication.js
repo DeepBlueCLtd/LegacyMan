@@ -205,7 +205,7 @@ var publicationJsonData={
           "url": "images/class_images/france/generic/composite/unit_a2.jpeg"
         }
       ],
-      "ref_id": "france-composite- unit_a"
+      "ref_id": "france-composite-_unit_a"
     },
     {
       "id": 6,
@@ -241,7 +241,7 @@ var publicationJsonData={
       "tpk": null,
       "max_rpm": null,
       "images": [],
-      "ref_id": "france-legacy  traditional-unit_c"
+      "ref_id": "france-legacy_-_traditional-unit_c"
     },
     {
       "id": 8,
@@ -268,7 +268,7 @@ var publicationJsonData={
           "url": "images/class_images/france/generic/legacy - traditional/new-test-48.jpg"
         }
       ],
-      "ref_id": "france-legacy  traditional-unit_d"
+      "ref_id": "france-legacy_-_traditional-unit_d"
     },
     {
       "id": 9,
@@ -286,7 +286,7 @@ var publicationJsonData={
       "tpk": null,
       "max_rpm": null,
       "images": [],
-      "ref_id": "france-legacy  traditional-unit_eww"
+      "ref_id": "france-legacy_-_traditional-unit_eww"
     },
     {
       "id": 10,
@@ -559,7 +559,7 @@ var publicationJsonData={
       "tpk": null,
       "max_rpm": null,
       "images": [],
-      "ref_id": "iceland-complex-unit_a%test106 icelandic complex%"
+      "ref_id": "iceland-complex-unit_a%test-106_icelandic_complex%"
     },
     {
       "id": 23,
@@ -604,7 +604,7 @@ var publicationJsonData={
           "url": "images/class_images/iceland/generic/composite/unit_a2.jpeg"
         }
       ],
-      "ref_id": "iceland-composite-unit_ab%test106 icelandic composite%"
+      "ref_id": "iceland-composite-unit_ab%test-106_icelandic_composite%"
     },
     {
       "id": 25,
