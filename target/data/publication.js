@@ -114,7 +114,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "narnia-composite-unit_a"
     },
     {
       "id": 2,
@@ -131,7 +132,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "narnia-composite-unit_b"
     },
     {
       "id": 3,
@@ -148,7 +150,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "narnia-legacy-unit_c"
     },
     {
       "id": 4,
@@ -174,7 +177,8 @@ var publicationJsonData={
           "name": "*Unit_d",
           "url": "images/class_images/narnia/generic/legacy/new-test-48.jpg"
         }
-      ]
+      ],
+      "ref_id": "narnia-legacy-*unit_d"
     },
     {
       "id": 5,
@@ -200,7 +204,8 @@ var publicationJsonData={
           "name": " Unit_a",
           "url": "images/class_images/france/generic/composite/unit_a2.jpeg"
         }
-      ]
+      ],
+      "ref_id": "france-composite-_unit_a"
     },
     {
       "id": 6,
@@ -217,7 +222,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "france-composite-unit_b"
     },
     {
       "id": 7,
@@ -234,7 +240,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "france-legacy_-_traditional-unit_c"
     },
     {
       "id": 8,
@@ -260,7 +267,8 @@ var publicationJsonData={
           "name": "Unit_d",
           "url": "images/class_images/france/generic/legacy - traditional/new-test-48.jpg"
         }
-      ]
+      ],
+      "ref_id": "france-legacy_-_traditional-unit_d"
     },
     {
       "id": 9,
@@ -277,7 +285,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "france-legacy_-_traditional-unit_eww"
     },
     {
       "id": 10,
@@ -294,7 +303,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "spain-composite-unit_a"
     },
     {
       "id": 11,
@@ -311,7 +321,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "spain-composite-unit_b"
     },
     {
       "id": 12,
@@ -328,7 +339,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "spain-legacy-unit_c"
     },
     {
       "id": 13,
@@ -362,7 +374,8 @@ var publicationJsonData={
           "name": "*Unit_db",
           "url": "images/class_images/spain/generic/legacy/test-48_1.jpg"
         }
-      ]
+      ],
+      "ref_id": "spain-legacy-*unit_db"
     },
     {
       "id": 14,
@@ -379,7 +392,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "britain-complex-unit_a"
     },
     {
       "id": 15,
@@ -405,7 +419,8 @@ var publicationJsonData={
           "name": "Unit_daf",
           "url": "images/class_images/britain/generic/complex/unit_da.jpg"
         }
-      ]
+      ],
+      "ref_id": "britain-complex-unit_daf"
     },
     {
       "id": 16,
@@ -422,7 +437,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "britain-standalones-unit_c"
     },
     {
       "id": 17,
@@ -452,7 +468,8 @@ var publicationJsonData={
           "name": "Unit_da",
           "url": "images/class_images/britain/generic/standalones/oscill_e.jpg"
         }
-      ]
+      ],
+      "ref_id": "britain-standalones-unit_da"
     },
     {
       "id": 18,
@@ -469,7 +486,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "britain-composite-unit_ab"
     },
     {
       "id": 19,
@@ -486,7 +504,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "britain-composite-unit_b"
     },
     {
       "id": 20,
@@ -503,7 +522,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "britain-legacy-unit_a"
     },
     {
       "id": 21,
@@ -520,7 +540,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "britain-legacy-unit_b"
     },
     {
       "id": 22,
@@ -537,7 +558,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "iceland-complex-unit_a%test-106_icelandic_complex%"
     },
     {
       "id": 23,
@@ -554,7 +576,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "iceland-complex-unit_b"
     },
     {
       "id": 24,
@@ -580,7 +603,8 @@ var publicationJsonData={
           "name": "Unit_ab%TEST-106 Icelandic Composite%",
           "url": "images/class_images/iceland/generic/composite/unit_a2.jpeg"
         }
-      ]
+      ],
+      "ref_id": "iceland-composite-unit_ab%test-106_icelandic_composite%"
     },
     {
       "id": 25,
@@ -606,7 +630,8 @@ var publicationJsonData={
           "name": "Unit_g",
           "url": "images/class_images/iceland/generic/composite/unit_a2.jpeg"
         }
-      ]
+      ],
+      "ref_id": "iceland-composite-unit_g"
     },
     {
       "id": 26,
@@ -623,7 +648,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "wales-complex-unit_a"
     },
     {
       "id": 27,
@@ -640,7 +666,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "wales-complex-unit_b"
     },
     {
       "id": 28,
@@ -657,7 +684,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "wales-standalones-unit_c"
     },
     {
       "id": 29,
@@ -687,7 +715,8 @@ var publicationJsonData={
           "name": "Unit_da",
           "url": "images/class_images/wales/generic/standalones/oscill_e.jpg"
         }
-      ]
+      ],
+      "ref_id": "wales-standalones-unit_da"
     },
     {
       "id": 30,
@@ -713,7 +742,8 @@ var publicationJsonData={
           "name": "Unit_aw",
           "url": "images/class_images/wales/generic/composite/unit_a2.jpeg"
         }
-      ]
+      ],
+      "ref_id": "wales-composite-unit_aw"
     },
     {
       "id": 31,
@@ -730,7 +760,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "wales-composite-unit_b"
     },
     {
       "id": 32,
@@ -747,7 +778,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "wales-legacy-unit_a"
     },
     {
       "id": 33,
@@ -764,7 +796,8 @@ var publicationJsonData={
       "max_speed": null,
       "tpk": null,
       "max_rpm": null,
-      "images": []
+      "images": [],
+      "ref_id": "wales-legacy-unit_b"
     }
   ],
   "tonal_sources": [

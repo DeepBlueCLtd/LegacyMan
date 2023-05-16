@@ -52,7 +52,8 @@ class Country:
 
 class ClassU:
     def __init__(self, id, title, platform_sub_type_id, country_id, remarks, engine, main_propulsion_type_id,
-                 backup_propulsion_type_id, propulsion, backup_propulsion, max_speed, tpk, max_rpm, images):
+                 backup_propulsion_type_id, propulsion, backup_propulsion, max_speed, tpk, max_rpm, images,
+                 ref_id):
         self.id = id
         self.bookmarked = False
         self.title = title
@@ -68,6 +69,7 @@ class ClassU:
         self.tpk = tpk
         self.max_rpm = max_rpm
         self.images = images
+        self.ref_id = ref_id
 
 
 class Tonal:
