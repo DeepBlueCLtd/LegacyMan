@@ -15,7 +15,7 @@ def get_ref_id_for_class(classu):
     # TODO: Introduce string shortening logic
     return (classu.country.country + ":"
             + classu.sub_category[0] + ":"
-            + classu.class_u).lower().replace("-", "").replace(":", "-")
+            + classu.class_u).lower().replace(" ", "_").replace(":", "-")
 
 
 def get_audited_ref_id_for_class(classu):
