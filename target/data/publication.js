@@ -178,7 +178,7 @@ var publicationJsonData={
           "url": "images/class_images/narnia/generic/legacy/new-test-48.jpg"
         }
       ],
-      "ref_id": "narnia-legacy-*unit_d"
+      "ref_id": "narnia-legacy-unit_d"
     },
     {
       "id": 5,
@@ -375,7 +375,7 @@ var publicationJsonData={
           "url": "images/class_images/spain/generic/legacy/test-48_1.jpg"
         }
       ],
-      "ref_id": "spain-legacy-*unit_db"
+      "ref_id": "spain-legacy-unit_db"
     },
     {
       "id": 14,
@@ -559,7 +559,7 @@ var publicationJsonData={
       "tpk": null,
       "max_rpm": null,
       "images": [],
-      "ref_id": "iceland-complex-unit_a%test-106_icelandic_complex%"
+      "ref_id": "iceland-complex-unit_atest-106_icelandic_complex"
     },
     {
       "id": 23,
@@ -604,7 +604,7 @@ var publicationJsonData={
           "url": "images/class_images/iceland/generic/composite/unit_a2.jpeg"
         }
       ],
-      "ref_id": "iceland-composite-unit_ab%test-106_icelandic_composite%"
+      "ref_id": "iceland-composite-unit_abtest-106_icelandic_composite"
     },
     {
       "id": 25,
