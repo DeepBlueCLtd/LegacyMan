@@ -13,9 +13,19 @@ class RegionMap:
         self.id = id
         self.region = region
         self.url = url
+    
+    def __init__(self, id, region, url, coords, shape):
+        self.id = id
+        self.region = region
+        self.url = url
+        self.coords = coords
+        self.shape = shape
 
     def __str__(self):
         return "{}. {} ==> {}".format(self.id, self.region, self.url)
+
+    def __str__(self):
+        return "{}. {} ==> {}".format(self.id, self.region, self.url, self.coords, self.shape)
 
 
 def extract_regions(soup: BeautifulSoup = None,
@@ -28,4 +38,4 @@ def extract_regions(soup: BeautifulSoup = None,
         href = area_element.get('href')
         if not href.startswith('..'):
             parsed_region_url = urljoin(parsed_url, href)
-            REGION_COLLECTION.append(RegionMap(seq, area_element.get('alt'), parsed_region_url))
+            REGION_COLLECTION.append(RegionMap(seq, area_element.get('alt'), parsed_region_url, area_element.get('coords'), area_element.get('shape')))

@@ -4,11 +4,18 @@ class GenericFields:
         self.id = id
         self.name = name
 
-
 class Region:
     def __init__(self, id, region):
         self.id = id
         self.name = region
+
+class Region:
+    def __init__(self, id, region, coords, shape, url):
+        self.id = id
+        self.name = region
+        self.coords = coords
+        self.shape = shape
+        self.url = url
 
 
 class TonalType:
