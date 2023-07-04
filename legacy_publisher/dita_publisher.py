@@ -4,11 +4,13 @@ import os
 from xml.dom import minidom
 from os.path import dirname, abspath
 from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
+from distutils.dir_util import copy_tree
+
 
 """This module will handle post parsing enhancements for DITA publishing"""
 # DITA_EXPORT_FILE = DITA_REGIONS_EXPORT_FILE
 
-def publish_regions(regions=None):
+def publish_regions(regions=None, sourcepath=None):
     root = minidom.Document()
     doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
 
@@ -63,6 +65,8 @@ def publish_regions(regions=None):
     isExist = os.path.exists(dita_dir)
     if not isExist:
         os.makedirs(dita_dir)
+
+    copy_tree(sourcepath+"/PlatformData/content", dita_dir+"/content")
 
     with open(DITA_REGIONS_EXPORT_FILE, "w") as f:
        f.write(xml_string_with_doctype) 
