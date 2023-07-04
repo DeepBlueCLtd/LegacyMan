@@ -8,22 +8,22 @@
 			<area>
 				<coords>540,326,611,308,681,326,711,286,659,128,618,139,588,199,572,273</coords>
 				<shape>poly</shape>
-				<xref href="../../../target/data/regions.dita" format="">Europe</xref>
+				<xref href="../../../target/dita/regions.dita" format="">Europe</xref>
 			</area>
 			<area>
 				<coords>515,372,586,332,674,371,709,435,685,556,640,585,568,483,506,430</coords>
 				<shape>poly</shape>
-				<xref href="../../../target/data/regions.dita" format="">Africa</xref>
+				<xref href="../../../target/dita/regions.dita" format="">Africa</xref>
 			</area>
 			<area>
 				<coords>550,211,522,231,515,263,540,275,564,269,561,231,555,214</coords>
 				<shape>poly</shape>
-				<xref href="../../../target/data/regions.dita" format="">Britain</xref>
+				<xref href="../../../target/dita/regions.dita" format="">Britain</xref>
 			</area>
 			<area>
 				<coords>500,180,25</coords>
 				<shape>circle</shape>
-				<xref href="../../../target/data/regions.dita" format="">Iceland</xref>
+				<xref href="../../../target/dita/regions.dita" format="">Iceland</xref>
 			</area>
 		</imagemap>
 	</body>
