@@ -36,7 +36,7 @@ def publish(parsed_regions=None, parsed_countries=None, parsed_classes=None, par
     # Extract regions
     regions = []
     for region in parsed_regions:
-        regions.append(Region(region.shape, region.id, region.region, region.coords, region.url))
+        regions.append(Region(region.id, region.region, region.coords, region.shape, region.url))
 
     # Extract countries
     countries = []
