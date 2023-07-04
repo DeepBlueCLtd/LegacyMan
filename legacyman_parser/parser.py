@@ -14,7 +14,7 @@ from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUN
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
 from legacyman_parser.parse_non_standard_countries import extract_non_standard_countries_in_region, \
     NON_STANDARD_COUNTRY_COLLECTION
-from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
+from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION, WORLD_MAP_URL
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND, DIAGNOSTICS_FOR_SPLIT_TONALS
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY, COPY_FLAGS_TO_DIRECTORY
@@ -81,8 +81,10 @@ def parse_from_root():
         resource_processor_callback=extract_regions, crawl_recursively=False)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_non_standard_countries_in_region,
                                          crawl_recursively=False)
-    print("Done. Parsed {} regions and {} non-standard countries.".format(len(REGION_COLLECTION),
-                                                                          len(NON_STANDARD_COUNTRY_COLLECTION)))
+    print("Done. Parsed {} regions and {} non-standard countries. Map URL at {}".format(len(REGION_COLLECTION),
+                                                                          len(NON_STANDARD_COUNTRY_COLLECTION), WORLD_MAP_URL))
+
+    sys.exit("Finished parsing world map")
 
     print("\n\nParsing Countries:")
     for region in REGION_COLLECTION:
