@@ -5,6 +5,7 @@ import sys
 
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
+from legacy_publisher.dita_publisher import publish_regions
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
@@ -14,7 +15,7 @@ from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUN
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
 from legacyman_parser.parse_non_standard_countries import extract_non_standard_countries_in_region, \
     NON_STANDARD_COUNTRY_COLLECTION
-from legacyman_parser.parse_regions import extract_regions, REGION_COLLECTION
+from legacyman_parser.parse_regions import extract_regions, REGION_DATA
 from legacyman_parser.parse_tonals_of_class import extract_tonals_of_class, TONAL_COLLECTION, TONAL_TYPE_COLLECTION, \
     TONAL_SOURCE_COLLECTION, TONAL_TABLE_NOT_FOUND, TONAL_HEADER_NOT_FOUND, DIAGNOSTICS_FOR_SPLIT_TONALS
 from legacyman_parser.utils.constants import COPY_CLASS_IMAGES_TO_DIRECTORY, COPY_FLAGS_TO_DIRECTORY
@@ -81,11 +82,51 @@ def parse_from_root():
         resource_processor_callback=extract_regions, crawl_recursively=False)
     root_spidey_to_extract_regions.crawl(resource_processor_callback=extract_non_standard_countries_in_region,
                                          crawl_recursively=False)
-    print("Done. Parsed {} regions and {} non-standard countries.".format(len(REGION_COLLECTION),
-                                                                          len(NON_STANDARD_COUNTRY_COLLECTION)))
+    print("Done. Parsed {} regions and {} non-standard countries. Map URL at {}".format(len(REGION_DATA.regions),
+                                                                          len(NON_STANDARD_COUNTRY_COLLECTION), REGION_DATA.url))
+
+    # combine the two sets of regions, for the world file
+    combined_regions = REGION_DATA.regions
+    for r in NON_STANDARD_COUNTRY_COLLECTION:
+        combined_regions.append(r.region)
+
+    publish_regions(REGION_DATA.url, combined_regions, "dita_out")
+
+    sys.exit("Finished parsing world map")
+
+    print("\n\nParsing Classes from non-standard countries:")
+    standard_class_parser = ClassParser(0, {})
+    watched_unit_category_country_combination_discrepancy_collector = {}
+
+
+    ns_class_parser = ClassParser(len(
+        standard_class_parser.CLASS_COLLECTION), standard_class_parser.SUBTYPE_COLLECTION)
+    for ns_country in NON_STANDARD_COUNTRY_COLLECTION:
+        if ns_country.url is None:
+            INVALID_COUNTRY_HREFS.append({"country": ns_country.country,
+                                          "url": ns_country.url})
+            continue
+        ns_class_row_extractor = MergedRowsExtractor(7)
+        ns_country_dict = {"country": ns_country,
+                           "class_extractor": ns_class_row_extractor,
+                           "ns_class_parser": ns_class_parser,
+                           "ucc_comb_discrepancy_collection": watched_unit_category_country_combination_discrepancy_collector}
+        ns_country_spidey_to_extract_classes = SimpleCrawler(url=ns_country.url,
+                                                             disable_crawler_log=True,
+                                                             userland_dict=ns_country_dict)
+        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=ns_class_parser
+                                                   .extract_classes_of_ns_country,
+                                                   crawl_recursively=False)
+        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_flag_of_ns_country,
+                                                   crawl_recursively=False)
+    print("Done. Parsed {} classes from {} "
+          "non-standard countries.".format(len(ns_class_parser.CLASS_COLLECTION),
+                                           len(NON_STANDARD_COUNTRY_COLLECTION)))
+
+    sys.exit("Finished parsing non-standard countries")
 
     print("\n\nParsing Countries:")
-    for region in REGION_COLLECTION:
+    for region in REGION_DATA.regions:
         """Parsing Countries from extracted regions"""
         reg_dict = {"region": region, "seq": uniq_id_gen_country}
         region_spidey_to_extract_countries = SimpleCrawler(url=region.url,
@@ -126,9 +167,7 @@ def parse_from_root():
         COUNTRY_COLLECTION.remove(nsv)
         NON_STANDARD_COUNTRY_COLLECTION.append(nsv)
 
-    watched_unit_category_country_combination_discrepancy_collector = {}
     print("\n\nParsing Classes:")
-    standard_class_parser = ClassParser(0, {})
     for country in COUNTRY_COLLECTION:
         """Parsing classes in each country"""
         if country.url is None:
@@ -154,31 +193,6 @@ def parse_from_root():
                                                                                .CLASS_COLLECTION),
                                                                            len(COUNTRY_FLAG_COLLECTION),
                                                                            len(COUNTRY_COLLECTION)))
-
-    print("\n\nParsing Classes from non-standard countries:")
-    ns_class_parser = ClassParser(len(
-        standard_class_parser.CLASS_COLLECTION), standard_class_parser.SUBTYPE_COLLECTION)
-    for ns_country in NON_STANDARD_COUNTRY_COLLECTION:
-        if ns_country.url is None:
-            INVALID_COUNTRY_HREFS.append({"country": ns_country.country,
-                                          "url": ns_country.url})
-            continue
-        ns_class_row_extractor = MergedRowsExtractor(7)
-        ns_country_dict = {"country": ns_country,
-                           "class_extractor": ns_class_row_extractor,
-                           "ns_class_parser": ns_class_parser,
-                           "ucc_comb_discrepancy_collection": watched_unit_category_country_combination_discrepancy_collector}
-        ns_country_spidey_to_extract_classes = SimpleCrawler(url=ns_country.url,
-                                                             disable_crawler_log=True,
-                                                             userland_dict=ns_country_dict)
-        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=ns_class_parser
-                                                   .extract_classes_of_ns_country,
-                                                   crawl_recursively=False)
-        ns_country_spidey_to_extract_classes.crawl(resource_processor_callback=extract_flag_of_ns_country,
-                                                   crawl_recursively=False)
-    print("Done. Parsed {} classes from {} "
-          "non-standard countries.".format(len(ns_class_parser.CLASS_COLLECTION),
-                                           len(NON_STANDARD_COUNTRY_COLLECTION)))
 
     print("\n\nParsing tonals and class images:")
     # Check and delete existing folder, if exists
