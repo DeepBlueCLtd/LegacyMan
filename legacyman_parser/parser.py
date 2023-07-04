@@ -5,6 +5,7 @@ import sys
 
 from crawler.simple_crawler import SimpleCrawler
 from legacy_publisher import json_publisher
+from legacy_publisher.dita_publisher import publish_regions
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
@@ -83,6 +84,13 @@ def parse_from_root():
                                          crawl_recursively=False)
     print("Done. Parsed {} regions and {} non-standard countries. Map URL at {}".format(len(REGION_DATA.regions),
                                                                           len(NON_STANDARD_COUNTRY_COLLECTION), REGION_DATA.url))
+
+    # combine the two sets of regions, for the world file
+    combined_regions = REGION_DATA.regions
+    for r in NON_STANDARD_COUNTRY_COLLECTION:
+        combined_regions.append(r.region)
+
+    publish_regions(REGION_DATA.url, combined_regions, "dita_out")
 
     sys.exit("Finished parsing world map")
 
