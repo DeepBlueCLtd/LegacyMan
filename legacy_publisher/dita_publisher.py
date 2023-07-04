@@ -6,7 +6,7 @@ from os.path import dirname, abspath
 from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 
 """This module will handle post parsing enhancements for DITA publishing"""
-DITA_EXPORT_FILE = DITA_REGIONS_EXPORT_FILE
+# DITA_EXPORT_FILE = DITA_REGIONS_EXPORT_FILE
 
 def publish_regions(regions=None):
     root = minidom.Document()
@@ -49,7 +49,7 @@ def publish_regions(regions=None):
         text_name = root.createTextNode(region.region)
         xref.appendChild(text_name)
 
-        relative_path_utl = os.path.relpath(DITA_EXPORT_FILE,region.url)
+        relative_path_utl = os.path.relpath(DITA_REGIONS_EXPORT_FILE,region.url)
         xref.setAttribute('href', relative_path_utl)
         xref.setAttribute('format', '')
         area.appendChild(xref)
@@ -57,12 +57,12 @@ def publish_regions(regions=None):
     xml_string = root.toprettyxml(indent ="\t") 
     xml_string_with_doctype = f"{doctype_str}\n{xml_string}"
 
-    print("Create / Save regions.dita : ", DITA_EXPORT_FILE)
+    print("Create / Save regions.dita : ", DITA_REGIONS_EXPORT_FILE)
 
-    dita_dir = dirname(abspath(DITA_EXPORT_FILE))
+    dita_dir = dirname(abspath(DITA_REGIONS_EXPORT_FILE))
     isExist = os.path.exists(dita_dir)
     if not isExist:
         os.makedirs(dita_dir)
 
-    with open(DITA_EXPORT_FILE, "w") as f:
+    with open(DITA_REGIONS_EXPORT_FILE, "w") as f:
        f.write(xml_string_with_doctype) 
