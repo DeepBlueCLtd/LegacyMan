@@ -34,7 +34,7 @@ class RegionMap:
 def extract_regions(soup: BeautifulSoup = None,
                     parsed_url: str = None,
                     parent_url: str = None,
-                    userland_dict: dict = None) -> []:
+                    userland_dict: dict = None):
     seq = 0
 
     # start off with the image
