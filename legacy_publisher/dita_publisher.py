@@ -1,5 +1,4 @@
 import json
-import random
 import os 
 
 from xml.dom import minidom
@@ -8,8 +7,6 @@ from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 
 """This module will handle post parsing enhancements for DITA publishing"""
 DITA_EXPORT_FILE = DITA_REGIONS_EXPORT_FILE
-
-random.seed(100)
 
 def publish_regions(regions=None):
     root = minidom.Document()
