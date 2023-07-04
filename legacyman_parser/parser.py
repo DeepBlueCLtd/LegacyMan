@@ -4,8 +4,7 @@ import shutil
 import sys
 
 from crawler.simple_crawler import SimpleCrawler
-from legacy_publisher import json_publisher
-from legacy_publisher.dita_publisher import publish_regions
+from legacy_publisher import json_publisher, dita_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
@@ -90,7 +89,9 @@ def parse_from_root():
     for r in NON_STANDARD_COUNTRY_COLLECTION:
         combined_regions.append(r.region)
 
-    publish_regions(REGION_DATA.url, combined_regions, "dita_out")
+    # publish_regions(REGION_DATA.url, combined_regions, "dita_out")
+    published_dita = dita_publisher.publish_regions(parsed_regions=REGION_DATA)
+
 
     sys.exit("Finished parsing world map")
 
