@@ -12,7 +12,7 @@ from distutils.dir_util import copy_tree
 
 def publish_regions(regions=None, sourcepath=None):
     root = minidom.Document()
-    doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
+    doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 
     xml = root.createElement('topic') 
     xml.setAttribute('id', 'links_1')
@@ -51,13 +51,16 @@ def publish_regions(regions=None, sourcepath=None):
         text_name = root.createTextNode(region.region)
         xref.appendChild(text_name)
 
-        relative_path_utl = os.path.relpath(DITA_REGIONS_EXPORT_FILE,region.url)
+        relative_path_utl = os.path.relpath(region.url, dirname(DITA_REGIONS_EXPORT_FILE))
         xref.setAttribute('href', relative_path_utl)
-        xref.setAttribute('format', '')
+        xref.setAttribute('format', 'html')
         area.appendChild(xref)
 
-    xml_string = root.toprettyxml(indent ="\t") 
-    xml_string_with_doctype = f"{doctype_str}\n{xml_string}"
+    root = root.childNodes[0]
+    xml_string = root.toprettyxml(indent='  ')
+
+    xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml_string_with_doctype = xml_declaration + doctype_str + xml_string
 
     print("Create / Save regions.dita : ", DITA_REGIONS_EXPORT_FILE)
 
@@ -66,7 +69,17 @@ def publish_regions(regions=None, sourcepath=None):
     if not isExist:
         os.makedirs(dita_dir)
 
-    copy_tree(sourcepath+"/PlatformData/content", dita_dir+"/content")
+    # copy map image
+    image_url = abspath(regions.url);
+    target_dir = dirname(dirname(dirname(abspath(DITA_REGIONS_EXPORT_FILE))))
+    new_path = image_url.replace(target_dir, "")
+    source_path = dirname(abspath(sourcepath));
+
+    print('copy ('+source_path+new_path+') to ('+dita_dir+new_path+')')
+    isDestExist = os.path.exists(dirname(dita_dir+new_path))
+    if not isDestExist:
+        os.makedirs(dirname(dita_dir+new_path))
+    os.system('cp '+source_path+new_path+' '+dita_dir+new_path)
 
     with open(DITA_REGIONS_EXPORT_FILE, "w") as f:
        f.write(xml_string_with_doctype) 

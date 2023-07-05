@@ -89,7 +89,7 @@ def parse_from_root():
     for r in NON_STANDARD_COUNTRY_COLLECTION:
         combined_regions.append(r.region)
 
-    dita_publisher.publish_regions(regions=REGION_DATA, sourcepath=cleansed_url)
+    dita_publisher.publish_regions(regions=REGION_DATA, sourcepath=cleansed_url+"/PlatformData/PD_1.html")
 
     sys.exit("Finished parsing world map")
 
