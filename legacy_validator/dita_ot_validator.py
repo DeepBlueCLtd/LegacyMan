@@ -1,8 +1,11 @@
-
 import subprocess
+import os
 
 # DITA-OT global path
 dita_ot_path = '/Users/workspace_blue_python/update_3/LegacyMan/legacy_validator/dita-ot-3.7.2/bin/dita'
+
+#os.environ["DITA-OT"] = dita_ot_path
+dita_ot_path = os.environ['DITA-OT']
 
 # function to validate dita files
 def validate_regions(dita_xml_file, dtd_file):
