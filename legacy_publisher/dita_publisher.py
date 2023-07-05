@@ -37,15 +37,15 @@ def publish_regions(regions=None, sourcepath=None):
         area = root.createElement('area')
         imagemap.appendChild(area)
 
-        coords = root.createElement('coords')
-        text_coords = root.createTextNode(region.coords)
-        coords.appendChild(text_coords)
-        area.appendChild(coords)
-
         shape = root.createElement('shape')
         text_shape = root.createTextNode(region.shape)
         shape.appendChild(text_shape)
         area.appendChild(shape)
+
+        coords = root.createElement('coords')
+        text_coords = root.createTextNode(region.coords)
+        coords.appendChild(text_coords)
+        area.appendChild(coords)
 
         xref = root.createElement('xref')
         text_name = root.createTextNode(region.region)
