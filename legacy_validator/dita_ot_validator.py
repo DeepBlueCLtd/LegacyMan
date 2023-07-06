@@ -2,10 +2,11 @@ import subprocess
 import os
 
 # DITA-OT global path
-dita_ot_path = '/Users/workspace_blue_python/update_3/LegacyMan/legacy_validator/dita-ot-3.7.2/bin/dita'
+dita_ot_path = '/Users/workspace_blue_python/update_3/LegacyMan/legacy_validator/dita-ot-3.7.2'
 
 #os.environ["DITA-OT"] = dita_ot_path
-dita_ot_path = os.environ['DITA-OT']
+dita_ot= os.environ['DITA-OT']
+dita_ot_path = dita_ot+'/bin/dita'
 
 # function to validate dita files
 def validate_regions(dita_xml_file, dtd_file):
@@ -30,7 +31,7 @@ def validate_regions(dita_xml_file, dtd_file):
 
 # Path to the XML and DTD files
 xml_file = './dita/regions-invalid.dita '
-dtd_file = './dita-ot-3.7.2/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
+dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
 
 # Calling function and validate regions
 validate_regions(xml_file, dtd_file)
