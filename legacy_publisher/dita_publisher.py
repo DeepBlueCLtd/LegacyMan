@@ -79,7 +79,8 @@ def publish_regions(regions=None, sourcepath=None):
     isDestExist = os.path.exists(dirname(dita_dir+new_path))
     if not isDestExist:
         os.makedirs(dirname(dita_dir+new_path))
-    os.system('cp '+source_path+new_path+' '+dita_dir+new_path)
+    copy_command = 'cp '+source_path+new_path+' '+dita_dir+new_path
+    os.system(copy_command)
 
     with open(DITA_REGIONS_EXPORT_FILE, "w") as f:
        f.write(xml_string_with_doctype) 
