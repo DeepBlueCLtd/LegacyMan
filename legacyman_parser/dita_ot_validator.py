@@ -14,7 +14,8 @@ dita_ot_path = dita_ot+'/bin/dita'
 def validate(dita_xml_file, dtd_file):
     print('Validate regions.dita...')
     
-    command = f'"{dita_ot_path}" -i "{dita_xml_file}" -f dita -v'
+    command = f'"{dita_ot_path}" -i "{dita_xml_file}" -f html5 -v --validate=yes'
+    print('COMMAND', command)
     completed_process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     if completed_process.returncode == 0:
