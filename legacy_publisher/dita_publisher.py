@@ -6,6 +6,7 @@ from os.path import dirname, abspath
 from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 from distutils.dir_util import copy_tree
 from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref
+from legacyman_parser.dita_ot_validator import validate, get_dita
 
 
 """This module will handle post parsing enhancements for DITA publishing"""
@@ -81,6 +82,12 @@ def publish_regions(regions=None, sourcepath=None):
 
     with open(DITA_REGIONS_EXPORT_FILE, "w") as f:
        f.write(xml_string_with_doctype) 
+
+    dita_ot = get_dita()
+    if(dita_ot != None):
+        xml_file = abspath('./target/dita/regions.dita')
+        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
+        validate(xml_file, dtd_file)
 
 
 def publish_country_regions(regions=None, stcountries=None, nstcountries=None):
