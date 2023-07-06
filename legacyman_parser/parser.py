@@ -1,5 +1,6 @@
 import itertools
 import os
+from os.path import abspath
 import shutil
 import sys
 
@@ -22,7 +23,7 @@ from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_count
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 from legacyman_parser.utils.stateful_suffix_generator import SequenceGenerator
-from legacy_validator.dita_ot_validator import validate
+from legacyman_parser.dita_ot_validator import validate, get_dita
 
 INVALID_COUNTRY_HREFS = []
 
@@ -91,15 +92,17 @@ def parse_from_root():
 
     dita_publisher.publish_regions(regions=REGION_DATA, sourcepath=cleansed_url+"/PlatformData/PD_1.html")
 
-    #validate
-    validate()
+    dita_ot = get_dita()
+    if(dita_ot != None):
+        xml_file = abspath('./target/dita/regions.dita')
+        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
+        validate(xml_file, dtd_file)
 
     sys.exit("Finished parsing world map")
 
     print("\n\nParsing Classes from non-standard countries:")
     standard_class_parser = ClassParser(0, {})
     watched_unit_category_country_combination_discrepancy_collector = {}
-
 
     ns_class_parser = ClassParser(len(
         standard_class_parser.CLASS_COLLECTION), standard_class_parser.SUBTYPE_COLLECTION)
