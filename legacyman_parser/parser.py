@@ -22,9 +22,9 @@ from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_count
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 from legacyman_parser.utils.stateful_suffix_generator import SequenceGenerator
+from legacy_validator.dita_ot_validator import validate
 
 INVALID_COUNTRY_HREFS = []
-
 
 def path_has_back_slash(path: str):
     # Check if it has backslash
@@ -90,6 +90,9 @@ def parse_from_root():
         combined_regions.append(r.region)
 
     dita_publisher.publish_regions(regions=REGION_DATA, sourcepath=cleansed_url+"/PlatformData/PD_1.html")
+
+    #validate
+    validate()
 
     sys.exit("Finished parsing world map")
 

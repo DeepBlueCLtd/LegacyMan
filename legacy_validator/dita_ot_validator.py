@@ -4,8 +4,15 @@ import os
 # DITA-OT global path
 dita_ot_path = '/Users/workspace_blue_python/update_3/LegacyMan/legacy_validator/dita-ot-3.7.2'
 
-#os.environ["DITA-OT"] = dita_ot_path
-dita_ot= os.environ['DITA-OT']
+#os.environ["DITA_OT"] = dita_ot_path
+dita_ot = os.getenv('DITA_OT', dita_ot_path)
+
+if 'DITA_OT' in os.environ:
+    print("Using DITA-OT from environment ("+os.environ["DITA_OT"]+")")
+else:
+    print("Using DITA-OT from global default path("+dita_ot_path+")")
+
+print ("DITA OT Path : ", dita_ot)
 dita_ot_path = dita_ot+'/bin/dita'
 
 # function to validate dita files
@@ -34,4 +41,7 @@ xml_file = './dita/regions-invalid.dita '
 dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
 
 # Calling function and validate regions
-validate_regions(xml_file, dtd_file)
+#validate_regions(xml_file, dtd_file)
+
+def validate():
+    validate_regions(xml_file, dtd_file)
