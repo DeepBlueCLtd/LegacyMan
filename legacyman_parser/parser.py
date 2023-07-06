@@ -1,5 +1,6 @@
 import itertools
 import os
+from os.path import abspath
 import shutil
 import sys
 
@@ -24,7 +25,6 @@ from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 from legacyman_parser.utils.stateful_suffix_generator import SequenceGenerator
 
 INVALID_COUNTRY_HREFS = []
-
 
 def path_has_back_slash(path: str):
     # Check if it has backslash
@@ -96,7 +96,6 @@ def parse_from_root():
     print("\n\nParsing Classes from non-standard countries:")
     standard_class_parser = ClassParser(0, {})
     watched_unit_category_country_combination_discrepancy_collector = {}
-
 
     ns_class_parser = ClassParser(len(
         standard_class_parser.CLASS_COLLECTION), standard_class_parser.SUBTYPE_COLLECTION)
