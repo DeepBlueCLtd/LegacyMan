@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><?path2rootmap-uri ./?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="links_1" specializations="@props/deliveryTarget">
+  <title>Regions</title>
+  <body>
+    <imagemap>
+      <image href="Content/Images/world-map.gif" placement="inline"/>
+      <area>
+        <shape translate="no">poly</shape>
+        <coords translate="no">540,326,611,308,681,326,711,286,659,128,618,139,588,199,572,273</coords>
+        <xref format="html" href="../../data/PlatformData/Europe.html">Europe</xref>
+      </area>
+      <area>
+        <shape translate="no">poly</shape>
+        <coords translate="no">515,372,586,332,674,371,709,435,685,556,640,585,568,483,506,430</coords>
+        <xref format="html" href="../../data/PlatformData/Africa.html">Africa</xref>
+      </area>
+      <area>
+        <shape translate="no">poly</shape>
+        <coords translate="no">550,211,522,231,515,263,540,275,564,269,561,231,555,214</coords>
+        <xref format="html" href="../../data/Britain/Britain1.html">Britain</xref>
+      </area>
+      <area>
+        <shape translate="no">circle</shape>
+        <coords translate="no">500,180,25</coords>
+        <xref format="html" href="../../data/Iceland/Iceland1.html">Iceland</xref>
+      </area>
+    </imagemap>
+  </body>
+</topic>

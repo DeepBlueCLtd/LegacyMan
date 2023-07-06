@@ -115,7 +115,8 @@ def extract_flag_of_ns_country(soup: BeautifulSoup = None, parsed_url: str = Non
     # Copy to target directory
     destination_file = COPY_FLAGS_TO_DIRECTORY + \
         userland_dict['country'].country.lower() + os.path.splitext(flag_image)[1].lower()
-    shutil.copy2(flag_image, destination_file)
+    # shutil.copy2(flag_image, destination_file)
+    os.system('cp '+flag_image+' '+destination_file)
 
     COUNTRY_FLAG_COLLECTION.append(CountryFlag(
         userland_dict['country'], destination_file))

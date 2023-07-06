@@ -12,7 +12,7 @@ else:
 dita_ot_path = dita_ot+'/bin/dita'
 
 def validate(dita_xml_file, dtd_file):
-    print('Validate regions.dita...')
+    print('Validate ('+dita_xml_file+')')
     
     command = f'"{dita_ot_path}" -i "{dita_xml_file}" -f dita -v --validate=yes'
     completed_process = subprocess.run(command, shell=True, capture_output=True, text=True)
