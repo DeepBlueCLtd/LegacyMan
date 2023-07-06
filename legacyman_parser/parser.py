@@ -23,7 +23,6 @@ from legacyman_parser.utils.filter_ns_countries_in_region import filter_ns_count
 from legacyman_parser.utils.parse_class_table import ClassParser
 from legacyman_parser.utils.parse_merged_rows import MergedRowsExtractor
 from legacyman_parser.utils.stateful_suffix_generator import SequenceGenerator
-from legacyman_parser.dita_ot_validator import validate, get_dita
 
 INVALID_COUNTRY_HREFS = []
 
@@ -91,12 +90,6 @@ def parse_from_root():
         combined_regions.append(r.region)
 
     dita_publisher.publish_regions(regions=REGION_DATA, sourcepath=cleansed_url+"/PlatformData/PD_1.html")
-
-    dita_ot = get_dita()
-    if(dita_ot != None):
-        xml_file = abspath('./target/dita/regions.dita')
-        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
-        validate(xml_file, dtd_file)
 
     sys.exit("Finished parsing world map")
 
