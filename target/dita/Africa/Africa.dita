@@ -4,14 +4,11 @@
   <title>Africa</title>
   <body>
     <table>
-      <tgroup cols="2">
+      <tgroup cols="1">
         <tbody>
           <row>
             <entry>
               <xref href="#" format="html">Zimbabwee</xref>
-            </entry>
-            <entry>
-              <xref href="../../../data/Namibia/Namibia1.html" format="html">Namibia</xref>
             </entry>
           </row>
         </tbody>

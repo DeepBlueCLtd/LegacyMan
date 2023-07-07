@@ -192,7 +192,9 @@ def parse_from_root():
                                                                            len(COUNTRY_FLAG_COLLECTION),
                                                                            len(COUNTRY_COLLECTION)))
 
-    dita_publisher.publish_country_regions(regions=REGION_DATA, stcountries=COUNTRY_COLLECTION, nstcountries=NON_STANDARD_COUNTRY_COLLECTION)
+    dita_publisher.publish_country_regions(regions=REGION_DATA, stcountries=COUNTRY_COLLECTION)
+    
+    dita_publisher.publish_ns_country_regions(regions=REGION_DATA, stcountries=COUNTRY_COLLECTION, nstcountries=NON_STANDARD_COUNTRY_COLLECTION)
     sys.exit("Finished parsing non-standard countries")
 
 

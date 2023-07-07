@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="Iceland">
-  <title>Iceland</title>
+<topic id="Britain">
+  <title>Britain</title>
   <body>
     <table>
       <tgroup cols="1">
         <tbody>
           <row>
             <entry>
-              <xref href="../../../data/Iceland/Iceland1.html" format="html">Iceland</xref>
+              <xref href="../../../../data/Britain/Britain1.html" format="html">Britain</xref>
             </entry>
           </row>
         </tbody>

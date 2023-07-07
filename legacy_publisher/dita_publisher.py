@@ -9,11 +9,11 @@ from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, creat
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
+doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 
 """This module will handle post parsing enhancements for DITA publishing"""
 def publish_regions(regions=None, sourcepath=None):
     root = minidom.Document()
-    doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 
     xml = root.createElement('topic') 
     xml.setAttribute('id', 'links_1')
@@ -90,45 +90,65 @@ def publish_regions(regions=None, sourcepath=None):
         validate(xml_file, dtd_file)
 
 
-def publish_country_regions(regions=None, stcountries=None, nstcountries=None):
-    countries = stcountries + nstcountries
+def publish_country_regions(regions=None, stcountries=None):
+    countries = stcountries
+    standard_countries = get_countries(regions=regions,stcountries=countries)
 
     for region in regions.regions:
         current_region = region.region
-        root = create_dita_root(doctype_str=None)
+        if current_region in standard_countries:
+            process_countries(region=current_region,countries=countries, current=current_region)
 
-        topic = create_topic(root=root,id=current_region)
+def publish_ns_country_regions(regions=None, stcountries=None, nstcountries=None):
+    countries = nstcountries
+    standard_countries = get_countries(regions=regions, stcountries=stcountries)
+    non_standard_countries = get_countries(regions=regions, stcountries=countries)
 
-        body = create_body(root=root,topic=topic)
+    for region in regions.regions:
+        current_region = region.region
+        if current_region not in standard_countries:
+            process_countries(region=current_region,countries=countries, current=current_region, nst=False)
 
-        number_country = 0
-        for country in countries:
-            if(current_region == country.region.region):
-                number_country+=1
+def get_countries(regions=None, stcountries=None):
+    countries = []
+    for region in regions.regions:
+        current_region = region.region
+        for country in stcountries:            
+            if current_region not in countries and current_region == country.region.region:
+                countries.append(current_region)
 
-        row = create_table(root=root,body=body, cols=str(number_country))
+    return countries
 
-        export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+current_region+"/"+current_region+".dita"
+def process_countries(region=None, countries=None,current=None,nst=True):
+    current_region=current
+    root = create_dita_root(doctype_str=None)
+    topic = create_topic(root=root,id=current_region)
+    body = create_body(root=root,topic=topic)
 
-        for country in countries:
-            if(current_region == country.region.region):
-                entry = root.createElement('entry')
-                relative_path_utl = "#" if country.url == None else os.path.relpath(country.url , dirname(export_dita))
-                xref = create_xref(root=root,text=country.country,url=relative_path_utl,format="html")
-                entry.appendChild(xref) 
-                row.appendChild(entry)
+    number_country = 0
+    for country in countries:
+        if(current_region == country.region.region):
+            number_country+=1
 
-        isDestExist = os.path.exists(dirname(export_dita))
-        if not isDestExist:
-            os.makedirs(dirname(export_dita))
-        print("export_dita :", export_dita)
-        write_dita_doc(root, export_dita)
+    pstr = "" if nst == True else "regions/"
+    row = create_table(root=root,body=body, cols=str(number_country))
+    export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+current_region+"/"+current_region+".dita"
 
-        if(dita_ot != None):
-            xml_file = abspath(export_dita)
-            dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
-            validate(xml_file, dtd_file)
+    for country in countries:
+        if(current_region == country.region.region):
+            entry = root.createElement('entry')
+            relative_path_utl = "#" if country.url == None else os.path.relpath(country.url , dirname(export_dita))
+            xref = create_xref(root=root,text=country.country,url=relative_path_utl,format="html")
+            entry.appendChild(xref) 
+            row.appendChild(entry)
 
+    isDestExist = os.path.exists(dirname(export_dita))
+    if not isDestExist:
+        os.makedirs(dirname(export_dita))
+    print("export_dita :", export_dita)
+    write_dita_doc(root, export_dita)
 
-
-
+    if(dita_ot != None):
+        xml_file = abspath(export_dita)
+        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
+        validate(xml_file, dtd_file)
