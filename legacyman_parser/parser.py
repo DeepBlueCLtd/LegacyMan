@@ -91,7 +91,7 @@ def parse_from_root():
 
     dita_publisher.publish_regions(regions=REGION_DATA, sourcepath=cleansed_url+"/PlatformData/PD_1.html")
 
-    sys.exit("Finished parsing world map")
+    # sys.exit("Finished parsing world map")
 
     print("\n\nParsing Classes from non-standard countries:")
     standard_class_parser = ClassParser(0, {})
@@ -121,7 +121,7 @@ def parse_from_root():
           "non-standard countries.".format(len(ns_class_parser.CLASS_COLLECTION),
                                            len(NON_STANDARD_COUNTRY_COLLECTION)))
 
-    sys.exit("Finished parsing non-standard countries")
+    # sys.exit("Finished parsing non-standard countries")
 
     print("\n\nParsing Countries:")
     for region in REGION_DATA.regions:
@@ -191,6 +191,11 @@ def parse_from_root():
                                                                                .CLASS_COLLECTION),
                                                                            len(COUNTRY_FLAG_COLLECTION),
                                                                            len(COUNTRY_COLLECTION)))
+
+    dita_publisher.publish_country_regions(regions=REGION_DATA, stcountries=COUNTRY_COLLECTION, nstcountries=NON_STANDARD_COUNTRY_COLLECTION)
+    sys.exit("Finished parsing non-standard countries")
+
+
 
     print("\n\nParsing tonals and class images:")
     # Check and delete existing folder, if exists
