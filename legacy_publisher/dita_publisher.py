@@ -97,7 +97,7 @@ def publish_country_regions(regions=None, stcountries=None):
     for region in regions.regions:
         current_region = region.region
         if current_region in standard_countries:
-            process_countries(region=current_region,countries=countries, current=current_region)
+            process_countries(region=current_region,countries=countries, current=current_region, nst=False)
 
 def publish_ns_country_regions(regions=None, stcountries=None, nstcountries=None):
     countries = nstcountries
