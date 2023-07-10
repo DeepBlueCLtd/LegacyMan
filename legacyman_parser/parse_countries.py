@@ -60,7 +60,7 @@ def extract_countries_in_region(soup: BeautifulSoup = None,
     for country in country_table.find_all('td'):
         COUNTRY_COLLECTION.append(create_country(seq.next_value(), country, userland_dict['region'], parsed_url))
 
-def extract_non_countries_in_region(soup: BeautifulSoup = None,
+def extract_nst_countries_in_region(soup: BeautifulSoup = None,
                                 parsed_url: str = None,
                                 parent_url: str = None,
                                 userland_dict: dict = None) -> []:
@@ -98,8 +98,7 @@ def extract_non_countries_in_region(soup: BeautifulSoup = None,
 
 
 def create_richcollection(title, body, relatedbody_pages, url, cols, rows):
-    title = title.text
-    return RichCollection(title, body, relatedbody_pages, url, cols, rows)
+    return RichCollection(title.text, body, relatedbody_pages, url, cols, rows)
 
 
 def create_country(seq, country, region, url):

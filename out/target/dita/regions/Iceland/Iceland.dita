@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><?path2rootmap-uri ./?>
+<!DOCTYPE rich-collection
+  PUBLIC "-//OASIS//DTD DITA Rich-collection//EN" "../../../../dtd/rich-collection.dtd">
+<rich-collection id="Iceland" specializations="">
+  <title>Iceland</title>
+  <body>
+    <table>
+      <tgroup cols="2">
+        <colspec colname="col1" colnum="1"/><colspec colname="col2" colnum="2"/><tbody>
+          <row>
+            <entry colname="col1">
+              <xref format="html" href="#">
+                Quick Links&gt;
+                <image href="#" placement="inline" width="None"/>
+              </xref>
+            </entry>
+            <entry colname="col2">
+              <xref format="html" href="../../../../FR_Transducers.html">
+                FR Transducers
+                <image href="#" placement="inline" width="None"/>
+              </xref>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </body>
+</rich-collection>

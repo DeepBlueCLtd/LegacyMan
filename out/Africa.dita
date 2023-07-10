@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?path2rootmap-uri ./?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="Africa" specializations="@props/deliveryTarget">
+  <title>Africa</title>
+  <body>
+    <table>
+      <tgroup cols="1">
+        <colspec colname="col1" colnum="1"/><tbody>
+          <row>
+            <entry colname="col1">
+              <xref format="html" href="#">Zimbabwee</xref>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </body>
+</topic>
