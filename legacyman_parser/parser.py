@@ -9,7 +9,7 @@ from legacy_publisher import json_publisher, dita_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
-from legacyman_parser.parse_countries import extract_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND
+from legacyman_parser.parse_countries import extract_countries_in_region,extract_nst_countries_in_region, COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND, COUNTRY_TABLE_FOUND
 from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION, \
     extract_flag_of_ns_country
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
@@ -192,7 +192,23 @@ def parse_from_root():
                                                                            len(COUNTRY_FLAG_COLLECTION),
                                                                            len(COUNTRY_COLLECTION)))
 
-    dita_publisher.publish_country_regions(regions=REGION_DATA, stcountries=COUNTRY_COLLECTION, nstcountries=NON_STANDARD_COUNTRY_COLLECTION)
+    dita_publisher.publish_country_regions(regions=REGION_DATA, stcountries=COUNTRY_COLLECTION)
+ 
+
+    if COUNTRY_TABLE_NOT_FOUND:
+        print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
+        for country_table_not_found_url in COUNTRY_TABLE_NOT_FOUND:
+            print("    " + country_table_not_found_url)
+            """Parsing Countries from extracted regions"""
+            reg_dict = {"url": country_table_not_found_url, "seq": uniq_id_gen_country}
+            region_spidey_to_extract_non_countries = SimpleCrawler(url=country_table_not_found_url,disable_crawler_log=True,userland_dict=reg_dict)
+            region_spidey_to_extract_non_countries.crawl(resource_processor_callback=extract_nst_countries_in_region,crawl_recursively=False)
+
+    dita_publisher.publish_ns_country_regions(regions=REGION_DATA, nstcountries=COUNTRY_TABLE_FOUND)
+
+
+    print("Done. None {} ".format(COUNTRY_TABLE_FOUND))
+
     sys.exit("Finished parsing non-standard countries")
 
 
