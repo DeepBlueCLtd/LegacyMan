@@ -66,7 +66,7 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
                                 userland_dict: dict = None) -> []:
     url = userland_dict['url']
     title = soup.find('h2')
-    body = soup.find_all('table')[1] if title.text == 'Britain' else soup.select_one("table:nth-of-type(1)")
+    body = soup.find_all('table')[1] #if title.text == 'Britain' else soup.select_one("table:nth-of-type(1)")
     first_row = body.find('tr')
     columns = first_row.find_all('td')
     cols = len(columns)
@@ -94,11 +94,7 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
         
         rows.append(tr)
         
-    COUNTRY_TABLE_FOUND.append(create_richcollection(title, body, None, url, cols, rows))
-
-
-def create_richcollection(title, body, relatedbody_pages, url, cols, rows):
-    return RichCollection(title.text, body, relatedbody_pages, url, cols, rows)
+    COUNTRY_TABLE_FOUND.append(RichCollection(title.text, body, None, url, cols, rows))
 
 
 def create_country(seq, country, region, url):
