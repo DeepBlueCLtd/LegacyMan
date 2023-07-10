@@ -1,3 +1,4 @@
+import sys
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
@@ -67,6 +68,9 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
     url = userland_dict['url']
     title = soup.find('h2')
     div_element = soup.find('div', id='ImageLinksTable')
+    if div_element is None:
+        sys.exit(f"Exiting: ImageLinksTable not found in {parsed_url}")
+
     body = div_element.find('table')
 
 
