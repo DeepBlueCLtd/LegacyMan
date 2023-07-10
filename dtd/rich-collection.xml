@@ -1,0 +1,20 @@
+<?xml version="1.0"?>          
+<!DOCTYPE rich-collection SYSTEM "rich-collection.dtd">          
+<rich-collection id="links_1">
+    <title>Europe</title>
+    <body>
+        <table>
+            <tgroup cols="2">
+                <tbody>
+                    <row>
+                        <entry><xref href="hybrid.dita">Hybrid<image href="images/oscill_e.jpg"></image></xref></entry>
+                        <entry><xref href="composite.dita">Compsite<image href="images/oscill_d.jpg"></image></xref></entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </body>
+    <related-pages>
+        
+    </related-pages>
+</rich-collection>

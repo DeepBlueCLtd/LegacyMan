@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="Iceland">
+<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">
+<rich-collection id="Iceland">
   <title>Iceland</title>
   <body>
     <table>
-      <tgroup cols="1">
+      <tgroup cols="2">
         <tbody>
           <row>
             <entry>
-              <xref href="../../../../data/Iceland/Iceland1.html" format="html">Iceland</xref>
+              <xref href="#" format="html">
+                Quick Links&gt;
+                <image href="#" width="None"/>
+              </xref>
+            </entry>
+            <entry>
+              <xref href="../../../../FR_Transducers.html" format="html">
+                FR Transducers
+                <image href="#" width="None"/>
+              </xref>
             </entry>
           </row>
         </tbody>
       </tgroup>
     </table>
   </body>
-</topic>
+</rich-collection>

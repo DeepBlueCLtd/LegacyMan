@@ -1,0 +1,17 @@
+<?xml version="1.0"?>          
+<!DOCTYPE collection SYSTEM "collection.dtd">          
+<collection id="links_1">
+    <title>Europe</title>
+    <body>
+        <table>
+            <tgroup cols="2">
+                <tbody>
+                    <row>
+                        <entry></entry>
+                        <entry></entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </body>
+</collection>

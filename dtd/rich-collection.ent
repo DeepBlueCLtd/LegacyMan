@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!--  MODULE:    DITA richcollection ENT                           -->
+<!--  VERSION:   1.2                                               -->
+<!--  DATE:      June 2023                                         -->
+<!--  Delivered as file "rich-collection.ent"                      -->
+<!-- ============================================================= -->
+
+
+<!-- ============================================================= -->
+<!--                    rich-collection ENTITIES                   -->
+<!-- ============================================================= -->
+
+<!ENTITY concept-att     
+  "(topic concept)"
+>
+
+<!ENTITY rich-collection-att     
+"(topic concept rich-collection)"
+>
+
+
+
+<!-- ================== End rich-collection Entities ============= -->

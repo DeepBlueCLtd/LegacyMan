@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="Britain">
+<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">
+<rich-collection id="Britain">
   <title>Britain</title>
   <body>
     <table>
-      <tgroup cols="1">
+      <tgroup cols="2">
         <tbody>
           <row>
             <entry>
-              <xref href="../../../../data/Britain/Britain1.html" format="html">Britain</xref>
+              <xref href="../../../../data/Britain_Complex/Britain_Complex.html" format="html">
+                Complex
+                <image href="Britain_Complex/Content/Images/unit_da.jpg" width=" 450px"/>
+              </xref>
+            </entry>
+            <entry>
+              <xref href="../../../../data/Britain_Standalones/Britain_Standalones.html" format="html">
+                Standalones
+                <image href="Britain_Standalones/Content/Images/unit_da.jpg" width=" 450px"/>
+              </xref>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <xref href="../../../../data/Britain_Composite/Britain_Composites.html" format="html">
+                Composites
+                <image href="Britain_Composite/Content/Images/unit_dar.jpeg" width=" 450px"/>
+              </xref>
+            </entry>
+            <entry>
+              <xref href="../../../../data/Britain_Legacy/Britain_Legacy.html" format="html">
+                Legacy
+                <image href="Britain_Legacy/Content/Images/unit_da.jpg" width=" 450px"/>
+              </xref>
             </entry>
           </row>
         </tbody>
       </tgroup>
     </table>
   </body>
-</topic>
+</rich-collection>

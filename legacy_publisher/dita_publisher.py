@@ -5,11 +5,13 @@ from xml.dom import minidom
 from os.path import dirname, abspath
 from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 from distutils.dir_util import copy_tree
-from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref
+from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
 doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
+doctype_richcollection_str = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">\n'
+
 
 """This module will handle post parsing enhancements for DITA publishing"""
 def publish_regions(regions=None, sourcepath=None):
@@ -97,17 +99,14 @@ def publish_country_regions(regions=None, stcountries=None):
     for region in regions.regions:
         current_region = region.region
         if current_region in standard_countries:
-            process_countries(region=current_region,countries=countries, current=current_region, nst=False)
+            process_countries(region=current_region,countries=countries, current=current_region)
 
-def publish_ns_country_regions(regions=None, stcountries=None, nstcountries=None):
-    countries = nstcountries
-    standard_countries = get_countries(regions=regions, stcountries=stcountries)
-    non_standard_countries = get_countries(regions=regions, stcountries=countries)
+def publish_ns_country_regions(regions=None, nstcountries=None):
+    for richcollection in nstcountries:
+        rich_region = richcollection.title
+        process_countries(region=rich_region, current=rich_region, nst=True, richcollection=richcollection)
 
-    for region in regions.regions:
-        current_region = region.region
-        if current_region not in standard_countries:
-            process_countries(region=current_region,countries=countries, current=current_region, nst=False)
+
 
 def get_countries(regions=None, stcountries=None):
     countries = []
@@ -119,20 +118,37 @@ def get_countries(regions=None, stcountries=None):
 
     return countries
 
-def process_countries(region=None, countries=None,current=None,nst=True):
+def process_countries(region=None, countries=None,current=None,nst=False, richcollection=None):
     current_region=current
+
+    number_country = 0
+    if countries != None:
+        for country in countries:
+            if(current_region == country.region.region):
+                number_country+=1
+
+    pstr = "regions/"
+    export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+current_region+"/"+current_region+".dita"
+    root = create_nst_page(current_region=current_region,export_dita=export_dita, richcollection=richcollection) if nst == True else create_page(current_region=current_region,number_country=number_country,countries=countries,export_dita=export_dita)
+
+    doc_str = doctype_richcollection_str if nst == True else None
+
+    isDestExist = os.path.exists(dirname(export_dita))
+    if not isDestExist:
+        os.makedirs(dirname(export_dita))
+    print("export_dita :", export_dita)
+    write_dita_doc(root, export_dita, doctype_str=doc_str)
+
+    if(dita_ot != None):
+        xml_file = abspath(export_dita)
+        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
+        validate(xml_file, dtd_file)
+
+def create_page(current_region=None,number_country=None,countries=None,export_dita=None):
     root = create_dita_root(doctype_str=None)
     topic = create_topic(root=root,id=current_region)
     body = create_body(root=root,topic=topic)
-
-    number_country = 0
-    for country in countries:
-        if(current_region == country.region.region):
-            number_country+=1
-
-    pstr = "" if nst == True else "regions/"
     row = create_table(root=root,body=body, cols=str(number_country))
-    export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+current_region+"/"+current_region+".dita"
 
     for country in countries:
         if(current_region == country.region.region):
@@ -141,14 +157,44 @@ def process_countries(region=None, countries=None,current=None,nst=True):
             xref = create_xref(root=root,text=country.country,url=relative_path_utl,format="html")
             entry.appendChild(xref) 
             row.appendChild(entry)
+    return root
 
-    isDestExist = os.path.exists(dirname(export_dita))
-    if not isDestExist:
-        os.makedirs(dirname(export_dita))
-    print("export_dita :", export_dita)
-    write_dita_doc(root, export_dita)
+def create_nst_page(current_region=None,export_dita=None, richcollection=None):
+    root = create_dita_root(doctype_str=None)
+    topic = create_richcollection(root=root,id=current_region)
+    body = create_body(root=root,topic=topic)
+    tbody = create_table_body(root=root,body=body, cols=str(richcollection.cols))
 
-    if(dita_ot != None):
-        xml_file = abspath(export_dita)
-        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
-        validate(xml_file, dtd_file)
+    for irow in richcollection.rows:
+        row = root.createElement('row')
+        for col in irow:
+            entry = root.createElement('entry')
+            # relative_path_url = "#" if col.href == None else os.path.relpath(col.href , dirname(export_dita))
+            # relative_path_img_url = "#" if col.src == None else os.path.relpath(col.src , dirname(export_dita))
+            # relative_path_url = "#" if col.href == None else str(col.href).replace("../", "")
+
+            href = str(col.href).replace("../", "../LegacyMan/data/")
+            relative_path_url = "#" if col.href == None else os.path.relpath(abspath(href) , dirname(export_dita))
+            relative_path_img_url = "#" if col.src == None else str(col.src).replace("../", "")
+            print("dirname(export_dita) ",dirname(export_dita))
+
+            print("Copy images  ")
+            image_url = str(col.src).replace("../", "../LegacyMan/data/")
+            new_path = str(col.src).replace("../", "/")
+            target_dir = dirname(export_dita)+new_path
+
+            print('copy ('+abspath(image_url)+') to ('+target_dir+')')
+            isDestExist = os.path.exists(dirname(target_dir))
+            if not isDestExist:
+                os.makedirs(dirname(target_dir))
+            os.system('cp '+abspath(image_url)+' '+target_dir)
+
+            image = create_image(root=root,url=relative_path_img_url,style=col.style)
+            xref = create_xref(root=root,text=col.text ,url=relative_path_url,format="html")
+            xref.appendChild(image)
+            entry.appendChild(xref) 
+            row.appendChild(entry)
+        tbody.appendChild(row)
+        
+    return root
+
