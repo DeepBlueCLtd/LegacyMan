@@ -141,8 +141,9 @@ def process_countries(region=None, countries=None,current=None,nst=False, richco
 
     if(dita_ot != None):
         xml_file = abspath(export_dita)
-        dtd_file = dita_ot+'/plugins/org.oasis-open.dita.v1_2/dtd/technicalContent/dtd/topic.dtd'
+        dtd_file = '../dtd/rich-collection.dtd'
         validate(xml_file, dtd_file)
+    
 
 def create_page(current_region=None,number_country=None,countries=None,export_dita=None):
     root = create_dita_root(doctype_str=None)
@@ -176,7 +177,7 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
 
             relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
             relative_path_img_url = "#" if col.src == None else str(col.src)
-            
+
             print("Copy images  ")
             print('copy ('+img_src_root+') to ('+img_dest_root+')')
             isDestExist = os.path.exists(dirname(img_dest_root))
