@@ -66,7 +66,11 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
                                 userland_dict: dict = None) -> []:
     url = userland_dict['url']
     title = soup.find('h2')
-    body = soup.find_all('table')[1] #if title.text == 'Britain' else soup.select_one("table:nth-of-type(1)")
+    div_element = soup.find('div', id='ImageLinksTable')
+    body = div_element.find('table')
+
+
+
     first_row = body.find('tr')
     columns = first_row.find_all('td')
     cols = len(columns)
