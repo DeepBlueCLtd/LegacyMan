@@ -169,25 +169,20 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
         row = root.createElement('row')
         for col in irow:
             entry = root.createElement('entry')
-            # relative_path_url = "#" if col.href == None else os.path.relpath(col.href , dirname(export_dita))
-            # relative_path_img_url = "#" if col.src == None else os.path.relpath(col.src , dirname(export_dita))
-            # relative_path_url = "#" if col.href == None else str(col.href).replace("../", "")
+            
+            img_src_root = dirname(dirname(richcollection.url))+str(col.src).replace("../", "/")
+            img_dest_root = dirname(dirname(export_dita))+str(col.src).replace("../", "/")
+            href_src_root = dirname(dirname(richcollection.url))+str(col.href).replace("../", "/")
 
-            href = str(col.href).replace("../", "../LegacyMan/data/")
-            relative_path_url = "#" if col.href == None else os.path.relpath(abspath(href) , dirname(export_dita))
-            relative_path_img_url = "#" if col.src == None else str(col.src).replace("../", "")
-            print("dirname(export_dita) ",dirname(export_dita))
-
+            relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
+            relative_path_img_url = "#" if col.src == None else str(col.src)
+            
             print("Copy images  ")
-            image_url = str(col.src).replace("../", "../LegacyMan/data/")
-            new_path = str(col.src).replace("../", "/")
-            target_dir = dirname(export_dita)+new_path
-
-            print('copy ('+abspath(image_url)+') to ('+target_dir+')')
-            isDestExist = os.path.exists(dirname(target_dir))
+            print('copy ('+img_src_root+') to ('+img_dest_root+')')
+            isDestExist = os.path.exists(dirname(img_dest_root))
             if not isDestExist:
-                os.makedirs(dirname(target_dir))
-            os.system('cp '+abspath(image_url)+' '+target_dir)
+                os.makedirs(dirname(img_dest_root))
+            os.system('cp '+abspath(img_src_root)+' '+img_dest_root)
 
             image = create_image(root=root,url=relative_path_img_url,style=col.style)
             xref = create_xref(root=root,text=col.text ,url=relative_path_url,format="html")
