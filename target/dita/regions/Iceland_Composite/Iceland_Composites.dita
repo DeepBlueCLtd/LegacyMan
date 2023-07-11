@@ -32,8 +32,8 @@
           </row>
           <row>
             <entry>
-Unit_ab%TEST-106 Icelandic Composite%
-</entry>
+              <xref href="unit_ab.html" format="html">Unit_ab%TEST-106 Icelandic Composite%</xref>
+            </entry>
             <entry>PB</entry>
             <entry>2 * V8 Diesel</entry>
             <entry>3 x 3</entry>
@@ -42,7 +42,9 @@ Unit_ab%TEST-106 Icelandic Composite%
             <entry>Unk</entry>
           </row>
           <row>
-            <entry>Unit_g</entry>
+            <entry>
+              <xref href="unit_g.html" format="html">Unit_g</xref>
+            </entry>
             <entry>PBF</entry>
             <entry>2 * V6 Diesel</entry>
             <entry>2 * 4 (FPP)</entry>

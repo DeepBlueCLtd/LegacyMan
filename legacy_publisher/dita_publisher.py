@@ -242,8 +242,15 @@ def create_collection_page(classlist=None,export_dita=None):
                 nameend="col7"
                 entry.setAttribute('namest', namest)
                 entry.setAttribute('nameend', nameend)
-            text_content = root.createTextNode(col)
-            entry.appendChild(text_content)
+        
+            relative_path_url = "#" if col[1] == None else col[1]
+            if col[1] != None :
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                entry.appendChild(xref) 
+            else : 
+                text_content = root.createTextNode(col[0])
+                entry.appendChild(text_content)
+
             row.appendChild(entry)
         tbody.appendChild(row)
 

@@ -31,7 +31,9 @@
             <entry>Reduction Ratio</entry>
           </row>
           <row>
-            <entry>Unit_ab</entry>
+            <entry>
+              <xref href="unit_split_a.html" format="html">Unit_ab</xref>
+            </entry>
             <entry>PB</entry>
             <entry>2 * V8 Diesel</entry>
             <entry>3 x 3</entry>

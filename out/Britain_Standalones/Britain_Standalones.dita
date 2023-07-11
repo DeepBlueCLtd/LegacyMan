@@ -41,7 +41,9 @@
             <entry colname="col7">Unk</entry>
           </row>
           <row>
-            <entry colname="col1">Unit_da</entry>
+            <entry colname="col1">
+              <xref format="html" href="britain_1a.html">Unit_da</xref>
+            </entry>
             <entry colname="col2">PBF</entry>
             <entry colname="col3">2 * V6 Diesel</entry>
             <entry colname="col4">2 * 4 (FPP)</entry>
