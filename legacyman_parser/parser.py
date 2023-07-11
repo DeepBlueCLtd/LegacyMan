@@ -211,7 +211,7 @@ def parse_from_root():
 
     if COUNTRY_TABLE_COLLECTION_LINKS:
         for collectionlink in COUNTRY_TABLE_COLLECTION_LINKS:
-            reg_dict = {"url": collectionlink.href,"flag": collectionlink.flag, "flag_dest": collectionlink.flag_dest, "seq": uniq_id_gen_country}
+            reg_dict = {"parent": collectionlink.parent, "url": collectionlink.href,"flag": collectionlink.flag, "flag_dest": collectionlink.flag_dest, "seq": uniq_id_gen_country}
             region_spidey_to_extract_nst_countries_collection = SimpleCrawler(url=collectionlink.href,disable_crawler_log=True,userland_dict=reg_dict)
             region_spidey_to_extract_nst_countries_collection.crawl(resource_processor_callback=extract_collections_non_standard_country,crawl_recursively=False)
    

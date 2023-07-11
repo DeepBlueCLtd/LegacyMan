@@ -11,7 +11,7 @@ from legacyman_parser.dita_ot_validator import validate, get_dita
 dita_ot = get_dita()
 doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 doctype_richcollection_str = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">\n'
-doctype_classlist_str = '<!DOCTYPE classlist SYSTEM "../../../../dtd/classlist.dtd">\n'
+doctype_classlist_str = '<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">\n'
 
 
 """This module will handle post parsing enhancements for DITA publishing"""
@@ -109,14 +109,15 @@ def publish_ns_country_regions(regions=None, nstcountries=None):
 
 def publish_country_collection(country_collection=None):
     print("Publish country...")
-
+ 
     for classlist in country_collection:
         current=classlist
         pstr = "regions/"
+        parent_folder = os.path.basename(dirname(str(classlist.flag.parent)))
         folder_name = os.path.basename(dirname(str(classlist.url)))
         file_name = os.path.basename(str(classlist.url)).replace(".html", "")
 
-        export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+folder_name+"/"+file_name+".dita"
+        export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+parent_folder+"/"+folder_name+"/"+file_name+".dita"
         root = create_collection_page(classlist=classlist,export_dita=export_dita)
 
         isDestExist = os.path.exists(dirname(export_dita))
@@ -195,12 +196,12 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
             entry = root.createElement('entry')
             
             img_src_root = dirname(dirname(richcollection.url))+str(col.src).replace("../", "/")
-            img_dest_root = dirname(dirname(export_dita))+str(col.src).replace("../", "/")
+            img_dest_root = dirname(export_dita)+str(col.src).replace("../", "/")
             href_src_root = dirname(dirname(richcollection.url))+str(col.href).replace("../", "/")
 
             relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
-            relative_path_img_url = "#" if col.src == None else str(col.src)
-
+            relative_path_img_url = "#" if col.src == None else str(col.src).replace("../", "")
+            
             print("Copy images  ")
             print('copy ('+img_src_root+') to ('+img_dest_root+')')
             isDestExist = os.path.exists(dirname(img_dest_root))
@@ -223,7 +224,7 @@ def create_collection_page(classlist=None,export_dita=None):
     flag = create_flag(root=root,url="../"+classlist.flag.flag_dest,topic=topic)
 
     print("Copy flags ")
-    img_dest = dirname(dirname(export_dita))+"/"+classlist.flag.flag_dest
+    img_dest = dirname(dirname(dirname(export_dita)))+"/"+classlist.flag.flag_dest
     print('copy ('+classlist.flag.flag+') to ('+img_dest+')')
     isDestExist = os.path.exists(dirname(img_dest))
     if not isDestExist:

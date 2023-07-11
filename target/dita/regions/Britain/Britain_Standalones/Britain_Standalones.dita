@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE classlist SYSTEM "../../../../dtd/classlist.dtd">
-<classlist id="britain-composite">
-  <title>Britain - Composite</title>
+<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">
+<classlist id="britain-standalones">
+  <title>Britain - Standalones</title>
   <flag>
     <fig>
       <image href="../Britain/Content/Images/Flag.jpg" alt="flag"/>
@@ -19,7 +19,7 @@
         <colspec colnum="7" colname="col7"/>
         <tbody>
           <row>
-            <entry namest="col1" nameend="col7">Overview of Composite in Britain</entry>
+            <entry namest="col1" nameend="col7">Overview of Standalones in Britain</entry>
           </row>
           <row>
             <entry>Class</entry>
@@ -31,18 +31,18 @@
             <entry>Reduction Ratio</entry>
           </row>
           <row>
-            <entry>
-              <xref href="unit_split_a.html" format="html">Unit_ab</xref>
-            </entry>
-            <entry>PB</entry>
-            <entry>2 * V8 Diesel</entry>
-            <entry>3 x 3</entry>
+            <entry>Unit_c</entry>
+            <entry>PBA</entry>
+            <entry>5 * V8 Diesel</entry>
+            <entry>1 x 3</entry>
             <entry>34 Kts</entry>
-            <entry>Unk</entry>
+            <entry>JR</entry>
             <entry>Unk</entry>
           </row>
           <row>
-            <entry>Unit_b</entry>
+            <entry>
+              <xref href="./britain_1a.html" format="html">Unit_da</xref>
+            </entry>
             <entry>PBF</entry>
             <entry>2 * V6 Diesel</entry>
             <entry>2 * 4 (FPP)</entry>

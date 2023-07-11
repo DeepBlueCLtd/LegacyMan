@@ -62,13 +62,14 @@ class TableLink:
         return "{}. {} in {} ==> {}".format(self.text, self.href, self.src, self.style)
 
 class CollectionLink:
-    def __init__(self, href, flag, flag_dest):
+    def __init__(self, href, flag, flag_dest, parent):
         self.href = href
         self.flag = flag
         self.flag_dest = flag_dest
+        self.parent = parent
 
     def __str__(self):
-        return "{}. {} in {} ==> {}".format(self.href, self.flag, self.flag_dest)
+        return "{}. {} in {} ==> {}".format(self.href, self.flag, self.flag_dest, self.parent)
 
 def extract_countries_in_region(soup: BeautifulSoup = None,
                                 parsed_url: str = None,
@@ -126,7 +127,7 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
             link_href = dirname(dirname(url))+str(href).replace("../", "/")
             flag = dirname(url)+str(image_flag.get('src')).replace("./", "/")
             flag_dest = os.path.basename(dirname(url))+str(image_flag.get('src')).replace("./", "/")
-            COUNTRY_TABLE_COLLECTION_LINKS.append(CollectionLink(link_href, flag, flag_dest))
+            COUNTRY_TABLE_COLLECTION_LINKS.append(CollectionLink(link_href, flag, flag_dest, url))
 
             tr.append(TableLink(td.text, href, src, style))
         
@@ -142,6 +143,8 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
     url = userland_dict['url']
     flag = userland_dict['flag']
     flag_dest = userland_dict['flag_dest']
+    parent = userland_dict['parent']
+    
     
     title = soup.find('h2')   
     wide_col = soup.find_all("td", {"colspan" : "7"})
@@ -164,7 +167,7 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
             tr.append([td.text, href])
         rows.append(tr)
 
-    flagdata = CollectionLink(None, flag, flag_dest)
+    flagdata = CollectionLink(None, flag, flag_dest, parent)
 
     COUNTRY_TABLE_COLLECTION.append(ClassList(title.text,None, url, cols, rows, flagdata))
 
