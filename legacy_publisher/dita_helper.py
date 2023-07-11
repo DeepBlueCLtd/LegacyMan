@@ -50,12 +50,43 @@ def create_richcollection(root=None,id=None):
 
     return xml
 
+def create_classlist(root=None,id=None):
+    xml = root.createElement('classlist') 
+    xml.setAttribute('id', id.lower().replace(" ", ""))
+    root.appendChild(xml)
+
+    title = root.createElement('title')
+    text_content = root.createTextNode(id)
+    title.appendChild(text_content)
+    xml.appendChild(title)
+
+    return xml
+
 def create_body(root=None,topic=None):
     body = root.createElement('body')
     topic.appendChild(body)
 
     return body
 
+def create_classlist_body(root=None,topic=None):
+    classlistbody = root.createElement('classlistbody')
+    topic.appendChild(classlistbody)
+
+    return classlistbody
+
+
+def create_flag(root=None,url=None,topic=None):
+    flag = root.createElement('flag')
+    fig = root.createElement('fig')
+    flag.appendChild(fig)
+    image = root.createElement('image') 
+    url = url if url != None else "#" 
+    image.setAttribute('href', url)
+    image.setAttribute('alt', 'flag')
+    fig.appendChild(image)
+
+    topic.appendChild(flag)
+    return flag
 
 def create_table(root=None,body=None, cols=None):
     table = root.createElement('table')
@@ -91,6 +122,34 @@ def create_table_body(root=None,body=None, cols=None):
 
     return tbody
 
+def create_classlisttable_body(root=None,body=None, cols=None):
+    # <table colsep="1" rowsep="1">
+    colsep = "1"
+    rowsep = "1"
+    table = root.createElement('table')
+    table.setAttribute('colsep', colsep)
+    table.setAttribute('rowsep', rowsep)
+    body.appendChild(table)
+
+    # <tgroup cols="7" colsep="1" rowsep="1">
+    tgroup = root.createElement('tgroup')
+    tgroup.setAttribute('cols', cols)
+    tgroup.setAttribute('colsep', colsep)
+    tgroup.setAttribute('rowsep', rowsep)
+    table.appendChild(tgroup)
+
+    #  <colspec colnum="1" colname="col1"/>
+    for i in range(1, int(cols)+1):
+        colspec = root.createElement('colspec')
+        colspec.setAttribute('colnum', str(i))
+        colspec.setAttribute('colname', "col"+str(i))
+        tgroup.appendChild(colspec)
+
+    # <tbody>
+    tbody = root.createElement('tbody')
+    tgroup.appendChild(tbody)
+
+    return tbody
 
 def create_xref(root=None,text=None,url=None,format=None):
     xref = root.createElement('xref')
@@ -106,7 +165,7 @@ def create_image(root=None,url=None,style=None):
     image = root.createElement('image') 
     image.setAttribute('href', url)
     width = str(style).replace("width:", "").replace("%","0px")
-    relative_path_utl = width if width == None else "450px"
+    # relative_path_utl = width if width == None else "450px"
     image.setAttribute('width', width)
     return image
 

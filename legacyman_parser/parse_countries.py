@@ -1,5 +1,7 @@
 import sys
 from urllib.parse import urljoin
+from os.path import dirname, abspath
+
 
 from bs4 import BeautifulSoup
 
@@ -9,7 +11,8 @@ to process country data
 COUNTRY_COLLECTION = []
 COUNTRY_TABLE_NOT_FOUND = []
 COUNTRY_TABLE_FOUND = []
-
+COUNTRY_TABLE_COLLECTION_LINKS = []
+COUNTRY_TABLE_COLLECTION = []
 
 class CountryMap:
     def __init__(self, id, country, region, url):
@@ -32,6 +35,18 @@ class RichCollection:
 
     def __str__(self):
         return "{}. {} in {} ==> {}".format(self.title, self.body, self.related_pages, self.url, self.cols, self.rows)
+
+class ClassList:
+    def __init__(self, title, related_pages, url, cols, rows):
+        self.url = url
+        self.title = title
+        self.cols = cols
+        self.rows = rows
+        self.related_pages = related_pages
+
+    def __str__(self):
+        return "{}. {} in {} ==> {}".format(self.title, self.related_pages, self.url, self.cols, self.rows)
+
 
 
 class TableLink:
@@ -72,9 +87,6 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
         sys.exit(f"Exiting: ImageLinksTable not found in {parsed_url}")
 
     body = div_element.find('table')
-
-
-
     first_row = body.find('tr')
     columns = first_row.find_all('td')
     cols = len(columns)
@@ -98,12 +110,39 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
                 src = image.get('src')
                 style = image.get('style')
 
+            link_href = dirname(dirname(url))+str(href).replace("../", "/")
+            COUNTRY_TABLE_COLLECTION_LINKS.append(link_href)
+
             tr.append(TableLink(td.text, href, src, style))
         
         rows.append(tr)
         
     COUNTRY_TABLE_FOUND.append(RichCollection(title.text, body, None, url, cols, rows))
 
+def extract_collections_non_standard_country(soup: BeautifulSoup = None,
+                                parsed_url: str = None,
+                                parent_url: str = None,
+                                userland_dict: dict = None) -> []:
+
+    url = userland_dict['url']
+    title = soup.find('h2')
+    div_element = soup.find('div', id='PageLayer')
+    if div_element is None:
+        sys.exit(f"Exiting: PageLayer table not found in {parsed_url}")
+
+    body = div_element.find('table')
+    first_row = body.find('tr')
+    columns = first_row.find('td')
+    cols = columns.get('colspan')
+
+    rows = []
+    for row in body.find_all('tr'):
+        tr = []
+        for td in row.find_all('td'):
+            tr.append(td.text)
+        rows.append(tr)
+
+    COUNTRY_TABLE_COLLECTION.append(ClassList(title.text,None, url, cols, rows))
 
 def create_country(seq, country, region, url):
     url_tag = country.find('a')
@@ -113,3 +152,6 @@ def create_country(seq, country, region, url):
         url_str = url_tag.get('href')
         parsed_url = urljoin(url, url_str)
     return CountryMap(seq, country.getText(), region, parsed_url)
+
+
+
