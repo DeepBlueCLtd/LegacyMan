@@ -1,5 +1,8 @@
 import sys
+import os
 from urllib.parse import urljoin
+from os.path import dirname, abspath
+
 
 from bs4 import BeautifulSoup
 
@@ -9,7 +12,8 @@ to process country data
 COUNTRY_COLLECTION = []
 COUNTRY_TABLE_NOT_FOUND = []
 COUNTRY_TABLE_FOUND = []
-
+COUNTRY_TABLE_COLLECTION_LINKS = []
+COUNTRY_TABLE_COLLECTION = []
 
 class CountryMap:
     def __init__(self, id, country, region, url):
@@ -33,6 +37,19 @@ class RichCollection:
     def __str__(self):
         return "{}. {} in {} ==> {}".format(self.title, self.body, self.related_pages, self.url, self.cols, self.rows)
 
+class ClassList:
+    def __init__(self, title, related_pages, url, cols, rows, flag):
+        self.url = url
+        self.title = title
+        self.cols = cols
+        self.rows = rows
+        self.related_pages = related_pages
+        self.flag = flag
+
+    def __str__(self):
+        return "{}. {} in {} ==> {}".format(self.title, self.related_pages, self.url, self.cols, self.rows, self.flag)
+
+
 
 class TableLink:
     def __init__(self, text, href, src, style):
@@ -43,6 +60,16 @@ class TableLink:
 
     def __str__(self):
         return "{}. {} in {} ==> {}".format(self.text, self.href, self.src, self.style)
+
+class CollectionLink:
+    def __init__(self, href, flag, flag_dest, parent):
+        self.href = href
+        self.flag = flag
+        self.flag_dest = flag_dest
+        self.parent = parent
+
+    def __str__(self):
+        return "{}. {} in {} ==> {}".format(self.href, self.flag, self.flag_dest, self.parent)
 
 def extract_countries_in_region(soup: BeautifulSoup = None,
                                 parsed_url: str = None,
@@ -72,12 +99,11 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
         sys.exit(f"Exiting: ImageLinksTable not found in {parsed_url}")
 
     body = div_element.find('table')
-
-
-
     first_row = body.find('tr')
     columns = first_row.find_all('td')
     cols = len(columns)
+
+    image_flag = title.find_next('img')
     
     rows = []
     for row in body.find_all('tr'):
@@ -98,12 +124,52 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
                 src = image.get('src')
                 style = image.get('style')
 
+            link_href = dirname(dirname(url))+str(href).replace("../", "/")
+            flag = dirname(url)+str(image_flag.get('src')).replace("./", "/")
+            flag_dest = os.path.basename(dirname(url))+str(image_flag.get('src')).replace("./", "/")
+            COUNTRY_TABLE_COLLECTION_LINKS.append(CollectionLink(link_href, flag, flag_dest, url))
+
             tr.append(TableLink(td.text, href, src, style))
         
         rows.append(tr)
         
     COUNTRY_TABLE_FOUND.append(RichCollection(title.text, body, None, url, cols, rows))
 
+def extract_collections_non_standard_country(soup: BeautifulSoup = None,
+                                parsed_url: str = None,
+                                parent_url: str = None,
+                                userland_dict: dict = None) -> []:
+
+    url = userland_dict['url']
+    flag = userland_dict['flag']
+    flag_dest = userland_dict['flag_dest']
+    parent = userland_dict['parent']
+    
+    
+    title = soup.find('h2')   
+    wide_col = soup.find("td", {"colspan" : "7"})
+
+    if wide_col is None:
+        sys.exit(f"Exiting: colspan:7 table not found in {parsed_url}")
+
+    body = wide_col.find_parent("table")
+    first_row = body.find('tr')
+    columns = first_row.find('td')
+    cols = columns.get('colspan')
+
+    rows = []
+    for row in body.find_all('tr'):
+        tr = []
+        for td in row.find_all('td'):
+            href = None
+            for link in td.find_all('a'):
+                href = link.get('href')
+            tr.append([td.text, href])
+        rows.append(tr)
+
+    flagdata = CollectionLink(None, flag, flag_dest, parent)
+
+    COUNTRY_TABLE_COLLECTION.append(ClassList(title.text,None, url, cols, rows, flagdata))
 
 def create_country(seq, country, region, url):
     url_tag = country.find('a')
@@ -113,3 +179,6 @@ def create_country(seq, country, region, url):
         url_str = url_tag.get('href')
         parsed_url = urljoin(url, url_str)
     return CountryMap(seq, country.getText(), region, parsed_url)
+
+
+

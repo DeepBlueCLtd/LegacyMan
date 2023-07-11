@@ -5,12 +5,13 @@ from xml.dom import minidom
 from os.path import dirname, abspath
 from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 from distutils.dir_util import copy_tree
-from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image
+from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
 doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 doctype_richcollection_str = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">\n'
+doctype_classlist_str = '<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">\n'
 
 
 """This module will handle post parsing enhancements for DITA publishing"""
@@ -106,6 +107,29 @@ def publish_ns_country_regions(regions=None, nstcountries=None):
         rich_region = richcollection.title
         process_countries(region=rich_region, current=rich_region, nst=True, richcollection=richcollection)
 
+def publish_country_collection(country_collection=None):
+    print("Publish country...")
+ 
+    for classlist in country_collection:
+        current=classlist
+        pstr = "regions/"
+        parent_folder = os.path.basename(dirname(str(classlist.flag.parent)))
+        folder_name = os.path.basename(dirname(str(classlist.url)))
+        file_name = os.path.basename(str(classlist.url)).replace(".html", "")
+
+        export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+parent_folder+"/"+folder_name+"/"+file_name+".dita"
+        root = create_collection_page(classlist=classlist,export_dita=export_dita)
+
+        isDestExist = os.path.exists(dirname(export_dita))
+        if not isDestExist:
+            os.makedirs(dirname(export_dita))
+        print("export_dita :", export_dita)
+        write_dita_doc(root, export_dita, doctype_str=doctype_classlist_str)
+
+        if(dita_ot != None):
+            xml_file = abspath(export_dita)
+            dtd_file = '../dtd/classlist.dtd'
+            validate(xml_file, dtd_file)
 
 
 def get_countries(regions=None, stcountries=None):
@@ -172,12 +196,12 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
             entry = root.createElement('entry')
             
             img_src_root = dirname(dirname(richcollection.url))+str(col.src).replace("../", "/")
-            img_dest_root = dirname(dirname(export_dita))+str(col.src).replace("../", "/")
+            img_dest_root = dirname(export_dita)+str(col.src).replace("../", "/")
             href_src_root = dirname(dirname(richcollection.url))+str(col.href).replace("../", "/")
 
             relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
-            relative_path_img_url = "#" if col.src == None else str(col.src)
-
+            relative_path_img_url = "#" if col.src == None else str(col.src).replace("../", "")
+            
             print("Copy images  ")
             print('copy ('+img_src_root+') to ('+img_dest_root+')')
             isDestExist = os.path.exists(dirname(img_dest_root))
@@ -193,4 +217,44 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
         tbody.appendChild(row)
         
     return root
+
+def create_collection_page(classlist=None,export_dita=None):
+    root = create_dita_root(doctype_str=None)
+    topic = create_classlist(root=root,id=classlist.title)
+    flag = create_flag(root=root,url=".."+classlist.flag.flag_dest.replace(os.path.basename(dirname(dirname(export_dita))), ""),topic=topic)
+
+    print("Copy flags ")
+    img_dest = dirname(dirname(dirname(export_dita)))+"/"+classlist.flag.flag_dest
+    print('copy ('+classlist.flag.flag+') to ('+img_dest+')')
+    isDestExist = os.path.exists(dirname(img_dest))
+    if not isDestExist:
+        os.makedirs(dirname(img_dest))
+    os.system('cp '+abspath(classlist.flag.flag)+' '+img_dest)
+
+    body = create_classlist_body(root=root,topic=topic)
+    tbody = create_classlisttable_body(root=root,body=body, cols=str(classlist.cols))
+
+    for irow in classlist.rows:
+        row = root.createElement('row')
+        for col in irow:
+            entry = root.createElement('entry')
+            if len(irow) < 7:
+                namest="col1" 
+                nameend="col7"
+                entry.setAttribute('namest', namest)
+                entry.setAttribute('nameend', nameend)
+        
+            relative_path_url = "#" if col[1] == None else col[1]
+            if col[1] != None :
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                entry.appendChild(xref) 
+            else : 
+                text_content = root.createTextNode(col[0])
+                entry.appendChild(text_content)
+
+            row.appendChild(entry)
+        tbody.appendChild(row)
+
+    return root
+
 
