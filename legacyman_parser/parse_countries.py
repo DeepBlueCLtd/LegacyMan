@@ -126,8 +126,6 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
             link_href = dirname(dirname(url))+str(href).replace("../", "/")
             flag = dirname(url)+str(image_flag.get('src')).replace("./", "/")
             flag_dest = os.path.basename(dirname(url))+str(image_flag.get('src')).replace("./", "/")
-
-            print("flag_dest : ",flag_dest)
             COUNTRY_TABLE_COLLECTION_LINKS.append(CollectionLink(link_href, flag, flag_dest))
 
             tr.append(TableLink(td.text, href, src, style))
@@ -145,12 +143,11 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
     flag = userland_dict['flag']
     flag_dest = userland_dict['flag_dest']
     
-    title = soup.find('h2')
-    div_element = soup.find('div', id='PageLayer')
-    if div_element is None:
-        sys.exit(f"Exiting: PageLayer table not found in {parsed_url}")
+    title = soup.find('h2')   
+    body = soup.find(lambda tag: tag.name=='table' and tag.find_all('tr')[0].find_all('td')[0].get('colspan') == '7')
+    if body is None:
+        sys.exit(f"Exiting: table not found in {parsed_url}")
 
-    body = div_element.find('table')
     first_row = body.find('tr')
     columns = first_row.find('td')
     cols = columns.get('colspan')
