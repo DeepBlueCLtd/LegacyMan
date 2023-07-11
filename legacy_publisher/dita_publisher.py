@@ -221,7 +221,7 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
 def create_collection_page(classlist=None,export_dita=None):
     root = create_dita_root(doctype_str=None)
     topic = create_classlist(root=root,id=classlist.title)
-    flag = create_flag(root=root,url="../"+classlist.flag.flag_dest,topic=topic)
+    flag = create_flag(root=root,url=".."+classlist.flag.flag_dest.replace(os.path.basename(dirname(dirname(export_dita))), ""),topic=topic)
 
     print("Copy flags ")
     img_dest = dirname(dirname(dirname(export_dita)))+"/"+classlist.flag.flag_dest
