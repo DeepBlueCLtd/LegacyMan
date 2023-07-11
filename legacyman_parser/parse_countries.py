@@ -144,10 +144,12 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
     flag_dest = userland_dict['flag_dest']
     
     title = soup.find('h2')   
-    body = soup.find(lambda tag: tag.name=='table' and tag.find_all('tr')[0].find_all('td')[0].get('colspan') == '7')
-    if body is None:
+    wide_col = soup.find_all("td", {"colspan" : "7"})
+
+    if wide_col is None:
         sys.exit(f"Exiting: table not found in {parsed_url}")
 
+    body = wide_col[0].find_parent("table")
     first_row = body.find('tr')
     columns = first_row.find('td')
     cols = columns.get('colspan')
