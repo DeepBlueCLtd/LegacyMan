@@ -150,7 +150,7 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
     wide_col = soup.find("td", {"colspan" : "7"})
 
     if wide_col is None:
-        sys.exit(f"Exiting: table not found in {parsed_url}")
+        sys.exit(f"Exiting: colspan:7 table not found in {parsed_url}")
 
     body = wide_col.find_parent("table")
     first_row = body.find('tr')
