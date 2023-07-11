@@ -5,7 +5,7 @@
   <title>Britain - Standalones</title>
   <flag>
     <fig>
-      <image alt="flag" href="Britain/Content/Images/Flag.jpg" placement="inline"/>
+      <image alt="flag" href="../../../../data/Britain/Content/Images/Flag.jpg" placement="inline"/>
     </fig>
   </flag>
   <classlistbody>

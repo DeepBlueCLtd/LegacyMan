@@ -210,9 +210,9 @@ def parse_from_root():
     print("Done. None {} ".format(COUNTRY_TABLE_FOUND))
 
     if COUNTRY_TABLE_COLLECTION_LINKS:
-        for link_href in COUNTRY_TABLE_COLLECTION_LINKS:
-            reg_dict = {"url": link_href, "seq": uniq_id_gen_country}
-            region_spidey_to_extract_nst_countries_collection = SimpleCrawler(url=link_href,disable_crawler_log=True,userland_dict=reg_dict)
+        for collectionlink in COUNTRY_TABLE_COLLECTION_LINKS:
+            reg_dict = {"url": collectionlink.href,"flag": collectionlink.flag, "flag_dest": collectionlink.flag_dest, "seq": uniq_id_gen_country}
+            region_spidey_to_extract_nst_countries_collection = SimpleCrawler(url=collectionlink.href,disable_crawler_log=True,userland_dict=reg_dict)
             region_spidey_to_extract_nst_countries_collection.crawl(resource_processor_callback=extract_collections_non_standard_country,crawl_recursively=False)
    
     dita_publisher.publish_country_collection(country_collection=COUNTRY_TABLE_COLLECTION)

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><?path2rootmap-uri ./?>
 <!DOCTYPE classlist
   PUBLIC "-//OASIS//DTD DITA Classlist//EN" "../../../../dtd/classlist.dtd">
-<classlist id="britain-standalones" specializations="">
-  <title>Britain - Standalones</title>
+<classlist id="britain-complex" specializations="">
+  <title>Britain - Complex</title>
   <flag>
     <fig>
-      <image alt="flag" href="Britain/Content/Images/Flag.jpg" placement="inline"/>
+      <image alt="flag" href="../Britain/Content/Images/Flag.jpg" placement="inline"/>
     </fig>
   </flag>
   <classlistbody>
@@ -20,7 +20,7 @@
         <colspec colname="col7" colnum="7"/>
         <tbody>
           <row>
-            <entry colname="col1" nameend="col7" namest="col1">Overview of Standalones in Britain</entry>
+            <entry colname="col1" nameend="col7" namest="col1">Details of Complex in Britain</entry>
           </row>
           <row>
             <entry colname="col1">Class</entry>
@@ -32,16 +32,16 @@
             <entry colname="col7">Reduction Ratio</entry>
           </row>
           <row>
-            <entry colname="col1">Unit_c</entry>
-            <entry colname="col2">PBA</entry>
-            <entry colname="col3">5 * V8 Diesel</entry>
-            <entry colname="col4">1 x 3</entry>
+            <entry colname="col1">Unit_a</entry>
+            <entry colname="col2">PB</entry>
+            <entry colname="col3">2 * V8 Diesel</entry>
+            <entry colname="col4">3 x 3</entry>
             <entry colname="col5">34 Kts</entry>
-            <entry colname="col6">JR</entry>
+            <entry colname="col6">Unk</entry>
             <entry colname="col7">Unk</entry>
           </row>
           <row>
-            <entry colname="col1">Unit_da</entry>
+            <entry colname="col1">Unit_daf</entry>
             <entry colname="col2">PBF</entry>
             <entry colname="col3">2 * V6 Diesel</entry>
             <entry colname="col4">2 * 4 (FPP)</entry>

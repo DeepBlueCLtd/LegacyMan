@@ -1,4 +1,5 @@
 import sys
+import os
 from urllib.parse import urljoin
 from os.path import dirname, abspath
 
@@ -37,15 +38,16 @@ class RichCollection:
         return "{}. {} in {} ==> {}".format(self.title, self.body, self.related_pages, self.url, self.cols, self.rows)
 
 class ClassList:
-    def __init__(self, title, related_pages, url, cols, rows):
+    def __init__(self, title, related_pages, url, cols, rows, flag):
         self.url = url
         self.title = title
         self.cols = cols
         self.rows = rows
         self.related_pages = related_pages
+        self.flag = flag
 
     def __str__(self):
-        return "{}. {} in {} ==> {}".format(self.title, self.related_pages, self.url, self.cols, self.rows)
+        return "{}. {} in {} ==> {}".format(self.title, self.related_pages, self.url, self.cols, self.rows, self.flag)
 
 
 
@@ -58,6 +60,15 @@ class TableLink:
 
     def __str__(self):
         return "{}. {} in {} ==> {}".format(self.text, self.href, self.src, self.style)
+
+class CollectionLink:
+    def __init__(self, href, flag, flag_dest):
+        self.href = href
+        self.flag = flag
+        self.flag_dest = flag_dest
+
+    def __str__(self):
+        return "{}. {} in {} ==> {}".format(self.href, self.flag, self.flag_dest)
 
 def extract_countries_in_region(soup: BeautifulSoup = None,
                                 parsed_url: str = None,
@@ -90,6 +101,8 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
     first_row = body.find('tr')
     columns = first_row.find_all('td')
     cols = len(columns)
+
+    image_flag = title.find_next('img')
     
     rows = []
     for row in body.find_all('tr'):
@@ -111,7 +124,11 @@ def extract_nst_countries_in_region(soup: BeautifulSoup = None,
                 style = image.get('style')
 
             link_href = dirname(dirname(url))+str(href).replace("../", "/")
-            COUNTRY_TABLE_COLLECTION_LINKS.append(link_href)
+            flag = dirname(url)+str(image_flag.get('src')).replace("./", "/")
+            flag_dest = os.path.basename(dirname(url))+str(image_flag.get('src')).replace("./", "/")
+
+            print("flag_dest : ",flag_dest)
+            COUNTRY_TABLE_COLLECTION_LINKS.append(CollectionLink(link_href, flag, flag_dest))
 
             tr.append(TableLink(td.text, href, src, style))
         
@@ -125,6 +142,9 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
                                 userland_dict: dict = None) -> []:
 
     url = userland_dict['url']
+    flag = userland_dict['flag']
+    flag_dest = userland_dict['flag_dest']
+    
     title = soup.find('h2')
     div_element = soup.find('div', id='PageLayer')
     if div_element is None:
@@ -142,7 +162,9 @@ def extract_collections_non_standard_country(soup: BeautifulSoup = None,
             tr.append(td.text)
         rows.append(tr)
 
-    COUNTRY_TABLE_COLLECTION.append(ClassList(title.text,None, url, cols, rows))
+    flagdata = CollectionLink(None, flag, flag_dest)
+
+    COUNTRY_TABLE_COLLECTION.append(ClassList(title.text,None, url, cols, rows, flagdata))
 
 def create_country(seq, country, region, url):
     url_tag = country.find('a')
