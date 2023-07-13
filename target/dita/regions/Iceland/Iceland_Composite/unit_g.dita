@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">
+<class id="unit_g">
+  <title>unit_g</title>
+  <body>
+    <images/>
+    <summary id="summary">
+      <table colsep="1" rowsep="1">
+        <tgroup cols="6" colsep="1" rowsep="1">
+          <colspec colnum="1" colname="col1"/>
+          <colspec colnum="2" colname="col2"/>
+          <colspec colnum="3" colname="col3"/>
+          <colspec colnum="4" colname="col4"/>
+          <colspec colnum="5" colname="col5"/>
+          <colspec colnum="6" colname="col6"/>
+          <tbody>
+            <row>
+              <entry>Drive</entry>
+              <entry>Mode</entry>
+              <entry>Shaft x Blade</entry>
+              <entry>R:R</entry>
+              <entry>Max Speed</entry>
+              <entry>Av TPK (Guide)</entry>
+            </row>
+            <row>
+              <entry>4 Diesel</entry>
+              <entry>PTR</entry>
+              <entry>2 * 4 (GRR)</entry>
+              <entry>412.8:1</entry>
+              <entry>40 kts</entry>
+              <entry>~14</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </summary>
+    <signatures id="signatures">
+      <title>Signatures</title>
+      <table colsep="1" rowsep="1">
+        <tgroup cols="6" colsep="1" rowsep="1">
+          <colspec colnum="1" colname="col1"/>
+          <colspec colnum="2" colname="col2"/>
+          <colspec colnum="3" colname="col3"/>
+          <colspec colnum="4" colname="col4"/>
+          <colspec colnum="5" colname="col5"/>
+          <colspec colnum="6" colname="col6"/>
+          <tbody>
+            <row>
+              <entry namest="col1" nameend="col6">Commonly Detected Sources</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Source</entry>
+              <entry namest="col2" nameend="col2">Ratio/Freq</entry>
+              <entry namest="col3" nameend="col4">Harmonics</entry>
+              <entry namest="col5" nameend="col6">Remarks</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col6">Power Related</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">SR</entry>
+              <entry namest="col2" nameend="col2">S1</entry>
+              <entry namest="col3" nameend="col4">H1-4</entry>
+              <entry namest="col5" nameend="col6">Discrete. Doublets common</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">BR</entry>
+              <entry namest="col2" nameend="col2">S5</entry>
+              <entry namest="col3" nameend="col4">H1</entry>
+              <entry namest="col5" nameend="col6">Discrete. Doublets common</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">BR</entry>
+              <entry namest="col2" nameend="col2">S4</entry>
+              <entry namest="col3" nameend="col4">H1 - 3</entry>
+              <entry namest="col5" nameend="col6">Discrete. Doublets common</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">EKG</entry>
+              <entry namest="col2" nameend="col2">13 x CSR</entry>
+              <entry namest="col3" nameend="col4">H1 - 3</entry>
+              <entry namest="col5" nameend="col6">Some EKG descriptor</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">EKJ</entry>
+              <entry namest="col2" nameend="col2">12 x CFR</entry>
+              <entry namest="col3" nameend="col4">H1</entry>
+              <entry namest="col5" nameend="col6">Some EKJ descriptor</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">EKW</entry>
+              <entry namest="col2" nameend="col2">124 x CSR</entry>
+              <entry namest="col3" nameend="col4">H1, 3</entry>
+              <entry namest="col5" nameend="col6">Some EKW descriptor</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Propulsion Diesel Engine CFR</entry>
+              <entry namest="col2" nameend="col2">16 - 17 (Common)</entry>
+              <entry namest="col3" nameend="col4">H2, H4</entry>
+              <entry namest="col5" nameend="col6">Some EKL descriptor</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col6">Auxiliary Machinery</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">DG CFR</entry>
+              <entry namest="col2" nameend="col2">17.2</entry>
+              <entry namest="col3" nameend="col4">H1 - 17</entry>
+              <entry namest="col5" nameend="col6">Some DG CFR descriptor</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Cat b Engine R</entry>
+              <entry namest="col2" nameend="col2">2-1000.4</entry>
+              <entry namest="col3" nameend="col4">H2, 4, 21, 145</entry>
+              <entry namest="col5" nameend="col6">
+                <xref href="../France_Legacy/France_Legacy_Pics.html#number3" format="html">The quick brown fox does something similar
+            Tool screenshot aTool screenshot b</xref>
+              </entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Unk BBA</entry>
+              <entry namest="col2" nameend="col2">25 &amp; CSR</entry>
+              <entry namest="col3" nameend="col4">H1</entry>
+              <entry namest="col5" nameend="col6">CBR 34</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col6">Transient Sources</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Unk BBA</entry>
+              <entry namest="col2" nameend="col2">135 &amp; CSR</entry>
+              <entry namest="col3" nameend="col4">H1 &amp; 2</entry>
+              <entry namest="col5" nameend="col6">CBR 54334</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">
+                <xref href="Iceland_Composites_Details.html#number4" format="html">DAF
+45.5
+H5-17
+Follow link for juicy details</xref>
+              </entry>
+              <entry namest="col2" nameend="col2">45.5</entry>
+              <entry namest="col3" nameend="col4">H5-17</entry>
+              <entry namest="col5" nameend="col6">Follow link for juicy details</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">
+                <xref href="Iceland_Composites_Details.html#number6" format="html">FOG
+544.4
+H2-12
+Follow link for more juicy details</xref>
+              </entry>
+              <entry namest="col2" nameend="col2">544.4</entry>
+              <entry namest="col3" nameend="col4">H2-12</entry>
+              <entry namest="col5" nameend="col6">Follow link for more juicy details</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col6">Signature &amp; Characteristics</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Acoustic Signature</entry>
+              <entry namest="col2" nameend="col6">
+            Expect plant to be similar to 2016 steam powered version
+          </entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Unique classifiers</entry>
+              <entry namest="col2" nameend="col6">None</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Aural</entry>
+              <entry namest="col2" nameend="col6">Expect Diesel, Whine, Governor release</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </signatures>
+    <propulsion id="propulsion">
+      <title>Propulsion</title>
+      <table colsep="1" rowsep="1">
+        <tgroup cols="4" colsep="1" rowsep="1">
+          <colspec colnum="1" colname="col1"/>
+          <colspec colnum="2" colname="col2"/>
+          <colspec colnum="3" colname="col3"/>
+          <colspec colnum="4" colname="col4"/>
+          <tbody>
+            <row>
+              <entry namest="col1" nameend="col4">Unit_G</entry>
+            </row>
+            <row>
+              <entry morerows="3" namest="col1" nameend="col1">Propulsion Mode</entry>
+              <entry morerows="3" namest="col2" nameend="col2">DD</entry>
+              <entry namest="col3" nameend="col3">Shaft x Blade</entry>
+              <entry namest="col4" nameend="col4">2 * 4 (GRR)</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Range</entry>
+              <entry namest="col2" nameend="col2">Duration 3-6 days</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Max Speed</entry>
+              <entry namest="col2" nameend="col2">11 Kts</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Av TPK</entry>
+              <entry namest="col2" nameend="col2">12</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col1">Turbine to Shaft R:R</entry>
+              <entry namest="col2" nameend="col2">N/A</entry>
+              <entry namest="col3" nameend="col3">Max SRPM</entry>
+              <entry namest="col4" nameend="col4">21</entry>
+            </row>
+            <row>
+              <entry namest="col1" nameend="col2">Typical Transit Speed SRPM</entry>
+              <entry namest="col3" nameend="col4">12-15</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </propulsion>
+    <remarks id="remarks">
+      <title>Remarks</title>
+      <span>
+        <ol>
+          <li>1. The alphabet is already in alphabetical order one</li>
+          <li>2. The alphabet is already in alphabetical order two</li>
+          <li>3. The alphabet is already in alphabetical order three</li>
+        </ol>
+      </span>
+    </remarks>
+  </body>
+</class>

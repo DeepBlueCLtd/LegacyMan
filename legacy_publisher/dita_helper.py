@@ -62,11 +62,60 @@ def create_classlist(root=None,id=None):
 
     return xml
 
+def create_class(root=None,id=None):
+    xml = root.createElement('class') 
+    xml.setAttribute('id', id.lower().replace(" ", ""))
+    root.appendChild(xml)
+
+    title = root.createElement('title')
+    text_content = root.createTextNode(id)
+    title.appendChild(text_content)
+    xml.appendChild(title)
+
+    return xml
+
 def create_body(root=None,topic=None):
     body = root.createElement('body')
     topic.appendChild(body)
 
     return body
+
+def create_images(root=None,body=None):
+    images = root.createElement('images')
+    body.appendChild(images)
+
+    return images
+
+def create_section(root=None,body=None, section=None,title_str=None):
+    section_element = root.createElement(section.lower())
+    section_element.setAttribute('id', section.lower())
+    body.appendChild(section_element)
+
+    title_str =  title_str if title_str == None else section.capitalize()
+    if title_str != None : 
+        title = root.createElement('title')
+        text_content = root.createTextNode(title_str)
+        title.appendChild(text_content)
+        section_element.appendChild(title)
+
+
+    return section_element
+
+
+#     <body>
+#     <images></images>
+#     <summary id="xx">
+#       <table>
+#         <tgroup cols="1">
+#           <tbody>
+#             <row>
+#               <entry></entry>
+#             </row>
+#           </tbody>
+#         </tgroup>
+#       </table>
+#     </summary>
+#   </body>
 
 def create_classlist_body(root=None,topic=None):
     classlistbody = root.createElement('classlistbody')
@@ -106,6 +155,52 @@ def create_table(root=None,body=None, cols=None):
     tbody.appendChild(row)
 
     return row
+
+def create_classtable(root=None,section=None, cols=None):
+    # table = root.createElement('table')
+    # section.appendChild(table)
+
+    # # <tgroup cols="2">
+    # tgroup = root.createElement('tgroup')
+    # tgroup.setAttribute('cols', cols)
+    # table.appendChild(tgroup)
+
+    # # <tbody>
+    # tbody = root.createElement('tbody')
+    # tgroup.appendChild(tbody)
+
+    # # <row>
+    # row = root.createElement('row')
+    # tbody.appendChild(row)
+
+
+    # <table colsep="1" rowsep="1">
+    colsep = "1"
+    rowsep = "1"
+    table = root.createElement('table')
+    table.setAttribute('colsep', colsep)
+    table.setAttribute('rowsep', rowsep)
+    section.appendChild(table)
+
+    # <tgroup cols="7" colsep="1" rowsep="1">
+    tgroup = root.createElement('tgroup')
+    tgroup.setAttribute('cols', cols)
+    tgroup.setAttribute('colsep', colsep)
+    tgroup.setAttribute('rowsep', rowsep)
+    table.appendChild(tgroup)
+
+    #  <colspec colnum="1" colname="col1"/>
+    for i in range(1, int(cols)+1):
+        colspec = root.createElement('colspec')
+        colspec.setAttribute('colnum', str(i))
+        colspec.setAttribute('colname', "col"+str(i))
+        tgroup.appendChild(colspec)
+
+    # <tbody>
+    tbody = root.createElement('tbody')
+    tgroup.appendChild(tbody)
+
+    return tbody
 
 def create_table_body(root=None,body=None, cols=None):
     table = root.createElement('table')
@@ -169,3 +264,18 @@ def create_image(root=None,url=None,style=None):
     image.setAttribute('width', width)
     return image
 
+def create_bullets(root=None,section=None, bullets=None):
+    span = root.createElement('span')
+    section.appendChild(span)
+
+    ol = root.createElement('ol')
+    span.appendChild(ol)
+
+    for bullet in bullets:
+        if bullet.strip() != "" : 
+            li = root.createElement('li')
+            text_li = root.createTextNode(bullet)
+            li.appendChild(text_li)
+            ol.appendChild(li)
+
+    return span

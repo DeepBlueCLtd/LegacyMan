@@ -10,7 +10,7 @@ from legacy_publisher import json_publisher, dita_publisher
 from legacy_tester.parsed_json_tester import parsed_json_tester
 from legacyman_parser.parse_abbreviations import parse_abbreviations, ABBREVIATIONS
 from legacyman_parser.parse_class_attributes_from_tonals import extract_class_attributes_from_tonals_page
-from legacyman_parser.parse_countries import extract_countries_in_region,extract_nst_countries_in_region,extract_collections_non_standard_country,COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND, COUNTRY_TABLE_FOUND, COUNTRY_TABLE_COLLECTION, COUNTRY_TABLE_COLLECTION_LINKS
+from legacyman_parser.parse_countries import extract_countries_in_region,extract_nst_countries_in_region,extract_collections_non_standard_country,extract_collections_non_standard_class,COUNTRY_COLLECTION, COUNTRY_TABLE_NOT_FOUND, COUNTRY_TABLE_FOUND, COUNTRY_TABLE_COLLECTION, COUNTRY_TABLE_COLLECTION_LINKS, COUNTRY_TABLE_CLASS, COUNTRY_TABLE_CLASS_DATA
 from legacyman_parser.parse_flag_of_country import extract_flag_of_country, COUNTRY_FLAG_COLLECTION, \
     extract_flag_of_ns_country
 from legacyman_parser.parse_images_of_class import extract_class_images, CLASS_IMAGES_COLLECTION
@@ -207,6 +207,7 @@ def parse_from_root():
 
     dita_publisher.publish_ns_country_regions(regions=REGION_DATA, nstcountries=COUNTRY_TABLE_FOUND)
 
+
     print("Done. None {} ".format(COUNTRY_TABLE_FOUND))
 
     if COUNTRY_TABLE_COLLECTION_LINKS:
@@ -216,6 +217,16 @@ def parse_from_root():
             region_spidey_to_extract_nst_countries_collection.crawl(resource_processor_callback=extract_collections_non_standard_country,crawl_recursively=False)
    
     dita_publisher.publish_country_collection(country_collection=COUNTRY_TABLE_COLLECTION)
+
+    if COUNTRY_TABLE_CLASS:
+        print("\n\nDiscrepancy: Couldn't identify table of countries in these urls\n")
+        for links in COUNTRY_TABLE_CLASS:
+            reg_dict = {"parent": links[0], "url": links[1],"link_dest": links[2], "seq": uniq_id_gen_country}
+            region_spidey_to_extract_nst_countries_class = SimpleCrawler(url=links[1],disable_crawler_log=True,userland_dict=reg_dict)
+            region_spidey_to_extract_nst_countries_class.crawl(resource_processor_callback=extract_collections_non_standard_class,crawl_recursively=False)
+
+
+    dita_publisher.publish_country_class(class_data=COUNTRY_TABLE_CLASS_DATA)
     sys.exit("Finished parsing non-standard countries")
 
     print("\n\nParsing tonals and class images:")

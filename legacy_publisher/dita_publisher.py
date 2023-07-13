@@ -5,13 +5,16 @@ from xml.dom import minidom
 from os.path import dirname, abspath
 from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 from distutils.dir_util import copy_tree
-from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body
+from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body,create_class
+
+from legacy_publisher.dita_helper import create_images, create_section, create_classtable, create_bullets
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
 doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 doctype_richcollection_str = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">\n'
 doctype_classlist_str = '<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">\n'
+doctype_class_str = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">\n'
 
 
 """This module will handle post parsing enhancements for DITA publishing"""
@@ -129,6 +132,29 @@ def publish_country_collection(country_collection=None):
         if(dita_ot != None):
             xml_file = abspath(export_dita)
             dtd_file = '../dtd/classlist.dtd'
+            validate(xml_file, dtd_file)
+
+def publish_country_class(class_data=None): 
+    for iclass in class_data:
+        current=iclass
+        pstr = "regions/"
+
+        parent_folder = os.path.basename(dirname(str(iclass.parent)))
+        folder_name = os.path.basename(dirname(str(iclass.url)))
+        file_name = os.path.basename(str(iclass.url)).replace(".html", "")
+
+        export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+parent_folder+"/"+folder_name+"/"+file_name+".dita"
+        root = create_class_page(class_data=iclass,export_dita=export_dita)
+
+        isDestExist = os.path.exists(dirname(export_dita))
+        if not isDestExist:
+            os.makedirs(dirname(export_dita))
+        print("export_dita :", export_dita)
+        write_dita_doc(root, export_dita, doctype_str=doctype_class_str)
+
+        if(dita_ot != None):
+            xml_file = abspath(export_dita)
+            dtd_file = '../dtd/class.dtd'
             validate(xml_file, dtd_file)
 
 
@@ -258,3 +284,114 @@ def create_collection_page(classlist=None,export_dita=None):
     return root
 
 
+
+def create_class_page(class_data=None,export_dita=None):
+    root = create_dita_root(doctype_str=None)
+    title = os.path.basename(str(export_dita)).replace(".dita","")
+    topic = create_class(root=root,id=title)
+    body = create_body(root=root,topic=topic)
+    images = create_images(root=root,body=body)
+
+    if len(class_data.summary.table) != 0 : 
+        summary = create_section(root=root,body=body, section=str(class_data.summary.title), title_str=None)
+        tbody = create_classtable(root=root,section=summary, cols=str(class_data.colspan))
+        process_section(class_data.summary.table,root,tbody)
+
+    if len(class_data.signatures.table) != 0 : 
+        signatures = create_section(root=root,body=body, section=str(class_data.signatures.title), title_str=str(class_data.signatures.title))
+        tbodysignatures = create_classtable(root=root,section=signatures, cols=str(class_data.colspan))
+        process_complex_section(class_data.signatures.table,root,tbodysignatures, class_data.colspan, 4)
+
+    if len(class_data.propulsion.table) != 0 : 
+        propulsion = create_section(root=root,body=body, section=str(class_data.propulsion.title), title_str=str(class_data.propulsion.title))
+        tbodypropulsion = create_classtable(root=root,section=propulsion, cols=str(4))
+        process_complex_section(class_data.propulsion.table,root,tbodypropulsion, 4, 4)
+
+    if len(class_data.remarks.table) != 0 and class_data.remarks.title != None: 
+        remarks = create_section(root=root,body=body, section=str(class_data.remarks.title), title_str=str(class_data.remarks.title))
+        remarks_body = create_bullets(root=root,section=remarks, bullets=class_data.remarks.table)
+    
+    return root
+
+
+def process_section(section=None,root=None,tbody=None):
+    for irow in section:
+        row = root.createElement('row')
+        for col in irow:
+            entry = root.createElement('entry')
+        
+            relative_path_url = "#" if col[1] == None else col[1]
+            if col[1] != None :
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                entry.appendChild(xref) 
+            else : 
+                text_content = root.createTextNode(col[0])
+                entry.appendChild(text_content)
+
+            row.appendChild(entry)
+            
+        tbody.appendChild(row)
+
+def process_complex_section(section=None,root=None,tbody=None,colspan=None, colspantr=None):
+    pnamest=None
+    pnameend=None
+    for irow in section:
+        row = root.createElement('row')
+        i = 1
+
+        for col in irow:
+            entry = root.createElement('entry')
+
+            if len(irow) == 1:
+                namest="col1" 
+                nameend="col"+str(colspan)
+                pnamest=None
+                pnameend=None
+            else :
+                if col[2] != None:
+                    if pnameend != None:
+                        namest="col"+str(pnameend+1)
+                        nameend="col"+ (str(int(pnameend+1)+int(col[2]) -1 ))
+
+                        pnamest = pnameend+1
+                        pnameend = int(pnameend+1)+int(col[2]) -1 
+                    else: 
+                        namest="col"+str(i) 
+                        nameend="col"+ (str(int(i)+int(col[2]) -1 ))
+
+                        pnamest = i
+                        pnameend = int(i)+int(col[2]) -1 
+
+
+                else:
+                    namest="col"+str(i) 
+                    nameend="col"+str(i) 
+
+                    pnamest=None
+                    pnameend=None
+
+            if i == colspantr:
+                pnamest=None
+                pnameend=None
+
+            if len(col) == 4 and col[3] != None:
+                entry.setAttribute('morerows', str(int(col[3]) - 1))
+
+            entry.setAttribute('namest', namest)
+            entry.setAttribute('nameend', nameend)
+
+        
+            relative_path_url = "#" if col[1] == None else col[1]
+
+            if col[1] != None :
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                entry.appendChild(xref) 
+            else : 
+                text_content = root.createTextNode(col[0])
+                entry.appendChild(text_content)
+
+            row.appendChild(entry)
+            i += 1
+        tbody.appendChild(row)
+
+    
