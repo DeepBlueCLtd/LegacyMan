@@ -7,7 +7,7 @@ from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 from distutils.dir_util import copy_tree
 from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body,create_class
 
-from legacy_publisher.dita_helper import create_images, create_section, create_classtable, create_bullets
+from legacy_publisher.dita_helper import create_images, create_section, create_classtable, create_review_block
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
@@ -309,7 +309,7 @@ def create_class_page(class_data=None,export_dita=None):
 
     if len(class_data.remarks.table) != 0 and class_data.remarks.title != None: 
         remarks = create_section(root=root,body=body, section=str(class_data.remarks.title), title_str=str(class_data.remarks.title))
-        remarks_body = create_bullets(root=root,section=remarks, bullets=class_data.remarks.table)
+        remarks_body = create_review_block(root=root,section=remarks, bullets=class_data.remarks.table)
     
     return root
 

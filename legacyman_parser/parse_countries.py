@@ -234,8 +234,6 @@ def extract_collections_non_standard_class(soup: BeautifulSoup = None,
 
     if remarks != None:
         all_elements_after_h1 = remarks.find_next_siblings()
-        print("all_elements_after_h1 : ",all_elements_after_h1)
-
         content = ""
         for element in all_elements_after_h1:
             bullets.append(element)

@@ -264,7 +264,7 @@ def create_image(root=None,url=None,style=None):
     image.setAttribute('width', width)
     return image
 
-def create_bullets(root=None,section=None, bullets=None):
+def create_review_block(root=None,section=None, bullets=None):
     for element in bullets:
         if element.name != "div":
             html_element = minidom.parseString(str(element)).documentElement
