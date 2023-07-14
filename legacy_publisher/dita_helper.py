@@ -265,17 +265,19 @@ def create_image(root=None,url=None,style=None):
     return image
 
 def create_bullets(root=None,section=None, bullets=None):
-    span = root.createElement('span')
-    section.appendChild(span)
+    for element in bullets:
+        if element.name != "div":
+            html_element = minidom.parseString(str(element)).documentElement
+            section.appendChild(html_element)
+        if element.name == "div":
+            image = element.find_all("img")
+            href = None
+            for image in element.find_all('img'):
+                href = image.get('src')
+                fig = root.createElement('fig')
+                image = root.createElement('image')
+                image.setAttribute('href', href)
+                fig.appendChild(image)
+                section.appendChild(fig)
 
-    ol = root.createElement('ol')
-    span.appendChild(ol)
-
-    for bullet in bullets:
-        if bullet.strip() != "" : 
-            li = root.createElement('li')
-            text_li = root.createTextNode(bullet)
-            li.appendChild(text_li)
-            ol.appendChild(li)
-
-    return span
+    return  section

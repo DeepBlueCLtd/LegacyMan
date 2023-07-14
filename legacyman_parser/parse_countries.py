@@ -223,14 +223,22 @@ def extract_collections_non_standard_class(soup: BeautifulSoup = None,
     remarks_str = remarks.text if remarks != None else None
 
     bullets = []
-    if remarks != None:
-        first_p = remarks.find_next('p')
-        following_p_tags = first_p.find_next_siblings('p')
+    # if remarks != None:
+    #     first_p = remarks.find_next('p')
+    #     following_p_tags = first_p.find_next_siblings('p')
 
-        for p_tag in following_p_tags:
-            if p_tag != None:
-                bullets.append(p_tag.text)
-            print(p_tag.get_text())
+    #     for p_tag in following_p_tags:
+    #         if p_tag != None:
+    #             bullets.append(p_tag.text)
+    #         print(p_tag.get_text())
+
+    if remarks != None:
+        all_elements_after_h1 = remarks.find_next_siblings()
+        print("all_elements_after_h1 : ",all_elements_after_h1)
+
+        content = ""
+        for element in all_elements_after_h1:
+            bullets.append(element)
 
     rows_remarks = Section(remarks_str, bullets)
 

@@ -189,13 +189,17 @@ Figure 2. Dominant frequency
     </propulsion>
     <remarks id="remarks">
       <title>Remarks</title>
-      <span>
-        <ol>
-          <li>1. The alphabet is already in alphabetical order one</li>
-          <li>2. The alphabet is already in alphabetical order two</li>
-          <li>3. The alphabet is already in alphabetical order three</li>
-        </ol>
-      </span>
+      <fig>
+        <image href="./Content/Images/unit_a1.jpg"/>
+      </fig>
+      <fig>
+        <image href="./Content/Images/unit_a2.jpeg"/>
+      </fig>
+      <p/>
+      <p/>
+      <p>1. The alphabet is already in alphabetical order one</p>
+      <p>2. The alphabet is already in alphabetical order two</p>
+      <p>3. The alphabet is already in alphabetical order three</p>
     </remarks>
   </body>
 </class>

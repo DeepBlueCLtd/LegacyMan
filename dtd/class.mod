@@ -45,7 +45,7 @@
 >
 <!ATTLIST propulsionRef id ID #REQUIRED>
 
-<!ELEMENT remarks    ((%title;)?, (%span;)*) >
+<!ELEMENT remarks    (%section.cnt;)*  >
 <!ATTLIST remarks     id ID #REQUIRED
                                   outputclass CDATA #IMPLIED
 >
