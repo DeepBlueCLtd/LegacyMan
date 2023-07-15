@@ -213,28 +213,29 @@ def extract_collections_non_standard_class(soup: BeautifulSoup = None,
 
     # Propulsion
     heading = soup.find("h1")
-    prop = heading.find_next('table') if heading is not None else None
-    heading =  heading.text if heading is not None else "Propulsion"
-    rows_propulson = Section(heading, process_table(table=prop,colspan=4))
+    # prop = heading.find_next('table') if heading is not None else None
+    # heading =  heading.text if heading is not None else "Propulsion"
+    # rows_propulson = Section(heading, process_table(table=prop,colspan=4))
+
+    propulsion_str = heading.text if heading != None else None
+
+    bullets_propulson = []
+    if heading != None:
+        all_elements_after_h1 = heading.find_next_siblings()
+        for element in all_elements_after_h1:
+            bullets_propulson.append(element)
+
+    rows_propulson = Section(propulsion_str, bullets_propulson)
 
     # Remarks
     headings = soup.find_all('h1')
+    # last h1
     remarks =  headings[-1] if headings else None
     remarks_str = remarks.text if remarks != None else None
 
     bullets = []
-    # if remarks != None:
-    #     first_p = remarks.find_next('p')
-    #     following_p_tags = first_p.find_next_siblings('p')
-
-    #     for p_tag in following_p_tags:
-    #         if p_tag != None:
-    #             bullets.append(p_tag.text)
-    #         print(p_tag.get_text())
-
     if remarks != None:
         all_elements_after_h1 = remarks.find_next_siblings()
-        content = ""
         for element in all_elements_after_h1:
             bullets.append(element)
 

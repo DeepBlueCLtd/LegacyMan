@@ -264,12 +264,9 @@ def create_image(root=None,url=None,style=None):
     image.setAttribute('width', width)
     return image
 
-def create_review_block(root=None,section=None, bullets=None):
+def create_dita_block(root=None,section=None, bullets=None):
     for element in bullets:
-        if element.name != "div":
-            html_element = minidom.parseString(str(element)).documentElement
-            section.appendChild(html_element)
-        if element.name == "div":
+        if element.name == "p" and len(element.find_all("img")) >= 1 :
             image = element.find_all("img")
             href = None
             for image in element.find_all('img'):
@@ -280,4 +277,117 @@ def create_review_block(root=None,section=None, bullets=None):
                 fig.appendChild(image)
                 section.appendChild(fig)
 
+        elif element.name != "div":
+            html_element = minidom.parseString(str(element)).documentElement
+            section.appendChild(html_element)
+        elif element.name == "div":
+            image = element.find_all("img")
+            table = element.find("table")
+
+            if len(element.find_all("img")) >= 1:
+                href = None
+                for image in element.find_all('img'):
+                    href = image.get('src')
+                    fig = root.createElement('fig')
+                    image = root.createElement('image')
+                    image.setAttribute('href', href)
+                    fig.appendChild(image)
+                    section.appendChild(fig)
+
+            if len(element.find_all("table")) >= 1:
+                tbodypropulsion = create_classtable(root=root,section=section, cols=str(4))
+                rows_propulson = process_table(table=table,colspan=4)
+                process_complex_section(rows_propulson,root,tbodypropulsion, 4, 4)
+
     return  section
+
+def process_table(table=None, colspan=None):
+    rows_propulson = []
+    if table != None:
+        first_row = table.find('tr')
+        columns = first_row.find('td')
+        
+        i = 1
+        for row in table.find_all('tr'):
+            tr = []
+            for td in row.find_all('td'):
+                href = None
+                for link in td.find_all('a'):
+                    href = link.get('href')
+                trcolspan = None
+                if td.get('colspan') != None:
+                    trcolspan = td.get('colspan')
+
+                trrowsspan = None
+                if td.get('rowspan') != None:
+                    trrowsspan = td.get('rowspan')
+
+
+                tr.append([td.text, href, trcolspan, trrowsspan])
+
+            rows_propulson.append(tr)
+            i += 1
+
+    return rows_propulson
+
+def process_complex_section(section=None,root=None,tbody=None,colspan=None, colspantr=None):
+    pnamest=None
+    pnameend=None
+    for irow in section:
+        row = root.createElement('row')
+        i = 1
+
+        for col in irow:
+            entry = root.createElement('entry')
+
+            if len(irow) == 1:
+                namest="col1" 
+                nameend="col"+str(colspan)
+                pnamest=None
+                pnameend=None
+            else :
+                if col[2] != None:
+                    if pnameend != None:
+                        namest="col"+str(pnameend+1)
+                        nameend="col"+ (str(int(pnameend+1)+int(col[2]) -1 ))
+
+                        pnamest = pnameend+1
+                        pnameend = int(pnameend+1)+int(col[2]) -1 
+                    else: 
+                        namest="col"+str(i) 
+                        nameend="col"+ (str(int(i)+int(col[2]) -1 ))
+
+                        pnamest = i
+                        pnameend = int(i)+int(col[2]) -1 
+
+
+                else:
+                    namest="col"+str(i) 
+                    nameend="col"+str(i) 
+
+                    pnamest=None
+                    pnameend=None
+
+            if i == colspantr:
+                pnamest=None
+                pnameend=None
+
+            if len(col) == 4 and col[3] != None:
+                entry.setAttribute('morerows', str(int(col[3]) - 1))
+
+            entry.setAttribute('namest', namest)
+            entry.setAttribute('nameend', nameend)
+
+
+            relative_path_url = "#" if col[1] == None else col[1]
+
+            if col[1] != None :
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                entry.appendChild(xref) 
+            else : 
+                text_content = root.createTextNode(col[0])
+                entry.appendChild(text_content)
+
+            row.appendChild(entry)
+            i += 1
+        tbody.appendChild(row)
