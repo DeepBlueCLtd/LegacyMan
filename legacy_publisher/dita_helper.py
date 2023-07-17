@@ -1,5 +1,6 @@
 import json
 import os 
+import re
 
 from xml.dom import minidom
 from os.path import dirname, abspath
@@ -19,8 +20,19 @@ def write_dita_doc(root=None, export_path=None, doctype_str=None):
     doc_str = doctype_str if doctype_str != None else doctype_topic_str
     root = root.childNodes[0]
     remove_whitespace(root)
-    xml_string = root.toprettyxml(indent=' ')
-    xml_string_with_doctype = xml_declaration + doc_str + xml_string
+    xml_string = root.toxml()
+
+    # Remove line breaks around <li> elements
+    clean_xml_string = re.sub(r'\s*<li>', '<li>', xml_string)
+    clean_xml_string = re.sub(r'</li>\s*', '</li>', clean_xml_string)
+
+    # Parse the XML string
+    dom = minidom.parseString(clean_xml_string).childNodes[0]
+
+    # Serialize the DOM object with proper indentation
+    pretty_xml_string = dom.toprettyxml(indent="    ")
+
+    xml_string_with_doctype = xml_declaration + doc_str + pretty_xml_string
 
     print("Create / Save ("+export_path+") : ", export_path)
 

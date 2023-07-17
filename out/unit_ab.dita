@@ -2,205 +2,200 @@
 <!DOCTYPE class
   PUBLIC "-//OASIS//DTD DITA Class//EN" "../../../../../dtd/class.dtd">
 <class id="unit_ab" specializations="">
- <title>unit_ab</title>
- <body>
-  <images/>
-  <summary id="summary">
-   <table colsep="1" rowsep="1">
-    <tgroup cols="6" colsep="1" rowsep="1">
-     <colspec colname="col1" colnum="1"/>
-     <colspec colname="col2" colnum="2"/>
-     <colspec colname="col3" colnum="3"/>
-     <colspec colname="col4" colnum="4"/>
-     <colspec colname="col5" colnum="5"/>
-     <colspec colname="col6" colnum="6"/>
-     <tbody>
-      <row>
-       <entry colname="col1">Drive</entry>
-       <entry colname="col2">Mode</entry>
-       <entry colname="col3">Shaft x Blade</entry>
-       <entry colname="col4">R:R</entry>
-       <entry colname="col5">Max Speed</entry>
-       <entry colname="col6">Av TPK (Guide)</entry>
-      </row>
-      <row>
-       <entry colname="col1">4 Diesel</entry>
-       <entry colname="col2">PTR</entry>
-       <entry colname="col3">2 * 4 (GRR)</entry>
-       <entry colname="col4">412.8:1</entry>
-       <entry colname="col5">40 kts</entry>
-       <entry colname="col6">~14</entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </table>
-  </summary>
-  <signatures id="signatures">
-   <title>Signatures</title>
-   <table colsep="1" rowsep="1">
-    <tgroup cols="6" colsep="1" rowsep="1">
-     <colspec colname="col1" colnum="1"/>
-     <colspec colname="col2" colnum="2"/>
-     <colspec colname="col3" colnum="3"/>
-     <colspec colname="col4" colnum="4"/>
-     <colspec colname="col5" colnum="5"/>
-     <colspec colname="col6" colnum="6"/>
-     <tbody>
-      <row>
-       <entry colname="col1" nameend="col6" namest="col1">Commonly Detected Sources</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Source</entry>
-       <entry colname="col2" nameend="col2" namest="col2">Ratio/Freq</entry>
-       <entry colname="col3" nameend="col4" namest="col3">Harmonics</entry>
-       <entry colname="col5" nameend="col6" namest="col5">Remarks</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col6" namest="col1">Propulsion Related</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">SR</entry>
-       <entry colname="col2" nameend="col2" namest="col2">S12</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H1-4</entry>
-       <entry colname="col5" nameend="col6" namest="col5">Discrete. Doublets common</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">BR</entry>
-       <entry colname="col2" nameend="col2" namest="col2">S5</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H1</entry>
-       <entry colname="col5" nameend="col6" namest="col5">Discrete. Doublets common</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col6" namest="col1">Auxiliary Machinery</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Cat b Engine R</entry>
-       <entry colname="col2" nameend="col2" namest="col2">2-1000.4</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H2, 4, 21, 145</entry>
-       <entry colname="col5" nameend="col6" namest="col5">Laboris proident culpa labore et ad excepteur aute aliqua sit do non ex quis elit. Consequat dolor duis officia culpa commodo minim do ex duis sint labore culpa. Ea ullamco culpa voluptate dolor sint minim labore magna velit Lorem aliquip mollit velit. Cupidatat sit commodo tempor in et nulla reprehenderit sint laborum. Ut ex fugiat quis elit amet adipisicing amet ea nostrud tempor. Mollit ad et mollit quis non magna anim occaecat non ipsum sit in.</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Unk BBA</entry>
-       <entry colname="col2" nameend="col2" namest="col2">25 &amp; CSR</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H1</entry>
-       <entry colname="col5" nameend="col6" namest="col5">CBR 34</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col6" namest="col1">Speed-related Sources</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Unk BBA</entry>
-       <entry colname="col2" nameend="col2" namest="col2">135 &amp; CSR</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H1 &amp; 2</entry>
-       <entry colname="col5" nameend="col6" namest="col5">CBR 54334</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">
-        <xref format="html" href="Iceland_Composites_Details.html#number4">DAF32.3H5-17Follow link for juicy details</xref>
-       </entry>
-       <entry colname="col2" nameend="col2" namest="col2">32.3</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H5-17</entry>
-       <entry colname="col5" nameend="col6" namest="col5">Follow link for juicy details</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">
-        <xref format="html" href="Iceland_Composites_Details.html#number6">FOG23.3H2-12Follow link for more juicy details</xref>
-       </entry>
-       <entry colname="col2" nameend="col2" namest="col2">23.3</entry>
-       <entry colname="col3" nameend="col4" namest="col3">H2-12</entry>
-       <entry colname="col5" nameend="col6" namest="col5">Follow link for more juicy details</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col6" namest="col1">Signature &amp; Characteristics</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Acoustic Signature</entry>
-       <entry colname="col2" nameend="col6" namest="col2">Expect plant to be similar to 2016 steam powered version</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Unique classifiers</entry>
-       <entry colname="col2" nameend="col6" namest="col2">The dominant frequency will be Laboris nostrud ipsum ex tempor. Est            fugiat et esse excepteur est voluptate cupidatat in sit. Ex est            laborum commodo eiusmod. Et tempor labore dolor eu laborum labore ex            sit deserunt cillum sit duis minim. Nisi ea ullamco minim duis elit            consectetur mollit ea mollit sunt voluptate. Esse nulla id mollit ad            deserunt Lorem deserunt excepteur nostrud.            Figure 2. Dominant frequency</entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </table>
-  </signatures>
-  <propulsion id="propulsion">
-   <title>Propulsion</title>
-   <p/>
-   <p/>
-   <p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat adipisicing laborum in.</p>
-   <p>
-    <ul>
-     
-     <li>Mode A</li>
-     
-     <li>Mode B</li>
-     
-     <li>Mode C</li>
-     
-     <li>Mode D</li>
-     
-    </ul>
-   </p>
-   <p/>
-   <p/>
-   <p/>
-   <table colsep="1" rowsep="1">
-    <tgroup cols="4" colsep="1" rowsep="1">
-     <colspec colname="col1" colnum="1"/>
-     <colspec colname="col2" colnum="2"/>
-     <colspec colname="col3" colnum="3"/>
-     <colspec colname="col4" colnum="4"/>
-     <tbody>
-      <row>
-       <entry colname="col1" nameend="col4" namest="col1">Unit_A</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Cruise Plant</entry>
-       <entry colname="col2" nameend="col2" namest="col2">4 * PR32 Diesel Engines</entry>
-       <entry colname="col3" nameend="col3" namest="col3">Shaft x Blade</entry>
-       <entry colname="col4" nameend="col4" namest="col4">2 * 4 (GRR)</entry>
-      </row>
-      <row>
-       <entry colname="col1" morerows="1" nameend="col1" namest="col1">Boost Plant</entry>
-       <entry colname="col2" morerows="1" nameend="col2" namest="col2">None</entry>
-       <entry colname="col3" nameend="col3" namest="col3">Range</entry>
-       <entry colname="col4" nameend="col4" namest="col4">123nm @ 8kts</entry>
-      </row>
-      <row>
-       <entry colname="col3" nameend="col1" namest="col1">Max Speed</entry>
-       <entry colname="col4" nameend="col2" namest="col2">40 kts</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Reduction Ratio</entry>
-       <entry colname="col2" nameend="col2" namest="col2">412.8:1</entry>
-       <entry colname="col3" nameend="col3" namest="col3">Av TPK</entry>
-       <entry colname="col4" nameend="col4" namest="col4">~14</entry>
-      </row>
-      <row>
-       <entry colname="col1" nameend="col1" namest="col1">Max TRPM</entry>
-       <entry colname="col2" nameend="col2" namest="col2">1400</entry>
-       <entry colname="col3" nameend="col3" namest="col3">Max SRPM</entry>
-       <entry colname="col4" nameend="col4" namest="col4">0-1600</entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </table>
-  </propulsion>
-  <remarks id="remarks">
-   <title>Remarks</title>
-   <fig>
-    <image href="Content/Images/unit_a1.jpg" placement="inline"/>
-   </fig>
-   <fig>
-    <image href="Content/Images/unit_a2.jpeg" placement="inline"/>
-   </fig>
-   <p/>
-   <p/>
-   <p>1. The alphabet is already in alphabetical order one</p>
-   <p>2. The alphabet is already in alphabetical order two</p>
-   <p>3. The alphabet is already in alphabetical order three</p>
-  </remarks>
- </body>
+    <title>unit_ab</title>
+    <body>
+        <images/>
+        <summary id="summary">
+            <table colsep="1" rowsep="1">
+                <tgroup cols="6" colsep="1" rowsep="1">
+                    <colspec colname="col1" colnum="1"/>
+                    <colspec colname="col2" colnum="2"/>
+                    <colspec colname="col3" colnum="3"/>
+                    <colspec colname="col4" colnum="4"/>
+                    <colspec colname="col5" colnum="5"/>
+                    <colspec colname="col6" colnum="6"/>
+                    <tbody>
+                        <row>
+                            <entry colname="col1">Drive</entry>
+                            <entry colname="col2">Mode</entry>
+                            <entry colname="col3">Shaft x Blade</entry>
+                            <entry colname="col4">R:R</entry>
+                            <entry colname="col5">Max Speed</entry>
+                            <entry colname="col6">Av TPK (Guide)</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1">4 Diesel</entry>
+                            <entry colname="col2">PTR</entry>
+                            <entry colname="col3">2 * 4 (GRR)</entry>
+                            <entry colname="col4">412.8:1</entry>
+                            <entry colname="col5">40 kts</entry>
+                            <entry colname="col6">~14</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </summary>
+        <signatures id="signatures">
+            <title>Signatures</title>
+            <table colsep="1" rowsep="1">
+                <tgroup cols="6" colsep="1" rowsep="1">
+                    <colspec colname="col1" colnum="1"/>
+                    <colspec colname="col2" colnum="2"/>
+                    <colspec colname="col3" colnum="3"/>
+                    <colspec colname="col4" colnum="4"/>
+                    <colspec colname="col5" colnum="5"/>
+                    <colspec colname="col6" colnum="6"/>
+                    <tbody>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Commonly Detected Sources</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Source</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">Ratio/Freq</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">Harmonics</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Remarks</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Propulsion Related</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">SR</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">S12</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1-4</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Discrete. Doublets common</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">BR</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">S5</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Discrete. Doublets common</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Auxiliary Machinery</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Cat b Engine R</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">2-1000.4</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H2, 4, 21, 145</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Laboris proident culpa labore et ad excepteur aute aliqua sit do non ex quis elit. Consequat dolor duis officia culpa commodo minim do ex duis sint labore culpa. Ea ullamco culpa voluptate dolor sint minim labore magna velit Lorem aliquip mollit velit. Cupidatat sit commodo tempor in et nulla reprehenderit sint laborum. Ut ex fugiat quis elit amet adipisicing amet ea nostrud tempor. Mollit ad et mollit quis non magna anim occaecat non ipsum sit in.</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Unk BBA</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">25 &amp; CSR</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">CBR 34</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Speed-related Sources</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Unk BBA</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">135 &amp; CSR</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1 &amp; 2</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">CBR 54334</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">
+                                <xref format="html" href="Iceland_Composites_Details.html#number4">DAF32.3H5-17Follow link for juicy details</xref>
+                            </entry>
+                            <entry colname="col2" nameend="col2" namest="col2">32.3</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H5-17</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Follow link for juicy details</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">
+                                <xref format="html" href="Iceland_Composites_Details.html#number6">FOG23.3H2-12Follow link for more juicy details</xref>
+                            </entry>
+                            <entry colname="col2" nameend="col2" namest="col2">23.3</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H2-12</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Follow link for more juicy details</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Signature &amp; Characteristics</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Acoustic Signature</entry>
+                            <entry colname="col2" nameend="col6" namest="col2">Expect plant to be similar to 2016 steam powered version</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Unique classifiers</entry>
+                            <entry colname="col2" nameend="col6" namest="col2">The dominant frequency will be Laboris nostrud ipsum ex tempor. Est            fugiat et esse excepteur est voluptate cupidatat in sit. Ex est            laborum commodo eiusmod. Et tempor labore dolor eu laborum labore ex            sit deserunt cillum sit duis minim. Nisi ea ullamco minim duis elit            consectetur mollit ea mollit sunt voluptate. Esse nulla id mollit ad            deserunt Lorem deserunt excepteur nostrud.            Figure 2. Dominant frequency</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </signatures>
+        <propulsion id="propulsion">
+            <title>Propulsion</title>
+            <p/>
+            <p/>
+            <p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat adipisicing laborum in.</p>
+            <p>
+                <ul>
+                    <li>Mode A</li>
+                    <li>Mode B</li>
+                    <li>Mode C</li>
+                    <li>Mode D</li>
+                </ul>
+            </p>
+            <p/>
+            <p/>
+            <p/>
+            <table colsep="1" rowsep="1">
+                <tgroup cols="4" colsep="1" rowsep="1">
+                    <colspec colname="col1" colnum="1"/>
+                    <colspec colname="col2" colnum="2"/>
+                    <colspec colname="col3" colnum="3"/>
+                    <colspec colname="col4" colnum="4"/>
+                    <tbody>
+                        <row>
+                            <entry colname="col1" nameend="col4" namest="col1">Unit_A</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Cruise Plant</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">4 * PR32 Diesel Engines</entry>
+                            <entry colname="col3" nameend="col3" namest="col3">Shaft x Blade</entry>
+                            <entry colname="col4" nameend="col4" namest="col4">2 * 4 (GRR)</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" morerows="1" nameend="col1" namest="col1">Boost Plant</entry>
+                            <entry colname="col2" morerows="1" nameend="col2" namest="col2">None</entry>
+                            <entry colname="col3" nameend="col3" namest="col3">Range</entry>
+                            <entry colname="col4" nameend="col4" namest="col4">123nm @ 8kts</entry>
+                        </row>
+                        <row>
+                            <entry colname="col3" nameend="col1" namest="col1">Max Speed</entry>
+                            <entry colname="col4" nameend="col2" namest="col2">40 kts</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Reduction Ratio</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">412.8:1</entry>
+                            <entry colname="col3" nameend="col3" namest="col3">Av TPK</entry>
+                            <entry colname="col4" nameend="col4" namest="col4">~14</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Max TRPM</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">1400</entry>
+                            <entry colname="col3" nameend="col3" namest="col3">Max SRPM</entry>
+                            <entry colname="col4" nameend="col4" namest="col4">0-1600</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </propulsion>
+        <remarks id="remarks">
+            <title>Remarks</title>
+            <fig>
+                <image href="Content/Images/unit_a1.jpg" placement="inline"/>
+            </fig>
+            <fig>
+                <image href="Content/Images/unit_a2.jpeg" placement="inline"/>
+            </fig>
+            <p/>
+            <p/>
+            <p>1. The alphabet is already in alphabetical order one</p>
+            <p>2. The alphabet is already in alphabetical order two</p>
+            <p>3. The alphabet is already in alphabetical order three</p>
+        </remarks>
+    </body>
 </class>
