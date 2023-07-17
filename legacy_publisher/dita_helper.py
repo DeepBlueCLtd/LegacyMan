@@ -18,7 +18,8 @@ def create_dita_root(doctype_str=None):
 def write_dita_doc(root=None, export_path=None, doctype_str=None):
     doc_str = doctype_str if doctype_str != None else doctype_topic_str
     root = root.childNodes[0]
-    xml_string = root.toprettyxml(indent='  ')
+    remove_whitespace(root)
+    xml_string = root.toprettyxml(indent=' ')
     xml_string_with_doctype = xml_declaration + doc_str + xml_string
 
     print("Create / Save ("+export_path+") : ", export_path)
@@ -300,6 +301,13 @@ def create_dita_block(root=None,section=None, bullets=None):
                 process_complex_section(rows_propulson,root,tbodypropulsion, 4, 4)
 
     return  section
+
+def remove_whitespace(node):
+    if node.nodeType == node.TEXT_NODE:
+        node.data = node.data.strip().replace('\n', '').replace('\r', '')
+    elif node.nodeType == node.ELEMENT_NODE:
+        for child_node in node.childNodes:
+            remove_whitespace(child_node)
 
 def process_table(table=None, colspan=None):
     rows_propulson = []
