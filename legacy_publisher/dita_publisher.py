@@ -69,7 +69,7 @@ def publish_regions(regions=None, sourcepath=None):
     xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
     xml_string_with_doctype = xml_declaration + doctype_str + xml_string
 
-    print("Create / Save regions.dita : ", DITA_REGIONS_EXPORT_FILE)
+    # print("Create / Save regions.dita : ", DITA_REGIONS_EXPORT_FILE)
 
     dita_dir = dirname(abspath(DITA_REGIONS_EXPORT_FILE))
     isExist = os.path.exists(dita_dir)
@@ -81,7 +81,7 @@ def publish_regions(regions=None, sourcepath=None):
     new_path = image_url.replace(target_dir, "")
     source_path = dirname(abspath(sourcepath));
 
-    print('copy ('+source_path+new_path+') to ('+dita_dir+new_path+')')
+    # print('copy ('+source_path+new_path+') to ('+dita_dir+new_path+')')
     isDestExist = os.path.exists(dirname(dita_dir+new_path))
     if not isDestExist:
         os.makedirs(dirname(dita_dir+new_path))
@@ -126,7 +126,7 @@ def publish_country_collection(country_collection=None):
         isDestExist = os.path.exists(dirname(export_dita))
         if not isDestExist:
             os.makedirs(dirname(export_dita))
-        print("export_dita :", export_dita)
+        # print("export_dita :", export_dita)
         write_dita_doc(root, export_dita, doctype_str=doctype_classlist_str)
 
         if(dita_ot != None):
@@ -149,7 +149,7 @@ def publish_country_class(class_data=None):
         isDestExist = os.path.exists(dirname(export_dita))
         if not isDestExist:
             os.makedirs(dirname(export_dita))
-        print("export_dita :", export_dita)
+        # print("export_dita :", export_dita)
         write_dita_doc(root, export_dita, doctype_str=doctype_class_str)
 
         if(dita_ot != None):
@@ -186,7 +186,7 @@ def process_countries(region=None, countries=None,current=None,nst=False, richco
     isDestExist = os.path.exists(dirname(export_dita))
     if not isDestExist:
         os.makedirs(dirname(export_dita))
-    print("export_dita :", export_dita)
+    # print("export_dita :", export_dita)
     write_dita_doc(root, export_dita, doctype_str=doc_str)
 
     if(dita_ot != None):
@@ -228,8 +228,8 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
             relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
             relative_path_img_url = "#" if col.src == None else str(col.src).replace("../", "")
             
-            print("Copy images  ")
-            print('copy ('+img_src_root+') to ('+img_dest_root+')')
+            # print("Copy images  ")
+            # print('copy ('+img_src_root+') to ('+img_dest_root+')')
             isDestExist = os.path.exists(dirname(img_dest_root))
             if not isDestExist:
                 os.makedirs(dirname(img_dest_root))
@@ -249,9 +249,9 @@ def create_collection_page(classlist=None,export_dita=None):
     topic = create_classlist(root=root,id=classlist.title)
     flag = create_flag(root=root,url=".."+classlist.flag.flag_dest.replace(os.path.basename(dirname(dirname(export_dita))), ""),topic=topic)
 
-    print("Copy flags ")
+    # print("Copy flags ")
     img_dest = dirname(dirname(dirname(export_dita)))+"/"+classlist.flag.flag_dest
-    print('copy ('+classlist.flag.flag+') to ('+img_dest+')')
+    # print('copy ('+classlist.flag.flag+') to ('+img_dest+')')
     isDestExist = os.path.exists(dirname(img_dest))
     if not isDestExist:
         os.makedirs(dirname(img_dest))

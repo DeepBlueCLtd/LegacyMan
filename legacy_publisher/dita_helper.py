@@ -34,7 +34,7 @@ def write_dita_doc(root=None, export_path=None, doctype_str=None):
 
     xml_string_with_doctype = xml_declaration + doc_str + pretty_xml_string
 
-    print("Create / Save ("+export_path+") : ", export_path)
+    # print("Create / Save ("+export_path+") : ", export_path)
 
     with open(export_path, "w") as f:
        f.write(xml_string_with_doctype) 
