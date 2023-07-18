@@ -89,9 +89,9 @@ class CollectionLink:
         return "{}. {} in {} ==> {}".format(self.href, self.flag, self.flag_dest, self.parent)
 
 class Section:
-    def __init__(self, title, table):
+    def __init__(self, title, tableorcontent):
         self.title = title
-        self.table = table
+        self.tableorcontent = tableorcontent
 
     def __str__(self):
         return "{}. {} in {} ==> {}".format(self.title, self.table)

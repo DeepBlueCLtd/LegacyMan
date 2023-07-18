@@ -7,7 +7,7 @@ from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
 from distutils.dir_util import copy_tree
 from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body,create_class
 
-from legacy_publisher.dita_helper import create_images, create_section, create_classtable, create_dita_block
+from legacy_publisher.dita_helper import create_images, create_section, create_classtable, create_dita_block, process_complex_rows
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
@@ -292,25 +292,25 @@ def create_class_page(class_data=None,export_dita=None):
     body = create_body(root=root,topic=topic)
     images = create_images(root=root,body=body)
 
-    if len(class_data.summary.table) != 0 : 
+    if len(class_data.summary.tableorcontent) != 0 : 
         summary = create_section(root=root,body=body, section=str(class_data.summary.title), title_str=None)
         tbody = create_classtable(root=root,section=summary, cols=str(class_data.colspan))
-        process_section(class_data.summary.table,root,tbody)
+        process_section(class_data.summary.tableorcontent,root,tbody)
 
-    if len(class_data.signatures.table) != 0 : 
+    if len(class_data.signatures.tableorcontent) != 0 : 
         signatures = create_section(root=root,body=body, section=str(class_data.signatures.title), title_str=str(class_data.signatures.title))
         tbodysignatures = create_classtable(root=root,section=signatures, cols=str(class_data.colspan))
-        process_complex_section(class_data.signatures.table,root,tbodysignatures, class_data.colspan, 4)
+        process_complex_rows(class_data.signatures.tableorcontent,root,tbodysignatures, class_data.colspan, 4)
 
-    if len(class_data.propulsion.table) != 0 : 
+    if len(class_data.propulsion.tableorcontent) != 0 : 
         propulsion = create_section(root=root,body=body, section=str(class_data.propulsion.title), title_str=str(class_data.propulsion.title))
         # tbodypropulsion = create_classtable(root=root,section=propulsion, cols=str(4))
         # create_dita_block(class_data.propulsion.table,root,tbodypropulsion, 4, 4)
-        create_dita_block(root=root, section=propulsion, bullets=class_data.propulsion.table)
+        create_dita_block(root=root, section=propulsion, bullets=class_data.propulsion.tableorcontent)
 
-    if len(class_data.remarks.table) != 0 and class_data.remarks.title != None: 
+    if len(class_data.remarks.tableorcontent) != 0 and class_data.remarks.title != None: 
         remarks = create_section(root=root,body=body, section=str(class_data.remarks.title), title_str=str(class_data.remarks.title))
-        remarks_body = create_dita_block(root=root,section=remarks, bullets=class_data.remarks.table)
+        remarks_body = create_dita_block(root=root,section=remarks, bullets=class_data.remarks.tableorcontent)
     
     return root
 
@@ -332,67 +332,3 @@ def process_section(section=None,root=None,tbody=None):
             row.appendChild(entry)
             
         tbody.appendChild(row)
-
-def process_complex_section(section=None,root=None,tbody=None,colspan=None, colspantr=None):
-    pnamest=None
-    pnameend=None
-    for irow in section:
-        row = root.createElement('row')
-        i = 1
-
-        for col in irow:
-            entry = root.createElement('entry')
-
-            if len(irow) == 1:
-                namest="col1" 
-                nameend="col"+str(colspan)
-                pnamest=None
-                pnameend=None
-            else :
-                if col[2] != None:
-                    if pnameend != None:
-                        namest="col"+str(pnameend+1)
-                        nameend="col"+ (str(int(pnameend+1)+int(col[2]) -1 ))
-
-                        pnamest = pnameend+1
-                        pnameend = int(pnameend+1)+int(col[2]) -1 
-                    else: 
-                        namest="col"+str(i) 
-                        nameend="col"+ (str(int(i)+int(col[2]) -1 ))
-
-                        pnamest = i
-                        pnameend = int(i)+int(col[2]) -1 
-
-
-                else:
-                    namest="col"+str(i) 
-                    nameend="col"+str(i) 
-
-                    pnamest=None
-                    pnameend=None
-
-            if i == colspantr:
-                pnamest=None
-                pnameend=None
-
-            if len(col) == 4 and col[3] != None:
-                entry.setAttribute('morerows', str(int(col[3]) - 1))
-
-            entry.setAttribute('namest', namest)
-            entry.setAttribute('nameend', nameend)
-
-        
-            relative_path_url = "#" if col[1] == None else col[1]
-
-            if col[1] != None :
-                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
-                entry.appendChild(xref) 
-            else : 
-                text_content = root.createTextNode(col[0])
-                entry.appendChild(text_content)
-
-            row.appendChild(entry)
-            i += 1
-        tbody.appendChild(row)
-
-    

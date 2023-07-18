@@ -309,8 +309,8 @@ def create_dita_block(root=None,section=None, bullets=None):
 
             if len(element.find_all("table")) >= 1:
                 tbodypropulsion = create_classtable(root=root,section=section, cols=str(4))
-                rows_propulson = process_table(table=table,colspan=4)
-                process_complex_section(rows_propulson,root,tbodypropulsion, 4, 4)
+                rows_propulson = process_rows(table=table,colspan=4)
+                process_complex_rows(rows_propulson,root,tbodypropulsion, 4, 4)
 
     return  section
 
@@ -321,7 +321,7 @@ def remove_whitespace(node):
         for child_node in node.childNodes:
             remove_whitespace(child_node)
 
-def process_table(table=None, colspan=None):
+def process_rows(table=None, colspan=None):
     rows_propulson = []
     if table != None:
         first_row = table.find('tr')
@@ -350,7 +350,7 @@ def process_table(table=None, colspan=None):
 
     return rows_propulson
 
-def process_complex_section(section=None,root=None,tbody=None,colspan=None, colspantr=None):
+def process_complex_rows(section=None,root=None,tbody=None,colspan=None, colspantr=None):
     pnamest=None
     pnameend=None
     for irow in section:
