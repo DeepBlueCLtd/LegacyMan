@@ -9,13 +9,13 @@
                 <colspec colname="col1" colnum="1"/><colspec colname="col2" colnum="2"/><tbody>
                     <row>
                         <entry colname="col1">
-                            <xref format="dita" href="../../../../../Iceland_Complex/Iceland_Complex.html/Iceland_Complex.dita">
+                            <xref format="dita" href="../../../../../../../../Iceland_Complex.dita">
                                 Complex
                                 <image href="Iceland_Complex/Content/Images/oscill_c.jpg" placement="inline" width="450px"/>
                             </xref>
                         </entry>
                         <entry colname="col2">
-                            <xref format="dita" href="../../../../../Iceland_Composite/Iceland_Composites.html/Iceland_Composites.dita">
+                            <xref format="dita" href="../../../../../../../../Iceland_Composites.dita">
                                 Composite
                                 <image href="Iceland_Composite/Content/Images/unit_da.jpg" placement="inline" width="450px"/>
                             </xref>

@@ -33,7 +33,7 @@
                     </row>
                     <row>
                         <entry colname="col1">
-                            <xref format="html" href="unit_ab.html">Unit_ab%TEST-106 Icelandic Composite%</xref>
+                            <xref format="dita" href="unit_ab.dita">Unit_ab%TEST-106 Icelandic Composite%</xref>
                         </entry>
                         <entry colname="col2">PB</entry>
                         <entry colname="col3">2 * V8 Diesel</entry>
@@ -44,7 +44,7 @@
                     </row>
                     <row>
                         <entry colname="col1">
-                            <xref format="html" href="unit_g.html">Unit_g</xref>
+                            <xref format="dita" href="unit_g.dita">Unit_g</xref>
                         </entry>
                         <entry colname="col2">PBF</entry>
                         <entry colname="col3">2 * V6 Diesel</entry>

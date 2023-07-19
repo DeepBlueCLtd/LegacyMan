@@ -8,13 +8,13 @@
                 <tbody>
                     <row>
                         <entry>
-                            <xref href="../../../../data/Iceland_Complex/Iceland_Complex.html" format="html">
+                            <xref href="Iceland_Complex/Iceland_Complex.dita" format="dita">
                                 Complex
                                 <image href="Iceland_Complex/Content/Images/oscill_c.jpg" width=" 450px"/>
                             </xref>
                         </entry>
                         <entry>
-                            <xref href="../../../../data/Iceland_Composite/Iceland_Composites.html" format="html">
+                            <xref href="Iceland_Composite/Iceland_Composites.dita" format="dita">
                                 Composite
                                 <image href="Iceland_Composite/Content/Images/unit_da.jpg" width=" 450px"/>
                             </xref>

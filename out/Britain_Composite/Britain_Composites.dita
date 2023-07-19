@@ -33,7 +33,7 @@
                     </row>
                     <row>
                         <entry colname="col1">
-                            <xref format="html" href="unit_split_a.html">Unit_ab</xref>
+                            <xref format="dita" href="unit_split_a.dita">Unit_ab</xref>
                         </entry>
                         <entry colname="col2">PB</entry>
                         <entry colname="col3">2 * V8 Diesel</entry>

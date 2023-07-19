@@ -8,13 +8,13 @@
                 <tbody>
                     <row>
                         <entry>
-                            <xref href="../../../../data/Britain_Complex/Britain_Complex.html" format="html">
+                            <xref href="Britain_Complex/Britain_Complex.dita" format="dita">
                                 Complex
                                 <image href="Britain_Complex/Content/Images/daf_1.jpeg" width=" 450px"/>
                             </xref>
                         </entry>
                         <entry>
-                            <xref href="../../../../data/Britain_Standalones/Britain_Standalones.html" format="html">
+                            <xref href="Britain_Standalones/Britain_Standalones.dita" format="dita">
                                 Standalones
                                 <image href="Britain_Standalones/Content/Images/oscill_c.jpg" width=" 450px"/>
                             </xref>
@@ -22,13 +22,13 @@
                     </row>
                     <row>
                         <entry>
-                            <xref href="../../../../data/Britain_Composite/Britain_Composites.html" format="html">
+                            <xref href="Britain_Composite/Britain_Composites.dita" format="dita">
                                 Composites
                                 <image href="Britain_Composite/Content/Images/unit_dar.jpeg" width=" 450px"/>
                             </xref>
                         </entry>
                         <entry>
-                            <xref href="../../../../data/Britain_Legacy/Britain_Legacy.html" format="html">
+                            <xref href="Britain_Legacy/Britain_Legacy.dita" format="dita">
                                 Legacy
                                 <image href="Britain_Legacy/Content/Images/unit_da.jpg" width=" 450px"/>
                             </xref>

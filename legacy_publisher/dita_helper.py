@@ -277,13 +277,18 @@ def create_image(root=None,url=None,style=None):
     image.setAttribute('width', width)
     return image
 
-def create_dita_block(root=None,section=None, bullets=None):
+def create_dita_block(root=None,section=None, bullets=None, base_url=None, export_dita=None):
     for element in bullets:
         if element.name == "p" and len(element.find_all("img")) >= 1 :
             image = element.find_all("img")
             href = None
             for image in element.find_all('img'):
                 href = image.get('src')
+
+                img_src = dirname(base_url)+"/"+os.path.basename(href)
+                img_dest =  dirname(export_dita)+"/"+ href.replace("./","")
+                copy_image(img_src=img_src, img_dest=img_dest)
+
                 fig = root.createElement('fig')
                 image = root.createElement('image')
                 image.setAttribute('href', href)
@@ -301,6 +306,11 @@ def create_dita_block(root=None,section=None, bullets=None):
                 href = None
                 for image in element.find_all('img'):
                     href = image.get('src')
+
+                    img_src = dirname(base_url)+"/"+os.path.basename(href)
+                    img_dest =  dirname(export_dita)+"/"+ href.replace("./","")
+                    copy_image(img_src=img_src, img_dest=img_dest)
+ 
                     fig = root.createElement('fig')
                     image = root.createElement('image')
                     image.setAttribute('href', href)
@@ -313,6 +323,12 @@ def create_dita_block(root=None,section=None, bullets=None):
                 process_complex_rows(rows_propulson,root,tbodypropulsion, 4, 4)
 
     return  section
+
+def copy_image(img_src=None, img_dest=None):
+        isDestExist = os.path.exists(dirname(img_dest))
+        if not isDestExist:
+            os.makedirs(dirname(img_dest))
+        os.system('cp '+img_src+' '+img_dest)
 
 def remove_whitespace(node):
     if node.nodeType == node.TEXT_NODE:

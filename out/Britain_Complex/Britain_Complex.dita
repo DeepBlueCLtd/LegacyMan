@@ -42,7 +42,7 @@
                     </row>
                     <row>
                         <entry colname="col1">
-                            <xref format="html" href="unit_daf.html">Unit_daf</xref>
+                            <xref format="dita" href="unit_daf.dita">Unit_daf</xref>
                         </entry>
                         <entry colname="col2">PBF</entry>
                         <entry colname="col3">2 * V6 Diesel</entry>
