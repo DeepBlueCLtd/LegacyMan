@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><?path2rootmap-uri ./?>
+<!DOCTYPE rich-collection
+  PUBLIC "-//OASIS//DTD DITA Rich-collection//EN" "../../../../dtd/rich-collection.dtd">
+<rich-collection id="Iceland" specializations="">
+    <title>Iceland</title>
+    <body>
+        <table>
+            <tgroup cols="2">
+                <colspec colname="col1" colnum="1"/><colspec colname="col2" colnum="2"/><tbody>
+                    <row>
+                        <entry colname="col1">
+                            <xref format="dita" href="../../../../../../../../Iceland_Complex.dita">
+                                Complex
+                                <image href="Iceland_Complex/Content/Images/oscill_c.jpg" placement="inline" width="450px"/>
+                            </xref>
+                        </entry>
+                        <entry colname="col2">
+                            <xref format="dita" href="../../../../../../../../Iceland_Composites.dita">
+                                Composite
+                                <image href="Iceland_Composite/Content/Images/unit_da.jpg" placement="inline" width="450px"/>
+                            </xref>
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </body>
+</rich-collection>

@@ -3,15 +3,18 @@ import os
 
 from xml.dom import minidom
 from os.path import dirname, abspath
-from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE
+from legacyman_parser.utils.constants import DITA_REGIONS_EXPORT_FILE, DITA_REGIONS_EXPORT_FILE_REGION
 from distutils.dir_util import copy_tree
-from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body
+from legacy_publisher.dita_helper import create_dita_root, write_dita_doc, create_topic, create_body,create_table,create_xref,create_richcollection, create_table_body, create_image, create_classlist, create_flag, create_classlist_body, create_classlisttable_body,create_class
+
+from legacy_publisher.dita_helper import create_images, create_section, create_classtable, create_dita_block, process_complex_rows
 from legacyman_parser.dita_ot_validator import validate, get_dita
 
 dita_ot = get_dita()
 doctype_str = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">\n'
 doctype_richcollection_str = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">\n'
 doctype_classlist_str = '<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">\n'
+doctype_class_str = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">\n'
 
 
 """This module will handle post parsing enhancements for DITA publishing"""
@@ -55,9 +58,15 @@ def publish_regions(regions=None, sourcepath=None):
         text_name = root.createTextNode(region.region)
         xref.appendChild(text_name)
 
-        relative_path_utl = os.path.relpath(region.url, dirname(DITA_REGIONS_EXPORT_FILE))
+        # relative_path_utl = os.path.relpath(region.url, dirname(DITA_REGIONS_EXPORT_FILE))
+        # xref.setAttribute('href', relative_path_utl)
+        # xref.setAttribute('format', 'html')
+
+        relative_path_utl = os.path.basename(region.url).replace(".html","") +"/"+ os.path.basename(region.url)
+        relative_path_utl = relative_path_utl.replace("html","dita")
         xref.setAttribute('href', relative_path_utl)
-        xref.setAttribute('format', 'html')
+        xref.setAttribute('format', 'dita')
+        
         area.appendChild(xref)
 
     root = root.childNodes[0]
@@ -66,25 +75,25 @@ def publish_regions(regions=None, sourcepath=None):
     xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
     xml_string_with_doctype = xml_declaration + doctype_str + xml_string
 
-    print("Create / Save regions.dita : ", DITA_REGIONS_EXPORT_FILE)
+    # print("Create / Save regions.dita : ", DITA_REGIONS_EXPORT_FILE)
 
-    dita_dir = dirname(abspath(DITA_REGIONS_EXPORT_FILE))
+    dita_dir = dirname(abspath(DITA_REGIONS_EXPORT_FILE_REGION))
     isExist = os.path.exists(dita_dir)
     if not isExist:
         os.makedirs(dita_dir)
 
     image_url = abspath(regions.url);
-    target_dir = dirname(dirname(dirname(abspath(DITA_REGIONS_EXPORT_FILE))))
+    target_dir = dirname(dirname(dirname(dirname(abspath(DITA_REGIONS_EXPORT_FILE_REGION)))))
     new_path = image_url.replace(target_dir, "")
     source_path = dirname(abspath(sourcepath));
 
-    print('copy ('+source_path+new_path+') to ('+dita_dir+new_path+')')
+    # print(' copy ('+source_path+new_path+') to ('+dita_dir+new_path+')')
     isDestExist = os.path.exists(dirname(dita_dir+new_path))
     if not isDestExist:
         os.makedirs(dirname(dita_dir+new_path))
     os.system('cp '+source_path+new_path+' '+dita_dir+new_path)
 
-    with open(DITA_REGIONS_EXPORT_FILE, "w") as f:
+    with open(DITA_REGIONS_EXPORT_FILE_REGION, "w") as f:
        f.write(xml_string_with_doctype) 
 
     if(dita_ot != None):
@@ -123,12 +132,35 @@ def publish_country_collection(country_collection=None):
         isDestExist = os.path.exists(dirname(export_dita))
         if not isDestExist:
             os.makedirs(dirname(export_dita))
-        print("export_dita :", export_dita)
+        # print("export_dita :", export_dita)
         write_dita_doc(root, export_dita, doctype_str=doctype_classlist_str)
 
         if(dita_ot != None):
             xml_file = abspath(export_dita)
             dtd_file = '../dtd/classlist.dtd'
+            validate(xml_file, dtd_file)
+
+def publish_country_class(class_data=None): 
+    for iclass in class_data:
+        current=iclass
+        pstr = "regions/"
+
+        parent_folder = os.path.basename(dirname(str(iclass.parent)))
+        folder_name = os.path.basename(dirname(str(iclass.url)))
+        file_name = os.path.basename(str(iclass.url)).replace(".html", "")
+
+        export_dita = dirname(DITA_REGIONS_EXPORT_FILE)+"/"+pstr+parent_folder+"/"+folder_name+"/"+file_name+".dita"
+        root = create_class_page(class_data=iclass,export_dita=export_dita)
+
+        isDestExist = os.path.exists(dirname(export_dita))
+        if not isDestExist:
+            os.makedirs(dirname(export_dita))
+        # print("export_dita :", export_dita)
+        write_dita_doc(root, export_dita, doctype_str=doctype_class_str)
+
+        if(dita_ot != None):
+            xml_file = abspath(export_dita)
+            dtd_file = '../dtd/class.dtd'
             validate(xml_file, dtd_file)
 
 
@@ -160,7 +192,7 @@ def process_countries(region=None, countries=None,current=None,nst=False, richco
     isDestExist = os.path.exists(dirname(export_dita))
     if not isDestExist:
         os.makedirs(dirname(export_dita))
-    print("export_dita :", export_dita)
+    # print("export_dita :", export_dita)
     write_dita_doc(root, export_dita, doctype_str=doc_str)
 
     if(dita_ot != None):
@@ -198,19 +230,18 @@ def create_nst_page(current_region=None,export_dita=None, richcollection=None):
             img_src_root = dirname(dirname(richcollection.url))+str(col.src).replace("../", "/")
             img_dest_root = dirname(export_dita)+str(col.src).replace("../", "/")
             href_src_root = dirname(dirname(richcollection.url))+str(col.href).replace("../", "/")
+            href_dest_root = "#" if col.href == None else os.path.basename(dirname(abspath(col.href))) +"/"+ os.path.basename(col.href).replace(".html", ".dita")
 
-            relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
+            # relative_path_url = "#" if col.href == None else os.path.relpath(href_src_root, dirname(export_dita))
             relative_path_img_url = "#" if col.src == None else str(col.src).replace("../", "")
-            
-            print("Copy images  ")
-            print('copy ('+img_src_root+') to ('+img_dest_root+')')
+
             isDestExist = os.path.exists(dirname(img_dest_root))
             if not isDestExist:
                 os.makedirs(dirname(img_dest_root))
             os.system('cp '+abspath(img_src_root)+' '+img_dest_root)
 
             image = create_image(root=root,url=relative_path_img_url,style=col.style)
-            xref = create_xref(root=root,text=col.text ,url=relative_path_url,format="html")
+            xref = create_xref(root=root,text=col.text ,url=href_dest_root,format="dita")
             xref.appendChild(image)
             entry.appendChild(xref) 
             row.appendChild(entry)
@@ -223,9 +254,9 @@ def create_collection_page(classlist=None,export_dita=None):
     topic = create_classlist(root=root,id=classlist.title)
     flag = create_flag(root=root,url=".."+classlist.flag.flag_dest.replace(os.path.basename(dirname(dirname(export_dita))), ""),topic=topic)
 
-    print("Copy flags ")
+    # print("Copy flags ")
     img_dest = dirname(dirname(dirname(export_dita)))+"/"+classlist.flag.flag_dest
-    print('copy ('+classlist.flag.flag+') to ('+img_dest+')')
+    # print('copy ('+classlist.flag.flag+') to ('+img_dest+')')
     isDestExist = os.path.exists(dirname(img_dest))
     if not isDestExist:
         os.makedirs(dirname(img_dest))
@@ -244,9 +275,9 @@ def create_collection_page(classlist=None,export_dita=None):
                 entry.setAttribute('namest', namest)
                 entry.setAttribute('nameend', nameend)
         
-            relative_path_url = "#" if col[1] == None else col[1]
+            relative_path_url = "#" if col[1] == None else col[1].replace(".html", ".dita")
             if col[1] != None :
-                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="dita")
                 entry.appendChild(xref) 
             else : 
                 text_content = root.createTextNode(col[0])
@@ -258,3 +289,51 @@ def create_collection_page(classlist=None,export_dita=None):
     return root
 
 
+
+def create_class_page(class_data=None,export_dita=None):
+    root = create_dita_root(doctype_str=None)
+    title = os.path.basename(str(export_dita)).replace(".dita","")
+    topic = create_class(root=root,id=title)
+    body = create_body(root=root,topic=topic)
+    images = create_images(root=root,body=body)
+
+    if len(class_data.summary.tableorcontent) != 0 : 
+        summary = create_section(root=root,body=body, section=str(class_data.summary.title), title_str=None)
+        tbody = create_classtable(root=root,section=summary, cols=str(class_data.colspan))
+        process_section(class_data.summary.tableorcontent,root,tbody)
+
+    if len(class_data.signatures.tableorcontent) != 0 : 
+        signatures = create_section(root=root,body=body, section=str(class_data.signatures.title), title_str=str(class_data.signatures.title))
+        tbodysignatures = create_classtable(root=root,section=signatures, cols=str(class_data.colspan))
+        process_complex_rows(class_data.signatures.tableorcontent,root,tbodysignatures, class_data.colspan, 4)
+
+    if len(class_data.propulsion.tableorcontent) != 0 : 
+        propulsion = create_section(root=root,body=body, section=str(class_data.propulsion.title), title_str=str(class_data.propulsion.title))
+        # tbodypropulsion = create_classtable(root=root,section=propulsion, cols=str(4))
+        # create_dita_block(class_data.propulsion.table,root,tbodypropulsion, 4, 4)
+        create_dita_block(root=root, section=propulsion, bullets=class_data.propulsion.tableorcontent, base_url=class_data.url, export_dita=export_dita)
+
+    if len(class_data.remarks.tableorcontent) != 0 and class_data.remarks.title != None: 
+        remarks = create_section(root=root,body=body, section=str(class_data.remarks.title), title_str=str(class_data.remarks.title))
+        remarks_body = create_dita_block(root=root,section=remarks, bullets=class_data.remarks.tableorcontent, base_url = class_data.url, export_dita=export_dita)
+    
+    return root
+
+
+def process_section(section=None,root=None,tbody=None):
+    for irow in section:
+        row = root.createElement('row')
+        for col in irow:
+            entry = root.createElement('entry')
+        
+            relative_path_url = "#" if col[1] == None else col[1]
+            if col[1] != None :
+                xref = create_xref(root=root,text=col[0] ,url=relative_path_url,format="html")
+                entry.appendChild(xref) 
+            else : 
+                text_content = root.createTextNode(col[0])
+                entry.appendChild(text_content)
+
+            row.appendChild(entry)
+            
+        tbody.appendChild(row)

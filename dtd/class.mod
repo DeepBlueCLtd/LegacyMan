@@ -6,6 +6,7 @@
 <!--  DATE:      June 2023                                         -->
 <!--  Delivered as file "class.mod"                                -->
 <!-- ============================================================= -->
+
 <!-- ============ Specialization of declared elements ============  -->
 <!ENTITY % class                 "class">
 <!ENTITY % body             "body">
@@ -15,8 +16,24 @@
 <!ENTITY % propulsionRef                   "propulsionRef">
 <!ENTITY % remarks                      "remarks">
 <!ENTITY % span                           "span">
+<!ENTITY % h1                           "h1">
+
 <!ENTITY % images                           "images">
 <!ENTITY % related-pages "related-pages">
+
+<!ENTITY % sectioncustom.cnt 
+  "#PCDATA | 
+   %basic.block; | 
+   %basic.ph; | 
+   %data.elements.incl; | 
+   %foreign.unknown.incl; |
+   %sectiondiv; | 
+   %title; | 
+   %h1; | 
+   %txt.incl;
+  "
+>
+
 <!ELEMENT class              ((%title;), (%body;))>
 <!ATTLIST class                   id ID #REQUIRED
                                   conref CDATA #IMPLIED
@@ -35,20 +52,28 @@
 <!ATTLIST signatures id ID #REQUIRED
                                   outputclass CDATA #IMPLIED
 >
-<!ELEMENT propulsion    (%section.cnt;)* >
+<!ELEMENT propulsion    (%sectioncustom.cnt;)* >
 <!ATTLIST propulsion    id ID #REQUIRED
                                   outputclass CDATA #IMPLIED
 >
+
+
+<!ELEMENT h1          (#PCDATA) >
+<!ATTLIST h1 
+                                outputclass CDATA #IMPLIED
+>
+
 <!ELEMENT propulsionRef    ((%title;)?, (%xref;)?) >
 <!ATTLIST propulsionRef    
                                   outputclass CDATA #IMPLIED
 >
 <!ATTLIST propulsionRef id ID #REQUIRED>
 
-<!ELEMENT remarks    ((%title;)?, (%span;)*) >
+<!ELEMENT remarks    (%sectioncustom.cnt;)*  >
 <!ATTLIST remarks     id ID #REQUIRED
                                   outputclass CDATA #IMPLIED
 >
+
 <!ELEMENT links     (%section.cnt;)* >
 <!ATTLIST links    id ID #REQUIRED
                                   outputclass CDATA #IMPLIED
@@ -85,5 +110,8 @@
 <!ATTLIST related-pages    class  CDATA "- topic/section class/related-pages ">
 <!-- sp extends p -->
 <!ATTLIST span    class  CDATA "- topic/p  class/span ">
+
+<!-- h1 extends p -->
+<!ATTLIST h1    class  CDATA "- topic/p  class/h1 ">
 <!-- images -->
 <!ATTLIST images             %global-atts;  class CDATA "- topic/body reference/refBody class/images ">

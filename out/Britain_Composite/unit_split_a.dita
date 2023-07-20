@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><?path2rootmap-uri ./?>
+<!DOCTYPE class
+  PUBLIC "-//OASIS//DTD DITA Class//EN" "../../../../../dtd/class.dtd">
+<class id="unit_split_a" specializations="">
+    <title>unit_split_a</title>
+    <body>
+        <images/>
+        <summary id="summary">
+            <table colsep="1" rowsep="1">
+                <tgroup cols="6" colsep="1" rowsep="1">
+                    <colspec colname="col1" colnum="1"/>
+                    <colspec colname="col2" colnum="2"/>
+                    <colspec colname="col3" colnum="3"/>
+                    <colspec colname="col4" colnum="4"/>
+                    <colspec colname="col5" colnum="5"/>
+                    <colspec colname="col6" colnum="6"/>
+                    <tbody>
+                        <row>
+                            <entry colname="col1">Drive</entry>
+                            <entry colname="col2">Mode</entry>
+                            <entry colname="col3">Shaft x Blade</entry>
+                            <entry colname="col4">R:R</entry>
+                            <entry colname="col5">Max Speed</entry>
+                            <entry colname="col6">Av TPK (Guide)</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1">2 * V8 Diesel</entry>
+                            <entry colname="col2">PTR</entry>
+                            <entry colname="col3">3 x 3</entry>
+                            <entry colname="col4">Unk1</entry>
+                            <entry colname="col5">12 kts</entry>
+                            <entry colname="col6">~14</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </summary>
+        <signatures id="signatures">
+            <title>Signatures</title>
+            <table colsep="1" rowsep="1">
+                <tgroup cols="6" colsep="1" rowsep="1">
+                    <colspec colname="col1" colnum="1"/>
+                    <colspec colname="col2" colnum="2"/>
+                    <colspec colname="col3" colnum="3"/>
+                    <colspec colname="col4" colnum="4"/>
+                    <colspec colname="col5" colnum="5"/>
+                    <colspec colname="col6" colnum="6"/>
+                    <tbody>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Commonly Detected Sources</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Source</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">Ratio/Freq</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">Harmonics</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Remarks</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Propulsion Related</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">SR</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">S12</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1-4</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Discrete. Doublets common</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">BR</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">S5</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">Discrete. Doublets common</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Auxiliary Machinery</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Cat b Engine R</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">2-1000.4</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H2, 4, 21, 145</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">
+                                <xref format="html" href="../France_Legacy/France_Legacy_Pics.html#number3">The quick brown fox does something similar            Tool screenshot aTool screenshot b</xref>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Unk BBA</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">25 &amp; CSR</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">CBR 34</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Transient Sources</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Unk BBA</entry>
+                            <entry colname="col2" nameend="col2" namest="col2">135 &amp; CSR</entry>
+                            <entry colname="col3" nameend="col4" namest="col3">H1 &amp; 2</entry>
+                            <entry colname="col5" nameend="col6" namest="col5">CBR 54334</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col6" namest="col1">Signature &amp; Characteristics</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Acoustic Signature</entry>
+                            <entry colname="col2" nameend="col6" namest="col2">Expect plant to be similar to 2016 steam powered version</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Unique classifiers</entry>
+                            <entry colname="col2" nameend="col6" namest="col2">None</entry>
+                        </row>
+                        <row>
+                            <entry colname="col1" nameend="col1" namest="col1">Aural</entry>
+                            <entry colname="col2" nameend="col6" namest="col2">Expect Diesel, Whine, Governor release</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </signatures>
+    </body>
+</class>

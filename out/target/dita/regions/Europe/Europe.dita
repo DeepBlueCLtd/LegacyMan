@@ -2,24 +2,24 @@
 <!DOCTYPE topic
   PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic id="Europe" specializations="@props/deliveryTarget">
-  <title>Europe</title>
-  <body>
-    <table>
-      <tgroup cols="3">
-        <colspec colname="col1" colnum="1"/><colspec colname="col2" colnum="2"/><colspec colname="col3" colnum="3"/><tbody>
-          <row>
-            <entry colname="col1">
-              <xref format="html" href="../../../../data/Narnia/Narnia1.html">Narnia</xref>
-            </entry>
-            <entry colname="col2">
-              <xref format="html" href="../../../../data/France/France1.html">France</xref>
-            </entry>
-            <entry colname="col3">
-              <xref format="html" href="../../../../data/Spain1/Spain.html">Spain</xref>
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
-  </body>
+    <title>Europe</title>
+    <body>
+        <table>
+            <tgroup cols="3">
+                <colspec colname="col1" colnum="1"/><colspec colname="col2" colnum="2"/><colspec colname="col3" colnum="3"/><tbody>
+                    <row>
+                        <entry colname="col1">
+                            <xref format="html" href="../../../../data/Narnia/Narnia1.html">Narnia</xref>
+                        </entry>
+                        <entry colname="col2">
+                            <xref format="html" href="../../../../data/France/France1.html">France</xref>
+                        </entry>
+                        <entry colname="col3">
+                            <xref format="html" href="../../../../data/Spain1/Spain.html">Spain</xref>
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </body>
 </topic>
