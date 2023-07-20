@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+    <title>Field Manual v4 Feb 2022</title>
+    <topicmeta/>
+    <topicref href="regions/regions.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+    <topicref href="regions/europe/france/france.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+    <topicref href="regions/europe/france/unit_a.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+    <topicref href="regions/europe/france/unit_d_star.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+    <topicref href="regions/europe/spain/unit_db.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+
+</map>
