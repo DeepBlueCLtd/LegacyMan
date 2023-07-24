@@ -35,25 +35,25 @@ Execute the following command from the project root directory to run program. Th
 
 ### Install DITA-OT
 
-Before you can use the dita command, you need to download and install the `DITA-OT` package on your system. You can download the latest version of `DITA-OT` from the official [website](https://www.dita-ot.org/download). Once you have downloaded and extracted the package to a directory on your system, you can add the `DITA-OT/bin` directory to your `PATH` variable by adding the following line to your `.bash_profile file`:
+1. Check if `DITA-OT` is already installed by running the command below
+   ```
+     dita --version
+   ```
+2. If the `dita` command is not found, then you need to download and install the latest version of `DITA-OT` from the official [website](https://www.dita-ot.org/download).
 
-```
-dita --version
-```
+3. Once you have downloaded and extracted the package to a directory on your system, you can add the `DITA-OT/bin` directory to your `PATH` variable by adding the following line to your `.bash_profile` file:
 
-If the `dita` command is not found, it's likely that the DITA-OT `bin` directory is not in your system's `PATH` environment variable. You can add the `DITA-OT/bin` directory to your `PATH` variable by adding the following line to your `.bash_profile` file:
+   ```
+    export PATH=$PATH:/path/to/DITA-OT/bin
+   ```
 
-```
-export PATH=$PATH:/path/to/DITA-OT/bin
-```
+   Replace `/path/to/DITA-OT` with the actual path to your DITA-OT installation directory. After saving the file, you'll need to reload your `.bash_profile` file by running the following command:
 
-Replace `/path/to/DITA-OT` with the actual path to your DITA-OT installation directory. After saving the file, you'll need to reload your `.bash_profile` file by running the following command:
+   ```
+    source ~/.bash_profile
+   ```
 
-```
-source ~/.bash_profile
-```
-
-Once you've added the DITA-OT `bin` directory to your `PATH` variable, you should be able to use the `dita` command in your terminal.
+4. Test that `DITA-OT` is installed correctly by running the `dita --version` command in your terminal. If the command returns a version number, then `DITA-OT` is installed and configured correctly. You can now use the `dita` command in your terminal to perform various DITA-related tasks.
 
 ### Run the parser
 

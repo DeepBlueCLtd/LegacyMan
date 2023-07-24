@@ -46,7 +46,7 @@ def parse_from_root(args):
     copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
     #Run DITA-OT command to transform the index.ditamap file to html
-    dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/dita/html"]
+    dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/html"]
     subprocess.run(dita_command)
 
     end_time = time.time()
