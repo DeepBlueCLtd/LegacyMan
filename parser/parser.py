@@ -32,6 +32,14 @@ def copy_files(source_dir, target_dir, file_names):
         #print('copy ', source_file, ' ', target_dir)
         shutil.copy(source_file, target_dir)
 
+def process_regions():
+    #copy the world-map.gif file
+    source_dir = "data/PlatformData/Content/images/"
+    target_dir = "regions/content/images"
+    copy_files(source_dir, target_dir, ["world-map.gif"])
+
+    #create a dita image map
+
 def parse_from_root(args):
     print(f'LegacyMan parser running, with these arguments: {args}')
     start_time = time.time()
@@ -53,6 +61,7 @@ def parse_from_root(args):
     parse_time = end_time - start_time
     print(f'Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap')
 
+    process_regions()
 if __name__ == '__main__':
     args = sys.argv[1:]
     parse_from_root(args)
