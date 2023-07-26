@@ -36,7 +36,7 @@ def copy_files(source_dir, target_dir, file_names):
 def process_regions():
     #copy the world-map.gif file
     source_dir = "data/PlatformData/Content/images/"
-    target_dir = "regions/content/images"
+    target_dir = "target/dita/regions/content/images"
     copy_files(source_dir, target_dir, ["world-map.gif"])
 
     #read the PD_1.html file
@@ -76,7 +76,7 @@ def process_regions():
 
         dita_xref = dita_soup.new_tag('xref')
         dita_xref['format'] = 'dita'
-        dita_xref['href'] = area['href']
+        dita_xref['href'] = "./regions.dita"
 
         dita_area = dita_soup.new_tag('area')
         dita_area.append(dita_shape)
