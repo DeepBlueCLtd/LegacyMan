@@ -126,6 +126,9 @@ def parse_from_root(args):
     target_dir = os.path.join("target", "dita")
     copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
+    # produce the world map
+    process_regions()
+
     #Run DITA-OT command to transform the index.ditamap file to html
     dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/html"]
     subprocess.run(dita_command)
@@ -134,7 +137,6 @@ def parse_from_root(args):
     parse_time = end_time - start_time
     print(f'Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap')
 
-    process_regions()
 if __name__ == '__main__':
     args = sys.argv[1:]
     parse_from_root(args)
