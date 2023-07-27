@@ -83,6 +83,12 @@ def process_regions():
         dita_xref['format'] = 'dita'
         dita_xref['href'] = "./regions.dita"
 
+        #if link starts with ../ create a dita file for the country => example ../Britain/Britain1.html
+        link = area['href']
+        country_name = area['alt']
+        if link.startswith("../"):
+            process_ns_countries(country_name, link[3:]) #remove the first 2 chars of the link ../
+
         dita_area = dita_soup.new_tag('area')
         dita_area.append(dita_shape)
         dita_area.append(dita_coords)
@@ -112,9 +118,9 @@ def process_regions():
     with open(f'{dita_output}/regions.dita', 'wb') as f:
         f.write(prettified_code.encode('utf-8'))
 
-def process_ns_countries():
-    #read the PD_1.html file
-    with open("data/Britain/Britain1.html", "r") as f:
+def process_ns_countries(country_name, link):
+    #read the html file
+    with open(f'data/{link}', "r") as f:
          html_string = f.read()
 
     #set Beautifulsoup objects to parse HTML and DITA files
@@ -132,7 +138,7 @@ def process_ns_countries():
      #Create dita elements: <rich-collection>,<title>,<table>,<tbody>,<tgroup>...
     dita_rich_collection = dita_soup.new_tag('rich-collection')
     dita_title = dita_soup.new_tag('title')
-    dita_title.string = 'Britain'
+    dita_title.string = country_name
     dita_rich_collection.append(dita_title)
 
     #Create DITA elements <xref>,<image>,
@@ -177,13 +183,13 @@ def process_ns_countries():
     dita_soup.append(dita_rich_collection)
 
     #Write the DITA file
-    dita_output = 'target/dita/regions/britain'
+    dita_output = f'target/dita/regions/{country_name}'
     create_directory(dita_output)
 
     #Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
 
-    with open(f'{dita_output}/britain.dita', 'wb') as f:
+    with open(f'{dita_output}/{country_name}.dita', 'wb') as f:
         f.write(prettified_code.encode('utf-8'))
 
 def parse_from_root(args):
@@ -201,9 +207,6 @@ def parse_from_root(args):
 
     #Produce the world map
     process_regions()
-
-    #Process NS countries
-    process_ns_countries()
 
     #Run DITA-OT command to transform the index.ditamap file to html
     dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/html"]
