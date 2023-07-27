@@ -114,25 +114,25 @@ def process_regions():
 
 
 def parse_from_root(args):
-    # print(f'LegacyMan parser running, with these arguments: {args}')
-    # start_time = time.time()
+    print(f'LegacyMan parser running, with these arguments: {args}')
+    start_time = time.time()
 
-    # #remove existing target directory and recreate it
-    # delete_directory(os.path.join(os.getcwd(), "target"))
-    # create_directory("target")
+    #remove existing target directory and recreate it
+    delete_directory(os.path.join(os.getcwd(), "target"))
+    create_directory("target")
 
-    # #copy index.dita and welcome.dita from data dir to target/dita
-    # source_dir = "data"
-    # target_dir = os.path.join("target", "dita")
-    # copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
+    #copy index.dita and welcome.dita from data dir to target/dita
+    source_dir = "data"
+    target_dir = os.path.join("target", "dita")
+    copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
-    # #Run DITA-OT command to transform the index.ditamap file to html
-    # dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/html"]
-    # subprocess.run(dita_command)
+    #Run DITA-OT command to transform the index.ditamap file to html
+    dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/html"]
+    subprocess.run(dita_command)
 
-    # end_time = time.time()
-    # parse_time = end_time - start_time
-    # print(f'Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap')
+    end_time = time.time()
+    parse_time = end_time - start_time
+    print(f'Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap')
 
     process_regions()
 if __name__ == '__main__':
