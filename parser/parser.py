@@ -58,7 +58,7 @@ def process_regions():
 
     #Create the html <image> element in the DITA file
     dita_image = dita_soup.new_tag('image')
-    dita_image['href'] = img_element['src']
+    dita_image['href'] = img_element['src'].lower()
 
     #Create the DITA document type declaration string
     dita_doctype = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
