@@ -6,4 +6,7 @@
     <topicref href="./welcome.dita" format="dita">
         <topicmeta/>
     </topicref>
+    <topicref href="./regions/regions.dita" format="dita">
+        <topicmeta/>
+    </topicref>
 </map>
