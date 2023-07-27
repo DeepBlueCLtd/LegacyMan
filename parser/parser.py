@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 from bs4 import BeautifulSoup
+import xml.dom.minidom
 
 
 def delete_directory(path):
@@ -33,6 +34,10 @@ def copy_files(source_dir, target_dir, file_names):
         #print('copy ', source_file, ' ', target_dir)
         shutil.copy(source_file, target_dir)
 
+def prettify_xml(xml_code):
+    dom = xml.dom.minidom.parseString(xml_code)
+    return dom.toprettyxml()
+
 def process_regions():
     #copy the world-map.gif file
     source_dir = "data/PlatformData/Content/images/"
@@ -55,9 +60,9 @@ def process_regions():
     dita_image = dita_soup.new_tag('image')
     dita_image['href'] = img_element['src']
 
-    # Create the DITA document type declaration string
-    dita_doctype = '''<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'''
-    dita_soup.append(dita_doctype)
+    #Create the DITA document type declaration string
+    dita_doctype = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
+    dita_soup = BeautifulSoup(dita_doctype, 'xml')
 
     #Create a body,title and imagemap elements
     dita_body = dita_soup.new_tag('body')
@@ -101,8 +106,11 @@ def process_regions():
     dita_output = 'target/dita/regions'
     create_directory(dita_output)
 
+    #Prettify the code
+    prettified_code = prettify_xml(str(dita_soup))
+
     with open(f'{dita_output}/regions.dita', 'wb') as f:
-        f.write(dita_soup.prettify().encode('utf-8'))
+        f.write(prettified_code.encode('utf-8'))
 
 
 def parse_from_root(args):
