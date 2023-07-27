@@ -112,6 +112,79 @@ def process_regions():
     with open(f'{dita_output}/regions.dita', 'wb') as f:
         f.write(prettified_code.encode('utf-8'))
 
+def process_ns_countries():
+    #read the PD_1.html file
+    with open("data/Britain/Britain1.html", "r") as f:
+         html_string = f.read()
+
+    #set Beautifulsoup objects to parse HTML and DITA files
+    soup = BeautifulSoup(html_string, 'html.parser')
+
+    #Parse the HTML string, parser the <map> and the <img> elements
+    img_links_table = soup.find('div', {'id': 'ImageLinksTable'})
+    if img_links_table is None:
+        raise ValueError("ImageLinksTable not found in the HTML file")
+
+    #Create the DITA document type declaration string
+    dita_doctype = '<!DOCTYPE rich-collection SYSTEM "../../dtd/rich-collection.dtd">'
+    dita_soup = BeautifulSoup(dita_doctype, 'xml')
+
+     #Create dita elements: <rich-collection>,<title>,<table>,<tbody>,<tgroup>...
+    dita_rich_collection = dita_soup.new_tag('rich-collection')
+    dita_title = dita_soup.new_tag('title')
+    dita_title.string = 'Britain'
+    dita_rich_collection.append(dita_title)
+
+    #Create DITA elements <xref>,<image>,
+    dita_row = dita_soup.new_tag('row')
+
+    for img_link in img_links_table.find_all('a'):
+        dita_xref = dita_soup.new_tag('xref')
+        dita_xref["href"] = img_link["href"]
+        dita_xref["format"] = "dita"
+
+        dita_bold = dita_soup.new_tag('b')
+        dita_bold.string = img_link.text.strip()
+
+        dita_img = dita_soup.new_tag('image')
+        dita_img['width'] = '400px'
+        dita_img['href'] = img_link.img['src']
+
+        dita_xref.append(dita_bold)
+        dita_xref.append(dita_img)
+
+        dita_entry = dita_soup.new_tag('entry')
+        dita_entry.append(dita_xref)
+
+        dita_row.append(dita_entry)
+
+    dita_tbody = dita_soup.new_tag('tbody')
+    dita_tbody.append(dita_row)
+
+    dita_tgroup = dita_soup.new_tag('tgroup')
+    dita_tgroup["cols"] = "2"
+    dita_tgroup.append(dita_tbody)
+
+    dita_table = dita_soup.new_tag('table')
+    dita_table.append(dita_tgroup)
+
+    dita_body = dita_soup.new_tag('body')
+    dita_body.append(dita_table)
+
+    dita_rich_collection.append(dita_body)
+
+    #Append the rich-collection element to the dita_soup object
+    dita_soup.append(dita_rich_collection)
+
+    #Write the DITA file
+    dita_output = 'target/dita/regions/britain'
+    create_directory(dita_output)
+
+    #Prettify the code
+    prettified_code = prettify_xml(str(dita_soup))
+
+    with open(f'{dita_output}/britain.dita', 'wb') as f:
+        f.write(prettified_code.encode('utf-8'))
 
 def parse_from_root(args):
     print(f'LegacyMan parser running, with these arguments: {args}')
@@ -126,8 +199,11 @@ def parse_from_root(args):
     target_dir = os.path.join("target", "dita")
     copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
-    # produce the world map
+    #Produce the world map
     process_regions()
+
+    #Process NS countries
+    process_ns_countries()
 
     #Run DITA-OT command to transform the index.ditamap file to html
     dita_command = ["dita", "-i", "./target/dita/index.ditamap", "-f", "html5", "-o", "./target/html"]

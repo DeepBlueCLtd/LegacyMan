@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!DOCTYPE rich-collection
+  SYSTEM '../../dtd/rich-collection.dtd'>
+<rich-collection>
+	<title>Britain</title>
+	<body>
+		<table>
+			<tgroup cols="2">
+				<tbody>
+					<row>
+						<entry>
+							<xref format="dita" href="../Britain_Complex/Britain_Complex.html">
+								<b>Complex</b>
+								<image href="../Britain_Complex/Content/Images/daf_1.jpeg" width="400px"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Britain_Standalones/Britain_Standalones.html">
+								<b>Standalones</b>
+								<image href="../Britain_Standalones/Content/Images/oscill_c.jpg" width="400px"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Britain_Composite/Britain_Composites.html">
+								<b>Composites</b>
+								<image href="../Britain_Composite/Content/Images/unit_dar.jpeg" width="400px"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Britain_Legacy/Britain_Legacy.html">
+								<b>Legacy</b>
+								<image href="../Britain_Legacy/Content/Images/unit_da.jpg" width="400px"/>
+							</xref>
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</body>
+</rich-collection>
