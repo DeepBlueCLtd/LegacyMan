@@ -6,6 +6,7 @@ import shutil
 import subprocess
 from bs4 import BeautifulSoup
 import xml.dom.minidom
+import re
 
 
 def delete_directory(path):
@@ -31,7 +32,6 @@ def copy_files(source_dir, target_dir, file_names):
     for file_name in file_names:
         source_file = os.path.join(source_dir, file_name)
         target_file = os.path.join(target_dir, file_name)
-        #print('copy ', source_file, ' ', target_dir)
         shutil.copy(source_file, target_dir)
 
 def prettify_xml(xml_code):
@@ -86,14 +86,15 @@ def process_regions():
         #if link starts with ../ create a dita file for the country => example ../Britain/Britain1.html
         link = area['href']
         country_name = area['alt']
+
         if link.startswith("../"):
-            process_ns_countries(country_name, link[3:]) #remove the first 2 chars of the link ../
+            country_path = process_ns_countries(country_name, link[3:])
+            dita_xref['href'] = f'./{country_path}'
 
         dita_area = dita_soup.new_tag('area')
         dita_area.append(dita_shape)
         dita_area.append(dita_coords)
         dita_area.append(dita_xref)
-
         dita_imagemap.append(dita_area)
 
     dita_body.append(dita_imagemap)
@@ -141,41 +142,42 @@ def process_ns_countries(country_name, link):
     dita_title.string = country_name
     dita_rich_collection.append(dita_title)
 
-    #Create DITA elements <xref>,<image>,
-    dita_row = dita_soup.new_tag('row')
-
-    for img_link in img_links_table.find_all('a'):
-        dita_xref = dita_soup.new_tag('xref')
-        dita_xref["href"] = img_link["href"]
-        dita_xref["format"] = "dita"
-
-        dita_bold = dita_soup.new_tag('b')
-        dita_bold.string = img_link.text.strip()
-
-        dita_img = dita_soup.new_tag('image')
-        dita_img['width'] = '400px'
-        dita_img['href'] = img_link.img['src']
-
-        dita_xref.append(dita_bold)
-        dita_xref.append(dita_img)
-
-        dita_entry = dita_soup.new_tag('entry')
-        dita_entry.append(dita_xref)
-
-        dita_row.append(dita_entry)
-
+    #Create DITA elements tbody,row,xref,b,table
     dita_tbody = dita_soup.new_tag('tbody')
-    dita_tbody.append(dita_row)
-
     dita_tgroup = dita_soup.new_tag('tgroup')
     dita_tgroup["cols"] = "2"
-    dita_tgroup.append(dita_tbody)
 
     dita_table = dita_soup.new_tag('table')
-    dita_table.append(dita_tgroup)
-
     dita_body = dita_soup.new_tag('body')
+
+    for tr in img_links_table.find_all('tr'):
+        dita_row = dita_soup.new_tag('row')
+
+        for a in tr.find_all('a'):
+            dita_xref = dita_soup.new_tag('xref')
+            dita_xref["href"] = a["href"]
+            dita_xref["format"] = "dita"
+
+            dita_bold = dita_soup.new_tag('b')
+            dita_bold.string = a.text.strip()
+
+            dita_img = dita_soup.new_tag('image')
+            dita_img['width'] = '400px'
+            dita_img['href'] = a.img['src']
+
+            dita_xref.append(dita_bold)
+            dita_xref.append(dita_img)
+
+            dita_entry = dita_soup.new_tag('entry')
+            dita_entry.append(dita_xref)
+
+            dita_row.append(dita_entry)
+        dita_tbody.append(dita_row)
+
+    dita_tgroup.append(dita_tbody)
+    dita_table.append(dita_tgroup)
     dita_body.append(dita_table)
+
 
     dita_rich_collection.append(dita_body)
 
@@ -183,14 +185,18 @@ def process_ns_countries(country_name, link):
     dita_soup.append(dita_rich_collection)
 
     #Write the DITA file
+    country_name = country_name.lower()
     dita_output = f'target/dita/regions/{country_name}'
     create_directory(dita_output)
 
     #Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
 
-    with open(f'{dita_output}/{country_name}.dita', 'wb') as f:
+    country_path = f'{dita_output}/{country_name}.dita'
+    with open(country_path, 'wb') as f:
         f.write(prettified_code.encode('utf-8'))
+
+    return f'{country_name}/{country_name}.dita'
 
 def parse_from_root(args):
     print(f'LegacyMan parser running, with these arguments: {args}')

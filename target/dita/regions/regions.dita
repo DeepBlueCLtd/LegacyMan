@@ -10,7 +10,7 @@
 			<area>
 				<shape>poly</shape>
 				<coords>550,211,522,231,515,263,540,275,564,269,561,231,555,214</coords>
-				<xref format="dita" href="./regions.dita"/>
+				<xref format="dita" href="./britain/britain.dita"/>
 			</area>
 			<area>
 				<shape>poly</shape>
@@ -25,7 +25,7 @@
 			<area>
 				<shape>circle</shape>
 				<coords>500,180,25</coords>
-				<xref format="dita" href="./regions.dita"/>
+				<xref format="dita" href="./iceland/iceland.dita"/>
 			</area>
 		</imagemap>
 	</body>
