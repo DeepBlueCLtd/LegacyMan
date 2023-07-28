@@ -147,6 +147,10 @@ def process_ns_countries(country_name, link):
             dita_entry.append(dita_xref)
 
             dita_row.append(dita_entry)
+
+            #Process category pages from this file
+            process_category_pages(a['href'], country_name)
+
         dita_tbody.append(dita_row)
 
     dita_tgroup.append(dita_tbody)
@@ -172,6 +176,97 @@ def process_ns_countries(country_name, link):
         f.write(prettified_code.encode('utf-8'))
 
     return f'{country_name}/{country_name}.dita'
+
+
+def process_category_pages(category_page_link, country_name):
+    #read the category page
+    with open(f'data/{category_page_link[3:]}', "r") as f:
+         category_page_html = f.read()
+
+    soup = BeautifulSoup(category_page_html, 'html.parser')
+
+    #Find a <td> with colspan=7, this indicates that the page is a category page
+    td = soup.find('td', {'colspan': '7'})
+    title = soup.find('h2')
+
+    if td is None:
+       raise ValueError(f"<td> element with colspan 7 not found in the {category_page_link} file")
+
+    #Create the DITA document type declaration string
+    dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../dtd/classlist.dtd">'
+    dita_soup = BeautifulSoup(dita_doctype, 'xml')
+
+    #Create dita elements for <tgroup>,<table>, <tbody> ...
+    dita_tbody = dita_soup.new_tag('tbody')
+    dita_tgroup = dita_soup.new_tag('tgroup')
+    dita_table = dita_soup.new_tag('table')
+    dita_classlistbody = dita_soup.new_tag('classlistbody')
+    dita_classlist = dita_soup.new_tag('classlist')
+    dita_flag = dita_soup.new_tag('flag')
+    dita_title = dita_soup.new_tag('title')
+    dita_image = dita_soup.new_tag('image')
+    dita_fig = dita_soup.new_tag('fig')
+
+    #Read the parent <table> element
+    parent_table = td.find_parent('table')
+    for tr in parent_table.find_all('tr'):
+        dita_row = dita_soup.new_tag('row')
+
+        for td in tr.find_all('td'):
+            dita_entry = dita_soup.new_tag('entry')
+            dita_entry.string = td.text.strip()
+            dita_row.append(dita_entry)
+
+            #If there is a link element in the <tr> append it to <entry>
+            for a in td.find_all('a'):
+                dita_a = dita_soup.new_tag('a')
+
+                #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
+                dita_a["href"] = category_page_link
+                dita_a.string = a.text.strip()
+                dita_entry.append(dita_a)
+
+        dita_tbody.append(dita_row)
+
+    #Manually add <colspec> elements to the <tgroup>
+    for count in range(7):
+        dita_colspec = dita_soup.new_tag('colspec')
+        dita_colspec['colnum'] = count
+        dita_colspec['colname'] = f'col{count}'
+        dita_tgroup.append(dita_colspec)
+
+    dita_tgroup.append(dita_tbody)
+    dita_table.append(dita_tgroup)
+    dita_classlistbody.append(dita_table)
+
+    #Append the <title>,<flag> and <classlistbody> elements in the <classlist>
+    dita_title.string = title.text.strip()
+
+    #TODO: change the href of the image
+    dita_image['href'] = f'images/{country_name}_flag.png'
+    dita_image['alt'] = 'flag'
+
+    dita_fig.append(dita_image)
+    dita_flag.append(dita_fig)
+
+    dita_classlist.append(dita_title)
+    dita_classlist.append(dita_flag)
+    dita_classlist.append(dita_classlistbody)
+
+    #Append the whole page to the dita soup
+    dita_soup.append(dita_classlist)
+
+    #Write the DITA file
+    country_path = f'target/dita/regions/{country_name}'
+    category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
+    create_directory(f'{country_path}/{os.path.dirname(category_page_link)}')
+
+    #Prettify the code
+    prettified_code = prettify_xml(str(dita_soup))
+
+    with open(f'{country_path}/{category_page_link}', 'wb') as f:
+        f.write(prettified_code.encode('utf-8'))
+
 
 def parse_from_root(args):
     print(f'LegacyMan parser running, with these arguments: {args}')

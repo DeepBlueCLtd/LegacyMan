@@ -11,7 +11,7 @@ def delete_directory(path):
 
 def create_directory(name):
     try:
-        os.mkdir(name)
+        os.makedirs(name)
         print(f'{name} directory created')
     except FileExistsError:
         print(f'The directory {name} already exists')
