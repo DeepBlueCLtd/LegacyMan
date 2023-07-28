@@ -6,8 +6,6 @@ import shutil
 import subprocess
 from bs4 import BeautifulSoup
 import xml.dom.minidom
-import re
-
 
 def delete_directory(path):
     if os.path.exists(path):
@@ -22,6 +20,9 @@ def create_directory(name):
         print(f'{name} directory created')
     except FileExistsError:
         print(f'The directory {name} already exists')
+
+def copy_directory(src_folder, dst_folder):
+    shutil.copytree(src_folder, dst_folder)
 
 def copy_files(source_dir, target_dir, file_names):
     #create the target dir if it doesn't exist
@@ -88,7 +89,7 @@ def process_regions():
         country_name = area['alt']
 
         if link.startswith("../"):
-            country_path = process_ns_countries(country_name, link[3:])
+            country_path = process_ns_countries(country_name.lower(), link[3:])
             dita_xref['href'] = f'./{country_path}'
 
         dita_area = dita_soup.new_tag('area')
@@ -133,11 +134,13 @@ def process_ns_countries(country_name, link):
         raise ValueError("ImageLinksTable not found in the HTML file")
 
     #Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE rich-collection SYSTEM "../../dtd/rich-collection.dtd">'
+    dita_doctype = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, 'xml')
 
      #Create dita elements: <rich-collection>,<title>,<table>,<tbody>,<tgroup>...
     dita_rich_collection = dita_soup.new_tag('rich-collection')
+    dita_rich_collection['id'] = country_name
+
     dita_title = dita_soup.new_tag('title')
     dita_title.string = country_name
     dita_rich_collection.append(dita_title)
@@ -155,7 +158,9 @@ def process_ns_countries(country_name, link):
 
         for a in tr.find_all('a'):
             dita_xref = dita_soup.new_tag('xref')
-            dita_xref["href"] = a["href"]
+
+            #TODO: Change the href attribute once the file is available. a["href"]
+            dita_xref['href'] = f'./{country_name}.dita'
             dita_xref["format"] = "dita"
 
             dita_bold = dita_soup.new_tag('b')
@@ -163,7 +168,9 @@ def process_ns_countries(country_name, link):
 
             dita_img = dita_soup.new_tag('image')
             dita_img['width'] = '400px'
-            dita_img['href'] = a.img['src']
+
+            #TODO: Change the href attribute once the file is available. a.img['src']
+            dita_img['href'] = "../content/images/world-map.gif"
 
             dita_xref.append(dita_bold)
             dita_xref.append(dita_img)
@@ -177,23 +184,23 @@ def process_ns_countries(country_name, link):
     dita_tgroup.append(dita_tbody)
     dita_table.append(dita_tgroup)
     dita_body.append(dita_table)
-
-
     dita_rich_collection.append(dita_body)
 
     #Append the rich-collection element to the dita_soup object
     dita_soup.append(dita_rich_collection)
 
     #Write the DITA file
-    country_name = country_name.lower()
-    dita_output = f'target/dita/regions/{country_name}'
-    create_directory(dita_output)
+    country_path = f'target/dita/regions/{country_name}'
+    create_directory(country_path)
+
+    #Copy the images to /dita/regions/$Country_name/content/images dir
+    source_dir = f'data/{country_name}/content/images'
+    copy_directory(source_dir, f'{country_path}/content/images')
 
     #Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
 
-    country_path = f'{dita_output}/{country_name}.dita'
-    with open(country_path, 'wb') as f:
+    with open(f'{country_path}/{country_name}.dita', 'wb') as f:
         f.write(prettified_code.encode('utf-8'))
 
     return f'{country_name}/{country_name}.dita'
