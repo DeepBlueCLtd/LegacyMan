@@ -1,26 +1,26 @@
 <?xml version="1.0" ?>
 <!DOCTYPE classlist
-  SYSTEM '../../../dtd/classlist.dtd'>
-<classlist>
+  SYSTEM '../../../../../dtd/classlist.dtd'>
+<classlist id="britain-composite">
 	<title>Britain - Composite</title>
 	<flag>
 		<fig>
-			<image alt="flag" href="images/britain_flag.png"/>
+			<image alt="flag" href="../content/images/flag.jpg"/>
 		</fig>
 	</flag>
 	<classlistbody>
 		<table>
-			<tgroup>
-				<colspec colname="col0" colnum="0"/>
+			<tgroup cols="7">
 				<colspec colname="col1" colnum="1"/>
 				<colspec colname="col2" colnum="2"/>
 				<colspec colname="col3" colnum="3"/>
 				<colspec colname="col4" colnum="4"/>
 				<colspec colname="col5" colnum="5"/>
 				<colspec colname="col6" colnum="6"/>
+				<colspec colname="col7" colnum="7"/>
 				<tbody>
 					<row>
-						<entry>Overview of Composite in Britain</entry>
+						<entry nameend="col7" namest="col1">Overview of Composite in Britain</entry>
 					</row>
 					<row>
 						<entry>Class</entry>
@@ -34,7 +34,7 @@
 					<row>
 						<entry>
 							Unit_ab
-							<a href="../Britain_Composite/Britain_Composites.html">Unit_ab</a>
+							<a href="../britain_composite/britain_composites.dita">Unit_ab</a>
 						</entry>
 						<entry>PB</entry>
 						<entry>2 * V8 Diesel</entry>

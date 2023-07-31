@@ -1,26 +1,26 @@
 <?xml version="1.0" ?>
 <!DOCTYPE classlist
-  SYSTEM '../../../dtd/classlist.dtd'>
-<classlist>
+  SYSTEM '../../../../../dtd/classlist.dtd'>
+<classlist id="britain-standalones">
 	<title>Britain - Standalones</title>
 	<flag>
 		<fig>
-			<image alt="flag" href="images/britain_flag.png"/>
+			<image alt="flag" href="../content/images/flag.jpg"/>
 		</fig>
 	</flag>
 	<classlistbody>
 		<table>
-			<tgroup>
-				<colspec colname="col0" colnum="0"/>
+			<tgroup cols="7">
 				<colspec colname="col1" colnum="1"/>
 				<colspec colname="col2" colnum="2"/>
 				<colspec colname="col3" colnum="3"/>
 				<colspec colname="col4" colnum="4"/>
 				<colspec colname="col5" colnum="5"/>
 				<colspec colname="col6" colnum="6"/>
+				<colspec colname="col7" colnum="7"/>
 				<tbody>
 					<row>
-						<entry>Overview of Standalones in Britain</entry>
+						<entry nameend="col7" namest="col1">Overview of Standalones in Britain</entry>
 					</row>
 					<row>
 						<entry>Class</entry>
@@ -34,7 +34,7 @@
 					<row>
 						<entry>
 							Unit_c
-							<a href="../Britain_Standalones/Britain_Standalones.html">Unit_c</a>
+							<a href="../britain_standalones/britain_standalones.dita">Unit_c</a>
 						</entry>
 						<entry>PBA</entry>
 						<entry>5 * V8 Diesel</entry>
@@ -46,7 +46,7 @@
 					<row>
 						<entry>
 							Unit_da
-							<a href="../Britain_Standalones/Britain_Standalones.html">Unit_da</a>
+							<a href="../britain_standalones/britain_standalones.dita">Unit_da</a>
 						</entry>
 						<entry>PBF</entry>
 						<entry>2 * V6 Diesel</entry>

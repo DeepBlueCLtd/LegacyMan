@@ -98,6 +98,9 @@ def process_ns_countries(country_name, link):
 
     #Parse the HTML string, parser the <map> and the <img> elements
     img_links_table = soup.find('div', {'id': 'ImageLinksTable'})
+    title = soup.find('h2')
+    country_flag = title.find_next('img')['src']
+
     if img_links_table is None:
         raise ValueError("ImageLinksTable not found in the HTML file")
 
@@ -149,7 +152,8 @@ def process_ns_countries(country_name, link):
             dita_row.append(dita_entry)
 
             #Process category pages from this file
-            process_category_pages(a['href'], country_name)
+            category_page_link = a['href']
+            process_category_pages(category_page_link, country_name, country_flag)
 
         dita_tbody.append(dita_row)
 
@@ -178,7 +182,7 @@ def process_ns_countries(country_name, link):
     return f'{country_name}/{country_name}.dita'
 
 
-def process_category_pages(category_page_link, country_name):
+def process_category_pages(category_page_link, country_name, country_flag):
     #read the category page
     with open(f'data/{category_page_link[3:]}', "r") as f:
          category_page_html = f.read()
@@ -193,7 +197,7 @@ def process_category_pages(category_page_link, country_name):
        raise ValueError(f"<td> element with colspan 7 not found in the {category_page_link} file")
 
     #Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../dtd/classlist.dtd">'
+    dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, 'xml')
 
     #Create dita elements for <tgroup>,<table>, <tbody> ...
@@ -207,32 +211,42 @@ def process_category_pages(category_page_link, country_name):
     dita_image = dita_soup.new_tag('image')
     dita_fig = dita_soup.new_tag('fig')
 
-    #Read the parent <table> element
+    #Get table columns <td> from the second row <tr> (the first <tr> is used for title so we can't get the column count from it)
     parent_table = td.find_parent('table')
-    for tr in parent_table.find_all('tr'):
+    tr_list = parent_table.find_all('tr')
+    second_tr_element = tr_list[1]
+    table_columns = second_tr_element.find_all('td')
+    dita_tgroup['cols'] = len(table_columns)
+
+    #Read the parent <table> element
+    for tr_count, tr in enumerate(parent_table.find_all('tr')):
         dita_row = dita_soup.new_tag('row')
 
-        for td in tr.find_all('td'):
+        for td_count, td in enumerate(tr.find_all('td')):
             dita_entry = dita_soup.new_tag('entry')
             dita_entry.string = td.text.strip()
             dita_row.append(dita_entry)
 
+            #Add "namest" and "nameend" attributes to the <entry> element in the first <row>
+            if tr_count == 0:
+                dita_entry["namest"] = "col1"
+                dita_entry["nameend"] = f"col{len(table_columns)}"
             #If there is a link element in the <tr> append it to <entry>
             for a in td.find_all('a'):
                 dita_a = dita_soup.new_tag('a')
 
                 #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
-                dita_a["href"] = category_page_link
+                dita_a["href"] = category_page_link.replace(".html", ".dita").lower()
                 dita_a.string = a.text.strip()
                 dita_entry.append(dita_a)
 
         dita_tbody.append(dita_row)
 
-    #Manually add <colspec> elements to the <tgroup>
-    for count in range(7):
+    #Generate <colspec> elements based on the <td> elements count
+    for count, td in enumerate(table_columns):
         dita_colspec = dita_soup.new_tag('colspec')
-        dita_colspec['colnum'] = count
-        dita_colspec['colname'] = f'col{count}'
+        dita_colspec['colnum'] = count + 1
+        dita_colspec['colname'] = f'col{count + 1}'
         dita_tgroup.append(dita_colspec)
 
     dita_tgroup.append(dita_tbody)
@@ -243,12 +257,13 @@ def process_category_pages(category_page_link, country_name):
     dita_title.string = title.text.strip()
 
     #TODO: change the href of the image
-    dita_image['href'] = f'images/{country_name}_flag.png'
+    dita_image['href'] = f'../{country_flag[2:].lower()}' #change the ./Content/image to ../Content/image
     dita_image['alt'] = 'flag'
 
     dita_fig.append(dita_image)
     dita_flag.append(dita_fig)
 
+    dita_classlist["id"] = title.text.replace(" ", "").lower()
     dita_classlist.append(dita_title)
     dita_classlist.append(dita_flag)
     dita_classlist.append(dita_classlistbody)
