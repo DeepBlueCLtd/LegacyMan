@@ -226,7 +226,6 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
         for td_count, td in enumerate(tr.find_all('td')):
             dita_entry = dita_soup.new_tag('entry')
             dita_entry.string = td.text.strip()
-            dita_row.append(dita_entry)
 
             #Add "namest" and "nameend" attributes to the <entry> element in the first <row>
             if tr_count == 0:
@@ -240,7 +239,12 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
                 #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
                 dita_xref["href"] =  category_page_link.replace(".html", ".dita").lower()
                 dita_xref.string = a.text.strip()
+                dita_entry.string = ""
                 dita_entry.append(dita_xref)
+
+
+            dita_row.append(dita_entry)
+
 
         dita_tbody.append(dita_row)
 
