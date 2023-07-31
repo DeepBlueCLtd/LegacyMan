@@ -5,7 +5,7 @@ import os
 import subprocess
 from bs4 import BeautifulSoup
 
-from parser.parser_utils import create_directory, delete_directory, copy_directory, copy_files, prettify_xml
+from parser.parser_utils import create_directory, get_files_in_path, delete_directory, copy_directory, copy_files, prettify_xml
 
 def process_regions():
     #copy the world-map.gif file
@@ -129,9 +129,7 @@ def process_ns_countries(country_name, link):
 
         for a in tr.find_all('a'):
             dita_xref = dita_soup.new_tag('xref')
-
-            #TODO: Change the href attribute once the file is available. a["href"]
-            dita_xref['href'] = f'./{country_name}.dita'
+            dita_xref['href'] = a['href'][1:].replace(".html", ".dita").lower()
             dita_xref["format"] = "dita"
 
             dita_bold = dita_soup.new_tag('b')
@@ -139,9 +137,6 @@ def process_ns_countries(country_name, link):
 
             dita_img = dita_soup.new_tag('image')
             dita_img['width'] = '400px'
-
-            #TODO: Change the href attribute once the file is available. a.img['src']
-            dita_img['href'] = "../content/images/world-map.gif"
 
             dita_xref.append(dita_bold)
             dita_xref.append(dita_img)
@@ -154,6 +149,7 @@ def process_ns_countries(country_name, link):
             #Process category pages from this file
             category_page_link = a['href']
             process_category_pages(category_page_link, country_name, country_flag)
+            dita_img['href'] =  a.img['src'][1:].lower()
 
         dita_tbody.append(dita_row)
 
@@ -171,7 +167,8 @@ def process_ns_countries(country_name, link):
 
     #Copy the images to /dita/regions/$Country_name/content/images dir
     source_dir = f'data/{country_name}/content/images'
-    copy_directory(source_dir, f'{country_path}/content/images')
+    file_names = get_files_in_path(source_dir, make_lowercase=True)
+    copy_files(source_dir, f'{country_path}/content/images', file_names)
 
     #Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
@@ -182,7 +179,7 @@ def process_ns_countries(country_name, link):
     return f'{country_name}/{country_name}.dita'
 
 
-def process_category_pages(category_page_link, country_name, country_flag):
+def process_category_pages(category_page_link, country_name, country_flag_link):
     #read the category page
     with open(f'data/{category_page_link[3:]}', "r") as f:
          category_page_html = f.read()
@@ -218,6 +215,10 @@ def process_category_pages(category_page_link, country_name, country_flag):
     table_columns = second_tr_element.find_all('td')
     dita_tgroup['cols'] = len(table_columns)
 
+    #TODO: change the href of the image
+    dita_image['href'] = f'../{country_flag_link[2:].lower()}'
+    dita_image['alt'] = 'flag'
+
     #Read the parent <table> element
     for tr_count, tr in enumerate(parent_table.find_all('tr')):
         dita_row = dita_soup.new_tag('row')
@@ -231,14 +232,15 @@ def process_category_pages(category_page_link, country_name, country_flag):
             if tr_count == 0:
                 dita_entry["namest"] = "col1"
                 dita_entry["nameend"] = f"col{len(table_columns)}"
+
             #If there is a link element in the <tr> append it to <entry>
             for a in td.find_all('a'):
-                dita_a = dita_soup.new_tag('a')
+                dita_xref = dita_soup.new_tag('xref')
 
                 #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
-                dita_a["href"] = category_page_link.replace(".html", ".dita").lower()
-                dita_a.string = a.text.strip()
-                dita_entry.append(dita_a)
+                dita_xref["href"] =  category_page_link.replace(".html", ".dita").lower()
+                dita_xref.string = a.text.strip()
+                dita_entry.append(dita_xref)
 
         dita_tbody.append(dita_row)
 
@@ -256,10 +258,6 @@ def process_category_pages(category_page_link, country_name, country_flag):
     #Append the <title>,<flag> and <classlistbody> elements in the <classlist>
     dita_title.string = title.text.strip()
 
-    #TODO: change the href of the image
-    dita_image['href'] = f'../{country_flag[2:].lower()}' #change the ./Content/image to ../Content/image
-    dita_image['alt'] = 'flag'
-
     dita_fig.append(dita_image)
     dita_flag.append(dita_fig)
 
@@ -276,9 +274,14 @@ def process_category_pages(category_page_link, country_name, country_flag):
     category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
     create_directory(f'{country_path}/{os.path.dirname(category_page_link)}')
 
+    #Copy all images to /dita/regions/$Country_name/$Category_page/content/images dir
+    source_img_dir = f'data/{os.path.dirname(category_page_link)}/content/images'
+    target_img_dir = f'{country_path}/{os.path.dirname(category_page_link)}/content/images'
+    file_names = get_files_in_path(source_img_dir, make_lowercase=True)
+    copy_files(source_img_dir, target_img_dir, file_names)
+
     #Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
-
     with open(f'{country_path}/{category_page_link}', 'wb') as f:
         f.write(prettified_code.encode('utf-8'))
 

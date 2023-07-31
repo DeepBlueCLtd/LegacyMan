@@ -9,29 +9,29 @@
 				<tbody>
 					<row>
 						<entry>
-							<xref format="dita" href="./britain.dita">
+							<xref format="dita" href="./britain_complex/britain_complex.dita">
 								<b>Complex</b>
-								<image href="../content/images/world-map.gif" width="400px"/>
+								<image href="./britain_complex/content/images/daf_1.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="./britain.dita">
+							<xref format="dita" href="./britain_standalones/britain_standalones.dita">
 								<b>Standalones</b>
-								<image href="../content/images/world-map.gif" width="400px"/>
+								<image href="./britain_standalones/content/images/oscill_c.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>
 					<row>
 						<entry>
-							<xref format="dita" href="./britain.dita">
+							<xref format="dita" href="./britain_composite/britain_composites.dita">
 								<b>Composites</b>
-								<image href="../content/images/world-map.gif" width="400px"/>
+								<image href="./britain_composite/content/images/unit_dar.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="./britain.dita">
+							<xref format="dita" href="./britain_legacy/britain_legacy.dita">
 								<b>Legacy</b>
-								<image href="../content/images/world-map.gif" width="400px"/>
+								<image href="./britain_legacy/content/images/unit_da.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>
