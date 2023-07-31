@@ -9,15 +9,15 @@
 				<tbody>
 					<row>
 						<entry>
-							<xref format="dita" href="./iceland.dita">
+							<xref format="dita" href="./iceland_complex/iceland_complex.dita">
 								<b>Complex</b>
-								<image href="../content/images/world-map.gif" width="400px"/>
+								<image href="./iceland_complex/content/images/oscill_c.jpg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="./iceland.dita">
+							<xref format="dita" href="./iceland_composite/iceland_composites.dita">
 								<b>Composite</b>
-								<image href="../content/images/world-map.gif" width="400px"/>
+								<image href="./iceland_composite/content/images/unit_da.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>
