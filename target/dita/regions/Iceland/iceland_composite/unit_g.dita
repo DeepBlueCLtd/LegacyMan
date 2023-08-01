@@ -1,29 +1,35 @@
 <?xml version="1.0" ?>
 <!DOCTYPE class
-  SYSTEM '../../../dtd/class.dtd'>
-<summary id="summary">
-	<table>
-		<tgroup>
-			<thead>
-				<row>
-					<entry>Drive</entry>
-					<entry>Mode</entry>
-					<entry>Shaft x Blade</entry>
-					<entry>R:R</entry>
-					<entry>Max Speed</entry>
-					<entry>Av TPK (Guide)</entry>
-				</row>
-			</thead>
-			<tbody>
-				<row>
-					<entry>4 Diesel</entry>
-					<entry>PTR</entry>
-					<entry>2 * 4 (GRR)</entry>
-					<entry>412.8:1</entry>
-					<entry>40 kts</entry>
-					<entry>~14</entry>
-				</row>
-			</tbody>
-		</tgroup>
-	</table>
-</summary>
+  SYSTEM '../../../../../dtd/class.dtd'>
+<class id="iceland-composite">
+	<title></title>
+	<body>
+		<images/>
+		<summary id="summary">
+			<table>
+				<tgroup cols="6">
+					<thead>
+						<row>
+							<entry>Drive</entry>
+							<entry>Mode</entry>
+							<entry>Shaft x Blade</entry>
+							<entry>R:R</entry>
+							<entry>Max Speed</entry>
+							<entry>Av TPK (Guide)</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>4 Diesel</entry>
+							<entry>PTR</entry>
+							<entry>2 * 4 (GRR)</entry>
+							<entry>412.8:1</entry>
+							<entry>40 kts</entry>
+							<entry>~14</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</summary>		
+	</body>
+</class>  
