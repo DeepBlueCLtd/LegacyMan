@@ -218,9 +218,11 @@ def process_class_file(class_file_src_path, class_file_target_path):
 
     #Find the <td> element with colspan 6 and find its parent table
     td = soup.find('td', {'colspan': '6'})
-    table = td.find_parent('table')
+    if td is None:
+        print(f">>> Failed to find colspan:6 for {class_file_src_path}")
+    else:
+        table = td.find_parent('table')
 
-    # print("PATH+++ ", class_file_path.replace(".html", ".dita").lower())
     for tr_count, tr in enumerate(table.find_all('tr')):
         dita_row_1 = dita_soup.new_tag("row")
         dita_thead_1 = dita_soup.new_tag('thead')
@@ -245,14 +247,13 @@ def process_class_file(class_file_src_path, class_file_target_path):
     #Append all of the elements to the dita_soup object
     dita_soup.append(dita_summary)
 
-    #Prettify the code
-    prettified_code = prettify_xml(str(dita_soup))
-
     file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
     file_path = f'{class_file_target_path}/{file_name}'
 
-    # with open(file_path, 'wb') as f:
-    #     f.write(prettified_code.encode('utf-8'))
+    #Prettify the code
+    prettified_code = prettify_xml(str(dita_soup))
+    with open(file_path, 'wb') as f:
+        f.write(prettified_code.encode('utf-8'))
 
 def process_category_pages(category_page_link, country_name, country_flag_link):
     #read the category page
@@ -296,7 +297,6 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
 
     country_path = f'target/dita/regions/{country_name}'
     file_path = f'{country_path}/{os.path.dirname(category_page_link[3:].lower())}'
-    print("CAT PAGE LINK : ", )
     create_directory(file_path)
 
     #Read the parent <table> element
@@ -320,7 +320,7 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
                 href = a.get('href')
                 if href is not None:
                     class_file_src_path = f'data/{os.path.dirname(category_page_link[3:])}/{href}'
-                    class_file_target_path = f'target/dita/regions/{os.path.dirname(category_page_link[3:].lower())}'
+                    class_file_target_path = f'target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}'
                     process_class_file(class_file_src_path, class_file_target_path)
 
                 #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
@@ -360,9 +360,6 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
 
     #Append the whole page to the dita soup
     dita_soup.append(dita_classlist)
-
-    #Write the DITA file
-    #create_directory(f'{country_path}/{os.path.dirname(category_page_link.lower())}')
 
     #Copy all images to /dita/regions/$Country_name/$Category_page/content/images dir
     category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
