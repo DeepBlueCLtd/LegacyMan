@@ -231,7 +231,27 @@ def process_class_file(class_file_path):
 
 
 
+        # propulsion section
+        propulsionHeading = soup.find("h1", string = "PROPULSION")
+        if propulsionHeading is None:
+            print(f">>> Failed to find propulsion section for {class_file_path}")
+        else:    
+            propulsion = propulsionHeading.find_parent('div')
+            # convert slug of html to DITA
+            # print('prop', propulsion)
 
+            # store DITA in results object
+
+        # propulsion section
+        remarksHeading = soup.find("h1", string = "REMARKS")
+        if remarksHeading is None:
+            print(f">>> Failed to find remarks section for {class_file_path}")
+        else:    
+            remarks = remarksHeading.find_parent('div')
+            # convert slug of html to DITA
+            # print('remarks', remarks)
+
+            # store DITA in results object
 
 
 
