@@ -215,16 +215,19 @@ def process_class_file(class_file_path):
 
     #Find the <td> element with colspan 6 and find its parent table
     td = soup.find('td', {'colspan': '6'})
-    table = td.find_parent('table')
+    if td is None:
+        print(f">>> Failed to find colspan:6 for {class_file_path}")
+    else:    
+        table = td.find_parent('table')
 
-    for tr in table.find_all('tr'):
-        dita_row = dita_soup.new_tag('row')
+        for tr in table.find_all('tr'):
+            dita_row = dita_soup.new_tag('row')
 
-        for td in tr.find_all('td'):
-            if td.get('colspan') == '6':
-                 dita_entry = dita_soup.new_tag('entry')
-                 dita_entry.string = td.text
-                 dita_row.append(dita_entry)
+            for td in tr.find_all('td'):
+                if td.get('colspan') == '6':
+                    dita_entry = dita_soup.new_tag('entry')
+                    dita_entry.string = td.text
+                    dita_row.append(dita_entry)
 
 
 
