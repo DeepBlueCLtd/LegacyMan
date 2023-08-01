@@ -222,38 +222,38 @@ def process_class_file(class_file_src_path, class_file_target_path):
         print(f">>> Failed to find colspan:6 for {class_file_src_path}")
     else:
         table = td.find_parent('table')
-
-    for tr_count, tr in enumerate(table.find_all('tr')):
-        dita_row_1 = dita_soup.new_tag("row")
         dita_thead_1 = dita_soup.new_tag('thead')
         dita_tbody_1 = dita_soup.new_tag('tbody')
 
-        for td_count, td in enumerate(tr.find_all('td')):
-            #Append the first and second <tr> elements to the <summary> element
-            dita_entry_1 = dita_soup.new_tag('entry')
-            dita_entry_1.string = td.text.strip()
-            dita_row_1.append(dita_entry_1)
+        for tr_count, tr in enumerate(table.find_all('tr')):
+            dita_row_1 = dita_soup.new_tag("row")
 
-        if tr_count == 0:
-           dita_thead_1.append(dita_row_1)
-        elif tr_count == 1:
-          dita_tbody_1.append(dita_row_1)
+            for td in enumerate(tr.find_all('td')):
+                #Append the first and second <tr> elements to the <summary> element
+                dita_entry_1 = dita_soup.new_tag('entry')
+                dita_entry_1.string = td.text.strip()
+                dita_row_1.append(dita_entry_1)
 
+            if tr_count == 0:
+                dita_thead_1.append(dita_row_1)
+            elif tr_count == 1:
+                dita_tbody_1.append(dita_row_1)
+                
         dita_tgroup.append(dita_thead_1)
         dita_tgroup.append(dita_tbody_1)
         dita_table.append(dita_tgroup)
         dita_summary.append(dita_table)
 
-    #Append all of the elements to the dita_soup object
-    dita_soup.append(dita_summary)
+        #Append all of the elements to the dita_soup object
+        dita_soup.append(dita_summary)
 
-    file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
-    file_path = f'{class_file_target_path}/{file_name}'
+        file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
+        file_path = f'{class_file_target_path}/{file_name}'
 
-    #Prettify the code
-    prettified_code = prettify_xml(str(dita_soup))
-    with open(file_path, 'wb') as f:
-        f.write(prettified_code.encode('utf-8'))
+        #Prettify the code
+        prettified_code = prettify_xml(str(dita_soup))
+        with open(file_path, 'wb') as f:
+            f.write(prettified_code.encode('utf-8'))
 
 def process_category_pages(category_page_link, country_name, country_flag_link):
     #read the category page
