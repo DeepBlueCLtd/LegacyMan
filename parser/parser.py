@@ -178,6 +178,61 @@ def process_ns_countries(country_name, link):
 
     return f'{country_name}/{country_name}.dita'
 
+def process_class_file(class_file_path):
+    #read the class file
+    with open(class_file_path, "r") as f:
+         class_file = f.read()
+
+    soup = BeautifulSoup(class_file, 'html.parser')
+
+    #Create the DITA document type declaration string
+    dita_doctype = '<!DOCTYPE class SYSTEM "../../../dtd/class.dtd">'
+    dita_soup = BeautifulSoup(dita_doctype, 'xml')
+
+    dita_body = dita_soup.new_tag('body')
+    dita_table = dita_soup.new_tag('table')
+    dita_images = dita_soup.new_tag('images')
+    dita_summary = dita_soup.new_tag('summary')
+    dita_tgroup = dita_soup.new_tag('tgroup')
+    dita_thead = dita_soup.new_tag('thead')
+    dita_entry = dita_soup.new_tag('entry')
+    dita_colspec = dita_soup.new_tag('colspec')
+    dita_signatures = dita_soup.new_tag('signatures')
+    dita_propulsion = dita_soup.new_tag('propulsion')
+    dita_remarks = dita_soup.new_tag('remarks')
+    dita_span = dita_soup.new_tag('span')
+    dita_related_pages = dita_soup.new_tag('related-pages')
+
+    #Parse all of the <img> elements
+    img = soup.find('img')
+    if img is not None:
+        img_link = img['src'].lower()
+        dita_image = dita_soup.new_tag('image')
+        dita_image['href'] = img_link
+        dita_image['scale'] = 33
+        dita_image['align'] = "left"
+        dita_images.append(dita_image)
+
+    #Find the <td> element with colspan 6 and find its parent table
+    td = soup.find('td', {'colspan': '6'})
+    table = td.find_parent('table')
+
+    for tr in table.find_all('tr'):
+        dita_row = dita_soup.new_tag('row')
+
+        for td in tr.find_all('td'):
+            if td.get('colspan') == '6':
+                 dita_entry = dita_soup.new_tag('entry')
+                 dita_entry.string = td.text
+                 dita_row.append(dita_entry)
+
+
+
+
+
+
+
+
 
 def process_category_pages(category_page_link, country_name, country_flag_link):
     #read the category page
@@ -235,6 +290,12 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
             #If there is a link element in the <tr> append it to <entry>
             for a in td.find_all('a'):
                 dita_xref = dita_soup.new_tag('xref')
+
+                #Process class files
+                href = a.get('href')
+                if href is not None:
+                    class_file_path = f'data/{os.path.dirname(category_page_link[3:])}/{href}'
+                    process_class_file(class_file_path)
 
                 #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
                 dita_xref["href"] =  category_page_link.replace(".html", ".dita").lower()
