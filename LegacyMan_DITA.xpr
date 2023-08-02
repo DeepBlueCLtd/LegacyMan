@@ -129,29 +129,6 @@
                                     <list>
                                         <ditaParameter>
                                             <field name="name">
-                                                <String>args.disable.security.checks</String>
-                                            </field>
-                                            <field name="description">
-                                                <String></String>
-                                            </field>
-                                            <field name="value">
-                                                <String>yes</String>
-                                            </field>
-                                            <field name="defaultValue">
-                                                <null/>
-                                            </field>
-                                            <field name="type">
-                                                <Integer>5</Integer>
-                                            </field>
-                                            <field name="possibleValues">
-                                                <null/>
-                                            </field>
-                                            <field name="possibleValuesDescriptions">
-                                                <null/>
-                                            </field>
-                                        </ditaParameter>
-                                        <ditaParameter>
-                                            <field name="name">
                                                 <String>args.figurelink.style</String>
                                             </field>
                                             <field name="description">
@@ -302,6 +279,29 @@
                                                     <String></String>
                                                     <String></String>
                                                 </String-array>
+                                            </field>
+                                        </ditaParameter>
+                                        <ditaParameter>
+                                            <field name="name">
+                                                <String>args.disable.security.checks</String>
+                                            </field>
+                                            <field name="description">
+                                                <String></String>
+                                            </field>
+                                            <field name="value">
+                                                <String>yes</String>
+                                            </field>
+                                            <field name="defaultValue">
+                                                <null/>
+                                            </field>
+                                            <field name="type">
+                                                <Integer>5</Integer>
+                                            </field>
+                                            <field name="possibleValues">
+                                                <null/>
+                                            </field>
+                                            <field name="possibleValuesDescriptions">
+                                                <null/>
                                             </field>
                                         </ditaParameter>
                                     </list>
