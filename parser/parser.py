@@ -215,6 +215,7 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
     dita_class = dita_soup.new_tag('class')
     dita_class['id'] = class_name.lower()
     dita_main_title = dita_soup.new_tag('title')
+    dita_main_title.string = class_name
     dita_related_pages = dita_soup.new_tag('related-pages')
 
     #Parse all of the <img> elements
@@ -249,6 +250,7 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
                 if len(cells) == 1:
                     dita_entry['nameend'] = 'col4'
                     dita_entry['namest'] = 'col1'
+                    dita_entry['align'] = 'center'
                 # if two cells, make the second one wider    
                 if len(cells) == 2:
                     if idx == 1:
