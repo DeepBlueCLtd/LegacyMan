@@ -1,29 +1,106 @@
 <?xml version="1.0" ?>
 <!DOCTYPE class
-  SYSTEM '../../../dtd/class.dtd'>
-<summary id="summary">
-	<table>
-		<tgroup>
-			<thead>
-				<row>
-					<entry>Drive</entry>
-					<entry>Mode</entry>
-					<entry>Shaft x Blade</entry>
-					<entry>R:R</entry>
-					<entry>Max Speed</entry>
-					<entry>Av TPK (Guide)</entry>
-				</row>
-			</thead>
-			<tbody>
-				<row>
-					<entry>4 Diesel</entry>
-					<entry>PTR</entry>
-					<entry>2 * 4 (GRR)</entry>
-					<entry>412.8:1</entry>
-					<entry>40 kts</entry>
-					<entry>~14</entry>
-				</row>
-			</tbody>
-		</tgroup>
-	</table>
-</summary>
+  SYSTEM '../../../../../dtd/class.dtd'>
+<class>
+	<title/>
+	<body>
+		<images>
+			<image align="left" href="./content/images/flags.jpg" scale="33"/>
+		</images>
+		<summary id="summary">
+			<table>
+				<tgroup>
+					<thead>
+						<row>
+							<entry>Drive</entry>
+							<entry>Mode</entry>
+							<entry>Shaft x Blade</entry>
+							<entry>R:R</entry>
+							<entry>Max Speed</entry>
+							<entry>Av TPK (Guide)</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>4 Diesel</entry>
+							<entry>PTR</entry>
+							<entry>2 * 4 (GRR)</entry>
+							<entry>412.8:1</entry>
+							<entry>40 kts</entry>
+							<entry>~14</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</summary>
+		<signatures>
+			<table>
+				<tgroup>
+					<thead>
+						<row>
+							<entry>Commonly Detected Sources</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>Source</entry>
+							<entry>Ratio/Freq</entry>
+							<entry>Harmonics</entry>
+							<entry>Remarks</entry>
+						</row>
+						<row>
+							<entry>Propulsion Related</entry>
+						</row>
+						<row>
+							<entry>SR</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry>BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry>Cat b Engine R</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>The quick brown fox does something similar
+            Tool screenshot a,
+            Tool screenshot b</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>CBR 34</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>CBR 54334</entry>
+						</row>
+						<row>
+							<entry>Signature &amp; Characteristics</entry>
+						</row>
+						<row>
+							<entry>Acoustic Signature</entry>
+							<entry>Expect plant to be similar to 2016 steam powered version</entry>
+						</row>
+						<row>
+							<entry>Unique classifiers</entry>
+							<entry>None</entry>
+						</row>
+						<row>
+							<entry>Aural</entry>
+							<entry>Expect Diesel, Whine, Governor release</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</signatures>
+	</body>
+</class>

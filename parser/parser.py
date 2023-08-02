@@ -186,24 +186,28 @@ def process_class_file(class_file_src_path, class_file_target_path):
     soup = BeautifulSoup(class_file, 'html.parser')
 
     #Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE class SYSTEM "../../../dtd/class.dtd">'
+    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, 'xml')
 
     dita_body = dita_soup.new_tag('body')
-    dita_table = dita_soup.new_tag('table')
-    dita_images = dita_soup.new_tag('images')
 
+    dita_summary_table = dita_soup.new_tag('table')
+    dita_signatures_table = dita_soup.new_tag('table')
+
+    dita_images = dita_soup.new_tag('images')
     dita_summary = dita_soup.new_tag('summary')
     dita_summary['id'] = 'summary'
 
-    dita_tgroup = dita_soup.new_tag('tgroup')
-    dita_thead = dita_soup.new_tag('thead')
-    dita_entry = dita_soup.new_tag('entry')
+    dita_summary_tgroup = dita_soup.new_tag('tgroup')
+    dita_signatures_tgroup = dita_soup.new_tag('tgroup')
+
     dita_colspec = dita_soup.new_tag('colspec')
     dita_signatures = dita_soup.new_tag('signatures')
     dita_propulsion = dita_soup.new_tag('propulsion')
     dita_remarks = dita_soup.new_tag('remarks')
     dita_span = dita_soup.new_tag('span')
+    dita_class = dita_soup.new_tag('class')
+    dita_main_title = dita_soup.new_tag('title')
     dita_related_pages = dita_soup.new_tag('related-pages')
 
     #Parse all of the <img> elements
@@ -222,30 +226,47 @@ def process_class_file(class_file_src_path, class_file_target_path):
         print(f">>> Failed to find colspan:6 for {class_file_src_path}")
     else:
         table = td.find_parent('table')
-        dita_thead_1 = dita_soup.new_tag('thead')
-        dita_tbody_1 = dita_soup.new_tag('tbody')
+        dita_summary_thead = dita_soup.new_tag('thead')
+        dita_summary_tbody = dita_soup.new_tag('tbody')
+        dita_signatures_thead = dita_soup.new_tag('thead')
+        dita_signatures_tbody = dita_soup.new_tag('tbody')
 
         for tr_count, tr in enumerate(table.find_all('tr')):
-            dita_row_1 = dita_soup.new_tag("row")
+            dita_row = dita_soup.new_tag("row")
 
-            for td in enumerate(tr.find_all('td')):
+            for td in tr.find_all('td'):
                 #Append the first and second <tr> elements to the <summary> element
-                dita_entry_1 = dita_soup.new_tag('entry')
-                dita_entry_1.string = td.text.strip()
-                dita_row_1.append(dita_entry_1)
+                dita_entry = dita_soup.new_tag('entry')
+                dita_entry.string = td.text.strip()
+                dita_row.append(dita_entry)
 
             if tr_count == 0:
-                dita_thead_1.append(dita_row_1)
+                dita_summary_thead.append(dita_row)
             elif tr_count == 1:
-                dita_tbody_1.append(dita_row_1)
-                
-        dita_tgroup.append(dita_thead_1)
-        dita_tgroup.append(dita_tbody_1)
-        dita_table.append(dita_tgroup)
-        dita_summary.append(dita_table)
+                dita_summary_tbody.append(dita_row)
+            elif tr_count == 2:
+                dita_signatures_thead.append(dita_row)
+            else:
+                dita_signatures_tbody.append(dita_row)
+
+        dita_summary_tgroup.append(dita_summary_thead)
+        dita_summary_tgroup.append(dita_summary_tbody)
+        dita_summary_table.append(dita_summary_tgroup)
+        dita_summary.append(dita_summary_table)
+
+        dita_signatures_tgroup.append(dita_signatures_thead)
+        dita_signatures_tgroup.append(dita_signatures_tbody)
+        dita_signatures_table.append(dita_signatures_tgroup)
+        dita_signatures.append(dita_signatures_table)
 
         #Append all of the elements to the dita_soup object
-        dita_soup.append(dita_summary)
+        dita_body.append(dita_images)
+        dita_body.append(dita_summary)
+        dita_body.append(dita_signatures)
+
+        dita_class.append(dita_main_title)
+        dita_class.append(dita_body)
+        dita_soup.append(dita_class)
 
         file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
         file_path = f'{class_file_target_path}/{file_name}'
