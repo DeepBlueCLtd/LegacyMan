@@ -33,7 +33,7 @@
 					</row>
 					<row>
 						<entry>
-							<xref href="../iceland_composite/iceland_composites.dita">Unit_ab%TEST-106 Icelandic Composite%</xref>
+							<xref href="./unit_ab.dita">Unit_ab%TEST-106 Icelandic Composite%</xref>
 						</entry>
 						<entry>PB</entry>
 						<entry>2 * V8 Diesel</entry>
@@ -44,7 +44,7 @@
 					</row>
 					<row>
 						<entry>
-							<xref href="../iceland_composite/iceland_composites.dita">Unit_g</xref>
+							<xref href="./unit_g.dita">Unit_g</xref>
 						</entry>
 						<entry>PBF</entry>
 						<entry>2 * V6 Diesel</entry>

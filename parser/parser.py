@@ -5,6 +5,7 @@ import os
 import subprocess
 from bs4 import BeautifulSoup
 
+
 from parser.parser_utils import create_directory, get_files_in_path, delete_directory, copy_directory, copy_files, prettify_xml
 
 def process_regions():
@@ -368,13 +369,14 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
                 #Process class files
                 href = a.get('href')
                 if href is not None:
-                    class_name = a.text
+                    class_name = os.path.basename(a['href'].replace(".html", ""))
                     class_file_src_path = f'data/{os.path.dirname(category_page_link[3:])}/{href}'
                     class_file_target_path = f'target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}'
                     process_class_file(class_file_src_path, class_file_target_path, class_name)
 
-                #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
-                dita_xref["href"] =  category_page_link.replace(".html", ".dita").lower()
+                    file_link = a['href'].replace(".html", ".dita")
+                    dita_xref["href"] = f'./{file_link}'
+
                 dita_xref.string = a.text.strip()
                 dita_entry.string = ""
                 dita_entry.append(dita_xref)
