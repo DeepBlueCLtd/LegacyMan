@@ -2,7 +2,7 @@
 <!DOCTYPE class
   SYSTEM '../../../../../dtd/class.dtd'>
 <class id="unit_ab">
-	<title>unit_ab</title>
+	<title>Unit_ab%TEST-106 Icelandic Composite%</title>
 	<body>
 		<images>
 			<image align="left" href="./content/images/frequency_2.jpeg" scale="33"/>
@@ -42,7 +42,7 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Commonly Detected Sources</entry>
+							<entry nameend="col4" namest="col1">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -53,7 +53,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Propulsion Related</entry>
+							<entry nameend="col4" namest="col1">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -68,7 +68,7 @@
 							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Auxiliary Machinery</entry>
+							<entry nameend="col4" namest="col1">Auxiliary Machinery</entry>
 						</row>
 						<row>
 							<entry>Cat b Engine R</entry>
@@ -83,7 +83,7 @@
 							<entry>CBR 34</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Speed-related Sources</entry>
+							<entry nameend="col4" namest="col1">Speed-related Sources</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -110,7 +110,7 @@ Follow link for more juicy details</entry>
 							<entry>Follow link for more juicy details</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+							<entry nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
@@ -144,5 +144,13 @@ Mode D</p>
 			<p/>
 			<p/>
 		</propulsion>
+		<remarks id="remarks">
+			<title>Remarks</title>
+			<span>
+				<p>1. The alphabet is already in alphabetical order one</p>
+				<p>2. The alphabet is already in alphabetical order two</p>
+				<p>3. The alphabet is already in alphabetical order three</p>
+			</span>
+		</remarks>
 	</body>
 </class>
