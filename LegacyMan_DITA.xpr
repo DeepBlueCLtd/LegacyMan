@@ -93,13 +93,13 @@
                                 <field name="publishingTemplateDataPO">
                                     <publishingTemplate>
                                         <field name="templateRoot">
-                                            <String>${configured.ditaot.dir}/plugins/com.oxygenxml.webhelp.responsive/templates/oxygen</String>
+                                            <String>/Users/ian/git/LegacyMan/template/F13ldMan</String>
                                         </field>
                                         <field name="descriptorRelativePath">
-                                            <String>oxygen-tiles.opt</String>
+                                            <String>f13ldMan.opt</String>
                                         </field>
                                         <field name="isCustomTemplate">
-                                            <Boolean>false</Boolean>
+                                            <Boolean>true</Boolean>
                                         </field>
                                     </publishingTemplate>
                                 </field>
