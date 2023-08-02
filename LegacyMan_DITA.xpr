@@ -48,13 +48,13 @@
                                     <Boolean>true</Boolean>
                                 </field>
                                 <field name="baseDir">
-                                    <String>${pd}</String>
+                                    <String>${pd}/target/dita</String>
                                 </field>
                                 <field name="outputDir">
-                                    <String>${pd}/out/</String>
+                                    <String>${pd}/target/oxygen</String>
                                 </field>
                                 <field name="tempDir">
-                                    <String>${pd}/temp/webhelp-responsive</String>
+                                    <String>${pd}/target/temp</String>
                                 </field>
                                 <field name="transtype">
                                     <String>webhelp-responsive</String>
