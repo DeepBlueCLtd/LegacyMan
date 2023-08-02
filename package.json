@@ -7,7 +7,7 @@
     "serve": "^14.0.1"
   },
   "scripts": {
-    "start": "serve dita/out"
+    "start": "serve target/oxygen/index.html"
   },
   "eslintConfig": {
     "extends": [
