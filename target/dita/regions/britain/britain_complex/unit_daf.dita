@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE class
   SYSTEM '../../../../../dtd/class.dtd'>
-<class>
+<class id="unit_daf">
 	<title/>
 	<body>
 		<images>
@@ -9,7 +9,7 @@
 		</images>
 		<summary id="summary">
 			<table>
-				<tgroup>
+				<tgroup cols="6">
 					<thead>
 						<row>
 							<entry>Drive</entry>
@@ -33,9 +33,9 @@
 				</tgroup>
 			</table>
 		</summary>
-		<signatures>
+		<signatures id="sigantures">
 			<table>
-				<tgroup>
+				<tgroup cols="4">
 					<thead>
 						<row>
 							<entry>Commonly Detected Sources</entry>
@@ -102,5 +102,17 @@
 				</tgroup>
 			</table>
 		</signatures>
+		<propulsion id="propulsion">
+			<title>Propulsion</title>
+			<p/>
+			<p/>
+			<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat adipisicing laborum in.</p>
+			<p>Mode A
+Mode B
+Mode C
+Mode D</p>
+			<p/>
+			<p/>
+		</propulsion>
 	</body>
 </class>

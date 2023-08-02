@@ -207,6 +207,8 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
     dita_signatures = dita_soup.new_tag('signatures')
     dita_signatures['id'] = 'sigantures'
     dita_propulsion = dita_soup.new_tag('propulsion')
+    dita_propulsion["id"] = "propulsion"
+
     dita_remarks = dita_soup.new_tag('remarks')
     dita_span = dita_soup.new_tag('span')
     dita_class = dita_soup.new_tag('class')
@@ -266,10 +268,29 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
         dita_signatures_table.append(dita_signatures_tgroup)
         dita_signatures.append(dita_signatures_table)
 
+        #Parse the propulsion block from the html
+        propulsion_h1 = soup.find('h1', text='PROPULSION')
+
+        #Add title for the propulsion block
+        dita_propulsion_title = dita_soup.new_tag('title')
+        dita_propulsion_title.string = "Propulsion"
+        dita_propulsion.append(dita_propulsion_title)
+
+        if propulsion_h1 is not None:
+            propulsion_div = propulsion_h1.find_parent('div')
+
+            for p in propulsion_div.find_all('p'):
+               dita_propulsion_p = dita_soup.new_tag('p')
+               dita_propulsion_p.string =  p.text.strip()
+               dita_propulsion.append(dita_propulsion_p)
+        else:
+            print(f'{class_file_src_path} does not have a div element with h1 named PROPOULSION')
+
         #Append all of the elements to the dita_soup object
         dita_body.append(dita_images)
         dita_body.append(dita_summary)
         dita_body.append(dita_signatures)
+        dita_body.append(dita_propulsion)
 
         dita_class.append(dita_main_title)
         dita_class.append(dita_body)

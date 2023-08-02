@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <!DOCTYPE class
   SYSTEM '../../../../../dtd/class.dtd'>
-<class>
+<class id="unit_ab">
 	<title/>
 	<body>
 		<images/>
 		<summary id="summary">
 			<table>
-				<tgroup>
+				<tgroup cols="6">
 					<thead>
 						<row>
 							<entry>Drive</entry>
@@ -31,9 +31,9 @@
 				</tgroup>
 			</table>
 		</summary>
-		<signatures>
+		<signatures id="sigantures">
 			<table>
-				<tgroup>
+				<tgroup cols="4">
 					<thead>
 						<row>
 							<entry>Commonly Detected Sources</entry>
@@ -105,5 +105,8 @@
 				</tgroup>
 			</table>
 		</signatures>
+		<propulsion id="propulsion">
+			<title>Propulsion</title>
+		</propulsion>
 	</body>
 </class>
