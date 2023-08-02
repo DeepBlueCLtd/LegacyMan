@@ -241,14 +241,21 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
         for tr_count, tr in enumerate(table.find_all('tr')):
             dita_row = dita_soup.new_tag("row")
             cells = tr.find_all('td')
-            for td in cells:
+            for idx, td in enumerate(cells):
                 #Append the first and second <tr> elements to the <summary> element
                 dita_entry = dita_soup.new_tag('entry')
                 dita_entry.string = td.text.strip()
-                dita_row.append(dita_entry)
                 # if only one cell, do colspan
                 if len(cells) == 1:
-                    print('handle colspan')
+                    dita_entry['nameend'] = 'col4'
+                    dita_entry['namest'] = 'col1'
+                # if two cells, make the second one wider    
+                if len(cells) == 2:
+                    if idx == 1:
+                        dita_entry['nameend'] = 'col4'
+                        dita_entry['namest'] = 'col2'
+                        
+                dita_row.append(dita_entry)
 
             if tr_count == 0:
                 dita_summary_thead.append(dita_row)
@@ -263,6 +270,12 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
         dita_summary_tgroup.append(dita_summary_tbody)
         dita_summary_table.append(dita_summary_tgroup)
         dita_summary.append(dita_summary_table)
+
+        for count in range(4):
+            dita_colspec = dita_soup.new_tag('colspec')
+            dita_colspec['colnum'] = count + 1
+            dita_colspec['colname'] = f'col{count + 1}'
+            dita_signatures_tgroup.append(dita_colspec)
 
         dita_signatures_tgroup.append(dita_signatures_thead)
         dita_signatures_tgroup.append(dita_signatures_tbody)
