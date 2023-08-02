@@ -2,7 +2,7 @@
 <!DOCTYPE class
   SYSTEM '../../../../../dtd/class.dtd'>
 <class id="unit_ab">
-	<title/>
+	<title>unit_ab</title>
 	<body>
 		<images>
 			<image align="left" href="./content/images/frequency_2.jpeg" scale="33"/>
@@ -36,9 +36,13 @@
 		<signatures id="sigantures">
 			<table>
 				<tgroup cols="4">
+					<colspec colname="col1" colnum="1"/>
+					<colspec colname="col2" colnum="2"/>
+					<colspec colname="col3" colnum="3"/>
+					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry>Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -49,7 +53,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry>Propulsion Related</entry>
+							<entry align="center" nameend="col4" namest="col1">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -64,7 +68,7 @@
 							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
-							<entry>Auxiliary Machinery</entry>
+							<entry align="center" nameend="col4" namest="col1">Auxiliary Machinery</entry>
 						</row>
 						<row>
 							<entry>Cat b Engine R</entry>
@@ -79,7 +83,7 @@
 							<entry>CBR 34</entry>
 						</row>
 						<row>
-							<entry>Speed-related Sources</entry>
+							<entry align="center" nameend="col4" namest="col1">Speed-related Sources</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -106,15 +110,15 @@ Follow link for more juicy details</entry>
 							<entry>Follow link for more juicy details</entry>
 						</row>
 						<row>
-							<entry>Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
-							<entry>Expect plant to be similar to 2016 steam powered version</entry>
+							<entry nameend="col4" namest="col2">Expect plant to be similar to 2016 steam powered version</entry>
 						</row>
 						<row>
 							<entry>Unique classifiers</entry>
-							<entry>The dominant frequency will be Laboris nostrud ipsum ex tempor. Est
+							<entry nameend="col4" namest="col2">The dominant frequency will be Laboris nostrud ipsum ex tempor. Est
             fugiat et esse excepteur est voluptate cupidatat in sit. Ex est
             laborum commodo eiusmod. Et tempor labore dolor eu laborum labore ex
             sit deserunt cillum sit duis minim. Nisi ea ullamco minim duis elit
