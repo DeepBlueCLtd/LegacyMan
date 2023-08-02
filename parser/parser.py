@@ -178,7 +178,7 @@ def process_ns_countries(country_name, link):
 
     return f'{country_name}/{country_name}.dita'
 
-def process_class_file(class_file_src_path, class_file_target_path):
+def process_class_file(class_file_src_path, class_file_target_path, class_name):
     #read the class file
     with open(class_file_src_path, "r") as f:
          class_file = f.read()
@@ -199,14 +199,18 @@ def process_class_file(class_file_src_path, class_file_target_path):
     dita_summary['id'] = 'summary'
 
     dita_summary_tgroup = dita_soup.new_tag('tgroup')
+    dita_summary_tgroup['cols'] = "6"
     dita_signatures_tgroup = dita_soup.new_tag('tgroup')
+    dita_signatures_tgroup['cols'] = "4"
 
     dita_colspec = dita_soup.new_tag('colspec')
     dita_signatures = dita_soup.new_tag('signatures')
+    dita_signatures['id'] = 'sigantures'
     dita_propulsion = dita_soup.new_tag('propulsion')
     dita_remarks = dita_soup.new_tag('remarks')
     dita_span = dita_soup.new_tag('span')
     dita_class = dita_soup.new_tag('class')
+    dita_class['id'] = class_name.lower()
     dita_main_title = dita_soup.new_tag('title')
     dita_related_pages = dita_soup.new_tag('related-pages')
 
@@ -233,12 +237,15 @@ def process_class_file(class_file_src_path, class_file_target_path):
 
         for tr_count, tr in enumerate(table.find_all('tr')):
             dita_row = dita_soup.new_tag("row")
-
-            for td in tr.find_all('td'):
+            cells = tr.find_all('td')
+            for td in cells:
                 #Append the first and second <tr> elements to the <summary> element
                 dita_entry = dita_soup.new_tag('entry')
                 dita_entry.string = td.text.strip()
                 dita_row.append(dita_entry)
+                # if only one cell, do colspan
+                if len(cells) == 1:
+                    print('handle colspan')
 
             if tr_count == 0:
                 dita_summary_thead.append(dita_row)
@@ -340,9 +347,10 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
                 #Process class files
                 href = a.get('href')
                 if href is not None:
+                    class_name = a.text
                     class_file_src_path = f'data/{os.path.dirname(category_page_link[3:])}/{href}'
                     class_file_target_path = f'target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}'
-                    process_class_file(class_file_src_path, class_file_target_path)
+                    process_class_file(class_file_src_path, class_file_target_path, class_name)
 
                 #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
                 dita_xref["href"] =  category_page_link.replace(".html", ".dita").lower()
