@@ -2,7 +2,7 @@
 <!DOCTYPE class
   SYSTEM '../../../../../dtd/class.dtd'>
 <class id="unit_daf">
-	<title>unit_daf</title>
+	<title>Unit_daf</title>
 	<body>
 		<images>
 			<image align="left" href="./content/images/flags.jpg" scale="33"/>
@@ -42,7 +42,7 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Commonly Detected Sources</entry>
+							<entry nameend="col4" namest="col1">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -53,7 +53,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Propulsion Related</entry>
+							<entry nameend="col4" namest="col1">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -88,7 +88,7 @@
 							<entry>CBR 54334</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+							<entry nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
@@ -118,5 +118,19 @@ Mode D</p>
 			<p/>
 			<p/>
 		</propulsion>
+		<remarks id="remarks">
+			<title>Remarks</title>
+			<span>
+				<ol>
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					<li>Aliquam tincidunt mauris eu risus.</li>
+					<li>Vestibulum auctor dapibus neque.</li>
+				</ol>
+				<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+      ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+      tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+      Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+			</span>
+		</remarks>
 	</body>
 </class>

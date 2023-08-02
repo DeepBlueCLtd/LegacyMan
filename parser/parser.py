@@ -179,7 +179,7 @@ def process_ns_countries(country_name, link):
 
     return f'{country_name}/{country_name}.dita'
 
-def process_class_file(class_file_src_path, class_file_target_path, class_name):
+def process_class_file(class_file_src_path, class_file_target_path, class_name, file_name):
     #read the class file
     with open(class_file_src_path, "r") as f:
          class_file = f.read()
@@ -211,11 +211,15 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
     dita_propulsion["id"] = "propulsion"
 
     dita_remarks = dita_soup.new_tag('remarks')
+    dita_remarks['id'] = 'remarks'
+
     dita_span = dita_soup.new_tag('span')
     dita_class = dita_soup.new_tag('class')
-    dita_class['id'] = class_name.lower()
+    dita_class['id'] = file_name.lower()
+
     dita_main_title = dita_soup.new_tag('title')
     dita_main_title.string = class_name
+
     dita_related_pages = dita_soup.new_tag('related-pages')
 
     #Parse all of the <img> elements
@@ -250,13 +254,12 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
                 if len(cells) == 1:
                     dita_entry['nameend'] = 'col4'
                     dita_entry['namest'] = 'col1'
-                    dita_entry['align'] = 'center'
-                # if two cells, make the second one wider    
+                # if two cells, make the second one wider
                 if len(cells) == 2:
                     if idx == 1:
                         dita_entry['nameend'] = 'col4'
                         dita_entry['namest'] = 'col2'
-                        
+
                 dita_row.append(dita_entry)
 
             if tr_count == 0:
@@ -285,7 +288,7 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
         dita_signatures.append(dita_signatures_table)
 
         #Parse the propulsion block from the html
-        propulsion_h1 = soup.find('h1', text='PROPULSION')
+        propulsion_h1 = soup.find('h1', string='PROPULSION')
 
         #Add title for the propulsion block
         dita_propulsion_title = dita_soup.new_tag('title')
@@ -295,6 +298,7 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
         if propulsion_h1 is not None:
             propulsion_div = propulsion_h1.find_parent('div')
 
+            #TODO: in the forloop below we are only getting the <p> elements but there are <ul> elements in some of the parent containers, so need to parse the <ul> elements as well
             for p in propulsion_div.find_all('p'):
                dita_propulsion_p = dita_soup.new_tag('p')
                dita_propulsion_p.string =  p.text.strip()
@@ -302,11 +306,46 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name):
         else:
             print(f'{class_file_src_path} does not have a div element with h1 named PROPOULSION')
 
+        #Parse the remark block from the HTML
+        remarks_h1 = soup.find('h1', string='REMARKS')
+
+        #Add title for the remark block
+        dita_remarks_title = dita_soup.new_tag('title')
+        dita_remarks_title.string = "Remarks"
+        dita_remarks.append(dita_remarks_title)
+
+        if remarks_h1 is not None:
+            #Get the parent div of the <h1>
+             remarks_div = remarks_h1.find_parent('div')
+
+             #Note: We are using two loops to parse the <ul> and <p> elements. We could have used a single loop, but the <span> element expects the <p> and <ul> elements in (ol*, p*) syntax. Therefore, we are parsing them in separate loops
+
+             #Parse the <ul> elements and change them to dita <ol> element
+             for ul in remarks_div.find_all('ul'):
+                    dita_ol = dita_soup.new_tag('ol')
+                    for li in ul.find_all('li'):
+                        dita_li = dita_soup.new_tag('li')
+                        dita_li.string = li.text
+                        dita_ol.append(dita_li)
+                    dita_span.append(dita_ol)
+
+             #Parse the <p> elements and change them to .dita
+             for p in remarks_div.find_all('p'):
+                if p.text != "":
+                    dita_remarks_p = dita_soup.new_tag('p')
+                    dita_remarks_p.string =  p.text.strip()
+                    dita_span.append(dita_remarks_p)
+
+             dita_remarks.append(dita_span)
+        else:
+            print(f'{class_file_src_path} does not have a div element with h1 named REMARKS')
+
         #Append all of the elements to the dita_soup object
         dita_body.append(dita_images)
         dita_body.append(dita_summary)
         dita_body.append(dita_signatures)
         dita_body.append(dita_propulsion)
+        dita_body.append(dita_remarks)
 
         dita_class.append(dita_main_title)
         dita_class.append(dita_body)
@@ -384,10 +423,11 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
                 #Process class files
                 href = a.get('href')
                 if href is not None:
-                    class_name = os.path.basename(a['href'].replace(".html", ""))
+                    file_name = os.path.basename(a['href'].replace(".html", ""))
+                    class_name = a.text
                     class_file_src_path = f'data/{os.path.dirname(category_page_link[3:])}/{href}'
                     class_file_target_path = f'target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}'
-                    process_class_file(class_file_src_path, class_file_target_path, class_name)
+                    process_class_file(class_file_src_path, class_file_target_path, class_name, file_name)
 
                     file_link = a['href'].replace(".html", ".dita")
                     dita_xref["href"] = f'./{file_link}'
