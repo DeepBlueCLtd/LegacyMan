@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+<!DOCTYPE class
+  SYSTEM '../../../../../dtd/class.dtd'>
+<class id="britain_1a">
+	<title>britain_1a</title>
+	<body>
+		<images>
+			<image align="left" href="./content/images/oscill_c.jpg" scale="33"/>
+		</images>
+		<summary id="summary">
+			<table>
+				<tgroup cols="6">
+					<thead>
+						<row>
+							<entry>Drive</entry>
+							<entry>Mode</entry>
+							<entry>Shaft x Blade</entry>
+							<entry>R:R</entry>
+							<entry>Max Speed</entry>
+							<entry>Av TPK</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>4 Diesel</entry>
+							<entry>PTR</entry>
+							<entry>2 * 4 (GRR)</entry>
+							<entry>19.4</entry>
+							<entry>22 kts</entry>
+							<entry>~14</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</summary>
+		<signatures id="sigantures">
+			<table>
+				<tgroup cols="4">
+					<colspec colname="col1" colnum="1"/>
+					<colspec colname="col2" colnum="2"/>
+					<colspec colname="col3" colnum="3"/>
+					<colspec colname="col4" colnum="4"/>
+					<thead>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Commonly Detected Sources</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>Source</entry>
+							<entry>Ratio/Freq</entry>
+							<entry>Harmonics</entry>
+							<entry>Remarks</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Propulsion Related</entry>
+						</row>
+						<row>
+							<entry>SR</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry>BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Intermittent Sources</entry>
+						</row>
+						<row>
+							<entry>Cat b Engine R</entry>
+							<entry>2-1000.4</entry>
+							<entry>H2, 4, 21, 145</entry>
+							<entry>The quick brown fox does something similar
+            Tool screenshot aTool screenshot b</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>CBR 34</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Speed related sources</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>CBR 54334</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+						</row>
+						<row>
+							<entry>Acoustic Signature</entry>
+							<entry nameend="col4" namest="col2">Mode Charlie. These platforms are able to process
+              up to 3000 tonnes of processed material per day. Mode Delta.
+              This lower mode is most useful in reducting tentative load during
+              night time energy reduction periods. Note 1.
+              Since the 1990s Carter Burman has has trouble generating the
+              volume of spares available when installations first designed.
+              Expect plant to be similar to 2016 steam powered version.</entry>
+						</row>
+						<row>
+							<entry>Unique classifiers</entry>
+							<entry nameend="col4" namest="col2">None</entry>
+						</row>
+						<row>
+							<entry>Aural</entry>
+							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</signatures>
+		<propulsion id="propulsion">
+			<title>Propulsion</title>
+			<p/>
+			<p/>
+			<p>Welcome to the propulsion section. Labore sunt Lorem sit officia incididunt do sunt aute cillum Lorem mollit amet anim occaecat. Labore nisi anim ut consectetur ut qui ea non reprehenderit amet eiusmod sit et consectetur. Lorem irure elit ex Lorem. Amet aliquip veniam voluptate anim labore reprehenderit. Ipsum officia deserunt quis deserunt duis proident ex occaecat excepteur minim mollit anim laboris.</p>
+			<p>Magna labore eu sint consectetur duis Lorem excepteur excepteur cupidatat nisi cillum ex sit. Aute culpa irure et nulla ea. Cillum esse in laborum dolor veniam exercitation mollit aliquip cillum deserunt dolor. Commodo non quis excepteur aute labore voluptate nostrud elit. Duis dolor pariatur velit consectetur consectetur aliqua ullamco et aliquip ea occaecat. Esse voluptate anim incididunt irure id cupidatat laborum do velit excepteur pariatur.</p>
+			<p/>
+			<p/>
+			<p>1. Electrical modulation noise is typically a function of generator
+      frequency and load</p>
+			<p>2. Air filtration noise is typically a function of generator frequency and
+      load</p>
+			<p>3. Pneumatic modulation noise is typically a function of generator
+      frequency and load</p>
+			<p>4. Hydraulic modulation noise is typically a function of generator
+      frequency and load</p>
+			<p>5. Hydrogen noise is typically a function of generator frequency and load</p>
+			<p>6. Fuel Cell modulation noise is typically a function of generator
+      frequency and load</p>
+		</propulsion>
+	</body>
+</class>

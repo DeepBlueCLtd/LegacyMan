@@ -4,7 +4,7 @@ import os
 
 def delete_directory(path):
     if os.path.exists(path):
-        os.system('rm -rf {}'.format(path))
+        shutil.rmtree(path)
         print('Target directory deleted')
     else:
         print('Target directory does not exist')

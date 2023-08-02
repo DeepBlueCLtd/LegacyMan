@@ -5,6 +5,7 @@ import os
 import subprocess
 from bs4 import BeautifulSoup
 
+
 from parser.parser_utils import create_directory, get_files_in_path, delete_directory, copy_directory, copy_files, prettify_xml
 
 def process_regions():
@@ -178,6 +179,146 @@ def process_ns_countries(country_name, link):
 
     return f'{country_name}/{country_name}.dita'
 
+def process_class_file(class_file_src_path, class_file_target_path, class_name):
+    #read the class file
+    with open(class_file_src_path, "r") as f:
+         class_file = f.read()
+
+    soup = BeautifulSoup(class_file, 'html.parser')
+
+    #Create the DITA document type declaration string
+    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">'
+    dita_soup = BeautifulSoup(dita_doctype, 'xml')
+
+    dita_body = dita_soup.new_tag('body')
+
+    dita_summary_table = dita_soup.new_tag('table')
+    dita_signatures_table = dita_soup.new_tag('table')
+
+    dita_images = dita_soup.new_tag('images')
+    dita_summary = dita_soup.new_tag('summary')
+    dita_summary['id'] = 'summary'
+
+    dita_summary_tgroup = dita_soup.new_tag('tgroup')
+    dita_summary_tgroup['cols'] = "6"
+    dita_signatures_tgroup = dita_soup.new_tag('tgroup')
+    dita_signatures_tgroup['cols'] = "4"
+
+    dita_colspec = dita_soup.new_tag('colspec')
+    dita_signatures = dita_soup.new_tag('signatures')
+    dita_signatures['id'] = 'sigantures'
+    dita_propulsion = dita_soup.new_tag('propulsion')
+    dita_propulsion["id"] = "propulsion"
+
+    dita_remarks = dita_soup.new_tag('remarks')
+    dita_span = dita_soup.new_tag('span')
+    dita_class = dita_soup.new_tag('class')
+    dita_class['id'] = class_name.lower()
+    dita_main_title = dita_soup.new_tag('title')
+    dita_main_title.string = class_name
+    dita_related_pages = dita_soup.new_tag('related-pages')
+
+    #Parse all of the <img> elements
+    img = soup.find('img')
+    if img is not None:
+        img_link = img['src'].lower()
+        dita_image = dita_soup.new_tag('image')
+        dita_image['href'] = img_link
+        dita_image['scale'] = 33
+        dita_image['align'] = "left"
+        dita_images.append(dita_image)
+
+    #Find the <td> element with colspan 6 and find its parent table
+    td = soup.find('td', {'colspan': '6'})
+    if td is None:
+        print(f">>> Failed to find colspan:6 for {class_file_src_path}")
+    else:
+        table = td.find_parent('table')
+        dita_summary_thead = dita_soup.new_tag('thead')
+        dita_summary_tbody = dita_soup.new_tag('tbody')
+        dita_signatures_thead = dita_soup.new_tag('thead')
+        dita_signatures_tbody = dita_soup.new_tag('tbody')
+
+        for tr_count, tr in enumerate(table.find_all('tr')):
+            dita_row = dita_soup.new_tag("row")
+            cells = tr.find_all('td')
+            for idx, td in enumerate(cells):
+                #Append the first and second <tr> elements to the <summary> element
+                dita_entry = dita_soup.new_tag('entry')
+                dita_entry.string = td.text.strip()
+                # if only one cell, do colspan
+                if len(cells) == 1:
+                    dita_entry['nameend'] = 'col4'
+                    dita_entry['namest'] = 'col1'
+                    dita_entry['align'] = 'center'
+                # if two cells, make the second one wider    
+                if len(cells) == 2:
+                    if idx == 1:
+                        dita_entry['nameend'] = 'col4'
+                        dita_entry['namest'] = 'col2'
+                        
+                dita_row.append(dita_entry)
+
+            if tr_count == 0:
+                dita_summary_thead.append(dita_row)
+            elif tr_count == 1:
+                dita_summary_tbody.append(dita_row)
+            elif tr_count == 2:
+                dita_signatures_thead.append(dita_row)
+            else:
+                dita_signatures_tbody.append(dita_row)
+
+        dita_summary_tgroup.append(dita_summary_thead)
+        dita_summary_tgroup.append(dita_summary_tbody)
+        dita_summary_table.append(dita_summary_tgroup)
+        dita_summary.append(dita_summary_table)
+
+        for count in range(4):
+            dita_colspec = dita_soup.new_tag('colspec')
+            dita_colspec['colnum'] = count + 1
+            dita_colspec['colname'] = f'col{count + 1}'
+            dita_signatures_tgroup.append(dita_colspec)
+
+        dita_signatures_tgroup.append(dita_signatures_thead)
+        dita_signatures_tgroup.append(dita_signatures_tbody)
+        dita_signatures_table.append(dita_signatures_tgroup)
+        dita_signatures.append(dita_signatures_table)
+
+        #Parse the propulsion block from the html
+        propulsion_h1 = soup.find('h1', text='PROPULSION')
+
+        #Add title for the propulsion block
+        dita_propulsion_title = dita_soup.new_tag('title')
+        dita_propulsion_title.string = "Propulsion"
+        dita_propulsion.append(dita_propulsion_title)
+
+        if propulsion_h1 is not None:
+            propulsion_div = propulsion_h1.find_parent('div')
+
+            for p in propulsion_div.find_all('p'):
+               dita_propulsion_p = dita_soup.new_tag('p')
+               dita_propulsion_p.string =  p.text.strip()
+               dita_propulsion.append(dita_propulsion_p)
+        else:
+            print(f'{class_file_src_path} does not have a div element with h1 named PROPOULSION')
+
+        #Append all of the elements to the dita_soup object
+        dita_body.append(dita_images)
+        dita_body.append(dita_summary)
+        dita_body.append(dita_signatures)
+        dita_body.append(dita_propulsion)
+
+        dita_class.append(dita_main_title)
+        dita_class.append(dita_body)
+        dita_soup.append(dita_class)
+
+        file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
+        file_path = f'{class_file_target_path}/{file_name}'
+
+        #Prettify the code
+        prettified_code = prettify_xml(str(dita_soup))
+        with open(file_path, 'wb') as f:
+            f.write(prettified_code.encode('utf-8'))
 
 def process_category_pages(category_page_link, country_name, country_flag_link):
     #read the category page
@@ -219,6 +360,10 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
     dita_image['href'] = f'../{country_flag_link[2:].lower()}'
     dita_image['alt'] = 'flag'
 
+    country_path = f'target/dita/regions/{country_name}'
+    file_path = f'{country_path}/{os.path.dirname(category_page_link[3:].lower())}'
+    create_directory(file_path)
+
     #Read the parent <table> element
     for tr_count, tr in enumerate(parent_table.find_all('tr')):
         dita_row = dita_soup.new_tag('row')
@@ -236,8 +381,17 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
             for a in td.find_all('a'):
                 dita_xref = dita_soup.new_tag('xref')
 
-                #TODO: The href value shouldn't be category_page_link, change it to the value of a["href"] once the href file is there
-                dita_xref["href"] =  category_page_link.replace(".html", ".dita").lower()
+                #Process class files
+                href = a.get('href')
+                if href is not None:
+                    class_name = os.path.basename(a['href'].replace(".html", ""))
+                    class_file_src_path = f'data/{os.path.dirname(category_page_link[3:])}/{href}'
+                    class_file_target_path = f'target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}'
+                    process_class_file(class_file_src_path, class_file_target_path, class_name)
+
+                    file_link = a['href'].replace(".html", ".dita")
+                    dita_xref["href"] = f'./{file_link}'
+
                 dita_xref.string = a.text.strip()
                 dita_entry.string = ""
                 dita_entry.append(dita_xref)
@@ -247,6 +401,7 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
 
 
         dita_tbody.append(dita_row)
+
 
     #Generate <colspec> elements based on the <td> elements count
     for count, td in enumerate(table_columns):
@@ -273,12 +428,8 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
     #Append the whole page to the dita soup
     dita_soup.append(dita_classlist)
 
-    #Write the DITA file
-    country_path = f'target/dita/regions/{country_name}'
-    category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
-    create_directory(f'{country_path}/{os.path.dirname(category_page_link)}')
-
     #Copy all images to /dita/regions/$Country_name/$Category_page/content/images dir
+    category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
     source_img_dir = f'data/{os.path.dirname(category_page_link)}/content/images'
     target_img_dir = f'{country_path}/{os.path.dirname(category_page_link)}/content/images'
     file_names = get_files_in_path(source_img_dir, make_lowercase=True)

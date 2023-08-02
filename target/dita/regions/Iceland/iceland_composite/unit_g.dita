@@ -1,0 +1,181 @@
+<?xml version="1.0" ?>
+<!DOCTYPE class
+  SYSTEM '../../../../../dtd/class.dtd'>
+<class id="unit_g">
+	<title>unit_g</title>
+	<body>
+		<images>
+			<image align="left" href="./content/images/unit_a1.jpg" scale="33"/>
+		</images>
+		<summary id="summary">
+			<table>
+				<tgroup cols="6">
+					<thead>
+						<row>
+							<entry>Drive</entry>
+							<entry>Mode</entry>
+							<entry>Shaft x Blade</entry>
+							<entry>R:R</entry>
+							<entry>Max Speed</entry>
+							<entry>Av TPK (Guide)</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>4 Diesel</entry>
+							<entry>PTR</entry>
+							<entry>2 * 4 (GRR)</entry>
+							<entry>412.8:1</entry>
+							<entry>40 kts</entry>
+							<entry>~14</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</summary>
+		<signatures id="sigantures">
+			<table>
+				<tgroup cols="4">
+					<colspec colname="col1" colnum="1"/>
+					<colspec colname="col2" colnum="2"/>
+					<colspec colname="col3" colnum="3"/>
+					<colspec colname="col4" colnum="4"/>
+					<thead>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Commonly Detected Sources</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>Source</entry>
+							<entry>Ratio/Freq</entry>
+							<entry>Harmonics</entry>
+							<entry>Remarks</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Power Related</entry>
+						</row>
+						<row>
+							<entry>SR</entry>
+							<entry>S1</entry>
+							<entry>H1-4</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry>BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry>BR</entry>
+							<entry>S4</entry>
+							<entry>H1 - 3</entry>
+							<entry>Discrete. Doublets common</entry>
+						</row>
+						<row>
+							<entry>EKG</entry>
+							<entry>13 x CSR</entry>
+							<entry>H1 - 3</entry>
+							<entry>Some EKG descriptor</entry>
+						</row>
+						<row>
+							<entry>EKJ</entry>
+							<entry>12 x CFR</entry>
+							<entry>H1</entry>
+							<entry>Some EKJ descriptor</entry>
+						</row>
+						<row>
+							<entry>EKW</entry>
+							<entry>124 x CSR</entry>
+							<entry>H1, 3</entry>
+							<entry>Some EKW descriptor</entry>
+						</row>
+						<row>
+							<entry>Propulsion Diesel Engine CFR</entry>
+							<entry>16 - 17 (Common)</entry>
+							<entry>H2, H4</entry>
+							<entry>Some EKL descriptor</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Auxiliary Machinery</entry>
+						</row>
+						<row>
+							<entry>DG CFR</entry>
+							<entry>17.2</entry>
+							<entry>H1 - 17</entry>
+							<entry>Some DG CFR descriptor</entry>
+						</row>
+						<row>
+							<entry>Cat b Engine R</entry>
+							<entry>2-1000.4</entry>
+							<entry>H2, 4, 21, 145</entry>
+							<entry>The quick brown fox does something similar
+            Tool screenshot aTool screenshot b</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>CBR 34</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Transient Sources</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>CBR 54334</entry>
+						</row>
+						<row>
+							<entry>DAF
+45.5
+H5-17
+Follow link for juicy details</entry>
+							<entry>45.5</entry>
+							<entry>H5-17</entry>
+							<entry>Follow link for juicy details</entry>
+						</row>
+						<row>
+							<entry>FOG
+544.4
+H2-12
+Follow link for more juicy details</entry>
+							<entry>544.4</entry>
+							<entry>H2-12</entry>
+							<entry>Follow link for more juicy details</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+						</row>
+						<row>
+							<entry>Acoustic Signature</entry>
+							<entry nameend="col4" namest="col2">Expect plant to be similar to 2016 steam powered version</entry>
+						</row>
+						<row>
+							<entry>Unique classifiers</entry>
+							<entry nameend="col4" namest="col2">None</entry>
+						</row>
+						<row>
+							<entry>Aural</entry>
+							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</signatures>
+		<propulsion id="propulsion">
+			<title>Propulsion</title>
+			<p/>
+			<p/>
+			<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat adipisicing laborum in.</p>
+			<p>Mode A
+Mode B
+Mode C
+Mode D</p>
+			<p/>
+			<p/>
+		</propulsion>
+	</body>
+</class>
