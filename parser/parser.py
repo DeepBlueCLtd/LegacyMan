@@ -486,7 +486,8 @@ def parse_from_root(args):
     start_time = time.time()
 
     #remove existing target directory and recreate it
-    delete_directory(os.path.join(os.getcwd(), "target"))
+    delete_directory(os.path.join(os.getcwd(), "target/dita"))
+    delete_directory(os.path.join(os.getcwd(), "target/html"))
     create_directory("target")
 
     #copy index.dita and welcome.dita from data dir to target/dita
