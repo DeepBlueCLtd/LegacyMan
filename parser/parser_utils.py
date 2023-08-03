@@ -5,6 +5,11 @@ import os
 # package of utility helpers that are not specific to the task of LegacyMan
 
 
+def ditaToHTML(path, soup):
+    print(f"Converting soup located in {path}")
+    return soup
+
+
 def delete_directory(path):
     if os.path.exists(path):
         shutil.rmtree(path)
