@@ -1,0 +1,38 @@
+{
+  "name": "node-build-pack",
+  "version": "0.1.0",
+  "homepage": ".",
+  "private": true,
+  "dependencies": {
+    "serve": "^14.0.1"
+  },
+  "scripts": {
+    "start": "serve target/html"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.2.3",
+    "@types/preval.macro": "^3.0.0",
+    "@types/react-image-gallery": "^1.2.0"
+  }
+}
