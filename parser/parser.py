@@ -24,8 +24,8 @@ def process_regions():
     dita_soup = BeautifulSoup('', 'lxml-xml')
 
     #Parse the HTML string, parser the <map> and the <img> elements
-    img_element = soup.find('img', {'usemap': '#image-map'})
-    map_element = soup.find('map', {'name': 'image-map'})
+    img_element = soup.find('img', {'usemap': '#image3Map'})
+    map_element = soup.find('map', {'name': 'image3Map'})
 
     #Create the html <image> element in the DITA file
     dita_image = dita_soup.new_tag('image')
