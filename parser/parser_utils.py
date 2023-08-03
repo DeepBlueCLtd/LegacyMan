@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 # package of utility helpers that are not specific to the task of LegacyMan
 
 
-def ditaToHTML(path, soup):
+def htmlToDITA(path, soup):
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
         soup.name = "span"

@@ -12,6 +12,7 @@ from parser.parser_utils import (
     copy_directory,
     copy_files,
     prettify_xml,
+    htmlToDITA,
 )
 
 
@@ -327,26 +328,8 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name, 
 
             # Get the parent div of the <h1>
             remarks_div = remarks_h1.find_parent("div")
-
-            # Note: We are using two loops to parse the <ul> and <p> elements. We could have used a single loop, but the <span> element expects the <p> and <ul> elements in (ol*, p*) syntax. Therefore, we are parsing them in separate loops
-
-            # Parse the <ul> elements and change them to dita <ol> element
-            for ul in remarks_div.find_all("ul"):
-                dita_ol = dita_soup.new_tag("ol")
-                for li in ul.find_all("li"):
-                    dita_li = dita_soup.new_tag("li")
-                    dita_li.string = li.text
-                    dita_ol.append(dita_li)
-                dita_span.append(dita_ol)
-
-            # Parse the <p> elements and change them to .dita
-            for p in remarks_div.find_all("p"):
-                if p.text != "":
-                    dita_remarks_p = dita_soup.new_tag("p")
-                    dita_remarks_p.string = p.text.strip()
-                    dita_span.append(dita_remarks_p)
-
-            dita_remarks.append(dita_span)
+            remarks_soup = htmlToDITA(file_name, remarks_div)
+            dita_remarks.append(remarks_soup)
         else:
             print(f"{class_file_src_path} does not have a div element with h1 named REMARKS")
 
