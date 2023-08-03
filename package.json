@@ -7,7 +7,7 @@
     "serve": "^14.0.1"
   },
   "scripts": {
-    "start": "serve ./"
+    "start": "serve target"
   },
   "eslintConfig": {
     "extends": [
