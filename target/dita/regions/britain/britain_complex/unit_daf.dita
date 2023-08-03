@@ -138,36 +138,80 @@ cell three, with a link</p>
 		<remarks id="remarks">
 			<title>Remarks</title>
 			<span>
-				<ol>
-					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					<li>Aliquam tincidunt mauris eu risus.</li>
-					<li>Vestibulum auctor dapibus neque.</li>
-				</ol>
-				<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+				
+
+				<p>REMARKS</p>
+				
+
+				<p id="image9">
+					
+
+					<image href="./content/images/unit_da.jpg"/>
+					
+
+				</p>
+				
+
+				<p>
+					
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-      Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a link</p>
-				<p>And now a table
+      Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
+					<xref href="#">link</xref>
+					
 
+				</p>
+				
 
-Heading one
-Heading two
+				<!-- <p>
+      <h3>And now a table</h3>
+      <table border="1">
+        <thead>
+          <th>Heading one</th>
+          <th>Heading two</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>cell one</td>
+            <td>cell two</td>
+          </tr>
+          <tr>
+            <td colspan="2">cell three, with a <a href="./BR_Power_Units.html">link</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </p> -->
+				
 
+				<!-- <ul>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+      <li>Vestibulum auctor dapibus neque.</li>
+    </ul> -->
+				
 
+				<!-- <p>
+      <p>1. Item one</p>
+      <p>2. Item two</p>
+      <p>3. Item three</p>
+    </p>
+    <ol>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+    </ol> -->
+				
 
-cell one
-cell two
+				<p>
+					
 
+					<!-- <h3 id="bba_background">Background to BBA</h3> -->
+					
+      Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum.
+    
+				</p>
+				
 
-cell three, with a link</p>
-				<p>1. Item one
-2. Item two
-3. Item three</p>
-				<p>1. Item one</p>
-				<p>2. Item two</p>
-				<p>3. Item three</p>
-				<p>Background to BBA
-      Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum.</p>
 			</span>
 		</remarks>
 	</body>

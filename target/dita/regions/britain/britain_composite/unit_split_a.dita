@@ -112,8 +112,6 @@
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
 		</propulsion>
-		<remarks id="remarks">
-			<title>Remarks</title>
-		</remarks>
+		<remarks id="remarks"/>
 	</body>
 </class>
