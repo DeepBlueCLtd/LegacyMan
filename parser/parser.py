@@ -412,10 +412,13 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
             dita_entry = dita_soup.new_tag('entry')
             dita_entry.string = td.text.strip()
 
-            #Add "namest" and "nameend" attributes to the <entry> element in the first <row>
-            if tr_count == 0:
+            #Add "namest" and "nameend" attributes to rows with a colspan of 7,
+            #(which includes the first row)    
+            if td.get('colspan') == "7":
                 dita_entry["namest"] = "col1"
                 dita_entry["nameend"] = f"col{len(table_columns)}"
+                dita_entry["align"] = "center"
+                dita_entry["outputclass"] = "table-separator"
 
             #If there is a link element in the <tr> append it to <entry>
             for a in td.find_all('a'):
