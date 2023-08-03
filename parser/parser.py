@@ -12,6 +12,7 @@ from parser.parser_utils import (
     copy_directory,
     copy_files,
     prettify_xml,
+    htmlToDITA
 )
 
 from parser.html_to_dita import htmlToDITA
