@@ -12,7 +12,8 @@ def process_regions():
     #copy the world-map.gif file
     source_dir = "data/PlatformData/Content/images/"
     target_dir = "target/dita/regions/content/images"
-    copy_files(source_dir, target_dir, ["world-map.gif"])
+    worldMapFile = "WorldMap.jpg".lower()
+    copy_files(source_dir, target_dir, [worldMapFile])
 
     #read the PD_1.html file
     with open("data/PlatformData/PD_1.html", "r") as f:
