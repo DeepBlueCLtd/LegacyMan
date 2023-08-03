@@ -6,7 +6,7 @@
 	<title>Regions</title>
 	<body>
 		<imagemap>
-			<image href="./content/images/world-map.gif"/>
+			<image href="./content/images/worldmap.jpg"/>
 			<area>
 				<shape>poly</shape>
 				<coords>550,211,522,231,515,263,540,275,564,269,561,231,555,214</coords>
