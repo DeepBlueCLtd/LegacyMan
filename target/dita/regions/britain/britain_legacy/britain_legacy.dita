@@ -20,7 +20,7 @@
 				<colspec colname="col7" colnum="7"/>
 				<tbody>
 					<row>
-						<entry nameend="col7" namest="col1">Overview of Legacy in Britain</entry>
+						<entry align="center" nameend="col7" namest="col1" outputclass="table-separator">Overview of Legacy in Britain</entry>
 					</row>
 					<row>
 						<entry>Class</entry>

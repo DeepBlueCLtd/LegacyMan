@@ -20,7 +20,7 @@
 				<colspec colname="col7" colnum="7"/>
 				<tbody>
 					<row>
-						<entry nameend="col7" namest="col1">Details of Complex in Britain</entry>
+						<entry align="center" nameend="col7" namest="col1" outputclass="table-separator">Details of Complex in Britain</entry>
 					</row>
 					<row>
 						<entry>Class</entry>
@@ -30,6 +30,9 @@
 						<entry>Max Speed</entry>
 						<entry>Av TPK</entry>
 						<entry>Reduction Ratio</entry>
+					</row>
+					<row>
+						<entry align="center" nameend="col7" namest="col1" outputclass="table-separator">Steam Driven</entry>
 					</row>
 					<row>
 						<entry>Unit_a</entry>
@@ -49,6 +52,27 @@
 						<entry>2 * 4 (FPP)</entry>
 						<entry>16.6</entry>
 						<entry>Est 1000</entry>
+						<entry>BWW</entry>
+					</row>
+					<row>
+						<entry align="center" nameend="col7" namest="col1" outputclass="table-separator">Hydraulic</entry>
+					</row>
+					<row>
+						<entry>Unit P5 (updated)</entry>
+						<entry>DFD</entry>
+						<entry>2 * V6 Diesel</entry>
+						<entry>12 x 4</entry>
+						<entry>21 Kts</entry>
+						<entry>Unk</entry>
+						<entry>Unk</entry>
+					</row>
+					<row>
+						<entry>Unit Foxtrot Alpha</entry>
+						<entry>PBF</entry>
+						<entry>2 * V6 Diesel</entry>
+						<entry>2 * 4 (FPP)</entry>
+						<entry>16.6</entry>
+						<entry>Est 2000</entry>
 						<entry>BWW</entry>
 					</row>
 				</tbody>

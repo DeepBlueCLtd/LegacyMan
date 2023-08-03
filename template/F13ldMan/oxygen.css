@@ -19,7 +19,7 @@
 }
 
 /* show borders for tables */
-.class .table .entry{ 
+.classlistbody .table .entry, .class .table .entry{ 
     border: 1px solid black !important;
     border-collapse: collapse;
  }
@@ -31,6 +31,10 @@
     font-size: 2em;
 }
 
+/* make table separators more prominent */
+.table-separator {
+    font-size: 1.5em;
+}
 
 /*
  * ==============================================
