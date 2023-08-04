@@ -5,7 +5,7 @@ import subprocess
 from bs4 import BeautifulSoup
 
 
-from parser.parser_utils import (
+from parser_utils import (
     create_directory,
     get_files_in_path,
     delete_directory,
@@ -14,7 +14,7 @@ from parser.parser_utils import (
     prettify_xml,
 )
 
-from parser.html_to_dita import htmlToDITA
+from html_to_dita import htmlToDITA
 
 
 def process_regions(root_path):
