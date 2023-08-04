@@ -16,6 +16,16 @@ from parser_utils import (
 
 from html_to_dita import htmlToDITA
 
+# lower case version of images we ignore. Note `prev_db.jpg` added for testing
+black_list = [
+    "image020.jpg",
+    "check_db.gif",
+    "prev_db.gif",
+    "rtn2map_db.gif",
+    "prev_db.jpg",
+    "flags.jpg",
+]
+
 
 def process_regions(root_path):
     # copy the world-map.gif file
@@ -241,14 +251,17 @@ def process_class_file(
     dita_related_pages = dita_soup.new_tag("related-pages")
 
     # Parse all of the <img> elements
-    img = soup.find("img")
-    if img is not None:
+    images = soup.find_all("img")
+    for img in images:
         img_link = img["src"].lower()
-        dita_image = dita_soup.new_tag("image")
-        dita_image["href"] = img_link
-        dita_image["scale"] = 33
-        dita_image["align"] = "left"
-        dita_images.append(dita_image)
+        image_filename = os.path.basename(img_link)
+        # check it's not blacklisted
+        if not image_filename in black_list:
+            dita_image = dita_soup.new_tag("image")
+            dita_image["href"] = img_link
+            dita_image["scale"] = 33
+            dita_image["align"] = "left"
+            dita_images.append(dita_image)
 
     # Find the <td> element with colspan 6 and find its parent table
     td = soup.find("td", {"colspan": "6"})
