@@ -1,5 +1,3 @@
-
-
 def htmlToDITA(path, soup):
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
@@ -9,7 +7,10 @@ def htmlToDITA(path, soup):
     # 2. Replace child divs with a span element
     for div in soup.find_all("div"):
         div.name = "p"
+        # TODO: verify if real HTML has divs with names
         del div["name"]
+        # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
+        del div["align"]
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
@@ -41,6 +42,10 @@ def htmlToDITA(path, soup):
     for ul in soup.find_all("ul"):
         ul.name = "ol"
 
+    # 7. Remove <br> newlines
+    for br in soup.find_all("br"):
+        br.decompose()
+
     # 7. TODO: Repalce the tables with a placeholder tag like "<p> There is a table here </p>""
     # for ul in soup.find_all('ul'):
     #     ul.name = 'ol'
@@ -48,6 +53,4 @@ def htmlToDITA(path, soup):
     return soup
 
 
-__all__ = [
-    "htmlToDITA"
-]
+__all__ = ["htmlToDITA"]
