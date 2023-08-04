@@ -1,4 +1,7 @@
-def htmlToDITA(path, soup):
+import os
+
+
+def htmlToDITA(file_name, soup):
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
         soup.name = "span"
@@ -36,7 +39,8 @@ def htmlToDITA(path, soup):
     # 5. Fix hyperlinks
     for a in soup.find_all("a"):
         a.name = "xref"
-        a["href"] = "#"
+        processLinkedPage(a["href"])
+        a["href"] = os.path.join(".", file_name + ".dita")
 
     # 6. Fix unordered lists
     for ul in soup.find_all("ul"):
@@ -51,6 +55,10 @@ def htmlToDITA(path, soup):
     #     ul.name = 'ol'
 
     return soup
+
+
+def processLinkedPage(href):
+    print(f"%% TODO: Process linked page: {href}")
 
 
 __all__ = ["htmlToDITA"]
