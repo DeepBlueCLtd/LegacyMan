@@ -40,7 +40,7 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry nameend="col4" namest="col1">Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -51,7 +51,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Propulsion Related</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -66,7 +66,7 @@
 							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Auxiliary Machinery</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Auxiliary Machinery</entry>
 						</row>
 						<row>
 							<entry>Cat b Engine R</entry>
@@ -82,7 +82,7 @@
 							<entry>CBR 34</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Transient Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Transient Sources</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -91,7 +91,7 @@
 							<entry>CBR 54334</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
