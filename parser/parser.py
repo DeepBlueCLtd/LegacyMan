@@ -17,15 +17,15 @@ from parser.parser_utils import (
 from parser.html_to_dita import htmlToDITA
 
 
-def process_regions():
+def process_regions(root_path):
     # copy the world-map.gif file
-    source_dir = "data/PlatformData/Content/images/"
+    source_dir = f'{root_path}/PlatformData/Content/images/'
     target_dir = "target/dita/regions/content/images"
     worldMapFile = "WorldMap.jpg".lower()
     copy_files(source_dir, target_dir, [worldMapFile])
 
     # read the PD_1.html file
-    with open("data/PlatformData/PD_1.html", "r") as f:
+    with open(f'{root_path}/PlatformData/PD_1.html', "r") as f:
         html_string = f.read()
 
     # set Beautifulsoup objects to parse HTML and DITA files
@@ -68,7 +68,7 @@ def process_regions():
         country_name = area["alt"]
 
         if link.startswith("../"):
-            country_path = process_ns_countries(country_name.lower(), link[3:])
+            country_path = process_ns_countries(country_name.lower(), link[3:], root_path)
             dita_xref["href"] = f"./{country_path}"
 
         dita_area = dita_soup.new_tag("area")
@@ -100,9 +100,9 @@ def process_regions():
         f.write(prettified_code.encode("utf-8"))
 
 
-def process_ns_countries(country_name, link):
+def process_ns_countries(country_name, link, root_path):
     # read the html file
-    with open(f"data/{link}", "r") as f:
+    with open(f"{root_path}/{link}", "r") as f:
         html_string = f.read()
 
     # set Beautifulsoup objects to parse HTML and DITA files
@@ -160,7 +160,7 @@ def process_ns_countries(country_name, link):
 
             # Process category pages from this file
             category_page_link = a["href"]
-            process_category_pages(category_page_link, country_name, country_flag)
+            process_category_pages(category_page_link, country_name, country_flag, root_path)
             dita_img["href"] = a.img["src"][1:].lower()
 
         dita_tbody.append(dita_row)
@@ -178,7 +178,7 @@ def process_ns_countries(country_name, link):
     create_directory(country_path)
 
     # Copy the images to /dita/regions/$Country_name/content/images dir
-    source_dir = f"data/{country_name}/content/images"
+    source_dir = f"{root_path}/{country_name}/content/images"
     file_names = get_files_in_path(source_dir, make_lowercase=True)
     copy_files(source_dir, f"{country_path}/content/images", file_names)
 
@@ -191,7 +191,7 @@ def process_ns_countries(country_name, link):
     return f"{country_name}/{country_name}.dita"
 
 
-def process_class_file(class_file_src_path, class_file_target_path, class_name, file_name):
+def process_class_file(class_file_src_path, class_file_target_path, class_name, file_name, root_path):
     # read the class file
     with open(class_file_src_path, "r") as f:
         class_file = f.read()
@@ -351,9 +351,9 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name, 
             f.write(prettified_code.encode("utf-8"))
 
 
-def process_category_pages(category_page_link, country_name, country_flag_link):
+def process_category_pages(category_page_link, country_name, country_flag_link, root_path):
     # read the category page
-    with open(f"data/{category_page_link[3:]}", "r") as f:
+    with open(f"{root_path}/{category_page_link[3:]}", "r") as f:
         category_page_html = f.read()
 
     soup = BeautifulSoup(category_page_html, "html.parser")
@@ -420,10 +420,10 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
                 if href is not None:
                     file_name = os.path.basename(a["href"].replace(".html", ""))
                     class_name = a.text
-                    class_file_src_path = f"data/{os.path.dirname(category_page_link[3:])}/{href}"
+                    class_file_src_path = f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
                     class_file_target_path = f"target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}"
                     process_class_file(
-                        class_file_src_path, class_file_target_path, class_name, file_name
+                        class_file_src_path, class_file_target_path, class_name, file_name, root_path
                     )
 
                     file_link = a["href"].replace(".html", ".dita")
@@ -464,7 +464,7 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
 
     # Copy all images to /dita/regions/$Country_name/$Category_page/content/images dir
     category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
-    source_img_dir = f"data/{os.path.dirname(category_page_link)}/content/images"
+    source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/content/images"
     target_img_dir = f"{country_path}/{os.path.dirname(category_page_link)}/content/images"
     file_names = get_files_in_path(source_img_dir, make_lowercase=True)
     copy_files(source_img_dir, target_img_dir, file_names)
@@ -475,8 +475,8 @@ def process_category_pages(category_page_link, country_name, country_flag_link):
         f.write(prettified_code.encode("utf-8"))
 
 
-def parse_from_root(args):
-    print(f"LegacyMan parser running, with these arguments: {args}")
+def parse_from_root(root_path):
+    print(f"LegacyMan parser running, with these arguments: {root_path}")
     start_time = time.time()
 
     # remove existing target directory and recreate it
@@ -485,12 +485,12 @@ def parse_from_root(args):
     create_directory("target")
 
     # copy index.dita and welcome.dita from data dir to target/dita
-    source_dir = "data"
+    source_dir = root_path
     target_dir = os.path.join("target", "dita")
     copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
     # Produce the world map
-    process_regions()
+    process_regions(root_path)
 
     # Run DITA-OT command to transform the index.ditamap file to html
     dita_command = [
@@ -510,5 +510,5 @@ def parse_from_root(args):
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    parse_from_root(args)
+    root_path = sys.argv[1]
+    parse_from_root(root_path)
