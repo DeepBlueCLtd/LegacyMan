@@ -166,7 +166,7 @@
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
       Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="#">link</xref>
+					<xref href="./unit_daf.dita">link</xref>
 					
 
 					<!-- </p>
@@ -253,7 +253,7 @@
 				<p>REMARKS</p>
 				
 
-				<p id="image9">
+				<p id="image10">
 					
 
 					<image href="./content/images/unit_da.jpg"/>
@@ -268,7 +268,7 @@
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
       Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="#">link</xref>
+					<xref href="./unit_daf.dita">link</xref>
 					
 
 				</p>
