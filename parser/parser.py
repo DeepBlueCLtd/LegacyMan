@@ -12,8 +12,9 @@ from parser.parser_utils import (
     copy_directory,
     copy_files,
     prettify_xml,
-    htmlToDITA,
 )
+
+from parser.html_to_dita import htmlToDITA
 
 
 def process_regions():
@@ -301,21 +302,18 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name, 
         # Parse the propulsion block from the html
         propulsion_h1 = soup.find("h1", string="PROPULSION")
 
-        # Add title for the propulsion block
-        dita_propulsion_title = dita_soup.new_tag("title")
-        dita_propulsion_title.string = "Propulsion"
-        dita_propulsion.append(dita_propulsion_title)
-
         if propulsion_h1 is not None:
-            propulsion_div = propulsion_h1.find_parent("div")
+            # Add title for the propulsion block
+            dita_propulsion_title = dita_soup.new_tag("title")
+            dita_propulsion_title.string = "Propulsion"
+            dita_propulsion.append(dita_propulsion_title)
 
-            # TODO: in the forloop below we are only getting the <p> elements but there are <ul> elements in some of the parent containers, so need to parse the <ul> elements as well
-            for p in propulsion_div.find_all("p"):
-                dita_propulsion_p = dita_soup.new_tag("p")
-                dita_propulsion_p.string = p.text.strip()
-                dita_propulsion.append(dita_propulsion_p)
+            propulsion_div = propulsion_h1.find_parent("div")
+            propulsion_soup = htmlToDITA(file_name, propulsion_div)
+            dita_propulsion.append(propulsion_soup)
+
         else:
-            print(f"{class_file_src_path} does not have a div element with h1 named PROPOULSION")
+            print(f"{class_file_src_path} does not have a div element with h1 named PROPOLSION")
 
         # Parse the remark block from the HTML
         remarks_h1 = soup.find("h1", string="REMARKS")

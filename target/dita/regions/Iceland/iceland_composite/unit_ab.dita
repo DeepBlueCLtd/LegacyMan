@@ -74,7 +74,11 @@
 							<entry>Cat b Engine R</entry>
 							<entry>2-1000.4</entry>
 							<entry>H2, 4, 21, 145</entry>
-							<entry>Laboris proident culpa labore et ad excepteur aute aliqua sit do non ex quis elit. Consequat dolor duis officia culpa commodo minim do ex duis sint labore culpa. Ea ullamco culpa voluptate dolor sint minim labore magna velit Lorem aliquip mollit velit. Cupidatat sit commodo tempor in et nulla reprehenderit sint laborum. Ut ex fugiat quis elit amet adipisicing amet ea nostrud tempor. Mollit ad et mollit quis non magna anim occaecat non ipsum sit in.</entry>
+							<entry>Laboris proident culpa labore et ad excepteur aute aliqua sit do non ex quis elit. Consequat dolor duis
+            officia culpa commodo minim do ex duis sint labore culpa. Ea ullamco culpa voluptate dolor sint minim labore
+            magna velit Lorem aliquip mollit velit. Cupidatat sit commodo tempor in et nulla reprehenderit sint laborum.
+            Ut ex fugiat quis elit amet adipisicing amet ea nostrud tempor. Mollit ad et mollit quis non magna anim
+            occaecat non ipsum sit in.</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -125,7 +129,8 @@ Follow link for more juicy details</entry>
             consectetur mollit ea mollit sunt voluptate. Esse nulla id mollit ad
             deserunt Lorem deserunt excepteur nostrud.
             
-Figure 2. Dominant frequency</entry>
+Figure 2. Dominant
+              frequency</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -133,16 +138,100 @@ Figure 2. Dominant frequency</entry>
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
-			<p/>
-			<p/>
-			<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat adipisicing laborum in.</p>
-			<p>Mode A
-Mode B
-Mode C
-Mode D</p>
-			<p/>
-			<p/>
-			<p/>
+			<span>
+				
+
+				<p>PROPULSION</p>
+				
+
+				<p/>
+				
+
+				<p/>
+				
+
+				<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate.
+      Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco
+      nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem
+      non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat
+      adipisicing laborum in.</p>
+				
+
+				<p>
+					
+
+					<ol>
+						
+
+						<li>Mode A</li>
+						
+
+						<li>Mode B</li>
+						
+
+						<li>Mode C</li>
+						
+
+						<li>Mode D</li>
+						
+
+					</ol>
+					
+
+				</p>
+				
+
+				<p/>
+				
+
+				<p/>
+				
+
+				<p/>
+				
+
+				<p>
+					
+
+					<!-- <table border="1">
+        <tr>
+          <td colspan="4"><strong>Unit_A</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Cruise Plant</strong></td>
+          <td>4 * PR32 Diesel Engines</td>
+          <td><strong>Shaft x Blade</strong></td>
+          <td>2 * 4 (GRR)</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>Boost Plant</strong></td>
+          <td rowspan="2">None</td>
+          <td><strong>Range</strong></td>
+          <td>123nm @ 8kts</td>
+        </tr>
+        <tr>
+          <td><strong>Max Speed</strong></td>
+          <td>40 kts</td>
+        </tr>
+        <tr>
+          <td><strong>Reduction Ratio</strong></td>
+          <td>412.8:1</td>
+          <td><strong>Av TPK</strong></td>
+          <td>~14</td>
+        </tr>
+        <tr>
+          <td><strong>Max TRPM</strong></td>
+          <td>1400</td>
+          <td><strong>Max SRPM</strong></td>
+          <td>0-1600</td>
+        </tr>
+      </table> -->
+					
+
+				</p>
+				
+
+			</span>
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
