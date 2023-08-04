@@ -1,4 +1,25 @@
 import os
+from bs4 import BeautifulSoup
+
+
+def testParse():
+    # read the PD_1.html file
+    with open("input.html", "r") as f:
+        html_string = f.read()
+
+    # set Beautifulsoup objects to parse HTML and DITA files
+    soup = BeautifulSoup(html_string, "html.parser")
+    xml_soup = BeautifulSoup("", "lxml-xml")
+
+    remarks_h1 = soup.find("h1", string="REMARKS")
+
+    if remarks_h1 is not None:
+        # Get the parent div of the <h1>
+        remarks_div = remarks_h1.find_parent("div")
+        remarks_soup = htmlToDITA("input", remarks_div)
+        print(remarks_soup)
+    else:
+        print("FAILED TO FIND H1")
 
 
 def htmlToDITA(file_name, soup):
@@ -24,17 +45,17 @@ def htmlToDITA(file_name, soup):
     # 4a. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
         h1.name = "p"
-        h1.outputClass = "h1"
+        h1["outputclass"] = "h1"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h2 in soup.find_all("h2"):
         h2.name = "p"
-        h2.outputClass = "h2"
+        h2["outputclass"] = "h2"
 
     # 4c. replace h1 with paragraph with correct outputClass
     for h3 in soup.find_all("h3"):
         h3.name = "p"
-        h3.outputClass = "h3"
+        h3["outputclass"] = "h3"
 
     # 5. Fix hyperlinks
     for a in soup.find_all("a"):
@@ -62,3 +83,6 @@ def processLinkedPage(href):
 
 
 __all__ = ["htmlToDITA"]
+
+if __name__ == "__main__":
+    testParse()
