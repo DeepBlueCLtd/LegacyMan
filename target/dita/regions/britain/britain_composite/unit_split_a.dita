@@ -109,9 +109,7 @@
 				</tgroup>
 			</table>
 		</signatures>
-		<propulsion id="propulsion">
-			<title>Propulsion</title>
-		</propulsion>
+		<propulsion id="propulsion"/>
 		<remarks id="remarks"/>
 	</body>
 </class>

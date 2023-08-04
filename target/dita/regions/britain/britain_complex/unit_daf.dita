@@ -108,32 +108,142 @@
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
-			<p/>
-			<p/>
-			<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat adipisicing laborum in.</p>
-			<p>Mode A
-Mode B
-Mode C
-Mode D</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+			<span>
+				
+
+				<p>PROPULSION</p>
+				
+
+				<p id="image9">
+					
+
+					<image href="./content/images/unit_da.jpg"/>
+					
+
+				</p>
+				
+
+				<p/>
+				
+
+				<p/>
+				
+
+				<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate.
+      Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco
+      nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem
+      non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat
+      adipisicing laborum in.</p>
+				
+
+				<p>
+					
+
+					<ol>
+						
+
+						<li>Mode A</li>
+						
+
+						<li>Mode B</li>
+						
+
+						<li>Mode C</li>
+						
+
+						<li>Mode D</li>
+						
+
+					</ol>
+					
+
+				</p>
+				
+
+				<p>
+					
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-      Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a link</p>
-			<p>And now a table
+      Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
+					<xref href="#">link</xref>
+					
 
+					<!-- </p>
+    <p>
+    <h3>And now a table</h3> -->
+					
 
-Heading one
-Heading two
+					<!-- <table border="1">
+        <thead>
+          <th>Heading one</th>
+          <th>Heading two</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>cell one</td>
+            <td>cell two</td>
+          </tr>
+          <tr>
+            <td colspan="2">cell three, with a <a href="./BR_Power_Units.html">link</a></td>
+          </tr>
+        </tbody>
+      </table> -->
+					
 
+				</p>
+				
 
+				<p>
+					<image href="./content/images/daf_3.jpeg"/>
+				</p>
+				
 
-cell one
-cell two
+				<p/>
+				
 
+				<p>
+					
 
-cell three, with a link</p>
-			<p/>
-			<p/>
+					<!-- <table border="1">
+        <tr>
+          <td colspan="4"><strong>Unit_DAF</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Cruise Plant</strong></td>
+          <td>4 * PR32 Diesel Engines</td>
+          <td><strong>Shaft x Blade</strong></td>
+          <td>2 * 4 (GRR)</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>Boost Plant</strong></td>
+          <td rowspan="2">None</td>
+          <td><strong>Range</strong></td>
+          <td>140nm @ 12kts</td>
+        </tr>
+        <tr>
+          <td><strong>Max Speed</strong></td>
+          <td>40 kts</td>
+        </tr>
+        <tr>
+          <td><strong>Reduction Ratio</strong></td>
+          <td>412.8:1</td>
+          <td><strong>Av TPK</strong></td>
+          <td>~14</td>
+        </tr>
+        <tr>
+          <td><strong>Max TRPM</strong></td>
+          <td>1400</td>
+          <td><strong>Max SRPM</strong></td>
+          <td>0-1600</td>
+        </tr>
+      </table> -->
+					
+
+				</p>
+				
+
+			</span>
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
@@ -207,7 +317,13 @@ cell three, with a link</p>
 
 					<!-- <h3 id="bba_background">Background to BBA</h3> -->
 					
-      Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum.
+      Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud
+      dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco
+      mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet
+      magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua
+      laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit.
+      Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor
+      ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum.
     
 				</p>
 				
