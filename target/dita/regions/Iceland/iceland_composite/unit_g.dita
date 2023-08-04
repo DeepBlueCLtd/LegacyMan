@@ -180,9 +180,37 @@ Mode D</p>
 		<remarks id="remarks">
 			<title>Remarks</title>
 			<span>
+				
+
+				<p>REMARKS</p>
+				
+
+				<p id="image9">
+					
+
+					<image href="./content/images/unit_a1.jpg"/>
+					 
+					<image href="./content/images/unit_a2.jpeg"/>
+					
+
+				</p>
+				
+
+				<p/>
+				
+
+				<p/>
+				
+
 				<p>1. The alphabet is already in alphabetical order one</p>
+				
+
 				<p>2. The alphabet is already in alphabetical order two</p>
+				
+
 				<p>3. The alphabet is already in alphabetical order three</p>
+				
+
 			</span>
 		</remarks>
 	</body>
