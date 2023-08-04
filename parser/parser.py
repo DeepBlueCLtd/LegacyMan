@@ -12,6 +12,7 @@ from parser.parser_utils import (
     copy_directory,
     copy_files,
     prettify_xml,
+    htmlToDITA
 )
 
 from parser.html_to_dita import htmlToDITA
@@ -266,6 +267,9 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name, 
                 if len(cells) == 1:
                     dita_entry["nameend"] = "col4"
                     dita_entry["namest"] = "col1"
+                    dita_entry["align"] = "center"
+                    dita_entry["outputclass"] = "table-separator"
+
                 # if two cells, make the second one wider
                 if len(cells) == 2:
                     if idx == 1:
