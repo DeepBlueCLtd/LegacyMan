@@ -14,7 +14,7 @@ from parser.parser_utils import (
     prettify_xml,
 )
 
-from parser.html_to_dita import (htmlToDITA)
+from parser.html_to_dita import htmlToDITA
 
 
 def process_regions():
@@ -313,7 +313,7 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name, 
             dita_propulsion.append(propulsion_soup)
 
         else:
-            print(f"{class_file_src_path} does not have a div element with h1 named PROPOULSION")
+            print(f"{class_file_src_path} does not have a div element with h1 named PROPOLSION")
 
         # Parse the remark block from the HTML
         remarks_h1 = soup.find("h1", string="REMARKS")
