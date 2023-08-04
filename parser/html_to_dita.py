@@ -16,8 +16,16 @@ def testParse():
     if remarks_h1 is not None:
         # Get the parent div of the <h1>
         remarks_div = remarks_h1.find_parent("div")
+
+        # convert to DITA
         remarks_soup = htmlToDITA("input", remarks_div)
-        print(remarks_soup)
+
+        xml_soup.append(remarks_soup)
+
+        # output to file
+        with open("output.html", "wb") as f:
+            f.write(str(xml_soup).encode("utf-8"))
+
     else:
         print("FAILED TO FIND H1")
 
