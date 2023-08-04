@@ -65,7 +65,8 @@ def process_regions(root_path):
 
         # if link starts with ../ create a dita file for the country => example ../Britain/Britain1.html
         link = area["href"]
-        country_name = area["alt"]
+        #country_name = area["alt"]
+        country_name = os.path.dirname(link[3:])
 
         if link.startswith("../"):
             country_path = process_ns_countries(country_name.lower(), link[3:], root_path)
@@ -347,6 +348,7 @@ def process_class_file(class_file_src_path, class_file_target_path, class_name, 
 
         # Prettify the code
         prettified_code = prettify_xml(str(dita_soup))
+
         with open(file_path, "wb") as f:
             f.write(prettified_code.encode("utf-8"))
 

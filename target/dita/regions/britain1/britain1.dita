@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE rich-collection
   SYSTEM '../../../../dtd/rich-collection.dtd'>
-<rich-collection id="britain">
-	<title>britain</title>
+<rich-collection id="britain1">
+	<title>britain1</title>
 	<body>
 		<table>
 			<tgroup cols="2">
