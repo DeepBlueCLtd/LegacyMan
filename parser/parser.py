@@ -12,7 +12,6 @@ from parser.parser_utils import (
     copy_directory,
     copy_files,
     prettify_xml,
-    htmlToDITA
 )
 
 from parser.html_to_dita import htmlToDITA
@@ -20,13 +19,13 @@ from parser.html_to_dita import htmlToDITA
 
 def process_regions(root_path):
     # copy the world-map.gif file
-    source_dir = f'{root_path}/PlatformData/Content/images/'
+    source_dir = f"{root_path}/PlatformData/Content/images/"
     target_dir = "target/dita/regions/content/images"
     worldMapFile = "WorldMap.jpg".lower()
     copy_files(source_dir, target_dir, [worldMapFile])
 
     # read the PD_1.html file
-    with open(f'{root_path}/PlatformData/PD_1.html', "r") as f:
+    with open(f"{root_path}/PlatformData/PD_1.html", "r") as f:
         html_string = f.read()
 
     # set Beautifulsoup objects to parse HTML and DITA files
@@ -40,6 +39,10 @@ def process_regions(root_path):
     # Create the html <image> element in the DITA file
     dita_image = dita_soup.new_tag("image")
     dita_image["href"] = img_element["src"].lower()
+
+    dita_image_alt = dita_soup.new_tag("alt")
+    dita_image_alt.string = "World Map"
+    dita_image.append(dita_image_alt)
 
     # Create the DITA document type declaration string
     dita_doctype = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
@@ -192,7 +195,9 @@ def process_ns_countries(country_name, link, root_path):
     return f"{country_name}/{country_name}.dita"
 
 
-def process_class_file(class_file_src_path, class_file_target_path, class_name, file_name, root_path):
+def process_class_file(
+    class_file_src_path, class_file_target_path, class_name, file_name, root_path
+):
     # read the class file
     with open(class_file_src_path, "r") as f:
         class_file = f.read()
@@ -424,10 +429,16 @@ def process_category_pages(category_page_link, country_name, country_flag_link, 
                 if href is not None:
                     file_name = os.path.basename(a["href"].replace(".html", ""))
                     class_name = a.text
-                    class_file_src_path = f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
+                    class_file_src_path = (
+                        f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
+                    )
                     class_file_target_path = f"target/dita/regions/{country_name}/{os.path.dirname(category_page_link[3:].lower())}"
                     process_class_file(
-                        class_file_src_path, class_file_target_path, class_name, file_name, root_path
+                        class_file_src_path,
+                        class_file_target_path,
+                        class_name,
+                        file_name,
+                        root_path,
                     )
 
                     file_link = a["href"].replace(".html", ".dita")
