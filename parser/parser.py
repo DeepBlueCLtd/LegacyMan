@@ -141,8 +141,10 @@ def process_ns_countries(country, country_name, link, root_path):
         dita_row = dita_soup.new_tag("row")
 
         for a in tr.find_all("a"):
+            category = f"{country}_{a.text.lower()}"
+
             dita_xref = dita_soup.new_tag("xref")
-            dita_xref["href"] = a["href"][1:].replace(".html", ".dita").lower()
+            dita_xref["href"] = f'{category}/{category}.dita'
             dita_xref["format"] = "dita"
 
             dita_bold = dita_soup.new_tag("b")
@@ -161,8 +163,9 @@ def process_ns_countries(country, country_name, link, root_path):
 
             # Process category pages from this file
             category_page_link = a["href"]
-            process_category_pages(country, category_page_link, country_name, country_flag, root_path)
+            process_category_pages(country, category_page_link, category, country_name, country_flag, root_path)
             dita_img["href"] = a.img["src"][1:].lower()
+            dita_img["href"] = f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}'
 
         dita_tbody.append(dita_row)
 
@@ -185,7 +188,6 @@ def process_ns_countries(country, country_name, link, root_path):
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
-
     with open(f"{country_path}/{country}.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
@@ -348,12 +350,11 @@ def process_class_file(country, class_file_src_path, class_file_target_path, cla
 
         # Prettify the code
         prettified_code = prettify_xml(str(dita_soup))
-
         with open(file_path, "wb") as f:
             f.write(prettified_code.encode("utf-8"))
 
 
-def process_category_pages(country, category_page_link, country_name, country_flag_link, root_path):
+def process_category_pages(country, category_page_link, category, country_name, country_flag_link, root_path):
     # read the category page
     with open(f"{root_path}/{category_page_link[3:]}", "r") as f:
         category_page_html = f.read()
@@ -394,7 +395,7 @@ def process_category_pages(country, category_page_link, country_name, country_fl
     dita_image["alt"] = "flag"
 
     country_path = f"target/dita/regions/{country}"
-    file_path = f"{country_path}/{os.path.dirname(category_page_link[3:].lower())}"
+    file_path = f"{country_path}/{category}"
     create_directory(file_path)
 
     # Read the parent <table> element
@@ -423,7 +424,7 @@ def process_category_pages(country, category_page_link, country_name, country_fl
                     file_name = os.path.basename(a["href"].replace(".html", ""))
                     class_name = a.text
                     class_file_src_path = f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
-                    class_file_target_path = f"target/dita/regions/{country}/{os.path.dirname(category_page_link[3:].lower())}"
+                    class_file_target_path = f"target/dita/regions/{country}/{category}"
                     process_class_file(
                         country, class_file_src_path, class_file_target_path, class_name, file_name, root_path
                     )
@@ -467,13 +468,14 @@ def process_category_pages(country, category_page_link, country_name, country_fl
     # Copy all images to /dita/regions/$Country_name/$Category_page/content/images dir
     category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
     source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/content/images"
-    target_img_dir = f"{country_path}/{os.path.dirname(category_page_link)}/content/images"
+    target_img_dir = f"{country_path}/{category}/content/images"
     file_names = get_files_in_path(source_img_dir, make_lowercase=True)
     copy_files(source_img_dir, target_img_dir, file_names)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
-    with open(f"{country_path}/{category_page_link}", "wb") as f:
+
+    with open(f"{country_path}/{category}/{category}.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
 

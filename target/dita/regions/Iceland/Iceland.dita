@@ -9,13 +9,13 @@
 				<tbody>
 					<row>
 						<entry>
-							<xref format="dita" href="./iceland_complex/iceland_complex.dita">
+							<xref format="dita" href="iceland_complex/iceland_complex.dita">
 								<b>Complex</b>
 								<image href="./iceland_complex/content/images/oscill_c.jpg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="./iceland_composite/iceland_composites.dita">
+							<xref format="dita" href="iceland_composite/iceland_composite.dita">
 								<b>Composite</b>
 								<image href="./iceland_composite/content/images/unit_da.jpg" width="400px"/>
 							</xref>
