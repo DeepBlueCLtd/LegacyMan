@@ -5,7 +5,12 @@
 	<title>Unit_daf</title>
 	<body>
 		<images>
-			<image align="left" href="./content/images/flags.jpg" scale="33"/>
+			<image align="left" href="./content/images/unit_da.jpg" scale="33"/>
+			<image align="left" href="./content/images/daf_3.jpeg" scale="33"/>
+			<image align="left" href="./content/images/daf_1.jpeg" scale="33"/>
+			<image align="left" href="./content/images/daf_2.jpeg" scale="33"/>
+			<image align="left" href="./content/images/daf_3.jpeg" scale="33"/>
+			<image align="left" href="./content/images/unit_da.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<table>
@@ -42,7 +47,7 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry nameend="col4" namest="col1">Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -53,7 +58,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Propulsion Related</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -88,7 +93,7 @@
 							<entry>CBR 54334</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
@@ -111,7 +116,7 @@
 			<span>
 				
 
-				<p>PROPULSION</p>
+				<p outputclass="h1">PROPULSION</p>
 				
 
 				<p id="image9">
@@ -250,7 +255,7 @@
 			<span>
 				
 
-				<p>REMARKS</p>
+				<p outputclass="h1">REMARKS</p>
 				
 
 				<p id="image10">

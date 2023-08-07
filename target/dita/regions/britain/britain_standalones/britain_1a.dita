@@ -6,6 +6,11 @@
 	<body>
 		<images>
 			<image align="left" href="./content/images/oscill_c.jpg" scale="33"/>
+			<image align="left" href="./content/images/oscill_d.jpg" scale="33"/>
+			<image align="left" href="./content/images/oscill_e.jpg" scale="33"/>
+			<image align="left" href="./content/images/oscill_c.jpg" scale="33"/>
+			<image align="left" href="./content/images/oscill_c.jpg" scale="33"/>
+			<image align="left" href="./content/images/oscill_d.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<table>
@@ -42,7 +47,7 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry nameend="col4" namest="col1">Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -53,7 +58,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Propulsion Related</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -68,7 +73,7 @@
 							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Intermittent Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Intermittent Sources</entry>
 						</row>
 						<row>
 							<entry>Cat b Engine R</entry>
@@ -84,7 +89,7 @@
 							<entry>CBR 34</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Speed related sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Speed related sources</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -93,7 +98,7 @@
 							<entry>CBR 54334</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
@@ -122,7 +127,7 @@
 			<span>
 				
 
-				<p>PROPULSION</p>
+				<p outputclass="h1">PROPULSION</p>
 				
 
 				<p/>
@@ -235,7 +240,7 @@
     </p>
 				
 
-				<p>HYDROGEN FUEL CELL TECHNOLOGY</p>
+				<p outputclass="h1">HYDROGEN FUEL CELL TECHNOLOGY</p>
 				
 
 				<p>
@@ -256,7 +261,7 @@
 			<span>
 				
 
-				<p>REMARKS</p>
+				<p outputclass="h1">REMARKS</p>
 				
 
 				<p id="image9">

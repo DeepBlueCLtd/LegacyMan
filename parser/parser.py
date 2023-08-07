@@ -5,7 +5,7 @@ import subprocess
 from bs4 import BeautifulSoup
 
 
-from parser.parser_utils import (
+from parser_utils import (
     create_directory,
     get_files_in_path,
     delete_directory,
@@ -14,18 +14,28 @@ from parser.parser_utils import (
     prettify_xml,
 )
 
-from parser.html_to_dita import htmlToDITA
+from html_to_dita import htmlToDITA
+
+# lower case version of images we ignore. Note `prev_db.jpg` added for testing
+black_list = [
+    "image020.jpg",
+    "check_db.gif",
+    "prev_db.gif",
+    "rtn2map_db.gif",
+    "prev_db.jpg",
+    "flags.jpg",
+]
 
 
 def process_regions(root_path):
     # copy the world-map.gif file
-    source_dir = f'{root_path}/PlatformData/Content/images/'
+    source_dir = f"{root_path}/PlatformData/Content/images/"
     target_dir = "target/dita/regions/content/images"
     worldMapFile = "WorldMap.jpg".lower()
     copy_files(source_dir, target_dir, [worldMapFile])
 
     # read the PD_1.html file
-    with open(f'{root_path}/PlatformData/PD_1.html', "r") as f:
+    with open(f"{root_path}/PlatformData/PD_1.html", "r") as f:
         html_string = f.read()
 
     # set Beautifulsoup objects to parse HTML and DITA files
@@ -39,6 +49,10 @@ def process_regions(root_path):
     # Create the html <image> element in the DITA file
     dita_image = dita_soup.new_tag("image")
     dita_image["href"] = img_element["src"].lower()
+
+    dita_image_alt = dita_soup.new_tag("alt")
+    dita_image_alt.string = "World Map"
+    dita_image.append(dita_image_alt)
 
     # Create the DITA document type declaration string
     dita_doctype = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
@@ -144,7 +158,7 @@ def process_ns_countries(country, country_name, link, root_path):
             category = f"{country}_{a.text.lower()}"
 
             dita_xref = dita_soup.new_tag("xref")
-            dita_xref["href"] = f'{category}/{category}.dita'
+            dita_xref["href"] = f"{category}/{category}.dita"
             dita_xref["format"] = "dita"
 
             dita_bold = dita_soup.new_tag("b")
@@ -163,9 +177,13 @@ def process_ns_countries(country, country_name, link, root_path):
 
             # Process category pages from this file
             category_page_link = a["href"]
-            process_category_pages(country, category_page_link, category, country_name, country_flag, root_path)
+            process_category_pages(
+                country, category_page_link, category, country_name, country_flag, root_path
+            )
             dita_img["href"] = a.img["src"][1:].lower()
-            dita_img["href"] = f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}'
+            dita_img[
+                "href"
+            ] = f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}'
 
         dita_tbody.append(dita_row)
 
@@ -194,7 +212,9 @@ def process_ns_countries(country, country_name, link, root_path):
     return f"{country}/{country}.dita"
 
 
-def process_class_file(country, class_file_src_path, class_file_target_path, class_name, file_name, root_path):
+def process_class_file(
+    class_file_src_path, class_file_target_path, class_name, file_name, root_path
+):
     # read the class file
     with open(class_file_src_path, "r") as f:
         class_file = f.read()
@@ -238,14 +258,17 @@ def process_class_file(country, class_file_src_path, class_file_target_path, cla
     dita_related_pages = dita_soup.new_tag("related-pages")
 
     # Parse all of the <img> elements
-    img = soup.find("img")
-    if img is not None:
+    images = soup.find_all("img")
+    for img in images:
         img_link = img["src"].lower()
-        dita_image = dita_soup.new_tag("image")
-        dita_image["href"] = img_link
-        dita_image["scale"] = 33
-        dita_image["align"] = "left"
-        dita_images.append(dita_image)
+        image_filename = os.path.basename(img_link)
+        # check it's not blacklisted
+        if not image_filename in black_list:
+            dita_image = dita_soup.new_tag("image")
+            dita_image["href"] = img_link
+            dita_image["scale"] = 33
+            dita_image["align"] = "left"
+            dita_images.append(dita_image)
 
     # Find the <td> element with colspan 6 and find its parent table
     td = soup.find("td", {"colspan": "6"})
@@ -269,6 +292,9 @@ def process_class_file(country, class_file_src_path, class_file_target_path, cla
                 if len(cells) == 1:
                     dita_entry["nameend"] = "col4"
                     dita_entry["namest"] = "col1"
+                    dita_entry["align"] = "center"
+                    dita_entry["outputclass"] = "table-separator"
+
                 # if two cells, make the second one wider
                 if len(cells) == 2:
                     if idx == 1:
@@ -354,7 +380,9 @@ def process_class_file(country, class_file_src_path, class_file_target_path, cla
             f.write(prettified_code.encode("utf-8"))
 
 
-def process_category_pages(country, category_page_link, category, country_name, country_flag_link, root_path):
+def process_category_pages(
+    country, category_page_link, category, country_name, country_flag_link, root_path
+):
     # read the category page
     with open(f"{root_path}/{category_page_link[3:]}", "r") as f:
         category_page_html = f.read()
@@ -423,10 +451,16 @@ def process_category_pages(country, category_page_link, category, country_name, 
                 if href is not None:
                     file_name = os.path.basename(a["href"].replace(".html", ""))
                     class_name = a.text
-                    class_file_src_path = f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
+                    class_file_src_path = (
+                        f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
+                    )
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
                     process_class_file(
-                        country, class_file_src_path, class_file_target_path, class_name, file_name, root_path
+                        class_file_src_path,
+                        class_file_target_path,
+                        class_name,
+                        file_name,
+                        root_path,
                     )
 
                     file_link = a["href"].replace(".html", ".dita")

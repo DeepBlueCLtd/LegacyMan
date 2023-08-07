@@ -6,6 +6,7 @@
 	<body>
 		<images>
 			<image align="left" href="./content/images/unit_a1.jpg" scale="33"/>
+			<image align="left" href="./content/images/unit_a2.jpeg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<table>
@@ -42,7 +43,7 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry nameend="col4" namest="col1">Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Commonly Detected Sources</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -53,7 +54,7 @@
 							<entry>Remarks</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Power Related</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Power Related</entry>
 						</row>
 						<row>
 							<entry>SR</entry>
@@ -98,7 +99,7 @@
 							<entry>Some EKL descriptor</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Auxiliary Machinery</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Auxiliary Machinery</entry>
 						</row>
 						<row>
 							<entry>DG CFR</entry>
@@ -120,7 +121,7 @@
 							<entry>CBR 34</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Transient Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Transient Sources</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -147,7 +148,7 @@ Follow link for more juicy details</entry>
 							<entry>Follow link for more juicy details</entry>
 						</row>
 						<row>
-							<entry nameend="col4" namest="col1">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
@@ -170,7 +171,7 @@ Follow link for more juicy details</entry>
 			<span>
 				
 
-				<p>PROPULSION</p>
+				<p outputclass="h1">PROPULSION</p>
 				
 
 				<p/>
@@ -267,7 +268,7 @@ Follow link for more juicy details</entry>
 			<span>
 				
 
-				<p>REMARKS</p>
+				<p outputclass="h1">REMARKS</p>
 				
 
 				<p id="image9">

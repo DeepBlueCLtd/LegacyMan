@@ -58,15 +58,7 @@ Execute the following command from the project root directory to run program. Th
 ### Run the parser
 
 ```
-python -m legacyman_parser.parser data test_payload_for_parsed_json=legacy_tester/test_payload/mock_data_test_payload.json
-
-```
-
-To disable the _assert_ statements, the above command can be executed with -O flag (hyphen capital o)
-
-```
-
-python -O -m legacyman_parser.parser data test_payload_for_parsed_json=legacy_tester/test_payload/mock_data_test_payload.json
+python parser/parser.py data
 
 ```
 
@@ -87,30 +79,6 @@ From tests, an absolute path `c:\real_data` works more reliably than using a rel
 
 ```
 
-python -m legacyman_parser.parser < data directory >
-
-```
-
-To disable the _assert_ statements, the above command can be executed with -O flag (hyphen capital o)
-
-```
-
-python -O -m legacyman_parser.parser < data directory >
-
-```
-
-## Parser outcomes
-
-This will
-
-- generate the json file to be imported into the Data Browser application
-- validate assumptions about the html structure with _assert_
-- generate a discrepancy report
-
-### Generate DITA content
-
-This is still under development.
-
-```
+python parser./parser.py < data directory >
 
 ```
