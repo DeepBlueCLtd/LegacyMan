@@ -30,13 +30,23 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(file_name, soup):
+def htmlToDITA(file_name, soup, dita_soup):
+    """
+    this function will convert a block of html to DITA
+    :param file_name: any number
+    :param soup: BS4 tag to be converted
+    :param dita_soup: BS4 soup XML element, used for generating new elements
+    :return: converted block of dita
+    """
+
+    # TODO: take clone of soup before we process it
+
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
         soup.name = "span"
         del soup["id"]
 
-    # 2. Replace child divs with a span element
+    # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
         div.name = "p"
         # TODO: verify if real HTML has divs with names
@@ -50,17 +60,35 @@ def htmlToDITA(file_name, soup):
         img["href"] = img["src"].lower()
         del img["src"]
 
-    # 4a. replace h1 with paragraph with correct outputClass
+    # 4. We can't handle headings in paragraphs. So, first search for, and fix
+    # headings in paragraphs
+    for p in soup.find_all("p"):
+        # 4a1. replace h1 with paragraph with correct outputClass
+        for h1 in p.find_all("h1"):
+            h1.name = "b"
+            h1["outputclass"] = "h1"
+
+        # 4a2. replace h1 with paragraph with correct outputClass
+        for h2 in p.find_all("h2"):
+            h2.name = "b"
+            h2["outputclass"] = "h2"
+
+        # 4a3. replace h1 with paragraph with correct outputClass
+        for h3 in p.find_all("h3"):
+            h3.name = "b"
+            h3["outputclass"] = "h3"
+
+    # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
         h1.name = "p"
         h1["outputclass"] = "h1"
 
-    # 4b. replace h1 with paragraph with correct outputClass
+    # 4c. replace h2 with paragraph with correct outputClass
     for h2 in soup.find_all("h2"):
         h2.name = "p"
         h2["outputclass"] = "h2"
 
-    # 4c. replace h1 with paragraph with correct outputClass
+    # 4d. replace h3 with paragraph with correct outputClass
     for h3 in soup.find_all("h3"):
         h3.name = "p"
         h3["outputclass"] = "h3"
@@ -76,6 +104,9 @@ def htmlToDITA(file_name, soup):
         br.decompose()
 
     # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
+    for tb in soup.find_all("table"):
+        tb.replace_with("[TABLE PLACEHOLDER]")
+
     # for ul in soup.find_all('ul'):
     #     ul.name = 'ol'
 
