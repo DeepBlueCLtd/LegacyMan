@@ -279,24 +279,14 @@
 				</p>
 				
 
-				<!-- <p>
-      <h3>And now a table</h3>
-      <table border="1">
-        <thead>
-          <th>Heading one</th>
-          <th>Heading two</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>cell one</td>
-            <td>cell two</td>
-          </tr>
-          <tr>
-            <td colspan="2">cell three, with a <a href="./BR_Power_Units.html">link</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </p> -->
+				<p>
+					
+
+					<b outputclass="h3">And now a table</b>
+					
+[TABLE PLACEHOLDER]
+
+				</p>
 				
 
 				<ul>
