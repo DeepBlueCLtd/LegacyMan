@@ -144,7 +144,7 @@
 				<p>
 					
 
-					<ol>
+					<ul>
 						
 
 						<li>Mode A</li>
@@ -159,7 +159,7 @@
 						<li>Mode D</li>
 						
 
-					</ol>
+					</ul>
 					
 
 				</p>
@@ -299,22 +299,41 @@
     </p> -->
 				
 
-				<!-- <ul>
-      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-      <li>Aliquam tincidunt mauris eu risus.</li>
-      <li>Vestibulum auctor dapibus neque.</li>
-    </ul> -->
+				<ul>
+					
+
+					<li>UNORDERED LIST</li>
+					
+
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					
+
+					<li>Aliquam tincidunt mauris eu risus.</li>
+					
+
+					<li>Vestibulum auctor dapibus neque.</li>
+					
+
+				</ul>
 				
 
 				<!-- <p>
       <p>1. Item one</p>
       <p>2. Item two</p>
       <p>3. Item three</p>
-    </p>
-    <ol>
-      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-      <li>Aliquam tincidunt mauris eu risus.</li>
-    </ol> -->
+    </p> -->
+				
+
+				<ol>
+					
+
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					
+
+					<li>Aliquam tincidunt mauris eu risus.</li>
+					
+
+				</ol>
 				
 
 				<p>
