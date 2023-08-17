@@ -338,7 +338,7 @@ def process_class_file(
             dita_propulsion.append(dita_propulsion_title)
 
             propulsion_div = propulsion_h1.find_parent("div")
-            propulsion_soup = htmlToDITA(file_name, propulsion_div)
+            propulsion_soup = htmlToDITA(file_name, propulsion_div, dita_soup)
             dita_propulsion.append(propulsion_soup)
 
         else:
@@ -355,7 +355,7 @@ def process_class_file(
 
             # Get the parent div of the <h1>
             remarks_div = remarks_h1.find_parent("div")
-            remarks_soup = htmlToDITA(file_name, remarks_div)
+            remarks_soup = htmlToDITA(file_name, remarks_div, dita_soup)
             dita_remarks.append(remarks_soup)
         else:
             print(f"{class_file_src_path} does not have a div element with h1 named REMARKS")
