@@ -71,15 +71,11 @@ def htmlToDITA(file_name, soup):
         processLinkedPage(a["href"])
         a["href"] = os.path.join(".", file_name + ".dita")
 
-    # 6. Fix unordered lists
-    for ul in soup.find_all("ul"):
-        ul.name = "ol"
-
-    # 7. Remove <br> newlines
+    # 6. Remove <br> newlines
     for br in soup.find_all("br"):
         br.decompose()
 
-    # 7. TODO: Repalce the tables with a placeholder tag like "<p> There is a table here </p>""
+    # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     # for ul in soup.find_all('ul'):
     #     ul.name = 'ol'
 
