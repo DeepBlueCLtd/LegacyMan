@@ -186,7 +186,7 @@ def process_c_file(class_file_src_path, class_file_target_path, class_name, file
     with open(class_file_src_path, "r") as f:
         class_file = f.read()
 
-    tag = BeautifulSoup(class_file, "html.parser")
+    html_soup = BeautifulSoup(class_file, "html.parser")
 
     # Create the DITA document type declaration string
     dita_doctype = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">'
@@ -195,7 +195,7 @@ def process_c_file(class_file_src_path, class_file_target_path, class_name, file
     dita_body = dita_soup.new_tag("body")
 
     # Parse the images
-    parse_images(tag, dita_body, dita_soup)
+    parse_images(html_soup, dita_body, dita_soup)
 
 
 def parse_images(tag, target, dita_soup):
