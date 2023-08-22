@@ -13,7 +13,7 @@ from parser_utils import (
     prettify_xml,
 )
 
-from class_files import process_class_file
+from class_files import process_class_file, process_c_file
 
 
 def process_regions(root_path):
@@ -279,8 +279,9 @@ def process_category_pages(
                         class_file_target_path,
                         class_name,
                         file_name,
-                        root_path,
                     )
+
+                    process_c_file(class_file_src_path, class_file_target_path, class_name,file_name )
 
                     file_link = a["href"].replace(".html", ".dita")
                     dita_xref["href"] = f"./{file_link}"
