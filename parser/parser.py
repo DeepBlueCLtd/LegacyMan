@@ -103,6 +103,7 @@ def process_regions(root_path):
     with open(f"{dita_output}/regions.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
+
 def process_ns_countries(country, country_name, link, root_path):
     # read the html file
     with open(f"{root_path}/{link}", "r") as f:
@@ -199,6 +200,7 @@ def process_ns_countries(country, country_name, link, root_path):
 
     return f"{country}/{country}.dita"
 
+
 def process_category_pages(
     country, category_page_link, category, country_name, country_flag_link, root_path
 ):
@@ -281,7 +283,9 @@ def process_category_pages(
                         file_name,
                     )
 
-                    process_c_file(class_file_src_path, class_file_target_path, class_name,file_name )
+                    process_c_file(
+                        class_file_src_path, class_file_target_path, class_name, file_name
+                    )
 
                     file_link = a["href"].replace(".html", ".dita")
                     dita_xref["href"] = f"./{file_link}"
@@ -332,6 +336,7 @@ def process_category_pages(
     with open(f"{country_path}/{category}/{category}.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
+
 def parse_from_root(root_path):
     print(f"LegacyMan parser running, with these arguments: {root_path}")
     start_time = time.time()
@@ -364,6 +369,7 @@ def parse_from_root(root_path):
     end_time = time.time()
     parse_time = end_time - start_time
     print(f"Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap")
+
 
 if __name__ == "__main__":
     root_path = sys.argv[1]
