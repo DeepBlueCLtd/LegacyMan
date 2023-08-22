@@ -1,4 +1,3 @@
-
 import os
 from bs4 import BeautifulSoup
 
@@ -15,9 +14,8 @@ black_list = [
     "flags.jpg",
 ]
 
-def process_class_file(
-    class_file_src_path, class_file_target_path, class_name, file_name
-):
+
+def process_class_file(class_file_src_path, class_file_target_path, class_name, file_name):
     # read the class file
     with open(class_file_src_path, "r") as f:
         class_file = f.read()
@@ -184,7 +182,7 @@ def process_class_file(
 
 
 def process_c_file(class_file_src_path, class_file_target_path, class_name, file_name):
-     # read the class file
+    # read the class file
     with open(class_file_src_path, "r") as f:
         class_file = f.read()
 
@@ -196,18 +194,18 @@ def process_c_file(class_file_src_path, class_file_target_path, class_name, file
 
     dita_body = dita_soup.new_tag("body")
 
-    #Parse the images
+    # Parse the images
     parse_images(tag, dita_body, dita_soup)
+
 
 def parse_images(tag, target, dita_soup):
     # create dita elements
     dita_images = dita_soup.new_tag("images")
-    dita_image = dita_soup.new_tag("image")
 
     # loop through the HTML images and change them to dita
-    images = tag.find_all('img')
+    images = tag.find_all("img")
     for img in images:
-        img_link = img['src'].lower()
+        img_link = img["src"].lower()
         image_filename = os.path.basename(img_link)
 
         # check it's not blacklisted
@@ -222,6 +220,4 @@ def parse_images(tag, target, dita_soup):
     target.append(dita_images)
 
 
-
-
-__all__ = ['process_class_files', 'process_c_file']
+__all__ = ["process_class_files", "process_c_file"]
