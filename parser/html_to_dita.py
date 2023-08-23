@@ -45,6 +45,7 @@ def htmlToDITA(file_name, soup, dita_soup):
     if soup.name == "div":
         soup.name = "span"
         del soup["id"]
+        del soup["style"]
 
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
@@ -53,12 +54,17 @@ def htmlToDITA(file_name, soup, dita_soup):
         del div["name"]
         # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
         del div["align"]
+        del div["style"]
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
         img.name = "image"
         img["href"] = img["src"].lower()
         del img["src"]
+        del img["border"]
+        # name not allowed in DITA image, put value into ID
+        img.id = img["name"]
+        del img["name"]
 
     # 4. We can't handle headings in paragraphs. So, first search for, and fix
     # headings in paragraphs
