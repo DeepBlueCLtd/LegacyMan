@@ -9,22 +9,11 @@ from parser_utils import (
     create_directory,
     get_files_in_path,
     delete_directory,
-    copy_directory,
     copy_files,
     prettify_xml,
 )
 
-from html_to_dita import htmlToDITA
-
-# lower case version of images we ignore. Note `prev_db.jpg` added for testing
-black_list = [
-    "image020.jpg",
-    "check_db.gif",
-    "prev_db.gif",
-    "rtn2map_db.gif",
-    "prev_db.jpg",
-    "flags.jpg",
-]
+from class_files import process_class_files
 
 
 def process_regions(root_path):
@@ -212,174 +201,6 @@ def process_ns_countries(country, country_name, link, root_path):
     return f"{country}/{country}.dita"
 
 
-def process_class_file(
-    class_file_src_path, class_file_target_path, class_name, file_name, root_path
-):
-    # read the class file
-    with open(class_file_src_path, "r") as f:
-        class_file = f.read()
-
-    soup = BeautifulSoup(class_file, "html.parser")
-
-    # Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">'
-    dita_soup = BeautifulSoup(dita_doctype, "xml")
-
-    dita_body = dita_soup.new_tag("body")
-
-    dita_summary_table = dita_soup.new_tag("table")
-    dita_signatures_table = dita_soup.new_tag("table")
-
-    dita_images = dita_soup.new_tag("images")
-    dita_summary = dita_soup.new_tag("summary")
-    dita_summary["id"] = "summary"
-
-    dita_summary_tgroup = dita_soup.new_tag("tgroup")
-    dita_summary_tgroup["cols"] = "6"
-    dita_signatures_tgroup = dita_soup.new_tag("tgroup")
-    dita_signatures_tgroup["cols"] = "4"
-
-    dita_colspec = dita_soup.new_tag("colspec")
-    dita_signatures = dita_soup.new_tag("signatures")
-    dita_signatures["id"] = "sigantures"
-    dita_propulsion = dita_soup.new_tag("propulsion")
-    dita_propulsion["id"] = "propulsion"
-
-    dita_remarks = dita_soup.new_tag("remarks")
-    dita_remarks["id"] = "remarks"
-
-    dita_span = dita_soup.new_tag("span")
-    dita_class = dita_soup.new_tag("class")
-    dita_class["id"] = file_name.lower()
-
-    dita_main_title = dita_soup.new_tag("title")
-    dita_main_title.string = class_name
-
-    dita_related_pages = dita_soup.new_tag("related-pages")
-
-    # Parse all of the <img> elements
-    images = soup.find_all("img")
-    for img in images:
-        img_link = img["src"].lower()
-        image_filename = os.path.basename(img_link)
-        # check it's not blacklisted
-        if not image_filename in black_list:
-            dita_image = dita_soup.new_tag("image")
-            dita_image["href"] = img_link
-            dita_image["scale"] = 33
-            dita_image["align"] = "left"
-            dita_images.append(dita_image)
-
-    # Find the <td> element with colspan 6 and find its parent table
-    td = soup.find("td", {"colspan": "6"})
-    if td is None:
-        print(f">>> Failed to find colspan:6 for {class_file_src_path}")
-    else:
-        table = td.find_parent("table")
-        dita_summary_thead = dita_soup.new_tag("thead")
-        dita_summary_tbody = dita_soup.new_tag("tbody")
-        dita_signatures_thead = dita_soup.new_tag("thead")
-        dita_signatures_tbody = dita_soup.new_tag("tbody")
-
-        for tr_count, tr in enumerate(table.find_all("tr")):
-            dita_row = dita_soup.new_tag("row")
-            cells = tr.find_all("td")
-            for idx, td in enumerate(cells):
-                # Append the first and second <tr> elements to the <summary> element
-                dita_entry = dita_soup.new_tag("entry")
-                dita_entry.string = td.text.strip()
-                # if only one cell, do colspan
-                if len(cells) == 1:
-                    dita_entry["nameend"] = "col4"
-                    dita_entry["namest"] = "col1"
-                    dita_entry["align"] = "center"
-                    dita_entry["outputclass"] = "table-separator"
-
-                # if two cells, make the second one wider
-                if len(cells) == 2:
-                    if idx == 1:
-                        dita_entry["nameend"] = "col4"
-                        dita_entry["namest"] = "col2"
-
-                dita_row.append(dita_entry)
-
-            if tr_count == 0:
-                dita_summary_thead.append(dita_row)
-            elif tr_count == 1:
-                dita_summary_tbody.append(dita_row)
-            elif tr_count == 2:
-                dita_signatures_thead.append(dita_row)
-            else:
-                dita_signatures_tbody.append(dita_row)
-
-        dita_summary_tgroup.append(dita_summary_thead)
-        dita_summary_tgroup.append(dita_summary_tbody)
-        dita_summary_table.append(dita_summary_tgroup)
-        dita_summary.append(dita_summary_table)
-
-        for count in range(4):
-            dita_colspec = dita_soup.new_tag("colspec")
-            dita_colspec["colnum"] = count + 1
-            dita_colspec["colname"] = f"col{count + 1}"
-            dita_signatures_tgroup.append(dita_colspec)
-
-        dita_signatures_tgroup.append(dita_signatures_thead)
-        dita_signatures_tgroup.append(dita_signatures_tbody)
-        dita_signatures_table.append(dita_signatures_tgroup)
-        dita_signatures.append(dita_signatures_table)
-
-        # Parse the propulsion block from the html
-        propulsion_h1 = soup.find("h1", string="PROPULSION")
-
-        if propulsion_h1 is not None:
-            # Add title for the propulsion block
-            dita_propulsion_title = dita_soup.new_tag("title")
-            dita_propulsion_title.string = "Propulsion"
-            dita_propulsion.append(dita_propulsion_title)
-
-            propulsion_div = propulsion_h1.find_parent("div")
-            propulsion_soup = htmlToDITA(file_name, propulsion_div, dita_soup)
-            dita_propulsion.append(propulsion_soup)
-
-        else:
-            print(f"{class_file_src_path} does not have a div element with h1 named PROPOLSION")
-
-        # Parse the remark block from the HTML
-        remarks_h1 = soup.find("h1", string="REMARKS")
-
-        if remarks_h1 is not None:
-            # Add title for the remark block
-            dita_remarks_title = dita_soup.new_tag("title")
-            dita_remarks_title.string = "Remarks"
-            dita_remarks.append(dita_remarks_title)
-
-            # Get the parent div of the <h1>
-            remarks_div = remarks_h1.find_parent("div")
-            remarks_soup = htmlToDITA(file_name, remarks_div, dita_soup)
-            dita_remarks.append(remarks_soup)
-        else:
-            print(f"{class_file_src_path} does not have a div element with h1 named REMARKS")
-
-        # Append all of the elements to the dita_soup object
-        dita_body.append(dita_images)
-        dita_body.append(dita_summary)
-        dita_body.append(dita_signatures)
-        dita_body.append(dita_propulsion)
-        dita_body.append(dita_remarks)
-
-        dita_class.append(dita_main_title)
-        dita_class.append(dita_body)
-        dita_soup.append(dita_class)
-
-        file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
-        file_path = f"{class_file_target_path}/{file_name}"
-
-        # Prettify the code
-        prettified_code = prettify_xml(str(dita_soup))
-        with open(file_path, "wb") as f:
-            f.write(prettified_code.encode("utf-8"))
-
-
 def process_category_pages(
     country, category_page_link, category, country_name, country_flag_link, root_path
 ):
@@ -455,12 +276,8 @@ def process_category_pages(
                         f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
                     )
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
-                    process_class_file(
-                        class_file_src_path,
-                        class_file_target_path,
-                        class_name,
-                        file_name,
-                        root_path,
+                    process_class_files(
+                        class_file_src_path, class_file_target_path, class_name, file_name
                     )
 
                     file_link = a["href"].replace(".html", ".dita")
