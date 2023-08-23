@@ -84,6 +84,12 @@ def htmlToDITA(file_name, soup, dita_soup):
             h3.name = "b"
             h3["outputclass"] = "h3"
 
+        # 4a4. Handle embedded paragraphs, by swapping for bold.
+        # NOTE: in the future, we may need to check the para is just one line long, or
+        # use some other test to establish that it's just providing a title
+        for pp in p.find_all("p"):
+            pp.name = "b"
+
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
         h1.name = "p"
