@@ -13,7 +13,7 @@ from parser_utils import (
     prettify_xml,
 )
 
-from class_files import process_class_file, process_c_file
+from class_files import process_class_files
 
 
 def process_regions(root_path):
@@ -276,14 +276,7 @@ def process_category_pages(
                         f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
                     )
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
-                    process_class_file(
-                        class_file_src_path,
-                        class_file_target_path,
-                        class_name,
-                        file_name,
-                    )
-
-                    process_c_file(
+                    process_class_files(
                         class_file_src_path, class_file_target_path, class_name, file_name
                     )
 
