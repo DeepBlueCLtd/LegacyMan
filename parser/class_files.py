@@ -14,6 +14,7 @@ black_list = [
     "flags.jpg",
 ]
 
+
 def process_class_files(class_file_src_path, class_file_target_path, class_name, file_name):
     # read the class file
     with open(class_file_src_path, "r") as f:
@@ -31,13 +32,13 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     parse_images(html_soup, dita_body, dita_soup)
 
     # Parse the summary and the signatures block
-    if  html_soup.find("td", {"colspan": "6"}) is None:
+    if html_soup.find("td", {"colspan": "6"}) is None:
         print(f">>> Failed to find colspan:6 for {class_file_src_path}")
     else:
-         # Parse the summary and the signature blocks from the html and build a dita <signagures> and <summary> blocks
-         parse_summary_and_signatures(html_soup, dita_body, dita_soup)
+        # Parse the summary and the signature blocks from the html and build a dita <signagures> and <summary> blocks
+        parse_summary_and_signatures(html_soup, dita_body, dita_soup)
 
-    options = {'file_name': file_name, 'file_path': class_file_src_path}
+    options = {"file_name": file_name, "file_path": class_file_src_path}
     # Parse the propulsion block and build a dita <propulsion>
     parse_propulsion(html_soup, dita_body, dita_soup, options)
 
@@ -63,6 +64,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     with open(file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
+
 def parse_images(tag, target, dita_soup):
     # create dita elements
     dita_images = dita_soup.new_tag("images")
@@ -84,7 +86,12 @@ def parse_images(tag, target, dita_soup):
     # Append the dita <images> to the dita <body>
     target.append(dita_images)
 
-def parse_summary_and_signatures(tag, target, dita_soup,):
+
+def parse_summary_and_signatures(
+    tag,
+    target,
+    dita_soup,
+):
     td = tag.find("td", {"colspan": "6"})
     table = td.find_parent("table")
 
@@ -158,9 +165,10 @@ def parse_summary_and_signatures(tag, target, dita_soup,):
     dita_signatures_table.append(dita_signatures_tgroup)
     dita_signatures.append(dita_signatures_table)
 
-    #Append the summary and the signatures in the dita <body>
+    # Append the summary and the signatures in the dita <body>
     target.append(dita_summary)
     target.append(dita_signatures)
+
 
 def parse_propulsion(tag, target, dita_soup, options):
     dita_propulsion = dita_soup.new_tag("propulsion")
@@ -174,13 +182,14 @@ def parse_propulsion(tag, target, dita_soup, options):
         dita_propulsion.append(dita_propulsion_title)
 
         propulsion_div = propulsion_h1.find_parent("div")
-        propulsion_soup = htmlToDITA(options['file_name'], propulsion_div, dita_soup)
+        propulsion_soup = htmlToDITA(options["file_name"], propulsion_div, dita_soup)
         dita_propulsion.append(propulsion_soup)
 
         target.append(dita_propulsion)
 
     else:
         print(f"{options['file_path']} does not have a div element with h1 named PROPOLSION")
+
 
 def parse_remarks(tag, target, dita_soup, options):
     dita_remarks = dita_soup.new_tag("remarks")
@@ -195,7 +204,7 @@ def parse_remarks(tag, target, dita_soup, options):
 
         # Get the parent div of the <h1>
         remarks_div = remarks_h1.find_parent("div")
-        remarks_soup = htmlToDITA(options['file_name'], remarks_div, dita_soup)
+        remarks_soup = htmlToDITA(options["file_name"], remarks_div, dita_soup)
         dita_remarks.append(remarks_soup)
 
         target.append(dita_remarks)
