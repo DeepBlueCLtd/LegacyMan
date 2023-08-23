@@ -270,11 +270,15 @@ def process_category_pages(
                 # Process class files
                 href = a.get("href")
                 if href is not None:
-                    file_name = os.path.basename(a["href"].replace(".html", ""))
+                    # Remove any #anchor_id value after the href
+                    href = href.split(".html")[0] + ".html"
+
+                    file_name = os.path.basename(href.replace(".html", ""))
                     class_name = a.text
                     class_file_src_path = (
                         f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
                     )
+
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
                     process_class_files(
                         class_file_src_path, class_file_target_path, class_name, file_name
