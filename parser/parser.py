@@ -140,6 +140,10 @@ def process_ns_countries(country, country_name, link, root_path):
     dita_table = dita_soup.new_tag("table")
     dita_body = dita_soup.new_tag("body")
 
+    # Create the dir to store the content and the dita files for countries
+    country_path = f"target/dita/regions/{country}"
+    create_directory(country_path)
+
     for tr in img_links_table.find_all("tr"):
         dita_row = dita_soup.new_tag("row")
 
@@ -164,6 +168,13 @@ def process_ns_countries(country, country_name, link, root_path):
 
             dita_row.append(dita_entry)
 
+            # Copy the images to /dita/regions/$Country_name/content/images dir
+            if a.find('img') is not None:
+                img_link = a.find('img')['src']
+                source_dir = f"{root_path}/{country_name}/content/images"
+                file_names = get_files_in_path(source_dir, make_lowercase=True)
+                copy_files(source_dir, f"{country_path}/content/images", file_names)
+
             # Process category pages from this file
             category_page_link = a["href"]
             process_category_pages(
@@ -183,15 +194,6 @@ def process_ns_countries(country, country_name, link, root_path):
 
     # Append the rich-collection element to the dita_soup object
     dita_soup.append(dita_rich_collection)
-
-    # Write the DITA file
-    country_path = f"target/dita/regions/{country}"
-    create_directory(country_path)
-
-    # Copy the images to /dita/regions/$Country_name/content/images dir
-    source_dir = f"{root_path}/{country_name}/content/images"
-    file_names = get_files_in_path(source_dir, make_lowercase=True)
-    copy_files(source_dir, f"{country_path}/content/images", file_names)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
