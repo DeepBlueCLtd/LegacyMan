@@ -30,39 +30,38 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     # Parse the images
     parse_images(html_soup, dita_body, dita_soup)
 
-    # Parse the summary block
+    # Parse the summary and the signatures block
     if  html_soup.find("td", {"colspan": "6"}) is None:
         print(f">>> Failed to find colspan:6 for {class_file_src_path}")
     else:
-         options = {'file_name': file_name, 'file_path': class_file_src_path}
-
          # Parse the summary and the signature blocks from the html and build a dita <signagures> and <summary> blocks
          parse_summary_and_signatures(html_soup, dita_body, dita_soup)
 
-         # Parse the propulsion block and build a dita <propulsion>
-         parse_propulsion(html_soup, dita_body, dita_soup, options)
+    options = {'file_name': file_name, 'file_path': class_file_src_path}
+    # Parse the propulsion block and build a dita <propulsion>
+    parse_propulsion(html_soup, dita_body, dita_soup, options)
 
-         # Parse the remarks block and build a dita <remarks> element
-         parse_remarks(html_soup, dita_body, dita_soup, options)
+    # Parse the remarks block and build a dita <remarks> element
+    parse_remarks(html_soup, dita_body, dita_soup, options)
 
-         # Append the dita <body> to the <class> element
-         dita_class = dita_soup.new_tag("class")
-         dita_class["id"] = file_name.lower()
+    # Append the dita <body> to the <class> element
+    dita_class = dita_soup.new_tag("class")
+    dita_class["id"] = file_name.lower()
 
-         dita_main_title = dita_soup.new_tag("title")
-         dita_main_title.string = class_name
+    dita_main_title = dita_soup.new_tag("title")
+    dita_main_title.string = class_name
 
-         dita_class.append(dita_main_title)
-         dita_class.append(dita_body)
-         dita_soup.append(dita_class)
+    dita_class.append(dita_main_title)
+    dita_class.append(dita_body)
+    dita_soup.append(dita_class)
 
-         file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
-         file_path = f"{class_file_target_path}/{file_name}"
+    file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
+    file_path = f"{class_file_target_path}/{file_name}"
 
-         # Prettify the code
-         prettified_code = prettify_xml(str(dita_soup))
-         with open(file_path, "wb") as f:
-            f.write(prettified_code.encode("utf-8"))
+    # Prettify the code
+    prettified_code = prettify_xml(str(dita_soup))
+    with open(file_path, "wb") as f:
+        f.write(prettified_code.encode("utf-8"))
 
 def parse_images(tag, target, dita_soup):
     # create dita elements
@@ -163,8 +162,6 @@ def parse_summary_and_signatures(tag, target, dita_soup,):
     target.append(dita_summary)
     target.append(dita_signatures)
 
-    return target
-
 def parse_propulsion(tag, target, dita_soup, options):
     dita_propulsion = dita_soup.new_tag("propulsion")
     dita_propulsion["id"] = "propulsion"
@@ -184,8 +181,6 @@ def parse_propulsion(tag, target, dita_soup, options):
 
     else:
         print(f"{options['file_path']} does not have a div element with h1 named PROPOLSION")
-
-    return target
 
 def parse_remarks(tag, target, dita_soup, options):
     dita_remarks = dita_soup.new_tag("remarks")
