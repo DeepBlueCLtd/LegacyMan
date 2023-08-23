@@ -284,7 +284,7 @@ def process_category_pages(
                         class_file_src_path, class_file_target_path, class_name, file_name
                     )
 
-                    file_link = a["href"].replace(".html", ".dita")
+                    file_link = a["href"].replace(".html", ".dita").lower()
                     dita_xref["href"] = f"./{file_link}"
 
                 dita_xref.string = a.text.strip()
