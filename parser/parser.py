@@ -280,7 +280,6 @@ def process_category_pages(
                     )
 
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
-                    print("NAME ", file_name)
                     process_class_files(
                         class_file_src_path, class_file_target_path, class_name, file_name
                     )
