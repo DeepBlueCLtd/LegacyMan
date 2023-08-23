@@ -113,6 +113,10 @@ def htmlToDITA(file_name, soup, dita_soup):
     for tb in soup.find_all("table"):
         tb.replace_with("[TABLE PLACEHOLDER]")
 
+    # 8. Replace <strong> with <bold>
+    for strong in soup.find_all("strong"):
+        strong.name = "b"
+
     # for ul in soup.find_all('ul'):
     #     ul.name = 'ol'
 
