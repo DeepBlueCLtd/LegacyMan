@@ -66,6 +66,8 @@ def get_files_in_path(path, make_lowercase=False):
     files = [f for f in entries if os.path.isfile(os.path.join(path, f))]
     return files
 
+def replace_characters(string, old_char, new_char):
+    return string.replace(old_char, new_char)
 
 __all__ = [
     "delete_directory",
