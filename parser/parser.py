@@ -11,6 +11,7 @@ from parser_utils import (
     delete_directory,
     copy_files,
     prettify_xml,
+    replace_characters
 )
 
 from class_files import process_class_files
@@ -37,7 +38,7 @@ def process_regions(root_path):
 
     # Create the html <image> element in the DITA file
     dita_image = dita_soup.new_tag("image")
-    dita_image["href"] = img_element["src"].lower()
+    dita_image["href"] = replace_characters(img_element["src"].lower(), ' ', '%20')
 
     dita_image_alt = dita_soup.new_tag("alt")
     dita_image_alt.string = "World Map"
@@ -182,7 +183,7 @@ def process_ns_countries(country, country_name, link, root_path):
 
                 dita_img[
                     "href"
-                ] = f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}'
+                ] = replace_characters(f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}', ' ', '%20')
                 dita_xref.append(dita_img)
 
         dita_tbody.append(dita_row)
@@ -247,7 +248,7 @@ def process_category_pages(
     dita_tgroup["cols"] = len(table_columns)
 
     # TODO: change the href of the image
-    dita_image["href"] = f"../{country_flag_link[2:].lower()}"
+    dita_image["href"] = replace_characters(f"../{country_flag_link[2:].lower()}", ' ', '%20')
     dita_image["alt"] = "flag"
 
     country_path = f"target/dita/regions/{country}"
