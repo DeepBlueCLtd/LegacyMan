@@ -188,7 +188,7 @@ def parse_propulsion(tag, target, dita_soup, options):
         target.append(dita_propulsion)
 
     else:
-        print(f"{options['file_path']} does not have a div element with h1 named PROPOLSION")
+        print(f"{options['file_path']} does not have a div element with h1 named PROPULSION")
 
 
 def parse_remarks(tag, target, dita_soup, options):
