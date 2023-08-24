@@ -4,6 +4,9 @@ Legacy content for Field Service Manual, a digital twin that we are going to dev
 
 See the original mock data [here](https://deepbluecltd.github.io/LegacyMan/data/PlatformData/PD_1.html).
 
+## Burndown
+![burndown chart](https://docs.google.com/spreadsheets/d/e/2PACX-1vS4RYYUIkU93MCcW95v64qu00MSFEgq7RXvMgtL21ad0uHNW2gTnS7HBzYS7AZsZ8ladWYJ8VZ1WV_w/pubchart?oid=1341797319&format=image)
+
 ## Technologies
 
 - python >= 3.9
