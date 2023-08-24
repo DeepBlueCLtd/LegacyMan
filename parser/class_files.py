@@ -56,7 +56,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     dita_class.append(dita_body)
     dita_soup.append(dita_class)
 
-    file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
+    file_name = os.path.basename(class_file_src_path.replace(".html", ".dita")).lower()
     file_path = f"{class_file_target_path}/{file_name}"
 
     # Prettify the code
