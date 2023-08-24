@@ -63,8 +63,9 @@ def htmlToDITA(file_name, soup, dita_soup):
         del img["src"]
         del img["border"]
         # name not allowed in DITA image, put value into ID
-        img.id = img["name"]
-        del img["name"]
+        if "name" in img.attrs.items():
+            img.id = img["name"]
+            del img["name"]
 
     # 4. We can't handle headings in paragraphs. So, first search for, and fix
     # headings in paragraphs
@@ -105,11 +106,16 @@ def htmlToDITA(file_name, soup, dita_soup):
         h3.name = "p"
         h3["outputclass"] = "h3"
 
-    # 5. Fix hyperlinks
-    for a in soup.find_all("a"):
+    # 5a. Fix hyperlinks (a with href attribute)
+    for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
         processLinkedPage(a["href"])
         a["href"] = os.path.join(".", file_name + ".dita")
+
+    # 5b. Fix anchors (a without href attribute)
+    # TODO: handle this instance in Issue #288
+    for a in soup.find_all("a", {"href": False}):
+        a.decompose()
 
     # 6. Remove <br> newlines
     for br in soup.find_all("br"):
