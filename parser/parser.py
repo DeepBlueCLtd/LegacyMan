@@ -161,29 +161,29 @@ def process_ns_countries(country, country_name, link, root_path):
             dita_img["width"] = "400px"
 
             dita_xref.append(dita_bold)
-            dita_xref.append(dita_img)
 
             dita_entry = dita_soup.new_tag("entry")
             dita_entry.append(dita_xref)
 
             dita_row.append(dita_entry)
 
-            # Copy the images to /dita/regions/$Country_name/content/images dir
-            if a.find('img') is not None:
-                img_link = a.find('img')['src']
-                source_dir = f"{root_path}/{country_name}/content/images"
-                file_names = get_files_in_path(source_dir, make_lowercase=True)
-                copy_files(source_dir, f"{country_path}/content/images", file_names)
-
             # Process category pages from this file
             category_page_link = a["href"]
             process_category_pages(
                 country, category_page_link, category, country_name, country_flag, root_path
             )
-            dita_img["href"] = a.img["src"][1:].lower()
-            dita_img[
-                "href"
-            ] = f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}'
+
+             # Copy each images in /data/$Category/content/images to /dita/regions/$Country_name/$Category/content/images dir
+            if a.find('img') is not None:
+                src_img_file = os.path.basename(a.find('img')['src'])
+                img_src_dir = f"{root_path}/{os.path.dirname(category_page_link.replace('../', ''))}/content/images"
+                img_target_dir = f"{country_path}/{category}/content/images"
+                copy_files(img_src_dir, img_target_dir, [src_img_file])
+
+                dita_img[
+                    "href"
+                ] = f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}'
+                dita_xref.append(dita_img)
 
         dita_tbody.append(dita_row)
 
@@ -194,6 +194,11 @@ def process_ns_countries(country, country_name, link, root_path):
 
     # Append the rich-collection element to the dita_soup object
     dita_soup.append(dita_rich_collection)
+
+    # Copy all of the images in data/$country/content/images to /dita/regions/$Country_name/content/images dir
+    source_dir = f"{root_path}/{country_name}/content/images"
+    file_names = get_files_in_path(source_dir, make_lowercase=True)
+    copy_files(source_dir, f"{country_path}/content/images", file_names)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
