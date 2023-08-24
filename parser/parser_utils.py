@@ -6,9 +6,10 @@ from bs4 import BeautifulSoup
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
+
 def delete_directory(path):
     if os.path.exists(path):
-        shutil.rmtree(path)
+        shutil.rmtree(path, ignore_errors=True)
         print("Target directory deleted:" + path)
     else:
         print("Target directory does not exist")
