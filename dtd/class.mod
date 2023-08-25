@@ -8,6 +8,7 @@
 <!-- ============================================================= -->
 <!-- ============ Specialization of declared elements ============  -->
 <!ENTITY % class                 "class">
+<!ENTITY % title             "title">
 <!ENTITY % body             "body">
 <!ENTITY % summary       "summary">
 <!ENTITY % signatures                    "signatures">
@@ -15,15 +16,24 @@
 <!ENTITY % propulsionRef                   "propulsionRef">
 <!ENTITY % remarks                      "remarks">
 <!ENTITY % span                           "span">
+<!ENTITY % section.cnt                           "section.cnt">
+<!ENTITY % table                           "table">
+<!ENTITY % xref                           "xref">
+<!ENTITY % ul                           "ul">
+<!ENTITY % ol                           "ol">
+<!ENTITY % p                           "p">
 <!ENTITY % images                           "images">
+<!ENTITY % image                           "image">
 <!ENTITY % related-pages "related-pages">
+<!ENTITY % related-links "related-links">
+
 <!ELEMENT class              ((%title;), (%body;))>
 <!ATTLIST class                   id ID #REQUIRED
                                   conref CDATA #IMPLIED
                                   %arch-atts;
                                   domains CDATA "&included-domains;"
 >
-<!ELEMENT body          ((%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%related-pages;)? )>
+<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%related-links;)? )>
 <!ATTLIST body              
                                         outputclass CDATA #IMPLIED
 >
@@ -62,15 +72,18 @@
 <!ATTLIST images
                                   outputclass CDATA #IMPLIED
 >
+<!--
 <!ELEMENT related-pages ((%title;), (%xref;)*) >
 <!ATTLIST related-pages 
                                     id ID #REQUIRED
-                                    outputclass CDATA #IMPLIED>
+                                    outputclass CDATA #IMPLIED> -->
 <!--specialization attributes-->
 <!-- class extends reference -->
 <!ATTLIST class              class  CDATA "- topic/topic  reference/reference class/class ">
 <!-- body extends refBody, summary is compulsory, other 3 child elements (signature, propulsion, remarks) optional -->
 <!ATTLIST body          class  CDATA "- topic/body reference/refBody class/body ">
+<!-- related links  -->
+<!ATTLIST related-links          class  CDATA "- topic/related-links class/related-links ">
 <!-- summary extends properties.  -->
 <!ATTLIST summary          class  CDATA "- topic/section class/summary ">
 <!-- signatures extends section, allows free content in Phase 1. Constrained table in Phase 2 -->
@@ -81,9 +94,24 @@
 <!ATTLIST propulsionRef    class  CDATA "- topic/section class/propulsionRef ">
 <!-- extends section -->
 <!ATTLIST remarks    class  CDATA "- topic/section class/remarks ">
-<!-- extends section -->
-<!ATTLIST related-pages    class  CDATA "- topic/section class/related-pages ">
+<!--
+<!- extends section ->
+<!ATTLIST related-pages    class  CDATA "- topic/section class/related-pages "> -->
+<!-- table extends table -->
+<!ATTLIST table    class  CDATA "- topic/table  class/table ">
+<!-- title extends title -->
+<!ATTLIST title    class  CDATA "- topic/title  class/title ">
 <!-- sp extends p -->
 <!ATTLIST span    class  CDATA "- topic/p  class/span ">
+<!-- p extends p -->
+<!ATTLIST p    class  CDATA "- topic/p  class/p ">
+<!-- ul extends ul -->
+<!ATTLIST ul    class  CDATA "- topic/ul  class/ul ">
+<!-- ol extends ol -->
+<!ATTLIST ol    class  CDATA "- topic/ol  class/ol ">
+<!-- xref extends xref -->
+<!ATTLIST xref    class  CDATA "- topic/xref  class/xref ">
 <!-- images -->
-<!ATTLIST images             %global-atts;  class CDATA "- topic/body reference/refBody class/images ">
+<!ATTLIST images  %global-atts;  class CDATA "- topic/body reference/refBody class/images ">
+<!-- image -->
+<!ATTLIST image  class CDATA "- topic/image class/image ">

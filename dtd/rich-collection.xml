@@ -9,13 +9,12 @@
                     <row>
                         <!-- put the text label in bold wrapper so it can be styled as display: block -->
                         <entry><xref href="hybrid.dita"><b>Hybrid</b><image href="images/oscill_e.jpg"></image></xref></entry>
-                        <entry><xref href="composite.dita"></b>Compsite</b><image href="images/oscill_d.jpg"></image></xref></entry>
+                        <entry><xref href="composite.dita"><b>Compsite</b><image href="images/oscill_d.jpg"></image></xref></entry>
                     </row>
                 </tbody>
             </tgroup>
         </table>
     </body>
-    <related-pages>
-        
-    </related-pages>
+    <related-links>
+    </related-links>
 </rich-collection>

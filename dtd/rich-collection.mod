@@ -46,7 +46,7 @@
 <!-- ============================================================= -->
 <!ENTITY % rich-collection                "rich-collection" >
 <!ENTITY % title                     "title" >
-<!ENTITY % related-pages                     "related-pages" >
+<!ENTITY % related-links                     "related-links" >
 
 <!-- ============================================================= -->
 <!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
@@ -67,7 +67,7 @@
  "
   ((%title;)?,
   (%body;)?,
-  (%related-pages;)?
+  (%related-links;)?
   )                   
 ">
 <!ENTITY % rich-collection.attributes
@@ -81,21 +81,6 @@
 <!ELEMENT rich-collection %rich-collection.content; >
 <!ATTLIST rich-collection %rich-collection.attributes; > 
 
-<!--                    LONG NAME: related pages details -->
-
-<!ENTITY % related-pages.content
-"
-  ((%title;), (%xref;)*)   
-">
-<!ENTITY % related-pages.attributes
-'            id     ID                                  #REQUIRED
-             outputclass 
-                        CDATA                            #IMPLIED    
-'>
-<!ELEMENT related-pages %related-pages.content; >
-<!ATTLIST related-pages %related-pages.attributes; > 
-
-
 <!-- ============================================================= -->
 <!--                    SPECIALIZATION ATTRIBUTE DECLARATIONS      -->
 <!-- ============================================================= -->
@@ -103,6 +88,8 @@
 <!ATTLIST rich-collection         %global-atts;  class CDATA "- topic/topic concept/concept rich-collection/rich-collection ">
 <!ATTLIST related-pages           %global-atts;  class CDATA "- topic/section  concept/title rich-collection/related-pages ">
 
+<!-- related links  -->
+<!ATTLIST related-links          class  CDATA "- topic/related-links rich-collection/related-links ">
 <!-- ================== End DITA rich-collection  ======================== -->
 
 
