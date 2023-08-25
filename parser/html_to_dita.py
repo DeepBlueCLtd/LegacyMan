@@ -62,8 +62,8 @@ def htmlToDITA(file_name, soup, dita_soup):
         img["href"] = img["src"]
         del img["src"]
         del img["border"]
-        # name not allowed in DITA image, put value into ID
-        if "name" in img.attrs.items():
+        # name not allowed in DITA image, put value into ID, if present
+        if img.has_attr("name"):
             img.id = img["name"]
             del img["name"]
 
