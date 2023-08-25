@@ -6,13 +6,13 @@
 	<title>Regions</title>
 	<body>
 		<imagemap>
-			<image href="./content/images/worldmap.jpg">
+			<image href="./Content/Images/WorldMap.jpg">
 				<alt>World Map</alt>
 			</image>
 			<area>
 				<shape>poly</shape>
 				<coords>550,211,522,231,515,263,540,275,564,269,561,231,555,214</coords>
-				<xref format="dita" href="./britain/britain.dita"/>
+				<xref format="dita" href="./Britain/Britain.dita"/>
 			</area>
 			<area>
 				<shape>poly</shape>
@@ -27,7 +27,7 @@
 			<area>
 				<shape>circle</shape>
 				<coords>500,180,25</coords>
-				<xref format="dita" href="./iceland/iceland.dita"/>
+				<xref format="dita" href="./Iceland/Iceland.dita"/>
 			</area>
 		</imagemap>
 	</body>

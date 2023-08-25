@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <!DOCTYPE classlist
   SYSTEM '../../../../../dtd/classlist.dtd'>
-<classlist id="britain-legacy">
+<classlist id="Britain-Legacy">
 	<title>Britain - Legacy</title>
 	<flag>
 		<fig>
-			<image alt="flag" href="../content/images/flag.jpg"/>
+			<image alt="flag" href="../Content/Images/Flag.jpg"/>
 		</fig>
 	</flag>
 	<classlistbody>

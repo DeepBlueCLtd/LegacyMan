@@ -1,37 +1,37 @@
 <?xml version="1.0" ?>
 <!DOCTYPE rich-collection
   SYSTEM '../../../../dtd/rich-collection.dtd'>
-<rich-collection id="britain">
-	<title>britain</title>
+<rich-collection id="Britain">
+	<title>Britain</title>
 	<body>
 		<table>
 			<tgroup cols="2">
 				<tbody>
 					<row>
 						<entry>
-							<xref format="dita" href="britain_complex/britain_complex.dita">
+							<xref format="dita" href="Britain_Complex/Britain_Complex.dita">
 								<b>Complex</b>
-								<image href="./britain_complex/content/images/daf%201.jpeg" width="400px"/>
+								<image href="./Britain_Complex/Content/Images/daf%201.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="britain_standalones/britain_standalones.dita">
+							<xref format="dita" href="Britain_Standalones/Britain_Standalones.dita">
 								<b>Standalones</b>
-								<image href="./britain_standalones/content/images/oscill_c.jpg" width="400px"/>
+								<image href="./Britain_Standalones/Content/Images/oscill_c.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>
 					<row>
 						<entry>
-							<xref format="dita" href="britain_composites/britain_composites.dita">
+							<xref format="dita" href="Britain_Composites/Britain_Composites.dita">
 								<b>Composites</b>
-								<image href="./britain_composites/content/images/unit_dar.jpeg" width="400px"/>
+								<image href="./Britain_Composites/Content/Images/unit_dar.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="britain_legacy/britain_legacy.dita">
+							<xref format="dita" href="Britain_Legacy/Britain_Legacy.dita">
 								<b>Legacy</b>
-								<image href="./britain_legacy/content/images/unit_da.jpg" width="400px"/>
+								<image href="./Britain_Legacy/Content/Images/unit_da.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>

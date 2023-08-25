@@ -5,8 +5,8 @@
 	<title>Unit_g</title>
 	<body>
 		<images>
-			<image align="left" href="./content/images/unit_a1.jpg" scale="33"/>
-			<image align="left" href="./content/images/unit_a2.jpeg" scale="33"/>
+			<image align="left" href="./Content/Images/unit_a1.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/unit_a2.jpeg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<table>
@@ -274,9 +274,9 @@ Follow link for more juicy details</entry>
 				<p id="image9">
 					
 
-					<image href="./content/images/unit_a1.jpg"/>
+					<image href="./Content/Images/unit_a1.jpg"/>
 					 
-					<image href="./content/images/unit_a2.jpeg"/>
+					<image href="./Content/Images/unit_a2.jpeg"/>
 					
 
 				</p>

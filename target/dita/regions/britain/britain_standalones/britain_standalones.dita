@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <!DOCTYPE classlist
   SYSTEM '../../../../../dtd/classlist.dtd'>
-<classlist id="britain-standalones">
+<classlist id="Britain-Standalones">
 	<title>Britain - Standalones</title>
 	<flag>
 		<fig>
-			<image alt="flag" href="../content/images/flag.jpg"/>
+			<image alt="flag" href="../Content/Images/Flag.jpg"/>
 		</fig>
 	</flag>
 	<classlistbody>
@@ -55,7 +55,7 @@
 					</row>
 					<row>
 						<entry>
-							<xref href="././britain_2a.dita#number2">Unit_2a</xref>
+							<xref href="././Britain_2A.dita#number2">Unit_2a</xref>
 						</entry>
 						<entry>PBF</entry>
 						<entry>2 * V6 Diesel</entry>
