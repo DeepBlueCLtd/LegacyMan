@@ -69,6 +69,11 @@ def get_files_in_path(path, make_lowercase=False):
 def replace_characters(string, old_char, new_char):
     return string.replace(old_char, new_char)
 
+def remove_leading_slash(path):
+    while path.startswith("../") or path.startswith("./"):
+        path = path.lstrip("../").lstrip("./")
+    return path
+
 __all__ = [
     "delete_directory",
     "create_directory",
@@ -76,4 +81,5 @@ __all__ = [
     "copy_files",
     "prettify_xml",
     "get_files_in_path",
+    "remove_leading_slash"
 ]
