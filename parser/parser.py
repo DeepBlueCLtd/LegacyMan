@@ -12,6 +12,7 @@ from parser_utils import (
     copy_files,
     prettify_xml,
     replace_characters,
+    remove_leading_slash
 )
 
 from class_files import process_class_files
@@ -72,8 +73,8 @@ def process_regions(root_path):
         country = area["alt"]
 
         if link.startswith("../"):
-            country_name = os.path.dirname(link[3:])
-            country_path = process_ns_countries(country, country_name, link[3:], root_path)
+            country_name = os.path.dirname(remove_leading_slash(link))
+            country_path = process_ns_countries(country, country_name, remove_leading_slash(link), root_path)
             dita_xref["href"] = f"./{country_path}"
 
         dita_area = dita_soup.new_tag("area")
@@ -215,7 +216,7 @@ def process_category_pages(
     country, category_page_link, category, country_name, country_flag_link, root_path
 ):
     # read the category page
-    with open(f"{root_path}/{category_page_link[3:]}", "r") as f:
+    with open(f"{root_path}/{remove_leading_slash(category_page_link)}", "r") as f:
         category_page_html = f.read()
 
     soup = BeautifulSoup(category_page_html, "html.parser")
@@ -250,7 +251,7 @@ def process_category_pages(
     dita_tgroup["cols"] = len(table_columns)
 
     # TODO: change the href of the image
-    dita_image["href"] = replace_characters(f"../{country_flag_link[2:]}", " ", "%20")
+    dita_image["href"] = replace_characters(f"../{remove_leading_slash(country_flag_link)}", " ", "%20")
     dita_image["alt"] = "flag"
 
     country_path = f"target/dita/regions/{country}"
@@ -286,7 +287,7 @@ def process_category_pages(
                     file_name = os.path.basename(href.replace(".html", ""))
                     class_name = a.text
                     class_file_src_path = (
-                        f"{root_path}/{os.path.dirname(category_page_link[3:])}/{href}"
+                        f"{root_path}/{os.path.dirname(remove_leading_slash(category_page_link))}/{href}"
                     )
 
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
@@ -331,7 +332,7 @@ def process_category_pages(
     dita_soup.append(dita_classlist)
 
     # Copy all images to /dita/regions/$Country_name/$Category_page/Content/Images dir
-    category_page_link = category_page_link.replace(".html", ".dita")[3:]
+    category_page_link = remove_leading_slash(category_page_link.replace(".html", ".dita"))
     source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/Content/Images"
     target_img_dir = f"{country_path}/{category}/Content/Images"
     file_names = get_files_in_path(source_img_dir, make_lowercase=False)
