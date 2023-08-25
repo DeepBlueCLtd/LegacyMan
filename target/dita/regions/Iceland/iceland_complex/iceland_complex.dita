@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <!DOCTYPE classlist
   SYSTEM '../../../../../dtd/classlist.dtd'>
-<classlist id="iceland-complex">
+<classlist id="Iceland-Complex">
 	<title>Iceland - Complex</title>
 	<flag>
 		<fig>
-			<image alt="flag" href="../content/images/flag.png"/>
+			<image alt="flag" href="../Content/Images/Flag.png"/>
 		</fig>
 	</flag>
 	<classlistbody>

@@ -59,7 +59,7 @@ def htmlToDITA(file_name, soup, dita_soup):
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
         img.name = "image"
-        img["href"] = img["src"].lower()
+        img["href"] = img["src"]
         del img["src"]
         del img["border"]
         # name not allowed in DITA image, put value into ID

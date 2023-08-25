@@ -11,7 +11,7 @@ from parser_utils import (
     delete_directory,
     copy_files,
     prettify_xml,
-    replace_characters
+    replace_characters,
 )
 
 from class_files import process_class_files
@@ -20,8 +20,8 @@ from class_files import process_class_files
 def process_regions(root_path):
     # copy the world-map.gif file
     source_dir = f"{root_path}/PlatformData/Content/images/"
-    target_dir = "target/dita/regions/content/images"
-    worldMapFile = "WorldMap.jpg".lower()
+    target_dir = "target/dita/regions/Content/Images"
+    worldMapFile = "WorldMap.jpg"
     copy_files(source_dir, target_dir, [worldMapFile])
 
     # read the PD_1.html file
@@ -38,7 +38,7 @@ def process_regions(root_path):
 
     # Create the html <image> element in the DITA file
     dita_image = dita_soup.new_tag("image")
-    dita_image["href"] = replace_characters(img_element["src"].lower(), ' ', '%20')
+    dita_image["href"] = replace_characters(img_element["src"], " ", "%20")
 
     dita_image_alt = dita_soup.new_tag("alt")
     dita_image_alt.string = "World Map"
@@ -69,10 +69,10 @@ def process_regions(root_path):
 
         # if link starts with ../ create a dita file for the country => example ../Britain/Britain1.html
         link = area["href"]
-        country = area["alt"].lower()
+        country = area["alt"]
 
         if link.startswith("../"):
-            country_name = os.path.dirname(link[3:].lower())
+            country_name = os.path.dirname(link[3:])
             country_path = process_ns_countries(country, country_name, link[3:], root_path)
             dita_xref["href"] = f"./{country_path}"
 
@@ -149,7 +149,7 @@ def process_ns_countries(country, country_name, link, root_path):
         dita_row = dita_soup.new_tag("row")
 
         for a in tr.find_all("a"):
-            category = f"{country}_{a.text.lower()}"
+            category = f"{country}_{a.text}"
 
             dita_xref = dita_soup.new_tag("xref")
             dita_xref["href"] = f"{category}/{category}.dita"
@@ -174,16 +174,18 @@ def process_ns_countries(country, country_name, link, root_path):
                 country, category_page_link, category, country_name, country_flag, root_path
             )
 
-             # Copy each images in /data/$Category/content/images to /dita/regions/$Country_name/$Category/content/images dir
-            if a.find('img') is not None:
-                src_img_file = os.path.basename(a.find('img')['src'])
-                img_src_dir = f"{root_path}/{os.path.dirname(category_page_link.replace('../', ''))}/content/images"
-                img_target_dir = f"{country_path}/{category}/content/images"
+            # Copy each images in /data/$Category/Content/Images to /dita/regions/$Country_name/$Category/Content/Images dir
+            if a.find("img") is not None:
+                src_img_file = os.path.basename(a.find("img")["src"])
+                img_src_dir = f"{root_path}/{os.path.dirname(category_page_link.replace('../', ''))}/Content/Images"
+                img_target_dir = f"{country_path}/{category}/Content/Images"
                 copy_files(img_src_dir, img_target_dir, [src_img_file])
 
-                dita_img[
-                    "href"
-                ] = replace_characters(f'./{category}/content/images/{os.path.basename(a.img["src"].lower())}', ' ', '%20')
+                dita_img["href"] = replace_characters(
+                    f'./{category}/Content/Images/{os.path.basename(a.img["src"])}',
+                    " ",
+                    "%20",
+                )
                 dita_xref.append(dita_img)
 
         dita_tbody.append(dita_row)
@@ -196,10 +198,10 @@ def process_ns_countries(country, country_name, link, root_path):
     # Append the rich-collection element to the dita_soup object
     dita_soup.append(dita_rich_collection)
 
-    # Copy all of the images in data/$country/content/images to /dita/regions/$Country_name/content/images dir
-    source_dir = f"{root_path}/{country_name}/content/images"
-    file_names = get_files_in_path(source_dir, make_lowercase=True)
-    copy_files(source_dir, f"{country_path}/content/images", file_names)
+    # Copy all of the images in data/$country/Content/Images to /dita/regions/$Country_name/Content/Images dir
+    source_dir = f"{root_path}/{country_name}/Content/Images"
+    file_names = get_files_in_path(source_dir, make_lowercase=False)
+    copy_files(source_dir, f"{country_path}/Content/Images", file_names)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
@@ -248,7 +250,7 @@ def process_category_pages(
     dita_tgroup["cols"] = len(table_columns)
 
     # TODO: change the href of the image
-    dita_image["href"] = replace_characters(f"../{country_flag_link[2:].lower()}", ' ', '%20')
+    dita_image["href"] = replace_characters(f"../{country_flag_link[2:]}", " ", "%20")
     dita_image["alt"] = "flag"
 
     country_path = f"target/dita/regions/{country}"
@@ -292,7 +294,7 @@ def process_category_pages(
                         class_file_src_path, class_file_target_path, class_name, file_name
                     )
 
-                    file_link = a["href"].replace(".html", ".dita").lower()
+                    file_link = a["href"].replace(".html", ".dita")
                     dita_xref["href"] = f"./{file_link}"
 
                 dita_xref.string = a.text.strip()
@@ -320,7 +322,7 @@ def process_category_pages(
     dita_fig.append(dita_image)
     dita_flag.append(dita_fig)
 
-    dita_classlist["id"] = title.text.replace(" ", "").lower()
+    dita_classlist["id"] = title.text.replace(" ", "")
     dita_classlist.append(dita_title)
     dita_classlist.append(dita_flag)
     dita_classlist.append(dita_classlistbody)
@@ -328,11 +330,11 @@ def process_category_pages(
     # Append the whole page to the dita soup
     dita_soup.append(dita_classlist)
 
-    # Copy all images to /dita/regions/$Country_name/$Category_page/content/images dir
-    category_page_link = category_page_link.lower().replace(".html", ".dita")[3:]
-    source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/content/images"
-    target_img_dir = f"{country_path}/{category}/content/images"
-    file_names = get_files_in_path(source_img_dir, make_lowercase=True)
+    # Copy all images to /dita/regions/$Country_name/$Category_page/Content/Images dir
+    category_page_link = category_page_link.replace(".html", ".dita")[3:]
+    source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/Content/Images"
+    target_img_dir = f"{country_path}/{category}/Content/Images"
+    file_names = get_files_in_path(source_img_dir, make_lowercase=False)
     copy_files(source_img_dir, target_img_dir, file_names)
 
     # Prettify the code

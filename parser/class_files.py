@@ -47,7 +47,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
 
     # Append the dita <body> to the <class> element
     dita_class = dita_soup.new_tag("class")
-    dita_class["id"] = file_name.lower()
+    dita_class["id"] = file_name
 
     dita_main_title = dita_soup.new_tag("title")
     dita_main_title.string = class_name
@@ -56,7 +56,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     dita_class.append(dita_body)
     dita_soup.append(dita_class)
 
-    file_name = os.path.basename(class_file_src_path.replace(".html", ".dita")).lower()
+    file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
     file_path = f"{class_file_target_path}/{file_name}"
 
     # Prettify the code
@@ -72,7 +72,7 @@ def parse_images(tag, target, dita_soup):
     # loop through the HTML images and change them to dita
     images = tag.find_all("img")
     for img in images:
-        img_link = img["src"].lower()
+        img_link = img["src"]
         image_filename = os.path.basename(img_link)
 
         # check it's not blacklisted
