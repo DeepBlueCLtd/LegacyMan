@@ -129,6 +129,17 @@ def htmlToDITA(file_name, soup, dita_soup):
     for strong in soup.find_all("strong"):
         strong.name = "b"
 
+    # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
+    for bq in soup.find_all("blockquote", recursive=False):
+        # note: we aren't doing this recursively, we're just looking at the top level
+        # in other scenarios there are nested blockquotes, culminating in a heading in a p
+        # we need to handle them separately.
+        if bq.find("p", recursive=False):
+            # it's an indented list.
+            bq.name = "ul"
+            for p in bq.find_all("p", recursive=False):
+                p.name = "li"
+
     # for ul in soup.find_all('ul'):
     #     ul.name = 'ol'
 
