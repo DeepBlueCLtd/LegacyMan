@@ -76,7 +76,7 @@ def parse_images(tag, target, dita_soup):
         image_filename = os.path.basename(img_link)
 
         # check it's not blacklisted
-        if not image_filename in black_list:
+        if not image_filename.lower() in black_list:
             dita_image = dita_soup.new_tag("image")
             dita_image["href"] = img_link
             dita_image["scale"] = 33
