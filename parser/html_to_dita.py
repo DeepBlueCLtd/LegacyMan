@@ -1,3 +1,4 @@
+import copy
 import os
 from bs4 import BeautifulSoup
 
@@ -30,7 +31,7 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(file_name, soup, dita_soup):
+def htmlToDITA(file_name, soup_in, dita_soup):
     """
     this function will convert a block of html to DITA
     :param file_name: any number
@@ -40,6 +41,7 @@ def htmlToDITA(file_name, soup, dita_soup):
     """
 
     # TODO: take clone of soup before we process it
+    soup = copy.copy(soup_in)
 
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
@@ -49,21 +51,26 @@ def htmlToDITA(file_name, soup, dita_soup):
 
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
-        print("=====")
-        print(file_name)
-        print(div)
-        # check it's not a formatting placeholder for an image
-        for img in div.find_all("img", recursive=False):
-            print(img)
-            div.replace_with(img)
-            img.name = "image"
-            img["href"] = img["src"]
-            del img["src"]
-            del img["border"]
-            # name not allowed in DITA image, put value into ID, if present
-            if img.has_attr("name"):
-                img.id = img["name"]
-                del img["name"]
+        if div.has_attr("align") and div["align"] == "center":
+            print("=====")
+            print(file_name)
+            print(div)
+            div.name = "p"
+            div["outputclass"] = "center"
+            del div["align"]
+            # check it's not a formatting placeholder for an image
+            for img in div.find_all("img", recursive=False):
+                print(img)
+                # div.replace_with(img)
+                # img["outputclass"] = "center"
+                img.name = "image"
+                img["href"] = img["src"]
+                del img["src"]
+                del img["border"]
+                # name not allowed in DITA image, put value into ID, if present
+                if img.has_attr("name"):
+                    img.id = img["name"]
+                    del img["name"]
         else:
             div.name = "p"
             # TODO: verify if real HTML has divs with names
@@ -105,7 +112,9 @@ def htmlToDITA(file_name, soup, dita_soup):
         # NOTE: in the future, we may need to check the para is just one line long, or
         # use some other test to establish that it's just providing a title
         for pp in p.find_all("p"):
-            pp.name = "b"
+            # check it's not a p that we have generated earlier
+            if not pp.has_attr("outputclass"):
+                pp.name = "b"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
