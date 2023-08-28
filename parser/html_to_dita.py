@@ -49,12 +49,28 @@ def htmlToDITA(file_name, soup, dita_soup):
 
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
-        div.name = "p"
-        # TODO: verify if real HTML has divs with names
-        del div["name"]
-        # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
-        del div["align"]
-        del div["style"]
+        print("=====")
+        print(file_name)
+        print(div)
+        # check it's not a formatting placeholder for an image
+        for img in div.find_all("img", recursive=False):
+            print(img)
+            div.replace_with(img)
+            img.name = "image"
+            img["href"] = img["src"]
+            del img["src"]
+            del img["border"]
+            # name not allowed in DITA image, put value into ID, if present
+            if img.has_attr("name"):
+                img.id = img["name"]
+                del img["name"]
+        else:
+            div.name = "p"
+            # TODO: verify if real HTML has divs with names
+            del div["name"]
+            # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
+            del div["align"]
+            del div["style"]
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
