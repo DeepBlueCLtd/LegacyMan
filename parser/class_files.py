@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
 
+from parser_utils import replace_characters
+
 # lower case version of images we ignore. Note `prev_db.jpg` added for testing
 black_list = [
     "image020.jpg",
@@ -78,7 +80,7 @@ def parse_images(tag, target, dita_soup):
         # check it's not blacklisted
         if not image_filename.lower() in black_list:
             dita_image = dita_soup.new_tag("image")
-            dita_image["href"] = img_link
+            dita_image["href"] = replace_characters(img_link, " ", "%20")
             dita_image["scale"] = 33
             dita_image["align"] = "left"
             dita_images.append(dita_image)
