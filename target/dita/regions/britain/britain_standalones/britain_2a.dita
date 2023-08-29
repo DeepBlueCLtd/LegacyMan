@@ -224,14 +224,13 @@
     </p>
 				
 
-				<p>
-					
-
+				<fig outputclass="center">
 					<image href="./Content/Images/oscill_c.jpg"/>
-					
+					<p outputclass="figtitle">
+
       Figure 4: new oscilloscope view
-    
-				</p>
+    </p>
+				</fig>
 				
 
 				<p>
