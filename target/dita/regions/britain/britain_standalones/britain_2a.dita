@@ -11,6 +11,8 @@
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<table>
@@ -38,7 +40,7 @@
 				</tgroup>
 			</table>
 		</summary>
-		<signatures id="sigantures">
+		<signatures id="signatures">
 			<table>
 				<tgroup cols="4">
 					<colspec colname="col1" colnum="1"/>
@@ -47,7 +49,9 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">
+								<b>Commonly Detected Sources</b>
+							</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -78,8 +82,15 @@
 							<entry>Cat b Engine R</entry>
 							<entry>2-1000.4</entry>
 							<entry>H2, 4, 21, 145</entry>
-							<entry>The quick brown fox does something similar
-            Tool screenshot aTool screenshot b</entry>
+							<entry>
+								
+            The quick brown fox does something similar
+            
+								<xref href="./Britain_2A.dita">Tool screenshot a[xxx]</xref>
+								<xref href="./Britain_2A.dita">Tool screenshot b[xxx]</xref>
+								
+
+							</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -102,27 +113,6 @@
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">124 &amp; CSR (low)</entry>
-						</row>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
-						</row>
-						<row>
-							<entry>Acoustic Signature</entry>
-							<entry nameend="col4" namest="col2">Mode Charlie. These platforms are able to process
-              up to 3000 tonnes of processed material per day. Mode Delta.
-              This lower mode is most useful in reducting tentative load during
-              night time energy reduction periods. Note 1.
-              Since the 1990s Carter Burman has has trouble generating the
-              volume of spares available when installations first designed.
-              Expect plant to be similar to 2016 steam powered version.</entry>
-						</row>
-						<row>
-							<entry>Unique classifiers</entry>
-							<entry nameend="col4" namest="col2">None</entry>
-						</row>
-						<row>
-							<entry>Aural</entry>
-							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -295,6 +285,18 @@
 				<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
       quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
       ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+				
+
+				<p>
+					
+
+					<b>
+						<ph outputclass="red">*</ph>
+						 Subject to confirmation from local engineer 
+					</b>
+					
+
+				</p>
 				
 
 			</span>

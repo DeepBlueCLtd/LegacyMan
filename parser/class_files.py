@@ -34,14 +34,15 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     # Parse the images
     parse_images(html_soup, dita_body, dita_soup)
 
+    options = {"file_name": file_name, "file_path": class_file_src_path}
+
     # Parse the summary and the signatures block
     if html_soup.find("td", {"colspan": "6"}) is None:
         print(f">>> Failed to find colspan:6 for {class_file_src_path}")
     else:
         # Parse the summary and the signature blocks from the html and build a dita <signagures> and <summary> blocks
-        parse_summary_and_signatures(html_soup, dita_body, dita_soup)
+        parse_summary_and_signatures(html_soup, dita_body, dita_soup, options)
 
-    options = {"file_name": file_name, "file_path": class_file_src_path}
     # Parse the propulsion block and build a dita <propulsion>
     parse_propulsion(html_soup, dita_body, dita_soup, options)
 
@@ -90,11 +91,7 @@ def parse_images(tag, target, dita_soup):
     target.append(dita_images)
 
 
-def parse_summary_and_signatures(
-    tag,
-    target,
-    dita_soup,
-):
+def parse_summary_and_signatures(tag, target, dita_soup, options):
     td = tag.find("td", {"colspan": "6"})
     table = td.find_parent("table")
 
@@ -119,15 +116,28 @@ def parse_summary_and_signatures(
 
     dita_colspec = dita_soup.new_tag("colspec")
     dita_signatures = dita_soup.new_tag("signatures")
-    dita_signatures["id"] = "sigantures"
+    dita_signatures["id"] = "signatures"
 
     for tr_count, tr in enumerate(table.find_all("tr")):
         dita_row = dita_soup.new_tag("row")
         cells = tr.find_all("td")
         for idx, td in enumerate(cells):
             # Append the first and second <tr> elements to the <summary> element
-            dita_entry = dita_soup.new_tag("entry")
-            dita_entry.string = td.text.strip()
+            # dita_entry = dita_soup.new_tag("entry")
+            # dita_entry.string = td.text.strip()
+
+            dita_entry = htmlToDITA(options["file_name"], td, dita_soup)
+            dita_entry.name = "entry"
+
+            # remove colspans and rowspans.
+            # In the future we will have to reflect
+            # colspan/rowspan using CALS terms.
+            # To be tidily handled in #324
+            if dita_entry.has_attr("colspan"):
+                del dita_entry["colspan"]
+            if dita_entry.has_attr("rowspan"):
+                del dita_entry["rowspan"]
+
             # if only one cell, do colspan
             if len(cells) == 1:
                 dita_entry["nameend"] = "col4"

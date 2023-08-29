@@ -17,7 +17,6 @@ from parser_utils import (
 
 from class_files import process_class_files
 
-
 def process_regions(root_path):
     # copy the world-map.gif file
     source_dir = f"{root_path}/PlatformData/Content/images/"

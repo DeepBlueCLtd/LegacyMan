@@ -34,7 +34,7 @@
 				</tgroup>
 			</table>
 		</summary>
-		<signatures id="sigantures">
+		<signatures id="signatures">
 			<table>
 				<tgroup cols="4">
 					<colspec colname="col1" colnum="1"/>
@@ -43,7 +43,9 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Commonly Detected Sources</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">
+								<b>Commonly Detected Sources</b>
+							</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -111,8 +113,15 @@
 							<entry>Cat b Engine R</entry>
 							<entry>2-1000.4</entry>
 							<entry>H2, 4, 21, 145</entry>
-							<entry>The quick brown fox does something similar
-            Tool screenshot aTool screenshot b</entry>
+							<entry>
+								
+            The quick brown fox does something similar
+            
+								<xref href="./unit_g.dita">Tool screenshot a[xxx]</xref>
+								<xref href="./unit_g.dita">Tool screenshot b[xxx]</xref>
+								
+
+							</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -130,19 +139,17 @@
 							<entry>CBR 54334</entry>
 						</row>
 						<row>
-							<entry>DAF
-45.5
-H5-17
-Follow link for juicy details</entry>
+							<entry>
+								<xref href="./unit_g.dita">DAF[xxx]</xref>
+							</entry>
 							<entry>45.5</entry>
 							<entry>H5-17</entry>
 							<entry>Follow link for juicy details</entry>
 						</row>
 						<row>
-							<entry>FOG
-544.4
-H2-12
-Follow link for more juicy details</entry>
+							<entry>
+								<xref href="./unit_g.dita">FOG[xxx]</xref>
+							</entry>
 							<entry>544.4</entry>
 							<entry>H2-12</entry>
 							<entry>Follow link for more juicy details</entry>
@@ -152,7 +159,9 @@ Follow link for more juicy details</entry>
 						</row>
 						<row>
 							<entry>Acoustic Signature</entry>
-							<entry nameend="col4" namest="col2">Expect plant to be similar to 2016 steam powered version</entry>
+							<entry nameend="col4" namest="col2">
+            Expect plant to be similar to 2016 steam powered version
+          </entry>
 						</row>
 						<row>
 							<entry>Unique classifiers</entry>
