@@ -165,23 +165,17 @@
 				</p>
 				
 
-				<p id="image4">
-					
+				<!-- this is an example of the presence of a div used to centre an image
+    and its label #343 -->
+				
 
-					<!-- this is an example of the presence of a div used to centre an image
-      and its label #343 CHECK IF THIS IS A DIV IN A DIV -->
-					
+				<fig outputclass="center">
+					<image href="./Content/Images/oscill_d.jpg"/>
+					<p outputclass="figtitle">
 
-					<fig outputclass="center">
-						<image href="./Content/Images/oscill_d.jpg"/>
-						<p outputclass="figtitle">
-
-        Figure 3: Britain 1A Overview
-      </p>
-					</fig>
-					
-
-				</p>
+      Figure 3: Britain 1A Overview
+    </p>
+				</fig>
 				
 
 				<p/>
