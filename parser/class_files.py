@@ -91,12 +91,7 @@ def parse_images(tag, target, dita_soup):
     target.append(dita_images)
 
 
-def parse_summary_and_signatures(
-    tag,
-    target,
-    dita_soup,
-    options
-):
+def parse_summary_and_signatures(tag, target, dita_soup, options):
     td = tag.find("td", {"colspan": "6"})
     table = td.find_parent("table")
 
@@ -121,7 +116,7 @@ def parse_summary_and_signatures(
 
     dita_colspec = dita_soup.new_tag("colspec")
     dita_signatures = dita_soup.new_tag("signatures")
-    dita_signatures["id"] = "sigantures"
+    dita_signatures["id"] = "signatures"
 
     for tr_count, tr in enumerate(table.find_all("tr")):
         dita_row = dita_soup.new_tag("row")
@@ -131,7 +126,17 @@ def parse_summary_and_signatures(
             # dita_entry = dita_soup.new_tag("entry")
             # dita_entry.string = td.text.strip()
 
-            dita_entry = htmlToDITA(options['file_name'], td, dita_soup)
+            dita_entry = htmlToDITA(options["file_name"], td, dita_soup)
+            dita_entry.name = "entry"
+
+            # remove colspans and rowspans.
+            # In the future we will have to reflect
+            # colspan/rowspan using CALS terms.
+            # To be tidily handled in #324
+            if dita_entry.has_attr("colspan"):
+                del dita_entry["colspan"]
+            if dita_entry.has_attr("rowspan"):
+                del dita_entry["rowspan"]
 
             # if only one cell, do colspan
             if len(cells) == 1:
