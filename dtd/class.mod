@@ -17,6 +17,7 @@
 <!ENTITY % remarks                      "remarks">
 <!ENTITY % span                           "span">
 <!ENTITY % section.cnt                           "section.cnt">
+<!ENTITY % arch-atts                           "arch-atts">
 <!ENTITY % table                           "table">
 <!ENTITY % xref                           "xref">
 <!ENTITY % ul                           "ul">
