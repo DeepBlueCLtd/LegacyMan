@@ -5,13 +5,11 @@
 	<title>Unit_daf</title>
 	<body>
 		<images>
-			<image align="left" href="./Content/Images/FlagS.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_2.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
-			<image align="left" href="./Content/Images/FlagS.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 		</images>
 		<summary id="summary">

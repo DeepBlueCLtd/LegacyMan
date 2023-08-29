@@ -7,7 +7,7 @@
 		<images>
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_e.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/oscill_e.JPG" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
@@ -64,13 +64,12 @@
 							<entry>SR</entry>
 							<entry>S12</entry>
 							<entry>H1-4</entry>
-							<entry>Discrete. Doublets common</entry>
+							<entry>Discrete. Doublets common. This cell spans two rows!</entry>
 						</row>
 						<row>
 							<entry>BR</entry>
 							<entry>S5</entry>
 							<entry>H1</entry>
-							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Intermittent Sources</entry>
@@ -85,17 +84,24 @@
 						<row>
 							<entry>Unk BBA</entry>
 							<entry>25 &amp; CSR</entry>
-							<entry>H1</entry>
-							<entry>CBR 34</entry>
+							<entry>H1 (and numerous others) - TWO ROWS</entry>
+							<entry>CBR 34 (in high humidiy) - TWO ROWS</entry>
+						</row>
+						<row>
+							<entry>Unk BBA</entry>
+							<entry nameend="col4" namest="col2">25 &amp; CSR</entry>
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Speed related sources</entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
-							<entry>135 &amp; CSR</entry>
+							<entry>135 &amp; CSR (high)</entry>
 							<entry>H1 &amp; 2</entry>
 							<entry>CBR 54334</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">124 &amp; CSR (low)</entry>
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
@@ -198,7 +204,7 @@
 
 					<image href="./Content/Images/oscill_c.jpg"/>
 					<image href="./Content/Images/oscill_d.jpg"/>
-					<image href="./Content/Images/oscill_e.jpg"/>
+					<image href="./Content/Images/oscill_e.JPG"/>
 					    Figure 1:
       oscilloscope view    Figure 2: other oscilloscope
       view    Figure 3: extra oscilloscope view
