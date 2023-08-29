@@ -185,6 +185,9 @@ def htmlToDITA(file_name, soup_in, dita_soup):
     # for ul in soup.find_all('ul'):
     #     ul.name = 'ol'
 
+    if soup.name == "td":
+        soup.name = "entry"
+
     return soup
 
 

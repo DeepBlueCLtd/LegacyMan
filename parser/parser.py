@@ -16,6 +16,7 @@ from parser_utils import (
 )
 
 from class_files import process_class_files
+from html_to_dita import htmlToDITA
 
 
 def process_regions(root_path):
@@ -265,7 +266,8 @@ def process_category_pages(
         for td_count, td in enumerate(tr.find_all("td")):
             dita_entry = dita_soup.new_tag("entry")
             dita_entry.string = td.text.strip()
-
+            result = htmlToDITA('td', td, dita_soup)
+            print("RESULT ", result)
             # Add "namest" and "nameend" attributes to rows with a colspan of 7,
             # (which includes the first row)
             if td.get("colspan") == "7":
