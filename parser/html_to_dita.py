@@ -147,6 +147,8 @@ def htmlToDITA(file_name, soup_in, dita_soup):
         a.name = "xref"
         processLinkedPage(a["href"])
         a["href"] = "/".join([".", file_name + ".dita"])
+        # insert marker to show now implemented
+        a.string.replace_with(a.string + "[xxx]")
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
