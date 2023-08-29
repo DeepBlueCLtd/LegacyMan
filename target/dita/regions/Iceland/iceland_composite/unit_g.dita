@@ -117,8 +117,8 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./unit_g.dita">Tool screenshot a</xref>
-								<xref href="./unit_g.dita">Tool screenshot b</xref>
+								<xref href="./unit_g.dita">Tool screenshot a[xxx]</xref>
+								<xref href="./unit_g.dita">Tool screenshot b[xxx]</xref>
 								
 
 							</entry>
@@ -140,7 +140,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_g.dita">DAF</xref>
+								<xref href="./unit_g.dita">DAF[xxx]</xref>
 							</entry>
 							<entry>45.5</entry>
 							<entry>H5-17</entry>
@@ -148,7 +148,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_g.dita">FOG</xref>
+								<xref href="./unit_g.dita">FOG[xxx]</xref>
 							</entry>
 							<entry>544.4</entry>
 							<entry>H2-12</entry>

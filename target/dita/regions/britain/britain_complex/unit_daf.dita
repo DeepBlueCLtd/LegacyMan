@@ -64,7 +64,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_daf.dita">SR</xref>
+								<xref href="./unit_daf.dita">SR[xxx]</xref>
 							</entry>
 							<entry>S12</entry>
 							<entry>H1-4</entry>
@@ -78,7 +78,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_daf.dita">Cat b Engine R</xref>
+								<xref href="./unit_daf.dita">Cat b Engine R[xxx]</xref>
 							</entry>
 							<entry>2-100.4, 112, 132</entry>
 							<entry>H1, 3, 21 - 45, 55</entry>
@@ -86,10 +86,10 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./unit_daf.dita">Tool screenshot a</xref>
+								<xref href="./unit_daf.dita">Tool screenshot a[xxx]</xref>
 								,
             
-								<xref href="./unit_daf.dita">Tool screenshot b</xref>
+								<xref href="./unit_daf.dita">Tool screenshot b[xxx]</xref>
 								
 
 							</entry>
@@ -102,7 +102,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_daf.dita">Unk BBA</xref>
+								<xref href="./unit_daf.dita">Unk BBA[xxx]</xref>
 							</entry>
 							<entry>135 &amp; CSR</entry>
 							<entry>H1 &amp; 2</entry>
@@ -189,7 +189,7 @@
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
       Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="./unit_daf.dita">link</xref>
+					<xref href="./unit_daf.dita">link[xxx]</xref>
 					
 
 					<!-- </p>
@@ -291,7 +291,7 @@
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
       Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="./unit_daf.dita">link</xref>
+					<xref href="./unit_daf.dita">link[xxx]</xref>
 					
 
 				</p>

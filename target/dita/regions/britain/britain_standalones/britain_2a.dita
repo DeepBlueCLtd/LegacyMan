@@ -11,6 +11,8 @@
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<table>
@@ -84,8 +86,8 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./Britain_2A.dita">Tool screenshot a</xref>
-								<xref href="./Britain_2A.dita">Tool screenshot b</xref>
+								<xref href="./Britain_2A.dita">Tool screenshot a[xxx]</xref>
+								<xref href="./Britain_2A.dita">Tool screenshot b[xxx]</xref>
 								
 
 							</entry>
@@ -111,46 +113,6 @@
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">124 &amp; CSR (low)</entry>
-						</row>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
-						</row>
-						<row>
-							<entry>Acoustic Signature</entry>
-							<entry nameend="col4" namest="col2">
-								
-
-								<p>
-									
-
-									<b>Mode Charlie.</b>
-									 These platforms are able to process
-              up to 3000 tonnes of processed material per day. 
-									<b>Mode Delta.</b>
-									
-              This lower mode is most useful in reducting tentative load during
-              night time energy reduction periods. 
-									<b>Note 1.</b>
-									
-              Since the 1990s Carter Burman has has trouble generating the
-              volume of spares available when installations first designed.
-              Expect plant to be similar to 2016 steam powered version.
-            
-								</p>
-								
-
-							</entry>
-						</row>
-						<row>
-							<entry>Unique classifiers</entry>
-							<entry nameend="col4" namest="col2">None</entry>
-						</row>
-						<row>
-							<entry>Aural</entry>
-							<entry nameend="col4" namest="col2">
-								<ph outputclass="red">    *</ph>
-								<b>Distinct in high humidity</b>
-							</entry>
 						</row>
 					</tbody>
 				</tgroup>

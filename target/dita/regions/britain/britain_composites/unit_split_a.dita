@@ -78,8 +78,8 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./unit_split_a.dita">Tool screenshot a</xref>
-								<xref href="./unit_split_a.dita">Tool screenshot b</xref>
+								<xref href="./unit_split_a.dita">Tool screenshot a[xxx]</xref>
+								<xref href="./unit_split_a.dita">Tool screenshot b[xxx]</xref>
 								
 
 							</entry>
