@@ -14,6 +14,7 @@ black_list = [
     "rtn2map_db.gif",
     "prev_db.jpg",
     "flags.jpg",
+    "return_db.gif",
 ]
 
 
