@@ -34,14 +34,15 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     # Parse the images
     parse_images(html_soup, dita_body, dita_soup)
 
+    options = {"file_name": file_name, "file_path": class_file_src_path}
+
     # Parse the summary and the signatures block
     if html_soup.find("td", {"colspan": "6"}) is None:
         print(f">>> Failed to find colspan:6 for {class_file_src_path}")
     else:
         # Parse the summary and the signature blocks from the html and build a dita <signagures> and <summary> blocks
-        parse_summary_and_signatures(html_soup, dita_body, dita_soup)
+        parse_summary_and_signatures(html_soup, dita_body, dita_soup, options)
 
-    options = {"file_name": file_name, "file_path": class_file_src_path}
     # Parse the propulsion block and build a dita <propulsion>
     parse_propulsion(html_soup, dita_body, dita_soup, options)
 
@@ -94,6 +95,7 @@ def parse_summary_and_signatures(
     tag,
     target,
     dita_soup,
+    options
 ):
     td = tag.find("td", {"colspan": "6"})
     table = td.find_parent("table")
@@ -126,8 +128,11 @@ def parse_summary_and_signatures(
         cells = tr.find_all("td")
         for idx, td in enumerate(cells):
             # Append the first and second <tr> elements to the <summary> element
-            dita_entry = dita_soup.new_tag("entry")
-            dita_entry.string = td.text.strip()
+            # dita_entry = dita_soup.new_tag("entry")
+            # dita_entry.string = td.text.strip()
+
+            dita_entry = htmlToDITA(options['file_name'], td, dita_soup)
+
             # if only one cell, do colspan
             if len(cells) == 1:
                 dita_entry["nameend"] = "col4"

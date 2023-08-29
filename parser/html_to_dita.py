@@ -167,26 +167,32 @@ def htmlToDITA(file_name, soup_in, dita_soup):
 
     # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
     for bq in soup.find_all("blockquote", recursive=False):
-        if bq.find("blockquote"):
-            # blockquotes used for padding. replace with placeholder
-            para = dita_soup.new_tag("p")
-            para.string = "[WHITESPACE FOR TABLE]"
-            bq.replace_with(para)
-        else:
-            # note: we aren't doing this recursively, we're just looking at the top level
-            # in other scenarios there are nested blockquotes, culminating in a heading in a p
-            # we need to handle them separately.
-            if bq.find("p", recursive=False):
-                # it's an indented list.
-                bq.name = "ul"
-                for p in bq.find_all("p", recursive=False):
-                    p.name = "li"
+            if bq.find("blockquote"):
+                # blockquotes used for padding. replace with placeholder
+                para = dita_soup.new_tag("p")
+                para.string = "[WHITESPACE FOR TABLE]"
+                bq.replace_with(para)
+            else:
+                # note: we aren't doing this recursively, we're just looking at the top level
+                # in other scenarios there are nested blockquotes, culminating in a heading in a p
+                # we need to handle them separately.
+                if bq.find("p", recursive=False):
+                    # it's an indented list.
+                    bq.name = "ul"
+                    for p in bq.find_all("p", recursive=False):
+                        p.name = "li"
 
-    # for ul in soup.find_all('ul'):
-    #     ul.name = 'ol'
+        # for ul in soup.find_all('ul'):
+        #     ul.name = 'ol'
+
+    for td in soup.find_all("td"):
+        td.name = "entry"
+        td['colspan'] = "1"
+
 
     if soup.name == "td":
         soup.name = "entry"
+        soup['colspan'] = "2"
 
     return soup
 
