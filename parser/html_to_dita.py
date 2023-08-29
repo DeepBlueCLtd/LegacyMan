@@ -189,6 +189,19 @@ def htmlToDITA(file_name, soup_in, dita_soup):
         td.name = "entry"
         td['colspan'] = "1"
 
+    # Replace `span` used for red-formatting with a <ph> equivalent
+    for span in soup.find_all("span"):
+        if span.has_attr("style"):
+            if "color:#F00" in span["style"]:
+                span.name = "ph"
+                span["outputclass"] = "red"
+                del span["style"]
+
+    # for ul in soup.find_all('ul'):
+    #     ul.name = 'ol'
+    for td in soup.find_all("td"):
+        td.name = "entry"
+        td["colspan"] = "1"
 
     if soup.name == "td":
         soup.name = "entry"
