@@ -17,6 +17,7 @@
 <!ENTITY % remarks                      "remarks">
 <!ENTITY % span                           "span">
 <!ENTITY % section.cnt                           "section.cnt">
+<!ENTITY % arch-atts                           "arch-atts">
 <!ENTITY % table                           "table">
 <!ENTITY % xref                           "xref">
 <!ENTITY % ul                           "ul">
@@ -34,7 +35,7 @@
                                   %arch-atts;
                                   domains CDATA "&included-domains;"
 >
-<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%related-links;)? )>
+<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%section.cnt;)*, (%related-links;)? )>
 <!ATTLIST body              
                                         outputclass CDATA #IMPLIED
 >
