@@ -51,15 +51,19 @@ def htmlToDITA(file_name, soup_in, dita_soup):
 
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
-        if div.has_attr("align") and div["align"] == "center":
-            print("=====")
-            print(file_name)
-            print(div)
-            div.name = "p"
+        # see if this is an image placeholder
+        if div.has_attr("align") and div["align"] == "center" and div.find("img"):
+            div.name = "fig"
             div["outputclass"] = "center"
             del div["align"]
+            # get the text content
+            content = div.text
+            # get the images
+            child_images = div.find_all("img", recursive=False)
+            # clear the element
+            div.clear()
             # check it's not a formatting placeholder for an image
-            for img in div.find_all("img", recursive=False):
+            for img in child_images:
                 print(img)
                 # div.replace_with(img)
                 # img["outputclass"] = "center"
@@ -71,6 +75,12 @@ def htmlToDITA(file_name, soup_in, dita_soup):
                 if img.has_attr("name"):
                     img.id = img["name"]
                     del img["name"]
+                div.append(img)
+            # put any child text into a `p`
+            newPara = dita_soup.new_tag("p")
+            newPara["outputclass"] = "figtitle"
+            newPara.string = content
+            div.append(newPara)
         else:
             div.name = "p"
             # TODO: verify if real HTML has divs with names
@@ -115,6 +125,7 @@ def htmlToDITA(file_name, soup_in, dita_soup):
             # check it's not a p that we have generated earlier
             if not pp.has_attr("outputclass"):
                 pp.name = "b"
+                pp["outputclass"] = "asP"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
