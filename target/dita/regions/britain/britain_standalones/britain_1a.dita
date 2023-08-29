@@ -11,6 +11,7 @@
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
+			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
 		</images>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
@@ -108,14 +109,13 @@
     </p>
 				
 
-				<p>
-					
-
+				<fig outputclass="center">
 					<image href="./Content/Images/oscill_c.jpg"/>
-					
+					<p outputclass="figtitle">
+
       Figure 4: new oscilloscope view
-    
-				</p>
+    </p>
+				</fig>
 				
 
 				<p>
@@ -160,6 +160,25 @@
 					<image href="./Content/Images/oscill_c.jpg"/>
 					 
 					<image href="./Content/Images/oscill_d.jpg"/>
+					
+
+				</p>
+				
+
+				<p id="image4">
+					
+
+					<!-- this is an example of the presence of a div used to centre an image
+      and its label #343 CHECK IF THIS IS A DIV IN A DIV -->
+					
+
+					<fig outputclass="center">
+						<image href="./Content/Images/oscill_d.jpg"/>
+						<p outputclass="figtitle">
+
+        Figure 3: Britain 1A Overview
+      </p>
+					</fig>
 					
 
 				</p>
