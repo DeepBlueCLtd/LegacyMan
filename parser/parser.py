@@ -16,8 +16,6 @@ from parser_utils import (
 )
 
 from class_files import process_class_files
-from html_to_dita import htmlToDITA
-
 
 def process_regions(root_path):
     # copy the world-map.gif file
