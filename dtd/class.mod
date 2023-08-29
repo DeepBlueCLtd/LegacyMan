@@ -35,7 +35,7 @@
                                   %arch-atts;
                                   domains CDATA "&included-domains;"
 >
-<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%section.cnt;)*, (%related-links;)? )>
+<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%related-links;)? )>
 <!ATTLIST body              
                                         outputclass CDATA #IMPLIED
 >
