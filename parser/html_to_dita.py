@@ -31,12 +31,13 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(file_name, soup_in, dita_soup):
+def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
     """
     this function will convert a block of html to DITA
     :param file_name: any number
-    :param soup: BS4 tag to be converted
+    :param soup_in: BS4 tag to be converted
     :param dita_soup: BS4 soup XML element, used for generating new elements
+    :param div_replacement: the tag to replace `div` elements with
     :return: converted block of dita
     """
 
@@ -45,8 +46,11 @@ def htmlToDITA(file_name, soup_in, dita_soup):
 
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
-        soup.name = "span"
-        del soup["id"]
+        soup.name = div_replacement
+        # del soup["id"]
+        if soup.has_attr("name"):
+            soup.id = soup["name"]
+            del soup["name"]
         del soup["style"]
 
     # 2. Replace child divs with a paragraph element
@@ -147,8 +151,9 @@ def htmlToDITA(file_name, soup_in, dita_soup):
         a.name = "xref"
         processLinkedPage(a["href"])
         a["href"] = "/".join([".", file_name + ".dita"])
-        # insert marker to show now implemented
-        a.string.replace_with(a.string + "[xxx]")
+        # insert marker to show not implemented, if it's a string link
+        if a.string:
+            a.string.replace_with(a.string + "[xxx]")
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
@@ -162,10 +167,19 @@ def htmlToDITA(file_name, soup_in, dita_soup):
     # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
         tb.replace_with("[TABLE PLACEHOLDER]")
+    if soup.name == "table":
+        # whole element is a table. Replace it with a placeholder
+        soup.clear
+        soup.name = "p"
+        soup.string = "[TABLE PLACEHOLDER]"
+        if soup.has_attr("border"):
+            del soup["border"]
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
         strong.name = "b"
+    if soup.name == "strong":
+        soup.name = "b"
 
     # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
     for bq in soup.find_all("blockquote", recursive=False):
