@@ -129,7 +129,6 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
             # check it's not a p that we have generated earlier
             if not pp.has_attr("outputclass"):
                 pp.name = "b"
-                pp["outputclass"] = "asP"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
@@ -152,8 +151,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
         processLinkedPage(a["href"])
         a["href"] = "/".join([".", file_name + ".dita"])
         # insert marker to show not implemented, if it's a string link
-        if a.string:
-            a.string.replace_with(a.string + "[xxx]")
+        a["outputclass"] = "placeholder"
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
@@ -166,14 +164,15 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
 
     # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
-        para = dita_soup.new_tag("p")
-        p.string = "[TABLE PLACEHOLDER]"
-        p["outputClass"] = "placeholder"
+        para = dita_soup.new_tag("b")
+        para.string = "[TABLE PLACEHOLDER]"
+        para["outputclass"] = "placeholder"
         tb.replace_with(para)
     if soup.name == "table":
         # whole element is a table. Replace it with a placeholder
         soup.clear
         soup.name = "p"
+        soup["outputclass"] = "placeholder"
         soup.string = "[TABLE PLACEHOLDER]"
         if soup.has_attr("border"):
             del soup["border"]
@@ -190,6 +189,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
             # blockquotes used for padding. replace with placeholder
             para = dita_soup.new_tag("p")
             para.string = "[WHITESPACE FOR TABLE]"
+            para["outputclass"] = "placeholder"
             bq.replace_with(para)
         else:
             # note: we aren't doing this recursively, we're just looking at the top level
