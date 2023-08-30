@@ -128,51 +128,6 @@
 					</tbody>
 				</tgroup>
 			</table>
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/prev_db.jpg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<!-- these are the images from the `daf_pics.html` page, though they
-      are compressed to be displayed here.  But, it could be that only a subset of
-      the available images are published on this page -->
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/daf_1.jpeg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/daf_2.jpeg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/daf_3.jpeg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
