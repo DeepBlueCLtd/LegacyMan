@@ -140,6 +140,8 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
                     dita_entry["outputclass"] = "lightGray"
                 elif dita_entry["bgcolor"] == "#999999":
                     dita_entry["outputclass"] = "darkGray"
+                else:
+                    print(f"Failed to handle this background color:{dita_entry['bgcolor']}")
                 del dita_entry["bgcolor"]
 
             # remove colspans and rowspans.
