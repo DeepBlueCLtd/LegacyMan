@@ -44,6 +44,14 @@
     background-color: #FF0;
 }
 
+.lightGray {
+    background-color: #CCC;    
+}
+
+.darkGray {
+    background-color: #999;    
+}
+
 /*
  * ==============================================
  * Style changes for Fi3ldMan project above this block
