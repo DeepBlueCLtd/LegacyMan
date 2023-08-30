@@ -134,6 +134,7 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
             if dita_entry.has_attr("width"):
                 del dita_entry["width"]
 
+            # support cell shading
             if dita_entry.has_attr("bgcolor"):
                 if dita_entry["bgcolor"] == "#CCCCCC":
                     dita_entry["outputclass"] = "lightGray"
