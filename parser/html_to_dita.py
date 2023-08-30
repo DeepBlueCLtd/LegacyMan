@@ -166,7 +166,10 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
 
     # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
-        tb.replace_with("[TABLE PLACEHOLDER]")
+        para = dita_soup.new_tag("p")
+        p.string = "[TABLE PLACEHOLDER]"
+        p["outputClass"] = "placeholder"
+        tb.replace_with(para)
     if soup.name == "table":
         # whole element is a table. Replace it with a placeholder
         soup.clear
