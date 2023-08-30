@@ -12,10 +12,11 @@ from parser_utils import (
     copy_files,
     prettify_xml,
     replace_characters,
-    remove_leading_slash
+    remove_leading_slash,
 )
 
 from class_files import process_class_files
+
 
 def process_regions(root_path):
     # copy the world-map.gif file
@@ -73,7 +74,9 @@ def process_regions(root_path):
 
         if link.startswith("../"):
             country_name = os.path.dirname(remove_leading_slash(link))
-            country_path = process_ns_countries(country, country_name, remove_leading_slash(link), root_path)
+            country_path = process_ns_countries(
+                country, country_name, remove_leading_slash(link), root_path
+            )
             dita_xref["href"] = f"./{country_path}"
 
         dita_area = dita_soup.new_tag("area")
@@ -250,7 +253,9 @@ def process_category_pages(
     dita_tgroup["cols"] = len(table_columns)
 
     # TODO: change the href of the image
-    dita_image["href"] = replace_characters(f"../{remove_leading_slash(country_flag_link)}", " ", "%20")
+    dita_image["href"] = replace_characters(
+        f"../{remove_leading_slash(country_flag_link)}", " ", "%20"
+    )
     dita_image["alt"] = "flag"
 
     country_path = f"target/dita/regions/{country}"
@@ -285,9 +290,7 @@ def process_category_pages(
 
                     file_name = os.path.basename(href.replace(".html", ""))
                     class_name = a.text
-                    class_file_src_path = (
-                        f"{root_path}/{os.path.dirname(remove_leading_slash(category_page_link))}/{href}"
-                    )
+                    class_file_src_path = f"{root_path}/{os.path.dirname(remove_leading_slash(category_page_link))}/{href}"
 
                     class_file_target_path = f"target/dita/regions/{country}/{category}"
                     process_class_files(
@@ -344,8 +347,14 @@ def process_category_pages(
         f.write(prettified_code.encode("utf-8"))
 
 
-def parse_from_root(root_path):
-    print(f"LegacyMan parser running, with these arguments: {root_path}")
+def parse_from_root(root_path, target_path):
+    """
+    this function will parse a body of HTML, writing to DITA format
+    :param root_path: the location of the source data
+    :param target_path: where to write the results
+    """
+
+    print(f"LegacyMan parser running, with these arguments: {root_path} {target_path}")
     start_time = time.time()
 
     # remove existing target directory and recreate it
@@ -369,7 +378,7 @@ def parse_from_root(root_path):
         "-f",
         "html5",
         "-o",
-        "./target/html",
+        target_path,
     ]
     subprocess.run(dita_command)
 
@@ -380,4 +389,9 @@ def parse_from_root(root_path):
 
 if __name__ == "__main__":
     root_path = sys.argv[1]
-    parse_from_root(root_path)
+    if len(sys.argv) == 3:
+        target_path = sys.argv[2]
+    else:
+        target_path = "./target/html"
+    print(target_path)
+    parse_from_root(root_path, target_path)
