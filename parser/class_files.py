@@ -1,5 +1,6 @@
 import os
 from bs4 import BeautifulSoup
+import bs4
 
 from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
@@ -177,6 +178,21 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
     dita_signatures_tgroup.append(dita_signatures_tbody)
     dita_signatures_table.append(dita_signatures_tgroup)
     dita_signatures.append(dita_signatures_table)
+
+    # lastly, parse any content in signatures that isn't the colspan:6
+    parent = table.parent
+    for element in parent.children:
+        if type(element) is bs4.element.Comment:
+            # html comments are valid in DITA
+            dita_signatures.append(element)
+        elif type(element) is bs4.element.NavigableString:
+            # check it's not a line-break
+            if len(element) != 1:
+                dita_signatures.append(element)
+        elif type(element) is bs4.element.Tag:
+            if not element.find("td", {"colspan": "6"}):
+                dita = htmlToDITA(options["file_name"], element, dita_soup, "p")
+                dita_signatures.append(dita)
 
     # Append the summary and the signatures in the dita <body>
     target.append(dita_summary)

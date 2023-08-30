@@ -64,7 +64,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_daf.dita">SR[xxx]</xref>
+								<xref href="./unit_daf.dita" outputclass="placeholder">SR</xref>
 							</entry>
 							<entry>S12</entry>
 							<entry>H1-4</entry>
@@ -78,7 +78,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_daf.dita">Cat b Engine R[xxx]</xref>
+								<xref href="./unit_daf.dita" outputclass="placeholder">Cat b Engine R</xref>
 							</entry>
 							<entry>2-100.4, 112, 132</entry>
 							<entry>H1, 3, 21 - 45, 55</entry>
@@ -86,10 +86,10 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./unit_daf.dita">Tool screenshot a[xxx]</xref>
+								<xref href="./unit_daf.dita" outputclass="placeholder">Tool screenshot a</xref>
 								,
             
-								<xref href="./unit_daf.dita">Tool screenshot b[xxx]</xref>
+								<xref href="./unit_daf.dita" outputclass="placeholder">Tool screenshot b</xref>
 								
 
 							</entry>
@@ -102,7 +102,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_daf.dita">Unk BBA[xxx]</xref>
+								<xref href="./unit_daf.dita" outputclass="placeholder">Unk BBA</xref>
 							</entry>
 							<entry>135 &amp; CSR</entry>
 							<entry>H1 &amp; 2</entry>
@@ -128,10 +128,55 @@
 					</tbody>
 				</tgroup>
 			</table>
+			<p>
+				
+
+				<xref href="./unit_daf.dita" outputclass="placeholder">
+					<image height="150" href="./Content/Images/prev_db.jpg" width="200"/>
+				</xref>
+				
+
+			</p>
+			<!-- these are the images from the `daf_pics.html` page, though they
+      are compressed to be displayed here.  But, it could be that only a subset of
+      the available images are published on this page -->
+			<p>
+				
+
+				<xref href="./unit_daf.dita" outputclass="placeholder">
+					<image height="150" href="./Content/Images/daf_1.jpeg" width="200"/>
+				</xref>
+				
+
+			</p>
+			<p>
+				
+
+				<xref href="./unit_daf.dita" outputclass="placeholder">
+					<image height="150" href="./Content/Images/daf_2.jpeg" width="200"/>
+				</xref>
+				
+
+			</p>
+			<p>
+				
+
+				<xref href="./unit_daf.dita" outputclass="placeholder">
+					<image height="150" href="./Content/Images/daf_3.jpeg" width="200"/>
+				</xref>
+				
+
+			</p>
+			<p> </p>
+			<p> </p>
+			<p> </p>
+			<p> </p>
+			<p> </p>
+			<p> </p>
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
-			<span>
+			<span id="PageLayer3">
 				
 
 				<p outputclass="h1">PROPULSION</p>
@@ -189,29 +234,19 @@
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
       Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="./unit_daf.dita">link[xxx]</xref>
+					<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
 					
 
-					<!-- </p>
-    <p>
-    <h3>And now a table</h3> -->
+				</p>
+				
+
+				<p>
 					
 
-					<!-- <table border="1">
-        <thead>
-          <th>Heading one</th>
-          <th>Heading two</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>cell one</td>
-            <td>cell two</td>
-          </tr>
-          <tr>
-            <td colspan="2">cell three, with a <a href="./BR_Power_Units.html">link</a></td>
-          </tr>
-        </tbody>
-      </table> -->
+					<b outputclass="h3">And now a table</b>
+					
+
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
 					
 
 				</p>
@@ -228,39 +263,7 @@
 				<p>
 					
 
-					<!-- <table border="1">
-        <tr>
-          <td colspan="4"><strong>Unit_DAF</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Cruise Plant</strong></td>
-          <td>4 * PR32 Diesel Engines</td>
-          <td><strong>Shaft x Blade</strong></td>
-          <td>2 * 4 (GRR)</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong>Boost Plant</strong></td>
-          <td rowspan="2">None</td>
-          <td><strong>Range</strong></td>
-          <td>140nm @ 12kts</td>
-        </tr>
-        <tr>
-          <td><strong>Max Speed</strong></td>
-          <td>40 kts</td>
-        </tr>
-        <tr>
-          <td><strong>Reduction Ratio</strong></td>
-          <td>412.8:1</td>
-          <td><strong>Av TPK</strong></td>
-          <td>~14</td>
-        </tr>
-        <tr>
-          <td><strong>Max TRPM</strong></td>
-          <td>1400</td>
-          <td><strong>Max SRPM</strong></td>
-          <td>0-1600</td>
-        </tr>
-      </table> -->
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
 					
 
 				</p>
@@ -270,7 +273,7 @@
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
-			<span>
+			<span id="PageLayer2">
 				
 
 				<p outputclass="h1">REMARKS</p>
@@ -291,7 +294,7 @@
       ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
       tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
       Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="./unit_daf.dita">link[xxx]</xref>
+					<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
 					
 
 				</p>
@@ -302,7 +305,9 @@
 
 					<b outputclass="h3">And now a table</b>
 					
-[TABLE PLACEHOLDER]
+
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+					
 
 				</p>
 				
@@ -325,11 +330,19 @@
 				</ul>
 				
 
-				<!-- <p>
-      <p>1. Item one</p>
-      <p>2. Item two</p>
-      <p>3. Item three</p>
-    </p> -->
+				<p>
+					
+
+					<b>1. Item one</b>
+					
+
+					<b>2. Item two</b>
+					
+
+					<b>3. Item three</b>
+					
+
+				</p>
 				
 
 				<ol>
@@ -347,7 +360,7 @@
 				<p>
 					
 
-					<!-- <h3 id="bba_background">Background to BBA</h3> -->
+					<b id="bba_background" outputclass="h3">Background to BBA</b>
 					
       Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud
       dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco

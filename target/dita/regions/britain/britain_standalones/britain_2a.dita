@@ -86,8 +86,8 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./Britain_2A.dita">Tool screenshot a[xxx]</xref>
-								<xref href="./Britain_2A.dita">Tool screenshot b[xxx]</xref>
+								<xref href="./Britain_2A.dita" outputclass="placeholder">Tool screenshot a</xref>
+								<xref href="./Britain_2A.dita" outputclass="placeholder">Tool screenshot b</xref>
 								
 
 							</entry>
@@ -117,10 +117,14 @@
 					</tbody>
 				</tgroup>
 			</table>
+			<b>
+				<ph outputclass="red">*</ph>
+				 Subject to confirmation from local engineer 
+			</b>
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
-			<span>
+			<span id="PageLayer3">
 				
 
 				<p outputclass="h1">PROPULSION</p>
@@ -253,7 +257,7 @@
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
-			<span>
+			<span id="PageLayer2">
 				
 
 				<p outputclass="h1">REMARKS</p>

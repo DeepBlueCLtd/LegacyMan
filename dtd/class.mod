@@ -55,7 +55,9 @@
 <!ATTLIST propulsionRef    
                                   outputclass CDATA #IMPLIED
 >
-<!ATTLIST propulsionRef id ID #REQUIRED>
+<!ATTLIST propulsionRef id ID #REQUIRED
+                        href CDATA #REQUIRED
+>
 
 <!ELEMENT remarks    ((%title;)?, (%span;)*) >
 <!ATTLIST remarks     id ID #REQUIRED
@@ -67,6 +69,7 @@
 >
 <!ELEMENT span    ((%ul; | %ol; | %p; | %table; | %fig;)*) >
 <!ATTLIST span    
+                                  id CDATA #IMPLIED
                                   conref CDATA #IMPLIED
                                   outputclass CDATA #IMPLIED
 >
@@ -93,7 +96,7 @@
 <!-- extends section -->
 <!ATTLIST propulsion    class  CDATA "- topic/section class/propulsion ">
 <!-- extends section -->
-<!ATTLIST propulsionRef    class  CDATA "- topic/section class/propulsionRef ">
+<!ATTLIST propulsionRef    class  CDATA "- topic/xref class/propulsionRef ">
 <!-- extends section -->
 <!ATTLIST remarks    class  CDATA "- topic/section class/remarks ">
 <!--

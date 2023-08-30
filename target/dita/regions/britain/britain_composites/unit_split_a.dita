@@ -78,8 +78,8 @@
 								
             The quick brown fox does something similar
             
-								<xref href="./unit_split_a.dita">Tool screenshot a[xxx]</xref>
-								<xref href="./unit_split_a.dita">Tool screenshot b[xxx]</xref>
+								<xref href="./unit_split_a.dita" outputclass="placeholder">Tool screenshot a</xref>
+								<xref href="./unit_split_a.dita" outputclass="placeholder">Tool screenshot b</xref>
 								
 
 							</entry>
@@ -96,7 +96,10 @@
 						<row>
 							<entry>Unk BBA</entry>
 							<entry>135 &amp; CSR</entry>
-							<entry>H1 &amp; 2</entry>
+							<entry>
+								<ph outputclass="red">*</ph>
+								H1 &amp; 2
+							</entry>
 							<entry>CBR 54334</entry>
 						</row>
 						<row>
@@ -119,6 +122,14 @@
 					</tbody>
 				</tgroup>
 			</table>
+			<b>
+				<ph outputclass="red">*</ph>
+				 Subject to confirmation from local engineer 
+			</b>
+			<p outputclass="placeholder">[TABLE PLACEHOLDER]</p>
+			<p outputclass="placeholder">[TABLE PLACEHOLDER]</p>
+			<p outputclass="placeholder">[TABLE PLACEHOLDER]</p>
+			<p outputclass="placeholder">[TABLE PLACEHOLDER]</p>
 		</signatures>
 	</body>
 </class>

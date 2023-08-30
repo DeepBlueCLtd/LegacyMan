@@ -15,7 +15,7 @@
 		</images>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
-			<span>
+			<span id="PageLayer3">
 				
 
 				<p outputclass="h1">PROPULSION</p>
@@ -148,7 +148,7 @@
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
-			<span>
+			<span id="PageLayer2">
 				
 
 				<p outputclass="h1">REMARKS</p>
@@ -215,7 +215,7 @@
 				<!-- use of block quote to create whitespace -->
 				
 
-				<p>[WHITESPACE FOR TABLE]</p>
+				<p outputclass="placeholder">[WHITESPACE FOR TABLE]</p>
 				
 
 				<p>Tempor magna labore ullamco esse occaecat exercitation culpa amet culpa aliqua in mollit. Est nulla excepteur esse adipisicing nisi quis eu sunt laboris laborum. Esse ad enim culpa eiusmod aliqua laboris consectetur pariatur sit amet ipsum. Duis amet ut laboris excepteur proident.</p>

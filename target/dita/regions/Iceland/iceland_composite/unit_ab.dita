@@ -103,7 +103,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_ab.dita">DAF[xxx]</xref>
+								<xref href="./unit_ab.dita" outputclass="placeholder">DAF</xref>
 							</entry>
 							<entry>32.3</entry>
 							<entry>H5-17</entry>
@@ -111,7 +111,7 @@
 						</row>
 						<row>
 							<entry>
-								<xref href="./unit_ab.dita">FOG[xxx]</xref>
+								<xref href="./unit_ab.dita" outputclass="placeholder">FOG</xref>
 							</entry>
 							<entry>23.3</entry>
 							<entry>H2-12</entry>
@@ -152,7 +152,7 @@ Figure 2. Dominant
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
-			<span>
+			<span id="PageLayer3">
 				
 
 				<p outputclass="h1">PROPULSION</p>
@@ -249,7 +249,7 @@ Figure 2. Dominant
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
-			<span>
+			<span id="PageLayer2">
 				
 
 				<p outputclass="h1">REMARKS</p>
