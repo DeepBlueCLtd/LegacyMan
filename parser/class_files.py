@@ -130,6 +130,20 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
             dita_entry = htmlToDITA(options["file_name"], td, dita_soup)
             dita_entry.name = "entry"
 
+            # handle the cell width
+            if dita_entry.has_attr("width"):
+                del dita_entry["width"]
+
+            # support cell shading
+            if dita_entry.has_attr("bgcolor"):
+                if dita_entry["bgcolor"] == "#CCCCCC":
+                    dita_entry["outputclass"] = "lightGray"
+                elif dita_entry["bgcolor"] == "#999999":
+                    dita_entry["outputclass"] = "darkGray"
+                else:
+                    print(f"Failed to handle this background color:{dita_entry['bgcolor']}")
+                del dita_entry["bgcolor"]
+
             # remove colspans and rowspans.
             # In the future we will have to reflect
             # colspan/rowspan using CALS terms.

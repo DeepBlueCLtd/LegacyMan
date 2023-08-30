@@ -17,12 +17,12 @@
 				<tgroup cols="6">
 					<thead>
 						<row>
-							<entry>Drive</entry>
-							<entry>Mode</entry>
-							<entry>Shaft x Blade</entry>
-							<entry>R:R</entry>
-							<entry>Max Speed</entry>
-							<entry>Av TPK (Guide)</entry>
+							<entry outputclass="darkGray">Drive</entry>
+							<entry outputclass="darkGray">Mode</entry>
+							<entry outputclass="darkGray">Shaft x Blade</entry>
+							<entry outputclass="darkGray">R:R</entry>
+							<entry outputclass="darkGray">Max Speed</entry>
+							<entry outputclass="darkGray">Av TPK (Guide)</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -54,16 +54,16 @@
 					</thead>
 					<tbody>
 						<row>
-							<entry>Source</entry>
-							<entry>Ratio/Freq</entry>
-							<entry>Harmonics</entry>
-							<entry>Remarks</entry>
+							<entry outputclass="lightGray">Source</entry>
+							<entry outputclass="lightGray">Ratio/Freq</entry>
+							<entry outputclass="lightGray">Harmonics</entry>
+							<entry outputclass="lightGray">Remarks</entry>
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
 						</row>
 						<row>
-							<entry>
+							<entry outputclass="lightGray">
 								<xref href="./unit_daf.dita" outputclass="placeholder">SR</xref>
 							</entry>
 							<entry>S12</entry>
@@ -71,13 +71,13 @@
 							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
-							<entry>BR</entry>
+							<entry outputclass="lightGray">BR</entry>
 							<entry>S5</entry>
 							<entry>H1</entry>
 							<entry>Discrete. Doublets common</entry>
 						</row>
 						<row>
-							<entry>
+							<entry outputclass="lightGray">
 								<xref href="./unit_daf.dita" outputclass="placeholder">Cat b Engine R</xref>
 							</entry>
 							<entry>2-100.4, 112, 132</entry>
@@ -95,13 +95,13 @@
 							</entry>
 						</row>
 						<row>
-							<entry>Unk BBA</entry>
+							<entry outputclass="lightGray">Unk BBA</entry>
 							<entry>25 &amp; CSR</entry>
 							<entry>H1</entry>
 							<entry>CBR 34</entry>
 						</row>
 						<row>
-							<entry>
+							<entry outputclass="lightGray">
 								<xref href="./unit_daf.dita" outputclass="placeholder">Unk BBA</xref>
 							</entry>
 							<entry>135 &amp; CSR</entry>
@@ -112,17 +112,17 @@
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
-							<entry>Acoustic Signature</entry>
+							<entry outputclass="lightGray">Acoustic Signature</entry>
 							<entry nameend="col4" namest="col2">
             Expect plant to be similar to 2016 steam powered version
           </entry>
 						</row>
 						<row>
-							<entry>Unique classifiers</entry>
+							<entry outputclass="lightGray">Unique classifiers</entry>
 							<entry nameend="col4" namest="col2">None</entry>
 						</row>
 						<row>
-							<entry>Aural</entry>
+							<entry outputclass="lightGray">Aural</entry>
 							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
 						</row>
 					</tbody>
