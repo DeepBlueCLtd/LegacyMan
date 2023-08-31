@@ -55,6 +55,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             del soup["name"]
         del soup["style"]
 
+    if soup.name == "td":
+        # swap spans for p's
+        for span in soup.find_all("span"):
+            span.name = "p"
+            if span.has_attr("style"):
+                del span["style"]
+
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
         # see if this is an image placeholder
@@ -173,9 +180,17 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
-        strong.name = "b"
+        if strong.find_all("image"):
+            strong.name = "p"
+            strong["outputclass"] = "bold"
+        else:
+            strong.name = "b"
     if soup.name == "strong":
-        soup.name = "b"
+        if soup.find_all("image"):
+            soup.name = "p"
+            soup["outputclass"] = "bold"
+        else:
+            soup.name = "b"
 
     # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
     for bq in soup.find_all("blockquote", recursive=False):
@@ -198,17 +213,23 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     for span in soup.find_all("span", recursive=True):
         if span.has_attr("style"):
-            if "color: #F00" in span["style"]:
+            if "color:" in span["style"]:
                 span.name = "ph"
-                span["outputclass"] = "red"
+                if "#F00" in span["style"]:
+                    span["outputclass"] = "red"
+                elif "#00F" in span["style"]:
+                    span["outputclass"] = "blue"
                 del span["style"]
 
     for strong in soup.find_all(
         "b", recursive=True
     ):  # note: strong has already been converted to `b`
         if strong.has_attr("style"):
-            if "color: #F00" in strong["style"]:
-                strong["outputclass"] = "red"
+            if "color:" in strong["style"]:
+                if "#F00" in strong["style"]:
+                    strong["outputclass"] = "red"
+                elif "#00F" in strong["style"]:
+                    strong["outputclass"] = "blue"
                 del strong["style"]
 
     # 11. Put loose text into a paragraph

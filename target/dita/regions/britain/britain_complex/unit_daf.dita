@@ -9,6 +9,7 @@
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf%201b.jpeg" scale="33"/>
+			<image align="left" href="./Content/Images/yellow.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_2.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
@@ -51,12 +52,15 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">
-								<b>Commonly Detected Sources</b>
-							</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="red table-separator">CAUTION THIS SITE WAS MOTHBALLED IN MARCH 2020</entry>
 						</row>
 					</thead>
 					<tbody>
+						<row>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">
+								<b>Commonly Detected Sources</b>
+							</entry>
+						</row>
 						<row>
 							<entry outputclass="lightGray">Source</entry>
 							<entry outputclass="lightGray">Ratio/Freq</entry>
@@ -64,7 +68,7 @@
 							<entry outputclass="lightGray">Remarks</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">
@@ -116,10 +120,19 @@
 							</entry>
 						</row>
 						<row>
-							<entry outputclass="lightGray">Unk BBA</entry>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
 							<entry>25 &amp; CSR</entry>
 							<entry>H1</entry>
-							<entry>CBR 34</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">
@@ -127,10 +140,16 @@
 							</entry>
 							<entry>135 &amp; CSR</entry>
 							<entry>H1 &amp; 2</entry>
-							<entry>CBR 54334</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in bold</b>
+									.
+								</p>
+							</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">Acoustic Signature</entry>

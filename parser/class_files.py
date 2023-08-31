@@ -144,6 +144,13 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
             if dita_entry.has_attr("height"):
                 del dita_entry["height"]
 
+            if dita_entry.has_attr("style"):
+                if "F00" in dita_entry["style"]:
+                    dita_entry["outputclass"] = "red"
+                if "00F" in dita_entry["style"]:
+                    dita_entry["outputclass"] = "blue"
+                del dita_entry["style"]
+
             # support cell shading
             if dita_entry.has_attr("bgcolor"):
                 if dita_entry["bgcolor"] == "#CCCCCC":
@@ -168,7 +175,10 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
                 dita_entry["nameend"] = "col4"
                 dita_entry["namest"] = "col1"
                 dita_entry["align"] = "center"
-                dita_entry["outputclass"] = "table-separator"
+                if dita_entry.has_attr("outputclass"):
+                    dita_entry["outputclass"] = dita_entry["outputclass"] + " table-separator"
+                else:
+                    dita_entry["outputclass"] = "table-separator"
 
             # if two cells, make the second one wider
             if len(cells) == 2:
