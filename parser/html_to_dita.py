@@ -234,6 +234,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     if soup.name == "p" and soup.has_attr("align"):
         del soup["align"]
 
+    # 13. remove "style" attribute for unordered lists
+    for ul in soup.find_all("ul", recursive=True):
+        if ul.has_attr("style"):
+            del ul["style"]
+    if soup.name == "ul" and soup.has_attr("style"):
+        del soup["style"]
+
     return soup
 
 
