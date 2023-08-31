@@ -5,6 +5,7 @@
 	<title>Unit_daf</title>
 	<body>
 		<images>
+			<title>Images</title>
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
@@ -13,6 +14,7 @@
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
+			<title>Summary</title>
 			<table>
 				<tgroup cols="6">
 					<thead>
@@ -39,6 +41,7 @@
 			</table>
 		</summary>
 		<signatures id="signatures">
+			<title>Signatures</title>
 			<table>
 				<tgroup cols="4">
 					<colspec colname="col1" colnum="1"/>

@@ -32,9 +32,7 @@
 						<entry>Reduction Ratio</entry>
 					</row>
 					<row>
-						<entry>
-							<xref>Unit_c</xref>
-						</entry>
+						<entry>Unit_c</entry>
 						<entry>PBA</entry>
 						<entry>5 * V8 Diesel</entry>
 						<entry>1 x 3</entry>
@@ -55,7 +53,7 @@
 					</row>
 					<row>
 						<entry>
-							<xref href="././Britain_2A.dita#number2">Unit_2a</xref>
+							<xref href="././Britain_2A.dita">Unit_2a</xref>
 						</entry>
 						<entry>PBF</entry>
 						<entry>2 * V6 Diesel</entry>

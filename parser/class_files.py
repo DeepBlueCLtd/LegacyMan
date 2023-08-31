@@ -73,7 +73,9 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
 def parse_images(tag, target, dita_soup):
     # create dita elements
     dita_images = dita_soup.new_tag("images")
-
+    dita_images_title = dita_soup.new_tag("title")
+    dita_images_title.string = "Images"
+    dita_images.append(dita_images_title)
     # loop through the HTML images and change them to dita
     images = tag.find_all("img")
     for img in images:
@@ -114,10 +116,16 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
 
     dita_summary = dita_soup.new_tag("summary")
     dita_summary["id"] = "summary"
+    dita_summary_title = dita_soup.new_tag("title")
+    dita_summary_title.string = "Summary"
+    dita_summary.append(dita_summary_title)
 
     dita_colspec = dita_soup.new_tag("colspec")
     dita_signatures = dita_soup.new_tag("signatures")
     dita_signatures["id"] = "signatures"
+    dita_signatures_title = dita_soup.new_tag("title")
+    dita_signatures_title.string = "Signatures"
+    dita_signatures.append(dita_signatures_title)
 
     for tr_count, tr in enumerate(table.find_all("tr")):
         dita_row = dita_soup.new_tag("row")
