@@ -328,6 +328,12 @@ def parse_non_class_file(file_path, options):
     dita_doctype = '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, "xml")
 
+    dita_reference = dita_soup.new_tag("reference")
+    topic_id = "some reference"  # get file_name from file_path (without anchor)
+    dita_reference["id"] = topic_id
+
+    dita_ref_body = dita_soup.new_tag("refbody")
+
     for page in html_soup.find_all("div"):
         if page.has_attr("id") and "PageLayer" in page["id"]:
             print(f"Processing {file_path}")
@@ -339,7 +345,11 @@ def parse_non_class_file(file_path, options):
 
             # insert title
 
-            # insert rest of converted contente
+            # insert rest of converted content
+
+            # append to dita_ref_body
+
+    # write files
 
     #  drop out early - just while this method is being developed
     exit()
