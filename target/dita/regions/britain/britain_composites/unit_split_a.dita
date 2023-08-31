@@ -135,5 +135,9 @@
 			<p outputclass="placeholder">[TABLE PLACEHOLDER]</p>
 			<p outputclass="placeholder">[TABLE PLACEHOLDER]</p>
 		</signatures>
+		<propulsionRef id="propulsion">
+			<title>Propulsion</title>
+			<xref format="dita" href="unit_split_b.dita"/>
+		</propulsionRef>
 	</body>
 </class>
