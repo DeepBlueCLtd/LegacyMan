@@ -55,6 +55,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             del soup["name"]
         del soup["style"]
 
+    if soup.name == "td":
+        # swap spans for p's
+        for span in soup.find_all("span"):
+            span.name = "p"
+            if span.has_attr("style"):
+                del span["style"]
+
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
         # see if this is an image placeholder
