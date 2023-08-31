@@ -35,11 +35,11 @@
                                   %arch-atts;
                                   domains CDATA "&included-domains;"
 >
-<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)?, (%related-links;)? )>
+<!ELEMENT body          ((%related-pages;)?, (%images;), (%summary;)?, (%signatures;)?, (%propulsion; | %propulsionRef;)?, (%remarks;)? )>
 <!ATTLIST body              
                                         outputclass CDATA #IMPLIED
 >
-<!ELEMENT summary          ((%table;)) >
+<!ELEMENT summary          ((%title;), (%table;)) >
 <!ATTLIST summary id ID #REQUIRED
                                 outputclass CDATA #IMPLIED
 >
@@ -56,7 +56,6 @@
                                   outputclass CDATA #IMPLIED
 >
 <!ATTLIST propulsionRef id ID #REQUIRED
-                        href CDATA #REQUIRED
 >
 
 <!ELEMENT remarks    ((%title;)?, (%span;)*) >
@@ -73,15 +72,15 @@
                                   conref CDATA #IMPLIED
                                   outputclass CDATA #IMPLIED
 >
-<!ELEMENT images              ((%image;)*)>
+<!ELEMENT images              ((%title;), (%image;)*)>
 <!ATTLIST images
                                   outputclass CDATA #IMPLIED
 >
-<!--
+
 <!ELEMENT related-pages ((%title;), (%xref;)*) >
 <!ATTLIST related-pages 
                                     id ID #REQUIRED
-                                    outputclass CDATA #IMPLIED> -->
+                                    outputclass CDATA #IMPLIED>
 <!--specialization attributes-->
 <!-- class extends reference -->
 <!ATTLIST class              class  CDATA "- topic/topic  reference/reference class/class ">
@@ -94,14 +93,15 @@
 <!-- signatures extends section, allows free content in Phase 1. Constrained table in Phase 2 -->
 <!ATTLIST signatures    class  CDATA "- topic/section class/signatures ">
 <!-- extends section -->
+<!ATTLIST remarks    class  CDATA "- topic/section class/remarks ">
+<!-- images -->
+<!ATTLIST images  class CDATA "- topic/section class/images ">
+<!-- extends section -->
 <!ATTLIST propulsion    class  CDATA "- topic/section class/propulsion ">
 <!-- extends section -->
-<!ATTLIST propulsionRef    class  CDATA "- topic/xref class/propulsionRef ">
-<!-- extends section -->
-<!ATTLIST remarks    class  CDATA "- topic/section class/remarks ">
-<!--
-<!- extends section ->
-<!ATTLIST related-pages    class  CDATA "- topic/section class/related-pages "> -->
+<!ATTLIST propulsionRef    class  CDATA "- topic/section class/propulsionRef ">
+<!-- drop this, use standard version of related-links -->
+<!ATTLIST related-pages    class  CDATA "- topic/section class/related-pages ">
 <!-- table extends table -->
 <!ATTLIST table    class  CDATA "- topic/table  class/table ">
 <!-- title extends title -->
@@ -118,7 +118,5 @@
 <!ATTLIST fig    class  CDATA "- topic/fig  class/fig ">
 <!-- xref extends xref -->
 <!ATTLIST xref    class  CDATA "- topic/xref  class/xref ">
-<!-- images -->
-<!ATTLIST images  %global-atts;  class CDATA "- topic/body reference/refBody class/images ">
 <!-- image -->
 <!ATTLIST image  class CDATA "- topic/image class/image ">
