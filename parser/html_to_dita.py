@@ -227,6 +227,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
                 para.string = child.text
                 child.replace_with(para)
 
+    # 12. remove "align" attribute for paragraphs
+    for p in soup.find_all("p", recursive=True):
+        if p.has_attr("align"):
+            del p["align"]
+    if soup.name == "p" and soup.has_attr("align"):
+        del soup["align"]
+
     return soup
 
 
