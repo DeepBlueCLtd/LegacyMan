@@ -173,9 +173,17 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
-        strong.name = "b"
+        if strong.find_all("image"):
+            strong.name = "p"
+            strong["outputclass"] = "bold"
+        else:
+            strong.name = "b"
     if soup.name == "strong":
-        soup.name = "b"
+        if soup.find_all("image"):
+            soup.name = "p"
+            soup["outputclass"] = "bold"
+        else:
+            soup.name = "b"
 
     # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
     for bq in soup.find_all("blockquote", recursive=False):
