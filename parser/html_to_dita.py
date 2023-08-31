@@ -70,17 +70,6 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             div.clear()
             # check it's not a formatting placeholder for an image
             for img in child_images:
-                print(img)
-                # div.replace_with(img)
-                # img["outputclass"] = "center"
-                img.name = "image"
-                img["href"] = img["src"]
-                del img["src"]
-                del img["border"]
-                # name not allowed in DITA image, put value into ID, if present
-                if img.has_attr("name"):
-                    img.id = img["name"]
-                    del img["name"]
                 div.append(img)
             # put any child text into a `p`
             newPara = dita_soup.new_tag("p")
@@ -99,6 +88,9 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     for img in soup.find_all("img"):
         img.name = "image"
         img["href"] = img["src"]
+        # swap spaces out of src
+        if " " in img["href"]:
+            img["href"] = img["href"].replace(" ", "%20")
         del img["src"]
         del img["border"]
         # name not allowed in DITA image, put value into ID, if present
