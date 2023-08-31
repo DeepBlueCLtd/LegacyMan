@@ -138,9 +138,11 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
             dita_entry = htmlToDITA(options["file_name"], td, dita_soup)
             dita_entry.name = "entry"
 
-            # handle the cell width
+            # handle the cell width & height
             if dita_entry.has_attr("width"):
                 del dita_entry["width"]
+            if dita_entry.has_attr("height"):
+                del dita_entry["height"]
 
             # support cell shading
             if dita_entry.has_attr("bgcolor"):
