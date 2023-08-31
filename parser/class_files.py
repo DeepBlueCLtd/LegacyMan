@@ -138,9 +138,11 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
             dita_entry = htmlToDITA(options["file_name"], td, dita_soup)
             dita_entry.name = "entry"
 
-            # handle the cell width
+            # handle the cell width & height
             if dita_entry.has_attr("width"):
                 del dita_entry["width"]
+            if dita_entry.has_attr("height"):
+                del dita_entry["height"]
 
             # support cell shading
             if dita_entry.has_attr("bgcolor"):
@@ -233,7 +235,7 @@ def parse_propulsion(tag, target, dita_soup, options):
         dita_propulsion.append(dita_propulsion_title)
 
         propulsion_div = propulsion_h1.find_parent("div")
-        propulsion_soup = htmlToDITA(options["file_name"], propulsion_div, dita_soup)
+        propulsion_soup = htmlToDITA(options["file_name"], propulsion_div, dita_soup, "span", True)
         dita_propulsion.append(propulsion_soup)
 
         target.append(dita_propulsion)
