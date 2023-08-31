@@ -215,9 +215,11 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     if wrap_strings:
         for child in soup.children:
             if type(child) is bs4.element.NavigableString:
-                para = dita_soup.new_tag("p")
-                para.string = child.text
-                child.replace_with(para)
+                # check it's not just newline char
+                if len(child.text) > 1:
+                    para = dita_soup.new_tag("p")
+                    para.string = child.text
+                    child.replace_with(para)
 
     # 12. remove "align" attribute for paragraphs
     for p in soup.find_all("p", recursive=True):
