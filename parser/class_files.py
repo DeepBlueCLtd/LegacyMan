@@ -35,7 +35,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     # Parse the images
     parse_images(html_soup, dita_body, dita_soup)
 
-    options = {"file_name": file_name, "file_path": class_file_src_path}
+    options = {"file_name": file_name, "file_path": class_file_src_path, 'target_path': class_file_target_path}
 
     # Parse the summary and the signatures block
     if html_soup.find("td", {"colspan": "6"}) is None:
@@ -217,8 +217,6 @@ def parse_propulsion(tag, target, dita_soup, options):
         target.append(dita_propulsion)
 
     else:
-        print(f"{options['file_path']} does not have a div element with h1 named PROPULSION")
-
         #Check if there is an html <div id="QuickLinksTable"> </div>
         quick_links_table = tag.find('div', {'id': 'QuickLinksTable'})
         propulsion = quick_links_table.find('td', text="Propulsion")
@@ -231,10 +229,30 @@ def parse_propulsion(tag, target, dita_soup, options):
             related_page_link = related_page_link.split(".html")[0] + ".html"
 
             if related_page_link == current_page_link:
-                print('Parsing related page stopped, the link found in the QuickLinksTable is the same as the current page link')
+                print(f'Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link')
             else:
                 source_file_path = f"{os.path.dirname(options['file_path'])}/{related_page_link}"
-                parse_non_class_file(source_file_path)
+                linked_file_path = parse_non_class_file(source_file_path, options)
+
+                #Add a <propulsionRef> element in the current file so it can point to the linked file
+                propulsion_ref = dita_soup.new_tag('propulsionRef')
+                propulsion_ref['id'] = 'propulsion'
+
+                ref_title = dita_soup.new_tag('title')
+                ref_title.string = "Propulsion"
+
+                ref_xref = dita_soup.new_tag('xref')
+                ref_xref['href'] = linked_file_path
+                ref_xref['format'] = "dita"
+
+
+                propulsion_ref.append(ref_title)
+                propulsion_ref.append(ref_xref)
+
+                #Append the propulsionRef link to the current dita file
+                target.append(propulsion_ref)
+
+
 
 def parse_remarks(tag, target, dita_soup, options):
     dita_remarks = dita_soup.new_tag("remarks")
@@ -258,11 +276,10 @@ def parse_remarks(tag, target, dita_soup, options):
         print(f"{options['file_path']} does not have a div element with h1 named REMARKS")
 
 
-def parse_non_class_file(file_path):
+def parse_non_class_file(file_path, options):
     # read the target file
     with open(file_path, "r") as f:
         file = f.read()
-
     html_soup = BeautifulSoup(file, "html.parser")
 
     # Create the DITA document type declaration string
@@ -273,21 +290,37 @@ def parse_non_class_file(file_path):
     file_name = os.path.basename(file_path)
 
     if propulsion_h1 is not None:
-        dita_propulsion = dita_soup.new_tag("propulsion")
-        dita_propulsion["id"] = "propulsion"
+        dita_reference = dita_soup.new_tag("reference")
+        dita_reference["id"] = "reference-propulsion"
+
+        dita_ref_body = dita_soup.new_tag('refbody')
 
         # Add title for the propulsion block
-        dita_propulsion_title = dita_soup.new_tag("title")
-        dita_propulsion_title.string = "Propulsion"
+        dita_title = dita_soup.new_tag("title")
+        dita_title.string = "Reference Propulsion"
 
-        dita_propulsion.append(dita_propulsion_title)
+        dita_reference.append(dita_title)
 
         propulsion_div = propulsion_h1.find_parent("div")
 
         propulsion_soup = htmlToDITA(file_name, propulsion_div, dita_soup)
-        dita_propulsion.append(propulsion_soup)
+        dita_ref_body.append(propulsion_soup)
+        dita_reference.append(dita_ref_body)
 
-        html_soup.append(dita_propulsion)
+        dita_soup.append(dita_reference)
+
+        file_name = file_name.replace(".html", ".dita")
+        target_file_path = f"{options['target_path']}/{file_name}"
+
+        # Prettify the code
+        prettified_code = prettify_xml(str(dita_soup))
+
+        with open(target_file_path, "wb") as f:
+            f.write(prettified_code.encode("utf-8"))
+
+        return file_name
+
+
 
 
 
