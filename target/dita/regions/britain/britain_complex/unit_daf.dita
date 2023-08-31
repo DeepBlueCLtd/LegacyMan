@@ -9,6 +9,7 @@
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf%201b.jpeg" scale="33"/>
+			<image align="left" href="./Content/Images/yellow.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_2.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
@@ -116,10 +117,19 @@
 							</entry>
 						</row>
 						<row>
-							<entry outputclass="lightGray">Unk BBA</entry>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
 							<entry>25 &amp; CSR</entry>
 							<entry>H1</entry>
-							<entry>CBR 34</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">
@@ -127,7 +137,13 @@
 							</entry>
 							<entry>135 &amp; CSR</entry>
 							<entry>H1 &amp; 2</entry>
-							<entry>CBR 54334</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in bold</b>
+									.
+								</p>
+							</entry>
 						</row>
 						<row>
 							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
