@@ -233,7 +233,7 @@ def parse_propulsion(tag, target, dita_soup, options):
         dita_propulsion.append(dita_propulsion_title)
 
         propulsion_div = propulsion_h1.find_parent("div")
-        propulsion_soup = htmlToDITA(options["file_name"], propulsion_div, dita_soup)
+        propulsion_soup = htmlToDITA(options["file_name"], propulsion_div, dita_soup, "span", True)
         dita_propulsion.append(propulsion_soup)
 
         target.append(dita_propulsion)

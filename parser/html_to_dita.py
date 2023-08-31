@@ -1,6 +1,7 @@
 import copy
 import os
 from bs4 import BeautifulSoup
+import bs4
 
 
 def testParse():
@@ -31,13 +32,14 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
+def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     """
     this function will convert a block of html to DITA
     :param file_name: any number
     :param soup_in: BS4 tag to be converted
     :param dita_soup: BS4 soup XML element, used for generating new elements
     :param div_replacement: the tag to replace `div` elements with
+    :param wrap_strings: flag to indicate that bare strings should be wrapped in a paragraph
     :return: converted block of dita
     """
 
@@ -208,6 +210,14 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span"):
                 span.name = "ph"
                 span["outputclass"] = "red"
                 del span["style"]
+
+    # 11. Put loose text into a paragraph
+    if wrap_strings:
+        for child in soup.children:
+            if type(child) is bs4.element.NavigableString:
+                para = dita_soup.new_tag("p")
+                para.string = child.text
+                child.replace_with(para)
 
     return soup
 
