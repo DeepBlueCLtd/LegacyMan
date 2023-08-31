@@ -4,8 +4,11 @@
 <class id="unit_split_a">
 	<title>Unit_ab</title>
 	<body>
-		<images/>
+		<images>
+			<title>Images</title>
+		</images>
 		<summary id="summary">
+			<title>Summary</title>
 			<table>
 				<tgroup cols="6">
 					<thead>
@@ -32,6 +35,7 @@
 			</table>
 		</summary>
 		<signatures id="signatures">
+			<title>Signatures</title>
 			<table>
 				<tgroup cols="4">
 					<colspec colname="col1" colnum="1"/>
@@ -97,7 +101,7 @@
 							<entry>Unk BBA</entry>
 							<entry>135 &amp; CSR</entry>
 							<entry>
-								<ph outputclass="red">*</ph>
+								<p>*</p>
 								H1 &amp; 2
 							</entry>
 							<entry>CBR 54334</entry>

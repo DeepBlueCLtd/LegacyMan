@@ -40,8 +40,24 @@
     color: #F00;
 }
 
+.blue {
+    color: #00F;
+}
+
 .placeholder {
     background-color: #FF0;
+}
+
+.lightGray {
+    background-color: #CCC;    
+}
+
+.darkGray {
+    background-color: #999;    
+}
+
+.bold {
+    font-weight: 200%
 }
 
 /*

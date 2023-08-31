@@ -5,11 +5,13 @@
 	<title>Unit_ab%TEST-106 Icelandic Composite%</title>
 	<body>
 		<images>
+			<title>Images</title>
 			<image align="left" href="./Content/Images/frequency_2.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/unit_a1.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/unit_a2.jpeg" scale="33"/>
 		</images>
 		<summary id="summary">
+			<title>Summary</title>
 			<table>
 				<tgroup cols="6">
 					<thead>
@@ -36,6 +38,7 @@
 			</table>
 		</summary>
 		<signatures id="signatures">
+			<title>Signatures</title>
 			<table>
 				<tgroup cols="4">
 					<colspec colname="col1" colnum="1"/>

@@ -5,24 +5,28 @@
 	<title>Unit_daf</title>
 	<body>
 		<images>
+			<title>Images</title>
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
+			<image align="left" href="./Content/Images/daf%201b.jpeg" scale="33"/>
+			<image align="left" href="./Content/Images/yellow.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_2.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
+			<title>Summary</title>
 			<table>
 				<tgroup cols="6">
 					<thead>
 						<row>
-							<entry>Drive</entry>
-							<entry>Mode</entry>
-							<entry>Shaft x Blade</entry>
-							<entry>R:R</entry>
-							<entry>Max Speed</entry>
-							<entry>Av TPK (Guide)</entry>
+							<entry outputclass="darkGray">Drive</entry>
+							<entry outputclass="darkGray">Mode</entry>
+							<entry outputclass="darkGray">Shaft x Blade</entry>
+							<entry outputclass="darkGray">R:R</entry>
+							<entry outputclass="darkGray">Max Speed</entry>
+							<entry outputclass="darkGray">Av TPK (Guide)</entry>
 						</row>
 					</thead>
 					<tbody>
@@ -39,6 +43,7 @@
 			</table>
 		</summary>
 		<signatures id="signatures">
+			<title>Signatures</title>
 			<table>
 				<tgroup cols="4">
 					<colspec colname="col1" colnum="1"/>
@@ -47,37 +52,57 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">
-								<b>Commonly Detected Sources</b>
-							</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="red table-separator">CAUTION THIS SITE WAS MOTHBALLED IN MARCH 2020</entry>
 						</row>
 					</thead>
 					<tbody>
 						<row>
-							<entry>Source</entry>
-							<entry>Ratio/Freq</entry>
-							<entry>Harmonics</entry>
-							<entry>Remarks</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">
+								<b>Commonly Detected Sources</b>
+							</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
+							<entry outputclass="lightGray">Source</entry>
+							<entry outputclass="lightGray">Ratio/Freq</entry>
+							<entry outputclass="lightGray">Harmonics</entry>
+							<entry outputclass="lightGray">Remarks</entry>
 						</row>
 						<row>
-							<entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Propulsion Related</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
 								<xref href="./unit_daf.dita" outputclass="placeholder">SR</xref>
 							</entry>
 							<entry>S12</entry>
 							<entry>H1-4</entry>
-							<entry>Discrete. Doublets common</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									
+
+									<li>Total control</li>
+									
+
+									<li>Intermediate control</li>
+									
+
+									<li>Not under control</li>
+									
+
+								</ul>
+							</entry>
 						</row>
 						<row>
-							<entry>BR</entry>
+							<entry outputclass="lightGray">BR</entry>
 							<entry>S5</entry>
 							<entry>H1</entry>
-							<entry>Discrete. Doublets common</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
 						</row>
 						<row>
-							<entry>
+							<entry outputclass="lightGray">
 								<xref href="./unit_daf.dita" outputclass="placeholder">Cat b Engine R</xref>
 							</entry>
 							<entry>2-100.4, 112, 132</entry>
@@ -95,84 +120,54 @@
 							</entry>
 						</row>
 						<row>
-							<entry>Unk BBA</entry>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
 							<entry>25 &amp; CSR</entry>
 							<entry>H1</entry>
-							<entry>CBR 34</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
 						</row>
 						<row>
-							<entry>
+							<entry outputclass="lightGray">
 								<xref href="./unit_daf.dita" outputclass="placeholder">Unk BBA</xref>
 							</entry>
 							<entry>135 &amp; CSR</entry>
 							<entry>H1 &amp; 2</entry>
-							<entry>CBR 54334</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in bold</b>
+									.
+								</p>
+							</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
-							<entry>Acoustic Signature</entry>
+							<entry outputclass="lightGray">Acoustic Signature</entry>
 							<entry nameend="col4" namest="col2">
             Expect plant to be similar to 2016 steam powered version
           </entry>
 						</row>
 						<row>
-							<entry>Unique classifiers</entry>
+							<entry outputclass="lightGray">Unique classifiers</entry>
 							<entry nameend="col4" namest="col2">None</entry>
 						</row>
 						<row>
-							<entry>Aural</entry>
+							<entry outputclass="lightGray">Aural</entry>
 							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
 						</row>
 					</tbody>
 				</tgroup>
 			</table>
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/prev_db.jpg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<!-- these are the images from the `daf_pics.html` page, though they
-      are compressed to be displayed here.  But, it could be that only a subset of
-      the available images are published on this page -->
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/daf_1.jpeg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/daf_2.jpeg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<p>
-				
-
-				<xref href="./unit_daf.dita" outputclass="placeholder">
-					<image height="150" href="./Content/Images/daf_3.jpeg" width="200"/>
-				</xref>
-				
-
-			</p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
-			<p> </p>
 		</signatures>
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
@@ -192,8 +187,9 @@
 				
 
 				<p/>
-				
-
+				<p>
+    Text at root level of div.
+    </p>
 				<p/>
 				
 
@@ -269,6 +265,14 @@
 				</p>
 				
 
+				<fig outputclass="center">
+					<image href="./Content/Images/daf%201b.jpeg"/>
+					<p outputclass="figtitle">
+    Figure 1: Sample image of DAF logo
+</p>
+				</fig>
+				
+
 			</span>
 		</propulsion>
 		<remarks id="remarks">
@@ -297,6 +301,15 @@
 					<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
 					
 
+					<ph outputclass="red">By introducing a watercooler, the OZ ws reduced by 30%</ph>
+					
+
+				</p>
+				
+
+				<p>
+					<b outputclass="red">*</b>
+					 This class is fitted with strongbow bowman thatchers.
 				</p>
 				
 
