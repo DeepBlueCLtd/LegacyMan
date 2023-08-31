@@ -280,11 +280,10 @@ def process_category_pages(
 
             # If there is a link element in the <tr> append it to <entry>
             for a in td.find_all("a"):
-                dita_xref = dita_soup.new_tag("xref")
-
-                # Process class files
+                # Process links to class files (not anchors)
                 href = a.get("href")
                 if href is not None:
+                    dita_xref = dita_soup.new_tag("xref")
                     # Remove any #anchor_id value after the href
                     href = href.split(".html")[0] + ".html"
 
@@ -300,9 +299,9 @@ def process_category_pages(
                     file_link = a["href"].replace(".html", ".dita")
                     dita_xref["href"] = f"./{file_link}"
 
-                dita_xref.string = a.text.strip()
-                dita_entry.string = ""
-                dita_entry.append(dita_xref)
+                    dita_xref.string = a.text.strip()
+                    dita_entry.string = ""
+                    dita_entry.append(dita_xref)
 
             dita_row.append(dita_entry)
 
