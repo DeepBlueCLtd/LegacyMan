@@ -203,13 +203,19 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
                 for p in bq.find_all("p", recursive=False):
                     p.name = "li"
 
-    # 10. Replace `span` used for red-formatting with a <ph> equivalent
+    # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     for span in soup.find_all("span"):
         if span.has_attr("style"):
-            if "color:#F00" in span["style"]:
+            if "color: #F00" in span["style"]:
                 span.name = "ph"
                 span["outputclass"] = "red"
                 del span["style"]
+
+    for strong in soup.find_all("b"):  # note: strong has already been converted to `b`
+        if strong.has_attr("style"):
+            if "color: #F00" in strong["style"]:
+                strong["outputclass"] = "red"
+                del strong["style"]
 
     # 11. Put loose text into a paragraph
     if wrap_strings:
