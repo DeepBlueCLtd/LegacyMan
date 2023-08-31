@@ -218,6 +218,7 @@ def parse_propulsion(tag, target, dita_soup, options):
 
     else:
         print(f"{options['file_path']} does not have a div element with h1 named PROPULSION")
+        parse_non_class_file(tag, options['file_path'])
 
 
 def parse_remarks(tag, target, dita_soup, options):
@@ -241,5 +242,34 @@ def parse_remarks(tag, target, dita_soup, options):
     else:
         print(f"{options['file_path']} does not have a div element with h1 named REMARKS")
 
+
+def parse_non_class_file(tag, file_path):
+    #Check if there is an html <div id="QuickLinksTable"> </div>
+    quick_links_table = tag.find('div', {'id': 'QuickLinksTable'})
+    propulsion = quick_links_table.find('td', text="Propulsion")
+
+    if quick_links_table and propulsion:
+        related_page_link = propulsion.find('a')['href']
+        current_page_link = os.path.basename(file_path)
+
+        #Remove any #anchor_id from the file link
+        related_page_link = related_page_link.split(".html")[0] + ".html"
+
+        if related_page_link == current_page_link:
+            print('Parsing related page stopped, the link found in the QuickLinksTable is the same as the current page link')
+        else:
+            # Open the target file
+            source_file_path = f'{os.path.dirname(file_path)}/{related_page_link}'
+
+             # read the target file
+            with open(source_file_path, "r") as f:
+                source_file = f.read()
+
+            #What if we call the parse_propulsion function here to parse the Propulsion block
+            #parse_propulsion()
+
+
+    else:
+        print(f'There is no div element with an id of QuickLinksTable or there is no Propulsion block in this file {file_path}')
 
 __all__ = ["process_class_files"]
