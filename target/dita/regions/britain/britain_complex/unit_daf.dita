@@ -52,12 +52,15 @@
 					<colspec colname="col4" colnum="4"/>
 					<thead>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">
-								<b>Commonly Detected Sources</b>
-							</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="red table-separator">CAUTION THIS SITE WAS MOTHBALLED IN MARCH 2020</entry>
 						</row>
 					</thead>
 					<tbody>
+						<row>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">
+								<b>Commonly Detected Sources</b>
+							</entry>
+						</row>
 						<row>
 							<entry outputclass="lightGray">Source</entry>
 							<entry outputclass="lightGray">Ratio/Freq</entry>
@@ -65,7 +68,7 @@
 							<entry outputclass="lightGray">Remarks</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Propulsion Related</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">
@@ -146,7 +149,7 @@
 							</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Signature &amp; Characteristics</entry>
+							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Signature &amp; Characteristics</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">Acoustic Signature</entry>
