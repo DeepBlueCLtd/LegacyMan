@@ -8,6 +8,7 @@
 			<title>Images</title>
 			<image align="left" href="./Content/Images/unit_da.jpg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
+			<image align="left" href="./Content/Images/daf%201b.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_2.jpeg" scale="33"/>
 			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
@@ -71,13 +72,30 @@
 							</entry>
 							<entry>S12</entry>
 							<entry>H1-4</entry>
-							<entry>Discrete. Doublets common</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									
+
+									<li>Total control</li>
+									
+
+									<li>Intermediate control</li>
+									
+
+									<li>Not under control</li>
+									
+
+								</ul>
+							</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">BR</entry>
 							<entry>S5</entry>
 							<entry>H1</entry>
-							<entry>Discrete. Doublets common</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">
@@ -150,8 +168,9 @@
 				
 
 				<p/>
-				
-
+				<p>
+    Text at root level of div.
+    </p>
 				<p/>
 				
 
@@ -227,6 +246,14 @@
 				</p>
 				
 
+				<fig outputclass="center">
+					<image href="./Content/Images/daf%201b.jpeg"/>
+					<p outputclass="figtitle">
+    Figure 1: Sample image of DAF logo
+</p>
+				</fig>
+				
+
 			</span>
 		</propulsion>
 		<remarks id="remarks">
@@ -255,6 +282,15 @@
 					<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
 					
 
+					<ph outputclass="red">By introducing a watercooler, the OZ ws reduced by 30%</ph>
+					
+
+				</p>
+				
+
+				<p>
+					<b outputclass="red">*</b>
+					 This class is fitted with strongbow bowman thatchers.
 				</p>
 				
 
