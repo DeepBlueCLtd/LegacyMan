@@ -35,7 +35,11 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     # Parse the images
     parse_images(html_soup, dita_body, dita_soup)
 
-    options = {"file_name": file_name, "file_path": class_file_src_path, 'target_path': class_file_target_path}
+    options = {
+        "file_name": file_name,
+        "file_path": class_file_src_path,
+        "target_path": class_file_target_path,
+    }
 
     # Parse the summary and the signatures block
     if html_soup.find("td", {"colspan": "6"}) is None:
@@ -251,41 +255,41 @@ def parse_propulsion(tag, target, dita_soup, options):
         target.append(dita_propulsion)
 
     else:
-        #Check if there is an html <div id="QuickLinksTable"> </div>
-        quick_links_table = tag.find('div', {'id': 'QuickLinksTable'})
-        propulsion = quick_links_table.find('td', text="Propulsion")
+        # Check if there is an html <div id="QuickLinksTable"> </div>
+        quick_links_table = tag.find("div", {"id": "QuickLinksTable"})
+        propulsion = quick_links_table.find("td", text="Propulsion")
 
         if quick_links_table and propulsion:
-            related_page_link = propulsion.find('a')['href']
-            current_page_link = os.path.basename(options['file_path'])
+            related_page_link = propulsion.find("a")["href"]
+            current_page_link = os.path.basename(options["file_path"])
 
-            #Remove any #anchor_id from the file link
+            # Remove any #anchor_id from the file link
             related_page_link = related_page_link.split(".html")[0] + ".html"
 
             if related_page_link == current_page_link:
-                print(f'Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link')
+                print(
+                    f"Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link"
+                )
             else:
                 source_file_path = f"{os.path.dirname(options['file_path'])}/{related_page_link}"
                 linked_file_path = parse_non_class_file(source_file_path, options)
 
-                #Add a <propulsionRef> element in the current file so it can point to the linked file
-                propulsion_ref = dita_soup.new_tag('propulsionRef')
-                propulsion_ref['id'] = 'propulsion'
+                # Add a <propulsionRef> element in the current file so it can point to the linked file
+                propulsion_ref = dita_soup.new_tag("propulsionRef")
+                propulsion_ref["id"] = "propulsion"
 
-                ref_title = dita_soup.new_tag('title')
+                ref_title = dita_soup.new_tag("title")
                 ref_title.string = "Propulsion"
 
-                ref_xref = dita_soup.new_tag('xref')
-                ref_xref['href'] = linked_file_path
-                ref_xref['format'] = "dita"
-
+                ref_xref = dita_soup.new_tag("xref")
+                ref_xref["href"] = linked_file_path
+                ref_xref["format"] = "dita"
 
                 propulsion_ref.append(ref_title)
                 propulsion_ref.append(ref_xref)
 
-                #Append the propulsionRef link to the current dita file
+                # Append the propulsionRef link to the current dita file
                 target.append(propulsion_ref)
-
 
 
 def parse_remarks(tag, target, dita_soup, options):
@@ -311,6 +315,10 @@ def parse_remarks(tag, target, dita_soup, options):
 
 
 def parse_non_class_file(file_path, options):
+    # generate DITA version of file_path
+
+    # check if DITA file already present (only progress if not already present)
+
     # read the target file
     with open(file_path, "r") as f:
         file = f.read()
@@ -320,6 +328,22 @@ def parse_non_class_file(file_path, options):
     dita_doctype = '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, "xml")
 
+    for page in html_soup.find_all("div"):
+        if page.has_attr("id") and "PageLayer" in page["id"]:
+            print(f"Processing {file_path}")
+            # find the first heading
+
+            # process the content in html to dita
+
+            # create the new `section`
+
+            # insert title
+
+            # insert rest of converted contente
+
+    #  drop out early - just while this method is being developed
+    exit()
+
     propulsion_h1 = html_soup.find("h1", string="PROPULSION")
     file_name = os.path.basename(file_path)
 
@@ -327,7 +351,7 @@ def parse_non_class_file(file_path, options):
         dita_reference = dita_soup.new_tag("reference")
         dita_reference["id"] = "reference-propulsion"
 
-        dita_ref_body = dita_soup.new_tag('refbody')
+        dita_ref_body = dita_soup.new_tag("refbody")
 
         # Add title for the propulsion block
         dita_title = dita_soup.new_tag("title")
@@ -353,9 +377,6 @@ def parse_non_class_file(file_path, options):
             f.write(prettified_code.encode("utf-8"))
 
         return file_name
-
-
-
 
 
 __all__ = ["process_class_files"]
