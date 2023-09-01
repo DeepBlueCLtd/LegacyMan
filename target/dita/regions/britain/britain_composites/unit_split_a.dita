@@ -139,5 +139,11 @@
 			<title>Propulsion</title>
 			<xref format="dita" href="unit_split_b.dita"/>
 		</propulsionRef>
+		<remarks id="remarks">
+			<span>
+				<title>Remarks</title>
+				<xref format="dita" href="unit_split_b.dita"/>
+			</span>
+		</remarks>
 	</body>
 </class>

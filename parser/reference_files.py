@@ -78,6 +78,6 @@ def parse_non_class_file(file_path, title, options):
         with open(target_file_path, "wb") as f:
             f.write(prettified_code.encode("utf-8"))
 
-        return file_name
+    return file_name
 
 __all__  = ["parse_non_class_file"]

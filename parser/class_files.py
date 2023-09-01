@@ -334,21 +334,25 @@ def parse_remarks(tag, target, dita_soup, options):
                 linked_file_path = parse_non_class_file(source_file_path, "Remarks", options)
 
                 # Add a <propulsionRef> element in the current file so it can point to the linked file
-                remarks_ref = dita_soup.new_tag("remarksRef")
+                remarks_ref = dita_soup.new_tag("remarks")
                 remarks_ref["id"] = "remarks"
 
                 ref_title = dita_soup.new_tag("title")
                 ref_title.string = "Remarks"
 
+                ref_span = dita_soup.new_tag("span")
+
                 ref_xref = dita_soup.new_tag("xref")
                 ref_xref["href"] = linked_file_path
                 ref_xref["format"] = "dita"
 
-                remarks_ref.append(ref_title)
-                remarks_ref.append(ref_xref)
+                ref_span.append(ref_title)
+                ref_span.append(ref_xref)
 
-                # Append the propulsionRef link to the current dita file
-                #target.append(remarks_ref)
+                remarks_ref.append(ref_span)
+
+                # Append the remarksRef link to the current dita file
+                target.append(remarks_ref)
 
 
 __all__ = ["process_class_files"]
