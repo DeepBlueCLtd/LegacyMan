@@ -127,9 +127,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         # NOTE: in the future, we may need to check the para is just one line long, or
         # use some other test to establish that it's just providing a title
         for pp in p.find_all("p"):
-            # check it's not a p that we have generated earlier
-            if not pp.has_attr("outputclass"):
-                pp.name = "b"
+            # check it doesn't contain an image
+            if pp.find("image"):
+                pp.unwrap()
+            else:
+                # check it's not a p that we have generated earlier
+                if not pp.has_attr("outputclass"):
+                    pp.name = "b"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
