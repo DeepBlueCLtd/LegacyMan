@@ -6,6 +6,7 @@ from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
 
 from parser_utils import replace_characters
+from reference_files import parse_non_class_file
 
 # lower case version of images we ignore. Note `prev_db.jpg` added for testing
 black_list = [
@@ -313,77 +314,41 @@ def parse_remarks(tag, target, dita_soup, options):
     else:
         print(f"{options['file_path']} does not have a div element with h1 named REMARKS")
 
+        # Check if there is an html <div id="QuickLinksTable"> </div>
+        quick_links_table = tag.find("div", {"id": "QuickLinksTable"})
+        remark = quick_links_table.find("td", text="Remarks")
 
-def parse_non_class_file(file_path, title, options):
-    """
-    this function will convert an html file to DITA
-    :param file_path: full path to the target file
-    :param title: the title to be used (typically the text from the link)
-    :param options: file paths & supporting content
-    :return: file_path of dita_file
-    """
-    # generate DITA version of file_path
-    file_name = os.path.basename(file_path)
-    file_name = file_name.replace(".html", ".dita")
+        if quick_links_table and remark:
+            related_page_link = remark.find("a")["href"]
+            current_page_link = os.path.basename(options["file_path"])
 
-    # check if DITA file already present (only progress if not already present)
-    if not os.path.exists(f"{options['target_path']}/{file_name}"):
-        # read the target file
-        with open(file_path, "r") as f:
-            file = f.read()
-        html_soup = BeautifulSoup(file, "html.parser")
+            # Remove any #anchor_id from the file link
+            related_page_link = related_page_link.split(".html")[0] + ".html"
 
-        # Create the DITA document type declaration string
-        dita_doctype = (
-            '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
-        )
-        dita_soup = BeautifulSoup(dita_doctype, "xml")
+            if related_page_link == current_page_link:
+                print(
+                    f"Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link"
+                )
+            else:
+                source_file_path = f"{os.path.dirname(options['file_path'])}/{related_page_link}"
+                linked_file_path = parse_non_class_file(source_file_path, "Remarks", options)
 
-        # create document level elements
-        dita_reference = dita_soup.new_tag("reference")
-        topic_id = file_name.replace(" ", "-")  # remove spaces, to make legal ID value
-        dita_reference["id"] = topic_id
-        dita_title = dita_soup.new_tag("title")
-        dita_title.string = title
-        dita_reference.append(dita_title)
-        dita_ref_body = dita_soup.new_tag("refbody")
+                # Add a <propulsionRef> element in the current file so it can point to the linked file
+                remarks_ref = dita_soup.new_tag("remarksRef")
+                remarks_ref["id"] = "remarks"
 
-        for page in html_soup.find_all("div"):
-            if page.has_attr("id") and "PageLayer" in page["id"]:
-                print(f"Processing {file_path}")
-                # find the first heading
-                heading = page.find("h1")
-                dita_section_title = dita_soup.new_tag("title")
-                dita_section_title.string = heading.text
+                ref_title = dita_soup.new_tag("title")
+                ref_title.string = "Remarks"
 
-                # process the content in html to dita. Note: since this is a non-class
-                # file, we instruct `div` elements to remain as `div`
-                soup = htmlToDITA(options["file_name"], page, dita_soup, "div")
+                ref_xref = dita_soup.new_tag("xref")
+                ref_xref["href"] = linked_file_path
+                ref_xref["format"] = "dita"
 
-                # create the new `section`
-                dita_section = dita_soup.new_tag("section")
+                remarks_ref.append(ref_title)
+                remarks_ref.append(ref_xref)
 
-                # insert title
-                dita_section.append(dita_section_title)
-
-                # insert rest of converted content
-                dita_section.append(soup)
-
-                # append to dita_ref_body
-                dita_ref_body.append(dita_section)
-
-        # write files
-        target_file_path = f"{options['target_path']}/{file_name}"
-
-        # Prettify the code
-        dita_reference.append(dita_ref_body)
-        dita_soup.append(dita_reference)
-        prettified_code = prettify_xml(str(dita_soup))
-
-        with open(target_file_path, "wb") as f:
-            f.write(prettified_code.encode("utf-8"))
-
-        return file_name
+                # Append the propulsionRef link to the current dita file
+                #target.append(remarks_ref)
 
 
 __all__ = ["process_class_files"]
