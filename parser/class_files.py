@@ -17,6 +17,7 @@ black_list = [
     "prev_db.jpg",
     "flags.jpg",
     "return_db.gif",
+    "prev_db.gif"
 ]
 
 
@@ -81,22 +82,35 @@ def parse_images(tag, target, dita_soup):
     dita_images_title = dita_soup.new_tag("title")
     dita_images_title.string = "Images"
     dita_images.append(dita_images_title)
-    # loop through the HTML images and change them to dita
-    images = tag.find_all("img")
-    for img in images:
-        img_link = img["src"]
-        image_filename = os.path.basename(img_link)
 
-        # check it's not blacklisted
-        if not image_filename.lower() in black_list:
-            dita_image = dita_soup.new_tag("image")
-            dita_image["href"] = replace_characters(img_link, " ", "%20")
-            dita_image["scale"] = 33
-            dita_image["align"] = "left"
-            dita_images.append(dita_image)
+    #Find the colspan:6 table
+    td = tag.find("td", {"colspan": "6"})
 
-    # Append the dita <images> to the dita <body>
-    target.append(dita_images)
+    #Find the parent table (div id="Table")
+    if td is not None:
+        parent_table = td.find_parent("div", id="Table")
+
+        #Find the parent element of the table
+        page_layer = parent_table.find_parent("div", id="PageLayer")
+
+        for child in page_layer.children:
+            #Find the img child
+            img = child.find("img")
+            if  type(child) is bs4.element.Tag and img is not None:
+                img_link = img['src']
+                img_file_name = os.path.basename(img_link)
+
+                # check it's not blacklisted
+                if not img_file_name.lower() in black_list:
+                    print("IMG Link >>>>>>> ", img_link)
+                    dita_image = dita_soup.new_tag("image")
+                    dita_image["href"] = replace_characters(img_link, " ", "%20")
+                    dita_image["scale"] = 33
+                    dita_image["align"] = "left"
+                    dita_images.append(dita_image)
+
+        # Append the dita <images> to the dita <body>
+        target.append(dita_images)
 
 
 def parse_summary_and_signatures(tag, target, dita_soup, options):
