@@ -346,9 +346,12 @@ def parse_remarks(tag, target, dita_soup, options):
                 ref_xref["href"] = linked_file_path
                 ref_xref["format"] = "dita"
 
-                ref_span.append(ref_title)
-                ref_span.append(ref_xref)
+                ref_para = dita_soup.new_tag("p")
+                ref_para.append(ref_xref)
 
+                ref_span.append(ref_para)
+
+                remarks_ref.append(ref_title)
                 remarks_ref.append(ref_span)
 
                 # Append the remarksRef link to the current dita file
