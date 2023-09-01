@@ -334,7 +334,9 @@ def parse_non_class_file(file_path, title, options):
         html_soup = BeautifulSoup(file, "html.parser")
 
         # Create the DITA document type declaration string
-        dita_doctype = '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        dita_doctype = (
+            '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        )
         dita_soup = BeautifulSoup(dita_doctype, "xml")
 
         # create document level elements
@@ -351,14 +353,15 @@ def parse_non_class_file(file_path, title, options):
                 print(f"Processing {file_path}")
                 # find the first heading
                 heading = page.find("h1")
-                dita_section_title = dita_soup.new_tag('title')
+                dita_section_title = dita_soup.new_tag("title")
                 dita_section_title.string = heading.text
 
-                # process the content in html to dita
-                soup = htmlToDITA(options["file_name"], page, dita_soup)
+                # process the content in html to dita. Note: since this is a non-class
+                # file, we instruct `div` elements to remain as `div`
+                soup = htmlToDITA(options["file_name"], page, dita_soup, "div")
 
                 # create the new `section`
-                dita_section = dita_soup.new_tag('section')
+                dita_section = dita_soup.new_tag("section")
 
                 # insert title
                 dita_section.append(dita_section_title)
