@@ -140,9 +140,11 @@
 			<xref format="dita" href="unit_split_b.dita"/>
 		</propulsionRef>
 		<remarks id="remarks">
+			<title>Remarks</title>
 			<span>
-				<title>Remarks</title>
-				<xref format="dita" href="unit_split_b.dita"/>
+				<p>
+					<xref format="dita" href="unit_split_b.dita"/>
+				</p>
 			</span>
 		</remarks>
 	</body>
