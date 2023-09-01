@@ -327,83 +327,54 @@ def parse_non_class_file(file_path, title, options):
     file_name = file_name.replace(".html", ".dita")
 
     # check if DITA file already present (only progress if not already present)
-    # note: we probably need the full file path to do that test correctly
+    if not os.path.exists(f"{options['target_path']}/{file_name}"):
+        # read the target file
+        with open(file_path, "r") as f:
+            file = f.read()
+        html_soup = BeautifulSoup(file, "html.parser")
 
-    # read the target file
-    with open(file_path, "r") as f:
-        file = f.read()
-    html_soup = BeautifulSoup(file, "html.parser")
+        # Create the DITA document type declaration string
+        dita_doctype = '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        dita_soup = BeautifulSoup(dita_doctype, "xml")
 
-    # Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
-    dita_soup = BeautifulSoup(dita_doctype, "xml")
-
-    # create document level elements
-    dita_reference = dita_soup.new_tag("reference")
-    topic_id = file_name.replace(" ", "-")  # remove spaces, to make legal ID value
-    dita_reference["id"] = topic_id
-    dita_title = dita_soup.new_tag("title")
-    dita_title.string = title
-    dita_reference.append(dita_title)
-    dita_ref_body = dita_soup.new_tag("refbody")
-
-    for page in html_soup.find_all("div"):
-        if page.has_attr("id") and "PageLayer" in page["id"]:
-            print(f"Processing {file_path}")
-            # find the first heading
-
-            # process the content in html to dita
-
-            # create the new `section`
-
-            # insert title
-
-            # insert rest of converted content
-
-            # append to dita_ref_body
-
-    # write files
-    target_file_path = f"{options['target_path']}/{file_name}"
-
-    # Prettify the code
-    dita_reference.append(dita_ref_body)
-    dita_soup.append(dita_reference)
-    prettified_code = prettify_xml(str(dita_soup))
-
-    with open(target_file_path, "wb") as f:
-        f.write(prettified_code.encode("utf-8"))
-
-    return file_name
-
-    #  drop out early - just while this method is being developed
-
-    propulsion_h1 = html_soup.find("h1", string="PROPULSION")
-    file_name = os.path.basename(file_path)
-
-    if propulsion_h1 is not None:
+        # create document level elements
         dita_reference = dita_soup.new_tag("reference")
-        dita_reference["id"] = "reference-propulsion"
-
+        topic_id = file_name.replace(" ", "-")  # remove spaces, to make legal ID value
+        dita_reference["id"] = topic_id
+        dita_title = dita_soup.new_tag("title")
+        dita_title.string = title
+        dita_reference.append(dita_title)
         dita_ref_body = dita_soup.new_tag("refbody")
 
-        # Add title for the propulsion block
-        dita_title = dita_soup.new_tag("title")
-        dita_title.string = "Reference Propulsion"
+        for page in html_soup.find_all("div"):
+            if page.has_attr("id") and "PageLayer" in page["id"]:
+                print(f"Processing {file_path}")
+                # find the first heading
+                heading = page.find("h1")
+                dita_section_title = dita_soup.new_tag('title')
+                dita_section_title.string = heading.text
 
-        dita_reference.append(dita_title)
+                # process the content in html to dita
+                soup = htmlToDITA(options["file_name"], page, dita_soup)
 
-        propulsion_div = propulsion_h1.find_parent("div")
+                # create the new `section`
+                dita_section = dita_soup.new_tag('section')
 
-        propulsion_soup = htmlToDITA(file_name, propulsion_div, dita_soup)
-        dita_ref_body.append(propulsion_soup)
-        dita_reference.append(dita_ref_body)
+                # insert title
+                dita_section.append(dita_section_title)
 
-        dita_soup.append(dita_reference)
+                # insert rest of converted content
+                dita_section.append(soup)
 
-        file_name = file_name.replace(".html", ".dita")
+                # append to dita_ref_body
+                dita_ref_body.append(dita_section)
+
+        # write files
         target_file_path = f"{options['target_path']}/{file_name}"
 
         # Prettify the code
+        dita_reference.append(dita_ref_body)
+        dita_soup.append(dita_reference)
         prettified_code = prettify_xml(str(dita_soup))
 
         with open(target_file_path, "wb") as f:
