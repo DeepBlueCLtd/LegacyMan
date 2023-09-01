@@ -48,8 +48,8 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
 
     # 1. if outer element is a div, replace with a span element
     if soup.name == "div":
-        soup.name = div_replacement
-        # del soup["id"]
+        if soup.name != div_replacement:
+            soup.name = div_replacement
         if soup.has_attr("name"):
             soup.id = soup["name"]
             del soup["name"]

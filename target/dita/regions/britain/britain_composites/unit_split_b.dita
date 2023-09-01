@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="unit_split_b.dita">
+	<title>Propulsion</title>
+	<refbody>
+		<section>
+			<title>REMARKS</title>
+			<div id="PageLayer2">
+				
+
+				<p outputclass="h1">REMARKS</p>
+				
+
+				<p id="image9">
+					
+
+					<image href="./Content/Images/unit_a1.jpg"/>
+					 
+					<image href="./Content/Images/unit_a2.jpeg"/>
+					
+
+				</p>
+				
+
+				<p>
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+      ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+      tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+      Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+    </p>
+				
+
+				<ul>
+					
+
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					
+
+					<li>Aliquam tincidunt mauris eu risus.</li>
+					
+
+					<li>Vestibulum auctor dapibus neque.</li>
+					
+
+				</ul>
+				
+
+				<p/>
+				
+
+				<ol>
+					
+
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					
+
+					<li>Aliquam tincidunt mauris eu risus.</li>
+					
+
+				</ol>
+				
+
+			</div>
+		</section>
+		<section>
+			<title>PROPULSION</title>
+			<div id="PageLayer3">
+				
+
+
+				<p outputclass="h1">PROPULSION</p>
+				
+
+				<p>
+					
+
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+					
+
+				</p>
+				
+
+				<p>
+					
+
+					<image href="./Content/Images/unit_a1.jpg"/>
+					<image href="./Content/Images/unit_a2.jpg"/>
+					<image href="./Content/Images/unit_da.jpeg"/>
+					    Figure 1:
+      oscilloscope view    Figure 2: other oscilloscope
+      view    Figure 3: extra oscilloscope view
+    
+				</p>
+				
+
+				<p>
+      1. Electrical modulation noise is typically a function of generator
+      frequency and load
+    </p>
+				
+
+				<p>
+      2. Air filtration noise is typically a function of generator frequency and
+      load
+    </p>
+				
+
+				<fig outputclass="center">
+					<image href="./Content/Images/unit_a2.jpg"/>
+					<p outputclass="figtitle">
+
+      Figure 4: new oscilloscope view
+    </p>
+				</fig>
+				
+
+				<p>
+      3. Pneumatic modulation noise is typically a function of generator
+      frequency and load
+    </p>
+				
+
+				<p>
+      4. Hydraulic modulation noise is typically a function of generator
+      frequency and load
+    </p>
+				
+
+				<p outputclass="h1">HYDROGEN FUEL CELL TECHNOLOGY</p>
+				
+
+				<p>
+      5. Hydrogen noise is typically a function of generator frequency and load
+    </p>
+				
+
+				<p>
+      6. Fuel Cell modulation noise is typically a function of generator
+      frequency and load
+    </p>
+				
+
+			</div>
+		</section>
+	</refbody>
+</reference>
