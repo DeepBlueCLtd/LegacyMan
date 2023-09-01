@@ -49,7 +49,10 @@ def copy_files(source_dir, target_dir, file_names=[]):
 
 def prettify_xml(xml_code):
     dom = xml.dom.minidom.parseString(xml_code)
-    return dom.toprettyxml()
+    pretty_dom = dom.toprettyxml()
+    # remove duplicate newlines
+    clean_dom = os.linesep.join([s for s in pretty_dom.splitlines() if s.strip()])
+    return clean_dom
 
 
 def get_files_in_path(path, make_lowercase=False):
@@ -66,13 +69,16 @@ def get_files_in_path(path, make_lowercase=False):
     files = [f for f in entries if os.path.isfile(os.path.join(path, f))]
     return files
 
+
 def replace_characters(string, old_char, new_char):
     return string.replace(old_char, new_char)
+
 
 def remove_leading_slash(path):
     while path.startswith("../") or path.startswith("./"):
         path = path.lstrip("../").lstrip("./")
     return path
+
 
 __all__ = [
     "delete_directory",
@@ -81,5 +87,5 @@ __all__ = [
     "copy_files",
     "prettify_xml",
     "get_files_in_path",
-    "remove_leading_slash"
+    "remove_leading_slash",
 ]
