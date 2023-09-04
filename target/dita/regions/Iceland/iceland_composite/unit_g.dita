@@ -117,13 +117,9 @@
 							<entry>2-1000.4</entry>
 							<entry>H2, 4, 21, 145</entry>
 							<entry>
-								
             The quick brown fox does something similar
-            
 								<xref href="./unit_g.dita" outputclass="placeholder">Tool screenshot a</xref>
 								<xref href="./unit_g.dita" outputclass="placeholder">Tool screenshot b</xref>
-								
-
 							</entry>
 						</row>
 						<row>
@@ -181,60 +177,26 @@
 		<propulsion id="propulsion">
 			<title>Propulsion</title>
 			<span id="PageLayer3">
-				
-
 				<p outputclass="h1">PROPULSION</p>
-				
-
 				<p/>
-				
-
 				<p/>
-				
-
 				<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate.
       Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco
       nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem
       non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat
       adipisicing laborum in.</p>
-				
-
 				<p>
-					
-
 					<ul>
-						
-
 						<li>Mode A</li>
-						
-
 						<li>Mode B</li>
-						
-
 						<li>Mode C</li>
-						
-
 						<li>Mode D</li>
-						
-
 					</ul>
-					
-
 				</p>
-				
-
 				<p/>
-				
-
 				<p/>
-				
-
 				<p>
-					
-
 					<!-- sample of prop table form unit a1 -->
-					
-
 					<!-- <table border="1">
         <tr>
           <td colspan="4"><strong>Unit_G</strong></td>
@@ -268,47 +230,22 @@
           <td colspan="2">12-15</td>
         </tr>
       </table> -->
-					
-
 				</p>
-				
-
 			</span>
 		</propulsion>
 		<remarks id="remarks">
 			<title>Remarks</title>
 			<span id="PageLayer2">
-				
-
 				<p outputclass="h1">REMARKS</p>
-				
-
 				<p id="image9">
-					
-
 					<image href="./Content/Images/unit_a1.jpg"/>
-					 
 					<image href="./Content/Images/unit_a2.jpeg"/>
-					
-
 				</p>
-				
-
 				<p/>
-				
-
 				<p/>
-				
-
 				<p>1. The alphabet is already in alphabetical order one</p>
-				
-
 				<p>2. The alphabet is already in alphabetical order two</p>
-				
-
 				<p>3. The alphabet is already in alphabetical order three</p>
-				
-
 			</span>
 		</remarks>
 	</body>
