@@ -86,31 +86,30 @@ def parse_images(tag, target, dita_soup):
     #Find the colspan:6 table
     td = tag.find("td", {"colspan": "6"})
 
-    #Find the parent table (div id="Table")
-    if td is not None:
+    if td:
+        #Find the parent table (div id="Table")
         parent_table = td.find_parent("div", id="Table")
 
         #Find the parent element of the table
-        page_layer = parent_table.find_parent("div", id="PageLayer")
+        parent_div = parent_table.parent("div")
 
-        for child in page_layer.children:
-            #Find the img child
-            img = child.find("img")
-            if  type(child) is bs4.element.Tag and img is not None:
+        for div in parent_div:
+            img = div.find("img")
+
+            if img is not None:
                 img_link = img['src']
-                img_file_name = os.path.basename(img_link)
+                img_filename = os.path.basename(img_link)
 
                 # check it's not blacklisted
-                if not img_file_name.lower() in black_list:
-                    print("IMG Link >>>>>>> ", img_link)
+                if not img_filename.lower() in black_list:
                     dita_image = dita_soup.new_tag("image")
                     dita_image["href"] = replace_characters(img_link, " ", "%20")
                     dita_image["scale"] = 33
                     dita_image["align"] = "left"
                     dita_images.append(dita_image)
 
-        # Append the dita <images> to the dita <body>
-        target.append(dita_images)
+    # Append the dita <images> to the dita <body>
+    target.append(dita_images)
 
 
 def parse_summary_and_signatures(tag, target, dita_soup, options):
