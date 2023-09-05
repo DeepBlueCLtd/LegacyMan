@@ -157,7 +157,7 @@ def process_ns_countries(country, country_name, link, root_path):
             category = f"{country}_{a.text}"
 
             dita_xref = dita_soup.new_tag("xref")
-            dita_xref["href"] = f"{category}/{category}.dita"
+            dita_xref["href"] = f"../{category}/{category}.dita"
             dita_xref["format"] = "dita"
 
             dita_bold = dita_soup.new_tag("b")
@@ -187,7 +187,7 @@ def process_ns_countries(country, country_name, link, root_path):
                 copy_files(img_src_dir, img_target_dir, [src_img_file])
 
                 dita_img["href"] = replace_characters(
-                    f'./{category}/Content/Images/{os.path.basename(a.img["src"])}',
+                    f'../{category}/Content/Images/{os.path.basename(a.img["src"])}',
                     " ",
                     "%20",
                 )
@@ -256,7 +256,7 @@ def process_category_pages(
 
     # TODO: change the href of the image
     dita_image["href"] = replace_characters(
-        f"../{remove_leading_slash(country_flag_link)}", " ", "%20"
+        f"../{country}/{remove_leading_slash(country_flag_link)}", " ", "%20"
     )
     dita_image["alt"] = "flag"
 

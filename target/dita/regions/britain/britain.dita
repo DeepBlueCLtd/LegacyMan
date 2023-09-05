@@ -9,29 +9,29 @@
 				<tbody>
 					<row>
 						<entry>
-							<xref format="dita" href="Britain_Complex/Britain_Complex.dita">
+							<xref format="dita" href="../Britain_Complex/Britain_Complex.dita">
 								<b>Complex</b>
-								<image href="./Britain_Complex/Content/Images/daf%201b.jpeg" width="400px"/>
+								<image href="../Britain_Complex/Content/Images/daf%201b.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="Britain_Standalones/Britain_Standalones.dita">
+							<xref format="dita" href="../Britain_Standalones/Britain_Standalones.dita">
 								<b>Standalones</b>
-								<image href="./Britain_Standalones/Content/Images/oscill_c.jpg" width="400px"/>
+								<image href="../Britain_Standalones/Content/Images/oscill_c.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>
 					<row>
 						<entry>
-							<xref format="dita" href="Britain_Composites/Britain_Composites.dita">
+							<xref format="dita" href="../Britain_Composites/Britain_Composites.dita">
 								<b>Composites</b>
-								<image href="./Britain_Composites/Content/Images/unit_dar.jpeg" width="400px"/>
+								<image href="../Britain_Composites/Content/Images/unit_dar.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
-							<xref format="dita" href="Britain_Legacy/Britain_Legacy.dita">
+							<xref format="dita" href="../Britain_Legacy/Britain_Legacy.dita">
 								<b>Legacy</b>
-								<image href="./Britain_Legacy/Content/Images/unit_da.jpg" width="400px"/>
+								<image href="../Britain_Legacy/Content/Images/unit_da.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>
