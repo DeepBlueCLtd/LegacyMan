@@ -79,9 +79,13 @@
       5. Hydrogen noise is typically a function of generator frequency and load
     </p>
 				<p>
-      6. Fuel Cell modulation noise is typically a function of generator
+      6. Fuel Cell modulation noise is 
+					<i>typically</i>
+					 a function of generator
       frequency and load
-    </p>
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+					<b>Table 1: Items 1 and 2</b>
+				</p>
 				<!-- this is an example of an unordered list, stored in a blockquote-->
 				<p>
 					<ul>
