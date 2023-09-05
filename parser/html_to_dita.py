@@ -84,12 +84,17 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             newPara.string = content
             div.append(newPara)
         else:
-            div.name = "p"
-            # TODO: verify if real HTML has divs with names
-            del div["name"]
-            # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
-            del div["align"]
-            del div["style"]
+            # A9 has the content within a parent div
+            if div.has_attr("id") and div["id"].startswith("layer"):
+                # just drop it, and keep the children
+                div.unwrap()
+            else:
+                div.name = "p"
+                # TODO: verify if real HTML has divs with names
+                del div["name"]
+                # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
+                del div["align"]
+                del div["style"]
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
@@ -233,6 +238,9 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
                     span["outputclass"] = "red"
                 elif "#00F" in span["style"]:
                     span["outputclass"] = "blue"
+                del span["style"]
+            elif "font-style: italic" in span["style"]:
+                span.name = "i"
                 del span["style"]
 
     for strong in soup.find_all(
