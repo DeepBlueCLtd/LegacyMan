@@ -6,14 +6,6 @@
 	<body>
 		<images>
 			<title>Images</title>
-			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_e.JPG" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_c.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/oscill_d.jpg" scale="33"/>
 		</images>
 		<summary id="summary">
 			<title>Summary</title>
