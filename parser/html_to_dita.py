@@ -127,9 +127,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         # NOTE: in the future, we may need to check the para is just one line long, or
         # use some other test to establish that it's just providing a title
         for pp in p.find_all("p"):
-            # check it's not a p that we have generated earlier
-            if not pp.has_attr("outputclass"):
-                pp.name = "b"
+            # check it doesn't contain an image
+            if pp.find("image"):
+                pp.unwrap()
+            else:
+                # check it's not a p that we have generated earlier
+                if not pp.has_attr("outputclass"):
+                    pp.name = "b"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
@@ -237,9 +241,9 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         for child in soup.children:
             if type(child) is bs4.element.NavigableString:
                 # check it's not just newline char
-                if len(child.text) > 1:
+                if len(child.string) > 1:
                     para = dita_soup.new_tag("p")
-                    para.string = child.text
+                    para.string = child.string
                     child.replace_with(para)
 
     # 12. remove "align" attribute for paragraphs

@@ -45,6 +45,12 @@
 					    Figure 1:
       oscilloscope view    Figure 2: other oscilloscope
       view    Figure 3: extra oscilloscope view
+        Some content goes here
+					<fig outputclass="center">
+						<image href="./Content/Images/unit_a2.jpg"/>
+						<image href="./Content/Images/unit_da.jpg"/>
+						<p outputclass="figtitle">Figure 1 Diagram a2 and da.</p>
+					</fig>
 				</p>
 				<p>
       1. Electrical modulation noise is typically a function of generator
