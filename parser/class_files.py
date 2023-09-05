@@ -302,7 +302,9 @@ def parse_propulsion(tag, target, dita_soup, options):
                     source_file_path = (
                         f"{os.path.dirname(options['file_path'])}/{related_page_link}"
                     )
-                    linked_file_path = parse_non_class_file(source_file_path, "Propulsion", options)
+
+                    ref_page_options = reference_page_options(options, related_page_link)
+                    linked_file_path = parse_non_class_file(source_file_path, "Propulsion", ref_page_options)
 
                     # Add a <propulsionRef> element in the current file so it can point to the linked file
                     propulsion_ref = dita_soup.new_tag("propulsionRef")
@@ -364,7 +366,9 @@ def parse_remarks(tag, target, dita_soup, options):
                     source_file_path = (
                         f"{os.path.dirname(options['file_path'])}/{related_page_link}"
                     )
-                    linked_file_path = parse_non_class_file(source_file_path, "Remarks", options)
+
+                    ref_page_options = reference_page_options(options, related_page_link)
+                    linked_file_path = parse_non_class_file(source_file_path, "Remarks", ref_page_options)
 
                     # Add a <propulsionRef> element in the current file so it can point to the linked file
                     remarks_ref = dita_soup.new_tag("remarks")
@@ -389,6 +393,15 @@ def parse_remarks(tag, target, dita_soup, options):
 
                     # Append the remarksRef link to the current dita file
                     target.append(remarks_ref)
+
+
+def reference_page_options(class_file_options, ref_page_link):
+    options = {
+        "file_name": os.path.basename(ref_page_link),
+        "file_path": os.path.dirname(ref_page_link),
+        "target_path": f"{class_file_options['target_path']}/{os.path.dirname(ref_page_link)}"
+    }
+    return options
 
 
 __all__ = ["process_class_files"]
