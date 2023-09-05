@@ -29,7 +29,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     html_soup = BeautifulSoup(class_file, "html.parser")
 
     # Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">'
+    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../dtd/class.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, "xml")
 
     dita_body = dita_soup.new_tag("body")
@@ -72,6 +72,8 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
+
+    #write the class file
     with open(file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 

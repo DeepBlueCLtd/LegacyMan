@@ -97,14 +97,15 @@ def process_regions(root_path):
     # Append the <topic> element to the BeautifulSoup object
     dita_soup.append(dita_topic)
 
-    # Write the DITA file
-    dita_output = "target/dita/regions"
-    create_directory(dita_output)
+    #create /target/dita/regions dir
+    regions_path = "target/dita/regions"
+    create_directory(regions_path)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
 
-    with open(f"{dita_output}/regions.dita", "wb") as f:
+    # Write the DITA file
+    with open(f"{regions_path}/regions.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
 
@@ -145,7 +146,8 @@ def process_ns_countries(country, country_name, link, root_path):
     dita_body = dita_soup.new_tag("body")
 
     # Create the dir to store the content and the dita files for countries
-    country_path = f"target/dita/regions/{country}"
+    regions_path = f"target/dita/regions"
+    country_path = f"{regions_path}/{country}"
     create_directory(country_path)
 
     for tr in img_links_table.find_all("tr"):
@@ -177,11 +179,11 @@ def process_ns_countries(country, country_name, link, root_path):
                 country, category_page_link, category, country_name, country_flag, root_path
             )
 
-            # Copy each images in /data/$Category/Content/Images to /dita/regions/$Country_name/$Category/Content/Images dir
+            # Copy each category images to /dita/regions/$Category_Name/Content/Images dir
             if a.find("img") is not None:
                 src_img_file = os.path.basename(a.find("img")["src"])
                 img_src_dir = f"{root_path}/{os.path.dirname(category_page_link.replace('../', ''))}/Content/Images"
-                img_target_dir = f"{country_path}/{category}/Content/Images"
+                img_target_dir =  f"{regions_path}/{category}/Content/Images"
                 copy_files(img_src_dir, img_target_dir, [src_img_file])
 
                 dita_img["href"] = replace_characters(
@@ -201,7 +203,7 @@ def process_ns_countries(country, country_name, link, root_path):
     # Append the rich-collection element to the dita_soup object
     dita_soup.append(dita_rich_collection)
 
-    # Copy all of the images in data/$country/Content/Images to /dita/regions/$Country_name/Content/Images dir
+    # Copy each country images to /dita/regions/$Country_name/Content/Images dir
     source_dir = f"{root_path}/{country_name}/Content/Images"
     file_names = get_files_in_path(source_dir, make_lowercase=False)
     copy_files(source_dir, f"{country_path}/Content/Images", file_names)
@@ -231,7 +233,7 @@ def process_category_pages(
         raise ValueError(f"<td> element with colspan 7 not found in the {category_page_link} file")
 
     # Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../../../dtd/classlist.dtd">'
+    dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../../dtd/classlist.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, "xml")
 
     # Create dita elements for <tgroup>,<table>, <tbody> ...
@@ -258,9 +260,9 @@ def process_category_pages(
     )
     dita_image["alt"] = "flag"
 
-    country_path = f"target/dita/regions/{country}"
-    file_path = f"{country_path}/{category}"
-    create_directory(file_path)
+    #create folder for category pages
+    category_path = f"target/dita/regions/{category}"
+    create_directory(category_path)
 
     # Read the parent <table> element
     for tr_count, tr in enumerate(parent_table.find_all("tr")):
@@ -291,13 +293,13 @@ def process_category_pages(
                     class_name = a.text
                     class_file_src_path = f"{root_path}/{os.path.dirname(remove_leading_slash(category_page_link))}/{href}"
 
-                    class_file_target_path = f"target/dita/regions/{country}/{category}"
-                    process_class_files(
-                        class_file_src_path, class_file_target_path, class_name, file_name
-                    )
+                    if not href.startswith("../"):
+                        process_class_files(
+                        class_file_src_path, category_path, class_name, file_name
+                        )
 
-                    file_link = a["href"].replace(".html", ".dita")
-                    dita_xref["href"] = f"./{file_link}"
+                    file_link = remove_leading_slash(href.replace(".html", ".dita"))
+                    dita_xref["href"] = file_link
 
                     dita_xref.string = a.text.strip()
                     dita_entry.string = ""
@@ -332,17 +334,18 @@ def process_category_pages(
     # Append the whole page to the dita soup
     dita_soup.append(dita_classlist)
 
-    # Copy all images to /dita/regions/$Country_name/$Category_page/Content/Images dir
+    #Copy the category images to /dita/regions/$category_name/Content/Images folder
     category_page_link = remove_leading_slash(category_page_link.replace(".html", ".dita"))
     source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/Content/Images"
-    target_img_dir = f"{country_path}/{category}/Content/Images"
+    target_img_dir = f"{category_path}/Content/Images"
     file_names = get_files_in_path(source_img_dir, make_lowercase=False)
     copy_files(source_img_dir, target_img_dir, file_names)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
 
-    with open(f"{country_path}/{category}/{category}.dita", "wb") as f:
+    #Write the category file to target/dita/regions/$category_name folder
+    with open(f"{category_path}/{category}.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
 
