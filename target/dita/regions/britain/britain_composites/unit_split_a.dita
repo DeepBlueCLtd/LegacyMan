@@ -6,6 +6,10 @@
 	<body>
 		<images>
 			<title>Images</title>
+			<image height="150" href="./Content/Images/unit_a1.jpg" width="200"/>
+			<image height="150" href="./Content/Images/unit_a2.jpeg" width="200"/>
+			<image height="150" href="./Content/Images/unit_dar.jpeg" width="200"/>
+			<image height="150" href="./Content/Images/unit_da.jpg" width="200"/>
 		</images>
 		<summary id="summary">
 			<title>Summary</title>
