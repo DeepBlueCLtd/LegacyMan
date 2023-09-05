@@ -98,13 +98,11 @@ def parse_images(tag, target, dita_soup, file_name):
             if type(div) is bs4.element.Tag:
                 # check if it's not the colspan, since we handle that separately
                 if div.find("td", {"colspan": "6"}) is None:
-                    # check our understanding of the data
-                    if len(div.find_all("img")) > 1:
-                        print(
-                            f"%% WARNING: Higher than expected number of images in div: {file_name} ({len(img)})"
-                        )
+                    # find images in this block
                     for img in div.find_all("img"):
-                        if img is not None:
+                        # check it has a parent with "image" in the ID
+                        parent_div = img.find_parent("div")
+                        if parent_div.has_attr("id") and parent_div["id"].startswith("image"):
                             img_link = img["src"]
                             img_filename = os.path.basename(img_link)
 
