@@ -6,9 +6,10 @@
 	<body>
 		<images>
 			<title>Images</title>
-			<image align="left" href="./Content/Images/daf_1.jpeg" scale="33"/>
-			<image align="left" href="./Content/Images/daf_2.jpeg" scale="33"/>
-			<image align="left" href="./Content/Images/daf_3.jpeg" scale="33"/>
+			<image height="150" href="./Content/Images/daf_1.jpeg" width="200"/>
+			<image height="150" href="./Content/Images/daf_2.jpeg" width="200"/>
+			<image height="150" href="./Content/Images/daf_3.jpeg" width="200"/>
+			<image height="150" href="./Content/Images/daf%201b.jpeg" width="200"/>
 		</images>
 		<summary id="summary">
 			<title>Summary</title>

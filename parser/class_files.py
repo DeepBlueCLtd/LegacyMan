@@ -98,26 +98,26 @@ def parse_images(tag, target, dita_soup, file_name):
             if type(div) is bs4.element.Tag:
                 # check if it's not the colspan, since we handle that separately
                 if div.find("td", {"colspan": "6"}) is None:
-                    # check our understanding of the data
-                    if len(div.find_all("img")) > 1:
-                        print(
-                            f"%% WARNING: Higher than expected number of images in div: {file_name} ({len(img)})"
-                        )
-                    img = div.find("img")
-                    if img is not None:
-                        img_link = img["src"]
-                        img_filename = os.path.basename(img_link)
+                    # find images in this block
+                    for img in div.find_all("img"):
+                        # check it has a parent with "image" in the ID
+                        parent_div = img.find_parent("div")
+                        if parent_div.has_attr("id") and parent_div["id"].startswith("image"):
+                            img_link = img["src"]
+                            img_filename = os.path.basename(img_link)
 
-                        # check it's not blacklisted
-                        if not img_filename.lower() in black_list:
-                            dita_image = dita_soup.new_tag("image")
-                            dita_image["href"] = replace_characters(img_link, " ", "%20")
-                            dita_image["scale"] = 33
-                            dita_image["align"] = "left"
-                            dita_images.append(dita_image)
-                            # TODO: transfer the height and width too?
-                            # NOTE: If we transfer them we may as well just rename the object,
-                            # rather than copy attributes to a new object
+                            # check it's not blacklisted
+                            if not img_filename.lower() in black_list:
+                                dita_image = dita_soup.new_tag("image")
+                                dita_image["href"] = replace_characters(img_link, " ", "%20")
+                                if img.has_attr("height"):
+                                    dita_image["height"] = img["height"]
+                                if img.has_attr("width"):
+                                    dita_image["width"] = img["width"]
+                                dita_images.append(dita_image)
+                                # TODO: transfer the height and width too?
+                                # NOTE: If we transfer them we may as well just rename the object,
+                                # rather than copy attributes to a new object
 
     # Append the dita <images> to the dita <body>
     target.append(dita_images)
