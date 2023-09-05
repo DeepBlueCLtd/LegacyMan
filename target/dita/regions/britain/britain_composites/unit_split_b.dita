@@ -83,12 +83,22 @@
       frequency and load
     </p>
 				<!-- this is an example of an unordered list, stored in a blockquote-->
+				<p>
+					<ul>
+						<li>a. Useful in colder climates</li>
+						<li>b. Ruggedised version available from 2022</li>
+						<li>c. Unreliable with DC power source</li>
+						<li>d. Have you tried turning it on and off again?  My uncle said that worked about 30% of the time.</li>
+						<li>e. Infallable when it comes to high altitude installations</li>
+					</ul>
+				</p>
+				<!-- this is an example of an unordered list, stored in a blockquote-->
 				<ul>
-					<li>a. Useful in colder climates</li>
-					<li>b. Ruggedised version available from 2022</li>
-					<li>c. Unreliable with DC power source</li>
-					<li>d. Have you tried turning it on and off again?  My uncle said that worked about 30% of the time.</li>
-					<li>e. Infallable when it comes to high altitude installations</li>
+					<li>a. Not useful in colder climates</li>
+					<li>b. No ruggedised version available from 2022</li>
+					<li>c. Reliable with DC power source</li>
+					<li>d. What about turning it on and off again?  My uncle said that worked about 30% of the time.</li>
+					<li>e. Fallable when it comes to high altitude installations</li>
 				</ul>
 			</div>
 		</section>
