@@ -196,7 +196,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         else:
             soup.name = "b"
 
-    # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
+    # 9a. For top-level block-quotes that contain child block-quotes
     for bq in soup.find_all("blockquote", recursive=False):
         if bq.find("blockquote"):
             # blockquotes used for padding. replace with placeholder
@@ -204,23 +204,25 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             para.string = "[WHITESPACE FOR TABLE]"
             para["outputclass"] = "placeholder"
             bq.replace_with(para)
-        else:
-            # note: we aren't doing this recursively, we're just looking at the top level
-            # in other scenarios there are nested blockquotes, culminating in a heading in a p
-            # we need to handle them separately.
-            if bq.find("p", recursive=False):
-                # it's an indented list.
-                bq.name = "ul"
-                for p in bq.find_all("p", recursive=False):
-                    p.name = "li"
-            # note: we aren't doing this recursively, we're just looking at the top level
-            # in other scenarios there are nested blockquotes, culminating in a heading in a p
-            # we need to handle them separately.
-            if bq.find("b", recursive=False):
-                # it's an indented list.
-                bq.name = "ul"
-                for p in bq.find_all("b", recursive=False):
-                    p.name = "li"
+
+    # 9b. For remaining block-quotes check for lists
+    for bq in soup.find_all("blockquote", recursive=True):
+        # note: we aren't doing this recursively, we're just looking at the top level
+        # in other scenarios there are nested blockquotes, culminating in a heading in a p
+        # we need to handle them separately.
+        if bq.find("p", recursive=False):
+            # it's an indented list.
+            bq.name = "ul"
+            for p in bq.find_all("p", recursive=False):
+                p.name = "li"
+        # note: we aren't doing this recursively, we're just looking at the top level
+        # in other scenarios there are nested blockquotes, culminating in a heading in a p
+        # we need to handle them separately.
+        if bq.find("b", recursive=False):
+            # it's an indented list.
+            bq.name = "ul"
+            for p in bq.find_all("b", recursive=False):
+                p.name = "li"
 
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     for span in soup.find_all("span", recursive=True):
