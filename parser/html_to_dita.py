@@ -213,6 +213,14 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
                 bq.name = "ul"
                 for p in bq.find_all("p", recursive=False):
                     p.name = "li"
+            # note: we aren't doing this recursively, we're just looking at the top level
+            # in other scenarios there are nested blockquotes, culminating in a heading in a p
+            # we need to handle them separately.
+            if bq.find("b", recursive=False):
+                # it's an indented list.
+                bq.name = "ul"
+                for p in bq.find_all("b", recursive=False):
+                    p.name = "li"
 
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     for span in soup.find_all("span", recursive=True):
