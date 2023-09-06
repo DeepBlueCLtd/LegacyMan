@@ -264,7 +264,6 @@ def process_category_pages(
 
     #create folder for category pages
     category_path = f"target/dita/regions/{category}"
-    print("CAT PATH >>> ", category_path)
     create_directory(category_path)
 
     # Read the parent <table> element
@@ -348,7 +347,8 @@ def process_category_pages(
     prettified_code = prettify_xml(str(dita_soup))
 
     #Write the category file to target/dita/regions/$category_name folder
-    with open(f"{category_path}/{category}.dita", "wb") as f:
+    category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
+    with open(category_file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
 
