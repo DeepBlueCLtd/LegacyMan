@@ -154,10 +154,10 @@ def process_ns_countries(country, country_name, link, root_path):
         dita_row = dita_soup.new_tag("row")
 
         for a in tr.find_all("a"):
-            category = f"{country}_{a.text}"
+            category_href =  a['href'].replace(".html", ".dita")
 
             dita_xref = dita_soup.new_tag("xref")
-            dita_xref["href"] = f"../{category}/{category}.dita"
+            dita_xref["href"] = category_href
             dita_xref["format"] = "dita"
 
             dita_bold = dita_soup.new_tag("b")
@@ -175,6 +175,8 @@ def process_ns_countries(country, country_name, link, root_path):
 
             # Process category pages from this file
             category_page_link = a["href"]
+            category = remove_leading_slash(os.path.dirname(category_href))
+
             process_category_pages(
                 country, category_page_link, category, country_name, country_flag, root_path
             )
@@ -262,6 +264,7 @@ def process_category_pages(
 
     #create folder for category pages
     category_path = f"target/dita/regions/{category}"
+    print("CAT PATH >>> ", category_path)
     create_directory(category_path)
 
     # Read the parent <table> element
@@ -298,7 +301,7 @@ def process_category_pages(
                         class_file_src_path, category_path, class_name, file_name
                         )
 
-                    file_link = remove_leading_slash(href.replace(".html", ".dita"))
+                    file_link = href.replace(".html", ".dita")
                     dita_xref["href"] = file_link
 
                     dita_xref.string = a.text.strip()

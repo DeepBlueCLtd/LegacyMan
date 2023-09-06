@@ -9,9 +9,9 @@
 				<tbody>
 					<row>
 						<entry>
-							<xref format="dita" href="../Britain_Complex/Britain_Complex.dita">
+							<xref format="dita" href="../Britain_Cmplx/Britain_Cmplx1.dita">
 								<b>Complex</b>
-								<image href="../Britain_Complex/Content/Images/daf%201b.jpeg" width="400px"/>
+								<image href="../Britain_Cmplx/Content/Images/daf%201b.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
@@ -23,9 +23,9 @@
 					</row>
 					<row>
 						<entry>
-							<xref format="dita" href="../Britain_Composites/Britain_Composites.dita">
+							<xref format="dita" href="../Britain_Composite/Britain_Composites.dita">
 								<b>Composites</b>
-								<image href="../Britain_Composites/Content/Images/unit_dar.jpeg" width="400px"/>
+								<image href="../Britain_Composite/Content/Images/unit_dar.jpeg" width="400px"/>
 							</xref>
 						</entry>
 						<entry>
