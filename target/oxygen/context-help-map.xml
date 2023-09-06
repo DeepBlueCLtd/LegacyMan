@@ -2,5 +2,5 @@
 <map>
    <appContext helpID="links_1" path="welcome.html"/>
    <appContext helpID="links_1" path="regions/regions.html"/>
-   <appContext helpID="unit_daf" path="regions/Britain/Britain_Complex/unit_daf.html"/>
+   <appContext helpID="unit_daf" path="regions/Britain_Cmplx/unit_daf.html"/>
 </map>
