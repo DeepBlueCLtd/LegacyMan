@@ -147,7 +147,7 @@ def process_ns_countries(country, country_name, link, root_path):
 
     # Create the dir to store the content and the dita files for countries
     regions_path = f"target/dita/regions"
-    country_path = f"{regions_path}/{country}"
+    country_path = f"{regions_path}/{country_name}"
     create_directory(country_path)
 
     for tr in img_links_table.find_all("tr"):
@@ -212,10 +212,10 @@ def process_ns_countries(country, country_name, link, root_path):
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
-    with open(f"{country_path}/{country}.dita", "wb") as f:
+    with open(f"{country_path}/{country_name}.dita", "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
-    return f"{country}/{country}.dita"
+    return f"{country_name}/{country_name}.dita"
 
 
 def process_category_pages(
@@ -258,7 +258,7 @@ def process_category_pages(
 
     # TODO: change the href of the image
     dita_image["href"] = replace_characters(
-        f"../{country}/{remove_leading_slash(country_flag_link)}", " ", "%20"
+        f"../{country_name}/{remove_leading_slash(country_flag_link)}", " ", "%20"
     )
     dita_image["alt"] = "flag"
 
@@ -288,9 +288,9 @@ def process_category_pages(
                 href = a.get("href")
                 if href is not None:
                     dita_xref = dita_soup.new_tag("xref")
+
                     # Remove any #anchor_id value after the href
                     href = href.split(".html")[0] + ".html"
-
                     file_name = os.path.basename(href.replace(".html", ""))
                     class_name = a.text
                     class_file_src_path = f"{root_path}/{os.path.dirname(remove_leading_slash(category_page_link))}/{href}"
