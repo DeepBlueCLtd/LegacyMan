@@ -73,7 +73,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
 
-    #write the class file
+    # write the class file
     with open(file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
@@ -100,26 +100,26 @@ def parse_images(tag, target, dita_soup, file_name):
             if type(div) is bs4.element.Tag:
                 # check if it's not the colspan, since we handle that separately
                 if div.find("td", {"colspan": "6"}) is None:
-                    # check our understanding of the data
-                    if len(div.find_all("img")) > 1:
-                        print(
-                            f"%% WARNING: Higher than expected number of images in div: {file_name} ({len(img)})"
-                        )
-                    img = div.find("img")
-                    if img is not None:
-                        img_link = img["src"]
-                        img_filename = os.path.basename(img_link)
+                    # find images in this block
+                    for img in div.find_all("img"):
+                        # check it has a parent with "image" in the ID
+                        parent_div = img.find_parent("div")
+                        if parent_div.has_attr("id") and parent_div["id"].startswith("image"):
+                            img_link = img["src"]
+                            img_filename = os.path.basename(img_link)
 
-                        # check it's not blacklisted
-                        if not img_filename.lower() in black_list:
-                            dita_image = dita_soup.new_tag("image")
-                            dita_image["href"] = replace_characters(img_link, " ", "%20")
-                            dita_image["scale"] = 33
-                            dita_image["align"] = "left"
-                            dita_images.append(dita_image)
-                            # TODO: transfer the height and width too?
-                            # NOTE: If we transfer them we may as well just rename the object,
-                            # rather than copy attributes to a new object
+                            # check it's not blacklisted
+                            if not img_filename.lower() in black_list:
+                                dita_image = dita_soup.new_tag("image")
+                                dita_image["href"] = replace_characters(img_link, " ", "%20")
+                                if img.has_attr("height"):
+                                    dita_image["height"] = img["height"]
+                                if img.has_attr("width"):
+                                    dita_image["width"] = img["width"]
+                                dita_images.append(dita_image)
+                                # TODO: transfer the height and width too?
+                                # NOTE: If we transfer them we may as well just rename the object,
+                                # rather than copy attributes to a new object
 
     # Append the dita <images> to the dita <body>
     target.append(dita_images)
@@ -284,39 +284,48 @@ def parse_propulsion(tag, target, dita_soup, options):
     else:
         # Check if there is an html <div id="QuickLinksTable"> </div>
         quick_links_table = tag.find("div", {"id": "QuickLinksTable"})
-        propulsion = quick_links_table.find("td", text="Propulsion")
+        if not quick_links_table:
+            print(f"Failed to find QuickLinksTable in {options['file_path']}")
+        else:
+            propulsion = quick_links_table.find("td", text="Propulsion")
 
-        if quick_links_table and propulsion:
-            related_page_link = propulsion.find("a")["href"]
-            current_page_link = os.path.basename(options["file_path"])
+            if propulsion and propulsion.find("a"):
+                related_page_link = propulsion.find("a")["href"]
+                current_page_link = os.path.basename(options["file_path"])
 
-            # Remove any #anchor_id from the file link
-            related_page_link = related_page_link.split(".html")[0] + ".html"
+                # Remove any #anchor_id from the file link
+                related_page_link = related_page_link.split(".html")[0] + ".html"
 
-            if related_page_link == current_page_link:
-                print(
-                    f"Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link"
-                )
-            else:
-                source_file_path = f"{os.path.dirname(options['file_path'])}/{related_page_link}"
-                linked_file_path = parse_non_class_file(source_file_path, "Propulsion", options)
+                if related_page_link == current_page_link:
+                    print(
+                        f"Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link"
+                    )
+                else:
+                    source_file_path = (
+                        f"{os.path.dirname(options['file_path'])}/{related_page_link}"
+                    )
 
-                # Add a <propulsionRef> element in the current file so it can point to the linked file
-                propulsion_ref = dita_soup.new_tag("propulsionRef")
-                propulsion_ref["id"] = "propulsion"
+                    ref_page_options = reference_page_options(options, related_page_link)
+                    linked_file_path = parse_non_class_file(
+                        source_file_path, "Propulsion", ref_page_options
+                    )
 
-                ref_title = dita_soup.new_tag("title")
-                ref_title.string = "Propulsion"
+                    # Add a <propulsionRef> element in the current file so it can point to the linked file
+                    propulsion_ref = dita_soup.new_tag("propulsionRef")
+                    propulsion_ref["id"] = "propulsion"
 
-                ref_xref = dita_soup.new_tag("xref")
-                ref_xref["href"] = linked_file_path
-                ref_xref["format"] = "dita"
+                    ref_title = dita_soup.new_tag("title")
+                    ref_title.string = "Propulsion"
 
-                propulsion_ref.append(ref_title)
-                propulsion_ref.append(ref_xref)
+                    ref_xref = dita_soup.new_tag("xref")
+                    ref_xref["href"] = linked_file_path
+                    ref_xref["format"] = "dita"
 
-                # Append the propulsionRef link to the current dita file
-                target.append(propulsion_ref)
+                    propulsion_ref.append(ref_title)
+                    propulsion_ref.append(ref_xref)
+
+                    # Append the propulsionRef link to the current dita file
+                    target.append(propulsion_ref)
 
 
 def parse_remarks(tag, target, dita_soup, options):
@@ -342,46 +351,63 @@ def parse_remarks(tag, target, dita_soup, options):
 
         # Check if there is an html <div id="QuickLinksTable"> </div>
         quick_links_table = tag.find("div", {"id": "QuickLinksTable"})
-        remark = quick_links_table.find("td", text="Remarks")
+        if not quick_links_table:
+            print(f"Failed to find QuickLinksTable in {options['file_path']}")
+        else:
+            remark = quick_links_table.find("td", text="Remarks")
+            if remark and remark.find("a"):
+                related_page_link = remark.find("a")["href"]
+                current_page_link = os.path.basename(options["file_path"])
 
-        if quick_links_table and remark:
-            related_page_link = remark.find("a")["href"]
-            current_page_link = os.path.basename(options["file_path"])
+                # Remove any #anchor_id from the file link
+                related_page_link = related_page_link.split(".html")[0] + ".html"
 
-            # Remove any #anchor_id from the file link
-            related_page_link = related_page_link.split(".html")[0] + ".html"
+                if related_page_link == current_page_link:
+                    print(
+                        f"Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link"
+                    )
+                else:
+                    source_file_path = (
+                        f"{os.path.dirname(options['file_path'])}/{related_page_link}"
+                    )
 
-            if related_page_link == current_page_link:
-                print(
-                    f"Faild to parse linked file {related_page_link}, The link found in the QuickLinksTable is the same as the current page link"
-                )
-            else:
-                source_file_path = f"{os.path.dirname(options['file_path'])}/{related_page_link}"
-                linked_file_path = parse_non_class_file(source_file_path, "Remarks", options)
+                    ref_page_options = reference_page_options(options, related_page_link)
+                    linked_file_path = parse_non_class_file(
+                        source_file_path, "Remarks", ref_page_options
+                    )
 
-                # Add a <propulsionRef> element in the current file so it can point to the linked file
-                remarks_ref = dita_soup.new_tag("remarks")
-                remarks_ref["id"] = "remarks"
+                    # Add a <propulsionRef> element in the current file so it can point to the linked file
+                    remarks_ref = dita_soup.new_tag("remarks")
+                    remarks_ref["id"] = "remarks"
 
-                ref_title = dita_soup.new_tag("title")
-                ref_title.string = "Remarks"
+                    ref_title = dita_soup.new_tag("title")
+                    ref_title.string = "Remarks"
 
-                ref_span = dita_soup.new_tag("span")
+                    ref_span = dita_soup.new_tag("span")
 
-                ref_xref = dita_soup.new_tag("xref")
-                ref_xref["href"] = linked_file_path
-                ref_xref["format"] = "dita"
+                    ref_xref = dita_soup.new_tag("xref")
+                    ref_xref["href"] = linked_file_path
+                    ref_xref["format"] = "dita"
 
-                ref_para = dita_soup.new_tag("p")
-                ref_para.append(ref_xref)
+                    ref_para = dita_soup.new_tag("p")
+                    ref_para.append(ref_xref)
 
-                ref_span.append(ref_para)
+                    ref_span.append(ref_para)
 
-                remarks_ref.append(ref_title)
-                remarks_ref.append(ref_span)
+                    remarks_ref.append(ref_title)
+                    remarks_ref.append(ref_span)
 
-                # Append the remarksRef link to the current dita file
-                target.append(remarks_ref)
+                    # Append the remarksRef link to the current dita file
+                    target.append(remarks_ref)
+
+
+def reference_page_options(class_file_options, ref_page_link):
+    options = {
+        "file_name": os.path.basename(ref_page_link),
+        "file_path": os.path.dirname(ref_page_link),
+        "target_path": f"{class_file_options['target_path']}/{os.path.dirname(ref_page_link)}",
+    }
+    return options
 
 
 __all__ = ["process_class_files"]

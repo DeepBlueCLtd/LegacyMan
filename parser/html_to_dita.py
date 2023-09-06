@@ -84,12 +84,17 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             newPara.string = content
             div.append(newPara)
         else:
-            div.name = "p"
-            # TODO: verify if real HTML has divs with names
-            del div["name"]
-            # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
-            del div["align"]
-            del div["style"]
+            # A9 has the content within a parent div
+            if div.has_attr("id") and div["id"].startswith("layer"):
+                # just drop it, and keep the children
+                div.unwrap()
+            else:
+                div.name = "p"
+                # TODO: verify if real HTML has divs with names
+                del div["name"]
+                # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
+                del div["align"]
+                del div["style"]
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
@@ -127,9 +132,13 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         # NOTE: in the future, we may need to check the para is just one line long, or
         # use some other test to establish that it's just providing a title
         for pp in p.find_all("p"):
-            # check it's not a p that we have generated earlier
-            if not pp.has_attr("outputclass"):
-                pp.name = "b"
+            # check it doesn't contain an image
+            if pp.find("image"):
+                pp.unwrap()
+            else:
+                # check it's not a p that we have generated earlier
+                if not pp.has_attr("outputclass"):
+                    pp.name = "b"
 
     # 4b. replace h1 with paragraph with correct outputClass
     for h1 in soup.find_all("h1"):
@@ -192,7 +201,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         else:
             soup.name = "b"
 
-    # 9. For top-level block-quotes that contain `p` elements, switch to UL lists
+    # 9a. For top-level block-quotes that contain child block-quotes
     for bq in soup.find_all("blockquote", recursive=False):
         if bq.find("blockquote"):
             # blockquotes used for padding. replace with placeholder
@@ -200,15 +209,25 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             para.string = "[WHITESPACE FOR TABLE]"
             para["outputclass"] = "placeholder"
             bq.replace_with(para)
-        else:
-            # note: we aren't doing this recursively, we're just looking at the top level
-            # in other scenarios there are nested blockquotes, culminating in a heading in a p
-            # we need to handle them separately.
-            if bq.find("p", recursive=False):
-                # it's an indented list.
-                bq.name = "ul"
-                for p in bq.find_all("p", recursive=False):
-                    p.name = "li"
+
+    # 9b. For remaining block-quotes check for lists
+    for bq in soup.find_all("blockquote", recursive=True):
+        # note: we aren't doing this recursively, we're just looking at the top level
+        # in other scenarios there are nested blockquotes, culminating in a heading in a p
+        # we need to handle them separately.
+        if bq.find("p", recursive=False):
+            # it's an indented list.
+            bq.name = "ul"
+            for p in bq.find_all("p", recursive=False):
+                p.name = "li"
+        # note: we aren't doing this recursively, we're just looking at the top level
+        # in other scenarios there are nested blockquotes, culminating in a heading in a p
+        # we need to handle them separately.
+        if bq.find("b", recursive=False):
+            # it's an indented list.
+            bq.name = "ul"
+            for p in bq.find_all("b", recursive=False):
+                p.name = "li"
 
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     for span in soup.find_all("span", recursive=True):
@@ -219,6 +238,9 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
                     span["outputclass"] = "red"
                 elif "#00F" in span["style"]:
                     span["outputclass"] = "blue"
+                del span["style"]
+            elif "font-style: italic" in span["style"]:
+                span.name = "i"
                 del span["style"]
 
     for strong in soup.find_all(
@@ -237,9 +259,9 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
         for child in soup.children:
             if type(child) is bs4.element.NavigableString:
                 # check it's not just newline char
-                if len(child.text) > 1:
+                if len(child.string) > 1:
                     para = dita_soup.new_tag("p")
-                    para.string = child.text
+                    para.string = child.string
                     child.replace_with(para)
 
     # 12. remove "align" attribute for paragraphs

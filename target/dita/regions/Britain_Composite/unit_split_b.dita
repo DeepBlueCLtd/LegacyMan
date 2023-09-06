@@ -45,6 +45,12 @@
 					    Figure 1:
       oscilloscope view    Figure 2: other oscilloscope
       view    Figure 3: extra oscilloscope view
+        Some content goes here
+					<fig outputclass="center">
+						<image href="./Content/Images/unit_a2.jpg"/>
+						<image href="./Content/Images/unit_da.jpg"/>
+						<p outputclass="figtitle">Figure 1 Diagram a2 and da.</p>
+					</fig>
 				</p>
 				<p>
       1. Electrical modulation noise is typically a function of generator
@@ -73,9 +79,31 @@
       5. Hydrogen noise is typically a function of generator frequency and load
     </p>
 				<p>
-      6. Fuel Cell modulation noise is typically a function of generator
+      6. Fuel Cell modulation noise is 
+					<i>typically</i>
+					 a function of generator
       frequency and load
-    </p>
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+					<b>Table 1: Items 1 and 2</b>
+				</p>
+				<!-- this is an example of an unordered list, stored in a blockquote-->
+				<p>
+					<ul>
+						<li>a. Useful in colder climates</li>
+						<li>b. Ruggedised version available from 2022</li>
+						<li>c. Unreliable with DC power source</li>
+						<li>d. Have you tried turning it on and off again?  My uncle said that worked about 30% of the time.</li>
+						<li>e. Infallable when it comes to high altitude installations</li>
+					</ul>
+				</p>
+				<!-- this is an example of an unordered list, stored in a blockquote-->
+				<ul>
+					<li>a. Not useful in colder climates</li>
+					<li>b. No ruggedised version available from 2022</li>
+					<li>c. Reliable with DC power source</li>
+					<li>d. What about turning it on and off again?  My uncle said that worked about 30% of the time.</li>
+					<li>e. Fallable when it comes to high altitude installations</li>
+				</ul>
 			</div>
 		</section>
 	</refbody>

@@ -6,8 +6,8 @@
 	<body>
 		<images>
 			<title>Images</title>
-			<image align="left" href="./Content/Images/unit_a1.jpg" scale="33"/>
-			<image align="left" href="./Content/Images/unit_a2.jpeg" scale="33"/>
+			<image href="./Content/Images/unit_a1.jpg"/>
+			<image href="./Content/Images/unit_a2.jpeg"/>
 		</images>
 		<summary id="summary">
 			<title>Summary</title>
