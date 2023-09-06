@@ -29,7 +29,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     html_soup = BeautifulSoup(class_file, "html.parser")
 
     # Create the DITA document type declaration string
-    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../../dtd/class.dtd">'
+    dita_doctype = '<!DOCTYPE class SYSTEM "../../../../dtd/class.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, "xml")
 
     dita_body = dita_soup.new_tag("body")
@@ -72,6 +72,8 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
+
+    # write the class file
     with open(file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
 
@@ -304,7 +306,9 @@ def parse_propulsion(tag, target, dita_soup, options):
                     )
 
                     ref_page_options = reference_page_options(options, related_page_link)
-                    linked_file_path = parse_non_class_file(source_file_path, "Propulsion", ref_page_options)
+                    linked_file_path = parse_non_class_file(
+                        source_file_path, "Propulsion", ref_page_options
+                    )
 
                     # Add a <propulsionRef> element in the current file so it can point to the linked file
                     propulsion_ref = dita_soup.new_tag("propulsionRef")
@@ -368,7 +372,9 @@ def parse_remarks(tag, target, dita_soup, options):
                     )
 
                     ref_page_options = reference_page_options(options, related_page_link)
-                    linked_file_path = parse_non_class_file(source_file_path, "Remarks", ref_page_options)
+                    linked_file_path = parse_non_class_file(
+                        source_file_path, "Remarks", ref_page_options
+                    )
 
                     # Add a <propulsionRef> element in the current file so it can point to the linked file
                     remarks_ref = dita_soup.new_tag("remarks")
@@ -399,7 +405,7 @@ def reference_page_options(class_file_options, ref_page_link):
     options = {
         "file_name": os.path.basename(ref_page_link),
         "file_path": os.path.dirname(ref_page_link),
-        "target_path": f"{class_file_options['target_path']}/{os.path.dirname(ref_page_link)}"
+        "target_path": f"{class_file_options['target_path']}/{os.path.dirname(ref_page_link)}",
     }
     return options
 
