@@ -96,9 +96,9 @@
 							<entry>2-100.4, 112, 132</entry>
 							<entry>H1, 3, 21 - 45, 55</entry>
 							<entry>
-              The quick brown fox does something similar
+								 The quick brown fox does something similar 
 								<xref href="./unit_daf.dita" outputclass="placeholder">Tool screenshot a</xref>
-								,
+								, 
 								<xref href="./unit_daf.dita" outputclass="placeholder">Tool screenshot b</xref>
 							</entry>
 						</row>
@@ -126,7 +126,8 @@
 							<entry>
 								CBR 54334. And some
 								<p>
-									<b>in bold</b>
+									<b>in
+                bold</b>
 									.
 								</p>
 							</entry>
@@ -136,9 +137,7 @@
 						</row>
 						<row>
 							<entry outputclass="lightGray">Acoustic Signature</entry>
-							<entry nameend="col4" namest="col2">
-              Expect plant to be similar to 2016 steam powered version
-            </entry>
+							<entry nameend="col4" namest="col2"> Expect plant to be similar to 2016 steam powered version </entry>
 						</row>
 						<row>
 							<entry outputclass="lightGray">Unique classifiers</entry>
@@ -160,15 +159,14 @@
 					<image href="./Content/Images/unit_da.jpg"/>
 				</p>
 				<p/>
-				<p>
-    Text at root level of div.
-    </p>
+				<p> Text at root level of div. </p>
 				<p/>
-				<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim exercitation voluptate.
-      Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua deserunt deserunt ut aliqua. Ea reprehenderit ullamco
-      nostrud culpa eiusmod mollit minim dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem
-      non aliqua eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate. Sint cupidatat
-      adipisicing laborum in.</p>
+				<p>Excepteur officia do ipsum consequat labore minim reprehenderit in Lorem esse dolor minim
+      exercitation voluptate. Magna ad Lorem pariatur irure laborum ad culpa sunt aliqua
+      deserunt deserunt ut aliqua. Ea reprehenderit ullamco nostrud culpa eiusmod mollit minim
+      dolor proident commodo minim. Cupidatat id occaecat proident irure elit Lorem non aliqua
+      eu. Qui Lorem cillum esse do magna sit magna aliqua anim tempor exercitation voluptate.
+      Sint cupidatat adipisicing laborum in.</p>
 				<p>
 					<ul>
 						<li>Mode A</li>
@@ -176,31 +174,26 @@
 						<li>Mode C</li>
 						<li>Mode D</li>
 					</ul>
-				</p>
-				<p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-        ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-        tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-        Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
-					<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
-				</p>
-				<p>
+					<b>
+						 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+      egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+      Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+      placerat eleifend leo. This paragraph contains a 
+						<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
+					</b>
 					<b outputclass="h3">And now a table</b>
 					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-				</p>
-				<p>
 					<image href="./Content/Images/daf_3.jpeg"/>
+					<b/>
+					<b>
+						<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+					</b>
+					<fig outputclass="center">
+						<image href="./Content/Images/daf%201b.jpeg"/>
+						<p outputclass="figtitle"> Figure 1:
+      Sample image of DAF logo </p>
+					</fig>
 				</p>
-				<p/>
-				<p>
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-				</p>
-				<fig outputclass="center">
-					<image href="./Content/Images/daf%201b.jpeg"/>
-					<p outputclass="figtitle">
-        Figure 1: Sample image of DAF logo
-</p>
-				</fig>
 			</span>
 		</propulsion>
 		<remarks id="remarks">
@@ -211,45 +204,44 @@
 					<image href="./Content/Images/unit_da.jpg"/>
 				</p>
 				<p>
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-          ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-          tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-          Aenean ultricies mi vitae est. Mauris placerat eleifend leo. This paragraph contains a 
+					 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+      egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+      Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+      placerat eleifend leo. This paragraph contains a 
 					<xref href="./unit_daf.dita" outputclass="placeholder">link</xref>
 					<ph outputclass="red">By introducing a watercooler, the OZ ws reduced by 30%</ph>
 				</p>
 				<p>
 					<b outputclass="red">*</b>
-					 This class is fitted with strongbow bowman thatchers.
+					 This class is fitted with strongbow bowman
+      thatchers.
 				</p>
 				<p>
 					<b outputclass="h3">And now a table</b>
 					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-				</p>
-				<ul>
-					<li>UNORDERED LIST</li>
-					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					<li>Aliquam tincidunt mauris eu risus.</li>
-					<li>Vestibulum auctor dapibus neque.</li>
-				</ul>
-				<p>
-					<b>1. Item one</b>
-					<b>2. Item two</b>
-					<b>3. Item three</b>
-				</p>
-				<ol>
-					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					<li>Aliquam tincidunt mauris eu risus.</li>
-				</ol>
-				<p>
-					<b id="bba_background" outputclass="h3">Background to BBA</b>
-          Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud
-          dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco
-          mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet
-          magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua
-          laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit.
-          Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor
-          ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum.
+					<ul>
+						<li>UNORDERED LIST</li>
+						<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+						<li>Aliquam tincidunt mauris eu risus.</li>
+						<li>Vestibulum auctor dapibus neque.</li>
+					</ul>
+					<b>
+						<b>1. Item one</b>
+						<b>2. Item two</b>
+						<b>3. Item three</b>
+						<b>
+							<b id="bba_background" outputclass="h3">Background to BBA</b>
+							 Dolore mollit consequat sint amet
+    magna dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut
+    laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor
+    ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore
+    mollit consequat sint amet magna dolore voluptate. Dolor ullamco mollit aliquip qui velit
+    elit. Nostrud dolor minim ut laborum aliqua laborum. Dolore mollit consequat sint amet magna
+    dolore voluptate. Dolor ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut
+    laborum aliqua laborum. Dolore mollit consequat sint amet magna dolore voluptate. Dolor
+    ullamco mollit aliquip qui velit elit. Nostrud dolor minim ut laborum aliqua laborum. 
+						</b>
+					</b>
 				</p>
 			</span>
 		</remarks>
