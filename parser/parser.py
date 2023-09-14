@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 
 
 from parser_utils import (
-    get_files_in_path,
     delete_directory,
     copy_files,
     prettify_xml,
@@ -207,8 +206,7 @@ def process_ns_countries(country, country_name, link, root_path):
 
     # Copy each country images to /dita/regions/$Country_name/Content/Images dir
     source_dir = f"{root_path}/{country_name}/Content/Images"
-    file_names = get_files_in_path(source_dir, make_lowercase=False)
-    copy_files(source_dir, f"{country_path}/Content/Images", file_names)
+    copy_files(source_dir, f"{country_path}/Content/Images")
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))
@@ -267,7 +265,7 @@ def process_category_pages(
     os.makedirs(category_path, exist_ok=True)
 
     # Read the parent <table> element
-    for tr_count, tr in enumerate(parent_table.find_all("tr")):
+    for tr in parent_table.find_all("tr"):
         dita_row = dita_soup.new_tag("row")
 
         for td_count, td in enumerate(tr.find_all("td")):
@@ -340,8 +338,7 @@ def process_category_pages(
     category_page_link = remove_leading_slashes(category_page_link.replace(".html", ".dita"))
     source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/Content/Images"
     target_img_dir = f"{category_path}/Content/Images"
-    file_names = get_files_in_path(source_img_dir, make_lowercase=False)
-    copy_files(source_img_dir, target_img_dir, file_names)
+    copy_files(source_img_dir, target_img_dir)
 
     # Prettify the code
     prettified_code = prettify_xml(str(dita_soup))

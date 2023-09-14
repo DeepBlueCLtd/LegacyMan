@@ -407,6 +407,3 @@ def reference_page_options(class_file_options, ref_page_link):
         "target_path": f"{class_file_options['target_path']}/{os.path.dirname(ref_page_link)}",
     }
     return options
-
-
-__all__ = ["process_class_files"]

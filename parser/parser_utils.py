@@ -42,21 +42,6 @@ def prettify_xml(xml_code):
     return clean_dom
 
 
-def get_files_in_path(path, make_lowercase=False):
-    entries = os.listdir(path)
-
-    # If make_lowercase is True, convert directory names to lowercase
-    if make_lowercase:
-        entries = [
-            entry.lower() if os.path.isfile(os.path.join(path, entry)) else entry
-            for entry in entries
-        ]
-
-    # Get a list of all files in the path
-    files = [f for f in entries if os.path.isfile(os.path.join(path, f))]
-    return files
-
-
 def remove_leading_slashes(path):
     while path.startswith("../") or path.startswith("./"):
         path = path.lstrip("../").lstrip("./")

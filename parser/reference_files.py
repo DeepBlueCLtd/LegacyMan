@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
 
+
 def parse_non_class_file(file_path, title, options):
     """
     this function will convert an html file to DITA
@@ -48,8 +49,8 @@ def parse_non_class_file(file_path, title, options):
                 headers = ["h1", "h2", "h3", "h4", "h5"]
                 for element in page.children:
                     if element.name in headers:
-                         dita_section_title.string = element.text
-                         break
+                        dita_section_title.string = element.text
+                        break
 
                 # process the content in html to dita. Note: since this is a non-class
                 # file, we instruct `div` elements to remain as `div`
@@ -79,5 +80,3 @@ def parse_non_class_file(file_path, title, options):
             f.write(prettified_code.encode("utf-8"))
 
     return file_name
-
-__all__  = ["parse_non_class_file"]
