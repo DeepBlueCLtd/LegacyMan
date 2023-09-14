@@ -169,7 +169,7 @@ def process_ns_countries(country, country_name, link, root_path):
             category = remove_leading_slashes(os.path.dirname(category_href))
 
             process_category_pages(
-                country, category_page_link, category, country_name, country_flag, root_path
+                category_page_link, category, country_name, country_flag, root_path
             )
 
             # Copy each category images to /dita/regions/$Category_Name/Content/Images dir
@@ -206,7 +206,7 @@ def process_ns_countries(country, country_name, link, root_path):
 
 
 def process_category_pages(
-    country, category_page_link, category, country_name, country_flag_link, root_path
+    category_page_link, category, country_name, country_flag_link, root_path
 ):
     # read the category page
     with open(f"{root_path}/{remove_leading_slashes(category_page_link)}", "r") as f:
