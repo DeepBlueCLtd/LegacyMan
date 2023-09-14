@@ -46,3 +46,10 @@ def remove_leading_slashes(path):
     while path.startswith("../") or path.startswith("./"):
         path = path.lstrip("../").lstrip("./")
     return path
+
+
+def write_prettified_xml(dita_soup, target_file_path):
+    prettified_code = prettify_xml(str(dita_soup))
+
+    with open(target_file_path, "wb") as f:
+        f.write(prettified_code.encode("utf-8"))

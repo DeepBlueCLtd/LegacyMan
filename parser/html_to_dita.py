@@ -240,7 +240,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     if wrap_strings:
         for child in soup.children:
             if type(child) is bs4.element.NavigableString:
-                # check it's not just newline char
+                # check it's not just single char (eg. a newline or a space)
                 if len(child.string) > 1:
                     para = dita_soup.new_tag("p")
                     para.string = child.string
@@ -266,8 +266,6 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
 def processLinkedPage(href):
     print(f"%% TODO: Process linked page: {href}")
 
-
-__all__ = ["htmlToDITA"]
 
 if __name__ == "__main__":
     testParse()

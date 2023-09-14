@@ -1,5 +1,6 @@
 import os
 from bs4 import BeautifulSoup
+from parser.parser_utils import write_prettified_xml
 
 from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
@@ -7,7 +8,7 @@ from html_to_dita import htmlToDITA
 
 def parse_non_class_file(file_path, title, options):
     """
-    this function will convert an html file to DITA
+    this function will convert a non-class HTML file to a DITA file.
     :param file_path: full path to the target file
     :param title: the title to be used (typically the text from the link)
     :param options: file paths & supporting content
@@ -71,12 +72,9 @@ def parse_non_class_file(file_path, title, options):
         # write files
         target_file_path = f"{options['target_path']}/{file_name}"
 
-        # Prettify the code
         dita_reference.append(dita_ref_body)
         dita_soup.append(dita_reference)
-        prettified_code = prettify_xml(str(dita_soup))
 
-        with open(target_file_path, "wb") as f:
-            f.write(prettified_code.encode("utf-8"))
+        write_prettified_xml(dita_soup, target_file_path)
 
     return file_name

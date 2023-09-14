@@ -1,8 +1,8 @@
 import os
 from bs4 import BeautifulSoup
 import bs4
+from parser.parser_utils import write_prettified_xml
 
-from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
 
 from reference_files import parse_non_class_file
@@ -69,12 +69,7 @@ def process_class_files(class_file_src_path, class_file_target_path, class_name,
     file_name = os.path.basename(class_file_src_path.replace(".html", ".dita"))
     file_path = f"{class_file_target_path}/{file_name}"
 
-    # Prettify the code
-    prettified_code = prettify_xml(str(dita_soup))
-
-    # write the class file
-    with open(file_path, "wb") as f:
-        f.write(prettified_code.encode("utf-8"))
+    write_prettified_xml(dita_soup, file_path)
 
 
 def parse_images(tag, target, dita_soup, file_name):

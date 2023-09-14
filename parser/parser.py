@@ -5,12 +5,7 @@ import subprocess
 from bs4 import BeautifulSoup
 
 
-from parser_utils import (
-    delete_directory,
-    copy_files,
-    prettify_xml,
-    remove_leading_slashes,
-)
+from parser_utils import delete_directory, copy_files, remove_leading_slashes, write_prettified_xml
 
 from class_files import process_class_files
 
@@ -98,12 +93,7 @@ def process_regions(root_path):
     regions_path = "target/dita/regions"
     os.makedirs(regions_path, exist_ok=True)
 
-    # Prettify the code
-    prettified_code = prettify_xml(str(dita_soup))
-
-    # Write the DITA file
-    with open(f"{regions_path}/regions.dita", "wb") as f:
-        f.write(prettified_code.encode("utf-8"))
+    write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
 
 
 def process_ns_countries(country, country_name, link, root_path):
@@ -208,10 +198,7 @@ def process_ns_countries(country, country_name, link, root_path):
     source_dir = f"{root_path}/{country_name}/Content/Images"
     copy_files(source_dir, f"{country_path}/Content/Images")
 
-    # Prettify the code
-    prettified_code = prettify_xml(str(dita_soup))
-    with open(f"{country_path}/{country_name}.dita", "wb") as f:
-        f.write(prettified_code.encode("utf-8"))
+    write_prettified_xml(dita_soup, f"{country_path}/{country_name}.dita")
 
     return f"{country_name}/{country_name}.dita"
 
@@ -340,13 +327,8 @@ def process_category_pages(
     target_img_dir = f"{category_path}/Content/Images"
     copy_files(source_img_dir, target_img_dir)
 
-    # Prettify the code
-    prettified_code = prettify_xml(str(dita_soup))
-
-    # Write the category file to target/dita/regions/$category_name folder
     category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
-    with open(category_file_path, "wb") as f:
-        f.write(prettified_code.encode("utf-8"))
+    write_prettified_xml(dita_soup, category_file_path)
 
 
 def parse_from_root(root_path, target_path):
