@@ -112,6 +112,8 @@ def process_ns_countries(country, country_name, link, root_path):
     country_flag = title.find_next("img")["src"]
 
     if img_links_table is None:
+        # terminate early. Our high level processing has gone wrong
+        # if we encounter a NS Country page without an ImageLinksTable
         raise ValueError("ImageLinksTable not found in the HTML file")
 
     # Create the DITA document type declaration string
