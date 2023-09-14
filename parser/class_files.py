@@ -5,7 +5,6 @@ import bs4
 from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
 
-from parser_utils import replace_characters
 from reference_files import parse_non_class_file
 
 # lower case version of images we ignore. Note `prev_db.jpg` added for testing
@@ -111,7 +110,7 @@ def parse_images(tag, target, dita_soup, file_name):
                             # check it's not blacklisted
                             if not img_filename.lower() in black_list:
                                 dita_image = dita_soup.new_tag("image")
-                                dita_image["href"] = replace_characters(img_link, " ", "%20")
+                                dita_image["href"] = img_link.replace(" ", "%20")
                                 if img.has_attr("height"):
                                     dita_image["height"] = img["height"]
                                 if img.has_attr("width"):
