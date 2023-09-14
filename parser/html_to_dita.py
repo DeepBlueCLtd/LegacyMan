@@ -46,15 +46,15 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     # TODO: take clone of soup before we process it
     soup = copy.copy(soup_in)
 
-    # 1. if outer element is a div, replace with a span element
+    # 1. if outer element is a div, replace with whatever div_replacement is (by default a span)
     if soup.name == "div":
-        if soup.name != div_replacement:
-            soup.name = div_replacement
+        soup.name = div_replacement
         if soup.has_attr("name"):
             soup.id = soup["name"]
             del soup["name"]
         del soup["style"]
 
+    # 1a. swap spans inside td's for a p tag
     if soup.name == "td":
         # swap spans for p's
         for span in soup.find_all("span"):
@@ -113,20 +113,11 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     # 4. We can't handle headings in paragraphs. So, first search for, and fix
     # headings in paragraphs
     for p in soup.find_all("p"):
-        # 4a1. replace h1 with paragraph with correct outputClass
-        for h1 in p.find_all("h1"):
-            h1.name = "b"
-            h1["outputclass"] = "h1"
-
-        # 4a2. replace h1 with paragraph with correct outputClass
-        for h2 in p.find_all("h2"):
-            h2.name = "b"
-            h2["outputclass"] = "h2"
-
-        # 4a3. replace h1 with paragraph with correct outputClass
-        for h3 in p.find_all("h3"):
-            h3.name = "b"
-            h3["outputclass"] = "h3"
+        # replace h1, h2 and h3 with paragraph with correct outputClasses
+        for tag in ["h1", "h2", "h3"]:
+            for h_tag in p.find_all(tag):
+                h_tag.name = "b"
+                h_tag["outputclass"] = tag
 
         # 4a4. Handle embedded paragraphs, by swapping for bold.
         # NOTE: in the future, we may need to check the para is just one line long, or
@@ -140,20 +131,11 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
                 if not pp.has_attr("outputclass"):
                     pp.name = "b"
 
-    # 4b. replace h1 with paragraph with correct outputClass
-    for h1 in soup.find_all("h1"):
-        h1.name = "p"
-        h1["outputclass"] = "h1"
-
-    # 4c. replace h2 with paragraph with correct outputClass
-    for h2 in soup.find_all("h2"):
-        h2.name = "p"
-        h2["outputclass"] = "h2"
-
-    # 4d. replace h3 with paragraph with correct outputClass
-    for h3 in soup.find_all("h3"):
-        h3.name = "p"
-        h3["outputclass"] = "h3"
+    # 4b. replace h1, h2, h3 with paragraph with correct outputClasses
+    for tag in ["h1", "h2", "h3"]:
+        for h_tag in soup.find_all(tag):
+            h_tag.name = "p"
+            h_tag["outputclass"] = tag
 
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
@@ -258,7 +240,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     if wrap_strings:
         for child in soup.children:
             if type(child) is bs4.element.NavigableString:
-                # check it's not just newline char
+                # check it's not just single char (eg. a newline or a space)
                 if len(child.string) > 1:
                     para = dita_soup.new_tag("p")
                     para.string = child.string
@@ -284,8 +266,6 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
 def processLinkedPage(href):
     print(f"%% TODO: Process linked page: {href}")
 
-
-__all__ = ["htmlToDITA"]
 
 if __name__ == "__main__":
     testParse()
