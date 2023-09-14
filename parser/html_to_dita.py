@@ -5,6 +5,10 @@ import bs4
 
 
 def testParse():
+    """
+    utility to allow quick high level testing of `htmlToDITA`, so a dev can extend it without having
+    to understand the rest of LegacyMan
+    """
     # read the PD_1.html file
     with open("input.html", "r") as f:
         html_string = f.read()
@@ -34,16 +38,25 @@ def testParse():
 
 def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     """
-    this function will convert a block of html to DITA
-    :param file_name: any number
+    this function will convert a block of html to a block of DITA xml
+    :param file_name: current filename, used to generate local click target until valid targets present
     :param soup_in: BS4 tag to be converted
     :param dita_soup: BS4 soup XML element, used for generating new elements
     :param div_replacement: the tag to replace `div` elements with
     :param wrap_strings: flag to indicate that bare strings should be wrapped in a paragraph
     :return: converted block of dita
+
+    General strategy: the HTML content isn't all that far from DITA format. So, we clone the content, then transform it
+    steadily into DITA format. Where the HTML element is already quite similar to the DITA one, we update it in place.
+    But where the DITA is quite different to the HTML (esp where the HTML may have lots of irrelevant attributes), we
+    replace the HTML element with a fresh one - only bringing over the relevant fields.
+
     """
 
-    # TODO: take clone of soup before we process it
+    # TODO: take clone of soup before we process it, since other high-level processing may be applied to the original
+    # HTML content, which could rely on it not being transformed.
+    # It remains a `TODO:` - since in the last time I checked, I don't think we're doing an actual clone,
+    # I think we're still manipulating the original soup
     soup = copy.copy(soup_in)
 
     # 1. if outer element is a div, replace with whatever div_replacement is (by default a span)
@@ -75,7 +88,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
             child_images = div.find_all("img", recursive=False)
             # clear the element
             div.clear()
-            # check it's not a formatting placeholder for an image
+            # reinstate the child images
             for img in child_images:
                 div.append(img)
             # put any child text into a `p`
