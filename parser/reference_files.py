@@ -1,8 +1,7 @@
 import os
 from bs4 import BeautifulSoup
-from parser.parser_utils import write_prettified_xml
+from parser_utils import write_prettified_xml
 
-from parser_utils import prettify_xml
 from html_to_dita import htmlToDITA
 
 
