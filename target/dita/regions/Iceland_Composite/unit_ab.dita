@@ -79,12 +79,12 @@
 							<entry>2-1000.4</entry>
 							<entry>H2, 4, 21, 145</entry>
 							<entry>
-            Laboris proident culpa labore et ad excepteur aute aliqua sit do non ex quis elit. Consequat dolor duis
-            officia culpa commodo minim do ex duis sint labore culpa. Ea ullamco culpa voluptate dolor sint minim labore
-            magna velit Lorem aliquip mollit velit. Cupidatat sit commodo tempor in et nulla reprehenderit sint laborum.
-            Ut ex fugiat quis elit amet adipisicing amet ea nostrud tempor. Mollit ad et mollit quis non magna anim
-            occaecat non ipsum sit in.
-          </entry>
+              Laboris proident culpa labore et ad excepteur aute aliqua sit do non ex quis elit. Consequat dolor duis
+              officia culpa commodo minim do ex duis sint labore culpa. Ea ullamco culpa voluptate dolor sint minim labore
+              magna velit Lorem aliquip mollit velit. Cupidatat sit commodo tempor in et nulla reprehenderit sint laborum.
+              Ut ex fugiat quis elit amet adipisicing amet ea nostrud tempor. Mollit ad et mollit quis non magna anim
+              occaecat non ipsum sit in.
+            </entry>
 						</row>
 						<row>
 							<entry>Unk BBA</entry>
@@ -123,26 +123,29 @@
 						<row>
 							<entry>Acoustic Signature</entry>
 							<entry nameend="col4" namest="col2">
-            Expect plant to be similar to 2016 steam powered version
-          </entry>
+              Expect plant to be similar to 2016 steam powered version
+            </entry>
 						</row>
 						<row>
 							<entry>Unique classifiers</entry>
 							<entry nameend="col4" namest="col2">
-            The dominant frequency will be Laboris nostrud ipsum ex tempor. Est
-            fugiat et esse excepteur est voluptate cupidatat in sit. Ex est
-            laborum commodo eiusmod. Et tempor labore dolor eu laborum labore ex
-            sit deserunt cillum sit duis minim. Nisi ea ullamco minim duis elit
-            consectetur mollit ea mollit sunt voluptate. Esse nulla id mollit ad
-            deserunt Lorem deserunt excepteur nostrud.
+              The dominant frequency will be Laboris nostrud ipsum ex tempor. Est
+              fugiat et esse excepteur est voluptate cupidatat in sit. Ex est
+              laborum commodo eiusmod. Et tempor labore dolor eu laborum labore ex
+              sit deserunt cillum sit duis minim. Nisi ea ullamco minim duis elit
+              consectetur mollit ea mollit sunt voluptate. Esse nulla id mollit ad
+              deserunt Lorem deserunt excepteur nostrud.
 								<fig outputclass="center">
 									<image href="./Content/Images/frequency_2.jpeg"/>
 									<p outputclass="figtitle">
 Figure 2. Dominant
-              frequency
-          </p>
+                frequency</p>
 								</fig>
 							</entry>
+						</row>
+						<row>
+							<entry>Aural</entry>
+							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
 						</row>
 					</tbody>
 				</tgroup>
@@ -172,38 +175,38 @@ Figure 2. Dominant
 				<p/>
 				<p>
 					<!-- <table border="1">
-        <tr>
-          <td colspan="4"><strong>Unit_A</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Cruise Plant</strong></td>
-          <td>4 * PR32 Diesel Engines</td>
-          <td><strong>Shaft x Blade</strong></td>
-          <td>2 * 4 (GRR)</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong>Boost Plant</strong></td>
-          <td rowspan="2">None</td>
-          <td><strong>Range</strong></td>
-          <td>123nm @ 8kts</td>
-        </tr>
-        <tr>
-          <td><strong>Max Speed</strong></td>
-          <td>40 kts</td>
-        </tr>
-        <tr>
-          <td><strong>Reduction Ratio</strong></td>
-          <td>412.8:1</td>
-          <td><strong>Av TPK</strong></td>
-          <td>~14</td>
-        </tr>
-        <tr>
-          <td><strong>Max TRPM</strong></td>
-          <td>1400</td>
-          <td><strong>Max SRPM</strong></td>
-          <td>0-1600</td>
-        </tr>
-      </table> -->
+          <tr>
+            <td colspan="4"><strong>Unit_A</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Cruise Plant</strong></td>
+            <td>4 * PR32 Diesel Engines</td>
+            <td><strong>Shaft x Blade</strong></td>
+            <td>2 * 4 (GRR)</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>Boost Plant</strong></td>
+            <td rowspan="2">None</td>
+            <td><strong>Range</strong></td>
+            <td>123nm @ 8kts</td>
+          </tr>
+          <tr>
+            <td><strong>Max Speed</strong></td>
+            <td>40 kts</td>
+          </tr>
+          <tr>
+            <td><strong>Reduction Ratio</strong></td>
+            <td>412.8:1</td>
+            <td><strong>Av TPK</strong></td>
+            <td>~14</td>
+          </tr>
+          <tr>
+            <td><strong>Max TRPM</strong></td>
+            <td>1400</td>
+            <td><strong>Max SRPM</strong></td>
+            <td>0-1600</td>
+          </tr>
+        </table> -->
 				</p>
 			</span>
 		</propulsion>
