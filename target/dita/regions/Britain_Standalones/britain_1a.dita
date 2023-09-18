@@ -1,15 +1,13 @@
 <?xml version="1.0" ?>
-<!DOCTYPE class
-  SYSTEM '../../../../dtd/class.dtd'>
-<class id="britain_1a">
-	<title>Unit_1a</title>
-	<body>
-		<images>
-			<title>Images</title>
-		</images>
-		<propulsion id="propulsion">
-			<title>Propulsion</title>
-			<span id="PageLayer3">
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="data/Britain_Standalones/britain_1a.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title>PROPULSION</title>
+			<div id="PageLayer3">
 				<p outputclass="h1">PROPULSION</p>
 				<p/>
 				<p/>
@@ -96,11 +94,11 @@
       6. Fuel Cell modulation noise is typically a function of generator
       frequency and load
     </p>
-			</span>
-		</propulsion>
-		<remarks id="remarks">
-			<title>Remarks</title>
-			<span id="PageLayer2">
+			</div>
+		</section>
+		<section>
+			<title>REMARKS</title>
+			<div id="PageLayer2">
 				<p outputclass="h1">REMARKS</p>
 				<p id="image9">
 					<image href="./Content/Images/oscill_c.jpg"/>
@@ -133,7 +131,7 @@
 				<!-- use of block quote to create whitespace -->
 				<p outputclass="placeholder">[WHITESPACE FOR TABLE]</p>
 				<p>Tempor magna labore ullamco esse occaecat exercitation culpa amet culpa aliqua in mollit. Est nulla excepteur esse adipisicing nisi quis eu sunt laboris laborum. Esse ad enim culpa eiusmod aliqua laboris consectetur pariatur sit amet ipsum. Duis amet ut laboris excepteur proident.</p>
-			</span>
-		</remarks>
-	</body>
-</class>
+			</div>
+		</section>
+	</refbody>
+</reference>

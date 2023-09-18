@@ -2,6 +2,7 @@ import copy
 import os
 from bs4 import BeautifulSoup
 import bs4
+from pathlib import Path
 
 
 def testParse():
@@ -154,7 +155,9 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
         processLinkedPage(a["href"])
-        a["href"] = "/".join([".", file_name + ".dita"])
+        # TODO: This is temporarily linking to the current page, so we don't get an error that we can't find a page
+        # when we publish
+        a["href"] = Path(file_name).name.replace(".html", ".dita")
         # insert marker to show not implemented, if it's a string link
         a["outputclass"] = "placeholder"
 

@@ -1,121 +1,13 @@
 <?xml version="1.0" ?>
-<!DOCTYPE class
-  SYSTEM '../../../../dtd/class.dtd'>
-<class id="Britain_2A">
-	<title>Unit_2a</title>
-	<body>
-		<images>
-			<title>Images</title>
-		</images>
-		<summary id="summary">
-			<title>Summary</title>
-			<table>
-				<tgroup cols="6">
-					<thead>
-						<row>
-							<entry>Drive</entry>
-							<entry>Mode</entry>
-							<entry>Shaft x Blade</entry>
-							<entry>R:R</entry>
-							<entry>Max Speed</entry>
-							<entry>Av TPK</entry>
-						</row>
-					</thead>
-					<tbody>
-						<row>
-							<entry>4 Diesel</entry>
-							<entry>PTR</entry>
-							<entry>2 * 4 (GRR)</entry>
-							<entry>19.4</entry>
-							<entry>22 kts</entry>
-							<entry>~14</entry>
-						</row>
-					</tbody>
-				</tgroup>
-			</table>
-		</summary>
-		<signatures id="signatures">
-			<title>Signatures</title>
-			<table>
-				<tgroup cols="4">
-					<colspec colname="col1" colnum="1"/>
-					<colspec colname="col2" colnum="2"/>
-					<colspec colname="col3" colnum="3"/>
-					<colspec colname="col4" colnum="4"/>
-					<thead>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">
-								<b>Commonly Detected Sources</b>
-							</entry>
-						</row>
-					</thead>
-					<tbody>
-						<row>
-							<entry>Source</entry>
-							<entry>Ratio/Freq</entry>
-							<entry>Harmonics</entry>
-							<entry>Remarks</entry>
-						</row>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Propulsion Related</entry>
-						</row>
-						<row>
-							<entry>SR</entry>
-							<entry>S12</entry>
-							<entry>H1-4</entry>
-							<entry>Discrete. Doublets common. This cell spans two rows!</entry>
-						</row>
-						<row>
-							<entry>BR</entry>
-							<entry>S5</entry>
-							<entry>H1</entry>
-						</row>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Intermittent Sources</entry>
-						</row>
-						<row>
-							<entry>Cat b Engine R</entry>
-							<entry>2-1000.4</entry>
-							<entry>H2, 4, 21, 145</entry>
-							<entry>
-            The quick brown fox does something similar
-								<xref href="./Britain_2A.dita" outputclass="placeholder">Tool screenshot a</xref>
-								<xref href="./Britain_2A.dita" outputclass="placeholder">Tool screenshot b</xref>
-							</entry>
-						</row>
-						<row>
-							<entry>Unk BBA</entry>
-							<entry>25 &amp; CSR</entry>
-							<entry>H1 (and numerous others) - TWO ROWS</entry>
-							<entry>CBR 34 (in high humidiy) - TWO ROWS</entry>
-						</row>
-						<row>
-							<entry>Unk BBA</entry>
-							<entry nameend="col4" namest="col2">25 &amp; CSR</entry>
-						</row>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">Speed related sources</entry>
-						</row>
-						<row>
-							<entry>Unk BBA</entry>
-							<entry>135 &amp; CSR (high)</entry>
-							<entry>H1 &amp; 2</entry>
-							<entry>CBR 54334</entry>
-						</row>
-						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="table-separator">124 &amp; CSR (low)</entry>
-						</row>
-					</tbody>
-				</tgroup>
-			</table>
-			<b>
-				<ph outputclass="red">*</ph>
-				 Subject to confirmation from local engineer 
-			</b>
-		</signatures>
-		<propulsion id="propulsion">
-			<title>Propulsion</title>
-			<span id="PageLayer3">
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="data/Britain_Standalones/Britain_2A.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title>PROPULSION</title>
+			<div id="PageLayer3">
 				<p outputclass="h1">PROPULSION</p>
 				<p/>
 				<p/>
@@ -202,11 +94,34 @@
       6. Fuel Cell modulation noise is typically a function of generator
       frequency and load
     </p>
-			</span>
-		</propulsion>
-		<remarks id="remarks">
-			<title>Remarks</title>
-			<span id="PageLayer2">
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="PageLayer">
+				<p id="Table">
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+					<b>
+						<ph outputclass="red">*</ph>
+						 Subject to confirmation from local engineer 
+					</b>
+				</p>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="PageLayer12">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+				<p id="image9">
+					<image href="./Content/Images/oscill_c.jpg"/>
+					<image href="./Content/Images/oscill_d.jpg"/>
+				</p>
+				<p/>
+			</div>
+		</section>
+		<section>
+			<title>REMARKS</title>
+			<div id="PageLayer2">
 				<p outputclass="h1">REMARKS</p>
 				<p id="image9">
 					<image href="./Content/Images/oscill_c.jpg"/>
@@ -228,7 +143,7 @@
 						 Subject to confirmation from local engineer 
 					</b>
 				</p>
-			</span>
-		</remarks>
-	</body>
-</class>
+			</div>
+		</section>
+	</refbody>
+</reference>

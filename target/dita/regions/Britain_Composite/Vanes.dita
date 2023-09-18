@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="/home/LegacyMan/data/QuickLinksData/Vanes.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title/>
+			<div id="PageLayer">
+				<p id="image2">
+					<b outputclass="h1">
+						<xref href="Vanes.dita" outputclass="placeholder">
+							<b>Click HERE for Southern Hemisphere Constants</b>
+						</xref>
+					</b>
+				</p>
+				<p>
+					<b>Note:</b>
+					The fundamentals of electric motor performance can vary with humidity
+				</p>
+				<p id="PolarityTable">
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+				</p>
+				<p id="PoleRate">
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+				</p>
+				<p>
+					<b>Bold</b>
+					 figures (in Green) are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+				</p>
+				<p>
+                     Always are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+                </p>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="PageLayer2">
+				<p>
+					<b>Note:</b>
+					The fundamentals of electric motor performance can vary with humidity
+				</p>
+				<p id="image2">
+					<b outputclass="h1">
+						<xref href="Vanes.dita" outputclass="placeholder">
+							<b>Click HERE for Northern Hemisphere Constants</b>
+						</xref>
+					</b>
+				</p>
+				<p id="PolarityTable2">
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+				</p>
+				<p id="PoleRate">
+					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
+				</p>
+				<p>
+					<b>Bold</b>
+					 figures (in Green) are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+				</p>
+				<p>
+                     Always are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+                </p>
+			</div>
+		</section>
+	</refbody>
+</reference>

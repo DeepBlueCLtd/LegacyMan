@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from parser_utils import delete_directory, copy_files, remove_leading_slashes, write_prettified_xml
 
 from class_files import process_class_files
+from generic_files import process_generic_file
 
 
 def process_regions(root_path):
@@ -283,9 +284,10 @@ def process_category_pages(
                     class_file_src_path = f"{root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
                     if not href.startswith("../"):
-                        process_class_files(
-                            class_file_src_path, category_path, class_name, file_name
-                        )
+                        # process_class_files(
+                        #     class_file_src_path, category_path, class_name, file_name
+                        # )
+                        process_generic_file(class_file_src_path, category_path)
 
                     file_link = href.replace(".html", ".dita")
                     dita_xref["href"] = file_link
@@ -357,6 +359,9 @@ def parse_from_root(root_path, target_path):
     # This is the entry point to the whole parsing process
     process_regions(root_path)
 
+    print("-" * 40)
+    print("Running dita publish command")
+    print("-" * 40)
     # Run DITA-OT command to transform the index.ditamap file to html
     dita_command = [
         "dita",
