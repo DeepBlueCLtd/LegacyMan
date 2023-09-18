@@ -154,12 +154,7 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
-        processLinkedPage(a["href"])
-        # TODO: This is temporarily linking to the current page, so we don't get an error that we can't find a page
-        # when we publish
-        a["href"] = Path(file_name).name.replace(".html", ".dita")
-        # insert marker to show not implemented, if it's a string link
-        a["outputclass"] = "placeholder"
+        # a["outputclass"] = "placeholder"
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288

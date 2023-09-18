@@ -1,4 +1,5 @@
 import shutil
+from urllib.parse import urlparse
 import xml.dom.minidom
 import os
 import copy
@@ -57,3 +58,17 @@ def write_prettified_xml(dita_soup, target_file_path):
 
     with open(target_file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
+
+
+def convert_html_href_to_dita_href(href):
+    parsed = urlparse(href)
+
+    parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
+    p = Path(parsed.path)
+
+    if parsed.fragment:
+        id_str = p.name.split(".")[0]
+        parsed = parsed._replace(fragment=f"{id_str}/{parsed.fragment}")
+
+    print(f"Converted URL = {parsed.geturl()}")
+    return parsed.geturl(), parsed.path.split(".")[-1]

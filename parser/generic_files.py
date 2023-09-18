@@ -5,22 +5,9 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
-from parser_utils import write_prettified_xml, copy_files
+from parser_utils import write_prettified_xml, convert_html_href_to_dita_href
 
 from html_to_dita import htmlToDITA
-
-
-def convert_html_href_to_dita_href(href):
-    parsed = urlparse(href)
-
-    parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
-    p = Path(parsed.path)
-
-    if parsed.fragment:
-        id_str = p.name.split(".")[0]
-        parsed = parsed._replace(fragment=f"{id_str}/{parsed.fragment}")
-
-    return parsed.geturl(), parsed.path.split(".")[-1]
 
 
 def process_generic_file_content(html_soup, input_file_path, quicklinks):
@@ -119,11 +106,18 @@ def process_generic_file(input_file_path, target_path_base, data_path):
     print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
     dita_soup = process_generic_file_content(html_soup, input_file_path, quicklinks)
 
+    bodylink_xrefs = dita_soup.find_all("xref")
+    bodylink_hrefs = []
+    for el in bodylink_xrefs:
+        bodylink_hrefs.append(el["href"])
+        el["href"], format = convert_html_href_to_dita_href(el["href"])
+        print(f"Final el href = {el['href']}")
+
     write_prettified_xml(dita_soup, output_dita_path)
 
     # Get a list of unique HTML pages that are linked to from this page
     # This removes any duplicates, removes links to labels within a page etc
-    unique_page_links = set([urlparse(l).path for l in quicklinks.values()])
+    unique_page_links = set([urlparse(l).path for l in list(quicklinks.values()) + bodylink_hrefs])
     unique_page_links.discard("")
     print(quicklinks)
     print(f"Target path = {target_path}")
