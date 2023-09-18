@@ -105,6 +105,72 @@
 							<entry outputclass="lightGray">
 								<p outputclass="bold">
 									<image href="./Content/Images/yellow.jpg"/>
+									Unk Banjo
+								</p>
+							</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Unk BBA</xref>
+							</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in
+              bold</b>
+									.
+								</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">SR</xref>
+							</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									<li>Total control</li>
+									<li>Intermediate control</li>
+									<li>Not under control</li>
+								</ul>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>
+								 The quick brown fox does something similar 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot a</xref>
+								, 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot b</xref>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
 									Unk BBA
 								</p>
 							</entry>
@@ -132,19 +198,281 @@
 							</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="col4" namest="col1" outputclass="lightGray table-separator">Signature &amp; Characteristics</entry>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">SR</xref>
+							</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									<li>Total control</li>
+									<li>Intermediate control</li>
+									<li>Not under control</li>
+								</ul>
+							</entry>
 						</row>
 						<row>
-							<entry outputclass="lightGray">Acoustic Signature</entry>
-							<entry nameend="col4" namest="col2"> Expect plant to be similar to 2016 steam powered version </entry>
+							<entry outputclass="lightGray">BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
 						</row>
 						<row>
-							<entry outputclass="lightGray">Unique classifiers</entry>
-							<entry nameend="col4" namest="col2">None</entry>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>
+								 The quick brown fox does something similar 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot a</xref>
+								, 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot b</xref>
+							</entry>
 						</row>
 						<row>
-							<entry outputclass="lightGray">Aural</entry>
-							<entry nameend="col4" namest="col2">Expect Diesel, Whine, Governor release</entry>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Unk BBA</xref>
+							</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in
+                    bold</b>
+									.
+								</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">SR</xref>
+							</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									<li>Total control</li>
+									<li>Intermediate control</li>
+									<li>Not under control</li>
+								</ul>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>
+								 The quick brown fox does something similar 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot a</xref>
+								, 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot b</xref>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Unk BBA</xref>
+							</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in
+                        bold</b>
+									.
+								</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">SR</xref>
+							</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									<li>Total control</li>
+									<li>Intermediate control</li>
+									<li>Not under control</li>
+								</ul>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>
+								 The quick brown fox does something similar 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot a</xref>
+								, 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot b</xref>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Unk BBA</xref>
+							</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in
+                            bold</b>
+									.
+								</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">SR</xref>
+							</entry>
+							<entry>S12</entry>
+							<entry>H1-4</entry>
+							<entry>
+								Discrete. Doublets common
+								<ul>
+									<li>Total control</li>
+									<li>Intermediate control</li>
+									<li>Not under control</li>
+								</ul>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">BR</entry>
+							<entry>S5</entry>
+							<entry>H1</entry>
+							<entry>
+								<p>Discrete. Doublets common</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>
+								 The quick brown fox does something similar 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot a</xref>
+								, 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot b</xref>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<p outputclass="bold">
+									<image href="./Content/Images/yellow.jpg"/>
+									Unk BBA
+								</p>
+							</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry>H1</entry>
+							<entry>
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Unk BBA</xref>
+							</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry>H1 &amp; 2</entry>
+							<entry>
+								CBR 54334. And some
+								<p>
+									<b>in
+                                bold</b>
+									.
+								</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="lightGray">
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry>H1, 3, 21 - 45, 55</entry>
+							<entry>
+								 The quick brown fox does something similar 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot a</xref>
+								, 
+								<xref href="./unit_anchors.dita" outputclass="placeholder">Tool screenshot b</xref>
+							</entry>
 						</row>
 					</tbody>
 				</tgroup>
