@@ -287,6 +287,7 @@ def process_category_pages(
                         # process_class_files(
                         #     class_file_src_path, category_path, class_name, file_name
                         # )
+                        print(f"href = {href}")
                         process_generic_file(class_file_src_path, category_path)
 
                     file_link = href.replace(".html", ".dita")

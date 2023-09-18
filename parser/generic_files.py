@@ -1,22 +1,38 @@
 import os
 import re
+import shutil
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
-from parser_utils import write_prettified_xml
+from parser_utils import write_prettified_xml, copy_files
 
 from html_to_dita import htmlToDITA
 
 
-def process_generic_file_content(html_soup, input_file_path):
+def convert_html_href_to_dita_href(href):
+    parsed = urlparse(href)
+
+    parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
+    p = Path(parsed.path)
+
+    if parsed.fragment:
+        id_str = p.name.split(".")[0]
+        parsed = parsed._replace(fragment=f"{id_str}/{parsed.fragment}")
+
+    return parsed.geturl(), parsed.path.split(".")[-1]
+
+
+def process_generic_file_content(html_soup, input_file_path, quicklinks):
     # Create the DITA document type declaration string
     dita_doctype = '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
     dita_soup = BeautifulSoup(dita_doctype, "xml")
 
     # create document level elements
     dita_reference = dita_soup.new_tag("reference")
-    topic_id = Path(str(input_file_path).replace(" ", "-"))  # remove spaces, to make legal ID value
+    topic_id = Path(
+        str(input_file_path.name).replace(" ", "-")
+    )  # remove spaces, to make legal ID value
     dita_reference["id"] = topic_id
     dita_title = dita_soup.new_tag("title")
     dita_title.string = "Test Title"
@@ -25,8 +41,6 @@ def process_generic_file_content(html_soup, input_file_path):
 
     for page in html_soup.find_all("div"):
         if page.has_attr("id") and "PageLayer" in page["id"]:
-            print(f"Processing generic file {input_file_path}")
-
             dita_section_title = dita_soup.new_tag("title")
 
             # find the first heading
@@ -53,6 +67,21 @@ def process_generic_file_content(html_soup, input_file_path):
             dita_ref_body.append(dita_section)
 
     dita_reference.append(dita_ref_body)
+
+    # Generate related-links for quicklinks table
+    related_links = dita_soup.new_tag("related-links", id="related-pages")
+    for link_text, link_href in quicklinks.items():
+        link = dita_soup.new_tag("link")
+        new_href, extension = convert_html_href_to_dita_href(link_href)
+        link["href"] = new_href
+        if extension != "dita":
+            link["format"] = extension
+        linktext = dita_soup.new_tag("linktext")
+        linktext.string = link_text
+        link.append(linktext)
+        related_links.append(link)
+
+    dita_reference.append(related_links)
     dita_soup.append(dita_reference)
 
     return dita_soup
@@ -81,20 +110,44 @@ def process_generic_file(input_file_path, target_path):
 
     quicklinks = {l.text: l["href"] for l in links}
 
-    dita_soup = process_generic_file_content(html_soup, input_file_path)
+    print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
+    dita_soup = process_generic_file_content(html_soup, input_file_path, quicklinks)
 
     write_prettified_xml(dita_soup, output_dita_path)
 
     # Get a list of unique HTML pages that are linked to from this page
     # This removes any duplicates, removes links to labels within a page etc
     unique_page_links = set([urlparse(l).path for l in quicklinks.values()])
+    unique_page_links.discard("")
+    print(quicklinks)
     for link in unique_page_links:
         if link.split(".")[-1] == "html":
+            print(f"Link: {link}")
             link_path = (input_file_directory / link).resolve()
             if link_path.exists():
+                if link.startswith(".."):
+                    p = Path(link).parent
+                    target_path = (target_path / p).resolve()
                 process_generic_file(link_path, target_path)
             else:
                 print(f"### Warning: {link_path} does not exist!")
+        else:
+            # Non HTML pages
+            print(f"Copying file link {link}")
+            link = Path(link)
+            print(link.parent)
+            print(target_path / link.parent)
+            print(link.name)
+            (target_path / link.parent).mkdir(parents=True, exist_ok=True)
+            shutil.copy(
+                input_file_path.parent / link,
+                target_path / link.parent / link.name.replace(" ", "_"),
+            )
+            # copy_files(
+            #     input_file_path.parent / link.parent,
+            #     target_path / link.parent,
+            #     [link.name.replace(" ", "_")],
+            # )
 
 
 if __name__ == "__main__":

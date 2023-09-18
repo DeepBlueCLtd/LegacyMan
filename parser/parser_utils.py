@@ -3,6 +3,7 @@ import xml.dom.minidom
 import os
 import copy
 from bs4 import BeautifulSoup
+from pathlib import Path
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -50,6 +51,9 @@ def remove_leading_slashes(path):
 
 def write_prettified_xml(dita_soup, target_file_path):
     prettified_code = prettify_xml(str(dita_soup))
+
+    target_file_path = Path(target_file_path)
+    target_file_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(target_file_path, "wb") as f:
         f.write(prettified_code.encode("utf-8"))
