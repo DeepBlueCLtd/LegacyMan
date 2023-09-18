@@ -58,7 +58,9 @@
 						<entry align="center" nameend="col7" namest="col1" outputclass="table-separator">Hydraulic</entry>
 					</row>
 					<row>
-						<entry>Unit P5 (updated)</entry>
+						<entry>
+							<xref href="unit_anchors.dita">Unit Anchors</xref>
+						</entry>
 						<entry>DFD</entry>
 						<entry>2 * V6 Diesel</entry>
 						<entry>12 x 4</entry>
