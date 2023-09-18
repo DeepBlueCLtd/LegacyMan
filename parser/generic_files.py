@@ -87,10 +87,16 @@ def process_generic_file_content(html_soup, input_file_path, quicklinks):
     return dita_soup
 
 
-def process_generic_file(input_file_path, target_path):
+def process_generic_file(input_file_path, target_path_base, data_path):
     input_file_path = Path(input_file_path)
     input_file_directory = input_file_path.parent
-    target_path = Path(target_path)
+
+    if str(input_file_directory).startswith("/"):
+        target_path = target_path_base / input_file_directory.relative_to(data_path)
+    else:
+        # target_path = target_path_base / input_file_directory.relative_to("data")
+        target_path = target_path_base / input_file_directory.relative_to(data_path.name)
+
     output_dita_path = target_path / input_file_path.with_suffix(".dita").name
 
     if output_dita_path.exists():
@@ -120,6 +126,7 @@ def process_generic_file(input_file_path, target_path):
     unique_page_links = set([urlparse(l).path for l in quicklinks.values()])
     unique_page_links.discard("")
     print(quicklinks)
+    print(f"Target path = {target_path}")
     for link in unique_page_links:
         if link.split(".")[-1] == "html":
             print(f"Link: {link}")
@@ -128,7 +135,7 @@ def process_generic_file(input_file_path, target_path):
                 if link.startswith(".."):
                     p = Path(link).parent
                     target_path = (target_path / p).resolve()
-                process_generic_file(link_path, target_path)
+                process_generic_file(link_path, target_path_base, data_path)
             else:
                 print(f"### Warning: {link_path} does not exist!")
         else:

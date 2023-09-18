@@ -1,3 +1,4 @@
+from pathlib import Path
 import sys
 import time
 import os
@@ -11,7 +12,7 @@ from class_files import process_class_files
 from generic_files import process_generic_file
 
 
-def process_regions(root_path):
+def process_regions(root_path, target_path_base):
     # copy the world-map.gif file
     source_dir = f"{root_path}/PlatformData/Content/images/"
     target_dir = "target/dita/regions/Content/Images"
@@ -68,7 +69,7 @@ def process_regions(root_path):
         if link.startswith("../"):
             country_name = os.path.dirname(remove_leading_slashes(link))
             country_path = process_ns_countries(
-                country, country_name, remove_leading_slashes(link), root_path
+                country, country_name, remove_leading_slashes(link), root_path, target_path_base
             )
             dita_xref["href"] = f"./{country_path}"
 
@@ -97,7 +98,7 @@ def process_regions(root_path):
     write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
 
 
-def process_ns_countries(country, country_name, link, root_path):
+def process_ns_countries(country, country_name, link, root_path, target_path_base):
     """Processes a non-standard country - ie. one that has an extra page at the start with links to various categories,
     and then those category pages have the actual information"""
     # read the html file
@@ -170,7 +171,12 @@ def process_ns_countries(country, country_name, link, root_path):
             category = remove_leading_slashes(os.path.dirname(category_href))
 
             process_category_pages(
-                category_page_link, category, country_name, country_flag, root_path
+                category_page_link,
+                category,
+                country_name,
+                country_flag,
+                root_path,
+                target_path_base,
             )
 
             # Copy each category images to /dita/regions/$Category_Name/Content/Images dir
@@ -207,7 +213,12 @@ def process_ns_countries(country, country_name, link, root_path):
 
 
 def process_category_pages(
-    category_page_link, category, country_name, country_flag_link, root_path
+    category_page_link,
+    category,
+    country_name,
+    country_flag_link,
+    root_path,
+    target_path_base,
 ):
     # read the category page
     with open(f"{root_path}/{remove_leading_slashes(category_page_link)}", "r") as f:
@@ -288,7 +299,9 @@ def process_category_pages(
                         #     class_file_src_path, category_path, class_name, file_name
                         # )
                         print(f"href = {href}")
-                        process_generic_file(class_file_src_path, category_path)
+                        process_generic_file(
+                            class_file_src_path, target_path_base, Path(root_path).resolve()
+                        )
 
                     file_link = href.replace(".html", ".dita")
                     dita_xref["href"] = file_link
@@ -342,7 +355,6 @@ def parse_from_root(root_path, target_path):
     :param root_path: the location of the source data
     :param target_path: where to write the results
     """
-
     print(f"LegacyMan parser running, with these arguments: {root_path} {target_path}")
     start_time = time.time()
 
@@ -358,7 +370,7 @@ def parse_from_root(root_path, target_path):
 
     # Process the regions, which will call functions to process the countries, and then each class within the country etc
     # This is the entry point to the whole parsing process
-    process_regions(root_path)
+    process_regions(root_path, Path(target_dir) / "regions")
 
     print("-" * 40)
     print("Running dita publish command")
