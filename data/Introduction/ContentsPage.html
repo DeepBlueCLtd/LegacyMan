@@ -1,18 +1,75 @@
+<!-- page illustrating floating anchors and content, appreviations.html -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Pub5 Ed10</title>
+</head>
 <body>
-  <div id="Layer2">
-    <h2>Contents</h2>
-    <h2><strong><a href="../PlatformData/PD_1.html">Platform Data Section</a></strong></h2>
-    <h2><strong><a href="../QuickLinksData/Contents_Index.html">Contents Index</a></strong></h2>
+  <div id="header" align="center" style="position: absolute; visibility: visible; left: 0px; top: 0px; width:1024px; height: 20px; background-color: #35D; layer-background-color: #CCF; border: 1px none #000000">
+    <b><font color="#00FF00" face="Arial">
+      <center>
+        <font color="#00FF00">COMMERCIALLLY SENSITIVE</font>
+      </center>
+    </font></b>
   </div>
-
-  <div id="GrayLayer">
-    </div id="QuickLinksTable">
-      <table border="1">
+  
+  <div id="submitButtons" style="visibility: hidden;"></div>
+  <div name="templateDetails" id="templateDetails" style="visibility: hidden; position: absolute;">
+    <form name="templateDetails">
+      <input type="hidden" name="templateName" value="Corp Generic Scheme.html">
+      <input type="hidden" name="defaultIntro" value="Generic Scheme">
+      <input type="hidden" name="width" value="1024">
+      <input type="hidden" name="height" value="768">
+    </form>
+  </div>
+  <div name="pageDetails" id="pageDetails" style="visibility: hidden; position: absolute;">
+    <form name="pageDetails">
+      <input type="hidden" name="schemeName" value="Pub5">
+      <input type="hidden" name="schemeXML" value="p5.xml">
+      <input type="hidden" name="sectionName" value="Introduction">
+      <input type="hidden" name="pageName" value="ContentsPage.html">
+      <input type="hidden" name="prevPage" value="">
+      <input type="hidden" name="nextPage" value="">
+      <input type="hidden" name="version" value="3">
+    </form>
+  </div>
+  
+  <div id="Layer2" style="position: absolute; width: 866px; height: 454px; z-index: 2; left:72px; top: 173px">
+    <h2 align="center">Contents</h2>
+    <h2 align="center"><strong><a href="../PlatformData/PD_1.html">New in this edition of Green Cross Code</a></strong></h2>
+    <p align="center">&nbsp;</p>
+    <h2 align="center">&nbsp;</h2>
+    <h2 align="center"><strong><a href="../PlatformData/PD_1.html">Platform Data Section</a></strong></h2>
+    <p align="center">&nbsp;</p>
+    <h2 align="center">&nbsp;</h2>
+    <h2 align="center"><strong><a href="../QuickLinksData/Contents_Index.html">Contents Index</a></strong></h2>
+    <p align="center">&nbsp;</p>
+    <h2 align="center">&nbsp;</h2>
+    <h1 align="center"><strong><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Guide</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Feedback</a></strong></h1>
+  </div>
+  
+  <div id="GrayLayer" style="position: absolute; width: 1024px; height: 49px; z-index: 2; left: 0px; top: 20px; background-color: #999999; layer-background-color: #999999; border: 1 none #000;">
+    <div name="btnHist" id="btnHist3" style="position: absolute; visibility: visible; left: 114px; top: 51px;">
+      <a href="javascript:history.go(-1)" target="main">Go back</a>
+    </div>
+    <div name="corpLogo" id="image" style="position: absolute; visibility: visible; left: 905px; top: 51px;">
+      <a href="../PlatformData/PD_1.html" target="main">Logo 2</a>
+    </div>
+    <div id="QuickLinksTable" style="position: absolute; visibility: visible; left:235px; top: 52px; width: 643px; background-color: #FFFFFF; border: 1px none #000000;">
+      <table width="100%" border="1">
         <tr>
-          <td><strong>Quick Links</strong></td>
+          <td bgcolor="#66CCFF"><strong>Quick Links</strong></td>
           <td><a href="../QuickLinksData/Abbreviations.html">Abbreviations</a></td>
+        </tr>
+        <!-- note: table has 3 rows of 4 links, with a rowspan=2 item-->     
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
         </tr>        
       </table>
+    </div>
+    <div id="Title" style="position: absolute; visibility: visible; left: 118px; top: 13px; width: 651px">
+      <h2 align="center">MAIN DOCUMENT TITLE & VERSION</h2>
     </div>
   </div>
 </body>
