@@ -1,3 +1,4 @@
+from collections import defaultdict
 import os
 import re
 import shutil
@@ -8,6 +9,8 @@ from bs4 import BeautifulSoup
 from parser_utils import write_prettified_xml, convert_html_href_to_dita_href
 
 from html_to_dita import htmlToDITA
+
+big_dict = defaultdict(set)
 
 
 def process_generic_file_content(html_soup, input_file_path, quicklinks):
@@ -75,6 +78,8 @@ def process_generic_file_content(html_soup, input_file_path, quicklinks):
 
 
 def process_generic_file(input_file_path, target_path_base, data_path):
+    global big_dict
+
     input_file_path = Path(input_file_path)
     input_file_directory = input_file_path.parent
 
@@ -111,7 +116,6 @@ def process_generic_file(input_file_path, target_path_base, data_path):
     for el in bodylink_xrefs:
         bodylink_hrefs.append(el["href"])
         el["href"], format = convert_html_href_to_dita_href(el["href"])
-        print(f"Final el href = {el['href']}")
 
     write_prettified_xml(dita_soup, output_dita_path)
 
@@ -119,11 +123,22 @@ def process_generic_file(input_file_path, target_path_base, data_path):
     # This removes any duplicates, removes links to labels within a page etc
     unique_page_links = set([urlparse(l).path for l in list(quicklinks.values()) + bodylink_hrefs])
     unique_page_links.discard("")
-    print(quicklinks)
-    print(f"Target path = {target_path}")
+
+    # big_dict[str(input_file_path)] = list(quicklinks.values())
+
+    for value in quicklinks.values():
+        parsed = urlparse(value)
+        if parsed.path:
+            filepath = (input_file_directory / Path(parsed.path)).resolve()
+        try:
+            filepath = input_file_path.relative_to(data_path)
+        except ValueError:
+            filepath = input_file_path.relative_to(data_path.name)
+        if parsed.fragment:
+            big_dict[str(filepath)].add(parsed.fragment)
+
     for link in unique_page_links:
         if link.split(".")[-1] == "html":
-            print(f"Link: {link}")
             link_path = (input_file_directory / link).resolve()
             if link_path.exists():
                 if link.startswith(".."):
@@ -134,21 +149,12 @@ def process_generic_file(input_file_path, target_path_base, data_path):
                 print(f"### Warning: {link_path} does not exist!")
         else:
             # Non HTML pages
-            print(f"Copying file link {link}")
             link = Path(link)
-            print(link.parent)
-            print(target_path / link.parent)
-            print(link.name)
             (target_path / link.parent).mkdir(parents=True, exist_ok=True)
             shutil.copy(
                 input_file_path.parent / link,
                 target_path / link.parent / link.name.replace(" ", "_"),
             )
-            # copy_files(
-            #     input_file_path.parent / link.parent,
-            #     target_path / link.parent,
-            #     [link.name.replace(" ", "_")],
-            # )
 
 
 if __name__ == "__main__":

@@ -4,12 +4,12 @@ import time
 import os
 import subprocess
 from bs4 import BeautifulSoup
-
+from pprint import pprint
 
 from parser_utils import delete_directory, copy_files, remove_leading_slashes, write_prettified_xml
 
 from class_files import process_class_files
-from generic_files import process_generic_file
+from generic_files import process_generic_file, big_dict
 
 
 def process_regions(root_path, target_path_base):
@@ -298,7 +298,6 @@ def process_category_pages(
                         # process_class_files(
                         #     class_file_src_path, category_path, class_name, file_name
                         # )
-                        print(f"href = {href}")
                         process_generic_file(
                             class_file_src_path, target_path_base, Path(root_path).resolve()
                         )
@@ -390,6 +389,8 @@ def parse_from_root(root_path, target_path):
     end_time = time.time()
     parse_time = end_time - start_time
     print(f"Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap")
+
+    pprint(big_dict)
 
 
 if __name__ == "__main__":

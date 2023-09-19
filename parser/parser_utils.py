@@ -70,5 +70,4 @@ def convert_html_href_to_dita_href(href):
         id_str = p.name.split(".")[0]
         parsed = parsed._replace(fragment=f"{id_str}/{parsed.fragment}")
 
-    print(f"Converted URL = {parsed.geturl()}")
     return parsed.geturl(), parsed.path.split(".")[-1]
