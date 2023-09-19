@@ -1,20 +1,56 @@
-<head></head>
+<!-- page illustrating floating anchors and content, contents_index.html -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Pub5 Ed10</title>
+</head>
 <body>
+  <div id="header" align="center" style="position: absolute; visibility: visible; left: 0px; top: 0px; width:1024px; height: 20px; background-color: #35D; layer-background-color: #CCF; border: 1px none #000000">
+    <b><font color="#00FF00" face="Arial">
+      <center>
+        <font color="#00FF00">COMMERCIALLLY SENSITIVE</font>
+      </center>
+    </font></b>
+  </div>
+  <div id="submitButtons" style="visibility: hidden;"></div>
+  <div name="templateDetails" id="templateDetails" style="visibility: hidden; position: absolute;">
+    <form name="templateDetails">
+      <input type="hidden" name="templateName" value="Corp Generic Scheme.html">
+      <input type="hidden" name="defaultIntro" value="Generic Scheme">
+      <input type="hidden" name="width" value="1024">
+      <input type="hidden" name="height" value="768">
+    </form>
+  </div>
+  <div name="pageDetails" id="pageDetails" style="visibility: hidden; position: absolute;">
+    <form name="pageDetails">
+      <input type="hidden" name="schemeName" value="Pub5">
+      <input type="hidden" name="schemeXML" value="p5.xml">
+      <input type="hidden" name="sectionName" value="QuickLinksData">
+      <input type="hidden" name="pageName" value="Abbreviations.html">
+      <input type="hidden" name="prevPage" value="">
+      <input type="hidden" name="nextPage" value="">
+      <input type="hidden" name="version" value="3">
+    </form>
+  </div>
+
+
+
   <div id="pageDetails"></div>
     <form id="pageDetails"></form>
        <input type="hidden" name="pageName" value="Abbreviations.html"> 
     </form> 
   </div>
-  <div id="Layer2">
-    <div><strong></strong></div>
-  </div>  
-  <div id="Layer2">
-    <div>
-      <table border="1">
+  <!-- yes, this file does have two top level elements called 'Layer2'-->
+  <div id="Layer2" style="position: absolute; visibility: visible; left: 1077px; top: 23px; width:1024px; height: 669px; background-color: #35D; layer-background-color: #CCF; border: 1px none #000000">
+    <div align="center"><strong></strong></div>
+  </div>
+  <div id="Layer2" style="position: absolute; visibility: visible; left: 107px; top: 127px; width:907px; height: 597px;  overflow: auto">
+    <div style="position: absolute;visibility: visible; left: 12px; top:0px;" id=""table>
+      <table border=1 cellspacing=0 cellpadding=0>
         <tr>
-          <td><div><strong>ABC</strong></div></td>
+          <td width="113"><div align="left"><strong>ABC</strong></div></td>
           <td colspan="2"><div><strong>Alpha Bravo Charlie%TEST-30%</strong></div></td>
-          <td><div><strong>MGM</strong></div></td>
+          <td><div align="left"><strong>MGM</strong></div></td>
           <td colspan="2"><div><strong>Metro Goldwyn Mayer</strong></div></td>
         </tr>
         <tr>
@@ -24,7 +60,10 @@
           <td colspan="2"><div><strong>Master Musician</strong></div></td>
         </tr>
         <tr>
-          <td colspan="6"><div><strong></strong></div></td>
+          <td colspan="6">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="6"><div align="left"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Decode of standard plant safety markers can be found in CTM-12/23</strong></div></td>
         </tr>
         <tr>
           <td width=112></td>
@@ -37,13 +76,32 @@
       </table>
     </div>
   </div>
-  <div id="QuickLinksTable">
-    <table>
+  <div id="QuickLinksTable" style="position: absolute; visibility: visible; left: 225px; top: 71px; width: 643px; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000">
+    <table width="100%" border="1">
       <tr>
-        <td>Quick Links</td>
-        <td>Other links</td>
-        <td>Some links</td>
+        <td width="18%" align="center" bgcolor="#66CCFF"><strong>Quick Links</strong></td>
+        <td width="18%" align="center"><a href="Contents_Index.html">Contents Index</a></td>
+
       </tr>
-    </table>   
-  </div>  
+      <tr>
+        <td width="18%" align="center">&nbsp;</td>
+        <td width="18%" align="center">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="GrayLayer" style="position: absolute; width: 1024px; height: 49px; z-index: 2; left: 0px; top: 20px; background-color: #999999; layer-background-color: #999999; border: 1 none #000;">
+  <div name="btnHist" id="btnHist3" style="position: absolute; visibility: visible; left: 114px; top: 51px;">
+    <a href="javascript:history.go(-1)" target="main">Go back</a>
+  </div>
+  <div name="corpLogo" id="image" style="position: absolute; visibility: visible; left: 905px; top: 51px;">
+    <a href="../PlatformData/PD_1.html" target="main">Logo 2</a>
+  </div>
+  <div id="Title2" style="position: absolute; visibility: visible; left: 352px; top: 13px; width: 316px">
+    <h2>ABBREVIATIONS</h2>
+  </div>
+  <div id="BritainComplex" style="position: absolute; visibility: visible; left: 76px; top: 7px; width: 200px;">
+    <a href="../Introduction/ContentsPage.html">Return to contents</a>
+  </div>
+</div>
 </body>
