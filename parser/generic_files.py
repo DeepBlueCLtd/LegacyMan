@@ -10,8 +10,6 @@ from parser_utils import write_prettified_xml, convert_html_href_to_dita_href
 
 from html_to_dita import htmlToDITA
 
-big_dict = defaultdict(set)
-
 
 def process_generic_file_content(html_soup, input_file_path, quicklinks):
     # Create the DITA document type declaration string
@@ -75,87 +73,3 @@ def process_generic_file_content(html_soup, input_file_path, quicklinks):
     dita_soup.append(dita_reference)
 
     return dita_soup
-
-
-def process_generic_file(input_file_path, target_path_base, data_path):
-    global big_dict
-
-    input_file_path = Path(input_file_path)
-    input_file_directory = input_file_path.parent
-
-    if str(input_file_directory).startswith("/"):
-        target_path = target_path_base / input_file_directory.relative_to(data_path)
-    else:
-        # target_path = target_path_base / input_file_directory.relative_to("data")
-        target_path = target_path_base / input_file_directory.relative_to(data_path.name)
-
-    output_dita_path = target_path / input_file_path.with_suffix(".dita").name
-
-    if output_dita_path.exists():
-        return
-
-    html = input_file_path.read_text()
-
-    html_soup = BeautifulSoup(html, "html.parser")
-
-    # Find all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
-    # and get all their links
-    ql_divs = html_soup.findAll("div", id=re.compile("QuickLinksTable"))
-    links = []
-
-    for ql_div in ql_divs:
-        links.extend(ql_div.findAll("a"))
-
-    quicklinks = {l.text: l["href"] for l in links}
-
-    print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
-    dita_soup = process_generic_file_content(html_soup, input_file_path, quicklinks)
-
-    bodylink_xrefs = dita_soup.find_all("xref")
-    bodylink_hrefs = []
-    for el in bodylink_xrefs:
-        bodylink_hrefs.append(el["href"])
-        el["href"], format = convert_html_href_to_dita_href(el["href"])
-
-    write_prettified_xml(dita_soup, output_dita_path)
-
-    # Get a list of unique HTML pages that are linked to from this page
-    # This removes any duplicates, removes links to labels within a page etc
-    unique_page_links = set([urlparse(l).path for l in list(quicklinks.values()) + bodylink_hrefs])
-    unique_page_links.discard("")
-
-    # big_dict[str(input_file_path)] = list(quicklinks.values())
-
-    for value in quicklinks.values():
-        parsed = urlparse(value)
-        if parsed.path:
-            filepath = (input_file_directory / Path(parsed.path)).resolve()
-        try:
-            filepath = input_file_path.relative_to(data_path)
-        except ValueError:
-            filepath = input_file_path.relative_to(data_path.name)
-        if parsed.fragment:
-            big_dict[str(filepath)].add(parsed.fragment)
-
-    for link in unique_page_links:
-        if link.split(".")[-1] == "html":
-            link_path = (input_file_directory / link).resolve()
-            if link_path.exists():
-                if link.startswith(".."):
-                    p = Path(link).parent
-                    target_path = (target_path / p).resolve()
-                process_generic_file(link_path, target_path_base, data_path)
-            else:
-                print(f"### Warning: {link_path} does not exist!")
-        else:
-            # Non HTML pages
-            link = Path(link)
-            (target_path / link.parent).mkdir(parents=True, exist_ok=True)
-            shutil.copy(
-                input_file_path.parent / link,
-                target_path / link.parent / link.name.replace(" ", "_"),
-            )
-
-
-if __name__ == "__main__":
-    process_generic_file(sys.argv[1], sys.argv[2])
