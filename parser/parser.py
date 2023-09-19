@@ -9,7 +9,7 @@ import subprocess
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from pprint import pprint
-from generic_files import process_generic_file_content
+from html_to_dita import htmlToDITA
 
 from parser_utils import (
     delete_directory,
@@ -25,6 +25,7 @@ class Parser:
         self.root_path = root_path
         self.target_path_base = target_path_base
         self.big_dict = defaultdict(set)
+        self.generic_files_already_processed = set()
 
     def process_regions(self):
         # copy the world-map.gif file
@@ -356,6 +357,104 @@ class Parser:
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
 
+    def process_generic_file_pagelayer(self, dita_soup, page):
+        dita_section_title = dita_soup.new_tag("title")
+
+        # find the first heading
+        headers = ["h1", "h2", "h3", "h4", "h5"]
+        for element in page.children:
+            if element.name in headers:
+                dita_section_title.string = element.text
+                break
+
+        # process the content in html to dita. Note: since this is a non-class
+        # file, we instruct `div` elements to remain as `div`
+        soup = htmlToDITA(page, dita_soup, "div")
+
+        # create the new `section`
+        dita_section = dita_soup.new_tag("section")
+
+        # insert title
+        dita_section.append(dita_section_title)
+
+        # insert rest of converted content
+        dita_section.append(soup)
+
+        return dita_section
+
+    def process_generic_file_content(self, html_soup, input_file_path, quicklinks):
+        # Create the DITA document type declaration string
+        dita_doctype = (
+            '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        )
+        dita_soup = BeautifulSoup(dita_doctype, "xml")
+
+        # create document level elements
+        dita_reference = dita_soup.new_tag("reference")
+        topic_id = Path(
+            str(input_file_path.name).replace(" ", "-")
+        )  # remove spaces, to make legal ID value
+        dita_reference["id"] = topic_id
+        dita_title = dita_soup.new_tag("title")
+        dita_title.string = "Test Title"
+        dita_reference.append(dita_title)
+        dita_ref_body = dita_soup.new_tag("refbody")
+
+        if self.write_generic_files:
+            sections = []
+            anchors_to_export = self.big_dict[
+                str(Path(input_file_path).relative_to(self.root_path))
+            ]
+            for anchor in anchors_to_export:
+                a_elements = html_soup.find_all("a", attrs={"name": anchor})
+                div_elements = html_soup.find_all("div", id=anchor)
+
+                all_elements = a_elements + div_elements
+                if len(all_elements) == 0:
+                    print(f"### Warning: Cannot find anchor {anchor} in page {input_file_path}")
+                    continue
+                elif len(all_elements) == 1:
+                    if all_elements[0].name == "div":
+                        if "PageLayer" in all_elements[0]["id"]:
+                            page = all_elements[0]
+                    else:
+                        page = all_elements[0].find_parent("div", id=re.compile("PageLayer"))
+                    if page is None:
+                        print(
+                            f"### Warning, couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
+                        )
+                        continue
+                    sections.append(self.process_generic_file_pagelayer(dita_soup, page))
+                else:
+                    print(f"### Warning: Multiple matches for anchor {anchor} in {input_file_path}")
+        else:
+            sections = []
+            for page in html_soup.find_all("div"):
+                if page.has_attr("id") and "PageLayer" in page["id"]:
+                    sections.append(self.process_generic_file_pagelayer(dita_soup, page))
+
+        dita_ref_body.extend(sections)
+
+        dita_reference.append(dita_ref_body)
+
+        # Generate related-links for quicklinks table
+        related_links = dita_soup.new_tag("related-links", id="related-pages")
+        for link_text, link_href in quicklinks.items():
+            link = dita_soup.new_tag("link")
+            new_href, extension = convert_html_href_to_dita_href(link_href)
+            link["href"] = new_href
+            if extension != "dita":
+                link["format"] = extension
+            linktext = dita_soup.new_tag("linktext")
+            linktext.string = link_text
+            link.append(linktext)
+            related_links.append(link)
+
+        dita_reference.append(related_links)
+        dita_soup.append(dita_reference)
+
+        return dita_soup
+
     def process_generic_file(self, input_file_path):
         input_file_path = Path(input_file_path)
         input_file_directory = input_file_path.parent
@@ -370,7 +469,7 @@ class Parser:
 
         output_dita_path = target_path / input_file_path.with_suffix(".dita").name
 
-        if output_dita_path.exists():
+        if output_dita_path in self.generic_files_already_processed:
             return
 
         html = input_file_path.read_text()
@@ -387,16 +486,20 @@ class Parser:
 
         quicklinks = {l.text: l["href"] for l in links}
 
-        print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
-        dita_soup = process_generic_file_content(html_soup, input_file_path, quicklinks)
-
+        dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
         bodylink_xrefs = dita_soup.find_all("xref")
         bodylink_hrefs = []
         for el in bodylink_xrefs:
             bodylink_hrefs.append(el["href"])
             el["href"], format = convert_html_href_to_dita_href(el["href"])
 
-        write_prettified_xml(dita_soup, output_dita_path)
+        if self.write_generic_files:
+            print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
+            write_prettified_xml(dita_soup, output_dita_path)
+        else:
+            print(f"Processing generic file {input_file_path} to store link information")
+
+        self.generic_files_already_processed.add(output_dita_path)
 
         # Get a list of unique HTML pages that are linked to from this page
         # This removes any duplicates, removes links to labels within a page etc
@@ -405,7 +508,8 @@ class Parser:
         )
         unique_page_links.discard("")
 
-        for value in quicklinks.values():
+        all_links = list(quicklinks.values()) + bodylink_hrefs
+        for value in all_links:
             parsed = urlparse(value)
             if parsed.path:
                 filepath = (input_file_directory / Path(parsed.path)).resolve()
@@ -413,6 +517,7 @@ class Parser:
                 filepath = input_file_path.relative_to(self.root_path)
             except ValueError:
                 filepath = input_file_path.relative_to(self.root_path.name)
+
             if parsed.fragment:
                 self.big_dict[str(filepath)].add(parsed.fragment)
 
@@ -434,6 +539,32 @@ class Parser:
                     input_file_path.parent / link,
                     target_path / link.parent / link.name.replace(" ", "_"),
                 )
+
+    def run_dita_command(self):
+        print("-" * 40)
+        print("Running dita publish command")
+        print("-" * 40)
+        # Run DITA-OT command to transform the index.ditamap file to html
+        dita_command = [
+            "dita",
+            "-i",
+            "./target/dita/index.ditamap",
+            "-f",
+            "html5",
+            "-o",
+            "./target/html",
+        ]
+        subprocess.run(dita_command)
+
+    def run(self):
+        self.write_generic_files = False
+        self.process_regions()
+        print("Done run 1")
+        self.write_generic_files = True
+        self.generic_files_already_processed = set()
+        self.process_regions()
+        print("Done run 2")
+        self.run_dita_command()
 
 
 def parse_from_root(root_path, target_path):
@@ -457,24 +588,7 @@ def parse_from_root(root_path, target_path):
 
     parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
 
-    # Process the regions, which will call functions to process the countries, and then each class within the country etc
-    # This is the entry point to the whole parsing process
-    parser.process_regions()
-
-    print("-" * 40)
-    print("Running dita publish command")
-    print("-" * 40)
-    # Run DITA-OT command to transform the index.ditamap file to html
-    dita_command = [
-        "dita",
-        "-i",
-        "./target/dita/index.ditamap",
-        "-f",
-        "html5",
-        "-o",
-        target_path,
-    ]
-    subprocess.run(dita_command)
+    parser.run()
 
     end_time = time.time()
     parse_time = end_time - start_time

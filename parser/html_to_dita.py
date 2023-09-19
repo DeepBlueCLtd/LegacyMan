@@ -37,7 +37,7 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strings=False):
+def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     """
     this function will convert a block of html to a block of DITA xml
     :param file_name: current filename, used to generate local click target until valid targets present
