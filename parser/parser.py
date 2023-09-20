@@ -411,7 +411,8 @@ class Parser:
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = html_soup.find("div", id=re.compile("PageLayer"))
-                    pages_to_process.add(page)
+                    if page:
+                        pages_to_process.add(page)
                     continue
 
                 a_elements = html_soup.find_all("a", attrs={"name": anchor})
@@ -435,8 +436,9 @@ class Parser:
                     pages_to_process.add(page)
                 else:
                     print(f"### Warning: Multiple matches for anchor {anchor} in {input_file_path}")
+            pages_to_process = sorted(list(pages_to_process), key=lambda x: x.sourceline)
 
-            for page in sorted(list(pages_to_process), key=lambda x: x.sourceline):
+            for page in pages_to_process:
                 sections.append(self.process_generic_file_pagelayer(dita_soup, page))
         else:
             sections = []
@@ -466,18 +468,23 @@ class Parser:
 
         return dita_soup
 
+    def make_relative_to_data_dir(self, filepath):
+        try:
+            filepath = filepath.relative_to(self.root_path)
+        except ValueError:
+            filepath = filepath.relative_to(self.root_path.name)
+
+        return filepath
+
     def track_all_links(self, all_links, input_file_path):
         for value in all_links:
-            print(f"Link: {value}")
             parsed = urlparse(value)
             if parsed.path:
                 filepath = (input_file_path.parent / Path(parsed.path)).resolve()
             else:
                 filepath = input_file_path
-            try:
-                filepath = input_file_path.relative_to(self.root_path)
-            except ValueError:
-                filepath = input_file_path.relative_to(self.root_path.name)
+
+            filepath = self.make_relative_to_data_dir(filepath)
 
             if parsed.fragment:
                 self.link_tracker[str(filepath)].add(parsed.fragment)
@@ -489,13 +496,16 @@ class Parser:
         input_file_path = Path(input_file_path)
         input_file_directory = input_file_path.parent
 
-        if str(input_file_directory).startswith("/"):
-            target_path = self.target_path_base / input_file_directory.relative_to(self.root_path)
-        else:
-            # target_path = target_path_base / input_file_directory.relative_to("data")
-            target_path = self.target_path_base / input_file_directory.relative_to(
-                self.root_path.name
-            )
+        # if str(input_file_directory).startswith("/"):
+        #     target_path = self.target_path_base / input_file_directory.relative_to(self.root_path)
+        # else:
+        #     # target_path = target_path_base / input_file_directory.relative_to("data")
+        #     target_path = self.target_path_base / input_file_directory.relative_to(
+        #         self.root_path.name
+        #     )
+
+        relative_input_file_directory = self.make_relative_to_data_dir(input_file_directory)
+        target_path = self.target_path_base / relative_input_file_directory
 
         output_dita_path = target_path / input_file_path.with_suffix(".dita").name
 
