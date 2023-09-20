@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
 
+from parser_utils import convert_html_href_to_dita_href
+
 
 def testParse():
     """
@@ -154,6 +156,7 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
+        a["href"], format = convert_html_href_to_dita_href(a["href"])
         # a["outputclass"] = "placeholder"
 
     # 5b. Fix anchors (a without href attribute)

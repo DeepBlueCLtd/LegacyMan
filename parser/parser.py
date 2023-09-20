@@ -19,12 +19,14 @@ from parser_utils import (
     convert_html_href_to_dita_href,
 )
 
+FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
+
 
 class Parser:
     def __init__(self, root_path, target_path_base):
         self.root_path = root_path
         self.target_path_base = target_path_base
-        self.big_dict = defaultdict(set)
+        self.link_tracker = defaultdict(set)
         self.generic_files_already_processed = set()
 
     def process_regions(self):
@@ -402,14 +404,20 @@ class Parser:
 
         if self.write_generic_files:
             sections = []
-            anchors_to_export = self.big_dict[
+            anchors_to_export = self.link_tracker[
                 str(Path(input_file_path).relative_to(self.root_path))
             ]
+            pages_to_process = set()
             for anchor in anchors_to_export:
+                if anchor == FIRST_PAGE_LAYER_MARKER:
+                    page = html_soup.find("div", id=re.compile("PageLayer"))
+                    pages_to_process.add(page)
+                    continue
+
                 a_elements = html_soup.find_all("a", attrs={"name": anchor})
                 div_elements = html_soup.find_all("div", id=anchor)
-
                 all_elements = a_elements + div_elements
+
                 if len(all_elements) == 0:
                     print(f"### Warning: Cannot find anchor {anchor} in page {input_file_path}")
                     continue
@@ -424,9 +432,12 @@ class Parser:
                             f"### Warning, couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
                         )
                         continue
-                    sections.append(self.process_generic_file_pagelayer(dita_soup, page))
+                    pages_to_process.add(page)
                 else:
                     print(f"### Warning: Multiple matches for anchor {anchor} in {input_file_path}")
+
+            for page in sorted(list(pages_to_process), key=lambda x: x.sourceline):
+                sections.append(self.process_generic_file_pagelayer(dita_soup, page))
         else:
             sections = []
             for page in html_soup.find_all("div"):
@@ -455,6 +466,25 @@ class Parser:
 
         return dita_soup
 
+    def track_all_links(self, all_links, input_file_path):
+        for value in all_links:
+            print(f"Link: {value}")
+            parsed = urlparse(value)
+            if parsed.path:
+                filepath = (input_file_path.parent / Path(parsed.path)).resolve()
+            else:
+                filepath = input_file_path
+            try:
+                filepath = input_file_path.relative_to(self.root_path)
+            except ValueError:
+                filepath = input_file_path.relative_to(self.root_path.name)
+
+            if parsed.fragment:
+                self.link_tracker[str(filepath)].add(parsed.fragment)
+                print(f"Putting in big dict with key {str(filepath)} and value {parsed.fragment}")
+            else:
+                self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
+
     def process_generic_file(self, input_file_path):
         input_file_path = Path(input_file_path)
         input_file_directory = input_file_path.parent
@@ -472,11 +502,12 @@ class Parser:
         if output_dita_path in self.generic_files_already_processed:
             return
 
+        # Parse the HTML
         html = input_file_path.read_text()
-
         html_soup = BeautifulSoup(html, "html.parser")
 
-        # Find all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
+        # Find all the QuickLinks tables and extract their link text and href
+        # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
         # and get all their links
         ql_divs = html_soup.findAll("div", id=re.compile("QuickLinksTable"))
         links = []
@@ -486,53 +517,52 @@ class Parser:
 
         quicklinks = {l.text: l["href"] for l in links}
 
-        dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
-        bodylink_xrefs = dita_soup.find_all("xref")
+        # Find all the links in the body of the page - that is, links that are inside a <div> with an id containing PageLayer
         bodylink_hrefs = []
-        for el in bodylink_xrefs:
-            bodylink_hrefs.append(el["href"])
-            el["href"], format = convert_html_href_to_dita_href(el["href"])
+        a_tags = html_soup.find_all("a")
+        for a_tag in a_tags:
+            parent_pagelayer = a_tag.find_parent("div", id=re.compile("PageLayer"))
+            if parent_pagelayer:
+                if a_tag.get("href"):
+                    bodylink_hrefs.append(a_tag["href"])
 
+        # If we're actually writing the files then do the conversion and write the file
         if self.write_generic_files:
             print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
+            dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
             write_prettified_xml(dita_soup, output_dita_path)
         else:
             print(f"Processing generic file {input_file_path} to store link information")
 
+        # Keep track of which files we've processed
+        # (we can't just use the existence of the file to keep track, as if we run with self.write_generic_files
+        # set to false then there will no files written)
         self.generic_files_already_processed.add(output_dita_path)
 
-        # Get a list of unique HTML pages that are linked to from this page
+        # Track all the links on this page and where they point to, so that we know which parts of pages
+        # are used, so we know which to export when we run with self.write_generic_files as True
+        all_links = list(quicklinks.values()) + bodylink_hrefs
+        self.track_all_links(all_links, input_file_path)
+
+        # Process all the pages that are linked from this page
+        # We get a list of unique HTML pages that are linked to from this page
         # This removes any duplicates, removes links to labels within a page etc
         unique_page_links = set(
             [urlparse(l).path for l in list(quicklinks.values()) + bodylink_hrefs]
         )
         unique_page_links.discard("")
 
-        all_links = list(quicklinks.values()) + bodylink_hrefs
-        for value in all_links:
-            parsed = urlparse(value)
-            if parsed.path:
-                filepath = (input_file_directory / Path(parsed.path)).resolve()
-            try:
-                filepath = input_file_path.relative_to(self.root_path)
-            except ValueError:
-                filepath = input_file_path.relative_to(self.root_path.name)
-
-            if parsed.fragment:
-                self.big_dict[str(filepath)].add(parsed.fragment)
-
+        # Go through each of the unique links and either call this function
+        # again to process the HTML file, or copy the file across (if it's not a HTML file)
         for link in unique_page_links:
             if link.split(".")[-1] == "html":
                 link_path = (input_file_directory / link).resolve()
                 if link_path.exists():
-                    if link.startswith(".."):
-                        p = Path(link).parent
-                        target_path = (target_path / p).resolve()
                     self.process_generic_file(link_path)
                 else:
                     print(f"### Warning: {link_path} does not exist!")
             else:
-                # Non HTML pages
+                # Non HTML pages, so just copy the file over
                 link = Path(link)
                 (target_path / link.parent).mkdir(parents=True, exist_ok=True)
                 shutil.copy(
@@ -594,7 +624,7 @@ def parse_from_root(root_path, target_path):
     parse_time = end_time - start_time
     print(f"Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap")
 
-    pprint(parser.big_dict)
+    pprint(parser.link_tracker)
 
 
 if __name__ == "__main__":
