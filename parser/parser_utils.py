@@ -5,6 +5,7 @@ import os
 import copy
 from bs4 import BeautifulSoup
 from pathlib import Path
+import cssutils
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -71,3 +72,38 @@ def convert_html_href_to_dita_href(href):
         parsed = parsed._replace(fragment=f"{id_str}/{parsed.fragment}")
 
     return parsed.geturl(), parsed.path.split(".")[-1]
+
+
+def get_top_value(css_string):
+    # print(css_string)
+    css = cssutils.css.CSSStyleDeclaration(css_string, validating=False)
+    top = css.top
+
+    if top == "":
+        return None
+
+    return int(top.replace("px", ""))
+
+
+def generate_top_to_div_mapping(html_soup):
+    all_bottom_layer_divs = html_soup.find_all("div")
+
+    for bottom_layer_div in all_bottom_layer_divs:
+        div_id = bottom_layer_div.get("id")
+        # Exclude GrayLayer divs
+        if div_id and "GrayLayer" in div_id:
+            continue
+
+        # Ignore ones without a style attribute as they can't have a top value
+        style_attrib = bottom_layer_div.get("style")
+        if style_attrib is None:
+            continue
+
+        top_value = get_top_value(bottom_layer_div["style"])
+
+        if top_value:
+            top_to_div_mapping[top_value] = bottom_layer_div
+
+    top_to_div_mapping = sorted(top_to_div_mapping.items())
+
+    return top_to_div_mapping

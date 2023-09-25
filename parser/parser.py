@@ -10,6 +10,7 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from pprint import pprint
 from html_to_dita import htmlToDITA
+import cssutils
 
 from parser_utils import (
     delete_directory,
@@ -17,6 +18,7 @@ from parser_utils import (
     remove_leading_slashes,
     write_prettified_xml,
     convert_html_href_to_dita_href,
+    get_top_value,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -408,6 +410,9 @@ class Parser:
                 str(Path(input_file_path).relative_to(self.root_path))
             ]
             pages_to_process = set()
+            top_to_div_mapping = {}
+            top_to_div_mapping = generate_top_to_div_mapping(html_soup)
+
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = html_soup.find("div", id=re.compile("PageLayer"))
@@ -424,10 +429,44 @@ class Parser:
                     continue
                 elif len(all_elements) == 1:
                     if all_elements[0].name == "div":
+                        # Deal with the case where the ID given is for the div itself
                         if "PageLayer" in all_elements[0]["id"]:
                             page = all_elements[0]
                     else:
-                        page = all_elements[0].find_parent("div", id=re.compile("PageLayer"))
+                        # Otherwise it's an <a> anchor, so we need to:
+                        # 1. Get the CSS top value for the enclosing div
+                        # 2. Get all top values for all BottomLayer divs
+                        # 3. Find the closest higher top value in the document
+                        anchor = all_elements[0]
+                        enclosing_div = anchor.find_parent("div")
+                        if "unit_anchors" in str(input_file_path):
+                            print("Enclosing div:")
+                            print(enclosing_div)
+                            print("---------")
+                        if not enclosing_div:
+                            print(f"### Warning, could not find enclosing div")
+                            continue
+                        style_attrib = enclosing_div.get("style")
+                        if not style_attrib:
+                            print(f"### Warning, could not find style attrib on enclosing div")
+                            continue
+                        enclosing_div_top_value = get_top_value(style_attrib)
+                        if not enclosing_div_top_value:
+                            print(f"### Warning, enclosing div has no top value")
+                            continue
+                        print(f"Enclosing div top value = {enclosing_div_top_value}")
+                        page = None
+                        for top_value, bottom_layer_div in top_to_div_mapping:
+                            if top_value > enclosing_div_top_value:
+                                # Check that the difference isn't too big
+                                if top_value - enclosing_div_top_value < 200:
+                                    page = bottom_layer_div
+                                    print(f"Found div top value = {top_value}")
+                        if not page:
+                            print(
+                                f"### Warning, couldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}"
+                            )
+                            continue
                     if page is None:
                         print(
                             f"### Warning, couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
@@ -488,7 +527,6 @@ class Parser:
 
             if parsed.fragment:
                 self.link_tracker[str(filepath)].add(parsed.fragment)
-                print(f"Putting in big dict with key {str(filepath)} and value {parsed.fragment}")
             else:
                 self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
 
