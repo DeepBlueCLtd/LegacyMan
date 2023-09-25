@@ -19,6 +19,7 @@ from parser_utils import (
     write_prettified_xml,
     convert_html_href_to_dita_href,
     get_top_value,
+    generate_top_to_div_mapping,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -371,9 +372,16 @@ class Parser:
                 dita_section_title.string = element.text
                 break
 
-        # process the content in html to dita. Note: since this is a non-class
-        # file, we instruct `div` elements to remain as `div`
-        soup = htmlToDITA(page, dita_soup, "div")
+        # TODO, this is where we loop through the divs in top value order
+        top_to_div_mapping = generate_top_to_div_mapping(page)
+        # print(f"Top to div mapping for div with id = {page['id']}")
+        # print([el[0] for el in top_to_div_mapping])
+        converted_bits = []
+        for _, sub_div in top_to_div_mapping:
+            # process the content in html to dita. Note: since this is a non-class
+            # file, we instruct `div` elements to remain as `div`
+            converted_soup = htmlToDITA(sub_div, dita_soup, "div")
+            converted_bits.append(converted_soup)
 
         # create the new `section`
         dita_section = dita_soup.new_tag("section")
@@ -382,7 +390,7 @@ class Parser:
         dita_section.append(dita_section_title)
 
         # insert rest of converted content
-        dita_section.append(soup)
+        dita_section.extend(converted_bits)
 
         return dita_section
 
@@ -410,7 +418,6 @@ class Parser:
                 str(Path(input_file_path).relative_to(self.root_path))
             ]
             pages_to_process = set()
-            top_to_div_mapping = {}
             top_to_div_mapping = generate_top_to_div_mapping(html_soup)
 
             for anchor in anchors_to_export:
@@ -437,12 +444,9 @@ class Parser:
                         # 1. Get the CSS top value for the enclosing div
                         # 2. Get all top values for all BottomLayer divs
                         # 3. Find the closest higher top value in the document
+                        print(f"Dealing with anchor {anchor} in page {input_file_path}")
                         anchor = all_elements[0]
                         enclosing_div = anchor.find_parent("div")
-                        if "unit_anchors" in str(input_file_path):
-                            print("Enclosing div:")
-                            print(enclosing_div)
-                            print("---------")
                         if not enclosing_div:
                             print(f"### Warning, could not find enclosing div")
                             continue
@@ -456,12 +460,15 @@ class Parser:
                             continue
                         print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
+                        print(top_to_div_mapping)
                         for top_value, bottom_layer_div in top_to_div_mapping:
+                            print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
-                                if top_value - enclosing_div_top_value < 200:
+                                if top_value - enclosing_div_top_value < 500:
                                     page = bottom_layer_div
                                     print(f"Found div top value = {top_value}")
+                                    break
                         if not page:
                             print(
                                 f"### Warning, couldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}"
@@ -472,6 +479,7 @@ class Parser:
                             f"### Warning, couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
                         )
                         continue
+                    print("About to process page")
                     pages_to_process.add(page)
                 else:
                     print(f"### Warning: Multiple matches for anchor {anchor} in {input_file_path}")

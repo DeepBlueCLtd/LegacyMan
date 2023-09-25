@@ -86,12 +86,15 @@ def get_top_value(css_string):
 
 
 def generate_top_to_div_mapping(html_soup):
+    top_to_div_mapping = {}
     all_bottom_layer_divs = html_soup.find_all("div")
 
     for bottom_layer_div in all_bottom_layer_divs:
         div_id = bottom_layer_div.get("id")
         # Exclude GrayLayer divs
         if div_id and "GrayLayer" in div_id:
+            continue
+        elif div_id and "QuickLinksTable" in div_id:
             continue
 
         # Ignore ones without a style attribute as they can't have a top value
