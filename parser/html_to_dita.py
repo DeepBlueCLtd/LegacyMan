@@ -165,6 +165,7 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     for a in soup.find_all("a", {"href": False}):
         a.name = "div"
         a["id"] = a["name"]
+        del a["name"]
 
     # 6. Remove <br> newlines
     for br in soup.find_all("br"):
