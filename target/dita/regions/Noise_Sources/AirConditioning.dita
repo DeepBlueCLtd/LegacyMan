@@ -2,8 +2,12 @@
 <!DOCTYPE reference
   PUBLIC '-//OASIS//DTD DITA Reference//EN'
   'reference.dtd'>
-<reference id="unit_ab.html">
+<reference id="AirConditioning.html">
 	<title>Test Title</title>
-	<refbody/>
+	<refbody>
+		<section>
+			<title>Noise sources</title>
+		</section>
+	</refbody>
 	<related-links id="related-pages"/>
 </reference>

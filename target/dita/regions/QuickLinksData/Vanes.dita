@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Vanes.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title/>
+			<div id="PoleRate">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Polarity Rate Formula</b>
+			</div>
+			<div id="PolarityTable">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Alpha</b>
+			</div>
+			<div>
+				<b>Note:</b>
+				The fundamentals of electric motor performance can vary with humidity
+			</div>
+			<div>
+				<b>Note</b>
+				These figures are a 
+				<b>general guide to Northern electrical polarities</b>
+				 Always are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+			</div>
+			<div>
+				<b>Bold</b>
+				 figures (in Green) are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+			</div>
+			<div id="image1">
+				<p outputclass="h1">
+					<xref href="#/number2">
+						<b>Click HERE for Southern Hemisphere Constants</b>
+					</xref>
+				</p>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="Abbreviations.dita">
+			<linktext>Abbreviations</linktext>
+		</link>
+		<link href="../Noise_Sources/Noise_Sources.dita">
+			<linktext>Noise Sources</linktext>
+		</link>
+		<link href="./Contents_Index.dita">
+			<linktext>Contents</linktext>
+		</link>
+	</related-links>
+</reference>

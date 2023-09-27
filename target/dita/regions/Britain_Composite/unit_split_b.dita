@@ -2,109 +2,37 @@
 <!DOCTYPE reference
   PUBLIC '-//OASIS//DTD DITA Reference//EN'
   'reference.dtd'>
-<reference id="/home/LegacyMan/data/Britain_Composite/unit_split_b.html">
+<reference id="unit_split_b.html">
 	<title>Test Title</title>
 	<refbody>
 		<section>
 			<title>REMARKS</title>
-			<div id="PageLayer2">
-				<p outputclass="h1">REMARKS</p>
-				<p id="image9">
-					<image href="./Content/Images/unit_a1.jpg"/>
-					<image href="./Content/Images/unit_a2.jpeg"/>
-				</p>
-				<p>
-      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-      ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-      tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-      Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-    </p>
-				<ul>
-					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					<li>Aliquam tincidunt mauris eu risus.</li>
-					<li>Vestibulum auctor dapibus neque.</li>
-				</ul>
-				<p/>
-				<ol>
-					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					<li>Aliquam tincidunt mauris eu risus.</li>
-				</ol>
-			</div>
-		</section>
-		<section>
-			<title>PROPULSION</title>
-			<div id="PageLayer3">
-				<p outputclass="h1">PROPULSION</p>
-				<p>
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-				</p>
-				<p>
-					<image href="./Content/Images/unit_a1.jpg"/>
-					<image href="./Content/Images/unit_a2.jpg"/>
-					<image href="./Content/Images/unit_da.jpeg"/>
-					    Figure 1:
-      oscilloscope view    Figure 2: other oscilloscope
-      view    Figure 3: extra oscilloscope view
-        Some content goes here
-					<fig outputclass="center">
-						<image href="./Content/Images/unit_a2.jpg"/>
-						<image href="./Content/Images/unit_da.jpg"/>
-						<p outputclass="figtitle">Figure 1 Diagram a2 and da.</p>
-					</fig>
-				</p>
-				<p>
-      1. Electrical modulation noise is typically a function of generator
-      frequency and load
-    </p>
-				<p>
-      2. Air filtration noise is typically a function of generator frequency and
-      load
-    </p>
-				<fig outputclass="center">
-					<image href="./Content/Images/unit_a2.jpg"/>
-					<p outputclass="figtitle">
-      Figure 4: new oscilloscope view
-    </p>
-				</fig>
-				<p>
-      3. Pneumatic modulation noise is typically a function of generator
-      frequency and load
-    </p>
-				<p>
-      4. Hydraulic modulation noise is typically a function of generator
-      frequency and load
-    </p>
-				<p outputclass="h1">HYDROGEN FUEL CELL TECHNOLOGY</p>
-				<p>
-      5. Hydrogen noise is typically a function of generator frequency and load
-    </p>
-				<p>
-      6. Fuel Cell modulation noise is 
-					<i>typically</i>
-					 a function of generator
-      frequency and load
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-					<b>Table 1: Items 1 and 2</b>
-				</p>
-				<!-- this is an example of an unordered list, stored in a blockquote-->
-				<p>
-					<ul>
-						<li>a. Useful in colder climates</li>
-						<li>b. Ruggedised version available from 2022</li>
-						<li>c. Unreliable with DC power source</li>
-						<li>d. Have you tried turning it on and off again?  My uncle said that worked about 30% of the time.</li>
-						<li>e. Infallable when it comes to high altitude installations</li>
-					</ul>
-				</p>
-				<!-- this is an example of an unordered list, stored in a blockquote-->
-				<ul>
-					<li>a. Not useful in colder climates</li>
-					<li>b. No ruggedised version available from 2022</li>
-					<li>c. Reliable with DC power source</li>
-					<li>d. What about turning it on and off again?  My uncle said that worked about 30% of the time.</li>
-					<li>e. Fallable when it comes to high altitude installations</li>
-				</ul>
-			</div>
 		</section>
 	</refbody>
+	<related-links id="related-pages">
+		<link href="phase_a.dita#phase_a/number2">
+			<linktext>Backup processes</linktext>
+		</link>
+		<link href="phase_a_power.dita#phase_a_power/number2">
+			<linktext>Phase A - Backup Power</linktext>
+		</link>
+		<link href="phase_a_power.dita">
+			<linktext>Phase A - Power</linktext>
+		</link>
+		<link href="unit_split_a.dita">
+			<linktext>Unit A Overview</linktext>
+		</link>
+		<link format="" href="#/number2">
+			<linktext>Unit B Propulsion</linktext>
+		</link>
+		<link href="phase_a.dita">
+			<linktext>Systems Overview</linktext>
+		</link>
+		<link format="xlsx" href="Content/Phase_A_HeatCalculator.xlsx">
+			<linktext/>
+		</link>
+		<link href="unit_split_b.dita">
+			<linktext>Unit B Remarks</linktext>
+		</link>
+	</related-links>
 </reference>

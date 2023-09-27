@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Contents_Index.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title> </title>
+			<div>
+				<p>
+					<b outputclass="placeholder">[TABLE PLACEHOLDER] - SUBJECT</b>
+				</p>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages"/>
+</reference>

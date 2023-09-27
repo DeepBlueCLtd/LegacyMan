@@ -2,53 +2,40 @@
 <!DOCTYPE reference
   PUBLIC '-//OASIS//DTD DITA Reference//EN'
   'reference.dtd'>
-<reference id="data/Britain_Composite/unit_split_a.html">
+<reference id="unit_split_a.html">
 	<title>Test Title</title>
 	<refbody>
 		<section>
 			<title/>
-			<div id="PageLayer3">
-				<!-- for some classes, the data is spread across
-        multiple files. So, the propulsion table my not be here-->
-			</div>
-		</section>
-		<section>
-			<title/>
-			<div id="PageLayer">
-				<p id="Table">
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-					<b>
-						<ph outputclass="red">*</ph>
-						 Subject to confirmation from local engineer 
-					</b>
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-					<b outputclass="placeholder">[TABLE PLACEHOLDER]</b>
-				</p>
-				<!-- these are the images from the `daf_pics.html` page, though they
-        are compressed to be displayed here.  But, it could be that only a subset of
-        the available images are published on this page. Note: they are presented in the same format as 
-        class A1, within a parent div -->
-				<p id="image21">
-					<xref href="unit_split_a.dita" outputclass="placeholder">
-						<image height="150" href="./Content/Images/unit_a1.jpg" width="200"/>
-					</xref>
-				</p>
-				<p id="image3">
-					<xref href="unit_split_a.dita" outputclass="placeholder">
-						<image height="150" href="./Content/Images/unit_a2.jpeg" width="200"/>
-					</xref>
-				</p>
-				<p id="image7">
-					<xref href="unit_split_a.dita" outputclass="placeholder">
-						<image height="150" href="./Content/Images/unit_dar.jpeg" width="200"/>
-					</xref>
-					<xref href="unit_split_a.dita" outputclass="placeholder">
-						<image height="150" href="./Content/Images/unit_da.jpg" width="200"/>
-					</xref>
-				</p>
-			</div>
 		</section>
 	</refbody>
+	<related-links id="related-pages">
+		<link href="phase_a.dita#phase_a/number2">
+			<linktext>Backup processes</linktext>
+		</link>
+		<link href="phase_a_power.dita#phase_a_power/number2">
+			<linktext>Phase A - Backup Power</linktext>
+		</link>
+		<link href="phase_a_power.dita">
+			<linktext>Phase A - Power</linktext>
+		</link>
+		<link href="unit_split_b.dita">
+			<linktext>Remarks</linktext>
+		</link>
+		<link href="unit_split_b.dita#unit_split_b/number2">
+			<linktext>Propulsion</linktext>
+		</link>
+		<link href="phase_a.dita">
+			<linktext>Systems Overview</linktext>
+		</link>
+		<link format="xlsx" href="Content/Phase_A_HeatCalculator.xlsx">
+			<linktext/>
+		</link>
+		<link href="../QuickLinksData/Vanes.dita">
+			<linktext>Polarity and Vanity</linktext>
+		</link>
+		<link href="./unit_split_a.dita">
+			<linktext>Signatures</linktext>
+		</link>
+	</related-links>
 </reference>

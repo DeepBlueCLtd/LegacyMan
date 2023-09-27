@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Phase_F.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title/>
+			<div id="SxBTable">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Strength / Utility</b>
+			</div>
+			<div>
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Physical Characteristics</b>
+			</div>
+			<div id="layer1">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Phase F/G Air Con Aux Systems</b>
+			</div>
+			<div id="key1">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] -  </b>
+			</div>
+			<div id="SignatureTable99">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Phase 6 Extractor Bearing Frequencies / Coverage Bands</b>
+			</div>
+			<div id="layer6">
+				<p>Phase F Overall Signature</p>
+			</div>
+			<div id="SignatureTable2">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - 6 - 11 degs</b>
+			</div>
+			<div id="SignatureTable">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - Less than 6 degs</b>
+			</div>
+			<div id="SignatureTable4">
+				<b outputclass="placeholder">[TABLE PLACEHOLDER] - More than 11 degs</b>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="BR_Power_Units.dita">
+			<linktext>Power Units</linktext>
+		</link>
+		<link format="xlsx" href="Content/Complex_HeatCalculator.xlsx">
+			<linktext>Heat calculator</linktext>
+		</link>
+		<link href="Phase_F_Size.dita">
+			<linktext>Remarks</linktext>
+		</link>
+		<link format="" href="#/number2">
+			<linktext>Systems</linktext>
+		</link>
+		<link href="../QuickLinksData/Vanes.dita">
+			<linktext>Vanity Sources</linktext>
+		</link>
+		<link format="" href="#/number3">
+			<linktext>Signature</linktext>
+		</link>
+		<link href="BR_Filter_Units.dita#BR_Filter_Units/filtrates">
+			<linktext>Filtration</linktext>
+		</link>
+		<link href="BR_Filter_Units.dita">
+			<linktext>Filtration background</linktext>
+		</link>
+		<link href="Phase_F.dita#Phase_F/number2">
+			<linktext>Phase F Residue</linktext>
+		</link>
+		<link href="BR_transducers.dita">
+			<linktext>Transducers</linktext>
+		</link>
+		<link href="Phase_F.dita">
+			<linktext>Phase F overview</linktext>
+		</link>
+	</related-links>
+</reference>
