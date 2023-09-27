@@ -157,12 +157,14 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
         a["href"], format = convert_html_href_to_dita_href(a["href"])
-        # a["outputclass"] = "placeholder"
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
+    # We actually convert them to <div> elements now, in case they have something inside them
+    # (which they do in Phase_F_Size.html - where a heading and more is inside)
     for a in soup.find_all("a", {"href": False}):
-        a.decompose()
+        a.name = "div"
+        a["id"] = a["name"]
 
     # 6. Remove <br> newlines
     for br in soup.find_all("br"):

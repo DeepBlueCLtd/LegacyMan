@@ -85,9 +85,12 @@ def get_top_value(css_string):
     return int(top.replace("px", ""))
 
 
-def generate_top_to_div_mapping(html_soup):
+def generate_top_to_div_mapping(html_soup, include_anchors=False):
     top_to_div_mapping = {}
-    all_bottom_layer_divs = html_soup.find_all("div")
+    if include_anchors:
+        all_bottom_layer_divs = html_soup.find_all(["div", "a"], recursive=False)
+    else:
+        all_bottom_layer_divs = html_soup.find_all("div", recursive=False)
 
     for bottom_layer_div in all_bottom_layer_divs:
         div_id = bottom_layer_div.get("id")
@@ -105,6 +108,8 @@ def generate_top_to_div_mapping(html_soup):
         top_value = get_top_value(bottom_layer_div["style"])
 
         if top_value:
+            while top_value in top_to_div_mapping.keys():
+                top_value += 1
             top_to_div_mapping[top_value] = bottom_layer_div
 
     top_to_div_mapping = sorted(top_to_div_mapping.items())

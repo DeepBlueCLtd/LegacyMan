@@ -380,6 +380,10 @@ class Parser:
         for _, sub_div in top_to_div_mapping:
             # process the content in html to dita. Note: since this is a non-class
             # file, we instruct `div` elements to remain as `div`
+            try:
+                print(f"Div id = {sub_div['id']}")
+            except Exception:
+                print("Div has no id")
             converted_soup = htmlToDITA(sub_div, dita_soup, "div")
             converted_bits.append(converted_soup)
 
@@ -460,7 +464,6 @@ class Parser:
                             continue
                         print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
-                        print(top_to_div_mapping)
                         for top_value, bottom_layer_div in top_to_div_mapping:
                             print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
