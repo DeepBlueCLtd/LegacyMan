@@ -432,7 +432,7 @@ class Parser:
                     continue
 
                 a_elements = html_soup.find_all("a", attrs={"name": anchor})
-                div_elements = html_soup.find_all("div", id=anchor)
+                div_elements = html_soup.find_all(["div", "h3"], id=anchor)
                 all_elements = a_elements + div_elements
 
                 if len(all_elements) == 0:
