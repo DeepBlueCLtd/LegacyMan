@@ -85,19 +85,45 @@ def get_top_value(css_string):
     return int(top.replace("px", ""))
 
 
-def generate_top_to_div_mapping(html_soup, include_anchors=False):
+def generate_top_to_div_mapping(html_soup, include_anchors=False, recursive=True):
     top_to_div_mapping = {}
+
+    if not recursive:
+        # If this div only has one child, and that child is a PageLayer div
+        # then process that div instead (ie. run the rest of the function on
+        # that div, and get top values of divs inside that one instead)
+        id_value = html_soup.get("id")
+        direct_div_children = html_soup.find_all("div", recursive=False)
+        if len(direct_div_children) == 1:
+            id_value = direct_div_children[0].get("id")
+            if id_value is not None and "PageLayer" in id_value:
+                html_soup = direct_div_children[0]
+
     if include_anchors:
-        all_bottom_layer_divs = html_soup.find_all(["div", "a"], recursive=False)
+        all_bottom_layer_divs = html_soup.find_all(["div", "a"], recursive=recursive)
     else:
-        all_bottom_layer_divs = html_soup.find_all("div", recursive=False)
+        all_bottom_layer_divs = html_soup.find_all("div", recursive=recursive)
 
     for bottom_layer_div in all_bottom_layer_divs:
         div_id = bottom_layer_div.get("id")
-        # Exclude GrayLayer divs
+        # print(f"Processing div id = {div_id}")
+        # Exclude GrayLayer divs and QuickLinksTable divs
         if div_id and "GrayLayer" in div_id:
             continue
         elif div_id and "QuickLinksTable" in div_id:
+            continue
+
+        # Ignore anything that is inside a GrayLayer div (ie. has one as a parent)
+        gray_layer = False
+        parent_divs = bottom_layer_div.find_parents("div")
+        if parent_divs:
+            for parent_div in parent_divs:
+                parent_div_id = parent_div.get("id")
+                if parent_div_id and "GrayLayer" in parent_div_id:
+                    gray_layer = True
+
+        # print(f"Gray layer = {gray_layer}")
+        if gray_layer:
             continue
 
         # Ignore ones without a style attribute as they can't have a top value
@@ -113,5 +139,8 @@ def generate_top_to_div_mapping(html_soup, include_anchors=False):
             top_to_div_mapping[top_value] = bottom_layer_div
 
     top_to_div_mapping = sorted(top_to_div_mapping.items())
+
+    if len(top_to_div_mapping) == 0:
+        return [(0, html_soup)]
 
     return top_to_div_mapping

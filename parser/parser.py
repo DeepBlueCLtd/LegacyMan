@@ -363,6 +363,13 @@ class Parser:
         write_prettified_xml(dita_soup, category_file_path)
 
     def process_generic_file_pagelayer(self, dita_soup, page):
+        # Exclude links that are in divs just for buttons, as they're not proper links they're just things that go
+        # back to the map etc
+        if page.name == "div":
+            div_id = page.get("id")
+            if div_id is not None and (div_id.startswith("btn") or div_id.startswith("bt")):
+                return None
+
         dita_section_title = dita_soup.new_tag("title")
 
         # find the first heading
@@ -372,18 +379,18 @@ class Parser:
                 dita_section_title.string = element.text
                 break
 
-        # TODO, this is where we loop through the divs in top value order
-        top_to_div_mapping = generate_top_to_div_mapping(page)
+        # TODO: Do a better recursive=False which gets down to the PageLayer
+        top_to_div_mapping = generate_top_to_div_mapping(page, recursive=False)
         # print(f"Top to div mapping for div with id = {page['id']}")
         # print([el[0] for el in top_to_div_mapping])
         converted_bits = []
         for _, sub_div in top_to_div_mapping:
             # process the content in html to dita. Note: since this is a non-class
             # file, we instruct `div` elements to remain as `div`
-            try:
-                print(f"Div id = {sub_div['id']}")
-            except Exception:
-                print("Div has no id")
+            # try:
+            #     print(f"Div id = {sub_div['id']}")
+            # except Exception:
+            #     print("Div has no id")
             converted_soup = htmlToDITA(sub_div, dita_soup, "div")
             converted_bits.append(converted_soup)
 
@@ -422,11 +429,25 @@ class Parser:
                 str(Path(input_file_path).relative_to(self.root_path))
             ]
             pages_to_process = set()
-            top_to_div_mapping = generate_top_to_div_mapping(html_soup)
-
+            top_to_div_mapping = generate_top_to_div_mapping(html_soup, recursive=True)
+            # print([el[0] for el in top_to_div_mapping])
+            # breakpoint()
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
-                    page = html_soup.find("div", id=re.compile("PageLayer"))
+                    # We need to select the PageLayer with the lowest top value
+                    # or if none of them have top values, then just the first one
+                    # TODO: Ask Ian - currently fails for banjo_pics.html
+                    page = None
+                    if len(top_to_div_mapping) > 0:
+                        for top_value, div in top_to_div_mapping:
+                            div_id = div.get("id")
+                            print(f"top_value = {top_value}, div_id = {div_id}")
+                            if div_id is not None and "PageLayer" in div_id:
+                                page = div
+                                break
+
+                    if page is None:
+                        page = html_soup.find("div", id=re.compile("PageLayer"))
                     if page:
                         pages_to_process.add(page)
                     continue
@@ -448,7 +469,7 @@ class Parser:
                         # 1. Get the CSS top value for the enclosing div
                         # 2. Get all top values for all BottomLayer divs
                         # 3. Find the closest higher top value in the document
-                        print(f"Dealing with anchor {anchor} in page {input_file_path}")
+                        # print(f"Dealing with anchor {anchor} in page {input_file_path}")
                         anchor = all_elements[0]
                         enclosing_div = anchor.find_parent("div")
                         if not enclosing_div:
@@ -462,15 +483,15 @@ class Parser:
                         if not enclosing_div_top_value:
                             print(f"### Warning, enclosing div has no top value")
                             continue
-                        print(f"Enclosing div top value = {enclosing_div_top_value}")
+                        # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
                         for top_value, bottom_layer_div in top_to_div_mapping:
-                            print(f"top_value = {top_value}")
+                            # print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
                                 if top_value - enclosing_div_top_value < 500:
                                     page = bottom_layer_div
-                                    print(f"Found div top value = {top_value}")
+                                    # print(f"Found div top value = {top_value}")
                                     break
                         if not page:
                             print(
@@ -482,19 +503,40 @@ class Parser:
                             f"### Warning, couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
                         )
                         continue
-                    print("About to process page")
                     pages_to_process.add(page)
                 else:
                     print(f"### Warning: Multiple matches for anchor {anchor} in {input_file_path}")
-            pages_to_process = sorted(list(pages_to_process), key=lambda x: x.sourceline)
+
+            def get_top_value_for_page(page):
+                style = page.get("style")
+                if style:
+                    top = get_top_value(style)
+
+                if top:
+                    return top
+                else:
+                    return 0
+
+            # pages_to_process = sorted(list(pages_to_process), key=lambda x: x.sourceline)
+            pages_to_process = sorted(
+                list(pages_to_process), key=lambda x: get_top_value_for_page(x)
+            )
 
             for page in pages_to_process:
-                sections.append(self.process_generic_file_pagelayer(dita_soup, page))
+                try:
+                    print(f"Processing page {page['id']}")
+                except Exception:
+                    pass
+                processed_page = self.process_generic_file_pagelayer(dita_soup, page)
+                if processed_page:
+                    sections.append(processed_page)
         else:
             sections = []
             for page in html_soup.find_all("div"):
                 if page.has_attr("id") and "PageLayer" in page["id"]:
-                    sections.append(self.process_generic_file_pagelayer(dita_soup, page))
+                    processed_page = self.process_generic_file_pagelayer(dita_soup, page)
+                    if processed_page:
+                        sections.append(processed_page)
 
         dita_ref_body.extend(sections)
 

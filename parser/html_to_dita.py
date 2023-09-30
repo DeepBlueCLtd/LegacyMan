@@ -156,7 +156,10 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
-        a["href"], format = convert_html_href_to_dita_href(a["href"])
+        a["href"], file_format = convert_html_href_to_dita_href(a["href"])
+        if file_format != "html":
+            a["format"] = file_format
+        del a["target"]
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
@@ -171,12 +174,25 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     for br in soup.find_all("br"):
         br.decompose()
 
-    # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
+    # 7. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
         first_cell = tb.find("td")
         para = dita_soup.new_tag("b")
-        para.string = f"[TABLE PLACEHOLDER] - {first_cell.text}"
+        para.string = f"[TABLE PLACEHOLDER] - {first_cell.text} - with links from the table: "
         para["outputclass"] = "placeholder"
+        links_in_table = tb.find_all("xref", recursive=True)
+        if len(links_in_table) > 0:
+            # ul = dita_soup.new_tag("ul")
+            for link in links_in_table:
+                # li = dita_soup.new_tag("li")
+                xref = dita_soup.new_tag("xref")
+                xref["href"], file_format = convert_html_href_to_dita_href(link["href"])
+                if file_format != "html":
+                    a["format"] = file_format
+                para.append(xref)
+                # li.append(xref)
+                # ul.append(li)
+
         tb.replace_with(para)
     if soup.name == "table":
         # whole element is a table. Replace it with a placeholder
