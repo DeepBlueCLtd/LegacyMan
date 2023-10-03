@@ -180,18 +180,17 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
         para = dita_soup.new_tag("b")
         para.string = f"[TABLE PLACEHOLDER] - {first_cell.text} - with links from the table: "
         para["outputclass"] = "placeholder"
+        # Include the links from the table, as if this is the only link to a page then the
+        # page won't be included in the HTML output from DITA as it won't find any way to get
+        # to the page
         links_in_table = tb.find_all("xref", recursive=True)
         if len(links_in_table) > 0:
-            # ul = dita_soup.new_tag("ul")
             for link in links_in_table:
-                # li = dita_soup.new_tag("li")
                 xref = dita_soup.new_tag("xref")
-                xref["href"], file_format = convert_html_href_to_dita_href(link["href"])
+                xref["href"] = link["href"]
                 if file_format != "html":
                     a["format"] = file_format
                 para.append(xref)
-                # li.append(xref)
-                # ul.append(li)
 
         tb.replace_with(para)
     if soup.name == "table":
