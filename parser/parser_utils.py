@@ -62,6 +62,8 @@ def write_prettified_xml(dita_soup, target_file_path):
 
 
 def convert_html_href_to_dita_href(href):
+    if ".dita" in href:
+        return href, "dita"
     parsed = urlparse(href)
 
     parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
@@ -69,7 +71,10 @@ def convert_html_href_to_dita_href(href):
 
     if parsed.fragment:
         id_str = p.name.split(".")[0]
-        parsed = parsed._replace(fragment=f"{id_str}/{parsed.fragment}")
+        if "/" in id_str:
+            id_str = id_str.split("/")[-1]
+        new_fragment = f"{id_str}.html/{parsed.fragment}"
+        parsed = parsed._replace(fragment=new_fragment)
 
     return parsed.geturl(), parsed.path.split(".")[-1]
 
