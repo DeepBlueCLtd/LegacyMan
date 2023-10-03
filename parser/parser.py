@@ -441,7 +441,7 @@ class Parser:
                     if len(top_to_div_mapping) > 0:
                         for top_value, div in top_to_div_mapping:
                             div_id = div.get("id")
-                            print(f"top_value = {top_value}, div_id = {div_id}")
+                            # print(f"top_value = {top_value}, div_id = {div_id}")
                             if div_id is not None and "PageLayer" in div_id:
                                 page = div
                                 break
@@ -523,10 +523,10 @@ class Parser:
             )
 
             for page in pages_to_process:
-                try:
-                    print(f"Processing page {page['id']}")
-                except Exception:
-                    pass
+                # try:
+                #     print(f"Processing page {page['id']}")
+                # except Exception:
+                #     pass
                 processed_page = self.process_generic_file_pagelayer(dita_soup, page)
                 if processed_page:
                     sections.append(processed_page)
