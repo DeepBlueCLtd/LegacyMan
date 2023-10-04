@@ -464,7 +464,7 @@ class Parser:
                         # print("Fallback")
                         page = html_soup.find("div", id=re.compile("PageLayer"))
                     if page:
-                        print(f"Selected page with id {page.get('id')}")
+                        # print(f"Selected page with id {page.get('id')}")
                         pages_to_process.add(page)
                     continue
 
@@ -720,6 +720,11 @@ class Parser:
         self.generic_files_already_processed = set()
         self.process_regions()
         print("Done run 2")
+        print("--------------")
+        print("Dictionary of links:")
+        pprint(self.link_tracker)
+        print("--------------")
+
         self.run_dita_command()
 
 
@@ -749,8 +754,6 @@ def parse_from_root(root_path, target_path):
     end_time = time.time()
     parse_time = end_time - start_time
     print(f"Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap")
-
-    pprint(parser.link_tracker)
 
 
 if __name__ == "__main__":
