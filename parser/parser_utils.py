@@ -32,9 +32,10 @@ def copy_files(source_dir, target_dir, file_names=[]):
         file_names = os.listdir(source_dir)
 
     for file_name in file_names:
-        source_file = os.path.join(source_dir, file_name)
-        target_file = os.path.join(target_dir, file_name)
-        shutil.copy(source_file, target_file)
+        if not "_notes" in file_name:
+            source_file = os.path.join(source_dir, file_name)
+            target_file = os.path.join(target_dir, file_name)
+            shutil.copy(source_file, target_file)
 
 
 def prettify_xml(xml_code):
