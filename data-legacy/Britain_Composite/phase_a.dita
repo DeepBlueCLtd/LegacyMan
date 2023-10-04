@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="phase_a.html">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<title>Systems Overview</title>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="unit_split_a.dita">
+			<linktext>Unit_a overview</linktext>
+		</link>
+		<link href="phase_a_power.dita#phase_a_power/number2">
+			<linktext>Phase A - Backup Power</linktext>
+		</link>
+		<link href="phase_a_power.dita">
+			<linktext>Phase A - Power</linktext>
+		</link>
+		<link href="unit_split_b.dita">
+			<linktext>Remarks</linktext>
+		</link>
+		<link href="unit_split_b.dita#unit_split_b/number2">
+			<linktext>Propulsion</linktext>
+		</link>
+		<link format="xlsx" href="Content/Phase_A_HeatCalculator.xlsx">
+			<linktext/>
+		</link>
+	</related-links>
+</reference>

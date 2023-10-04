@@ -2,6 +2,9 @@ import copy
 import os
 from bs4 import BeautifulSoup
 import bs4
+from pathlib import Path
+
+from parser_utils import convert_html_href_to_dita_href
 
 
 def testParse():
@@ -36,7 +39,7 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strings=False):
+def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     """
     this function will convert a block of html to a block of DITA xml
     :param file_name: current filename, used to generate local click target until valid targets present
@@ -153,32 +156,50 @@ def htmlToDITA(file_name, soup_in, dita_soup, div_replacement="span", wrap_strin
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
-        processLinkedPage(a["href"])
-        a["href"] = "/".join([".", file_name + ".dita"])
-        # insert marker to show not implemented, if it's a string link
-        a["outputclass"] = "placeholder"
+        a["href"], file_format = convert_html_href_to_dita_href(a["href"])
+        if file_format != "html":
+            a["format"] = file_format
+        del a["target"]
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
+    # We actually convert them to <div> elements now, in case they have something inside them
+    # (which they do in Phase_F_Size.html - where a heading and more is inside)
     for a in soup.find_all("a", {"href": False}):
-        a.decompose()
+        a.name = "div"
+        a["id"] = a["name"]
+        del a["name"]
 
     # 6. Remove <br> newlines
     for br in soup.find_all("br"):
         br.decompose()
 
-    # 7. TODO: Replace the tables with a placeholder tag like "<p> There is a table here </p>""
+    # 7. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
+        first_cell = tb.find("td")
         para = dita_soup.new_tag("b")
-        para.string = "[TABLE PLACEHOLDER]"
+        para.string = f"[TABLE PLACEHOLDER] - {first_cell.text} - with links from the table: "
         para["outputclass"] = "placeholder"
+        # Include the links from the table, as if this is the only link to a page then the
+        # page won't be included in the HTML output from DITA as it won't find any way to get
+        # to the page
+        links_in_table = tb.find_all("xref", recursive=True)
+        if len(links_in_table) > 0:
+            for link in links_in_table:
+                xref = dita_soup.new_tag("xref")
+                xref["href"], file_format = convert_html_href_to_dita_href(link["href"])
+                if file_format != "html":
+                    xref["format"] = file_format
+                para.append(xref)
+
         tb.replace_with(para)
     if soup.name == "table":
         # whole element is a table. Replace it with a placeholder
+        first_cell = soup.find("td")
         soup.clear
         soup.name = "p"
         soup["outputclass"] = "placeholder"
-        soup.string = "[TABLE PLACEHOLDER]"
+        soup.string = f"[TABLE PLACEHOLDER] - {first_cell.text}"
         if soup.has_attr("border"):
             del soup["border"]
 
