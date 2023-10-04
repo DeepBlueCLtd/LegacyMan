@@ -187,9 +187,9 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
         if len(links_in_table) > 0:
             for link in links_in_table:
                 xref = dita_soup.new_tag("xref")
-                xref["href"] = link["href"]
+                xref["href"], file_format = convert_html_href_to_dita_href(link["href"])
                 if file_format != "html":
-                    a["format"] = file_format
+                    xref["format"] = file_format
                 para.append(xref)
 
         tb.replace_with(para)

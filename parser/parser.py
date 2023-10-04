@@ -439,16 +439,32 @@ class Parser:
                     # TODO: Ask Ian - currently fails for banjo_pics.html
                     page = None
                     if len(top_to_div_mapping) > 0:
+                        # print({el[0]: el[1].get("id") for el in top_to_div_mapping})
                         for top_value, div in top_to_div_mapping:
                             div_id = div.get("id")
-                            # print(f"top_value = {top_value}, div_id = {div_id}")
-                            if div_id is not None and "PageLayer" in div_id:
+                            image_tags = div.find_all("img")
+                            if div_id is not None and "PicLayer" in div_id:
+                                continue
+                            # print(
+                            #     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
+                            # )
+                            # print(div.get_text().strip())
+                            # breakpoint()
+                            if len(image_tags) > 0:
+                                page = div
+                                break
+                            elif div.get_text().strip() != "":
+                                page = div
+                                break
+                            elif div_id is not None and "PageLayer" in div_id:
                                 page = div
                                 break
 
                     if page is None:
+                        # print("Fallback")
                         page = html_soup.find("div", id=re.compile("PageLayer"))
                     if page:
+                        print(f"Selected page with id {page.get('id')}")
                         pages_to_process.add(page)
                     continue
 
@@ -486,6 +502,15 @@ class Parser:
                         # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
                         for top_value, bottom_layer_div in top_to_div_mapping:
+                            div_id = bottom_layer_div.get("id")
+                            if div_id:
+                                # print(f"div id = {div_id}")
+                                if (
+                                    "BottomLayer" not in div_id
+                                    and "PageLayer" not in div_id
+                                    and "image" not in div_id
+                                ):
+                                    continue
                             # print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
@@ -523,10 +548,10 @@ class Parser:
             )
 
             for page in pages_to_process:
-                # try:
-                #     print(f"Processing page {page['id']}")
-                # except Exception:
-                #     pass
+                try:
+                    print(f"Processing page {page['id']}")
+                except Exception:
+                    pass
                 processed_page = self.process_generic_file_pagelayer(dita_soup, page)
                 if processed_page:
                     sections.append(processed_page)
