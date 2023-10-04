@@ -1,0 +1,1 @@
+We have these _notes sub-folders occasionally. They contain `.mno` files
