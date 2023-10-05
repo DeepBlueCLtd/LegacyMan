@@ -65,6 +65,15 @@ python parser/parser.py data
 
 ```
 
+The arguments that can be passed to the parser.py script are as follows:
+
+```
+python parser/parser.py INPUT_FOLDER LOGGING_LEVEL
+```
+
+- `INPUT_FOLDER` is the folder containing the input data (`data` usually)
+- `LOGGING LEVEL` is a string giving the level of logs to display. This defaults to `info` which displays informational messages, but can be set to `warning` to just display warnings, or `debug` to display lots of debugging information.
+
 ## Running LegacyMan parser program (against REAL data)
 
 Apply the version controlled (checked into Git) **HTML discrepancy corrections** available at client site.
