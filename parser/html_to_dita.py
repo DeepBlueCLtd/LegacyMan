@@ -105,12 +105,16 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
                 # just drop it, and keep the children
                 div.unwrap()
             else:
-                div.name = "p"
-                # TODO: verify if real HTML has divs with names
-                del div["name"]
-                # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
-                del div["align"]
-                del div["style"]
+                # we don't need the `PageLayer` divs
+                if div.has_attr("id") and "PageLayer" in div["id"]:
+                    div.unwrap()
+                else:
+                    div.name = "p"
+                    # TODO: verify if real HTML has divs with names
+                    del div["name"]
+                    # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
+                    del div["align"]
+                    del div["style"]
         if div.get("id") == "":
             del div["id"]
 
