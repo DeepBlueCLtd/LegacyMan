@@ -66,6 +66,7 @@ def write_prettified_xml(dita_soup, target_file_path):
 def convert_html_href_to_dita_href(href):
     if ".dita" in href:
         return href, "dita"
+
     parsed = urlparse(href)
 
     parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
@@ -180,3 +181,10 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
         pages_to_process.add(new_page)
 
     return pages_to_process
+
+
+def sanitise_filename(filename):
+    if not isinstance(filename, str):
+        filename = str(filename.name)
+
+    return filename.replace(" ", "_").replace("&", "and")

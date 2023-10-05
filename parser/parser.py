@@ -22,6 +22,7 @@ from parser_utils import (
     get_top_value,
     generate_top_to_div_mapping,
     add_if_not_a_child_or_parent_of_existing,
+    sanitise_filename,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -416,7 +417,7 @@ class Parser:
         # create document level elements
         dita_reference = dita_soup.new_tag("reference")
         topic_id = Path(
-            str(input_file_path.name).replace(" ", "-")
+            sanitise_filename(input_file_path.name)
         )  # remove spaces, to make legal ID value
         dita_reference["id"] = topic_id
         dita_title = dita_soup.new_tag("title")
@@ -708,10 +709,11 @@ class Parser:
                 link = Path(link)
                 if (input_file_path.parent / link).exists():
                     (target_path / link.parent).mkdir(parents=True, exist_ok=True)
-                    shutil.copy(
-                        input_file_path.parent / link,
-                        target_path / link.parent / link.name.replace(" ", "_"),
-                    )
+
+                    source_filename = input_file_path.parent / link
+                    target_filename = target_path / link.parent / sanitise_filename(link.name)
+                    logging.debug(f"Copying from {source_filename} to {target_filename}")
+                    shutil.copy(source_filename, target_filename)
                 else:
                     logging.warning(f"Link {link} does not exist, from page {input_file_path}")
 
