@@ -21,6 +21,7 @@ from parser_utils import (
     convert_html_href_to_dita_href,
     get_top_value,
     generate_top_to_div_mapping,
+    add_if_not_a_child_or_parent_of_existing,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -430,25 +431,23 @@ class Parser:
             ]
             pages_to_process = set()
             top_to_div_mapping = generate_top_to_div_mapping(html_soup, recursive=True)
-            # print([el[0] for el in top_to_div_mapping])
-            # breakpoint()
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
-                    # We need to select the PageLayer with the lowest top value
-                    # or if none of them have top values, then just the first one
-                    # TODO: Ask Ian - currently fails for banjo_pics.html
                     page = None
                     if len(top_to_div_mapping) > 0:
-                        # print({el[0]: el[1].get("id") for el in top_to_div_mapping})
+                        print({el[0]: el[1].get("id") for el in top_to_div_mapping})
                         for top_value, div in top_to_div_mapping:
+                            # Don't look at any divs that are within a BottomLayer div
+                            bl_parents = div.find_parents(id=re.compile("BottomLayer"))
+                            if len(bl_parents) > 0:
+                                continue
                             div_id = div.get("id")
                             image_tags = div.find_all("img")
                             if div_id is not None and "PicLayer" in div_id:
                                 continue
-                            # print(
-                            #     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
-                            # )
-                            # print(div.get_text().strip())
+                            print(
+                                f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
+                            )
                             # breakpoint()
                             if len(image_tags) > 0:
                                 page = div
@@ -461,11 +460,13 @@ class Parser:
                                 break
 
                     if page is None:
-                        # print("Fallback")
+                        print("Fallback")
                         page = html_soup.find("div", id=re.compile("PageLayer"))
                     if page:
-                        # print(f"Selected page with id {page.get('id')}")
-                        pages_to_process.add(page)
+                        print(f"Selected page for First Page Layer with id {page.get('id')}")
+                        pages_to_process = add_if_not_a_child_or_parent_of_existing(
+                            pages_to_process, page
+                        )
                     continue
 
                 a_elements = html_soup.find_all("a", attrs={"name": anchor})
@@ -534,7 +535,11 @@ class Parser:
                             f"Couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
                         )
                         continue
-                    pages_to_process.add(page)
+                    if page:
+                        pages_to_process = add_if_not_a_child_or_parent_of_existing(
+                            pages_to_process, page
+                        )
+                    # pages_to_process.add(page)
                 else:
                     logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
 

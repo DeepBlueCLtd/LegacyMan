@@ -149,3 +149,33 @@ def generate_top_to_div_mapping(html_soup, include_anchors=False, recursive=True
         return [(0, html_soup)]
 
     return top_to_div_mapping
+
+
+def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
+    logging.debug(f"Trying to add page {new_page.get('id')}")
+    is_parent = False
+    is_child = False
+    for existing_page in pages_to_process:
+        if existing_page is None:
+            continue
+
+        children = existing_page.find_all()
+        if new_page in children:
+            logging.debug("Found in children")
+            is_child = True
+            break
+
+    for existing_page in pages_to_process:
+        if existing_page is None:
+            continue
+        parents = existing_page.find_parents()
+        if new_page in parents:
+            logging.debug("Found in parents")
+            pages_to_process.remove(existing_page)
+            pages_to_process.add(new_page)
+            return pages_to_process
+
+    if not is_child:
+        pages_to_process.add(new_page)
+
+    return pages_to_process
