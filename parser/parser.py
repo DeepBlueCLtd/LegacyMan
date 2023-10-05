@@ -441,6 +441,9 @@ class Parser:
                             if len(bl_parents) > 0:
                                 continue
                             div_id = div.get("id")
+                            # Don't look at any divs without an ID
+                            if div_id is None:
+                                continue
                             image_tags = div.find_all("img")
                             if div_id is not None and "PicLayer" in div_id:
                                 continue
