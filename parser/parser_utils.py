@@ -6,6 +6,7 @@ import copy
 from bs4 import BeautifulSoup
 from pathlib import Path
 import cssutils
+import logging
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -13,9 +14,9 @@ import cssutils
 def delete_directory(path):
     if os.path.exists(path):
         shutil.rmtree(path, ignore_errors=True)
-        print("Target directory deleted:" + path)
+        logging.debug("Target directory deleted:" + path)
     else:
-        print("Target directory does not exist")
+        logging.debug("Target directory does not exist")
 
 
 def copy_directory(src_folder, dst_folder):
@@ -80,7 +81,6 @@ def convert_html_href_to_dita_href(href):
 
 
 def get_top_value(css_string):
-    # print(css_string)
     css = cssutils.css.CSSStyleDeclaration(css_string, validating=False)
     top = css.top
 

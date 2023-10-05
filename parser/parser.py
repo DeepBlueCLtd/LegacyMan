@@ -8,9 +8,10 @@ import os
 import subprocess
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
-from pprint import pprint
+from pprint import pprint, pformat
 from html_to_dita import htmlToDITA
-import cssutils
+import time
+import logging
 
 from parser_utils import (
     delete_directory,
@@ -379,7 +380,6 @@ class Parser:
                 dita_section_title.string = element.text
                 break
 
-        # TODO: Do a better recursive=False which gets down to the PageLayer
         top_to_div_mapping = generate_top_to_div_mapping(page, recursive=False)
         # print(f"Top to div mapping for div with id = {page['id']}")
         # print([el[0] for el in top_to_div_mapping])
@@ -473,7 +473,7 @@ class Parser:
                 all_elements = a_elements + div_elements
 
                 if len(all_elements) == 0:
-                    print(f"### Warning: Cannot find anchor {anchor} in page {input_file_path}")
+                    logging.warning(f"Cannot find anchor {anchor} in page {input_file_path}")
                     continue
                 elif len(all_elements) == 1:
                     if all_elements[0].name == "div":
@@ -489,15 +489,21 @@ class Parser:
                         anchor = all_elements[0]
                         enclosing_div = anchor.find_parent("div")
                         if not enclosing_div:
-                            print(f"### Warning, could not find enclosing div")
+                            logging.warning(
+                                f"Could not find enclosing div for anchor {anchor} in file {input_file_path}"
+                            )
                             continue
                         style_attrib = enclosing_div.get("style")
                         if not style_attrib:
-                            print(f"### Warning, could not find style attrib on enclosing div")
+                            logging.warning(
+                                f"Could not find style attrib on enclosing div for anchor {anchor} in file {input_file_path}"
+                            )
                             continue
                         enclosing_div_top_value = get_top_value(style_attrib)
                         if not enclosing_div_top_value:
-                            print(f"### Warning, enclosing div has no top value")
+                            logging.warning(
+                                f"Enclosing div for anchor {anchor} has no top value in file {input_file_path}"
+                            )
                             continue
                         # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
@@ -519,18 +525,18 @@ class Parser:
                                     # print(f"Found div top value = {top_value}")
                                     break
                         if not page:
-                            print(
-                                f"### Warning, couldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}"
+                            logging.warning(
+                                f"Douldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
                             )
                             continue
                     if page is None:
-                        print(
-                            f"### Warning, couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
+                        logging.warning(
+                            f"Couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
                         )
                         continue
                     pages_to_process.add(page)
                 else:
-                    print(f"### Warning: Multiple matches for anchor {anchor} in {input_file_path}")
+                    logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
 
             def get_top_value_for_page(page):
                 style = page.get("style")
@@ -549,7 +555,7 @@ class Parser:
 
             for page in pages_to_process:
                 try:
-                    print(f"Processing page {page['id']}")
+                    logging.debug(f"Processing sub-page {page['id']}")
                 except Exception:
                     pass
                 processed_page = self.process_generic_file_pagelayer(dita_soup, page)
@@ -654,11 +660,13 @@ class Parser:
 
         # If we're actually writing the files then do the conversion and write the file
         if self.write_generic_files:
-            print(f"Processing generic file {input_file_path} to output at {output_dita_path}")
+            logging.info(
+                f"Processing generic file {input_file_path} to output at {output_dita_path}"
+            )
             dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
             write_prettified_xml(dita_soup, output_dita_path)
         else:
-            print(f"Processing generic file {input_file_path} to store link information")
+            logging.debug(f"Processing generic file {input_file_path} to store link information")
 
         # Keep track of which files we've processed
         # (we can't just use the existence of the file to keep track, as if we run with self.write_generic_files
@@ -686,20 +694,26 @@ class Parser:
                 if link_path.exists():
                     self.process_generic_file(link_path)
                 else:
-                    print(f"### Warning: {link_path} does not exist!")
+                    logging.warning(
+                        f"{link_path} found from file {input_file_path} does not exist!"
+                    )
             else:
                 # Non HTML pages, so just copy the file over
+                logging.debug(f"Copying non-HTML file {link}")
                 link = Path(link)
-                (target_path / link.parent).mkdir(parents=True, exist_ok=True)
-                shutil.copy(
-                    input_file_path.parent / link,
-                    target_path / link.parent / link.name.replace(" ", "_"),
-                )
+                if (input_file_path.parent / link).exists():
+                    (target_path / link.parent).mkdir(parents=True, exist_ok=True)
+                    shutil.copy(
+                        input_file_path.parent / link,
+                        target_path / link.parent / link.name.replace(" ", "_"),
+                    )
+                else:
+                    logging.warning(f"Link {link} does not exist, from page {input_file_path}")
 
     def run_dita_command(self):
-        print("-" * 40)
-        print("Running dita publish command")
-        print("-" * 40)
+        logging.info(
+            "Running dita publish command - output below is errors/warnings directly from the dita command"
+        )
         # Run DITA-OT command to transform the index.ditamap file to html
         dita_command = [
             "dita",
@@ -713,19 +727,28 @@ class Parser:
         subprocess.run(dita_command)
 
     def run(self):
+        time1 = time.time()
         self.write_generic_files = False
         self.process_regions()
-        print("Done run 1")
+        time2 = time.time()
+        logging.info("Done run 1")
+        logging.info(f"Run 1 took {time2-time1:.2} seconds")
         self.write_generic_files = True
         self.generic_files_already_processed = set()
         self.process_regions()
-        print("Done run 2")
-        print("--------------")
-        print("Dictionary of links:")
-        pprint(self.link_tracker)
-        print("--------------")
-
+        time3 = time.time()
+        logging.info("Done run 2")
+        logging.info(f"Run 2 took {time3-time2:.2} seconds")
+        logging.debug("Dictionary of links:")
+        logging.debug(pformat(self.link_tracker))
         self.run_dita_command()
+        time4 = time.time()
+        logging.info(f"Running DITA to HTML conversion took {time4-time3:.2} seconds")
+        logging.info("Timings:")
+        logging.info(f"Run 1: {time2-time1:.2} seconds")
+        logging.info(f"Run 2: {time3-time2:.2} seconds")
+        logging.info(f"DITA conversion: {time4-time3:.2} seconds")
+        logging.info(f"Total: {time4-time1:.2} seconds")
 
 
 def parse_from_root(root_path, target_path):
@@ -734,8 +757,7 @@ def parse_from_root(root_path, target_path):
     :param root_path: the location of the source data
     :param target_path: where to write the results
     """
-    print(f"LegacyMan parser running, with these arguments: {root_path} {target_path}")
-    start_time = time.time()
+    logging.info(f"LegacyMan parser running, with these arguments: {root_path} {target_path}")
 
     # remove existing target directory and recreate it
     delete_directory(os.path.join(os.getcwd(), "target/dita"))
@@ -751,16 +773,21 @@ def parse_from_root(root_path, target_path):
 
     parser.run()
 
-    end_time = time.time()
-    parse_time = end_time - start_time
-    print(f"Publish complete after {parse_time} seconds. Root file at /target/dita/index.ditamap")
-
 
 if __name__ == "__main__":
     root_path = sys.argv[1]
     if len(sys.argv) == 3:
-        target_path = sys.argv[2]
+        logging_level = sys.argv[2]
+        if logging_level == "debug":
+            logging.basicConfig(level=logging.DEBUG)
+        elif logging_level == "info":
+            logging.basicConfig(level=logging.INFO)
+        elif logging_level == "warning":
+            logging.basicConfig(level=logging.WARNING)
     else:
-        target_path = "./target/html"
-    print(target_path)
+        logging.basicConfig(level=logging.INFO)
+    # if len(sys.argv) == 3:
+    #     target_path = sys.argv[2]
+    # else:
+    target_path = "./target/html"
     parse_from_root(root_path, target_path)
