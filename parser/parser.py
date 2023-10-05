@@ -633,18 +633,17 @@ class Parser:
         input_file_path = Path(input_file_path)
         input_file_directory = input_file_path.parent
 
-        # if str(input_file_directory).startswith("/"):
-        #     target_path = self.target_path_base / input_file_directory.relative_to(self.root_path)
-        # else:
-        #     # target_path = target_path_base / input_file_directory.relative_to("data")
-        #     target_path = self.target_path_base / input_file_directory.relative_to(
-        #         self.root_path.name
-        #     )
-
         relative_input_file_directory = self.make_relative_to_data_dir(input_file_directory)
         target_path = self.target_path_base / relative_input_file_directory
 
         output_dita_path = target_path / input_file_path.with_suffix(".dita").name
+
+        # Check to see if we have the relevant Content/Images folder for this file
+        # and if not, then copy it over
+        # (It may have been copied already by one of the category page processors but may not have been if
+        # we haven't gone via a category page)
+        if not (target_path / "Content").exists() and (input_file_directory / "Content").exists():
+            shutil.copytree(input_file_directory / "Content", target_path / "Content")
 
         if output_dita_path in self.generic_files_already_processed:
             return
