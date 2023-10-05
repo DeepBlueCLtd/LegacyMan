@@ -58,7 +58,7 @@ class Parser:
 
         # Create the html <image> element in the DITA file
         dita_image = dita_soup.new_tag("image")
-        dita_image["href"] = img_element["src"].replace(" ", "%20")
+        dita_image["href"] = sanitise_filename(img_element["src"])
 
         dita_image_alt = dita_soup.new_tag("alt")
         dita_image_alt.string = "World Map"
@@ -206,10 +206,8 @@ class Parser:
                     img_target_dir = f"{regions_path}/{category}/Content/Images"
                     copy_files(img_src_dir, img_target_dir, [src_img_file])
 
-                    dita_img[
-                        "href"
-                    ] = f'../{category}/Content/Images/{os.path.basename(a.img["src"])}'.replace(
-                        " ", "%20"
+                    dita_img["href"] = sanitise_filename(
+                        f'../{category}/Content/Images/{os.path.basename(a.img["src"])}'
                     )
                     dita_xref.append(dita_img)
 
@@ -276,9 +274,9 @@ class Parser:
         dita_tgroup["cols"] = len(table_columns)
 
         # TODO: change the href of the image
-        dita_image[
-            "href"
-        ] = f"../{country_name}/{remove_leading_slashes(country_flag_link)}".replace(" ", "%20")
+        dita_image["href"] = sanitise_filename(
+            f"../{country_name}/{remove_leading_slashes(country_flag_link)}"
+        )
         dita_image["alt"] = "flag"
 
         # create folder for category pages

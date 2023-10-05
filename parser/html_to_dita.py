@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
 
-from parser_utils import convert_html_href_to_dita_href
+from parser_utils import convert_html_href_to_dita_href, sanitise_filename
 
 
 def testParse():
@@ -120,7 +120,7 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
         img["href"] = img["src"]
         # swap spaces out of src
         if " " in img["href"]:
-            img["href"] = img["href"].replace(" ", "%20")
+            img["href"] = sanitise_filename(img["href"])
         del img["src"]
         del img["border"]
         # name not allowed in DITA image, put value into ID, if present

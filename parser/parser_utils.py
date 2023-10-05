@@ -35,7 +35,7 @@ def copy_files(source_dir, target_dir, file_names=[]):
     for file_name in file_names:
         if not "_notes" in file_name:
             source_file = os.path.join(source_dir, file_name)
-            target_file = os.path.join(target_dir, file_name)
+            target_file = os.path.join(target_dir, sanitise_filename(file_name))
             shutil.copy(source_file, target_file)
 
 
@@ -66,20 +66,23 @@ def write_prettified_xml(dita_soup, target_file_path):
 def convert_html_href_to_dita_href(href):
     if ".dita" in href:
         return href, "dita"
+    if ".html" in href:
+        parsed = urlparse(href)
 
-    parsed = urlparse(href)
+        parsed = parsed._replace(path=parsed.path.replace(".html", ".dita"))
+        p = Path(parsed.path)
 
-    parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
-    p = Path(parsed.path)
+        if parsed.fragment:
+            id_str = p.name.split(".")[0]
+            if "/" in id_str:
+                id_str = id_str.split("/")[-1]
+            new_fragment = f"{sanitise_filename(id_str)}.html/{parsed.fragment}"
+            parsed = parsed._replace(fragment=new_fragment)
 
-    if parsed.fragment:
-        id_str = p.name.split(".")[0]
-        if "/" in id_str:
-            id_str = id_str.split("/")[-1]
-        new_fragment = f"{id_str}.html/{parsed.fragment}"
-        parsed = parsed._replace(fragment=new_fragment)
-
-    return parsed.geturl(), parsed.path.split(".")[-1]
+        return parsed.geturl(), parsed.path.split(".")[-1]
+    else:
+        parsed = urlparse(href)
+        return sanitise_filename(href), parsed.path.split(".")[-1]
 
 
 def get_top_value(css_string):
