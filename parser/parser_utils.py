@@ -157,8 +157,6 @@ def generate_top_to_div_mapping(html_soup, include_anchors=False, recursive=True
 
 
 def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
-    logging.debug(f"Trying to add page {new_page.get('id')}")
-    is_parent = False
     is_child = False
     for existing_page in pages_to_process:
         if existing_page is None:
@@ -183,7 +181,9 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
     if not is_child:
         pages_to_process.add(new_page)
 
-    return pages_to_process
+    # This is weird - the set doesn't seem to be keeping things unique properly, so we get around it
+    # by converting to a list and then back to a set. This shouldn't be needed, but seems to fix the problem
+    return set(list(pages_to_process))
 
 
 def sanitise_filename(filename):

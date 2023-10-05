@@ -550,11 +550,19 @@ class Parser:
                             f"Couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
                         )
                         continue
-                    if page:
-                        pages_to_process = add_if_not_a_child_or_parent_of_existing(
-                            pages_to_process, page
-                        )
-                    # pages_to_process.add(page)
+
+                    # See if there is already an element in the page that has a name containing the anchor value that we're
+                    # processing (eg. "number2")
+                    # If there isn't, then add an empty div at the top of this page with that anchor value in it
+                    elements_with_id_of_anchor = page.find_all(attrs={"name": anchor["name"]})
+                    if len(elements_with_id_of_anchor) == 0:
+                        anchor_div = dita_soup.new_tag("div")
+                        anchor_div["id"] = anchor["name"]
+                        logging.debug(f"Inserting {anchor_div}")
+                        page.insert(0, anchor_div)
+                    pages_to_process = add_if_not_a_child_or_parent_of_existing(
+                        pages_to_process, page
+                    )
                 else:
                     logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
 
@@ -568,7 +576,6 @@ class Parser:
                 else:
                     return 0
 
-            # pages_to_process = sorted(list(pages_to_process), key=lambda x: x.sourceline)
             pages_to_process = sorted(
                 list(pages_to_process), key=lambda x: get_top_value_for_page(x)
             )
