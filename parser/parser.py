@@ -785,16 +785,17 @@ def parse_from_root(root_path, target_path):
 
 if __name__ == "__main__":
     root_path = sys.argv[1]
+    logging_format = "%(levelname)s:  %(message)s"
     if len(sys.argv) == 3:
         logging_level = sys.argv[2]
         if logging_level == "debug":
-            logging.basicConfig(level=logging.DEBUG)
+            logging.basicConfig(level=logging.DEBUG, format=logging_format)
         elif logging_level == "info":
-            logging.basicConfig(level=logging.INFO)
+            logging.basicConfig(level=logging.INFO, format=logging_format)
         elif logging_level == "warning":
-            logging.basicConfig(level=logging.WARNING)
+            logging.basicConfig(level=logging.WARNING, format=logging_format)
     else:
-        logging.basicConfig(level=logging.INFO)
+        logging.basicConfig(level=logging.INFO, format=logging_format)
     # if len(sys.argv) == 3:
     #     target_path = sys.argv[2]
     # else:
