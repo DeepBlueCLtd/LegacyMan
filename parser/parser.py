@@ -441,7 +441,7 @@ class Parser:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = None
                     if len(top_to_div_mapping) > 0:
-                        # print({el[0]: el[1].get("id") for el in top_to_div_mapping})
+                        logging.debug({el[0]: el[1].get("id") for el in top_to_div_mapping})
                         for top_value, div in top_to_div_mapping:
                             # Don't look at any divs that are within a BottomLayer div
                             bl_parents = div.find_parents(id=re.compile("BottomLayer"))
@@ -451,17 +451,22 @@ class Parser:
                             # Don't look at any divs without an ID
                             if div_id is None:
                                 continue
+                            # Ignore divs with an id of btN (where N is a number) as they're just buttons
+                            if div_id.startswith("bt") and len(div_id) == 3:
+                                continue
+
                             image_tags = div.find_all("img")
                             if div_id is not None and "PicLayer" in div_id:
                                 continue
-                            # logging.debug(
-                            #     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
-                            # )
+                            logging.debug(
+                                f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
+                            )
                             # breakpoint()
+                            text = div.get_text().strip()
                             if len(image_tags) > 0:
                                 page = div
                                 break
-                            elif div.get_text().strip() != "":
+                            elif text != "" and text != "Return to map":
                                 page = div
                                 break
                             elif div_id is not None and "PageLayer" in div_id:
@@ -537,7 +542,7 @@ class Parser:
                                     break
                         if not page:
                             logging.warning(
-                                f"Douldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                                f"Couldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
                             )
                             continue
                     if page is None:
