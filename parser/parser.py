@@ -434,7 +434,7 @@ class Parser:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = None
                     if len(top_to_div_mapping) > 0:
-                        print({el[0]: el[1].get("id") for el in top_to_div_mapping})
+                        # print({el[0]: el[1].get("id") for el in top_to_div_mapping})
                         for top_value, div in top_to_div_mapping:
                             # Don't look at any divs that are within a BottomLayer div
                             bl_parents = div.find_parents(id=re.compile("BottomLayer"))
@@ -444,9 +444,9 @@ class Parser:
                             image_tags = div.find_all("img")
                             if div_id is not None and "PicLayer" in div_id:
                                 continue
-                            print(
-                                f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
-                            )
+                            # logging.debug(
+                            #     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
+                            # )
                             # breakpoint()
                             if len(image_tags) > 0:
                                 page = div
@@ -459,10 +459,11 @@ class Parser:
                                 break
 
                     if page is None:
-                        print("Fallback")
                         page = html_soup.find("div", id=re.compile("PageLayer"))
                     if page:
-                        print(f"Selected page for First Page Layer with id {page.get('id')}")
+                        logging.debug(
+                            f"Selected page for First Page Layer with id {page.get('id')}"
+                        )
                         pages_to_process = add_if_not_a_child_or_parent_of_existing(
                             pages_to_process, page
                         )
