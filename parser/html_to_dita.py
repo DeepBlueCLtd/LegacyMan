@@ -111,6 +111,8 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
                 # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
                 del div["align"]
                 del div["style"]
+        if div.get("id") == "":
+            del div["id"]
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
