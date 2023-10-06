@@ -311,6 +311,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     if soup.name == "ul" and soup.has_attr("style"):
         del soup["style"]
 
+    # 14. Swap "em" for "i"
+    for a in soup.find_all("em"):
+        a.name = "i"
+
     return soup
 
 
