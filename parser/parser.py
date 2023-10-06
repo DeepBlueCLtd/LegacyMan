@@ -417,7 +417,7 @@ class Parser:
         # create document level elements
         dita_reference = dita_soup.new_tag("reference")
         topic_id = Path(
-            sanitise_filename(input_file_path.name)
+            sanitise_filename(input_file_path.name, remove_extension=True)
         )  # remove spaces, to make legal ID value
         dita_reference["id"] = topic_id
         dita_title = dita_soup.new_tag("title")
