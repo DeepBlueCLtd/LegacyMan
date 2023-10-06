@@ -23,6 +23,7 @@ from parser_utils import (
     generate_top_to_div_mapping,
     add_if_not_a_child_or_parent_of_existing,
     sanitise_filename,
+    is_button_id,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -368,7 +369,7 @@ class Parser:
         # back to the map etc
         if page.name == "div":
             div_id = page.get("id")
-            if div_id is not None and (div_id.startswith("btn") or div_id.startswith("bt")):
+            if div_id is not None and is_button_id(div_id):
                 return None
 
         dita_section_title = dita_soup.new_tag("title")
@@ -462,7 +463,7 @@ class Parser:
                             if div_id is None:
                                 continue
                             # Ignore divs with an id of btN (where N is a number) as they're just buttons
-                            if div_id.startswith("bt") and len(div_id) == 3:
+                            if is_button_id(div_id):
                                 continue
 
                             image_tags = div.find_all("img")

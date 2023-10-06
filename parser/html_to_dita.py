@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
 
-from parser_utils import convert_html_href_to_dita_href, sanitise_filename
+from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
 
 
 def testParse():
@@ -71,7 +71,7 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
         del soup["style"]
         div_id = soup.get("id")
         # Remove btn divs as they just contain buttons
-        if div_id is not None and div_id.startswith("btn"):
+        if div_id is not None and is_button_id(div_id):
             soup.decompose()
             return None
 
@@ -124,7 +124,7 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
         if div_id == "":
             del div["id"]
         # Remove btn divs as they just contain buttons
-        if div_id is not None and div_id.startswith("btn"):
+        if div_id is not None and is_button_id(div_id):
             div.decompose()
 
     # 3. For img elements, rename it to image, and rename the src attribute to href

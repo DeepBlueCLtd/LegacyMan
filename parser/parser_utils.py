@@ -191,3 +191,18 @@ def sanitise_filename(filename):
         filename = str(filename.name)
 
     return filename.replace(" ", "_").replace("&", "and")
+
+
+def is_button_id(div_id):
+    if div_id == "btn":
+        return True
+    elif div_id == "btnHist":
+        return True
+    elif div_id.startswith("btn") and len(div_id) == 4:
+        return True
+    elif div_id.startswith("btnHist") and len(div_id) == 8:
+        return True
+    elif div_id.startswith("bt") and len(div_id) == 3:
+        return True
+    else:
+        return False
