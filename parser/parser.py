@@ -421,12 +421,21 @@ class Parser:
         dita_reference["id"] = topic_id
         dita_title = dita_soup.new_tag("title")
 
+        # Try and extract the title from a div with an id of Title*
         title_tags = html_soup.find_all(id=re.compile("Title"))
         title_tags = sorted(title_tags, key=lambda tag: tag.get("id"))
         try:
             dita_title.string = title_tags[0].get_text()
         except Exception:
-            logging.warning(f"Could not extract title from {input_file_path}")
+            # If we fail then take the first div we can find that just has one h2 child
+            h2s = html_soup.select("div > h2")
+            for h2 in h2s:
+                children_of_parent = h2.parent.find_all()
+                if len(children_of_parent) == 1:
+                    dita_title.string = h2.get_text()
+                    break
+            else:
+                logging.warning(f"Could not extract title from {input_file_path}")
 
         dita_reference.append(dita_title)
         dita_ref_body = dita_soup.new_tag("refbody")
