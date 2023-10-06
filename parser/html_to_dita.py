@@ -69,6 +69,11 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
             soup.id = soup["name"]
             del soup["name"]
         del soup["style"]
+        div_id = soup.get("id")
+        # Remove btn divs as they just contain buttons
+        if div_id is not None and div_id.startswith("btn"):
+            soup.decompose()
+            return None
 
     # 1a. swap spans inside td's for a p tag
     if soup.name == "td":
@@ -115,8 +120,12 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
                     # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
                     del div["align"]
                     del div["style"]
-        if div.get("id") == "":
+        div_id = div.get("id")
+        if div_id == "":
             del div["id"]
+        # Remove btn divs as they just contain buttons
+        if div_id is not None and div_id.startswith("btn"):
+            div.decompose()
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):

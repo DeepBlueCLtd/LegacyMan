@@ -392,7 +392,8 @@ class Parser:
             # except Exception:
             #     print("Div has no id")
             converted_soup = htmlToDITA(sub_div, dita_soup, "div")
-            converted_bits.append(converted_soup)
+            if converted_soup:
+                converted_bits.append(converted_soup)
 
         # create the new `section`
         dita_section = dita_soup.new_tag("section")
@@ -727,7 +728,9 @@ class Parser:
                 # Non HTML pages, so just copy the file over
                 logging.debug(f"Copying non-HTML file {link}")
                 link = Path(link)
-                if (input_file_path.parent / link).exists():
+                if "(-1)" in str(link):
+                    continue
+                elif (input_file_path.parent / link).exists():
                     (target_path / link.parent).mkdir(parents=True, exist_ok=True)
 
                     source_filename = input_file_path.parent / link
