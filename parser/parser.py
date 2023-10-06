@@ -364,7 +364,7 @@ class Parser:
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
 
-    def process_generic_file_pagelayer(self, dita_soup, page):
+    def process_generic_file_pagelayer(self, dita_soup, page, topic_id):
         # Exclude links that are in divs just for buttons, as they're not proper links they're just things that go
         # back to the map etc
         if page.name == "div":
@@ -392,7 +392,7 @@ class Parser:
             #     print(f"Div id = {sub_div['id']}")
             # except Exception:
             #     print("Div has no id")
-            converted_soup = htmlToDITA(sub_div, dita_soup, "div")
+            converted_soup = htmlToDITA(sub_div, dita_soup, topic_id, "div")
             if converted_soup:
                 converted_bits.append(converted_soup)
 
@@ -597,14 +597,14 @@ class Parser:
                     logging.debug(f"Processing sub-page {page['id']}")
                 except Exception:
                     pass
-                processed_page = self.process_generic_file_pagelayer(dita_soup, page)
+                processed_page = self.process_generic_file_pagelayer(dita_soup, page, topic_id)
                 if processed_page:
                     sections.append(processed_page)
         else:
             sections = []
             for page in html_soup.find_all("div"):
                 if page.has_attr("id") and "PageLayer" in page["id"]:
-                    processed_page = self.process_generic_file_pagelayer(dita_soup, page)
+                    processed_page = self.process_generic_file_pagelayer(dita_soup, page, topic_id)
                     if processed_page:
                         sections.append(processed_page)
 
