@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
 
-from parser_utils import convert_html_href_to_dita_href, sanitise_filename
+from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
 
 
 def testParse():
@@ -39,7 +39,7 @@ def testParse():
         print("FAILED TO FIND H1")
 
 
-def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
+def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_strings=False):
     """
     this function will convert a block of html to a block of DITA xml
     :param file_name: current filename, used to generate local click target until valid targets present
@@ -69,6 +69,11 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
             soup.id = soup["name"]
             del soup["name"]
         del soup["style"]
+        div_id = soup.get("id")
+        # Remove btn divs as they just contain buttons
+        if div_id is not None and is_button_id(div_id):
+            soup.decompose()
+            return None
 
     # 1a. swap spans inside td's for a p tag
     if soup.name == "td":
@@ -115,8 +120,12 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
                     # TODO: examine use of centre-aligned DIVs. Do we need to reproduce that formatting?
                     del div["align"]
                     del div["style"]
-        if div.get("id") == "":
+        div_id = div.get("id")
+        if div_id == "":
             del div["id"]
+        # Remove btn divs as they just contain buttons
+        if div_id is not None and is_button_id(div_id):
+            div.decompose()
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
     for img in soup.find_all("img"):
@@ -163,6 +172,8 @@ def htmlToDITA(soup_in, dita_soup, div_replacement="span", wrap_strings=False):
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
         a["href"], file_format = convert_html_href_to_dita_href(a["href"])
+        if a["href"].startswith("#"):
+            a["href"] = f"#{topic_id}__{a['href'][1:]}"
         if file_format != "html":
             a["format"] = file_format
         del a["target"]

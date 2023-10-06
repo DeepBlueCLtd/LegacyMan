@@ -76,7 +76,7 @@ def convert_html_href_to_dita_href(href):
             id_str = p.name.split(".")[0]
             if "/" in id_str:
                 id_str = id_str.split("/")[-1]
-            new_fragment = f"{sanitise_filename(id_str)}.html/{parsed.fragment}"
+            new_fragment = f"{sanitise_filename(id_str, remove_extension=True)}/{parsed.fragment}"
             parsed = parsed._replace(fragment=new_fragment)
 
         return parsed.geturl(), parsed.path.split(".")[-1]
@@ -186,8 +186,28 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
     return set(list(pages_to_process))
 
 
-def sanitise_filename(filename):
+def sanitise_filename(filename, remove_extension=False):
     if not isinstance(filename, str):
         filename = str(filename.name)
 
-    return filename.replace(" ", "_").replace("&", "and")
+    filename = filename.replace(" ", "_").replace("&", "and")
+
+    if remove_extension:
+        filename = filename.split(".")[0]
+
+    return filename
+
+
+def is_button_id(div_id):
+    if div_id == "btn":
+        return True
+    elif div_id == "btnHist":
+        return True
+    elif div_id.startswith("btn") and len(div_id) == 4:
+        return True
+    elif div_id.startswith("btnHist") and len(div_id) == 8:
+        return True
+    elif div_id.startswith("bt") and len(div_id) == 3:
+        return True
+    else:
+        return False

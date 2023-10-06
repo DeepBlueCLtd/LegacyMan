@@ -23,6 +23,7 @@ from parser_utils import (
     generate_top_to_div_mapping,
     add_if_not_a_child_or_parent_of_existing,
     sanitise_filename,
+    is_button_id,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -363,12 +364,12 @@ class Parser:
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
 
-    def process_generic_file_pagelayer(self, dita_soup, page):
+    def process_generic_file_pagelayer(self, dita_soup, page, topic_id):
         # Exclude links that are in divs just for buttons, as they're not proper links they're just things that go
         # back to the map etc
         if page.name == "div":
             div_id = page.get("id")
-            if div_id is not None and (div_id.startswith("btn") or div_id.startswith("bt")):
+            if div_id is not None and is_button_id(div_id):
                 return None
 
         dita_section_title = dita_soup.new_tag("title")
@@ -391,8 +392,9 @@ class Parser:
             #     print(f"Div id = {sub_div['id']}")
             # except Exception:
             #     print("Div has no id")
-            converted_soup = htmlToDITA(sub_div, dita_soup, "div")
-            converted_bits.append(converted_soup)
+            converted_soup = htmlToDITA(sub_div, dita_soup, topic_id, "div")
+            if converted_soup:
+                converted_bits.append(converted_soup)
 
         # create the new `section`
         dita_section = dita_soup.new_tag("section")
@@ -415,17 +417,26 @@ class Parser:
         # create document level elements
         dita_reference = dita_soup.new_tag("reference")
         topic_id = Path(
-            sanitise_filename(input_file_path.name)
+            sanitise_filename(input_file_path.name, remove_extension=True)
         )  # remove spaces, to make legal ID value
         dita_reference["id"] = topic_id
         dita_title = dita_soup.new_tag("title")
 
+        # Try and extract the title from a div with an id of Title*
         title_tags = html_soup.find_all(id=re.compile("Title"))
         title_tags = sorted(title_tags, key=lambda tag: tag.get("id"))
         try:
             dita_title.string = title_tags[0].get_text()
         except Exception:
-            logging.warning(f"Could not extract title from {input_file_path}")
+            # If we fail then take the first div we can find that just has one h2 child
+            h2s = html_soup.select("div > h2")
+            for h2 in h2s:
+                children_of_parent = h2.parent.find_all()
+                if len(children_of_parent) == 1:
+                    dita_title.string = h2.get_text()
+                    break
+            else:
+                logging.warning(f"Could not extract title from {input_file_path}")
 
         dita_reference.append(dita_title)
         dita_ref_body = dita_soup.new_tag("refbody")
@@ -452,7 +463,7 @@ class Parser:
                             if div_id is None:
                                 continue
                             # Ignore divs with an id of btN (where N is a number) as they're just buttons
-                            if div_id.startswith("bt") and len(div_id) == 3:
+                            if is_button_id(div_id):
                                 continue
 
                             image_tags = div.find_all("img")
@@ -531,6 +542,7 @@ class Parser:
                                     "BottomLayer" not in div_id
                                     and "PageLayer" not in div_id
                                     and "image" not in div_id
+                                    and "layer" not in div_id
                                 ):
                                     continue
                             # print(f"top_value = {top_value}")
@@ -542,7 +554,7 @@ class Parser:
                                     break
                         if not page:
                             logging.warning(
-                                f"Couldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                                f"Couldn't find BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
                             )
                             continue
                     if page is None:
@@ -585,14 +597,14 @@ class Parser:
                     logging.debug(f"Processing sub-page {page['id']}")
                 except Exception:
                     pass
-                processed_page = self.process_generic_file_pagelayer(dita_soup, page)
+                processed_page = self.process_generic_file_pagelayer(dita_soup, page, topic_id)
                 if processed_page:
                     sections.append(processed_page)
         else:
             sections = []
             for page in html_soup.find_all("div"):
                 if page.has_attr("id") and "PageLayer" in page["id"]:
-                    processed_page = self.process_generic_file_pagelayer(dita_soup, page)
+                    processed_page = self.process_generic_file_pagelayer(dita_soup, page, topic_id)
                     if processed_page:
                         sections.append(processed_page)
 
@@ -727,7 +739,9 @@ class Parser:
                 # Non HTML pages, so just copy the file over
                 logging.debug(f"Copying non-HTML file {link}")
                 link = Path(link)
-                if (input_file_path.parent / link).exists():
+                if "(-1)" in str(link):
+                    continue
+                elif (input_file_path.parent / link).exists():
                     (target_path / link.parent).mkdir(parents=True, exist_ok=True)
 
                     source_filename = input_file_path.parent / link
