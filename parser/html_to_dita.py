@@ -3,6 +3,7 @@ import os
 from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
+import cssutils
 
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
 
@@ -111,7 +112,17 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 div.unwrap()
             else:
                 # we don't need the `PageLayer` divs
-                if div.has_attr("id") and "PageLayer" in div["id"]:
+                # NOTE: sometimes the div inside the `BottomLayer` is missing an id, as
+                # in `unit_charlie.html`
+                isPageLayer = div.has_attr("id") and "PageLayer" in div["id"]
+                isAbsolute = False
+                if not isPageLayer and div.has_attr("style"):
+                    css_string = div["style"]
+                    css = cssutils.css.CSSStyleDeclaration(css_string, validating=False)
+                    position = css.position
+                    isAbsolute = position == "absolute"
+
+                if isPageLayer or isAbsolute:
                     div.unwrap()
                 else:
                     div.name = "p"
