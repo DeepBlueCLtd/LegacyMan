@@ -192,7 +192,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
     # We actually convert them to <div> elements now, in case they have something inside them
-    # (which they do in Phase_F_Size.html - where a heading and more is inside)
+    # (which they do in Phase_F_Size.html (ref a3b) - where a heading and more is inside)
     for a in soup.find_all("a", {"href": False}):
         a.name = "div"
         a["id"] = a["name"]
