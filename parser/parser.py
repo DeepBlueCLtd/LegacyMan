@@ -542,6 +542,7 @@ class Parser:
                                     "BottomLayer" not in div_id
                                     and "PageLayer" not in div_id
                                     and "image" not in div_id
+                                    and "layer" not in div_id
                                 ):
                                     continue
                             # print(f"top_value = {top_value}")
@@ -553,7 +554,7 @@ class Parser:
                                     break
                         if not page:
                             logging.warning(
-                                f"Couldn't find value BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                                f"Couldn't find BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
                             )
                             continue
                     if page is None:
