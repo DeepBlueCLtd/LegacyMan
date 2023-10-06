@@ -6,6 +6,7 @@ import copy
 from bs4 import BeautifulSoup
 from pathlib import Path
 import cssutils
+import logging
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -13,9 +14,9 @@ import cssutils
 def delete_directory(path):
     if os.path.exists(path):
         shutil.rmtree(path, ignore_errors=True)
-        print("Target directory deleted:" + path)
+        logging.debug("Target directory deleted:" + path)
     else:
-        print("Target directory does not exist")
+        logging.debug("Target directory does not exist")
 
 
 def copy_directory(src_folder, dst_folder):
@@ -34,7 +35,7 @@ def copy_files(source_dir, target_dir, file_names=[]):
     for file_name in file_names:
         if not "_notes" in file_name:
             source_file = os.path.join(source_dir, file_name)
-            target_file = os.path.join(target_dir, file_name)
+            target_file = os.path.join(target_dir, sanitise_filename(file_name))
             shutil.copy(source_file, target_file)
 
 
@@ -65,23 +66,26 @@ def write_prettified_xml(dita_soup, target_file_path):
 def convert_html_href_to_dita_href(href):
     if ".dita" in href:
         return href, "dita"
-    parsed = urlparse(href)
+    if ".html" in href:
+        parsed = urlparse(href)
 
-    parsed = parsed._replace(path=parsed.path.replace(".html", ".dita").replace(" ", "_"))
-    p = Path(parsed.path)
+        parsed = parsed._replace(path=parsed.path.replace(".html", ".dita"))
+        p = Path(parsed.path)
 
-    if parsed.fragment:
-        id_str = p.name.split(".")[0]
-        if "/" in id_str:
-            id_str = id_str.split("/")[-1]
-        new_fragment = f"{id_str}.html/{parsed.fragment}"
-        parsed = parsed._replace(fragment=new_fragment)
+        if parsed.fragment:
+            id_str = p.name.split(".")[0]
+            if "/" in id_str:
+                id_str = id_str.split("/")[-1]
+            new_fragment = f"{sanitise_filename(id_str)}.html/{parsed.fragment}"
+            parsed = parsed._replace(fragment=new_fragment)
 
-    return parsed.geturl(), parsed.path.split(".")[-1]
+        return parsed.geturl(), parsed.path.split(".")[-1]
+    else:
+        parsed = urlparse(href)
+        return sanitise_filename(href), parsed.path.split(".")[-1]
 
 
 def get_top_value(css_string):
-    # print(css_string)
     css = cssutils.css.CSSStyleDeclaration(css_string, validating=False)
     top = css.top
 
@@ -150,3 +154,40 @@ def generate_top_to_div_mapping(html_soup, include_anchors=False, recursive=True
         return [(0, html_soup)]
 
     return top_to_div_mapping
+
+
+def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
+    is_child = False
+    for existing_page in pages_to_process:
+        if existing_page is None:
+            continue
+
+        children = existing_page.find_all()
+        if new_page in children:
+            logging.debug("Found in children")
+            is_child = True
+            break
+
+    for existing_page in pages_to_process:
+        if existing_page is None:
+            continue
+        parents = existing_page.find_parents()
+        if new_page in parents:
+            logging.debug("Found in parents")
+            pages_to_process.remove(existing_page)
+            pages_to_process.add(new_page)
+            return pages_to_process
+
+    if not is_child:
+        pages_to_process.add(new_page)
+
+    # This is weird - the set doesn't seem to be keeping things unique properly, so we get around it
+    # by converting to a list and then back to a set. This shouldn't be needed, but seems to fix the problem
+    return set(list(pages_to_process))
+
+
+def sanitise_filename(filename):
+    if not isinstance(filename, str):
+        filename = str(filename.name)
+
+    return filename.replace(" ", "_").replace("&", "and")
