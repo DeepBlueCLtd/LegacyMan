@@ -71,7 +71,7 @@ def convert_html_href_to_dita_href(href):
     if ".html" in href:
         parsed = urlparse(href)
 
-        parsed = parsed._replace(path=parsed.path.replace(".html", ".dita"))
+        parsed = parsed._replace(path=sanitise_filename(parsed.path.replace(".html", ".dita")))
         p = Path(parsed.path)
 
         if parsed.fragment:
@@ -199,7 +199,7 @@ def sanitise_filename(filename, remove_extension=False):
     if not isinstance(filename, str):
         filename = str(filename.name)
 
-    filename = filename.replace(" ", "_").replace("&", "and").replace("(", "_").replace(")", "_")
+    filename = filename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
 
     if remove_extension:
         filename = filename.split(".")[0]

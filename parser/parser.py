@@ -320,7 +320,7 @@ class Parser:
                             self.process_generic_file(class_file_src_path)
 
                         file_link = href.replace(".html", ".dita")
-                        dita_xref["href"] = file_link
+                        dita_xref["href"] = sanitise_filename(file_link)
 
                         dita_xref.string = a.text.strip()
                         dita_entry.string = ""
@@ -665,7 +665,9 @@ class Parser:
         relative_input_file_directory = self.make_relative_to_data_dir(input_file_directory)
         target_path = self.target_path_base / relative_input_file_directory
 
-        output_dita_path = target_path / input_file_path.with_suffix(".dita").name
+        output_dita_path = target_path / sanitise_filename(
+            input_file_path.with_suffix(".dita").name
+        )
 
         # Check to see if we have the relevant Content/Images folder for this file
         # and if not, then copy it over
