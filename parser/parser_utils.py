@@ -192,7 +192,7 @@ def sanitise_filename(filename, remove_extension=False):
     if not isinstance(filename, str):
         filename = str(filename.name)
 
-    filename = filename.replace(" ", "_").replace("&", "and")
+    filename = filename.replace(" ", "_").replace("&", "and").replace("(", "_").replace(")", "_")
 
     if remove_extension:
         filename = filename.split(".")[0]
