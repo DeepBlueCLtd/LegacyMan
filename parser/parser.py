@@ -667,7 +667,7 @@ class Parser:
         # (It may have been copied already by one of the category page processors but may not have been if
         # we haven't gone via a category page)
         if not (target_path / "Content").exists() and (input_file_directory / "Content").exists():
-            shutil.copytree(input_file_directory / "Content", target_path / "Content")
+            copy_files(input_file_directory / "Content", target_path / "Content")
 
         if output_dita_path in self.generic_files_already_processed:
             return

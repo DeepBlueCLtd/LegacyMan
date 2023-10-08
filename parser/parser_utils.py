@@ -19,11 +19,10 @@ def delete_directory(path):
         logging.debug("Target directory does not exist")
 
 
-def copy_directory(src_folder, dst_folder):
-    shutil.copytree(src_folder, dst_folder)
+def copy_files(source_dir, target_dir, file_names=None, recursive=True):
+    if file_names:
+        recursive = False
 
-
-def copy_files(source_dir, target_dir, file_names=[]):
     # create the target dir if it doesn't exist
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
@@ -36,7 +35,10 @@ def copy_files(source_dir, target_dir, file_names=[]):
         if not "_notes" in file_name:
             source_file = os.path.join(source_dir, file_name)
             target_file = os.path.join(target_dir, sanitise_filename(file_name))
-            shutil.copy(source_file, target_file)
+            if recursive and os.path.isdir(source_file):
+                copy_files(source_file, target_file)
+            else:
+                shutil.copy(source_file, target_file)
 
 
 def prettify_xml(xml_code):
