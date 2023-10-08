@@ -81,7 +81,14 @@ def convert_html_href_to_dita_href(href):
             new_fragment = f"{sanitise_filename(id_str, remove_extension=True)}/{parsed.fragment}"
             parsed = parsed._replace(fragment=new_fragment)
 
-        return parsed.geturl(), parsed.path.split(".")[-1]
+        url = parsed.geturl()
+
+        # Prepend ./ to the URL if it's a URL in the same directory, so that
+        # we don't get errors from Oxygen (without ./ is valid DITA but Oxygen complains)
+        if not url.startswith("."):
+            url = "./" + url
+
+        return url, parsed.path.split(".")[-1]
     else:
         parsed = urlparse(href)
         return sanitise_filename(href), parsed.path.split(".")[-1]
