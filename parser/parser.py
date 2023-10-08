@@ -436,7 +436,12 @@ class Parser:
                     dita_title.string = h2.get_text()
                     break
             else:
-                logging.warning(f"Could not extract title from {input_file_path}")
+                # If that also fails, then take the first h1 and use that, giving an error if there aren't any
+                h1s = html_soup.find_all("h1")
+                if len(h1s) >= 1:
+                    dita_title.string = h1s[0].get_text()
+                else:
+                    logging.warning(f"Could not extract title from {input_file_path}")
 
         dita_reference.append(dita_title)
         dita_ref_body = dita_soup.new_tag("refbody")
