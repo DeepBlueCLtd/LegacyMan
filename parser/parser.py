@@ -698,7 +698,7 @@ class Parser:
 
         # If we're actually writing the files then do the conversion and write the file
         if self.write_generic_files:
-            logging.info(
+            logging.debug(
                 f"Processing generic file {input_file_path} to output at {output_dita_path}"
             )
             dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
@@ -822,14 +822,15 @@ if __name__ == "__main__":
         logging_level = sys.argv[2]
         if logging_level == "debug":
             logging.basicConfig(level=logging.DEBUG, format=logging_format)
+            logging.info("Logging level set to DEBUG")
         elif logging_level == "info":
             logging.basicConfig(level=logging.INFO, format=logging_format)
+            logging.info("Logging level set to INFO")
         elif logging_level == "warning":
             logging.basicConfig(level=logging.WARNING, format=logging_format)
+            logging.info("Logging level set to WARNING")
     else:
         logging.basicConfig(level=logging.INFO, format=logging_format)
-    # if len(sys.argv) == 3:
-    #     target_path = sys.argv[2]
-    # else:
+        logging.info("Logging level set to INFO")
     target_path = "./target/html"
     parse_from_root(root_path, target_path)
