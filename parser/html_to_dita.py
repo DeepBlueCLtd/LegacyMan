@@ -294,6 +294,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             if "italic" in span["class"]:
                 span.name = "i"
                 del span["class"]
+        if span.name == "span":
+            # If it's still a span element by the time we get here
+            # then just change it to a ph element with no output class
+            span.name = "ph"
 
     for strong in soup.find_all(
         "b", recursive=True
