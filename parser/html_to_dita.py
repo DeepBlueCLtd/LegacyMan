@@ -142,9 +142,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     for img in soup.find_all("img"):
         img.name = "image"
         img["href"] = img["src"]
-        # swap spaces out of src
-        if " " in img["href"]:
-            img["href"] = sanitise_filename(img["href"])
+        img["href"] = sanitise_filename(img["href"])
         del img["src"]
         del img["border"]
         # name not allowed in DITA image, put value into ID, if present
