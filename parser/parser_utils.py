@@ -209,6 +209,10 @@ def sanitise_filename(filename, remove_extension=False):
 
     if remove_extension:
         filename = filename.split(".")[0]
+    else:
+        # Make the extension lower-case
+        p = Path(filename)
+        filename = str(p.with_suffix(p.suffix.lower()))
 
     return filename
 
