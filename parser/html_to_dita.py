@@ -285,10 +285,17 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     span["outputclass"] = "red"
                 elif "#00F" in span["style"]:
                     span["outputclass"] = "blue"
+                elif "#777" in span["style"]:
+                    span["outputclass"] = "gray"
                 del span["style"]
             elif "font-style: italic" in span["style"]:
                 span.name = "i"
                 del span["style"]
+        # handle use of class for italic formatting
+        if span.has_attr("class"):
+            if "italic" in span["class"]:
+                span.name = "i"
+                del span["class"]
 
     for strong in soup.find_all(
         "b", recursive=True
