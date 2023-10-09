@@ -553,15 +553,34 @@ class Parser:
                             # print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
-                                if top_value - enclosing_div_top_value < 500:
+                                if top_value - enclosing_div_top_value < 1000:
                                     page = bottom_layer_div
                                     # print(f"Found div top value = {top_value}")
                                     break
                         if not page:
-                            logging.warning(
-                                f"Couldn't find BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                            top_to_div_mapping_with_graylayers = generate_top_to_div_mapping(
+                                html_soup, recursive=True, ignore_graylayer=False
                             )
-                            continue
+                            for top_value, bottom_layer_div in top_to_div_mapping_with_graylayers:
+                                div_id = bottom_layer_div.get("id")
+                                # print(f"{top_value}: {div_id}")
+                                if div_id:
+                                    # print(f"div id = {div_id}")
+                                    if "GrayLayer" not in div_id:
+                                        continue
+                                # print(f"top_value = {top_value}")
+                                if top_value > enclosing_div_top_value:
+                                    # Check that the difference isn't too big
+                                    if top_value - enclosing_div_top_value < 500:
+                                        page = bottom_layer_div
+                                        page = page.find(id=re.compile("BottomLayer"))
+                                        # print(f"Found div top value = {top_value}")
+                                        break
+                            if not page:
+                                logging.warning(
+                                    f"Couldn't find BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                                )
+                                continue
                     if page is None:
                         logging.warning(
                             f"Couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"

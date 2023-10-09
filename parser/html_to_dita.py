@@ -182,6 +182,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
+        if "(-1)" in a["href"]:
+            a.decompose()
+            continue
         a["href"], file_format = convert_html_href_to_dita_href(a["href"])
         if a["href"].startswith("#"):
             a["href"] = f"#{topic_id}__{a['href'][1:]}"
