@@ -3,6 +3,7 @@ import os
 from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
+import cssutils
 
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
 
@@ -111,7 +112,17 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 div.unwrap()
             else:
                 # we don't need the `PageLayer` divs
-                if div.has_attr("id") and "PageLayer" in div["id"]:
+                # NOTE: sometimes the div inside the `BottomLayer` is missing an id, as
+                # in `unit_charlie.html`
+                isPageLayer = div.has_attr("id") and "PageLayer" in div["id"]
+                isAbsolute = False
+                if not isPageLayer and div.has_attr("style"):
+                    css_string = div["style"]
+                    css = cssutils.css.CSSStyleDeclaration(css_string, validating=False)
+                    position = css.position
+                    isAbsolute = position == "absolute"
+
+                if isPageLayer or isAbsolute:
                     div.unwrap()
                 else:
                     div.name = "p"
@@ -171,6 +182,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 5a. Fix hyperlinks (a with href attribute)
     for a in soup.find_all("a", {"href": True}):
         a.name = "xref"
+        if "(-1)" in a["href"]:
+            a.decompose()
+            continue
         a["href"], file_format = convert_html_href_to_dita_href(a["href"])
         if a["href"].startswith("#"):
             a["href"] = f"#{topic_id}__{a['href'][1:]}"
@@ -181,7 +195,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
     # We actually convert them to <div> elements now, in case they have something inside them
-    # (which they do in Phase_F_Size.html - where a heading and more is inside)
+    # (which they do in Phase_F_Size.html (ref a3b) - where a heading and more is inside)
     for a in soup.find_all("a", {"href": False}):
         a.name = "div"
         a["id"] = a["name"]
@@ -310,6 +324,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             del ul["style"]
     if soup.name == "ul" and soup.has_attr("style"):
         del soup["style"]
+
+    # 14. Swap "em" for "i"
+    for a in soup.find_all("em"):
+        a.name = "i"
 
     return soup
 

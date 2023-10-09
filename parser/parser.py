@@ -1,5 +1,6 @@
 from collections import defaultdict
 from pathlib import Path
+import platform
 import shutil
 import sys
 import time
@@ -320,7 +321,7 @@ class Parser:
                             self.process_generic_file(class_file_src_path)
 
                         file_link = href.replace(".html", ".dita")
-                        dita_xref["href"] = file_link
+                        dita_xref["href"] = sanitise_filename(file_link)
 
                         dita_xref.string = a.text.strip()
                         dita_entry.string = ""
@@ -436,7 +437,12 @@ class Parser:
                     dita_title.string = h2.get_text()
                     break
             else:
-                logging.warning(f"Could not extract title from {input_file_path}")
+                # If that also fails, then take the first h1 and use that, giving an error if there aren't any
+                h1s = html_soup.find_all("h1")
+                if len(h1s) >= 1:
+                    dita_title.string = h1s[0].get_text()
+                else:
+                    logging.warning(f"Could not extract title from {input_file_path}")
 
         dita_reference.append(dita_title)
         dita_ref_body = dita_soup.new_tag("refbody")
@@ -548,15 +554,34 @@ class Parser:
                             # print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
-                                if top_value - enclosing_div_top_value < 500:
+                                if top_value - enclosing_div_top_value < 800:
                                     page = bottom_layer_div
                                     # print(f"Found div top value = {top_value}")
                                     break
                         if not page:
-                            logging.warning(
-                                f"Couldn't find BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                            top_to_div_mapping_with_graylayers = generate_top_to_div_mapping(
+                                html_soup, recursive=True, ignore_graylayer=False
                             )
-                            continue
+                            for top_value, bottom_layer_div in top_to_div_mapping_with_graylayers:
+                                div_id = bottom_layer_div.get("id")
+                                # print(f"{top_value}: {div_id}")
+                                if div_id:
+                                    # print(f"div id = {div_id}")
+                                    if "GrayLayer" not in div_id:
+                                        continue
+                                # print(f"top_value = {top_value}")
+                                if top_value > enclosing_div_top_value:
+                                    # Check that the difference isn't too big
+                                    if top_value - enclosing_div_top_value < 500:
+                                        page = bottom_layer_div
+                                        page = page.find(id=re.compile("BottomLayer"))
+                                        # print(f"Found div top value = {top_value}")
+                                        break
+                            if not page:
+                                logging.warning(
+                                    f"Couldn't find BottomLayer with appropriate top value - where top value is {enclosing_div_top_value}, in file {input_file_path}"
+                                )
+                                continue
                     if page is None:
                         logging.warning(
                             f"Couldn't find PageLayer parent of anchor {anchor} in page {input_file_path}"
@@ -660,14 +685,16 @@ class Parser:
         relative_input_file_directory = self.make_relative_to_data_dir(input_file_directory)
         target_path = self.target_path_base / relative_input_file_directory
 
-        output_dita_path = target_path / input_file_path.with_suffix(".dita").name
+        output_dita_path = target_path / sanitise_filename(
+            input_file_path.with_suffix(".dita").name
+        )
 
         # Check to see if we have the relevant Content/Images folder for this file
         # and if not, then copy it over
         # (It may have been copied already by one of the category page processors but may not have been if
         # we haven't gone via a category page)
         if not (target_path / "Content").exists() and (input_file_directory / "Content").exists():
-            shutil.copytree(input_file_directory / "Content", target_path / "Content")
+            copy_files(input_file_directory / "Content", target_path / "Content")
 
         if output_dita_path in self.generic_files_already_processed:
             return
@@ -698,7 +725,7 @@ class Parser:
 
         # If we're actually writing the files then do the conversion and write the file
         if self.write_generic_files:
-            logging.info(
+            logging.debug(
                 f"Processing generic file {input_file_path} to output at {output_dita_path}"
             )
             dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
@@ -755,9 +782,15 @@ class Parser:
         logging.info(
             "Running dita publish command - output below is errors/warnings directly from the dita command"
         )
+
+        if "Windows" in platform.system():
+            dita_executable = "dita.bat"
+        else:
+            dita_executable = "dita"
+
         # Run DITA-OT command to transform the index.ditamap file to html
         dita_command = [
-            "dita",
+            dita_executable,
             "-i",
             "./target/dita/index.ditamap",
             "-f",
@@ -822,14 +855,15 @@ if __name__ == "__main__":
         logging_level = sys.argv[2]
         if logging_level == "debug":
             logging.basicConfig(level=logging.DEBUG, format=logging_format)
+            logging.info("Logging level set to DEBUG")
         elif logging_level == "info":
             logging.basicConfig(level=logging.INFO, format=logging_format)
+            logging.info("Logging level set to INFO")
         elif logging_level == "warning":
             logging.basicConfig(level=logging.WARNING, format=logging_format)
+            logging.info("Logging level set to WARNING")
     else:
         logging.basicConfig(level=logging.INFO, format=logging_format)
-    # if len(sys.argv) == 3:
-    #     target_path = sys.argv[2]
-    # else:
+        logging.info("Logging level set to INFO")
     target_path = "./target/html"
     parse_from_root(root_path, target_path)

@@ -19,11 +19,10 @@ def delete_directory(path):
         logging.debug("Target directory does not exist")
 
 
-def copy_directory(src_folder, dst_folder):
-    shutil.copytree(src_folder, dst_folder)
+def copy_files(source_dir, target_dir, file_names=None, recursive=True):
+    if file_names:
+        recursive = False
 
-
-def copy_files(source_dir, target_dir, file_names=[]):
     # create the target dir if it doesn't exist
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
@@ -36,7 +35,10 @@ def copy_files(source_dir, target_dir, file_names=[]):
         if not "_notes" in file_name:
             source_file = os.path.join(source_dir, file_name)
             target_file = os.path.join(target_dir, sanitise_filename(file_name))
-            shutil.copy(source_file, target_file)
+            if recursive and os.path.isdir(source_file):
+                copy_files(source_file, target_file)
+            else:
+                shutil.copy(source_file, target_file)
 
 
 def prettify_xml(xml_code):
@@ -69,7 +71,7 @@ def convert_html_href_to_dita_href(href):
     if ".html" in href:
         parsed = urlparse(href)
 
-        parsed = parsed._replace(path=parsed.path.replace(".html", ".dita"))
+        parsed = parsed._replace(path=sanitise_filename(parsed.path.replace(".html", ".dita")))
         p = Path(parsed.path)
 
         if parsed.fragment:
@@ -79,7 +81,14 @@ def convert_html_href_to_dita_href(href):
             new_fragment = f"{sanitise_filename(id_str, remove_extension=True)}/{parsed.fragment}"
             parsed = parsed._replace(fragment=new_fragment)
 
-        return parsed.geturl(), parsed.path.split(".")[-1]
+        url = parsed.geturl()
+
+        # Prepend ./ to the URL if it's a URL in the same directory, so that
+        # we don't get errors from Oxygen (without ./ is valid DITA but Oxygen complains)
+        if not url.startswith("."):
+            url = "./" + url
+
+        return url, parsed.path.split(".")[-1]
     else:
         parsed = urlparse(href)
         return sanitise_filename(href), parsed.path.split(".")[-1]
@@ -95,7 +104,9 @@ def get_top_value(css_string):
     return int(top.replace("px", ""))
 
 
-def generate_top_to_div_mapping(html_soup, include_anchors=False, recursive=True):
+def generate_top_to_div_mapping(
+    html_soup, include_anchors=False, recursive=True, ignore_graylayer=True
+):
     top_to_div_mapping = {}
 
     if not recursive:
@@ -118,23 +129,24 @@ def generate_top_to_div_mapping(html_soup, include_anchors=False, recursive=True
         div_id = bottom_layer_div.get("id")
         # print(f"Processing div id = {div_id}")
         # Exclude GrayLayer divs and QuickLinksTable divs
-        if div_id and "GrayLayer" in div_id:
+        if ignore_graylayer and div_id and "GrayLayer" in div_id:
             continue
         elif div_id and "QuickLinksTable" in div_id:
             continue
 
-        # Ignore anything that is inside a GrayLayer div (ie. has one as a parent)
-        gray_layer = False
-        parent_divs = bottom_layer_div.find_parents("div")
-        if parent_divs:
-            for parent_div in parent_divs:
-                parent_div_id = parent_div.get("id")
-                if parent_div_id and "GrayLayer" in parent_div_id:
-                    gray_layer = True
+        if ignore_graylayer:
+            # Ignore anything that is inside a GrayLayer div (ie. has one as a parent)
+            gray_layer = False
+            parent_divs = bottom_layer_div.find_parents("div")
+            if parent_divs:
+                for parent_div in parent_divs:
+                    parent_div_id = parent_div.get("id")
+                    if parent_div_id and "GrayLayer" in parent_div_id:
+                        gray_layer = True
 
-        # print(f"Gray layer = {gray_layer}")
-        if gray_layer:
-            continue
+            # print(f"Gray layer = {gray_layer}")
+            if gray_layer:
+                continue
 
         # Ignore ones without a style attribute as they can't have a top value
         style_attrib = bottom_layer_div.get("style")
@@ -190,7 +202,7 @@ def sanitise_filename(filename, remove_extension=False):
     if not isinstance(filename, str):
         filename = str(filename.name)
 
-    filename = filename.replace(" ", "_").replace("&", "and")
+    filename = filename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
 
     if remove_extension:
         filename = filename.split(".")[0]
