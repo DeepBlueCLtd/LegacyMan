@@ -204,6 +204,9 @@ def sanitise_filename(filename, remove_extension=False):
 
     filename = filename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
 
+    if filename[0].isdigit():
+        filename = "_" + filename
+
     if remove_extension:
         filename = filename.split(".")[0]
 
