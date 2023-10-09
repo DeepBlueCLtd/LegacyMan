@@ -1,5 +1,6 @@
 from collections import defaultdict
 from pathlib import Path
+import platform
 import shutil
 import sys
 import time
@@ -781,9 +782,15 @@ class Parser:
         logging.info(
             "Running dita publish command - output below is errors/warnings directly from the dita command"
         )
+
+        if "Windows" in platform.system():
+            dita_executable = "dita.bat"
+        else:
+            dita_executable = "dita"
+
         # Run DITA-OT command to transform the index.ditamap file to html
         dita_command = [
-            "dita",
+            dita_executable,
             "-i",
             "./target/dita/index.ditamap",
             "-f",
