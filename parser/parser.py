@@ -554,7 +554,7 @@ class Parser:
                             # print(f"top_value = {top_value}")
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
-                                if top_value - enclosing_div_top_value < 1000:
+                                if top_value - enclosing_div_top_value < 800:
                                     page = bottom_layer_div
                                     # print(f"Found div top value = {top_value}")
                                     break
