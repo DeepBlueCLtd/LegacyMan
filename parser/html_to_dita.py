@@ -142,9 +142,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     for img in soup.find_all("img"):
         img.name = "image"
         img["href"] = img["src"]
-        # swap spaces out of src
-        if " " in img["href"]:
-            img["href"] = sanitise_filename(img["href"])
+        if "image020" in img["href"]:
+            # Ignore this image
+            img.decompose()
+            continue
+        img["href"] = sanitise_filename(img["href"])
         del img["src"]
         del img["border"]
         # name not allowed in DITA image, put value into ID, if present
@@ -296,6 +298,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             if "italic" in span["class"]:
                 span.name = "i"
                 del span["class"]
+        if span.name == "span":
+            # If it's still a span element by the time we get here
+            # then just change it to a ph element with no output class
+            span.name = "ph"
 
     for strong in soup.find_all(
         "b", recursive=True

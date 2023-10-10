@@ -199,15 +199,23 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
 
 
 def sanitise_filename(filename, remove_extension=False):
-    if not isinstance(filename, str):
-        filename = str(filename.name)
+    p = Path(filename)
+    basename = str(p.name)
 
-    filename = filename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
+    print(f"Sanitising filename {basename}")
+    basename = basename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
+
+    if basename[0].isdigit():
+        basename = "_" + basename
 
     if remove_extension:
-        filename = filename.split(".")[0]
+        basename = basename.split(".")[0]
+    else:
+        # Make the extension lower case
+        path_obj = Path(basename)
+        basename = str(path_obj.with_suffix(path_obj.suffix.lower()))
 
-    return filename
+    return str(p.with_name(basename))
 
 
 def is_button_id(div_id):
