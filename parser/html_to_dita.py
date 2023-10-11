@@ -352,6 +352,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
         para.string = f"[MAP PLACEHOLDER] - {mmap.name}"
         para["outputclass"] = "placeholder"
         mmap.replace_with(para)
+    # while we are not (yet) processing image maps, delete the attribute
+    for image in soup.find_all("image"):
+        if image.has_attr("usemap"):
+            del image["usemap"]    
 
     return soup
 
