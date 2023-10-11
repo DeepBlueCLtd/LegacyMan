@@ -302,6 +302,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             # If it's still a span element by the time we get here
             # then just change it to a ph element with no output class
             span.name = "ph"
+            # span may be used to position image. remove style
+            if span.has_attr("style"):
+                if "absolute" in span["style"]:
+                    del span["style"]
 
     for strong in soup.find_all(
         "b", recursive=True
