@@ -39,7 +39,7 @@ class Parser:
 
     def process_regions(self):
         # copy the world-map.gif file
-        source_dir = f"{self.root_path}/PlatformData/Content/images/"
+        source_dir = f"{self.root_path}/PlatformData/Content/Images/"
         target_dir = "target/dita/regions/Content/Images"
         worldMapFile = "WorldMap.jpg"
         copy_files(source_dir, target_dir, [worldMapFile])
