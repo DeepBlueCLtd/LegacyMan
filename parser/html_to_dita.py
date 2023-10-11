@@ -346,6 +346,13 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     for a in soup.find_all("em"):
         a.name = "i"
 
+    # 15. (temporarily) drop image tables
+    for mmap in soup.find_all("map"):
+        para = dita_soup.new_tag("b")
+        para.string = f"[MAP PLACEHOLDER] - {mmap.name}"
+        para["outputclass"] = "placeholder"
+        mmap.replace_with(para)
+
     return soup
 
 
