@@ -302,6 +302,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             # If it's still a span element by the time we get here
             # then just change it to a ph element with no output class
             span.name = "ph"
+            # span may be used to position image. remove style
+            if span.has_attr("style"):
+                if "absolute" in span["style"]:
+                    del span["style"]
 
     for strong in soup.find_all(
         "b", recursive=True
@@ -341,6 +345,17 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 14. Swap "em" for "i"
     for a in soup.find_all("em"):
         a.name = "i"
+
+    # 15. (temporarily) drop image tables
+    for mmap in soup.find_all("map"):
+        para = dita_soup.new_tag("b")
+        para.string = f"[MAP PLACEHOLDER] - {mmap.name}"
+        para["outputclass"] = "placeholder"
+        mmap.replace_with(para)
+    # while we are not (yet) processing image maps, delete the attribute
+    for image in soup.find_all("image"):
+        if image.has_attr("usemap"):
+            del image["usemap"]    
 
     return soup
 

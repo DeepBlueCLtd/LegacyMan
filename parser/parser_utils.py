@@ -202,7 +202,7 @@ def sanitise_filename(filename, remove_extension=False):
     p = Path(filename)
     basename = str(p.name)
 
-    print(f"Sanitising filename {basename}")
+    # print(f"Sanitising filename {basename}")
     basename = basename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
 
     if basename[0].isdigit():
