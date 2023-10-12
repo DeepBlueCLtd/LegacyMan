@@ -789,17 +789,30 @@ class Parser:
                     logging.warning(f"Link {link} does not exist, from page {input_file_path}")
 
     def run_dita_command(self):
-        logging.info(
-            "Running dita publish command - output below is errors/warnings directly from the dita command"
-        )
-
         if "Windows" in platform.system():
             dita_executable = "dita.bat"
         else:
             dita_executable = "dita"
 
+        logging.info(
+            "Running dita validation command - output below is errors/warnings directly from the dita command"
+        )
+        validate_command = [
+            dita_executable,
+            "--format",
+            "svrl",
+            "--input",
+            "target/dita/index.ditamap",
+            "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing",
+        ]
+        subprocess.run(validate_command)
+
+        logging.info(
+            "Running dita publish command - output below is errors/warnings directly from the dita command"
+        )
+
         # Run DITA-OT command to transform the index.ditamap file to html
-        dita_command = [
+        publish_command = [
             dita_executable,
             "-i",
             "./target/dita/index.ditamap",
@@ -808,7 +821,7 @@ class Parser:
             "-o",
             "./target/html",
         ]
-        subprocess.run(dita_command)
+        subprocess.run(publish_command)
 
     def run(self):
         time1 = time.time()
