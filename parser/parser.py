@@ -723,11 +723,13 @@ class Parser:
         quicklinks = {l.text: l["href"] for l in links}
 
         # Find all the links in the body of the page - that is, links that are inside a <div> with an id containing PageLayer
+        # or an id starting with layer
         bodylink_hrefs = []
         a_tags = html_soup.find_all("a")
         for a_tag in a_tags:
             parent_pagelayer = a_tag.find_parent("div", id=re.compile("PageLayer"))
-            if parent_pagelayer:
+            parent_layer = a_tag.find_parent("div", id=re.compile("^layer"))
+            if parent_pagelayer or parent_layer:
                 if a_tag.get("href"):
                     bodylink_hrefs.append(a_tag["href"])
 
