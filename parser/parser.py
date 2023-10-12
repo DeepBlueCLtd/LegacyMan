@@ -109,7 +109,7 @@ class Parser:
 
         # Create a <topic> element in the DITA file and append the <map> and the <image> elements
         dita_topic = dita_soup.new_tag("topic")
-        dita_topic["id"] = "links_1"
+        dita_topic["id"] = "regions"
 
         dita_topic.append(dita_title)
         dita_topic.append(dita_body)
