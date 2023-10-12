@@ -765,7 +765,7 @@ class Parser:
             else:
                 # Non HTML pages, so just copy the file over
                 logging.debug(f"Copying non-HTML file {link}")
-                link = Path(link)
+                link = Path(link.replace("\\", "/"))
                 if "(-1)" in str(link):
                     continue
                 elif (input_file_path.parent / link).exists():

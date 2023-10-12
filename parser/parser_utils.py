@@ -215,7 +215,10 @@ def sanitise_filename(filename, remove_extension=False):
         path_obj = Path(basename)
         basename = str(path_obj.with_suffix(path_obj.suffix.lower()))
 
-    return str(p.with_name(basename))
+    new_full_path = str(p.with_name(basename))
+    new_full_path = new_full_path.replace("\\", "//")
+
+    return new_full_path
 
 
 def is_button_id(div_id):
