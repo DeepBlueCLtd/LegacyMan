@@ -216,7 +216,7 @@ def sanitise_filename(filename, remove_extension=False):
         basename = str(path_obj.with_suffix(path_obj.suffix.lower()))
 
     new_full_path = str(p.with_name(basename))
-    new_full_path = new_full_path.replace("\\", "//")
+    new_full_path = new_full_path.replace("\\", "/")
 
     return new_full_path
 
