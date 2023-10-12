@@ -133,6 +133,8 @@ def generate_top_to_div_mapping(
             continue
         elif div_id and "QuickLinksTable" in div_id:
             continue
+        elif div_id and div_id.startswith("btnHist"):
+            continue
 
         if ignore_graylayer:
             # Ignore anything that is inside a GrayLayer div (ie. has one as a parent)
