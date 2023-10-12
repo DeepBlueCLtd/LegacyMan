@@ -25,6 +25,7 @@ from parser_utils import (
     add_if_not_a_child_or_parent_of_existing,
     sanitise_filename,
     is_button_id,
+    is_skippable_div_id,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -408,6 +409,48 @@ class Parser:
 
         return dita_section
 
+    def find_first_page_layer(self, top_to_div_mapping, html_soup):
+        page = None
+        if len(top_to_div_mapping) > 0:
+            logging.debug({el[0]: el[1].get("id") for el in top_to_div_mapping})
+            for top_value, div in top_to_div_mapping:
+                # Don't look at any divs that are within a BottomLayer div
+                bl_parents = div.find_parents(id=re.compile("BottomLayer"))
+                if len(bl_parents) > 0:
+                    continue
+                div_id = div.get("id")
+                # Don't look at any divs without an ID
+                if div_id is None:
+                    continue
+                # Ignore divs with an id of btN (where N is a number) as they're just buttons
+                if is_button_id(div_id):
+                    continue
+                if is_skippable_div_id(div_id):
+                    continue
+
+                image_tags = div.find_all("img")
+                if div_id is not None and "PicLayer" in div_id:
+                    continue
+                logging.debug(
+                    f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
+                )
+                # breakpoint()
+                text = div.get_text().strip()
+                if len(image_tags) > 0:
+                    page = div
+                    break
+                elif text != "" and text != "Return to map":
+                    page = div
+                    break
+                elif div_id is not None and "PageLayer" in div_id:
+                    page = div
+                    break
+
+        if page is None:
+            page = html_soup.find("div", id=re.compile("PageLayer"))
+
+        return page
+
     def process_generic_file_content(self, html_soup, input_file_path, quicklinks):
         # Create the DITA document type declaration string
         dita_doctype = (
@@ -456,42 +499,7 @@ class Parser:
             top_to_div_mapping = generate_top_to_div_mapping(html_soup, recursive=True)
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
-                    page = None
-                    if len(top_to_div_mapping) > 0:
-                        logging.debug({el[0]: el[1].get("id") for el in top_to_div_mapping})
-                        for top_value, div in top_to_div_mapping:
-                            # Don't look at any divs that are within a BottomLayer div
-                            bl_parents = div.find_parents(id=re.compile("BottomLayer"))
-                            if len(bl_parents) > 0:
-                                continue
-                            div_id = div.get("id")
-                            # Don't look at any divs without an ID
-                            if div_id is None:
-                                continue
-                            # Ignore divs with an id of btN (where N is a number) as they're just buttons
-                            if is_button_id(div_id):
-                                continue
-
-                            image_tags = div.find_all("img")
-                            if div_id is not None and "PicLayer" in div_id:
-                                continue
-                            logging.debug(
-                                f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
-                            )
-                            # breakpoint()
-                            text = div.get_text().strip()
-                            if len(image_tags) > 0:
-                                page = div
-                                break
-                            elif text != "" and text != "Return to map":
-                                page = div
-                                break
-                            elif div_id is not None and "PageLayer" in div_id:
-                                page = div
-                                break
-
-                    if page is None:
-                        page = html_soup.find("div", id=re.compile("PageLayer"))
+                    page = self.find_first_page_layer(top_to_div_mapping, html_soup)
                     if page:
                         logging.debug(
                             f"Selected page for First Page Layer with id {page.get('id')}"
