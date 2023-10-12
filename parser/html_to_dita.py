@@ -189,9 +189,14 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             continue
         a["href"], file_format = convert_html_href_to_dita_href(a["href"])
         if a["href"].startswith("#"):
-            a["href"] = f"#{topic_id}__{a['href'][1:]}"
-        if file_format != "html":
-            a["format"] = file_format
+            # It's an internal link to somewhere else on the page
+            a["href"] = f"#{topic_id}/{a['href'][1:]}"
+            a["format"] = "dita"
+        else:
+            if file_format != "html":
+                a["format"] = file_format
+            else:
+                a["format"] = "dita"
         del a["target"]
 
     # 5b. Fix anchors (a without href attribute)
@@ -355,7 +360,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # while we are not (yet) processing image maps, delete the attribute
     for image in soup.find_all("image"):
         if image.has_attr("usemap"):
-            del image["usemap"]    
+            del image["usemap"]
 
     return soup
 
