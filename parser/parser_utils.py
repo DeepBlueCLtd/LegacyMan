@@ -239,7 +239,7 @@ def is_button_id(div_id):
 
 
 def is_skippable_div_id(div_id):
-    SKIPPABLE_DIV_IDS = ["submitButtons" "templateDetails", "pageDetails", "Layer", "GrayLayer"]
+    SKIPPABLE_DIV_IDS = ["submitButtons", "templateDetails", "pageDetails", "Layer", "GrayLayer"]
     for skip_id in SKIPPABLE_DIV_IDS:
         if div_id.startswith(skip_id):
             return True
