@@ -25,6 +25,7 @@ from parser_utils import (
     add_if_not_a_child_or_parent_of_existing,
     sanitise_filename,
     is_button_id,
+    is_skippable_div_id,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -108,7 +109,7 @@ class Parser:
 
         # Create a <topic> element in the DITA file and append the <map> and the <image> elements
         dita_topic = dita_soup.new_tag("topic")
-        dita_topic["id"] = "links_1"
+        dita_topic["id"] = "regions"
 
         dita_topic.append(dita_title)
         dita_topic.append(dita_body)
@@ -408,6 +409,48 @@ class Parser:
 
         return dita_section
 
+    def find_first_page_layer(self, top_to_div_mapping, html_soup):
+        page = None
+        if len(top_to_div_mapping) > 0:
+            logging.debug({el[0]: el[1].get("id") for el in top_to_div_mapping})
+            for top_value, div in top_to_div_mapping:
+                # Don't look at any divs that are within a BottomLayer div
+                bl_parents = div.find_parents(id=re.compile("BottomLayer"))
+                if len(bl_parents) > 0:
+                    continue
+                div_id = div.get("id")
+                # Don't look at any divs without an ID
+                if div_id is None:
+                    continue
+                # Ignore divs with an id of btN (where N is a number) as they're just buttons
+                if is_button_id(div_id):
+                    continue
+                if is_skippable_div_id(div_id):
+                    continue
+
+                image_tags = div.find_all("img")
+                if div_id is not None and "PicLayer" in div_id:
+                    continue
+                logging.debug(
+                    f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
+                )
+                # breakpoint()
+                text = div.get_text().strip()
+                if len(image_tags) > 0:
+                    page = div
+                    break
+                elif text != "" and text != "Return to map":
+                    page = div
+                    break
+                elif div_id is not None and "PageLayer" in div_id:
+                    page = div
+                    break
+
+        if page is None:
+            page = html_soup.find("div", id=re.compile("PageLayer"))
+
+        return page
+
     def process_generic_file_content(self, html_soup, input_file_path, quicklinks):
         # Create the DITA document type declaration string
         dita_doctype = (
@@ -456,42 +499,7 @@ class Parser:
             top_to_div_mapping = generate_top_to_div_mapping(html_soup, recursive=True)
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
-                    page = None
-                    if len(top_to_div_mapping) > 0:
-                        logging.debug({el[0]: el[1].get("id") for el in top_to_div_mapping})
-                        for top_value, div in top_to_div_mapping:
-                            # Don't look at any divs that are within a BottomLayer div
-                            bl_parents = div.find_parents(id=re.compile("BottomLayer"))
-                            if len(bl_parents) > 0:
-                                continue
-                            div_id = div.get("id")
-                            # Don't look at any divs without an ID
-                            if div_id is None:
-                                continue
-                            # Ignore divs with an id of btN (where N is a number) as they're just buttons
-                            if is_button_id(div_id):
-                                continue
-
-                            image_tags = div.find_all("img")
-                            if div_id is not None and "PicLayer" in div_id:
-                                continue
-                            logging.debug(
-                                f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
-                            )
-                            # breakpoint()
-                            text = div.get_text().strip()
-                            if len(image_tags) > 0:
-                                page = div
-                                break
-                            elif text != "" and text != "Return to map":
-                                page = div
-                                break
-                            elif div_id is not None and "PageLayer" in div_id:
-                                page = div
-                                break
-
-                    if page is None:
-                        page = html_soup.find("div", id=re.compile("PageLayer"))
+                    page = self.find_first_page_layer(top_to_div_mapping, html_soup)
                     if page:
                         logging.debug(
                             f"Selected page for First Page Layer with id {page.get('id')}"
@@ -715,11 +723,13 @@ class Parser:
         quicklinks = {l.text: l["href"] for l in links}
 
         # Find all the links in the body of the page - that is, links that are inside a <div> with an id containing PageLayer
+        # or an id starting with layer
         bodylink_hrefs = []
         a_tags = html_soup.find_all("a")
         for a_tag in a_tags:
             parent_pagelayer = a_tag.find_parent("div", id=re.compile("PageLayer"))
-            if parent_pagelayer:
+            parent_layer = a_tag.find_parent("div", id=re.compile("^layer"))
+            if parent_pagelayer or parent_layer:
                 if a_tag.get("href"):
                     bodylink_hrefs.append(a_tag["href"])
 
@@ -765,7 +775,7 @@ class Parser:
             else:
                 # Non HTML pages, so just copy the file over
                 logging.debug(f"Copying non-HTML file {link}")
-                link = Path(link)
+                link = Path(link.replace("\\", "/"))
                 if "(-1)" in str(link):
                     continue
                 elif (input_file_path.parent / link).exists():
@@ -779,17 +789,30 @@ class Parser:
                     logging.warning(f"Link {link} does not exist, from page {input_file_path}")
 
     def run_dita_command(self):
-        logging.info(
-            "Running dita publish command - output below is errors/warnings directly from the dita command"
-        )
-
         if "Windows" in platform.system():
             dita_executable = "dita.bat"
         else:
             dita_executable = "dita"
 
+        logging.info(
+            "Running dita validation command - output below is errors/warnings directly from the dita command"
+        )
+        validate_command = [
+            dita_executable,
+            "--format",
+            "svrl",
+            "--input",
+            "target/dita/index.ditamap",
+            "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing",
+        ]
+        subprocess.run(validate_command)
+
+        logging.info(
+            "Running dita publish command - output below is errors/warnings directly from the dita command"
+        )
+
         # Run DITA-OT command to transform the index.ditamap file to html
-        dita_command = [
+        publish_command = [
             dita_executable,
             "-i",
             "./target/dita/index.ditamap",
@@ -798,7 +821,7 @@ class Parser:
             "-o",
             "./target/html",
         ]
-        subprocess.run(dita_command)
+        subprocess.run(publish_command)
 
     def run(self):
         time1 = time.time()

@@ -133,6 +133,8 @@ def generate_top_to_div_mapping(
             continue
         elif div_id and "QuickLinksTable" in div_id:
             continue
+        elif div_id and div_id.startswith("btnHist"):
+            continue
 
         if ignore_graylayer:
             # Ignore anything that is inside a GrayLayer div (ie. has one as a parent)
@@ -215,7 +217,10 @@ def sanitise_filename(filename, remove_extension=False):
         path_obj = Path(basename)
         basename = str(path_obj.with_suffix(path_obj.suffix.lower()))
 
-    return str(p.with_name(basename))
+    new_full_path = str(p.with_name(basename))
+    new_full_path = new_full_path.replace("\\", "/")
+
+    return new_full_path
 
 
 def is_button_id(div_id):
@@ -231,3 +236,12 @@ def is_button_id(div_id):
         return True
     else:
         return False
+
+
+def is_skippable_div_id(div_id):
+    SKIPPABLE_DIV_IDS = ["submitButtons" "templateDetails", "pageDetails", "Layer", "GrayLayer"]
+    for skip_id in SKIPPABLE_DIV_IDS:
+        if div_id.startswith(skip_id):
+            return True
+
+    return False
