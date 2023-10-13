@@ -23,6 +23,8 @@ def copy_files(source_dir, target_dir, file_names=None, recursive=True):
     if file_names:
         recursive = False
 
+    target_dir = sanitise_filename(target_dir)
+
     # create the target dir if it doesn't exist
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
@@ -201,11 +203,11 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
 
 
 def sanitise_filename(filename, remove_extension=False):
+    filename = str(filename).replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
     p = Path(filename)
     basename = str(p.name)
 
     # print(f"Sanitising filename {basename}")
-    basename = basename.replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
 
     if basename[0].isdigit():
         basename = "_" + basename
