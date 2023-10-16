@@ -57,11 +57,24 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
     """
 
+    # If this is just a string of content (ie. not a set of tags) then just pass the text through
+    # unchanged
+    if type(soup_in) is bs4.NavigableString:
+        return soup_in.get_text()
+
     # TODO: take clone of soup before we process it, since other high-level processing may be applied to the original
     # HTML content, which could rely on it not being transformed.
     # It remains a `TODO:` - since in the last time I checked, I don't think we're doing an actual clone,
     # I think we're still manipulating the original soup
     soup = copy.copy(soup_in)
+
+    # 0. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
+    for tb in soup.find_all("table"):
+        converted_table = convert_html_table_to_dita_table(tb, dita_soup)
+        tb.replace_with(converted_table)
+    if soup.name == "table":
+        converted_table = convert_html_table_to_dita_table(soup, dita_soup)
+        soup.replace_with(converted_table)
 
     # 1. if outer element is a div, replace with whatever div_replacement is (by default a span)
     if soup.name == "div":
@@ -212,35 +225,6 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     for br in soup.find_all("br"):
         br.decompose()
 
-    # 7. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
-    for tb in soup.find_all("table"):
-        first_cell = tb.find("td")
-        para = dita_soup.new_tag("b")
-        para.string = f"[TABLE PLACEHOLDER] - {first_cell.text} - with links from the table: "
-        para["outputclass"] = "placeholder"
-        # Include the links from the table, as if this is the only link to a page then the
-        # page won't be included in the HTML output from DITA as it won't find any way to get
-        # to the page
-        links_in_table = tb.find_all("xref", recursive=True)
-        if len(links_in_table) > 0:
-            for link in links_in_table:
-                xref = dita_soup.new_tag("xref")
-                xref["href"], file_format = convert_html_href_to_dita_href(link["href"])
-                if file_format != "html":
-                    xref["format"] = file_format
-                para.append(xref)
-
-        tb.replace_with(para)
-    if soup.name == "table":
-        # whole element is a table. Replace it with a placeholder
-        first_cell = soup.find("td")
-        soup.clear
-        soup.name = "p"
-        soup["outputclass"] = "placeholder"
-        soup.string = f"[TABLE PLACEHOLDER] - {first_cell.text}"
-        if soup.has_attr("border"):
-            del soup["border"]
-
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
         if strong.find_all("image"):
@@ -307,6 +291,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             # If it's still a span element by the time we get here
             # then just change it to a ph element with no output class
             span.name = "ph"
+            del span["align"]
             # span may be used to position image. remove style
             if span.has_attr("style"):
                 if "absolute" in span["style"]:
@@ -367,6 +352,91 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
 def processLinkedPage(href):
     print(f"%% TODO: Process linked page: {href}")
+
+
+def convert_html_table_to_dita_table(source_html, target_soup):
+    # Create a new DITA table element.
+    dita_table_element = target_soup.new_tag("table")
+    dita_table_element["colsep"] = "1"
+    dita_table_element["rowsep"] = "1"
+
+    max_num_columns = 0
+    for tr in source_html.find_all("tr"):
+        num_columns = len(tr.find_all(["th", "td"]))
+        if num_columns > max_num_columns:
+            max_num_columns = num_columns
+
+    # Create a new DITA tgroup element.
+    dita_tgroup_element = target_soup.new_tag("tgroup")
+    dita_tgroup_element["cols"] = max_num_columns
+
+    # Create colspec elements to represent columns.
+    for col_number in range(max_num_columns):
+        colspec_element = target_soup.new_tag("colspec")
+        colspec_element["colname"] = f"c{col_number + 1}"
+        dita_tgroup_element.append(colspec_element)
+
+    # Wrap the entire table with tbody tags.
+    dita_tbody_element = target_soup.new_tag("tbody")
+
+    # Iterate over the rows of the HTML table and add them to the DITA table.
+    for html_row_element in source_html.find_all("tr"):
+        dita_row_element = target_soup.new_tag("row")
+
+        # Iterate over the cells of the HTML row and add them to the DITA row.
+        for col_index, html_cell_element in enumerate(html_row_element.find_all(["th", "td"])):
+            dita_cell_element = target_soup.new_tag("entry")
+            # Deal with rowspans by converting them to the morerows attribute
+            if html_cell_element.has_attr("rowspan"):
+                dita_cell_element["morerows"] = int(html_cell_element["rowspan"]) - 1
+
+            # Deal with colspan by giving the column names to span over
+            if html_cell_element.has_attr("colspan"):
+                dita_cell_element["namest"] = f"c{col_index+1}"
+                dita_cell_element["nameend"] = f"c{col_index + int(html_cell_element['colspan'])}"
+
+            # Deal with aligning by finding any alignment specifiers in any children of the cell and applying that to
+            # the whole cell
+            if html_cell_element.has_attr("align"):
+                dita_cell_element["align"] = align
+            else:
+                align = None
+                for el in html_cell_element.find_all():
+                    if el.has_attr("align"):
+                        align = el["align"]
+
+                if align:
+                    dita_cell_element["align"] = align
+
+            # Set the outputClass attribute of the DITA cell element based on the background color of the HTML cell element.
+            bgcolor = html_cell_element.get("bgcolor", "").lower()
+            if bgcolor == "#cccccc":
+                dita_cell_element["outputclass"] = "bkGray"
+            elif bgcolor == "#999999":
+                dita_cell_element["outputclass"] = "bkDarkGray"
+
+            style = html_cell_element.get("style", "").lower()
+            if style == "color: #f00":
+                dita_cell_element["outputclass"] = "colorRed"
+
+            # Convert all the children of the <td> element to DITA, one at a time
+            for child in html_cell_element.children:
+                converted_child = htmlToDITA(child, target_soup, "topic")
+                dita_cell_element.append(converted_child)
+
+            # Add the DITA cell element to the DITA row element.
+            dita_row_element.append(dita_cell_element)
+
+        # Add the DITA row element to the DITA tbody.
+        dita_tbody_element.append(dita_row_element)
+
+    # Add the DITA tbody to the DITA tgroup.
+    dita_tgroup_element.append(dita_tbody_element)
+
+    # Add the DITA tgroup to the DITA table.
+    dita_table_element.append(dita_tgroup_element)
+
+    return dita_table_element
 
 
 if __name__ == "__main__":

@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="test-id">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<table colsep="1" rowsep="1">
+				<tgroup cols="4">
+					<colspec colname="c1"/>
+					<colspec colname="c2"/>
+					<colspec colname="c3"/>
+					<colspec colname="c4"/>
+					<tbody>
+						<row>
+							<entry nameend="c4" namest="c1" outputclass="bkDarkGray">
+								<b>Unit_DAF</b>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<b>Cruise Plant</b>
+							</entry>
+							<entry>4 * PR32 Diesel Engines</entry>
+							<entry>
+								<b>Shaft x Blade</b>
+							</entry>
+							<entry>2 * 4 (GRR)</entry>
+						</row>
+						<row>
+							<entry morerows="1" outputclass="bkGray">
+								<b>Boost Plant</b>
+							</entry>
+							<entry morerows="1">None</entry>
+							<entry outputclass="bkGray">
+								<b>Range</b>
+							</entry>
+							<entry>140nm @ 12kts</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<b>Max Speed</b>
+							</entry>
+							<entry>40 kts</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<b>Reduction Ratio</b>
+							</entry>
+							<entry>412.8:1</entry>
+							<entry outputclass="bkGray">
+								<b>Av TPK</b>
+							</entry>
+							<entry>~14</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<b>Max TRPM</b>
+							</entry>
+							<entry>1400</entry>
+							<entry outputclass="bkGray">
+								<b>Max SRPM</b>
+							</entry>
+							<entry>0-1600</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+	</refbody>
+</reference>
