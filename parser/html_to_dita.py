@@ -1,10 +1,11 @@
 import copy
+import logging
 import os
 from bs4 import BeautifulSoup
 import bs4
 from pathlib import Path
 import cssutils
-
+import re
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
 
 
@@ -348,17 +349,40 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     for a in soup.find_all("em"):
         a.name = "i"
 
-    # 15. (temporarily) drop image tables
+    # 15. Process imagemaps
     for mmap in soup.find_all("map"):
-        para = dita_soup.new_tag("b")
-        para.string = f"[MAP PLACEHOLDER] - {mmap.name}"
-        para["outputclass"] = "placeholder"
-        mmap.replace_with(para)
-    # while we are not (yet) processing image maps, delete the attribute
-    for image in soup.find_all("image"):
-        if image.has_attr("usemap"):
-            del image["usemap"]
+        # Find associated image
+        image_tag = soup.find_all(
+            "image",
+            usemap=re.compile(f'#{mmap["name"]}', re.IGNORECASE),
+        )
+        if len(image_tag) != 1:
+            logging.warning(f"Cannot find image tag to match map element with ID {mmap['name']}")
+            continue
+        image_filename = image_tag[0]["href"]
+        image_tag[0].decompose()
 
+        dita_imagemap = dita_soup.new_tag("imagemap")
+        dita_image = dita_soup.new_tag("image")
+        dita_image["href"] = sanitise_filename(image_filename)
+        dita_imagemap.append(dita_image)
+        for area in mmap.find_all("area"):
+            dita_shape = dita_soup.new_tag("shape")
+            dita_shape.string = area["shape"]
+
+            dita_coords = dita_soup.new_tag("coords")
+            dita_coords.string = area["coords"]
+
+            dita_xref = dita_soup.new_tag("xref")
+            dita_xref["href"], dita_xref["format"] = convert_html_href_to_dita_href(area["href"])
+
+            dita_area = dita_soup.new_tag("area")
+            dita_area.append(dita_shape)
+            dita_area.append(dita_coords)
+            dita_area.append(dita_xref)
+            dita_imagemap.append(dita_area)
+
+        mmap.replace_with(dita_imagemap)
     return soup
 
 
