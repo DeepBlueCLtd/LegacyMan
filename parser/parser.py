@@ -37,6 +37,7 @@ class Parser:
         self.target_path_base = target_path_base
         self.link_tracker = defaultdict(set)
         self.generic_files_already_processed = set()
+        self.only_process_single_file = False
 
     def process_regions(self):
         # copy the world-map.gif file
@@ -46,7 +47,7 @@ class Parser:
         copy_files(source_dir, target_dir, [worldMapFile])
 
         # read the PD_1.html file
-        with open(f"{root_path}/PlatformData/PD_1.html", "r") as f:
+        with open(f"{self.root_path}/PlatformData/PD_1.html", "r") as f:
             html_string = f.read()
 
         # set Beautifulsoup objects to parse HTML and DITA files
@@ -359,7 +360,7 @@ class Parser:
 
         # Copy the category images to /dita/regions/$category_name/Content/Images folder
         category_page_link = remove_leading_slashes(category_page_link.replace(".html", ".dita"))
-        source_img_dir = f"{root_path}/{os.path.dirname(category_page_link)}/Content/Images"
+        source_img_dir = f"{self.root_path}/{os.path.dirname(category_page_link)}/Content/Images"
         target_img_dir = f"{category_path}/Content/Images"
         copy_files(source_img_dir, target_img_dir)
 
@@ -766,6 +767,8 @@ class Parser:
         for link in unique_page_links:
             if link.split(".")[-1] == "html":
                 link_path = (input_file_directory / link).resolve()
+                if self.only_process_single_file:
+                    continue
                 if link_path.exists():
                     self.process_generic_file(link_path)
                 else:
@@ -788,24 +791,27 @@ class Parser:
                 else:
                     logging.warning(f"Link {link} does not exist, from page {input_file_path}")
 
-    def run_dita_command(self):
+        return output_dita_path
+
+    def run_dita_command(self, input_path="target/dita/index.ditamap", run_validator=True):
         if "Windows" in platform.system():
             dita_executable = "dita.bat"
         else:
             dita_executable = "dita"
 
-        logging.info(
-            "Running dita validation command - output below is errors/warnings directly from the dita command"
-        )
-        validate_command = [
-            dita_executable,
-            "--format",
-            "svrl",
-            "--input",
-            "target/dita/index.ditamap",
-            "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing",
-        ]
-        subprocess.run(validate_command)
+        if run_validator:
+            logging.info(
+                "Running dita validation command - output below is errors/warnings directly from the dita command"
+            )
+            validate_command = [
+                dita_executable,
+                "--format",
+                "svrl",
+                "--input",
+                str(input_path),
+                "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing",
+            ]
+            subprocess.run(validate_command)
 
         logging.info(
             "Running dita publish command - output below is errors/warnings directly from the dita command"
@@ -815,7 +821,7 @@ class Parser:
         publish_command = [
             dita_executable,
             "-i",
-            "./target/dita/index.ditamap",
+            str(input_path),
             "-f",
             "html5",
             "-o",
