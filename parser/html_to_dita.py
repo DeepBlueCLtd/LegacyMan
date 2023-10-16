@@ -61,6 +61,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # unchanged
     if type(soup_in) is bs4.NavigableString:
         return soup_in.get_text()
+    elif type(soup_in) is bs4.Comment:
+        return None
 
     # TODO: take clone of soup before we process it, since other high-level processing may be applied to the original
     # HTML content, which could rely on it not being transformed.
@@ -183,6 +185,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             # check it doesn't contain an image
             if pp.find("image"):
                 pp.unwrap()
+            if pp.find("table"):
+                pp.unwrap()
             else:
                 # check it's not a p that we have generated earlier
                 if not pp.has_attr("outputclass"):
@@ -294,8 +298,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             del span["align"]
             # span may be used to position image. remove style
             if span.has_attr("style"):
-                if "absolute" in span["style"]:
-                    del span["style"]
+                del span["style"]
 
     for strong in soup.find_all(
         "b", recursive=True
@@ -306,7 +309,16 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     strong["outputclass"] = "red"
                 elif "#00F" in strong["style"]:
                     strong["outputclass"] = "blue"
-                del strong["style"]
+            del strong["style"]
+
+    if soup.name == "b":
+        if soup.has_attr("style"):
+            if "color:" in soup["style"]:
+                if "#F00" in soup["style"]:
+                    soup["outputclass"] = "red"
+                elif "#00F" in soup["style"]:
+                    soup["outputclass"] = "blue"
+            del soup["style"]
 
     # 11. Put loose text into a paragraph
     if wrap_strings:
@@ -392,13 +404,17 @@ def convert_html_table_to_dita_table(source_html, target_soup):
 
             # Deal with colspan by giving the column names to span over
             if html_cell_element.has_attr("colspan"):
+                if int(html_cell_element["colspan"]) > max_num_columns:
+                    colspan = max_num_columns
+                else:
+                    colspan = int(html_cell_element["colspan"])
                 dita_cell_element["namest"] = f"c{col_index+1}"
-                dita_cell_element["nameend"] = f"c{col_index + int(html_cell_element['colspan'])}"
+                dita_cell_element["nameend"] = f"c{col_index + colspan}"
 
             # Deal with aligning by finding any alignment specifiers in any children of the cell and applying that to
             # the whole cell
             if html_cell_element.has_attr("align"):
-                dita_cell_element["align"] = align
+                dita_cell_element["align"] = html_cell_element["align"]
             else:
                 align = None
                 for el in html_cell_element.find_all():
@@ -422,7 +438,8 @@ def convert_html_table_to_dita_table(source_html, target_soup):
             # Convert all the children of the <td> element to DITA, one at a time
             for child in html_cell_element.children:
                 converted_child = htmlToDITA(child, target_soup, "topic")
-                dita_cell_element.append(converted_child)
+                if converted_child:
+                    dita_cell_element.append(converted_child)
 
             # Add the DITA cell element to the DITA row element.
             dita_row_element.append(dita_cell_element)
