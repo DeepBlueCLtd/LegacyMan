@@ -23,7 +23,7 @@ def copy_files(source_dir, target_dir, file_names=None, recursive=True):
     if file_names:
         recursive = False
 
-    target_dir = sanitise_filename(target_dir)
+    target_dir = sanitise_filename(target_dir, directory=True)
 
     # create the target dir if it doesn't exist
     if not os.path.exists(target_dir):
@@ -202,7 +202,7 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
     return set(list(pages_to_process))
 
 
-def sanitise_filename(filename, remove_extension=False):
+def sanitise_filename(filename, remove_extension=False, directory=False):
     filename = str(filename).replace(" ", "_").replace("&", "and").replace("(", "").replace(")", "")
     p = Path(filename)
     basename = str(p.name)
@@ -212,12 +212,13 @@ def sanitise_filename(filename, remove_extension=False):
     if basename[0].isdigit():
         basename = "_" + basename
 
-    if remove_extension:
-        basename = basename.split(".")[0]
-    else:
-        # Make the extension lower case
-        path_obj = Path(basename)
-        basename = str(path_obj.with_suffix(path_obj.suffix.lower()))
+    if not directory:
+        if remove_extension:
+            basename = basename.split(".")[0]
+        else:
+            # Make the extension lower case
+            path_obj = Path(basename)
+            basename = str(path_obj.with_suffix(path_obj.suffix.lower()))
 
     new_full_path = str(p.with_name(basename))
     new_full_path = new_full_path.replace("\\", "/")

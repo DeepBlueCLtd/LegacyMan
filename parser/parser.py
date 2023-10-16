@@ -94,7 +94,9 @@ class Parser:
             country = area["alt"]
 
             if link.startswith("../"):
-                country_name = sanitise_filename(os.path.dirname(remove_leading_slashes(link)))
+                country_name = sanitise_filename(
+                    os.path.dirname(remove_leading_slashes(link)), directory=True
+                )
                 country_path = self.process_ns_countries(
                     country, country_name, remove_leading_slashes(link)
                 )
@@ -284,7 +286,7 @@ class Parser:
         dita_image["alt"] = "flag"
 
         # create folder for category pages
-        category_path = f"target/dita/regions/{sanitise_filename(category)}"
+        category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
         # Read the parent <table> element
@@ -692,7 +694,9 @@ class Parser:
         input_file_directory = input_file_path.parent
 
         relative_input_file_directory = self.make_relative_to_data_dir(input_file_directory)
-        target_path = self.target_path_base / sanitise_filename(relative_input_file_directory)
+        target_path = self.target_path_base / sanitise_filename(
+            relative_input_file_directory, directory=True
+        )
 
         output_dita_path = target_path / sanitise_filename(
             input_file_path.with_suffix(".dita").name
