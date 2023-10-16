@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="test-id">
+	<title>Test Title</title>
+	<refbody>
+		<section>
+			<table colsep="1" rowsep="1">
+				<tgroup cols="6">
+					<colspec colname="c1"/>
+					<colspec colname="c2"/>
+					<colspec colname="c3"/>
+					<colspec colname="c4"/>
+					<colspec colname="c5"/>
+					<colspec colname="c6"/>
+					<tbody>
+						<row>
+							<entry outputclass="bkDarkGray">Drive</entry>
+							<entry outputclass="bkDarkGray">Mode</entry>
+							<entry outputclass="bkDarkGray">Shaft x Blade</entry>
+							<entry outputclass="bkDarkGray">R:R</entry>
+							<entry outputclass="bkDarkGray">Max Speed (Guide)</entry>
+							<entry outputclass="bkDarkGray">Av TPK (Guide)</entry>
+						</row>
+						<row>
+							<entry>4 Diesel</entry>
+							<entry>PTR</entry>
+							<entry>2 * 4 (GRR)</entry>
+							<entry>412.8:1</entry>
+							<entry>40 kts</entry>
+							<entry>~14</entry>
+						</row>
+						<row>
+							<entry nameend="c6" namest="c1">CAUTION THIS SITE WAS MOTHBALLED IN MARCH 2020</entry>
+						</row>
+						<row>
+							<entry nameend="c6" namest="c1" outputclass="bkGray">
+								<b>Commonly Detected Sources</b>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">Source</entry>
+							<entry outputclass="bkGray">Ratio/Freq</entry>
+							<entry nameend="c4" namest="c3" outputclass="bkGray">Harmonics</entry>
+							<entry nameend="c5" namest="c4" outputclass="bkGray">Remarks</entry>
+						</row>
+						<row>
+							<entry nameend="c6" namest="c1" outputclass="bkGray">Propulsion Related</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<xref format="dita" href="./BR_Power_Units.dita">SR</xref>
+							</entry>
+							<entry>S12</entry>
+							<entry nameend="c4" namest="c3">H1-4</entry>
+							<entry nameend="c5" namest="c4">
+								Discrete. Doublets common
+								<ul>
+									<li>Total control</li>
+									<li>Intermediate control</li>
+									<li>Not under control</li>
+								</ul>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">BR</entry>
+							<entry>S5</entry>
+							<entry nameend="c4" namest="c3">H1</entry>
+							<entry align="left" nameend="c5" namest="c4">
+								<p>Discrete. Doublets common</p>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<xref format="dita" href="./BR_Power_Units.dita#BR_Power_Units/engineering">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
+							<entry nameend="c5" namest="c4">
+								 The quick brown fox does something similar 
+								<xref format="dita" href="./Britain_Pics.dita#Britain_Pics/number4">Tool screenshot a</xref>
+								, 
+								<xref format="dita" href="./Britain_Pics.dita#Britain_Pics/number3">Tool screenshot b</xref>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<p outputclass="bold">
+									<image href="Content/Images/yellow.jpg"/>
+									Unk Banjo
+								</p>
+							</entry>
+							<entry>25 &amp; CSR</entry>
+							<entry nameend="c4" namest="c3">H1</entry>
+							<entry nameend="c5" namest="c4">
+								CBR 34 with 
+								<b outputclass="blue">*</b>
+								P-Gears
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<xref format="dita" href="#test-topic/bba_background">Unk BBA</xref>
+							</entry>
+							<entry>135 &amp; CSR</entry>
+							<entry nameend="c4" namest="c3">H1 &amp; 2</entry>
+							<entry nameend="c5" namest="c4">
+								CBR 54334. And some
+								<ph style="font-weight: bold">
+									<b>in
+      bold</b>
+									.
+								</ph>
+							</entry>
+						</row>
+						<row>
+							<entry outputclass="bkGray">
+								<xref format="dita" href="./BR_Power_Units.dita#BR_Power_Units/engineering">Cat b Engine R</xref>
+							</entry>
+							<entry>2-100.4, 112, 132</entry>
+							<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
+							<entry nameend="c5" namest="c4">
+								 The quick brown fox does something similar 
+								<xref format="dita" href="./Britain_Pics.dita#Britain_Pics/number4">Tool screenshot a</xref>
+								, 
+								<xref format="dita" href="./Britain_Pics.dita#Britain_Pics/number3">Tool screenshot b</xref>
+							</entry>
+						</row>
+						<row>
+							<entry morerows="1" outputclass="bkGray">Unk BBA</entry>
+							<entry>135 &amp; CSR (high)</entry>
+							<entry morerows="1" nameend="c4" namest="c3">H1 &amp; 2</entry>
+							<entry morerows="1" nameend="c5" namest="c4">CBR 54334</entry>
+						</row>
+						<row>
+							<entry>124 &amp; CSR (low)</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+	</refbody>
+</reference>

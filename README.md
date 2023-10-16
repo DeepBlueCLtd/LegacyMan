@@ -74,6 +74,20 @@ python parser/parser.py INPUT_FOLDER LOGGING_LEVEL
 - `INPUT_FOLDER` is the folder containing the input data (`data` usually)
 - `LOGGING LEVEL` is a string giving the level of logs to display. This defaults to `info` which displays informational messages, but can be set to `warning` to just display warnings, or `debug` to display lots of debugging information.
 
+There is a separate script to run the parser for a single file. Run:
+
+```
+python parser/parse_single_file.py INPUT_FOLDER SINGLE_FILE LOGGING_LEVEL
+```
+
+The only extra parameter is the `SINGLE_FILE` which should be the path to the individual file you want to process. For example:
+
+```
+python parser/parse_single_file.py data /home/LegacyMan/data/Britain_Cmplx/Phase_F.html debug
+```
+
+will process `Phase_F.html`, with debug logging
+
 ## Running LegacyMan parser program (against REAL data)
 
 Apply the version controlled (checked into Git) **HTML discrepancy corrections** available at client site.
