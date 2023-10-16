@@ -420,6 +420,7 @@ def convert_html_table_to_dita_table(source_html, target_soup):
         dita_row_element = target_soup.new_tag("row")
 
         # Iterate over the cells of the HTML row and add them to the DITA row.
+        count_of_cols_seen_so_far = 0
         for col_index, html_cell_element in enumerate(html_row_element.find_all(["th", "td"])):
             dita_cell_element = target_soup.new_tag("entry")
             # Deal with rowspans by converting them to the morerows attribute
@@ -428,12 +429,25 @@ def convert_html_table_to_dita_table(source_html, target_soup):
 
             # Deal with colspan by giving the column names to span over
             if html_cell_element.has_attr("colspan"):
-                if int(html_cell_element["colspan"]) > max_num_columns:
+                colspan = int(html_cell_element["colspan"])
+                # If this colspan itself is longer than the number of cols in the table
+                # then it is obviously wrong - set it to the number of cols in the table
+                # (this could apply for a column that is merged across the whole width of the table,
+                # but the original HTML had a higher colspan number than makes sense)
+                if colspan > max_num_columns:
                     colspan = max_num_columns
+                # If the length of this colspan plus the number of cols seen so far exceeds
+                # the number of cols in the table then reduce this colspan to the maximum it is allowed to be
+                elif (colspan + count_of_cols_seen_so_far) > max_num_columns:
+                    colspan = max_num_columns - count_of_cols_seen_so_far
+                # Otherwise just use the colspan as-is
                 else:
                     colspan = int(html_cell_element["colspan"])
                 dita_cell_element["namest"] = f"c{col_index+1}"
                 dita_cell_element["nameend"] = f"c{col_index + colspan}"
+                count_of_cols_seen_so_far += colspan
+            else:
+                count_of_cols_seen_so_far += 1
 
             # Deal with aligning by finding any alignment specifiers in any children of the cell and applying that to
             # the whole cell
