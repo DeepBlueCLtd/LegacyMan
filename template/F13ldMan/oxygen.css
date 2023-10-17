@@ -36,15 +36,15 @@
     font-size: 1.5em;
 }
 
-.red {
+.colorRed {
     color: #F00;
 }
 
-.blue {
+.colorBlue {
     color: #00F;
 }
 
-.grey {
+.colorGray {
     color: #777;
 }
 
@@ -52,11 +52,11 @@
     background-color: #FF0;
 }
 
-.lightGray {
+.bkLightGray {
     background-color: #CCC;    
 }
 
-.darkGray {
+.bkDarkGray {
     background-color: #999;    
 }
 
