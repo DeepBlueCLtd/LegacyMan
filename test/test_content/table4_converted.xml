@@ -20,16 +20,21 @@
 							<entry nameend="c7" namest="c1">Overview of systems in France</entry>
 						</row>
 						<row>
-							<entry>Class</entry>
-							<entry>Designator</entry>
-							<entry>Propulsion</entry>
-							<entry>Shaft x Blade</entry>
-							<entry>Max Speed</entry>
-							<entry>Av TPK</entry>
-							<entry>Reduction Ratio</entry>
+							<entry>c1</entry>
+							<entry>c2</entry>
+							<entry>c3</entry>
+							<entry>c4</entry>
+							<entry>c5</entry>
+							<entry>c6</entry>
+							<entry>c7</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="c7" namest="c1" outputclass="bkGray">
+							<entry nameend="c3" namest="c1">c1-c3</entry>
+							<entry nameend="c6" namest="c4">c4-c6</entry>
+							<entry>c7</entry>
+						</row>
+						<row>
+							<entry align="center" nameend="c7" namest="c1" outputclass="bkLightGray">
 								<ph>
 									<b>Composite</b>
 								</ph>
@@ -56,7 +61,7 @@
 							<entry>BWW</entry>
 						</row>
 						<row>
-							<entry align="center" nameend="c7" namest="c1" outputclass="bkGray">
+							<entry align="center" nameend="c7" namest="c1" outputclass="bkLightGray">
 								<ph>
 									<b>Legacy / Traditional</b>
 								</ph>

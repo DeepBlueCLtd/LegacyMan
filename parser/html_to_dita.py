@@ -443,8 +443,8 @@ def convert_html_table_to_dita_table(source_html, target_soup):
                 # Otherwise just use the colspan as-is
                 else:
                     colspan = int(html_cell_element["colspan"])
-                dita_cell_element["namest"] = f"c{col_index+1}"
-                dita_cell_element["nameend"] = f"c{col_index + colspan}"
+                dita_cell_element["namest"] = f"c{count_of_cols_seen_so_far+1}"
+                dita_cell_element["nameend"] = f"c{count_of_cols_seen_so_far + colspan}"
                 count_of_cols_seen_so_far += colspan
             else:
                 count_of_cols_seen_so_far += 1
