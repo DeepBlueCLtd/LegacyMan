@@ -278,11 +278,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             if "color:" in span["style"]:
                 span.name = "ph"
                 if "#F00" in span["style"]:
-                    span["outputclass"] = "red"
+                    span["outputclass"] = "colorRed"
                 elif "#00F" in span["style"]:
-                    span["outputclass"] = "blue"
+                    span["outputclass"] = "colorBlue"
                 elif "#777" in span["style"]:
-                    span["outputclass"] = "gray"
+                    span["outputclass"] = "colorGray"
                 del span["style"]
             elif "font-style: italic" in span["style"]:
                 span.name = "i"
@@ -443,8 +443,8 @@ def convert_html_table_to_dita_table(source_html, target_soup):
                 # Otherwise just use the colspan as-is
                 else:
                     colspan = int(html_cell_element["colspan"])
-                dita_cell_element["namest"] = f"c{col_index+1}"
-                dita_cell_element["nameend"] = f"c{col_index + colspan}"
+                dita_cell_element["namest"] = f"c{count_of_cols_seen_so_far+1}"
+                dita_cell_element["nameend"] = f"c{count_of_cols_seen_so_far + colspan}"
                 count_of_cols_seen_so_far += colspan
             else:
                 count_of_cols_seen_so_far += 1
@@ -465,7 +465,7 @@ def convert_html_table_to_dita_table(source_html, target_soup):
             # Set the outputClass attribute of the DITA cell element based on the background color of the HTML cell element.
             bgcolor = html_cell_element.get("bgcolor", "").lower()
             if bgcolor == "#cccccc":
-                dita_cell_element["outputclass"] = "bkGray"
+                dita_cell_element["outputclass"] = "bkLightGray"
             elif bgcolor == "#999999":
                 dita_cell_element["outputclass"] = "bkDarkGray"
 

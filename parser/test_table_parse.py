@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from html_to_dita import htmlToDITA
 from parser_utils import write_prettified_xml
 
-with open("/home/LegacyMan/test/test_content/table3.html") as f:
+with open("/home/LegacyMan/test/test_content/table4.html") as f:
     contents = f.read()
 
 html_soup = BeautifulSoup(contents, "html.parser")
@@ -25,4 +25,4 @@ ref_tag.extend([title_tag, refbody_tag])
 
 dita_output = htmlToDITA(html_soup, dita_soup, "test-topic")
 section_tag.append(dita_output)
-write_prettified_xml(dita_soup, "/home/LegacyMan/test/test_content/table3_converted.xml")
+write_prettified_xml(dita_soup, "/home/LegacyMan/test/test_content/table4_converted.xml")

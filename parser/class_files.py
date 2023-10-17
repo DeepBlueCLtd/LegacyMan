@@ -171,9 +171,9 @@ def parse_summary_and_signatures(tag, target, dita_soup, options):
 
             if dita_entry.has_attr("style"):
                 if "F00" in dita_entry["style"]:
-                    dita_entry["outputclass"] = "red"
+                    dita_entry["outputclass"] = "colorRed"
                 if "00F" in dita_entry["style"]:
-                    dita_entry["outputclass"] = "blue"
+                    dita_entry["outputclass"] = "colorBlue"
                 del dita_entry["style"]
 
             # support cell shading

@@ -94,7 +94,9 @@ class Parser:
             country = area["alt"]
 
             if link.startswith("../"):
-                country_name = sanitise_filename(os.path.dirname(remove_leading_slashes(link)))
+                country_name = sanitise_filename(
+                    os.path.dirname(remove_leading_slashes(link)), directory=True
+                )
                 country_path = self.process_ns_countries(
                     country, country_name, remove_leading_slashes(link)
                 )
@@ -284,7 +286,7 @@ class Parser:
         dita_image["alt"] = "flag"
 
         # create folder for category pages
-        category_path = f"target/dita/regions/{sanitise_filename(category)}"
+        category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
         # Read the parent <table> element
@@ -650,10 +652,14 @@ class Parser:
         related_links = dita_soup.new_tag("related-links", id="related-pages")
         for link_text, link_href in quicklinks.items():
             link = dita_soup.new_tag("link")
-            new_href, extension = convert_html_href_to_dita_href(link_href)
-            link["href"] = new_href
-            if extension != "dita":
-                link["format"] = extension
+            link["href"], extension = convert_html_href_to_dita_href(link_href)
+            if link["href"].startswith("#"):
+                # It's an internal link to somewhere else on the page
+                link["href"] = f"#{topic_id}/{link['href'][1:]}"
+                link["format"] = "dita"
+            else:
+                if extension != "dita":
+                    link["format"] = extension
             linktext = dita_soup.new_tag("linktext")
             linktext.string = link_text
             link.append(linktext)
@@ -692,7 +698,9 @@ class Parser:
         input_file_directory = input_file_path.parent
 
         relative_input_file_directory = self.make_relative_to_data_dir(input_file_directory)
-        target_path = self.target_path_base / sanitise_filename(relative_input_file_directory)
+        target_path = self.target_path_base / sanitise_filename(
+            relative_input_file_directory, directory=True
+        )
 
         output_dita_path = target_path / sanitise_filename(
             input_file_path.with_suffix(".dita").name
@@ -799,7 +807,9 @@ class Parser:
         else:
             dita_executable = "dita"
 
+        validator_time = 0
         if run_validator:
+            time1 = time.time()
             logging.info(
                 "Running dita validation command - output below is errors/warnings directly from the dita command"
             )
@@ -812,11 +822,14 @@ class Parser:
                 "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing",
             ]
             subprocess.run(validate_command)
+            time2 = time.time()
+            validator_time = time2 - time1
+            logging.info(f"DITA validator took {validator_time:.1f} seconds")
 
         logging.info(
             "Running dita publish command - output below is errors/warnings directly from the dita command"
         )
-
+        time1 = time.time()
         # Run DITA-OT command to transform the index.ditamap file to html
         publish_command = [
             dita_executable,
@@ -828,6 +841,11 @@ class Parser:
             "./target/html",
         ]
         subprocess.run(publish_command)
+        time2 = time.time()
+        publish_time = time2 - time1
+        logging.info(f"DITA publish took {publish_time:.1f} seconds")
+
+        return validator_time, publish_time
 
     def run(self):
         time1 = time.time()
@@ -835,23 +853,23 @@ class Parser:
         self.process_regions()
         time2 = time.time()
         logging.info("Done run 1")
-        logging.info(f"Run 1 took {time2-time1:.2} seconds")
+        logging.info(f"Run 1 took {time2-time1:.1f} seconds")
         self.write_generic_files = True
         self.generic_files_already_processed = set()
         self.process_regions()
         time3 = time.time()
         logging.info("Done run 2")
-        logging.info(f"Run 2 took {time3-time2:.2} seconds")
+        logging.info(f"Run 2 took {time3-time2:.1f} seconds")
         logging.debug("Dictionary of links:")
         logging.debug(pformat(self.link_tracker))
-        self.run_dita_command()
+        validator_time, publish_time = self.run_dita_command()
         time4 = time.time()
-        logging.info(f"Running DITA to HTML conversion took {time4-time3:.2} seconds")
         logging.info("Timings:")
-        logging.info(f"Run 1: {time2-time1:.2} seconds")
-        logging.info(f"Run 2: {time3-time2:.2} seconds")
-        logging.info(f"DITA conversion: {time4-time3:.2} seconds")
-        logging.info(f"Total: {time4-time1:.2} seconds")
+        logging.info(f"Run 1: {time2-time1:.1f} seconds")
+        logging.info(f"Run 2: {time3-time2:.1f} seconds")
+        logging.info(f"DITA validator: {validator_time:.1f} seconds")
+        logging.info(f"DITA publish: {publish_time:.1f} seconds")
+        logging.info(f"Total: {time4-time1:.1f} seconds")
 
 
 def parse_from_root(root_path, target_path):
