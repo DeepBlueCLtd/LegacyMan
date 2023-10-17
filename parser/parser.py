@@ -652,10 +652,14 @@ class Parser:
         related_links = dita_soup.new_tag("related-links", id="related-pages")
         for link_text, link_href in quicklinks.items():
             link = dita_soup.new_tag("link")
-            new_href, extension = convert_html_href_to_dita_href(link_href)
-            link["href"] = new_href
-            if extension != "dita":
-                link["format"] = extension
+            link["href"], extension = convert_html_href_to_dita_href(link_href)
+            if link["href"].startswith("#"):
+                # It's an internal link to somewhere else on the page
+                link["href"] = f"#{topic_id}/{link['href'][1:]}"
+                link["format"] = "dita"
+            else:
+                if extension != "dita":
+                    link["format"] = extension
             linktext = dita_soup.new_tag("linktext")
             linktext.string = link_text
             link.append(linktext)
