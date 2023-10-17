@@ -61,7 +61,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # If this is just a string of content (ie. not a set of tags) then just pass the text through
     # unchanged
     if type(soup_in) is bs4.NavigableString:
-        return soup_in.get_text()
+        return soup_in
     elif type(soup_in) is bs4.Comment:
         return None
 
