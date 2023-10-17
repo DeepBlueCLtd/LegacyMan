@@ -465,7 +465,7 @@ def convert_html_table_to_dita_table(source_html, target_soup):
             # Set the outputClass attribute of the DITA cell element based on the background color of the HTML cell element.
             bgcolor = html_cell_element.get("bgcolor", "").lower()
             if bgcolor == "#cccccc":
-                dita_cell_element["outputclass"] = "bkGray"
+                dita_cell_element["outputclass"] = "bkLightGray"
             elif bgcolor == "#999999":
                 dita_cell_element["outputclass"] = "bkDarkGray"
 
