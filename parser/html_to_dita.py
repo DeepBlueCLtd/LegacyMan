@@ -396,6 +396,9 @@ def convert_html_table_to_dita_table(source_html, target_soup):
     dita_table_element["colsep"] = "1"
     dita_table_element["rowsep"] = "1"
 
+    if source_html.has_attr("border") and source_html["border"] == "1":
+        dita_table_element["frame"] = "all"
+
     max_num_columns = 0
     for tr in source_html.find_all("tr"):
         num_columns = len(tr.find_all(["th", "td"]))
