@@ -216,6 +216,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             else:
                 a["format"] = "dita"
         del a["target"]
+        if a.has_attr("style") and "font-weight: bold" in a["style"]:
+            bold = dita_soup.new_tag("b")
+            a.wrap(bold)
+            del a["style"]
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
