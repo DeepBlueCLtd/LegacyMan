@@ -57,19 +57,22 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     replace the HTML element with a fresh one - only bringing over the relevant fields.
 
     """
+    # It is ESSENTIAL that this is the first line of code in this function.
+    # DO NOT move it down or put anything above it
+    # It needs to do the copy straight away, so that nothing it does affects the original
+    soup = copy.copy(soup_in)
 
     # If this is just a string of content (ie. not a set of tags) then just pass the text through
     # unchanged
-    if type(soup_in) is bs4.NavigableString:
-        return soup_in.get_text()
-    elif type(soup_in) is bs4.Comment:
+    if type(soup) is bs4.NavigableString:
+        return soup
+    elif type(soup) is bs4.Comment:
         return None
 
     # TODO: take clone of soup before we process it, since other high-level processing may be applied to the original
     # HTML content, which could rely on it not being transformed.
     # It remains a `TODO:` - since in the last time I checked, I don't think we're doing an actual clone,
     # I think we're still manipulating the original soup
-    soup = copy.copy(soup_in)
 
     # 0. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
@@ -216,6 +219,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             else:
                 a["format"] = "dita"
         del a["target"]
+        if a.has_attr("style") and "font-weight: bold" in a["style"]:
+            bold = dita_soup.new_tag("b")
+            a.wrap(bold)
+            del a["style"]
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
@@ -476,12 +483,12 @@ def convert_html_table_to_dita_table(source_html, target_soup):
             if style == "color: #f00":
                 dita_cell_element["outputclass"] = "colorRed"
 
+            # dita_cell_element = htmlToDITA(html_cell_element, target_soup, "topic")
             # Convert all the children of the <td> element to DITA, one at a time
-            for child in html_cell_element.children:
+            for child in html_cell_element.contents:
                 converted_child = htmlToDITA(child, target_soup, "topic")
-                if converted_child:
+                if converted_child is not None:
                     dita_cell_element.append(converted_child)
-
             # Add the DITA cell element to the DITA row element.
             dita_row_element.append(dita_cell_element)
 
