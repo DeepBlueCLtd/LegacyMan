@@ -157,16 +157,20 @@ class Parser:
                     # Empty link
                     continue
                 path = href.replace("../", "")
+                country_name = sanitise_filename(
+                    os.path.dirname(remove_leading_slashes(str(href))), directory=True
+                )
                 # Work out whether it's a Non-Standard country or a Standard Country
                 # by looking for the Image Links Table
                 if does_image_links_table_exist(self.root_path / path):
-                    country_name = sanitise_filename(
-                        os.path.dirname(remove_leading_slashes(str(href))), directory=True
-                    )
                     self.process_ns_countries("Wales1", country_name, href.replace("../", ""))
                 else:
+                    country_flag_link = ""
                     self.process_category_pages(
-                        href, remove_leading_slashes(os.path.dirname(href)), "", ""
+                        href,
+                        remove_leading_slashes(os.path.dirname(href)),
+                        country_name,
+                        country_flag_link,
                     )
 
         dita_topic = dita_soup.new_tag("topic")
@@ -311,11 +315,18 @@ class Parser:
         country_name,
         country_flag_link,
     ):
+        print(
+            f"Called process_category_pages with category_page_link = {category_page_link}, country_flag_link = {country_flag_link}"
+        )
         # read the category page
         with open(f"{self.root_path}/{remove_leading_slashes(category_page_link)}", "r") as f:
             category_page_html = f.read()
 
         soup = BeautifulSoup(category_page_html, "html.parser")
+
+        if country_flag_link == "" or country_flag_link is None:
+            title = soup.find("h2")
+            country_flag_link = title.find_next("img")["src"]
 
         # Find a <td> with colspan=7, this indicates that the page is a category page
         td = soup.find("td", {"colspan": "7"})
