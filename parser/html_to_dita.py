@@ -382,6 +382,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
             dita_xref = dita_soup.new_tag("xref")
             dita_xref["href"], dita_xref["format"] = convert_html_href_to_dita_href(area["href"])
+            if area.has_attr("alt"):
+                dita_xref.string = area["alt"]
 
             dita_area = dita_soup.new_tag("area")
             dita_area.append(dita_shape)
