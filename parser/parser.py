@@ -191,14 +191,13 @@ class Parser:
 
         output_path = Path(self.make_relative_to_data_dir(Path(link))).with_suffix(".dita")
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
-        print(f"Output to {output_path}")
 
         return str(output_path)
 
     def process_ns_countries(self, country, country_name, link):
         """Processes a non-standard country - ie. one that has an extra page at the start with links to various categories,
         and then those category pages have the actual information"""
-        print(f"Called process_ns_countries with args {country}, {country_name}, {link}")
+        logging.debug(f"Called process_ns_countries with args {country}, {country_name}, {link}")
         # read the html file
         with open(f"{self.root_path}/{link}", "r") as f:
             html_string = f.read()
@@ -302,10 +301,7 @@ class Parser:
         copy_files(source_dir, f"{country_path}/Content/Images")
 
         output_path = str(Path(link).with_suffix(".dita"))
-        # write_prettified_xml(dita_soup, f"{country_path}/{country_name}.dita")
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
-        print(f"Wrote DITA to {output_path}")
-        # return f"{country_name}/{country_name}.dita"
         return output_path
 
     def process_category_pages(
@@ -315,7 +311,7 @@ class Parser:
         country_name,
         country_flag_link,
     ):
-        print(
+        logging.debug(
             f"Called process_category_pages with category_page_link = {category_page_link}, country_flag_link = {country_flag_link}"
         )
         # read the category page
