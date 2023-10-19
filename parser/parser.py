@@ -899,7 +899,7 @@ class Parser:
                 "svrl",
                 "--input",
                 str(input_path),
-                "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing",
+                "--args.validate.ignore.rules=href-not-lower-case,running-text-lorem-ipsum,id-not-lower-case,section-id-missing,fig-title-missing,file-not-lower-case",
             ]
             subprocess.run(validate_command)
             time2 = time.time()
