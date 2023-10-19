@@ -59,6 +59,7 @@ def remove_leading_slashes(path):
 
 def write_prettified_xml(dita_soup, target_file_path):
     prettified_code = prettify_xml(str(dita_soup))
+    # prettified_code = str(dita_soup)
 
     target_file_path = Path(target_file_path)
     target_file_path.parent.mkdir(parents=True, exist_ok=True)
@@ -200,6 +201,24 @@ def add_if_not_a_child_or_parent_of_existing(pages_to_process, new_page):
     # This is weird - the set doesn't seem to be keeping things unique properly, so we get around it
     # by converting to a list and then back to a set. This shouldn't be needed, but seems to fix the problem
     return set(list(pages_to_process))
+
+
+def does_image_links_table_exist(path):
+    with open(path, "r") as f:
+        html_string = f.read()
+
+    # set Beautifulsoup objects to parse the HTML file
+    soup = BeautifulSoup(html_string, "html.parser")
+
+    # Parse the HTML string, parser the <map> and the <img> elements
+    img_links_table = soup.find("div", {"id": "ImageLinksTable"})
+    title = soup.find("h2")
+    country_flag = title.find_next("img")["src"]
+
+    if img_links_table is None:
+        return False
+    else:
+        return True
 
 
 def sanitise_filename(filename, remove_extension=False, directory=False):

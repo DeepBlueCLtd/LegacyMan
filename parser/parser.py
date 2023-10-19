@@ -26,6 +26,7 @@ from parser_utils import (
     sanitise_filename,
     is_button_id,
     is_skippable_div_id,
+    does_image_links_table_exist,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -101,6 +102,9 @@ class Parser:
                     country, country_name, remove_leading_slashes(link)
                 )
                 dita_xref["href"] = f"./{country_path}"
+            else:
+                sub_region_path = self.process_sub_region(self.root_path / "PlatformData" / link)
+                dita_xref["href"] = sub_region_path
 
             dita_area = dita_soup.new_tag("area")
             dita_area.append(dita_shape)
@@ -126,9 +130,71 @@ class Parser:
 
         write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
 
+    def process_std_country(self, link):
+        pass
+
+    def process_sub_region(self, link):
+        with open(link, "r") as f:
+            html_string = f.read()
+
+        # set Beautifulsoup objects to parse the HTML file
+        html_soup = BeautifulSoup(html_string, "html.parser")
+
+        dita_doctype = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
+        dita_soup = BeautifulSoup(dita_doctype, "xml")
+
+        divs_with_no_id = html_soup.find_all("div", id="")
+        table = None
+        for div in divs_with_no_id:
+            table = div.find("table")
+            if table:
+                break
+        if table:
+            a_tags = table.find_all("a")
+            for a_tag in a_tags:
+                href = a_tag["href"]
+                if href == "#":
+                    # Empty link
+                    continue
+                path = href.replace("../", "")
+                # Work out whether it's a Non-Standard country or a Standard Country
+                # by looking for the Image Links Table
+                if does_image_links_table_exist(self.root_path / path):
+                    country_name = sanitise_filename(
+                        os.path.dirname(remove_leading_slashes(str(href))), directory=True
+                    )
+                    self.process_ns_countries("Wales1", country_name, href.replace("../", ""))
+                else:
+                    self.process_category_pages(
+                        href, remove_leading_slashes(os.path.dirname(href)), "", ""
+                    )
+
+        dita_topic = dita_soup.new_tag("topic")
+        dita_topic["id"] = Path(sanitise_filename(Path(link).name, remove_extension=True))
+
+        dita_title = dita_soup.new_tag("title")
+        dita_title.string = "Regions"
+
+        dita_body = dita_soup.new_tag("body")
+
+        for div in divs_with_no_id:
+            converted_content = htmlToDITA(div, dita_soup, "test", "div")
+            dita_body.append(converted_content)
+
+        dita_topic.append(dita_title)
+        dita_topic.append(dita_body)
+        dita_soup.append(dita_topic)
+
+        output_path = Path(self.make_relative_to_data_dir(Path(link))).with_suffix(".dita")
+        write_prettified_xml(dita_soup, self.target_path_base / output_path)
+        print(f"Output to {output_path}")
+
+        return str(output_path)
+
     def process_ns_countries(self, country, country_name, link):
         """Processes a non-standard country - ie. one that has an extra page at the start with links to various categories,
         and then those category pages have the actual information"""
+        print(f"Called process_ns_countries with args {country}, {country_name}, {link}")
         # read the html file
         with open(f"{self.root_path}/{link}", "r") as f:
             html_string = f.read()
@@ -231,9 +297,12 @@ class Parser:
         source_dir = f"{self.root_path}/{country_name}/Content/Images"
         copy_files(source_dir, f"{country_path}/Content/Images")
 
-        write_prettified_xml(dita_soup, f"{country_path}/{country_name}.dita")
-
-        return f"{country_name}/{country_name}.dita"
+        output_path = str(Path(link).with_suffix(".dita"))
+        # write_prettified_xml(dita_soup, f"{country_path}/{country_name}.dita")
+        write_prettified_xml(dita_soup, self.target_path_base / output_path)
+        print(f"Wrote DITA to {output_path}")
+        # return f"{country_name}/{country_name}.dita"
+        return output_path
 
     def process_category_pages(
         self,
