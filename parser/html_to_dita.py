@@ -210,9 +210,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             continue
         a["href"], file_format = convert_html_href_to_dita_href(a["href"])
         if a["href"].startswith("#"):
-            # It's an internal link to somewhere else on the page
-            a["href"] = f"#{topic_id}/{a['href'][1:]}"
-            a["format"] = "dita"
+            if a["href"] != "#":
+                # It's an internal link to somewhere else on the page
+                a["href"] = f"#{topic_id}/{a['href'][1:]}"
+                a["format"] = "dita"
         else:
             if file_format != "html":
                 a["format"] = file_format
@@ -382,6 +383,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
             dita_xref = dita_soup.new_tag("xref")
             dita_xref["href"], dita_xref["format"] = convert_html_href_to_dita_href(area["href"])
+            if area.has_attr("alt"):
+                dita_xref.string = area["alt"]
 
             dita_area = dita_soup.new_tag("area")
             dita_area.append(dita_shape)
