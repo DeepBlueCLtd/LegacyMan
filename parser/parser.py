@@ -37,7 +37,7 @@ class Parser:
         self.root_path = root_path
         self.target_path_base = target_path_base
         self.link_tracker = defaultdict(set)
-        self.generic_files_already_processed = set()
+        self.files_already_processed = set()
         self.only_process_single_file = False
 
     def process_regions(self):
@@ -129,6 +129,7 @@ class Parser:
         os.makedirs(regions_path, exist_ok=True)
 
         write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
+        self.files_already_processed.add(f"{regions_path}/regions.dita")
 
     def process_std_country(self, link):
         pass
@@ -191,6 +192,7 @@ class Parser:
 
         output_path = Path(self.make_relative_to_data_dir(Path(link))).with_suffix(".dita")
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
+        self.files_already_processed.add(self.target_path_base / output_path)
 
         return str(output_path)
 
@@ -302,6 +304,7 @@ class Parser:
 
         output_path = str(Path(link).with_suffix(".dita"))
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
+        self.files_already_processed.add(self.target_path_base / output_path)
         return output_path
 
     def process_category_pages(
@@ -394,11 +397,7 @@ class Parser:
                         class_name = a.text
                         class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
-                        if not href.startswith("../"):
-                            # process_class_files(
-                            #     class_file_src_path, category_path, class_name, file_name
-                            # )
-                            self.process_generic_file(class_file_src_path)
+                        self.process_generic_file(class_file_src_path)
 
                         file_link = href.replace(".html", ".dita")
                         dita_xref["href"] = sanitise_filename(file_link)
@@ -444,6 +443,7 @@ class Parser:
 
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
+        self.files_already_processed.add(category_file_path)
 
     def process_generic_file_pagelayer(self, dita_soup, page, topic_id):
         # Exclude links that are in divs just for buttons, as they're not proper links they're just things that go
@@ -789,7 +789,7 @@ class Parser:
         if not (target_path / "Content").exists() and (input_file_directory / "Content").exists():
             copy_files(input_file_directory / "Content", target_path / "Content")
 
-        if output_dita_path in self.generic_files_already_processed:
+        if output_dita_path in self.files_already_processed:
             return
 
         # Parse the HTML
@@ -831,7 +831,7 @@ class Parser:
         # Keep track of which files we've processed
         # (we can't just use the existence of the file to keep track, as if we run with self.write_generic_files
         # set to false then there will no files written)
-        self.generic_files_already_processed.add(output_dita_path)
+        self.files_already_processed.add(output_dita_path)
 
         # Track all the links on this page and where they point to, so that we know which parts of pages
         # are used, so we know which to export when we run with self.write_generic_files as True
@@ -931,7 +931,7 @@ class Parser:
         logging.info("Done run 1")
         logging.info(f"Run 1 took {time2-time1:.1f} seconds")
         self.write_generic_files = True
-        self.generic_files_already_processed = set()
+        self.files_already_processed = set()
         self.process_regions()
         time3 = time.time()
         logging.info("Done run 2")
