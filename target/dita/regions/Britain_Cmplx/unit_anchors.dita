@@ -687,7 +687,7 @@ Anchor 1
 										<b>11 - 20 degs C</b>
 										  The halon drench is particularly fragile while Veniam enim eu velit tempor excepteur pariatur magna et laboris. Sit do ipsum exercitation sint occaecat. 
 										<b>Click</b>
-										<xref format="jpg" href="Content/Images/cooling_unit.jpg">
+										<xref format="dita" href="#topic/number4">
 											<b>Here</b>
 										</xref>
 										<b> for a screenshot of the diagnostic panel for this</b>
@@ -744,6 +744,23 @@ Anchor 1
 			<div id="image4">
 				<p id="number2"/>
 				<image href="Content/Images/system_layout.jpg"/>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="BottomLayer3">
+				<p id="number4"/>
+				<p outputclass="h1">ACME B234 Screen Shot of Unit Anchor</p>
+				<!-- the following image was floating within this div, but I've put it inline -->
+				<p id="image13">
+					<image href="Content/Images/oscill_c.jpg"/>
+				</p>
+				<p>Figure 1. Unit Anchors (Version Bravo) at 15 degs C</p>
+				<p>
+					1.  Figure 1, above, shows system monitoring of 
+					<b>Unit Anchors on ACME B234</b>
+					. The unit was coming out of Spring preventative maintenance and was in general good condition.  In addition to the observed harmonics Excepteur laborum incididunt eu laborum magna sit duis sint enim adipisicing excepteur. Nostrud duis et esse adipisicing dolore. Incididunt ea deserunt Lorem incididunt officia officia enim dolore.
+				</p>
 			</div>
 		</section>
 	</refbody>
