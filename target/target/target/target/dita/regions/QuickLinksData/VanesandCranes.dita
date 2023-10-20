@@ -1,0 +1,322 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="VanesandCranes">
+	<title>
+Quick Look Guide to vanes
+</title>
+	<refbody>
+		<section>
+			<title/>
+			<div id="PoleRate">
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="3">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<tbody>
+							<row>
+								<entry align="center" nameend="c3" namest="c1">Polarity Rate Formula</entry>
+							</row>
+							<row>
+								<entry morerows="1">Polarity Rate = </entry>
+								<entry>Watts/Hr - Amps/meter</entry>
+								<entry morerows="1">  * 225 </entry>
+							</row>
+							<row>
+								<entry align="center">Mean Temperature</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+			<div id="PolarityTable">
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="5">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<colspec colname="c5"/>
+						<tbody>
+							<row>
+								<entry outputclass="bkDarkGray">
+									<b>Alpha</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>0.4</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>0.6</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>0.78</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>1.2</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>2</b>
+								</entry>
+								<entry>
+									<b>12-15</b>
+								</entry>
+								<entry>
+									<b>16-17</b>
+								</entry>
+								<entry>
+									<b>18-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>4</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>10-12</b>
+								</entry>
+								<entry>
+									<b>13-15</b>
+								</entry>
+								<entry>
+									<b>16-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>6</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>8-19</b>
+								</entry>
+								<entry>
+									<b>20-25</b>
+								</entry>
+								<entry>
+									<b>26-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>8</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>8-19</b>
+								</entry>
+								<entry>
+									<b>20-25</b>
+								</entry>
+								<entry>
+									<b>26-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>10</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>8-19</b>
+								</entry>
+								<entry>
+									<b>20-25</b>
+								</entry>
+								<entry>
+									<b>26-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>12</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>8-19</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>20-25</b>
+								</entry>
+								<entry>
+									<b>26-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+			<div>
+				<b>Note:</b>
+				The fundamentals of electric motor performance can vary with humidity
+			</div>
+			<div>
+				<b>Note</b>
+				These figures are a 
+				<b>general guide to Northern electrical polarities</b>
+				 Always are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+			</div>
+			<div>
+				<b>Bold</b>
+				 figures (in Green) are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+			</div>
+			<div id="image1">
+				<p outputclass="h1">
+					<xref format="dita" href="#VanesandCranes/number2">
+						<b>Click HERE for Southern Hemisphere Constants</b>
+					</xref>
+				</p>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="BottomLayer2">
+				<p id="number2"/>
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="5">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<colspec colname="c5"/>
+						<tbody>
+							<row>
+								<entry outputclass="bkDarkGray">
+									<b>Bravo</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>0.4</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>0.6</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>0.78</b>
+								</entry>
+								<entry outputclass="bkDarkGray">
+									<b>1.2</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>2</b>
+								</entry>
+								<entry>
+									<b>12-15</b>
+								</entry>
+								<entry>
+									<b>16-17</b>
+								</entry>
+								<entry>
+									<b>18-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>4</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>10-12</b>
+								</entry>
+								<entry>
+									<b>13-15</b>
+								</entry>
+								<entry>
+									<b>16-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>6</b>
+								</entry>
+								<entry outputclass="bkLightGray">
+									<b>8-19</b>
+								</entry>
+								<entry>
+									<b>20-25</b>
+								</entry>
+								<entry>
+									<b>26-55</b>
+								</entry>
+								<entry>
+									<b>56-105</b>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="3">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<tbody>
+							<row>
+								<entry align="center" nameend="c3" namest="c1" outputclass="bkDarkGray">Polarity Rate Formula 2</entry>
+							</row>
+							<row>
+								<entry morerows="1">Polarity Rate = </entry>
+								<entry>Watts/Hr - Amps/meter</entry>
+								<entry morerows="1">  * 225 </entry>
+							</row>
+							<row>
+								<entry align="center">Mean Temperature</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				<b>Note</b>
+				These figures are a 
+				<b>general guide to Souterhn electrical polarities</b>
+				 Always are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+				<p outputclass="h1">
+					<xref format="dita" href="./VanesandCranes.dita">
+						<b>Click HERE for Northern Hemisphere Constants</b>
+					</xref>
+				</p>
+				<b>Bold</b>
+				 figures (in Green) are considered most common humidities. Ex et ullamco nostrud ea sit anim non ut labore et mollit laboris aute. Incididunt excepteur officia aute magna. Id deserunt reprehenderit duis dolore Lorem anim et cupidatat ipsum.
+				<!-- this isn't from content, it's just a way of pulling in an image from 
+                    QuickLinksData/content/images-->
+				<image href="Content/Images/_640px-Frequency_counter.jpeg"/>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="./Abbreviations.dita">
+			<linktext>Abbreviations</linktext>
+		</link>
+		<link href="../Wales/Wales1.dita">
+			<linktext>Welsh units</linktext>
+		</link>
+		<link href="./Contents_Index.dita">
+			<linktext>Contents</linktext>
+		</link>
+		<link href="../France1/France1.1.dita">
+			<linktext>French units</linktext>
+		</link>
+	</related-links>
+</reference>

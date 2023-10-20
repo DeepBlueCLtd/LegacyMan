@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="wa_delta_pics">
+	<title>
+banjo Pics
+</title>
+	<refbody>
+		<section>
+			<title/>
+			<div id="image10">
+				<xref format="dita" href="./unit_delta12.dita">
+					<image href="Content/Images/leyland_2.jpg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="image3">
+				<p id="number2"/>
+				<xref format="dita" href="./unit_delta12.dita">
+					<image href="Content/Images/leyland_1.jpg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="image12">
+				<p id="number3"/>
+				<xref format="dita" href="./unit_delta12.dita">
+					<image href="Content/Images/leyland_3a.jpg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title>Warming Up Pattern</title>
+			<div id="PageLayer3">
+				<p id="number4"/>
+				<p outputclass="h1">Warming Up Pattern</p>
+				<p>
+					1.    Always check for the PEiusmod reprehenderit pariatur sunt ea quis elit irure id id occaecat consequat. Labore occaecat est magna ad nostrud aliqua laboris mollit irure fugiat sunt. Deserunt ipsum sint dolor ea laboris labore nostrud consequat irure tempor ex et esse. 
+					<b/>
+					<b>
+						<xref format="wav" href="Content/CantinaBand3.wav">Aural Example</xref>
+					</b>
+				</p>
+				<fig outputclass="center">
+					<image href="Content/Images/oscill_c.jpg"/>
+					<p outputclass="figtitle">Figure 1. banjo Trace
+        </p>
+				</fig>
+				<p>2.    The trace below reprehenderit pariatur sunt ea quis elit irure id id occaecat consequat. Labore occaecat est magna ad nostrud aliqua laboris mollit irure fugiat sunt. Deserunt ipsum sint dolor ea laboris labore nostrud consequat irure tempor ex et esse.</p>
+				<fig outputclass="center">
+					<image href="Content/Images/system_layout.jpg"/>
+					<p outputclass="figtitle">Figure 2. banjo Bravo Trace
+        </p>
+				</fig>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages"/>
+</reference>

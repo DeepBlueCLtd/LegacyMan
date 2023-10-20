@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!DOCTYPE rich-collection
+  SYSTEM '../../../../dtd/rich-collection.dtd'>
+<rich-collection id="Wales1">
+	<title>Wales1</title>
+	<body>
+		<table>
+			<tgroup cols="2">
+				<tbody>
+					<row>
+						<entry>
+							<xref format="dita" href="../Wales_Cmplx/Wales_Cmplx1.dita">
+								<b>Complex</b>
+								<image href="../Wales_Cmplx/Content/Images/daf_1b.jpeg" width="400px"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Wales.Legacy/Wales_Legacy.dita">
+								<b>Legacy</b>
+								<image href="../Wales.Legacy/Content/Images/leyland_2.jpg" width="400px"/>
+							</xref>
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</body>
+</rich-collection>
