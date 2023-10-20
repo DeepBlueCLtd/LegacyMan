@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TARGET_FOLDER="target"
-BRANCH="docs_new"
+BRANCH="docs"
 
 if [ -z "$(git status --untracked-files=no --porcelain . -- ':!target')" ]; then 
     # Working directory clean excluding untracked files
