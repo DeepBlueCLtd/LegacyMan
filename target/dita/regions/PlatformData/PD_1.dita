@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!DOCTYPE topic
+  PUBLIC '-//OASIS//DTD DITA Topic//EN'
+  'topic.dtd'>
+<topic id="PD_1">
+	<title>Regions</title>
+	<body>
+		<div>
+			<p outputclass="h2">Welcome map</p>
+    lots of assorted content
+		</div>
+		<div> </div>
+		<div> </div>
+		<div>A BIG MAP, WITH HOT LINKS TO REGIONS</div>
+		<div> </div>
+		<div> </div>
+		<div> </div>
+		<div> </div>
+	</body>
+</topic>
