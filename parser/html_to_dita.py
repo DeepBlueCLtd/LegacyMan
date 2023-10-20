@@ -76,10 +76,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
     # 0. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
     for tb in soup.find_all("table"):
-        converted_table = convert_html_table_to_dita_table(tb, dita_soup)
+        converted_table = convert_html_table_to_dita_table(tb, dita_soup, topic_id)
         tb.replace_with(converted_table)
     if soup.name == "table":
-        converted_table = convert_html_table_to_dita_table(soup, dita_soup)
+        converted_table = convert_html_table_to_dita_table(soup, dita_soup, topic_id)
         soup.replace_with(converted_table)
 
     # 1. if outer element is a div, replace with whatever div_replacement is (by default a span)
@@ -400,7 +400,7 @@ def processLinkedPage(href):
     print(f"%% TODO: Process linked page: {href}")
 
 
-def convert_html_table_to_dita_table(source_html, target_soup):
+def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
     # Create a new DITA table element.
     dita_table_element = target_soup.new_tag("table")
     dita_table_element["colsep"] = "1"
@@ -489,7 +489,7 @@ def convert_html_table_to_dita_table(source_html, target_soup):
             # dita_cell_element = htmlToDITA(html_cell_element, target_soup, "topic")
             # Convert all the children of the <td> element to DITA, one at a time
             for child in html_cell_element.contents:
-                converted_child = htmlToDITA(child, target_soup, "topic")
+                converted_child = htmlToDITA(child, target_soup, topic_id)
                 if converted_child is not None:
                     dita_cell_element.append(converted_child)
             # Add the DITA cell element to the DITA row element.
