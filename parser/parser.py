@@ -332,9 +332,11 @@ class Parser:
         title = soup.find("h2")
 
         if td is None:
-            raise ValueError(
-                f"<td> element with colspan 7 not found in the {category_page_link} file"
-            )
+            # note this is a workaround, while we temporarily have a
+            # category page without a colspan:7.  This ensures we
+            # skip that file, until we implement #475
+            print(f"<td> element with colspan 7 not found in the {category_page_link} file")
+            return
 
         # Create the DITA document type declaration string
         dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../../dtd/classlist.dtd">'
