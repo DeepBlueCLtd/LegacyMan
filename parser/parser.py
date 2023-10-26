@@ -131,9 +131,6 @@ class Parser:
         write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
         self.files_already_processed.add(f"{regions_path}/regions.dita")
 
-    def process_std_country(self, link):
-        pass
-
     def process_sub_region(self, link):
         with open(link, "r") as f:
             html_string = f.read()
@@ -164,7 +161,7 @@ class Parser:
                 # Work out whether it's a Non-Standard country or a Standard Country
                 # by looking for the Image Links Table
                 if does_image_links_table_exist(self.root_path / path):
-                    self.process_ns_countries("Wales1", country_name, href.replace("../", ""))
+                    self.process_ns_countries(country_name, country_name, href.replace("../", ""))
                 else:
                     country_flag_link = ""
                     self.process_category_pages(
@@ -323,6 +320,18 @@ class Parser:
 
         soup = BeautifulSoup(category_page_html, "html.parser")
 
+        # If there is an empty div with an ID of "handle_as_generic" then this should be handled as a generic
+        # page, not as a category page.
+        # Note we need to add the FIRST_PAGE_LAYER_MARKER for this page to the list of pages to extract
+        # before we call process_generic_file, or nothing will be extracted
+        handle_as_generic_div = soup.find_all("div", id="handle_as_generic")
+        if len(handle_as_generic_div) == 1:
+            path = f"{self.root_path}/{remove_leading_slashes(category_page_link)}"
+            filepath = self.make_relative_to_data_dir(Path(path))
+            self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
+            self.process_generic_file(path)
+            return
+
         if country_flag_link == "" or country_flag_link is None:
             title = soup.find("h2")
             country_flag_link = title.find_next("img")["src"]
@@ -332,9 +341,9 @@ class Parser:
         title = soup.find("h2")
 
         if td is None:
-            # note this is a workaround, while we temporarily have a
-            # category page without a colspan:7.  This ensures we
-            # skip that file, until we implement #475
+            # This used to be a workaround for not dealing with a page without a <td> with colspan 7,
+            # it shouldn't be needed now, but is kept as a fallback error in case we find something
+            # we can't handle
             print(f"<td> element with colspan 7 not found in the {category_page_link} file")
             return
 
@@ -429,7 +438,7 @@ class Parser:
         dita_fig.append(dita_image)
         dita_flag.append(dita_fig)
 
-        dita_classlist["id"] = title.text.replace(" ", "")
+        dita_classlist["id"] = sanitise_filename(title.text)
         dita_classlist.append(dita_title)
         dita_classlist.append(dita_flag)
         dita_classlist.append(dita_classlistbody)
