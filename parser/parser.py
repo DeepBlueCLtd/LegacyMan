@@ -429,7 +429,7 @@ class Parser:
         dita_fig.append(dita_image)
         dita_flag.append(dita_fig)
 
-        dita_classlist["id"] = title.text.replace(" ", "")
+        dita_classlist["id"] = sanitise_filename(title.text)
         dita_classlist.append(dita_title)
         dita_classlist.append(dita_flag)
         dita_classlist.append(dita_classlistbody)
