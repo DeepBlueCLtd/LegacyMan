@@ -1,4 +1,4 @@
-from parser import Parser
+from lman_parser import Parser
 import sys
 import logging
 from parser_utils import delete_directory, copy_files
