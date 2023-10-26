@@ -131,9 +131,6 @@ class Parser:
         write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
         self.files_already_processed.add(f"{regions_path}/regions.dita")
 
-    def process_std_country(self, link):
-        pass
-
     def process_sub_region(self, link):
         with open(link, "r") as f:
             html_string = f.read()
@@ -164,7 +161,7 @@ class Parser:
                 # Work out whether it's a Non-Standard country or a Standard Country
                 # by looking for the Image Links Table
                 if does_image_links_table_exist(self.root_path / path):
-                    self.process_ns_countries("Wales1", country_name, href.replace("../", ""))
+                    self.process_ns_countries(country_name, country_name, href.replace("../", ""))
                 else:
                     country_flag_link = ""
                     self.process_category_pages(
