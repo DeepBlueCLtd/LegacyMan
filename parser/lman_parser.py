@@ -408,7 +408,8 @@ class Parser:
                         class_name = a.text
                         class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
-                        self.process_generic_file(class_file_src_path)
+                        if not self.only_process_single_file:
+                            self.process_generic_file(class_file_src_path)
 
                         file_link = href.replace(".html", ".dita")
                         dita_xref["href"] = sanitise_filename(file_link)
@@ -801,7 +802,7 @@ class Parser:
             copy_files(input_file_directory / "Content", target_path / "Content")
 
         if output_dita_path in self.files_already_processed:
-            return
+            return output_dita_path
 
         # Parse the HTML
         html = input_file_path.read_text()
