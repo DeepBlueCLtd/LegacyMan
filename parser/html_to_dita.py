@@ -283,16 +283,17 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     for span in soup.find_all("span", recursive=True):
         if span.has_attr("style"):
-            if "color:" in span["style"]:
+            style = span["style"].lower()
+            if "color:" in style:
                 span.name = "ph"
-                if "#F00" in span["style"]:
+                if "#F00" in style:
                     span["outputclass"] = "colorRed"
-                elif "#00F" in span["style"]:
+                elif "#00F" in style:
                     span["outputclass"] = "colorBlue"
-                elif "#777" in span["style"]:
+                elif "#777" in style:
                     span["outputclass"] = "colorGray"
                 del span["style"]
-            elif "font-style: italic" in span["style"]:
+            elif "font-style: italic" in style:
                 span.name = "i"
                 del span["style"]
         # handle use of class for italic formatting
@@ -493,7 +494,8 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
                 if converted_child is not None:
                     dita_cell_element.append(converted_child)
             # Add the DITA cell element to the DITA row element.
-            dita_row_element.append(dita_cell_element)
+            if len(list(dita_cell_element.contents)) != 0:
+                dita_row_element.append(dita_cell_element)
 
         # Add the DITA row element to the DITA tbody.
         dita_tbody_element.append(dita_row_element)
