@@ -61,8 +61,8 @@ def check_file(source_path, source_root, target_root):
 
 def init_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(usage="%(prog)s [OPTION] SOURCE_PATH TARGET_PATH")
-    parser.add_argument("SOURCE_PATH")
-    parser.add_argument("TARGET_PATH")
+    parser.add_argument("SOURCE_PATH", help="Path to the source data")
+    parser.add_argument("TARGET_PATH", help="Path to the target (converted) data")
     parser.add_argument(
         "--files",
         default=5,
