@@ -558,10 +558,11 @@ class Parser:
                     continue
 
                 image_tags = div.find_all("img")
+                div_text = div.get_text().strip()
                 if div_id is not None and "PicLayer" in div_id:
                     continue
                 # Skip any divs that just have an image020 image in them - that's just the corporate logo
-                if len(image_tags) == 1 and "image020" in image_tags[0]["src"]:
+                if len(image_tags) == 1 and "image020" in image_tags[0]["src"] and div_text == "":
                     continue
                 logging.debug(
                     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
