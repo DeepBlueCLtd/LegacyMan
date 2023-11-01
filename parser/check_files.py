@@ -12,7 +12,7 @@ def search_for_strings(html_soup, output):
         return
     for element in html_soup.children:
         if type(element) is NavigableString:
-            s = str(element).strip()
+            s = str(element).strip().replace("&", "&amp;")
             if s.startswith("Click the picture"):
                 continue
             if len(s) > 0:
