@@ -13,7 +13,7 @@ def search_for_strings(html_soup, output):
     for element in html_soup.children:
         if type(element) is NavigableString:
             s = str(element).strip().replace("&", "&amp;")
-            if s.startswith("Click the picture"):
+            if s.startswith("Click the picture") or s.startswith("LIMIT OF THE PAGE"):
                 continue
             if len(s) > 0:
                 output.append(s)
