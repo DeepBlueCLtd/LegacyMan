@@ -172,6 +172,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
         if img.has_attr("name"):
             img.id = img["name"]
             del img["name"]
+        # Make sure the image tag has no contents within it, as that isn't allowed in DITA
+        # If there are contents, put them after the image tag
+        if len(list(img.children)) > 0:
+            for child in img.children:
+                img.insert_after(child)
 
     # 4. We can't handle headings in paragraphs. So, first search for, and fix
     # headings in paragraphs
