@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE rich-collection
   SYSTEM '../../../../dtd/rich-collection.dtd'>
-<rich-collection id="Wales1">
-	<title>Wales1</title>
+<rich-collection id="Wales">
+	<title>Wales</title>
 	<body>
 		<table>
 			<tgroup cols="2">
@@ -18,6 +18,12 @@
 							<xref format="dita" href="../Wales.Legacy/Wales_Legacy.dita">
 								<b>Legacy</b>
 								<image href="../Wales.Legacy/Content/Images/leyland_2.jpg" width="400px"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Wales_Composite/Wales_Composite.dita">
+								<b>Composite</b>
+								<image href="../Wales_Composite/Content/Images/unit_da.jpg" width="400px"/>
 							</xref>
 						</entry>
 					</row>

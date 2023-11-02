@@ -11,16 +11,13 @@ Unit delta General Signature
 			<title/>
 			<div id="layer1">
 				<xref format="dita" href="./wa_delta_pics.dita">
-					<image height="177" href="Content/Images/leyland_1.jpg" width="259">
-</image>
+					<image height="177" href="Content/Images/leyland_1.jpg" width="259"/>
 				</xref>
 				<xref format="dita" href="./wa_delta_pics.dita#wa_delta_pics/number3">
-					<image height="177" href="Content/Images/leyland_2.jpg" width="347">
-</image>
+					<image height="177" href="Content/Images/leyland_2.jpg" width="347"/>
 				</xref>
 				<xref format="dita" href="./wa_delta_pics.dita#wa_delta_pics/number2">
-					<image height="177" href="Content/Images/leyland_3a.jpg" width="374">
-</image>
+					<image height="177" href="Content/Images/leyland_3a.jpg" width="374"/>
 				</xref>
 			</div>
 			<div id="Table">
@@ -92,7 +89,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -105,7 +102,7 @@ Unit delta General Signature
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -155,7 +152,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -168,7 +165,7 @@ Unit delta General Signature
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -215,7 +212,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -228,7 +225,7 @@ Unit delta General Signature
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -275,7 +272,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -288,7 +285,7 @@ Unit delta General Signature
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -335,7 +332,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -348,7 +345,7 @@ Unit delta General Signature
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -395,7 +392,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -418,7 +415,7 @@ Unit delta General Signature
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry morerows="1" outputclass="bkLightGray">Unk BBA</entry>

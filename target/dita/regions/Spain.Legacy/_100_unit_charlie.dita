@@ -11,16 +11,13 @@ Charlie
 			<title/>
 			<div id="layer2">
 				<xref format="dita" href="./sp_charlie_pics.dita">
-					<image height="177" href="Content/Images/daf_1.jpeg" width="259">
-</image>
+					<image height="177" href="Content/Images/daf_1.jpeg" width="259"/>
 				</xref>
 				<xref format="dita" href="./sp_charlie_pics.dita#sp_charlie_pics/number3">
-					<image height="177" href="Content/Images/daf_1.jpeg" width="347">
-</image>
+					<image height="177" href="Content/Images/daf_1.jpeg" width="347"/>
 				</xref>
 				<xref format="dita" href="./sp_charlie_pics.dita#sp_charlie_pics/number2">
-					<image height="177" href="Content/Images/daf_2.jpeg" width="374">
-</image>
+					<image height="177" href="Content/Images/daf_2.jpeg" width="374"/>
 				</xref>
 			</div>
 			<div id="Table">
@@ -111,7 +108,7 @@ Charlie
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -161,7 +158,7 @@ Charlie
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -174,7 +171,7 @@ Charlie
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -221,7 +218,7 @@ Charlie
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -234,7 +231,7 @@ Charlie
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -281,7 +278,7 @@ Charlie
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                    </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -294,7 +291,7 @@ Charlie
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -341,7 +338,7 @@ Charlie
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                        </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -354,7 +351,7 @@ Charlie
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -401,7 +398,7 @@ Charlie
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -424,7 +421,7 @@ Charlie
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                                </entry>
 							</row>
 							<row>
 								<entry morerows="1" outputclass="bkLightGray">Unk BBA</entry>

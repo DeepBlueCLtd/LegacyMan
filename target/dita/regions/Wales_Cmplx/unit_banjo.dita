@@ -106,16 +106,13 @@ Banjo
 			<title/>
 			<div id="layer1">
 				<xref format="dita" href="./banjo_pics.dita">
-					<image height="177" href="Content/Images/leyland_1.jpg" width="259">
-</image>
+					<image height="177" href="Content/Images/leyland_1.jpg" width="259"/>
 				</xref>
 				<xref format="dita" href="./banjo_pics.dita#banjo_pics/number3">
-					<image height="177" href="Content/Images/leyland_2.jpg" width="347">
-</image>
+					<image height="177" href="Content/Images/leyland_2.jpg" width="347"/>
 				</xref>
 				<xref format="dita" href="./banjo_pics.dita#banjo_pics/number2">
-					<image height="177" href="Content/Images/daf_3.jpeg" width="374">
-</image>
+					<image height="177" href="Content/Images/daf_3.jpeg" width="374"/>
 				</xref>
 			</div>
 			<div id="Table">
@@ -199,7 +196,7 @@ Banjo
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -261,7 +258,7 @@ Banjo
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -320,7 +317,7 @@ Banjo
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -379,7 +376,7 @@ Banjo
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -438,7 +435,7 @@ Banjo
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>

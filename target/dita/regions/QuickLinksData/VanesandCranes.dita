@@ -268,6 +268,12 @@ Quick Look Guide to vanes
 						</tbody>
 					</tgroup>
 				</table>
+				<p outputclass="h1">
+					<ph outputclass="colorDarkBlue">This title is in blue</ph>
+				</p>
+				<p outputclass="h1">
+					<ph outputclass="colorDarkBrown">This title is in brown</ph>
+				</p>
 				<table colsep="1" frame="all" rowsep="1">
 					<tgroup cols="3">
 						<colspec colname="c1"/>

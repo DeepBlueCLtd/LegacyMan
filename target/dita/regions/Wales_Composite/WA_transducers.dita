@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="WA_transducers">
+	<title>
+BR Complex - TRANSDUCERS
+</title>
+	<refbody>
+		<section>
+			<title/>
+			<div id="Table">
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="5">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<colspec colname="c5"/>
+						<tbody>
+							<row>
+								<entry align="center" nameend="c5" namest="c1" outputclass="bkDarkGray">
+									<b>Unit Anchor Transducers</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>Transducer</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>Use</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>Sensory Hz</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>Connector</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray">
+									<b>Remarks</b>
+								</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkLightGray">
+									<b>Bingo</b>
+								</entry>
+								<entry>AAC</entry>
+								<entry>1.4 - 22</entry>
+								<entry>HA1</entry>
+								<entry>Excepteur quis ut laborum culpa quis adipisicing sit.</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkLightGray">
+									<b>
+										<xref format="dita" href="../Transducers/Charlie_Transducer.dita">Charlie</xref>
+									</b>
+								</entry>
+								<entry>ABC</entry>
+								<entry>1.4 - 12</entry>
+								<entry>H2A</entry>
+								<entry>Voluptate reprehenderit aute laboris nisi exercitation irure sit.</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkLightGray">
+									<b>
+										<xref format="dita" href="../Transducers/Delta_Transducer.dita">Delta</xref>
+									</b>
+								</entry>
+								<entry>ADC</entry>
+								<entry>2.4 - 22</entry>
+								<entry>H4A</entry>
+								<entry>Excepteur do non irure fugiat quis tempor et commodo.</entry>
+							</row>
+							<row>
+								<entry align="center" outputclass="bkLightGray">
+									<b>Echo</b>
+								</entry>
+								<entry>ACC</entry>
+								<entry>1.4 - 52</entry>
+								<entry>HA5</entry>
+								<entry>Mollit incididunt anim aliquip excepteur laborum officia sit eiusmod dolor ullamco consectetur qui culpa enim.</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+	</refbody>
+</reference>

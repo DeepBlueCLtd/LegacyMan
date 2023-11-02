@@ -11,16 +11,13 @@ Anchor 1
 			<title/>
 			<div id="layer1">
 				<xref format="dita" href="./anchor_pics.dita">
-					<image height="177" href="Content/Images/daf_1.jpeg" width="259">
-</image>
+					<image height="177" href="Content/Images/daf_1.jpeg" width="259"/>
 				</xref>
 				<xref format="dita" href="./anchor_pics.dita#anchor_pics/number3">
-					<image height="177" href="Content/Images/daf_3.jpeg" width="347">
-</image>
+					<image height="177" href="Content/Images/daf_3.jpeg" width="347"/>
 				</xref>
 				<xref format="dita" href="./anchor_pics.dita#anchor_pics/number2">
-					<image height="177" href="Content/Images/daf_2.jpeg" width="374">
-</image>
+					<image height="177" href="Content/Images/daf_2.jpeg" width="374"/>
 				</xref>
 			</div>
 			<div id="Table">
@@ -95,7 +92,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -108,7 +105,7 @@ Anchor 1
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -158,7 +155,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -171,7 +168,7 @@ Anchor 1
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -218,7 +215,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -231,7 +228,7 @@ Anchor 1
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -278,7 +275,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                    </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -291,7 +288,7 @@ Anchor 1
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -338,7 +335,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                        </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -351,7 +348,7 @@ Anchor 1
 								<entry nameend="c4" namest="c3">H1</entry>
 								<entry nameend="c6" namest="c5">
 									CBR 34 with 
-									<b outputclass="blue">*</b>
+									<b outputclass="colorBlue">*</b>
 									P-Gears
 								</entry>
 							</row>
@@ -398,7 +395,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                            </entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
@@ -421,7 +418,7 @@ Anchor 1
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
 								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-</entry>
+                                </entry>
 							</row>
 							<row>
 								<entry morerows="1" outputclass="bkLightGray">Unk BBA</entry>

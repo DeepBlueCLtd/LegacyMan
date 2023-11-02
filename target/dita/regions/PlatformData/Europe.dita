@@ -10,9 +10,10 @@
 		</div>
 		<div>
 			<table colsep="1" frame="all" rowsep="1">
-				<tgroup cols="2">
+				<tgroup cols="3">
 					<colspec colname="c1"/>
 					<colspec colname="c2"/>
+					<colspec colname="c3"/>
 					<tbody>
 						<row>
 							<entry>
@@ -20,6 +21,9 @@
 							</entry>
 							<entry>
 								<xref format="dita" href="../Wales/Wales1.dita">Wales</xref>
+							</entry>
+							<entry>
+								<xref format="dita" href="../WightandMan/WightandM.dita">Isles of Wight &amp; Man</xref>
 							</entry>
 						</row>
 						<row>
