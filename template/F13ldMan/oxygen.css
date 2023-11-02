@@ -627,7 +627,7 @@ floating table of contents */
 
 /* make the related links float */
 .wh_related_links {
-    background-color: #DDD; 
+    background-color: #EFEFFA; 
     position:fixed;
     width: 200px;
     right:0;
