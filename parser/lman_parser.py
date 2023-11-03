@@ -191,7 +191,9 @@ class Parser:
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
         self.files_already_processed.add(self.target_path_base / output_path)
 
-        return str(output_path)
+        # note: on MS-Win, the path generator produces windows slashes, but
+        # DITA expects URL-style slashes
+        return str(output_path).replace("\\", "/")
 
     def process_ns_countries(self, country, country_name, link):
         """Processes a non-standard country - ie. one that has an extra page at the start with links to various categories,
@@ -302,7 +304,9 @@ class Parser:
         output_path = str(Path(link).with_suffix(".dita"))
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
         self.files_already_processed.add(self.target_path_base / output_path)
-        return output_path
+
+        # note: on MS-Windows a MS-Win slash is generated, but DITA requires URL-style slashes
+        return output_path.replace("\\", "/")
 
     def process_category_pages(
         self,
