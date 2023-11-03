@@ -191,7 +191,9 @@ class Parser:
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
         self.files_already_processed.add(self.target_path_base / output_path)
 
-        return str(output_path)
+        # note: on MS-Win, the path generator produces windows slashes, but
+        # DITA expects URL-style slashes
+        return str(output_path).replace("\\", "/")
 
     def process_ns_countries(self, country, country_name, link):
         """Processes a non-standard country - ie. one that has an extra page at the start with links to various categories,
@@ -302,7 +304,9 @@ class Parser:
         output_path = str(Path(link).with_suffix(".dita"))
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
         self.files_already_processed.add(self.target_path_base / output_path)
-        return output_path
+
+        # note: on MS-Windows a MS-Win slash is generated, but DITA requires URL-style slashes
+        return output_path.replace("\\", "/")
 
     def process_category_pages(
         self,
@@ -348,16 +352,22 @@ class Parser:
             return
 
         # Create the DITA document type declaration string
-        dita_doctype = '<!DOCTYPE classlist SYSTEM "../../../../dtd/classlist.dtd">'
+        dita_doctype = (
+            '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        )
         dita_soup = BeautifulSoup(dita_doctype, "xml")
+        dita_refbody = dita_soup.new_tag("refbody")
+        dita_reference = dita_soup.new_tag("reference")
+        dita_section = dita_soup.new_tag("section")
+        dita_flagsection = dita_soup.new_tag("section")
+        dita_emptytitle = dita_soup.new_tag("title")
+        dita_emptytitle2 = dita_soup.new_tag("title")
 
         # Create dita elements for <tgroup>,<table>, <tbody> ...
         dita_tbody = dita_soup.new_tag("tbody")
         dita_tgroup = dita_soup.new_tag("tgroup")
         dita_table = dita_soup.new_tag("table")
-        dita_classlistbody = dita_soup.new_tag("classlistbody")
-        dita_classlist = dita_soup.new_tag("classlist")
-        dita_flag = dita_soup.new_tag("flag")
+
         dita_title = dita_soup.new_tag("title")
         dita_image = dita_soup.new_tag("image")
         dita_fig = dita_soup.new_tag("fig")
@@ -373,7 +383,7 @@ class Parser:
         dita_image["href"] = sanitise_filename(
             f"../{country_name}/{remove_leading_slashes(country_flag_link)}"
         )
-        dita_image["alt"] = "flag"
+        dita_image["id"] = "flag"
 
         # create folder for category pages
         category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
@@ -413,6 +423,7 @@ class Parser:
 
                         file_link = href.replace(".html", ".dita")
                         dita_xref["href"] = sanitise_filename(file_link)
+                        dita_xref["format"] = "dita"
 
                         dita_xref.string = a.text.strip()
                         dita_entry.string = ""
@@ -431,21 +442,40 @@ class Parser:
 
         dita_tgroup.append(dita_tbody)
         dita_table.append(dita_tgroup)
-        dita_classlistbody.append(dita_table)
+        dita_section.append(dita_emptytitle)
+        dita_section.append(dita_table)
+        dita_refbody.append(dita_section)
 
         # Append the <title>,<flag> and <classlistbody> elements in the <classlist>
         dita_title.string = title.text.strip()
 
         dita_fig.append(dita_image)
-        dita_flag.append(dita_fig)
+        dita_flagsection["id"] = "flag-section"
+        dita_flagsection.append(dita_emptytitle2)
+        dita_flagsection.append(dita_fig)
+        dita_refbody.insert(0, dita_flagsection)
 
-        dita_classlist["id"] = sanitise_filename(title.text)
-        dita_classlist.append(dita_title)
-        dita_classlist.append(dita_flag)
-        dita_classlist.append(dita_classlistbody)
+        dita_reference["id"] = sanitise_filename(title.text)
+        dita_reference.append(dita_title)
+        dita_reference.append(dita_refbody)
+
+        # Find all the QuickLinks tables and extract their link text and href
+        # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
+        # and get all their links
+        ql_divs = soup.findAll("div", id=re.compile("QuickLinksTable"))
+        links = []
+
+        for ql_div in ql_divs:
+            links.extend(ql_div.findAll("a"))
+
+        quicklinks = {l.text: l["href"] for l in links}
+
+        related_links = self.process_quicklinks_table(dita_soup, quicklinks, dita_reference["id"])
+        if related_links:
+            dita_reference.append(related_links)
 
         # Append the whole page to the dita soup
-        dita_soup.append(dita_classlist)
+        dita_soup.append(dita_reference)
 
         # Copy the category images to /dita/regions/$category_name/Content/Images folder
         category_page_link = remove_leading_slashes(category_page_link.replace(".html", ".dita"))
@@ -456,6 +486,18 @@ class Parser:
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
         self.files_already_processed.add(category_file_path)
+
+        input_file_path = Path(f"{self.root_path}/{remove_leading_slashes(category_page_link)}")
+        input_file_directory = input_file_path.parent
+
+        for _, href in quicklinks.items():
+            link_path = (input_file_directory / href).resolve()
+            if link_path.exists():
+                self.process_generic_file(link_path)
+            else:
+                logging.error(
+                    f"File {link_path} doesn't exist, linked in the QuickLinks table from {input_file_path}"
+                )
 
     def process_generic_file_pagelayer(self, dita_soup, page, topic_id):
         # Exclude links that are in divs just for buttons, as they're not proper links they're just things that go
@@ -520,10 +562,11 @@ class Parser:
                     continue
 
                 image_tags = div.find_all("img")
+                div_text = div.get_text().strip()
                 if div_id is not None and "PicLayer" in div_id:
                     continue
                 # Skip any divs that just have an image020 image in them - that's just the corporate logo
-                if len(image_tags) == 1 and "image020" in image_tags[0]["src"]:
+                if len(image_tags) == 1 and "image020" in image_tags[0]["src"] and div_text == "":
                     continue
                 logging.debug(
                     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
@@ -739,8 +782,21 @@ class Parser:
 
         dita_reference.append(dita_ref_body)
 
+        related_links = self.process_quicklinks_table(dita_soup, quicklinks, topic_id)
+
+        if related_links:
+            dita_reference.append(related_links)
+        dita_soup.append(dita_reference)
+
+        return dita_soup
+
+    def process_quicklinks_table(self, dita_soup, quicklinks, topic_id, name="related-links"):
         # Generate related-links for quicklinks table
-        related_links = dita_soup.new_tag("related-links", id="related-pages")
+        related_links = dita_soup.new_tag(name, id="related-pages")
+
+        if len(quicklinks) == 0:
+            return None
+
         for link_text, link_href in quicklinks.items():
             link = dita_soup.new_tag("link")
             link["href"], extension = convert_html_href_to_dita_href(link_href)
@@ -756,10 +812,7 @@ class Parser:
             link.append(linktext)
             related_links.append(link)
 
-        dita_reference.append(related_links)
-        dita_soup.append(dita_reference)
-
-        return dita_soup
+        return related_links
 
     def make_relative_to_data_dir(self, filepath):
         try:
