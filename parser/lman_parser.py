@@ -491,7 +491,8 @@ class Parser:
         input_file_directory = input_file_path.parent
 
         for _, href in quicklinks.items():
-            link_path = (input_file_directory / href).resolve()
+            clean_href = href.split("#")[0]
+            link_path = (input_file_directory / clean_href).resolve()
             if link_path.exists():
                 self.process_generic_file(link_path)
             else:
