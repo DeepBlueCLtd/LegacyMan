@@ -43,7 +43,7 @@ class Parser:
     def process_regions(self):
         # copy the world-map.gif file
         source_dir = f"{self.root_path}/PlatformData/Content/Images/"
-        target_dir = "target/dita/regions/Content/Images"
+        target_dir = "target/dita/regions/PlatformData/Content/Images"
         worldMapFile = "WorldMap.jpg"
         copy_files(source_dir, target_dir, [worldMapFile])
 
@@ -101,7 +101,7 @@ class Parser:
                 country_path = self.process_ns_countries(
                     country, country_name, remove_leading_slashes(link)
                 )
-                dita_xref["href"] = f"./{country_path}"
+                dita_xref["href"] = f"../{country_path}"
             else:
                 sub_region_path = self.process_sub_region(self.root_path / "PlatformData" / link)
                 dita_xref["href"] = sub_region_path
@@ -116,7 +116,7 @@ class Parser:
 
         # Create a <topic> element in the DITA file and append the <map> and the <image> elements
         dita_topic = dita_soup.new_tag("topic")
-        dita_topic["id"] = "regions"
+        dita_topic["id"] = "PD_1"
 
         dita_topic.append(dita_title)
         dita_topic.append(dita_body)
@@ -128,8 +128,8 @@ class Parser:
         regions_path = "target/dita/regions"
         os.makedirs(regions_path, exist_ok=True)
 
-        write_prettified_xml(dita_soup, f"{regions_path}/regions.dita")
-        self.files_already_processed.add(f"{regions_path}/regions.dita")
+        write_prettified_xml(dita_soup, f"{regions_path}/PlatformData/PD_1.dita")
+        self.files_already_processed.add(f"{regions_path}/PlatformData/PD_1.dita")
 
     def process_sub_region(self, link):
         with open(link, "r") as f:
@@ -193,7 +193,9 @@ class Parser:
 
         # note: on MS-Win, the path generator produces windows slashes, but
         # DITA expects URL-style slashes
-        return str(output_path).replace("\\", "/")
+
+        return_value = str(output_path).replace("\\", "/").replace("PlatformData/", "")
+        return return_value
 
     def process_ns_countries(self, country, country_name, link):
         """Processes a non-standard country - ie. one that has an extra page at the start with links to various categories,
@@ -838,6 +840,9 @@ class Parser:
                 self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
 
     def process_generic_file(self, input_file_path):
+        if "PD_1" in str(input_file_path):
+            return
+
         input_file_path = Path(input_file_path)
         input_file_directory = input_file_path.parent
 
@@ -991,8 +996,13 @@ class Parser:
 
         return validator_time, publish_time
 
+    def process_contents_page(self):
+        self.process_generic_file(self.root_path / "Introduction" / "ContentsPage.html")
+
     def run(self):
         time1 = time.time()
+        self.write_generic_files = True
+        self.process_contents_page()
         self.write_generic_files = False
         self.process_regions()
         time2 = time.time()
