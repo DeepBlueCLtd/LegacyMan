@@ -419,11 +419,28 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
     if source_html.has_attr("border") and source_html["border"] == "1":
         dita_table_element["frame"] = "all"
 
+    # Get max number of columns in all rows
     max_num_columns = 0
     for tr in source_html.find_all("tr"):
         num_columns = len(tr.find_all(["th", "td"]))
         if num_columns > max_num_columns:
             max_num_columns = num_columns
+
+    # Get the highest colspan value in any row
+    max_colspan = 0
+    for td in source_html.find_all("td"):
+        if td.has_attr("colspan"):
+            colspan = int(td["colspan"])
+            if colspan > max_colspan:
+                max_colspan = colspan
+
+    # If the max colspan value is bigger than the number of columns
+    # then we've got a table whose structure makes no sense
+    # and it has a colspan across the whole table (eg. colspan=8)
+    # when there are only actually a max of 6 columns
+    # This *should* sort it out, but there are no guarantees
+    if max_colspan > max_num_columns:
+        max_num_columns = max_colspan
 
     # Create a new DITA tgroup element.
     dita_tgroup_element = target_soup.new_tag("tgroup")
