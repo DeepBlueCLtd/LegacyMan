@@ -108,3 +108,30 @@ From tests, an absolute path `c:\real_data` works more reliably than using a rel
 python parser./parser.py < data directory > < target directory >
 
 ```
+
+## Running the file checker
+
+We have also developed a checking script that will search for content in files in the source directory and check that it appears in content in the target directory. Each 'chunk' of content is a bit of plain text (ie. no tags in the middle of it) that is at least 40 characters long.
+
+To run the file checker run:
+
+```
+python parser/check_files.py --help
+```
+
+This will show this help text:
+
+```
+usage: check_files.py [OPTION] SOURCE_PATH TARGET_PATH
+
+positional arguments:
+  SOURCE_PATH    Path to the source data
+  TARGET_PATH    Path to the target (converted) data
+
+options:
+  -h, --help     show this help message and exit
+  --files FILES  Either an integer, to process that number of random files, or 'all' to process all files (default: 5)
+  --text TEXT    Either an integer, to read that number of random text strings from each file or 'all' to read all valid text strings from the file (default: 10)
+  ```
+
+  Running with just the path to the source and target files will check 10 chunks of text each from 5 files. These numbers can be adjusted by setting the `--files` and `--text` parameters, and the checking can be run on all chunks of text in all files by passing `--files all --text all`.
