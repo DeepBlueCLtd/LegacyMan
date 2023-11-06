@@ -74,7 +74,7 @@ def init_argparse() -> argparse.ArgumentParser:
     parser.add_argument(
         "--text",
         default=10,
-        help="Either an integer, to read that number of random text strings from each file or 'all' to read all valid text strings from the file",
+        help="Either an integer, to read that number of random text strings from each file or 'all' to read all valid text strings from the file (default: 10)",
     )
     return parser
 
