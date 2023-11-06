@@ -236,9 +236,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # (which they do in Phase_F_Size.html (ref a3b) - where a heading and more is inside)
     for a in soup.find_all("a", {"href": False}):
         a.name = "div"
-        if a.has_attr("name"):
-            a["id"] = a["name"]
-            del a["name"]
+        a["id"] = a["name"]
+        del a["name"]
 
     # 6. Remove <br> newlines
     for br in soup.find_all("br"):
