@@ -1,5 +1,5 @@
 from pathlib import Path
-from bs4 import BeautifulSoup, NavigableString, Comment, Doctype
+from bs4 import BeautifulSoup, NavigableString, Comment, Doctype, Stylesheet, Script
 import random
 import argparse
 
@@ -8,7 +8,7 @@ from parser_utils import sanitise_filename
 
 
 def search_for_strings(html_soup, output):
-    if type(html_soup) in (Comment, Doctype):
+    if type(html_soup) in (Comment, Doctype, Stylesheet, Script):
         return
     for element in html_soup.children:
         if type(element) is NavigableString:
