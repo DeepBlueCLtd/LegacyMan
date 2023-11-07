@@ -1054,7 +1054,7 @@ if __name__ == "__main__":
     root_path = sys.argv[1]
     logging_format = "%(levelname)s:  %(message)s"
     if len(sys.argv) == 3:
-        logging_level = sys.argv[2]
+        logging_level = sys.argv[2].lower()
         if logging_level == "debug":
             logging.basicConfig(level=logging.DEBUG, format=logging_format)
             logging.info("Logging level set to DEBUG")
