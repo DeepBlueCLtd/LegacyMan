@@ -24,12 +24,12 @@
     border-collapse: collapse;
  }
 
-/* text label for category image links */
+/* text label for category image links
 .xref .b {
     display:block;
     text-align: center;
     font-size: 2em;
-}
+} */
 
 /* make table separators more prominent */
 .table-separator {
@@ -636,4 +636,11 @@ html[dir='rtl'] .wh_top_menu.activated-on-click ul li.active > ul {
         top:200px;
         z-index: 1000;
     }
+}
+
+/* text label for category image links (FONT-SIZE REMOVED) */
+.xref .b {
+    display:block;
+    text-align: center;
+    /* font-size: 2em; */
 }
