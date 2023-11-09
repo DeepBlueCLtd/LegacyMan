@@ -1,0 +1,30 @@
+/*
+ * ======================================================
+ * 
+ * CSS rules for adding headers on the chapter and
+ * table of contens first page.
+ * 
+ * ======================================================
+ */
+
+@page table-of-contents:first:left {
+  @top-left {
+    content: string(toc-header) " | " counter(page, lower-roman);
+  }
+}
+@page table-of-contents:first:right {
+   @top-right {
+     content: string(toc-header) " | " counter(page, lower-roman);
+   }
+}
+
+@page chapter:first:left {
+  @top-left {
+    content: string(maptitle) string(parttitle) string(chaptertitle) string(sectiontitle) " | " counter(page);
+  }
+}
+@page chapter:first:right {
+  @top-right {
+    content: string(maptitle) string(parttitle) string(chaptertitle) string(sectiontitle) " | " counter(page);
+  }
+}

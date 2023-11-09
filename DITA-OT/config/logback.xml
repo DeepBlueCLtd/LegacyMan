@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%level] %msg%n</pattern>
+      <!--pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
+      </pattern-->
+    </encoder>
+  </appender>
+  <logger name="org.apache.fop.apps.FopConfParser" level="WARN"/>
+  <logger name="org.dita" level="DEBUG"/>
+  <logger name="org.ditang" level="DEBUG"/>
+  <logger name="com.idiominc" level="DEBUG"/>
+  <logger name="com.suite" level="DEBUG"/>
+  <logger name="ro.sync" level="INFO"/>
+  <logger name="com.oxygenxml.zendesk" level="INFO"/>
+  <logger name="com.oxygenxml.platform.integration" level="INFO"/>
+  <logger name="org.asynchttpclient" level="INFO"/>
+  <logger name="org.zendesk.client" level="INFO"/>
+  <logger name="io.netty" level="INFO"/>
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>

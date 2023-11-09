@@ -1,0 +1,6 @@
+<dummy xmlns:if="ant:if">
+    <param 
+        name="webhelp.csh.disable.topicID.fallback" 
+        expression="${webhelp.csh.disable.topicID.fallback}" 
+        if:set="webhelp.csh.disable.topicID.fallback"/>
+</dummy>

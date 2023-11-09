@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    
+Oxygen WebHelp Plugin
+Copyright (c) 1998-2023 Syncro Soft SRL, Romania.  All rights reserved.
+
+-->
+<?xml-model href="dita-ot/plugin.rnc" type="application/relax-ng-compact-syntax"?>
+<plugin id="com.oxygenxml.gsd"> 
+    <require plugin="org.dita.html5"/>
+    
+    <feature extension="dita.xsl.html5" file="xsl/html5-gsd.xsl"/>
+    <feature extension="dita.conductor.html5.param" value="params.xml" type="file" />
+    
+    <transtype name="html5" desc="HTML5">
+	    <param name="google.structured.data"
+	        desc="Specifies if Google Structured Data used to improve google search results should be generated in the transformation output.
+	        If set to yes, the transformation will automatically generate Google Structured Data for Questions and Answers topics, DITA Task topics, 
+	        and from &lt;data&gt; elements found inside a topic that has the @name=&quot;oxy:question&quot; construct. If set to no (default value), 
+	        the transformation will not generate Google Structured Data. "        
+	        type="enum">
+	        <val default="true">no</val>
+	        <val>yes</val>
+	    </param>   
+    </transtype>
+</plugin>

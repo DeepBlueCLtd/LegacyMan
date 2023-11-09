@@ -1,0 +1,304 @@
+<xsl:stylesheet
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:oxy="http://www.oxygenxml.com/extensions/author"
+  exclude-result-prefixes="#all" version="2.0">
+
+  <!-- 
+    Set an ID for every table with title.
+    This can be used from the list of tables. 
+  -->
+  <xsl:template match="
+      *[contains(@class, ' topic/table ')][not(@id)][*[contains(@class, ' topic/title ')]]" priority="2">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:attribute name="id">
+        <xsl:call-template name="get-id"/>
+      </xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- CALS table. -->
+  <xsl:template match="*[contains(@class, ' topic/table ')]">
+    <xsl:choose>
+      <!-- If the table contains multiple tgroups, create a table for each of them. -->
+      <xsl:when test="count(child::*[contains(@class, 'topic/tgroup')]) > 1">
+        <xsl:apply-templates select="*[contains(@class, ' topic/tgroup ')]" mode="wrap-into-table"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:next-match/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Wrap each tgroup in a separate table. -->
+  <xsl:template match="*[contains(@class, ' topic/tgroup ')]" mode="wrap-into-table">
+    <xsl:variable name="parent-table" select="parent::*[contains(@class, ' topic/table ')]"/>
+    <xsl:element name="{local-name($parent-table)}">
+      <xsl:choose>
+        <xsl:when test="count(preceding-sibling::*[contains(@class, ' topic/tgroup ')]) > 0">
+          <xsl:apply-templates select="$parent-table/@* except $parent-table/@id"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="$parent-table/@*"/>
+          <xsl:apply-templates select="$parent-table/*[contains(@class, ' topic/title ')]"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:copy>
+        <xsl:apply-templates select="@*"/>
+        <xsl:apply-templates/>
+      </xsl:copy>
+    </xsl:element>
+  </xsl:template>
+  
+  <!-- 
+    When a whole table/simpletable is inserted or commented, some extra oxy:elements are added as rows/strows children,
+    these elements must be filtered or they will be added into extra-cells, causing the process to fail.
+  -->
+  <xsl:template match="*[contains(@class, ' topic/row ')] | *[contains(@class, ' topic/strow ')]">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="* except oxy:*"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <!-- 
+    https://github.com/oxygenxml/dita-css/issues/10
+    Convert the CALS column and span attributes:
+    
+    @morerows
+    @namest, @nameend 
+    
+    to:
+    
+    @rowspan
+    @cospan 
+    
+    The CSS will match these attributes. Works with Prince and Antenna House.
+  -->
+  <xsl:template match="*[contains(@class, ' topic/entry ')]">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:if test="@morerows">
+        <xsl:attribute name="rowspan" select="number(@morerows) + 1"/>
+      </xsl:if>
+      <xsl:if test="@namest and @nameend">
+        <xsl:variable name="namest" select="@namest"/>
+        <xsl:variable name="nameend" select="@nameend"/>
+        <xsl:variable name="namestPos" select="number(parent::*/parent::*/parent::*/*[contains(@class, ' topic/colspec ')][@colname = $namest]/@colnum)"/>
+        <xsl:variable name="nameendPos" select="number(parent::*/parent::*/parent::*/*[contains(@class, ' topic/colspec ')][@colname = $nameend]/@colnum)"/>
+        <xsl:attribute name="colspan" select="$nameendPos - $namestPos + 1"/>
+      </xsl:if>
+      <xsl:if test="
+        current() = (
+        preceding-sibling::processing-instruction('oxy_comment_start') |
+        preceding-sibling::processing-instruction('oxy_insert_start') |
+        preceding-sibling::processing-instruction('oxy_custom_start'))
+        /following-sibling::entry[1]">
+        <xsl:apply-templates select="
+          preceding-sibling::processing-instruction('oxy_comment_start') |
+          preceding-sibling::processing-instruction('oxy_insert_start') |
+          preceding-sibling::processing-instruction('oxy_custom_start')" mode="processOxygenPIs"/>
+      </xsl:if>
+      <xsl:apply-templates/>
+      <xsl:if test="
+        current() = (
+        following-sibling::processing-instruction('oxy_comment_end') |
+        following-sibling::processing-instruction('oxy_insert_end') |
+        following-sibling::processing-instruction('oxy_custom_end'))
+        /preceding-sibling::entry[1]">
+        <xsl:apply-templates select="
+          following-sibling::processing-instruction('oxy_comment_end') |
+          following-sibling::processing-instruction('oxy_insert_end') |
+          following-sibling::processing-instruction('oxy_custom_end')" mode="processOxygenPIs"/>
+      </xsl:if>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Simple table. -->
+  <xsl:template match="*[contains(@class, ' topic/simpletable ')]">
+    <xsl:choose>
+      <xsl:when test="starts-with($transtype, 'pdf-css-html5')">
+        <!-- Leave it as it is. -->
+        <xsl:next-match/>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- Add necessary markup to impose the column widths and headers. -->
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+
+          <xsl:if test="@relcolwidth">
+            <!--
+                    Compute the column widths for simple tables by extracting the propoprtions from relcolwidths and 
+                    set them as percents in a 'style' attribute, on an artificial 'colspec' element. 
+                  -->
+            <xsl:variable name="proportions" select="tokenize(normalize-space(replace(@relcolwidth, '\*', ' ')), ' ')"/>
+            <xsl:variable name="total-prop-width" select="
+                sum(for $s in $proportions
+                return
+                  number($s))"/>
+            <xsl:for-each select="$proportions">
+              <colspec class="- topic/colspec ">
+                <xsl:variable name="prop-width" select="number(.)"/>
+                <xsl:variable name="percent" select="round($prop-width div $total-prop-width * 1000000) div 10000"/>
+                <xsl:variable name="percent" select="
+                    if (round($percent) = $percent) then
+                      $percent
+                    else
+                      format-number($percent, '##0.0000')"/>
+                <xsl:attribute name="style">width:<xsl:value-of select="$percent"/>%;</xsl:attribute>
+              </colspec>
+            </xsl:for-each>
+          </xsl:if>
+
+          <xsl:choose>
+            <xsl:when test="./*[contains(@class, ' topic/sthead ')]">
+              <!--
+                      This is needed to create running headers for simpletables and other tables derived from it.
+                      Wrap the simpletable heading into an artificial element that will have its CSS display set to table-header-group
+                    -->
+              <oxy:table-header-group class="- simpletable/table-header-group ">
+                <xsl:apply-templates select="*[contains(@class, ' topic/sthead ')]"/>
+              </oxy:table-header-group>
+              <oxy:table-row-group class="- simpletable/table-row-group ">
+                <xsl:apply-templates select="*[not(contains(@class, ' topic/sthead '))] | processing-instruction()"/>
+              </oxy:table-row-group>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Simple table entry. -->
+  <xsl:template match="*[contains(@class, ' topic/stentry ')]">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:if test="
+        current() = (
+        preceding-sibling::processing-instruction('oxy_comment_start') |
+        preceding-sibling::processing-instruction('oxy_insert_start') |
+        preceding-sibling::processing-instruction('oxy_custom_start'))
+        /following-sibling::stentry[1]">
+        <xsl:apply-templates select="
+          preceding-sibling::processing-instruction('oxy_comment_start') |
+          preceding-sibling::processing-instruction('oxy_insert_start') |
+          preceding-sibling::processing-instruction('oxy_custom_start')" mode="processOxygenPIs"/>
+      </xsl:if>
+      <xsl:apply-templates/>
+      <xsl:if test="
+        current() = (
+        following-sibling::processing-instruction('oxy_comment_end') |
+        following-sibling::processing-instruction('oxy_insert_end') |
+        following-sibling::processing-instruction('oxy_custom_end'))
+        /preceding-sibling::stentry[1]">
+        <xsl:apply-templates select="
+          following-sibling::processing-instruction('oxy_comment_end') |
+          following-sibling::processing-instruction('oxy_insert_end') |
+          following-sibling::processing-instruction('oxy_custom_end')" mode="processOxygenPIs"/>
+      </xsl:if>
+    </xsl:copy>
+  </xsl:template>
+
+  <!--
+		Computes the column widths for normal tables and set them in a 'style' attribute on the existing
+		'colspec' element.
+		Proportional CALS units are converted to percents.
+		The fixed values are copied unchanged.		
+	-->
+  <xsl:template match="*[contains(@class, ' topic/colspec ')]">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+
+      <xsl:choose>
+        <xsl:when test="contains(@colwidth, '*')">
+          <!-- It is a proportional width. Solve it to % -->
+          <xsl:variable name="total-prop-width" select="
+              sum(
+              ..//*[contains(@colwidth, '*')]/number(
+              if (string-length(normalize-space(substring-before(@colwidth, '*'))) = 0)
+              then
+                1
+              else
+                normalize-space(substring-before(@colwidth, '*')))
+              )"/>
+
+
+          <xsl:variable name="prop-width" select="
+              number(
+              if (string-length(normalize-space(substring-before(@colwidth, '*'))) = 0)
+              then
+                1
+              else
+                normalize-space(substring-before(@colwidth, '*')))"/>
+          <xsl:if test="string($total-prop-width) != 'NaN'">
+            <xsl:variable name="percent" select="round($prop-width div $total-prop-width * 1000000) div 10000"/>
+            <xsl:variable name="percent" select="
+                if (round($percent) = $percent) then
+                  $percent
+                else
+                  format-number($percent, '##0.0000')"/>
+            <xsl:attribute name="style">width:<xsl:value-of select="$percent"/>%;</xsl:attribute>
+          </xsl:if>
+        </xsl:when>
+        <xsl:when test="@colwidth">
+          <!-- It is a fixed value. Use it as it is -->
+          <xsl:attribute name="style">width:<xsl:value-of select="@colwidth"/>;</xsl:attribute>
+        </xsl:when>
+      </xsl:choose>
+
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Move the start PIs that are placed before the empty cells inside them. This is the ignore part. -->
+  <xsl:template match="
+      processing-instruction('oxy_attributes') |
+      processing-instruction('oxy_comment_start') |
+      processing-instruction('oxy_delete') |
+      processing-instruction('oxy_insert_start') |
+      processing-instruction('oxy_custom_start')" priority="2">
+
+    <xsl:variable name="isOutsideCell" select="
+        if (following-sibling::*[contains(@class, ' topic/entry ')][1] or following-sibling::*[contains(@class, ' topic/stentry ')][1]) then
+          true()
+        else
+          false()"/>
+
+    <xsl:choose>
+      <xsl:when test="$isOutsideCell">
+        <!-- Skip, it will be processed in the cell template, it will be copied there. -->
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:next-match/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Move the end PIs that are placed after the empty cells inside them. This is the ignore part. -->
+  <xsl:template match="
+      processing-instruction('oxy_comment_end') |
+      processing-instruction('oxy_insert_end') |
+      processing-instruction('oxy_custom_end')" priority="2">
+
+    <xsl:variable name="isOutsideCell" select="
+        if (preceding-sibling::*[contains(@class, ' topic/entry ')][1] or preceding-sibling::*[contains(@class, ' topic/stentry ')][1]) then
+          true()
+        else
+          false()"/>
+
+    <xsl:choose>
+      <xsl:when test="$isOutsideCell">
+        <!-- Skip, it will be processed in the cell template, it will be copied there. -->
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:next-match/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+</xsl:stylesheet>

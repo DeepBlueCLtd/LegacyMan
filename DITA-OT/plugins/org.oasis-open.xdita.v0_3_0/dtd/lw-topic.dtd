@@ -1,0 +1,130 @@
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!--  MODULE:    Lightweight DITA Topic                            -->
+<!--  VERSION:   1.0                                               -->
+<!--  DATE:      XXX                                               -->
+<!--                                                               -->
+<!-- ============================================================= -->
+
+<!-- ============================================================= -->
+<!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
+<!--                    TYPICAL INVOCATION                         -->
+<!--                                                               -->
+<!--  Refer to this file by the following public identifier or an
+      appropriate system identifier:
+PUBLIC "-//OASIS//DTD LIGHTWEIGHT DITA Topic//EN"
+      Delivered as file "lw-topic.dtd"                             -->
+
+<!-- ============================================================= -->
+<!-- SYSTEM:     Lightweight DITA                                  -->
+<!--                                                               -->
+<!-- PURPOSE:    DTD to describe Lightweight DITA topic            -->
+<!--                                                               -->
+<!-- ORIGINAL CREATION DATE:                                       -->
+<!--             XXXX                                              -->
+<!--                                                               -->
+<!--             (C) OASIS                                         -->
+<!--             All Rights Reserved.                              -->
+<!--                                                               -->
+<!--  UPDATES:                                                     -->
+<!--    25 Nov 2014 KJE: Upload files to DITA TC SVN repo          -->
+<!--    16 May 2016  MG: Upload files to GitHub repo               -->
+<!--    03 Apr 2017  CE: Added XDITA constraint token              -->
+<!--    11 Jun 2017 KJE: Added headers and update logs             -->
+<!--    20 Jun 2017  CE: Added prefix lw- to filename              -->
+<!--    25 Jul 2017  CE: Changed public identifier to LIGHTWEIGHT  -->
+<!--                     DITA                                      -->
+<!--    08 Jun 2021  CE: Added emphasis domain                     -->
+<!--    26 Oct 2021  ES: split common entities element to their    -->
+<!--                     own files                                 -->
+<!--    15 Dec 2022 KJE: Added <tt> as specialization of <ph>      -->
+<!-- ============================================================= -->
+
+
+<!-- ============================================================= -->
+<!--                    ADD PHRASE ELEMENTS                        -->
+<!-- ============================================================= -->
+
+<!-- hi-d and emphasis-d -->
+<!ENTITY % ph           "b | em | i | ph | strong | sub | sup | tt | u" >
+
+
+<!-- ============================================================= -->
+<!--                    ADD FILTERING ATTRIBUTES                   -->
+<!-- ============================================================= -->
+
+<!-- none-->
+<!-- ENTITY % filter-adds
+      "ADD-ATTRIBUTE-HERE      CDATA                        #IMPLIED"-->
+
+
+<!-- ============================================================= -->
+<!--                    DECLARE USE OF ELEMENT/ATTRIBUTE DOMAINS   -->
+<!-- ============================================================= -->
+
+<!ENTITY included-domains                         ""                 >
+
+<!-- ============================================================= -->
+<!--                    REMOVE ATTRIBUTE/ELEMENT GROUPS            -->
+<!-- ============================================================= -->
+
+<!-- Remove a group by uncommenting its redefinition below -->
+
+<!--ENTITY % filters " " -->
+<!--ENTITY % reuse " " -->
+<!--ENTITY % localization " " -->
+<!--ENTITY % nested-blocks "p" -->
+
+<!--For each group removed add a corresponding constraint value to
+    the excluded-domains entity. The constraint name should be "no-"
+    followed by the name of the entity removed/constrained.
+    For example, if you removed reuse attributes, add the value
+    "no-reuse-c" to the excluded-domains entity definition-->
+
+<!ENTITY excluded-domains                         " "                >
+
+<!-- ============================================================= -->
+<!--                    INCLUDE TOPIC AND SECTION MODULES          -->
+<!-- ============================================================= -->
+
+<!ENTITY % common-ent   PUBLIC
+"-//OASIS//ENTITIES LIGHTWEIGHT DITA Common//EN"
+"lw-common.ent"                                                      >
+%common-ent;
+
+
+<!ENTITY % common-defn   PUBLIC
+"-//OASIS//ELEMENTS LIGHTWEIGHT DITA Common//EN"
+"lw-common.mod"                                                      >
+%common-defn;
+
+<!--                    Embed topic module to get generic elements -->
+
+<!ENTITY % topic-type   PUBLIC
+"-//OASIS//ELEMENTS LIGHTWEIGHT DITA Topic//EN"
+"lw-topic.mod"                                                       >
+%topic-type;
+
+
+
+<!--                    Embed section modules                      -->
+<!-- none -->
+
+
+<!-- ============================================================= -->
+<!--                    INCLUDE PHRASE MODULES                     -->
+<!-- ============================================================= -->
+
+<!ENTITY % hi-d-def     PUBLIC
+" -//OASIS//ELEMENTS LIGHTWEIGHT DITA Highlight Domain//EN"
+"lw-highlightDomain.mod"                                             >
+%hi-d-def;
+
+<!ENTITY % hi-emph-def     PUBLIC
+" -//OASIS//ELEMENTS LIGHTWEIGHT DITA Emphasis Domain//EN"
+"lw-emphasisDomain.mod"                                              >
+%hi-emph-def;
+
+
+<!-- ============== End LIGHTWEIGHT DITA Topic DTD  =============== -->
