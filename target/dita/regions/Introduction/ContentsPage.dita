@@ -6,7 +6,43 @@
 	<title>
 MAIN DOCUMENT TITLE &amp; VERSION
 </title>
-	<refbody/>
+	<refbody>
+		<section>
+			<title/>
+			<div id="PageLayer">
+				<p outputclass="h2">Contents</p>
+				<p outputclass="h2">
+					<b>
+						<xref format="dita" href="../PlatformData/PD_1.dita">New in this edition of Green Cross Code</xref>
+					</b>
+				</p>
+				<p> </p>
+				<p outputclass="h2"> </p>
+				<p outputclass="h2">
+					<b>
+						<xref format="dita" href="../PlatformData/PD_1.dita">Platform Data Section</xref>
+					</b>
+				</p>
+				<p> </p>
+				<p outputclass="h2"> </p>
+				<p outputclass="h2">
+					<b>
+						<xref format="dita" href="../QuickLinksData/Contents_Index.dita">Contents Index</xref>
+					</b>
+				</p>
+				<p> </p>
+				<p outputclass="h2"> </p>
+				<p outputclass="h1">
+					<b>
+						<b>
+							<xref format="dita" href="./ContentsPage.dita">Guide</xref>
+						</b>
+						<xref format="dita" href="./ContentsPage.dita">Feedback</xref>
+					</b>
+				</p>
+			</div>
+		</section>
+	</refbody>
 	<related-links id="related-pages">
 		<link href="../QuickLinksData/Abbreviations.dita">
 			<linktext>Abbreviations</linktext>

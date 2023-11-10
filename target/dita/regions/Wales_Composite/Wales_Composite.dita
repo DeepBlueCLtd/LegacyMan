@@ -92,14 +92,12 @@ WALES
 								</entry>
 							</row>
 							<row>
-								<entry>Unit 1</entry>
-								<entry>Unit 2</entry>
-								<entry>Unit 3</entry>
-								<entry>Unit 4</entry>
-								<entry>Unit 5</entry>
-								<entry>Unit 6</entry>
-								<entry>Unit 7</entry>
-								<entry>Unit 8</entry>
+								<entry>alpha</entry>
+								<entry>bravo</entry>
+								<entry nameend="c4" namest="c3">charlie</entry>
+								<entry>delta</entry>
+								<entry>echo</entry>
+								<entry nameend="c8" namest="c7">foxtrot</entry>
 							</row>
 						</tbody>
 					</tgroup>

@@ -11,7 +11,7 @@ Delta Transducer
 			<title/>
 			<div>
 				<table colsep="1" frame="all" rowsep="1">
-					<tgroup cols="7">
+					<tgroup cols="8">
 						<colspec colname="c1"/>
 						<colspec colname="c2"/>
 						<colspec colname="c3"/>
@@ -19,9 +19,10 @@ Delta Transducer
 						<colspec colname="c5"/>
 						<colspec colname="c6"/>
 						<colspec colname="c7"/>
+						<colspec colname="c8"/>
 						<tbody>
 							<row>
-								<entry nameend="c7" namest="c1" outputclass="bkDarkGray">
+								<entry nameend="c8" namest="c1" outputclass="bkDarkGray">
 									<b>Delta Transducer</b>
 								</entry>
 							</row>
@@ -44,7 +45,7 @@ Delta Transducer
 								<entry outputclass="bkLightGray">
 									<b>Power</b>
 								</entry>
-								<entry nameend="c7" namest="c7" outputclass="bkLightGray">
+								<entry nameend="c8" namest="c7" outputclass="bkLightGray">
 									<b>Other names</b>
 								</entry>
 							</row>
@@ -63,7 +64,7 @@ Delta Transducer
 								<entry outputclass="bkLightGray">
 									<b>Remarks</b>
 								</entry>
-								<entry nameend="c7" namest="c2">
+								<entry nameend="c8" namest="c2">
 									<p>Aliquip incididunt sint commodo et fugiat consequat aliquip qui sunt.</p>
 									<p>
 										<b>Other nations using this transducer:</b>
@@ -105,5 +106,4 @@ Delta Transducer
 			</div>
 		</section>
 	</refbody>
-	<related-links id="related-pages"/>
 </reference>
