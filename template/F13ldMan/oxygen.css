@@ -64,6 +64,32 @@
     font-weight: 200%
 }
 
+/* float the related link, if the screen is wide enough */
+@media screen and (min-width: 692px) {
+    /* pad the right-hand side of hte content, to make space for hte
+    floating table of contents */
+    .body {
+        padding-right: 100px;
+    }
+    
+    /* make the related links float */
+    .wh_related_links {
+        background-color: #EFEFFA; 
+        position:fixed;
+        width: 200px;
+        right:0;
+        top:200px;
+        z-index: 1000;
+    }
+}
+
+/* text label for category image links (FONT-SIZE REMOVED) */
+.xref .b {
+    display:block;
+    text-align: center;
+    /* font-size: 2em; */
+}
+
 /*
  * ==============================================
  * Style changes for Fi3ldMan project above this block
@@ -619,28 +645,3 @@ html[dir='rtl'] .wh_top_menu.activated-on-click ul li.active > ul {
     max-width: 270px;
 }
 
-/* float the related link, if the screen is wide enough */
-@media screen and (min-width: 692px) {
-    /* pad the right-hand side of hte content, to make space for hte
-    floating table of contents */
-    .body {
-        padding-right: 100px;
-    }
-    
-    /* make the related links float */
-    .wh_related_links {
-        background-color: #EFEFFA; 
-        position:fixed;
-        width: 200px;
-        right:0;
-        top:200px;
-        z-index: 1000;
-    }
-}
-
-/* text label for category image links (FONT-SIZE REMOVED) */
-.xref .b {
-    display:block;
-    text-align: center;
-    /* font-size: 2em; */
-}
