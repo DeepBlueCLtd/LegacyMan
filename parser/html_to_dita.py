@@ -520,8 +520,7 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
                 if converted_child is not None:
                     dita_cell_element.append(converted_child)
             # Add the DITA cell element to the DITA row element.
-            if len(list(dita_cell_element.contents)) != 0:
-                dita_row_element.append(dita_cell_element)
+            dita_row_element.append(dita_cell_element)
 
         # Add the DITA row element to the DITA tbody.
         dita_tbody_element.append(dita_row_element)
