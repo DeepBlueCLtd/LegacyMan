@@ -39,7 +39,9 @@
 							<entry align="center" nameend="col7" namest="col1" outputclass="table-separator">LEGACY</entry>
 						</row>
 						<row>
-							<entry>Unit_a</entry>
+							<entry>
+								<xref format="dita" href="FR_A27_Unit.dita">Unit_a27</xref>
+							</entry>
 							<entry>PB</entry>
 							<entry>2 * V8 Diesel</entry>
 							<entry>3 x 3</entry>
