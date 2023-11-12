@@ -109,7 +109,7 @@ def get_top_value(css_string):
 
 
 def generate_top_to_div_mapping(
-    html_soup, include_anchors=False, recursive=True, ignore_graylayer=True
+    html_soup, include_anchors=False, recursive=True, ignore_graylayer=True, filename=""
 ):
     top_to_div_mapping = {}
 
@@ -176,10 +176,17 @@ def generate_top_to_div_mapping(
     # soup and process that as one thing - because we haven't got enough top values
     # to properly order things
     non_div_elements = html_soup.find_all(re.compile("^(?!div.*$).*"), recursive=False)
-    if (
-        len(non_div_elements) > len(all_bottom_layer_divs)
-        and len(html_soup.find_all(recursive=False)) > 1
-    ):
+    filtered_non_div_elements = []
+    for el in non_div_elements:
+        if el.name in ("p", "h1") and el.text.strip() == "":
+            continue
+        else:
+            filtered_non_div_elements.append(el)
+
+    if len(filtered_non_div_elements) > 0 and len(html_soup.find_all(recursive=False)) > 1:
+        logging.warning(
+            f"Elements with no top value found inside element with ID {html_soup.get('id')} in file {filename}"
+        )
         return [(0, html_soup)]
 
     return top_to_div_mapping

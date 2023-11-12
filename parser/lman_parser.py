@@ -502,7 +502,7 @@ class Parser:
                     f"File {link_path} doesn't exist, linked in the QuickLinks table from {input_file_path}"
                 )
 
-    def process_generic_file_pagelayer(self, dita_soup, page, topic_id):
+    def process_generic_file_pagelayer(self, dita_soup, page, topic_id, filename=""):
         # Exclude links that are in divs just for buttons, as they're not proper links they're just things that go
         # back to the map etc
         if page.name == "div":
@@ -519,17 +519,11 @@ class Parser:
                 dita_section_title.string = element.text
                 break
 
-        top_to_div_mapping = generate_top_to_div_mapping(page, recursive=False)
-        # print(f"Top to div mapping for div with id = {page['id']}")
-        # print([el[0] for el in top_to_div_mapping])
+        top_to_div_mapping = generate_top_to_div_mapping(page, recursive=False, filename=filename)
         converted_bits = []
         for _, sub_div in top_to_div_mapping:
             # process the content in html to dita. Note: since this is a non-class
             # file, we instruct `div` elements to remain as `div`
-            # try:
-            #     print(f"Div id = {sub_div['id']}")
-            # except Exception:
-            #     print("Div has no id")
             converted_soup = htmlToDITA(sub_div, dita_soup, topic_id, "div")
             if converted_soup:
                 converted_bits.append(converted_soup)
@@ -636,7 +630,9 @@ class Parser:
                 str(Path(input_file_path).relative_to(self.root_path))
             ]
             pages_to_process = set()
-            top_to_div_mapping = generate_top_to_div_mapping(html_soup, recursive=True)
+            top_to_div_mapping = generate_top_to_div_mapping(
+                html_soup, recursive=True, filename=input_file_path
+            )
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = self.find_first_page_layer(top_to_div_mapping, html_soup)
@@ -708,7 +704,10 @@ class Parser:
                                     break
                         if not page:
                             top_to_div_mapping_with_graylayers = generate_top_to_div_mapping(
-                                html_soup, recursive=True, ignore_graylayer=False
+                                html_soup,
+                                recursive=True,
+                                ignore_graylayer=False,
+                                filename=input_file_path,
                             )
                             for top_value, bottom_layer_div in top_to_div_mapping_with_graylayers:
                                 div_id = bottom_layer_div.get("id")
@@ -770,14 +769,18 @@ class Parser:
                     logging.debug(f"Processing sub-page {page['id']}")
                 except Exception:
                     pass
-                processed_page = self.process_generic_file_pagelayer(dita_soup, page, topic_id)
+                processed_page = self.process_generic_file_pagelayer(
+                    dita_soup, page, topic_id, filename=input_file_path
+                )
                 if processed_page:
                     sections.append(processed_page)
         else:
             sections = []
             for page in html_soup.find_all("div"):
                 if page.has_attr("id") and "PageLayer" in page["id"]:
-                    processed_page = self.process_generic_file_pagelayer(dita_soup, page, topic_id)
+                    processed_page = self.process_generic_file_pagelayer(
+                        dita_soup, page, topic_id, filename=input_file_path
+                    )
                     if processed_page:
                         sections.append(processed_page)
 
