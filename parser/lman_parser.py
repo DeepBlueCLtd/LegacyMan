@@ -550,8 +550,8 @@ class Parser:
         if len(top_to_div_mapping) > 0:
             logging.debug({el[0]: el[1].get("id") for el in top_to_div_mapping})
             for top_value, div in top_to_div_mapping:
-                # Don't look at any divs that are within a BottomLayer div
-                bl_parents = div.find_parents(id=re.compile("BottomLayer"))
+                # Don't look at any divs that are within a BottomLayer or PageLayer div
+                bl_parents = div.find_parents(id=re.compile("BottomLayer|PageLayer"))
                 if len(bl_parents) > 0:
                     continue
                 div_id = div.get("id")

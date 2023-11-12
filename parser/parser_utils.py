@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 import cssutils
 import logging
+import re
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -168,6 +169,17 @@ def generate_top_to_div_mapping(
     top_to_div_mapping = sorted(top_to_div_mapping.items())
 
     if len(top_to_div_mapping) == 0:
+        return [(0, html_soup)]
+
+    # If we have a load of non-div elements and there are more of them than
+    # the div elements (which might have top values) then just return the whole
+    # soup and process that as one thing - because we haven't got enough top values
+    # to properly order things
+    non_div_elements = html_soup.find_all(re.compile("^(?!div.*$).*"), recursive=False)
+    if (
+        len(non_div_elements) > len(all_bottom_layer_divs)
+        and len(html_soup.find_all(recursive=False)) > 1
+    ):
         return [(0, html_soup)]
 
     return top_to_div_mapping
