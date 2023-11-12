@@ -989,6 +989,10 @@ class Parser:
             "html5",
             "-o",
             "./target/html",
+            # commands to pull in css template
+            "-Dargs.copycss=yes",  # provide a copy of css file
+            "-Dargs.css=oxygen.css",  # name of CSS file
+            "-Dargs.cssroot=$(pwd)/template/F13ldMan",  # absolute path to CSS file
         ]
         subprocess.run(publish_command)
         time2 = time.time()
