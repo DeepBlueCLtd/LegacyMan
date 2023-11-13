@@ -476,6 +476,20 @@ class Parser:
         if related_links:
             dita_reference.append(related_links)
 
+        bodylink_hrefs = []
+        a_tags = soup.find_all("a")
+        for a_tag in a_tags:
+            parent_pagelayer = a_tag.find_parent("div", id=re.compile("PageLayer"))
+            parent_layer = a_tag.find_parent("div", id=re.compile("^layer"))
+            if parent_pagelayer or parent_layer:
+                if a_tag.get("href"):
+                    bodylink_hrefs.append(a_tag["href"])
+
+        all_links = list(quicklinks.values()) + bodylink_hrefs
+        self.track_all_links(
+            all_links, Path(f"{self.root_path}/{remove_leading_slashes(category_page_link)}")
+        )
+
         # Append the whole page to the dita soup
         dita_soup.append(dita_reference)
 
@@ -830,9 +844,14 @@ class Parser:
 
     def track_all_links(self, all_links, input_file_path):
         for value in all_links:
+            if value == "history.go(-1)":
+                continue
             parsed = urlparse(value)
+
             if parsed.path:
                 filepath = (input_file_path.parent / Path(parsed.path)).resolve()
+                if filepath.suffix != ".html":
+                    continue
             else:
                 filepath = input_file_path
 
