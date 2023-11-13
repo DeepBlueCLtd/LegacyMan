@@ -990,6 +990,8 @@ class Parser:
             "-o",
             "./target/html",
             "-Dargs.cssroot=$(pwd)/template/F13ldMan",  # absolute path to CSS file
+            # note: the above attribute won't work from props file, since it requires
+            # absolute path, which doesn't allow for portable repo.
             "--propertyfile=html5.properties",  # properties file
         ]
         subprocess.run(publish_command)
