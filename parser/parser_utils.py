@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 import cssutils
 import logging
+import re
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -108,7 +109,7 @@ def get_top_value(css_string):
 
 
 def generate_top_to_div_mapping(
-    html_soup, include_anchors=False, recursive=True, ignore_graylayer=True
+    html_soup, include_anchors=False, recursive=True, ignore_graylayer=True, filename=""
 ):
     top_to_div_mapping = {}
 
@@ -168,6 +169,24 @@ def generate_top_to_div_mapping(
     top_to_div_mapping = sorted(top_to_div_mapping.items())
 
     if len(top_to_div_mapping) == 0:
+        return [(0, html_soup)]
+
+    # If we have a load of non-div elements and there are more of them than
+    # the div elements (which might have top values) then just return the whole
+    # soup and process that as one thing - because we haven't got enough top values
+    # to properly order things
+    non_div_elements = html_soup.find_all(re.compile("^(?!div.*$).*"), recursive=False)
+    filtered_non_div_elements = []
+    for el in non_div_elements:
+        if el.name in ("p", "h1") and el.text.strip() == "":
+            continue
+        else:
+            filtered_non_div_elements.append(el)
+
+    if len(filtered_non_div_elements) > 0 and len(html_soup.find_all(recursive=False)) > 1:
+        logging.warning(
+            f"Elements with no top value found inside element with ID {html_soup.get('id')} in file {filename}"
+        )
         return [(0, html_soup)]
 
     return top_to_div_mapping
