@@ -8,9 +8,101 @@ A27 (some-name) ABC
 </title>
 	<refbody>
 		<section>
+			<title/>
+			<div id="Table">
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="6">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<colspec colname="c5"/>
+						<colspec colname="c6"/>
+						<tbody>
+							<row>
+								<entry outputclass="bkDarkGray">Drive</entry>
+								<entry outputclass="bkDarkGray">Mode</entry>
+								<entry outputclass="bkDarkGray">Shaft x Blade</entry>
+								<entry outputclass="bkDarkGray">R:R</entry>
+								<entry outputclass="bkDarkGray">Max Speed (Guide)</entry>
+								<entry outputclass="bkDarkGray">Av TPK (Guide)</entry>
+							</row>
+							<row>
+								<entry>4 Diesel</entry>
+								<entry>PTR</entry>
+								<entry>2 * 4 (GRR)</entry>
+								<entry>412.8:1</entry>
+								<entry>40 kts</entry>
+								<entry>~14</entry>
+							</row>
+							<row>
+								<entry nameend="c6" namest="c1" outputclass="bkLightGray">
+									<b>Commonly Detected Sources</b>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">Source</entry>
+								<entry outputclass="bkLightGray">Ratio/Freq</entry>
+								<entry nameend="c4" namest="c3" outputclass="bkLightGray">Harmonics</entry>
+								<entry nameend="c6" namest="c5" outputclass="bkLightGray">Remarks</entry>
+							</row>
+							<row>
+								<entry nameend="c6" namest="c1" outputclass="bkLightGray">Propulsion Related</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+</entry>
+								<entry>S12</entry>
+								<entry nameend="c4" namest="c3">H1-4</entry>
+								<entry nameend="c6" namest="c5">
+									Discrete. Doublets common
+									<ul>
+										<li>Total control</li>
+										<li>Intermediate control</li>
+										<li>Not under control</li>
+									</ul>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+		<section>
 			<title>REMARKS</title>
-			<div id="image7">
+			<div id="PageLayer2">
+				<p id="number2"/>
+				<p outputclass="h1">REMARKS</p>
 				<image height="177" href="Content/Images/leyland_1.jpg"/>
+				<p> </p>
+				<p> </p>
+				<p> </p>
+				<p> </p>
+				<p> </p>
+				<p>1.   Currently the following installations for this type of plant are in use by
+            Petroleum Luxe</p>
+				<ul>
+					<li>La Boheme (P432)</li>
+					<li>Le Figaro (P765)</li>
+					<li>Vive la difference (P433)</li>
+				</ul>
+				<p>2.   The unit anchor was designed in France as an after school project, no-one
+            intended it for mainstream use. ∏Laborum incididunt exercitation fugiat est veniam deserunt labore
+            proident voluptate commodo. Esse fugiat eu veniam amet dolore. Aliqua quis nostrud pariatur amet
+            nisi incididunt tempor qui sint. Adipisicing ad dolore est et cupidatat duis eiusmod et laborum est
+            officia enim ullamco. Aliqua nostrud eu eiusmod consequat consectetur labore aliqua proident nulla
+            pariatur.</p>
+				<p>3.   One of the more notable features of this installation is the chimney height,
+            intended to avoid pollutant spread over staff car parks.</p>
+				<p>4.   Reprehenderit nisi est labore ut anim. Elit sit nulla consectetur nostrud nulla
+            officia ea consectetur. Veniam aliquip labore pariatur cupidatat dolor dolor consectetur ex ullamco
+            sit tempor amet ipsum.</p>
+				<p>5.   One of the distinguishing features of later Charlie units Amet commodo exercitation eiusmod
+            reprehenderit mollit eiusmod excepteur consectetur aute consequat. Aliqua ullamco duis voluptate
+            duis reprehenderit commodo officia minim dolor sunt duis reprehenderit. Laboris ullamco magna
+            consequat incididunt non qui pariatur pariatur fugiat laborum Lorem. Excepteur nostrud laborum nisi
+            officia irure sint nisi quis ea dolore proident exercitation. Anim do ea ad consequat elit non irure
+            excepteur.</p>
 			</div>
 		</section>
 		<section>

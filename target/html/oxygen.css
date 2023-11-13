@@ -60,6 +60,18 @@
     background-color: #999;    
 }
 
+.bkYellow {
+    background-color: #ffff00;    
+}
+
+.bkBlue {
+    background-color: #0000ff;    
+}
+
+.bkRed {
+    background-color: #ff0000;    
+}
+
 .bold {
     font-weight: 200%
 }

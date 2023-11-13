@@ -9,7 +9,7 @@ SP Complex - TRANSDUCERS
 	<refbody>
 		<section>
 			<title/>
-			<div id="Table">
+			<div id="PageLayer1">
 				<table colsep="1" frame="all" rowsep="1">
 					<tgroup cols="6">
 						<colspec colname="c1"/>
@@ -88,6 +88,14 @@ SP Complex - TRANSDUCERS
 						</tbody>
 					</tgroup>
 				</table>
+				<ul>
+					<li>
+						<!-- note: this is a link to an element in anchors that isn't included in the anchors QuickLinks table -->
+						<xref format="dita" href="./unit_anchors.dita#unit_anchors/number2">
+							<b>Click here for Anchor System Layout</b>
+						</xref>
+					</li>
+				</ul>
 			</div>
 		</section>
 	</refbody>

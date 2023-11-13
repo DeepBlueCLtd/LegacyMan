@@ -181,118 +181,121 @@ Phase G UNITS OVERVIEW
 							<row>
 								<entry>1-1.3</entry>
 								<entry>GR CCP</entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
+								<entry/>
+								<entry/>
+								<entry/>
 							</row>
 							<row>
 								<entry>2.2 - 2.7</entry>
 								<entry>MAC BK Double</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkYellow"> </entry>
+								<entry outputclass="bkBlue"> </entry>
 							</row>
 							<row>
 								<entry>3.2 - 3.55</entry>
 								<entry>TEX BBQ</entry>
 								<entry> </entry>
 								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>6.2 - 13.55</entry>
 								<entry>MAN TRANSF</entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>9.15 - 11.66</entry>
 								<entry>FORF 12A</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>12.2 - 12.7</entry>
 								<entry>MAC BK Double</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
+								<entry outputclass="bkRed"> </entry>
+								<entry outputclass="bkRed"> </entry>
+								<entry outputclass="bkRed"> </entry>
 							</row>
 							<row>
 								<entry>13.2 - 13.55</entry>
 								<entry>TEX BBQ</entry>
 								<entry> </entry>
 								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>16.2 - 23.55</entry>
 								<entry>MAN TRANSF</entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>19.15 - 21.66</entry>
 								<entry>FORF 12A</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>26.2 - 33.55</entry>
 								<entry>MAN TRANSF</entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>29.15 - 31.66</entry>
 								<entry>FORF 12A</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>32.2 - 32.7</entry>
 								<entry>MAC BK Double</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
+								<entry outputclass="bkRed"> </entry>
+								<entry outputclass="bkRed"> </entry>
+								<entry outputclass="bkRed"> </entry>
 							</row>
 							<row>
 								<entry>33.2 - 14.55</entry>
 								<entry>TEX BBQ</entry>
 								<entry> </entry>
 								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>34.2 - 33.55</entry>
 								<entry>MAN TRANSF</entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry> </entry>
 							</row>
 							<row>
 								<entry>39.15 - 51.66</entry>
 								<entry>FORF 12A</entry>
-								<entry> </entry>
-								<entry> </entry>
-								<entry> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
+								<entry outputclass="bkBlue"> </entry>
 								<entry> </entry>
 							</row>
 						</tbody>
@@ -306,15 +309,15 @@ Phase G UNITS OVERVIEW
 						<colspec colname="c2"/>
 						<tbody>
 							<row>
-								<entry> </entry>
+								<entry outputclass="bkRed"> </entry>
 								<entry>Usually Present</entry>
 							</row>
 							<row>
-								<entry> </entry>
+								<entry outputclass="bkBlue"> </entry>
 								<entry>Occasionally Present</entry>
 							</row>
 							<row>
-								<entry> </entry>
+								<entry outputclass="bkYellow"> </entry>
 								<entry>Infrequently Present</entry>
 							</row>
 						</tbody>
