@@ -3,6 +3,42 @@
  * Skin for oXygen generated WebHelp.
  * ==============================================
  */
+
+/* user-defined CSS */
+
+
+.wh_footer_commercial{
+    text-align: center;
+    padding: 1em;
+    position:relative;
+    bottom: 0;
+    width: 100%;
+    color: #000;
+    background: none #bfebb9;
+    top: 2em;
+}
+
+.wh_footer_commercial span{
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.wh_header_commercial{
+    background: #bfebb9 none;
+    color: #000;
+    text-align: center;
+}
+
+.wh_header_commercial span{
+    font-family: Arial;
+    font-size: 14px;
+}
+
+
+
+/* ------------------------------------------- */
+
+
 /* don't show section title anchro */
 .permalink {
     display: none
