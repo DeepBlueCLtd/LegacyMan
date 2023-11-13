@@ -99,6 +99,9 @@ def convert_html_href_to_dita_href(href):
 
 
 def get_top_value(css_string):
+    if css_string is None:
+        return None
+
     css = cssutils.css.CSSStyleDeclaration(css_string, validating=False)
     top = css.top
 
@@ -168,22 +171,26 @@ def generate_top_to_div_mapping(
 
     top_to_div_mapping = sorted(top_to_div_mapping.items())
 
+    # If there are no top values at all then just return the whole lot with a fake
+    # top value of 0
     if len(top_to_div_mapping) == 0:
         return [(0, html_soup)]
 
-    # If we have a load of non-div elements and there are more of them than
-    # the div elements (which might have top values) then just return the whole
-    # soup and process that as one thing - because we haven't got enough top values
-    # to properly order things
-    non_div_elements = html_soup.find_all(re.compile("^(?!div.*$).*"), recursive=False)
-    filtered_non_div_elements = []
-    for el in non_div_elements:
+    # Otherwise, look for all elements that don't have a top value
+    # and also aren't just a <p> or a <h1> containing spaces (including nbsps)
+    all_elements = html_soup.find_all(recursive=False)
+    elements_without_top_value = []
+    for el in all_elements:
         if el.name in ("p", "h1") and el.text.strip() == "":
             continue
-        else:
-            filtered_non_div_elements.append(el)
+        top_value = get_top_value(el.get("style"))
+        if top_value is None:
+            elements_without_top_value.append(el)
 
-    if len(filtered_non_div_elements) > 0 and len(html_soup.find_all(recursive=False)) > 1:
+    # If we get here then there are definitely some elements with top values (because otherwise we'd have
+    # exited in an earlier if statement), so we check if there are some elements without top values
+    # and raise a warning if so
+    if len(elements_without_top_value) > 0 and len(html_soup.find_all(recursive=False)) > 1:
         logging.warning(
             f"Elements with no top value found inside element with ID {html_soup.get('id')} in file {filename}"
         )
