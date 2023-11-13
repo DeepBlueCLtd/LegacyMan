@@ -112,6 +112,11 @@
     font-weight: 200%
 }
 
+/* artificially support headings */
+.h1, .h2 {
+    font-size: 2em;
+}
+
 /* float the related link, if the screen is wide enough */
 @media screen and (min-width: 692px) {
     /* pad the right-hand side of hte content, to make space for hte
