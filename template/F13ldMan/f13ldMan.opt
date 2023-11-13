@@ -11,6 +11,9 @@
             <page-layout-file page="index-terms" file="page-templates/wt_terms.html"/>
         </html-page-layout-files>
         <parameters>
+            <parameter name="webhelp.show.commercial" value="yes"/>
+            <parameter name="webhelp.commercial.text" value="COMMERCIALLY SENSITIVE"/>
+            <parameter name="webhelp.commercial.background.color" value=""/>
             <parameter name="webhelp.show.main.page.tiles" value="yes"/>
             <parameter name="webhelp.show.main.page.toc" value="no"/>
             <parameter name="webhelp.top.menu.depth" value="3"/>
@@ -20,6 +23,11 @@
             <parameter name="webhelp.show.print.link" value="no"/>
             <parameter name="webhelp.show.publication.toc" value="no"/>
         </parameters>
+        <xslt>
+            <extension 
+                file="xslt/customMainPage.xsl" 
+                id="com.oxygenxml.webhelp.xsl.createMainPage"/>
+        </xslt>
         <resources>
             <css file="oxygen.css"/>
             <css file="notes.css"/>
