@@ -27,6 +27,9 @@
             <extension 
                 file="xslt/customMainPage.xsl" 
                 id="com.oxygenxml.webhelp.xsl.createMainPage"/>
+            <extension 
+                file="xslt/customTopicPage.xsl" 
+                id="com.oxygenxml.webhelp.xsl.dita2webhelp"/>
         </xslt>
         <resources>
             <css file="oxygen.css"/>
