@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div>
-    <header class="navbar navbar-default wh_header_commercial" xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components">
-        <div class="header-container mx-auto">
-            <span>COMMERCIALLY SENSITIVE</span>
-        </div>
-    </header>
+    <header class="navbar navbar-default wh_header_protection" xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components"/>
     <header class="navbar navbar-default wh_header" xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components">
         <div class="container-fluid">
             <div class="wh_header_flex_container navbar-nav navbar-expand-md navbar-dark">

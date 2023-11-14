@@ -1,7 +1,3 @@
 <div>
-  <footer class="navbar navbar-default wh_footer_commercial" xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components">
-    <div class=" footer-container mx-auto ">
-      <span>COMMERCIALLY SENSITIVE</span>
-    </div>
-  </footer>  
+  <footer class="navbar navbar-default wh_footer_protection" xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components"/> 
 </div>
