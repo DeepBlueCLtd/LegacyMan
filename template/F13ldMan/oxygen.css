@@ -7,7 +7,7 @@
 /* user-defined CSS */
 
 
-.wh_footer_commercial{
+.wh_footer_protection{
     text-align: center;
     padding: 1em;
     position:relative;
@@ -18,18 +18,18 @@
     top: 2em;
 }
 
-.wh_footer_commercial span{
+.wh_footer_protection span{
     font-family: Arial;
     font-size: 14px;
 }
 
-.wh_header_commercial{
+.wh_header_protection{
     background: #bfebb9 none;
     color: #000;
     text-align: center;
 }
 
-.wh_header_commercial span{
+.wh_header_protection span{
     font-family: Arial;
     font-size: 14px;
 }
