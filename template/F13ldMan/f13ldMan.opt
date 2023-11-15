@@ -30,6 +30,9 @@
             <extension 
                 file="xslt/customTopicPage.xsl" 
                 id="com.oxygenxml.webhelp.xsl.dita2webhelp"/>
+            <extension 
+                file="xslt/customSearchPage.xsl" 
+                id="com.oxygenxml.webhelp.xsl.createSearchPage"/>
         </xslt>
         <resources>
             <css file="oxygen.css"/>
