@@ -3,5 +3,6 @@
     
     <xsl:import href="inc/customHeader.xsl"/>
     <xsl:import href="inc/customFooter.xsl"/>
+    <xsl:import href="inc/customSearch.xsl"/>
 
 </xsl:stylesheet>
