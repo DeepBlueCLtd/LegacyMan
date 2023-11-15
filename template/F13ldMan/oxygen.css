@@ -36,6 +36,76 @@
 
 
 
+@media only screen and (max-width: 1350px) {
+  .c-no-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: unset;
+  }
+
+  #searchForm > div {
+    width: 100%;
+    min-width: 300px;
+    max-width: 700px;
+    padding-left: 8px;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 1350px) {
+  .c-no-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: unset;
+  }
+
+  .c-menu > ul {
+    padding: 0 10px;
+    display: flex;
+    word-break: unset;
+    justify-content: flex-end;
+  }
+
+  #searchForm > div {
+    width: 100%;
+    max-width: 700px;
+  }
+
+}
+
+.c-nav-bar {
+  z-index: unset;
+}
+
+.c-menu {
+  min-width: 710px;
+  text-align: start;
+}
+
+.c-full-width {
+  max-width: unset;
+}
+
+.wh_logo_and_publication_title {
+  width: max-content;
+  padding: 0 10px;
+}
+
+#searchForm {
+  width: 100%;
+}
+
+#searchForm > div > button {
+  display: block;
+}
+
+
+
 /* ------------------------------------------- */
 
 
