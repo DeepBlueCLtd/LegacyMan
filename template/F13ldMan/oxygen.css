@@ -487,8 +487,8 @@ Example:
     display:block;
     margin:0;
     position:relative;
-/*    background: url('resources/images/bgr_right_small.png') right no-repeat #2771bb;
-    padding: 40px 0; */
+/*    background: url('resources/images/bgr_right_small.png') right no-repeat #2771bb; */
+    padding: 0 0; */
 }
 
 .wh_welcome:not(:empty){
