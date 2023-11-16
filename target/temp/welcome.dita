@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/?><?path2project?><?path2project-uri ./?><?path2rootmap-uri ./?><?doctype-public -//OASIS//DTD DITA Topic//EN?><?doctype-system topic.dtd?><topic xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="welcome" ditaarch:DITAArchVersion="1.3" domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic " xtrf="file:/Users/ian/git/LegacyMan/target/dita/welcome.dita" xtrc="topic:1;4:21" specializations="@props/deliveryTarget">
-  <title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/welcome.dita" xtrc="title:1;5:10">Welcome</title>
-  <body class="- topic/body " xtrf="file:/Users/ian/git/LegacyMan/target/dita/welcome.dita" xtrc="body:1;6:9">
-    <p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/welcome.dita" xtrc="p:1;7:8">The body content for the welcome page.</p>
-  </body>
-</topic>
