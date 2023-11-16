@@ -6,6 +6,40 @@
 
 /* user-defined CSS */
 
+.wh_tiles-container {
+    padding: 5% 15%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @media only screen and (min-width: 985px) {
+    .wh_tiles-item { 
+      display: flex; 
+      flex-direction: row;
+      width: 100%;
+      
+      & > div {
+        width: 50%;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 985px) {
+    .wh_tiles-item {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      
+      & > div {
+        width: 100%;
+      }
+    }
+  }
+  
+  [data-id="PD_1"] {
+    width: 100% !important;
+  }
+  
 
 .wh_footer_protection{
     text-align: center;
