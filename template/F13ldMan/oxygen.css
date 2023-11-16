@@ -41,6 +41,25 @@
   width: 100% !important;
 }
 
+/* style the current page link. Note: relies on JS code here:
+https://stackoverflow.com/a/51557550/92441
+*/
+.wh_top_menu ul li a.current {
+  color:#000;
+  background-color: #ccc;
+}
+
+/* reduce the padding around the header links */
+.wh_top_menu ul li a {
+  padding: 0.5em 0.5em;
+  transition: background 0.5s; /* this attribute animates the `hover` behaviour */
+}
+
+.wh_top_menu ul li a:hover {
+  color: #222;
+  background-color: #ccc;
+}
+
 /* styling for headers and footers, to show protection */
 .wh_footer_protection {
   text-align: center;
