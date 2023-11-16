@@ -16,14 +16,24 @@
                 cupidatat incididunt cillum. Amet ut non Lorem laboris ut tempor qui velit velit.
                 Duis veniam quis officia est do.</p>
             <p><xref outputclass="enterBtn" href="index.ditamap">View Data</xref></p>
+            <table>
+                <tgroup cols="2">
+                    <tbody>
+                        <row>
+                            <entry><xref outputclass="enterBtn" href="home.html" format="html">Cover Page</xref></entry>
+                            <entry><xref outputclass="enterBtn" href="whats-new.dita"></xref></entry>
+                        </row>
+                        <row>
+                            <entry><xref outputclass="enterBtn" href="quality.dita"></xref></entry>
+                            <entry><xref outputclass="enterBtn" href="distribution.dita"></xref></entry>
+                        </row>
+                        <row>
+                            <entry><xref outputclass="enterBtn" href="guide.dita"></xref></entry>
+                            <entry><xref outputclass="enterBtn" href="feedback.dita"></xref></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
         </section>
     </refbody>
-    <related-links>
-        <link href="home.html" format="html"><linktext>Cover Page</linktext></link>
-        <link href="whats-new.dita"/>
-        <link href="quality.dita"/>
-        <link href="distribution.dita"/>
-        <link href="guide.dita"/>
-        <link href="feedback.dita"/>
-    </related-links>
 </reference>
