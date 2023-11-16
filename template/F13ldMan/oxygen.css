@@ -41,6 +41,23 @@
   width: 100% !important;
 }
 
+/* reduce the padding around the header links */
+.wh_top_menu ul li a {
+  padding: 0.5em 0.5em;
+  transition: background 0.5s; /* For modern browsers */
+}
+
+/* reduce the padding around the header links */
+.wh_top_menu ul li a:hover {
+  color: #000;
+  background-color: #ccc;
+}
+
+/* reduce the padding around the header links */
+.wh_top_menu ul li a:active {
+  color: #ccc;
+}
+
 /* styling for headers and footers, to show protection */
 .wh_footer_protection {
   text-align: center;
