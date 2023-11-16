@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/Britain_Cmplx?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/Britain_Cmplx/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="BR_transducers" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="reference:1;5:32" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="title:1;6:9">
+BR Complex - TRANSDUCERS
+</title>
+	<refbody class="- topic/body        reference/refbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="refbody:1;9:11">
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="section:1;10:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="title:2;11:12"/>
+			<div id="Table" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="div:1;12:20">
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="p:1;13:8">
+					
+					<xref format="dita" href="unit_anchors.dita#unit_anchors/number2" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="xref:1;15:74" type="p"><?ditaot usertext?>
+						<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:1;16:10">Click here for Anchor System Layout</b>
+					</xref>
+				</p>
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="table:1;19:46">
+					<tgroup cols="6" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="tgroup:1;20:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="colspec:1;21:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="colspec:2;22:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="colspec:3;23:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="colspec:4;24:30" colnum="4"/>
+						<colspec colname="col5" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="colspec:5;25:30" colnum="5"/>
+						<colspec colname="col6" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="colspec:6;26:30" colnum="6"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="tbody:1;27:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="row:1;28:13">
+								<entry align="center" nameend="col6" namest="col1" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:1;29:81" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:2;30:13">Unit Anchor Transducers</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="row:2;33:13">
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:2;34:56" colname="col1" dita-ot:x="1" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:3;35:13">Transducer</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:3;37:56" colname="col2" dita-ot:x="2" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:4;38:13">Use</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:4;40:56" colname="col3" dita-ot:x="3" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:5;41:13">Sensory Hz</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:5;43:56" colname="col4" dita-ot:x="4" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:6;44:13">Connector</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:6;46:56" colname="col5" dita-ot:x="5" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:7;47:13">Remarks</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="row:3;50:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:7;51:57" colname="col1" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:8;52:13">
+										<xref format="dita" href="Bravo_Transducer.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="xref:2;53:62" type="reference"><?ditaot usertext?>Bingo</xref>
+									</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:8;56:16" colname="col2" dita-ot:x="2" dita-ot:y="3">AAC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:9;57:16" colname="col3" dita-ot:x="3" dita-ot:y="3">1.4 - 22</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:10;58:16" colname="col4" dita-ot:x="4" dita-ot:y="3">HA1</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:11;59:16" colname="col5" dita-ot:x="5" dita-ot:y="3">Excepteur quis ut laborum culpa quis adipisicing sit.</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="row:4;61:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:12;62:57" colname="col1" dita-ot:x="1" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:9;63:13">
+										<xref format="dita" href="../Transducers/Charlie_Transducer.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="xref:3;64:77" type="reference"><?ditaot usertext?>Charlie</xref>
+									</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:13;67:16" colname="col2" dita-ot:x="2" dita-ot:y="4">ABC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:14;68:16" colname="col3" dita-ot:x="3" dita-ot:y="4">1.4 - 12</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:15;69:16" colname="col4" dita-ot:x="4" dita-ot:y="4">H2A</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:16;70:16" colname="col5" dita-ot:x="5" dita-ot:y="4">Voluptate reprehenderit aute laboris nisi exercitation irure sit.</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="row:5;72:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:17;73:57" colname="col1" dita-ot:x="1" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:10;74:13">
+										<xref format="dita" href="../Transducers/Delta_Transducer.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="xref:4;75:75" type="reference"><?ditaot usertext?>Delta</xref>
+									</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:18;78:16" colname="col2" dita-ot:x="2" dita-ot:y="5">ADC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:19;79:16" colname="col3" dita-ot:x="3" dita-ot:y="5">2.4 - 22</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:20;80:16" colname="col4" dita-ot:x="4" dita-ot:y="5">H4A</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:21;81:16" colname="col5" dita-ot:x="5" dita-ot:y="5">Excepteur do non irure fugiat quis tempor et commodo.</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="row:6;83:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:22;84:57" colname="col1" dita-ot:x="1" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="b:11;85:13">
+										<xref format="dita" href="Echo_Transducer.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="xref:5;86:61" type="reference"><?ditaot usertext?>Echo</xref>
+									</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:23;89:16" colname="col2" dita-ot:x="2" dita-ot:y="6">ACC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:24;90:16" colname="col3" dita-ot:x="3" dita-ot:y="6">1.4 - 52</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:25;91:16" colname="col4" dita-ot:x="4" dita-ot:y="6">HA5</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/BR_transducers.dita" xtrc="entry:26;92:16" colname="col5" dita-ot:x="5" dita-ot:y="6">Mollit incididunt anim aliquip excepteur laborum officia sit eiusmod dolor ullamco consectetur qui culpa enim.</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+	</refbody>
+</reference>

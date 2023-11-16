@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/Wales_Cmplx?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/Wales_Cmplx/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Bravo_Transducer" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="reference:1;5:34" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="title:1;6:9">
+Bravo Transducer
+</title>
+	<refbody class="- topic/body        reference/refbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="refbody:1;9:11">
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="section:1;10:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="title:2;11:12"/>
+			<div class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="div:1;12:9">
+				
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:1;14:8">Prepare for inline image</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:2;15:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:3;16:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:4;17:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:5;18:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:6;19:8">
+					<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="ph:1;20:10">
+						<image height="177" href="Content/Images/daf_3.jpeg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="image:1;21:61" dita-ot:image-width="1102" dita-ot:image-height="479"/>
+					</ph>
+				</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:7;24:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:8;25:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:9;26:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:10;27:8"> </p>
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="table:1;28:46">
+					<tgroup cols="8" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="tgroup:1;29:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:1;30:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:2;31:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:3;32:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:4;33:30" colnum="4"/>
+						<colspec colname="col5" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:5;34:30" colnum="5"/>
+						<colspec colname="col6" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:6;35:30" colnum="6"/>
+						<colspec colname="col7" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:7;36:30" colnum="7"/>
+						<colspec colname="col8" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="colspec:8;37:30" colnum="8"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="tbody:1;38:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="row:1;39:13">
+								<entry nameend="col8" namest="col1" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:1;40:66" colname="col1" dita-ot:morecols="7" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:1;41:13">Bravo Transducer</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="row:2;44:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:2;45:42" colname="col1" dita-ot:x="1" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:2;46:13">Freq (Hz)</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:3;48:42" colname="col2" dita-ot:x="2" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:3;49:13">Pairing</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:4;51:42" colname="col3" dita-ot:x="3" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:4;52:13">Modes</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:5;54:42" colname="col4" dita-ot:x="4" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:5;55:13">Max Temp</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:6;57:42" colname="col5" dita-ot:x="5" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:6;58:13">Weight</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:7;60:42" colname="col6" dita-ot:x="6" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:7;61:13">Power</b>
+								</entry>
+								<entry nameend="col8" namest="col7" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:8;63:67" colname="col7" dita-ot:morecols="1" dita-ot:x="7" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:8;64:13">Other names</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="row:3;67:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:9;68:31" colname="col1" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:9;69:13">12</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:10;71:16" colname="col2" dita-ot:x="2" dita-ot:y="3">AAW</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:11;72:16" colname="col3" dita-ot:x="3" dita-ot:y="3">N/A</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:12;73:16" colname="col4" dita-ot:x="4" dita-ot:y="3">112.3, 443.2, 553.2</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:13;74:16" colname="col5" dita-ot:x="5" dita-ot:y="3">Unk</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:14;75:16" colname="col6" dita-ot:x="6" dita-ot:y="3">10-20</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:15;76:16" colname="col7" dita-ot:x="7" dita-ot:y="3">Dark Ripple</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="row:4;78:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:16;79:42" colname="col1" dita-ot:x="1" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:10;80:13">Remarks</b>
+								</entry>
+								<entry nameend="col8" namest="col2" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="entry:17;82:41" colname="col2" dita-ot:morecols="6" dita-ot:x="2" dita-ot:y="4">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:11;83:13">Aliquip incididunt sint commodo et fugiat consequat aliquip qui sunt.</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:12;84:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:11;85:14">Other nations using this transducer:</b>
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:13;87:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:12;88:14">Ireland</b>
+										 Unit_a (345)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:14;91:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:13;92:14">Denmark</b>
+										 Unit_b (245)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:15;95:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:14;96:14">France</b>
+										 Unit_c (346)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:16;99:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:15;100:14">Germany</b>
+										 Unit_d (335)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:17;103:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:16;104:14">Italy</b>
+										   Unit_e
+                                               Unit_f (654)
+                                               Unit_g (All types)
+                                               Unit_h (154)
+                                               Unit_i
+                                               Unit_j (5343)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="p:18;112:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="b:17;113:14">Sweden</b>
+										 Unit_23 (135)
+									</p>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				
+				<imagemap class="+ topic/fig ut-d/imagemap " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="imagemap:1;123:15">
+					<image href="../PlatformData/Content/Images/WorldMap.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="image:2;124:65" dita-ot:image-width="1200" dita-ot:image-height="715"/>
+					<area class="+ topic/figgroup ut-d/area " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="area:1;125:12">
+						<shape translate="no" class="+ topic/keyword ut-d/shape " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="shape:1;126:14">poly</shape>
+						<coords translate="no" class="+ topic/ph ut-d/coords " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="coords:1;127:15">550,211,522,231,515,263,540,275,564,269,561,231,555,214</coords>
+						<xref format="dita" href="../Wales/Wales1.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="xref:1;128:55" type="rich-collection"><?ditaot usertext?>Wales</xref>
+					</area>
+					<area class="+ topic/figgroup ut-d/area " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="area:2;130:12">
+						<shape translate="no" class="+ topic/keyword ut-d/shape " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="shape:2;131:14">poly</shape>
+						<coords translate="no" class="+ topic/ph ut-d/coords " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="coords:2;132:15">540,326,611,308,681,326,711,286,659,128,618,139,588,199,572,273</coords>
+						<xref format="dita" href="../Wales/Wales1.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="xref:2;133:55" type="rich-collection"><?ditaot usertext?>Europe</xref>
+					</area>
+					<area class="+ topic/figgroup ut-d/area " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="area:3;135:12">
+						<shape translate="no" class="+ topic/keyword ut-d/shape " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="shape:3;136:14">poly</shape>
+						<coords translate="no" class="+ topic/ph ut-d/coords " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="coords:3;137:15">515,372,586,332,674,371,709,435,685,556,640,585,568,483,506,430</coords>
+						<xref format="dita" href="../Wales/Wales1.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="xref:3;138:55" type="rich-collection"><?ditaot usertext?>Africa</xref>
+					</area>
+					<area class="+ topic/figgroup ut-d/area " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="area:4;140:12">
+						<shape translate="no" class="+ topic/keyword ut-d/shape " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="shape:4;141:14">circle</shape>
+						<coords translate="no" class="+ topic/ph ut-d/coords " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="coords:4;142:15">500,180,25</coords>
+						<xref format="dita" href="../Wales/Wales1.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/Bravo_Transducer.dita" xtrc="xref:4;143:55" type="rich-collection"><?ditaot usertext?>Iceland</xref>
+					</area>
+				</imagemap>
+			</div>
+		</section>
+	</refbody>
+</reference>

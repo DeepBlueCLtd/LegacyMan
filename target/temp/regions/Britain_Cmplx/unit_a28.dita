@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/Britain_Cmplx?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/Britain_Cmplx/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="unit_a28" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="reference:1;5:26" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="title:1;6:9">
+Unit A28
+</title>
+	<refbody class="- topic/body        reference/refbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="refbody:1;9:11">
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="section:1;10:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="title:2;11:12"/>
+			<div id="Table" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="div:1;12:20">
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="table:1;13:46">
+					<tgroup cols="6" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="tgroup:1;14:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:1;15:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:2;16:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:3;17:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:4;18:30" colnum="4"/>
+						<colspec colname="col5" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:5;19:30" colnum="5"/>
+						<colspec colname="col6" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:6;20:30" colnum="6"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="tbody:1;21:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:1;22:13">
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:1;23:41" colname="col1" dita-ot:x="1" dita-ot:y="1">Drive</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:2;24:41" colname="col2" dita-ot:x="2" dita-ot:y="1">Mode</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:3;25:41" colname="col3" dita-ot:x="3" dita-ot:y="1">Shaft x Blade</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:4;26:41" colname="col4" dita-ot:x="4" dita-ot:y="1">R:R</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:5;27:41" colname="col5" dita-ot:x="5" dita-ot:y="1">Max Speed (Guide)</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:6;28:41" colname="col6" dita-ot:x="6" dita-ot:y="1">Av TPK (Guide)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:2;30:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:7;31:16" colname="col1" dita-ot:x="1" dita-ot:y="2">4 Diesel</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:8;32:16" colname="col2" dita-ot:x="2" dita-ot:y="2">PTR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:9;33:16" colname="col3" dita-ot:x="3" dita-ot:y="2">2 * 4 (GRR)</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:10;34:16" colname="col4" dita-ot:x="4" dita-ot:y="2">412.8:1</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:11;35:16" colname="col5" dita-ot:x="5" dita-ot:y="2">40 kts</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:12;36:16" colname="col6" dita-ot:x="6" dita-ot:y="2">~14</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:3;38:13">
+								<entry nameend="col6" namest="col1" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:13;39:67" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:1;40:13">Commonly Detected Sources</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:4;43:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:14;44:42" colname="col1" dita-ot:x="1" dita-ot:y="4">Source</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:15;45:42" colname="col2" dita-ot:x="2" dita-ot:y="4">Ratio/Freq</entry>
+								<entry nameend="col4" namest="col3" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:16;46:67" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="4">Harmonics</entry>
+								<entry nameend="col6" namest="col5" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:17;47:67" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="4">Remarks</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:5;49:13">
+								<entry nameend="col6" namest="col1" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:18;50:67" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="5">Propulsion Related</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:6;52:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:19;53:42" colname="col1" dita-ot:x="1" dita-ot:y="6">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:20;55:16" colname="col2" dita-ot:x="2" dita-ot:y="6">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:21;56:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="6">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:22;57:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="6">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="ul:1;59:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="li:1;60:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="li:2;61:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="li:3;62:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:7;66:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:23;67:42" colname="col1" dita-ot:x="1" dita-ot:y="7">BR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:24;68:16" colname="col2" dita-ot:x="2" dita-ot:y="7">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:25;69:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="7">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:26;70:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="7">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:1;71:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:8;74:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:27;75:42" colname="col1" dita-ot:x="1" dita-ot:y="8">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="xref:1;76:75" type="div"><?ditaot usertext?>Cat b Engine R</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:28;78:16" colname="col2" dita-ot:x="2" dita-ot:y="8">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:29;79:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="8">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:30;80:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="8"> The quick brown fox does something similar </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:9;82:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:31;83:42" colname="col1" dita-ot:x="1" dita-ot:y="9">
+									<p outputclass="bold" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:2;84:32">
+										<image href="Content/Images/yellow.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="image:1;85:52" dita-ot:image-width="20" dita-ot:image-height="19"/>
+										Unk Banjo
+									</p>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:32;89:16" colname="col2" dita-ot:x="2" dita-ot:y="9">25 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:33;90:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="9">H1</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:34;91:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="9">
+									CBR 34 with 
+									<b outputclass="colorBlue" class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:2;93:37">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:10;97:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:35;98:42" colname="col1" dita-ot:x="1" dita-ot:y="10">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="xref:2;99:75" type="div"><?ditaot usertext?>Unk BBA</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:36;101:16" colname="col2" dita-ot:x="2" dita-ot:y="10">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:37;102:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="10">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:38;103:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="10">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="ph:1;105:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:3;106:14">in
+                  bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:11;112:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:39;113:42" colname="col1" dita-ot:x="1" dita-ot:y="11">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="xref:3;114:75" type="div"><?ditaot usertext?>SPDR</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:40;116:16" colname="col2" dita-ot:x="2" dita-ot:y="11">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:41;117:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="11">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:42;118:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="11">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="ul:2;120:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="li:4;121:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="li:5;122:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="li:6;123:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:12;127:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:43;128:42" colname="col1" dita-ot:x="1" dita-ot:y="12">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="xref:4;129:75" type="div"><?ditaot usertext?>BPDR</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:44;131:16" colname="col2" dita-ot:x="2" dita-ot:y="12">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:45;132:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="12">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:46;133:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="12">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:3;134:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="section:2;142:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="title:3;143:12"/>
+			<div id="BottomLayer2" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="div:2;144:27">
+				<p id="number2" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:4;145:22"/>
+				<p outputclass="h1" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:5;146:25">Unit A28 Remarks b</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:6;147:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:7;148:8">
+					<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="ph:2;149:10">
+						<image height="234" href="Content/Images/leyland_3a.jpg" width="415" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="image:2;150:77" dita-ot:image-width="533" dita-ot:image-height="600"/>
+					</ph>
+				</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:8;153:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:9;154:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:10;155:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:11;156:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:12;157:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:13;158:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:14;159:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:15;160:8">1.     The design includes a floating dwell valve entertaining 450 psi.</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:16;161:8">2.     The design includes a floating donkey valve entertaining 123 psi.</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:17;162:8">3.     The design includes a floating farquad valve entertaining 653 psi.</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:18;163:8"> </p>
+			</div>
+		</section>
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="section:3;166:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="title:4;167:12"/>
+			<div id="BottomLayer3" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="div:3;168:27">
+				<p id="number4" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:19;169:22"/>
+				<p outputclass="h1" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:20;170:25">Unit A28 Propulsion</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:21;171:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:22;172:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:23;173:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:24;174:8"> </p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:25;175:8">
+      </p>
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="table:2;177:46">
+					<tgroup cols="4" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="tgroup:2;178:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:7;179:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:8;180:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:9;181:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="colspec:10;182:30" colnum="4"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="tbody:2;183:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:13;184:13">
+								<entry nameend="col4" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:47;185:41" colname="col1" dita-ot:morecols="3" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:4;186:13">Unit A28</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:14;189:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:48;190:16" colname="col1" dita-ot:x="1" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:5;191:13">Cruise Plant</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:49;193:16" colname="col2" dita-ot:x="2" dita-ot:y="2">
+              4 * PR32 Diesel Engines %TEST#150 - Update values from tonal split page%
+            </entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:50;196:16" colname="col3" dita-ot:x="3" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:6;197:13">Shaft x Blade</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:51;199:16" colname="col4" dita-ot:x="4" dita-ot:y="2">2 * 4 (GRR)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:15;201:13">
+								<entry morerows="1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:52;202:29" colname="col1" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:7;203:13">Boost Plant</b>
+								</entry>
+								<entry morerows="1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:53;205:29" colname="col2" dita-ot:x="2" dita-ot:y="3">4 DEW Alpha Batteries</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:54;206:16" colname="col3" dita-ot:x="3" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:8;207:13">Range</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:55;209:16" colname="col4" dita-ot:x="4" dita-ot:y="3">N/A</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:16;211:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:56;212:16" colname="col3" dita-ot:x="3" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:9;213:13">Max Speed</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:57;215:16" colname="col4" dita-ot:x="4" dita-ot:y="4">22 kts</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:17;217:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:58;218:16" colname="col1" dita-ot:x="1" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:10;219:13">Reduction Ratio</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:59;221:16" colname="col2" dita-ot:x="2" dita-ot:y="5">Unk1</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:60;222:16" colname="col3" dita-ot:x="3" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:11;223:13">Av TPK</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:61;225:16" colname="col4" dita-ot:x="4" dita-ot:y="5">~14</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="row:18;227:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:62;228:16" colname="col1" dita-ot:x="1" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:12;229:13">ERPM</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:63;231:16" colname="col2" dita-ot:x="2" dita-ot:y="6">400-1400</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:64;232:16" colname="col3" dita-ot:x="3" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:13;233:13">Max SRPM</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="entry:65;235:16" colname="col4" dita-ot:x="4" dita-ot:y="6">1600</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:26;240:8">Table 1: A2 Carpet Propagation Table</p>
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:27;241:8">
+					1.    
+					<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:14;243:9">Statue</b>
+				</p>
+				  The western wing is longer than the eastern one.
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:28;246:8">
+					2.    
+					<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:15;248:9">Garage</b>
+				</p>
+				  Consectetur ipsum elit sunt mollit dolore elit
+      consequat. Cupidatat Lorem eiusmod est nisi proident commodo consectetur irure occaecat velit sint consectetur ad
+      laborum. Duis reprehenderit quis irure duis consectetur. Occaecat id dolore aliquip elit sunt laboris
+      reprehenderit. Eiusmod enim velit do anim aliquip labore aliqua velit do ea.
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:29;254:8">
+					3.    
+					<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:16;256:9">Fooball</b>
+				</p>
+				 Dolor magna laboris proident sint sint occaecat non
+      reprehenderit ex minim. Laborum minim tempor ut consequat occaecat quis non et fugiat. Reprehenderit ut
+      reprehenderit non aliquip dolor. Eiusmod officia eu anim excepteur deserunt laborum nisi nulla labore laborum
+      pariatur proident. Commodo ea excepteur incididunt adipisicing laboris id.
+				<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="p:30;262:8">
+					4.    
+					<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="b:17;264:9">Playground</b>
+				</p>
+				  Consectetur fugiat enim quis ut. Tempor laboris
+      quis officia sunt dolore ad. Exercitation cupidatat qui nostrud cupidatat labore amet ullamco quis velit. Sit
+      reprehenderit sit ullamco id commodo cupidatat veniam in mollit dolore. Anim sunt officia fugiat excepteur
+      incididunt ex tempor id et ad.
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages" class="- topic/related-links " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="related-links:1;273:36">
+		<link format="dita" href="#unit_a28/number4" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="link:1;274:48" type="p"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="linktext:1;275:14">Propulsion</linktext></link>
+		<link format="dita" href="#unit_a28/number2" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="link:2;277:48" type="p"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="linktext:2;278:14">Remarks</linktext></link>
+		<link format="xlsx" href="Content/Complex_HeatCalculator.xlsx" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="link:3;280:66"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="linktext:3;281:14">Heat calculator</linktext></link>
+		<link href="BR_transducers.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="link:4;283:38" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="linktext:4;284:14">Transducers</linktext></link>
+		<link href="../QuickLinksData/VanesandCranes.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="link:5;286:54" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain_Cmplx/unit_a28.dita" xtrc="linktext:5;287:14">Vanity Sources</linktext></link>
+	</related-links>
+</reference>

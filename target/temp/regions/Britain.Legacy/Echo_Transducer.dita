@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/Britain.Legacy?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/Britain.Legacy/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Echo_Transducer" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="reference:1;5:33" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="title:1;6:9">
+Echo Transducer
+</title>
+	<refbody class="- topic/body        reference/refbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="refbody:1;9:11">
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="section:1;10:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="title:2;11:12"/>
+			<div class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="div:1;12:9">
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="table:1;13:46">
+					<tgroup cols="8" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="tgroup:1;14:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:1;15:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:2;16:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:3;17:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:4;18:30" colnum="4"/>
+						<colspec colname="col5" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:5;19:30" colnum="5"/>
+						<colspec colname="col6" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:6;20:30" colnum="6"/>
+						<colspec colname="col7" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:7;21:30" colnum="7"/>
+						<colspec colname="col8" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="colspec:8;22:30" colnum="8"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="tbody:1;23:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="row:1;24:13">
+								<entry nameend="col8" namest="col1" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:1;25:66" colname="col1" dita-ot:morecols="7" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:1;26:13">Echo Transducer</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="row:2;29:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:2;30:42" colname="col1" dita-ot:x="1" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:2;31:13">Freq (Hz)</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:3;33:42" colname="col2" dita-ot:x="2" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:3;34:13">Pairing</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:4;36:42" colname="col3" dita-ot:x="3" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:4;37:13">Modes</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:5;39:42" colname="col4" dita-ot:x="4" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:5;40:13">Max Temp</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:6;42:42" colname="col5" dita-ot:x="5" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:6;43:13">Weight</b>
+								</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:7;45:42" colname="col6" dita-ot:x="6" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:7;46:13">Power</b>
+								</entry>
+								<entry nameend="col8" namest="col7" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:8;48:67" colname="col7" dita-ot:morecols="1" dita-ot:x="7" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:8;49:13">Other names</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="row:3;52:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:9;53:31" colname="col1" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:9;54:13">12</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:10;56:16" colname="col2" dita-ot:x="2" dita-ot:y="3">AAW</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:11;57:16" colname="col3" dita-ot:x="3" dita-ot:y="3">N/A</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:12;58:16" colname="col4" dita-ot:x="4" dita-ot:y="3">112.3, 443.2, 553.2</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:13;59:16" colname="col5" dita-ot:x="5" dita-ot:y="3">Unk</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:14;60:16" colname="col6" dita-ot:x="6" dita-ot:y="3">10-20</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:15;61:16" colname="col7" dita-ot:x="7" dita-ot:y="3">Dark Ripple</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="row:4;63:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:16;64:42" colname="col1" dita-ot:x="1" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:10;65:13">Remarks</b>
+								</entry>
+								<entry nameend="col8" namest="col2" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="entry:17;67:41" colname="col2" dita-ot:morecols="6" dita-ot:x="2" dita-ot:y="4">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:1;68:13">Aliquip incididunt sint commodo et fugiat consequat aliquip qui sunt.</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:2;69:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:11;70:14">Other nations using this transducer:</b>
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:3;72:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:12;73:14">Ireland</b>
+										 Unit_a (345)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:4;76:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:13;77:14">Denmark</b>
+										 Unit_b (245)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:5;80:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:14;81:14">France</b>
+										 Unit_c (346)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:6;84:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:15;85:14">Germany</b>
+										 Unit_d (335)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:7;88:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:16;89:14">Italy</b>
+										   Unit_e
+                                               Unit_f (654)
+                                               Unit_g (All types)
+                                               Unit_h (154)
+                                               Unit_i
+                                               Unit_j (5343)
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="p:8;97:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Britain.Legacy/Echo_Transducer.dita" xtrc="b:17;98:14">Sweden</b>
+										 Unit_23 (135)
+									</p>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+	</refbody>
+</reference>

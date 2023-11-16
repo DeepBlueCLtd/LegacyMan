@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/Wales_Composite?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/Wales_Composite/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WA_transducers" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="reference:1;5:32" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="title:1;6:9">
+BR Complex - TRANSDUCERS
+</title>
+	<refbody class="- topic/body        reference/refbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="refbody:1;9:11">
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="section:1;10:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="title:2;11:12"/>
+			<div id="Table" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="div:1;12:20">
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="table:1;13:46">
+					<tgroup cols="6" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="tgroup:1;14:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="colspec:1;15:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="colspec:2;16:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="colspec:3;17:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="colspec:4;18:30" colnum="4"/>
+						<colspec colname="col5" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="colspec:5;19:30" colnum="5"/>
+						<colspec colname="col6" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="colspec:6;20:30" colnum="6"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="tbody:1;21:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="row:1;22:13">
+								<entry align="center" nameend="col6" namest="col1" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:1;23:81" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:1;24:13">Unit Anchor Transducers</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="row:2;27:13">
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:2;28:56" colname="col1" dita-ot:x="1" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:2;29:13">Transducer</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:3;31:56" colname="col2" dita-ot:x="2" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:3;32:13">Use</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:4;34:56" colname="col3" dita-ot:x="3" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:4;35:13">Sensory Hz</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:5;37:56" colname="col4" dita-ot:x="4" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:5;38:13">Connector</b>
+								</entry>
+								<entry align="center" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:6;40:56" colname="col5" dita-ot:x="5" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:6;41:13">Remarks</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="row:3;44:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:7;45:57" colname="col1" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:7;46:13">Bingo</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:8;48:16" colname="col2" dita-ot:x="2" dita-ot:y="3">AAC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:9;49:16" colname="col3" dita-ot:x="3" dita-ot:y="3">1.4 - 22</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:10;50:16" colname="col4" dita-ot:x="4" dita-ot:y="3">HA1</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:11;51:16" colname="col5" dita-ot:x="5" dita-ot:y="3">Excepteur quis ut laborum culpa quis adipisicing sit.</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="row:4;53:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:12;54:57" colname="col1" dita-ot:x="1" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:8;55:13">
+										<xref format="dita" href="../Transducers/Charlie_Transducer.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="xref:1;56:77" type="reference"><?ditaot usertext?>Charlie</xref>
+									</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:13;59:16" colname="col2" dita-ot:x="2" dita-ot:y="4">ABC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:14;60:16" colname="col3" dita-ot:x="3" dita-ot:y="4">1.4 - 12</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:15;61:16" colname="col4" dita-ot:x="4" dita-ot:y="4">H2A</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:16;62:16" colname="col5" dita-ot:x="5" dita-ot:y="4">Voluptate reprehenderit aute laboris nisi exercitation irure sit.</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="row:5;64:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:17;65:57" colname="col1" dita-ot:x="1" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:9;66:13">
+										<xref format="dita" href="../Transducers/Delta_Transducer.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="xref:2;67:75" type="reference"><?ditaot usertext?>Delta</xref>
+									</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:18;70:16" colname="col2" dita-ot:x="2" dita-ot:y="5">ADC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:19;71:16" colname="col3" dita-ot:x="3" dita-ot:y="5">2.4 - 22</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:20;72:16" colname="col4" dita-ot:x="4" dita-ot:y="5">H4A</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:21;73:16" colname="col5" dita-ot:x="5" dita-ot:y="5">Excepteur do non irure fugiat quis tempor et commodo.</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="row:6;75:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:22;76:57" colname="col1" dita-ot:x="1" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="b:10;77:13">Echo</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:23;79:16" colname="col2" dita-ot:x="2" dita-ot:y="6">ACC</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:24;80:16" colname="col3" dita-ot:x="3" dita-ot:y="6">1.4 - 52</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:25;81:16" colname="col4" dita-ot:x="4" dita-ot:y="6">HA5</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Composite/WA_transducers.dita" xtrc="entry:26;82:16" colname="col5" dita-ot:x="5" dita-ot:y="6">Mollit incididunt anim aliquip excepteur laborum officia sit eiusmod dolor ullamco consectetur qui culpa enim.</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+	</refbody>
+</reference>

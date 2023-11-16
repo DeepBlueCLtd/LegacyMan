@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/Wales_Cmplx?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/Wales_Cmplx/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="unit_anchors" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="reference:1;5:30" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="title:1;6:9">
+Anchor 1
+</title>
+	<refbody class="- topic/body        reference/refbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="refbody:1;9:11">
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="section:1;10:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="title:2;11:12"/>
+			<div id="layer1" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="div:1;12:21">
+				<xref format="dita" href="anchor_pics.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:1;13:51" type="reference"><?ditaot usertext?>
+					<image height="177" href="Content/Images/daf_1.jpeg" width="259" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:1;14:72" dita-ot:image-width="275" dita-ot:image-height="183"/>
+				</xref>
+				<xref format="dita" href="anchor_pics.dita#anchor_pics/number3" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:2;16:71" type="p"><?ditaot usertext?>
+					<image height="177" href="Content/Images/daf_3.jpeg" width="347" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:2;17:72" dita-ot:image-width="1102" dita-ot:image-height="479"/>
+				</xref>
+				<xref format="dita" href="anchor_pics.dita#anchor_pics/number2" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:3;19:71" type="p"><?ditaot usertext?>
+					<image height="177" href="Content/Images/daf_2.jpeg" width="374" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:3;20:72" dita-ot:image-width="1378" dita-ot:image-height="293"/>
+				</xref>
+			</div>
+			<div id="Table" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="div:2;23:20">
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="table:1;24:46">
+					<tgroup cols="6" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tgroup:1;25:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:1;26:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:2;27:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:3;28:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:4;29:30" colnum="4"/>
+						<colspec colname="col5" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:5;30:30" colnum="5"/>
+						<colspec colname="col6" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:6;31:30" colnum="6"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tbody:1;32:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:1;33:13">
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:1;34:41" colname="col1" dita-ot:x="1" dita-ot:y="1">Drive</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:2;35:41" colname="col2" dita-ot:x="2" dita-ot:y="1">Mode</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:3;36:41" colname="col3" dita-ot:x="3" dita-ot:y="1">Shaft x Blade</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:4;37:41" colname="col4" dita-ot:x="4" dita-ot:y="1">R:R</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:5;38:41" colname="col5" dita-ot:x="5" dita-ot:y="1">Max Speed (Guide)</entry>
+								<entry outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:6;39:41" colname="col6" dita-ot:x="6" dita-ot:y="1">Av TPK (Guide)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:2;41:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:7;42:16" colname="col1" dita-ot:x="1" dita-ot:y="2">4 Diesel</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:8;43:16" colname="col2" dita-ot:x="2" dita-ot:y="2">PTR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:9;44:16" colname="col3" dita-ot:x="3" dita-ot:y="2">2 * 4 (GRR)</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:10;45:16" colname="col4" dita-ot:x="4" dita-ot:y="2">412.8:1</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:11;46:16" colname="col5" dita-ot:x="5" dita-ot:y="2">40 kts</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:12;47:16" colname="col6" dita-ot:x="6" dita-ot:y="2">~14</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:3;49:13">
+								<entry nameend="col6" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:13;50:41" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="3">CAUTION THIS SITE WAS MOTHBALLED IN MARCH 2020</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:4;52:13">
+								<entry nameend="col6" namest="col1" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:14;53:67" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:1;54:13">Commonly Detected Sources</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:5;57:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:15;58:42" colname="col1" dita-ot:x="1" dita-ot:y="5">Source</entry>
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:16;59:42" colname="col2" dita-ot:x="2" dita-ot:y="5">Ratio/Freq</entry>
+								<entry nameend="col4" namest="col3" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:17;60:67" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="5">Harmonics</entry>
+								<entry nameend="col6" namest="col5" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:18;61:67" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="5">Remarks</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:6;63:13">
+								<entry nameend="col6" namest="col1" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:19;64:67" colname="col1" dita-ot:morecols="5" dita-ot:x="1" dita-ot:y="6">Propulsion Related</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:7;66:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:20;67:42" colname="col1" dita-ot:x="1" dita-ot:y="7">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:21;69:16" colname="col2" dita-ot:x="2" dita-ot:y="7">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:22;70:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="7">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:23;71:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="7">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:1;73:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:1;74:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:2;75:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:3;76:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:8;80:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:24;81:42" colname="col1" dita-ot:x="1" dita-ot:y="8">BR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:25;82:16" colname="col2" dita-ot:x="2" dita-ot:y="8">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:26;83:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="8">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:27;84:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="8">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:1;85:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:9;88:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:28;89:42" colname="col1" dita-ot:x="1" dita-ot:y="9">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:4;90:75" type="div"><?ditaot usertext?>Cat b Engine R</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:29;92:16" colname="col2" dita-ot:x="2" dita-ot:y="9">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:30;93:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="9">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:31;94:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="9"> The quick brown fox does something similar
+            </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:10;97:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:32;98:42" colname="col1" dita-ot:x="1" dita-ot:y="10">
+									<p outputclass="bold" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:2;99:32">
+										<image href="Content/Images/yellow.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:4;100:52" dita-ot:image-width="20" dita-ot:image-height="19"/>
+										Unk Banjo
+									</p>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:33;104:16" colname="col2" dita-ot:x="2" dita-ot:y="10">25 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:34;105:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="10">H1</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:35;106:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="10">
+									CBR 34 with 
+									<b outputclass="colorBlue" class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:2;108:37">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:11;112:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:36;113:42" colname="col1" dita-ot:x="1" dita-ot:y="11">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:5;114:75" type="div"><?ditaot usertext?>Unk BBA</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:37;116:16" colname="col2" dita-ot:x="2" dita-ot:y="11">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:38;117:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="11">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:39;118:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="11">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ph:1;120:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:3;121:14">in
+              bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:12;127:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:40;128:42" colname="col1" dita-ot:x="1" dita-ot:y="12">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:6;129:75" type="div"><?ditaot usertext?>SPDR</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:41;131:16" colname="col2" dita-ot:x="2" dita-ot:y="12">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:42;132:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="12">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:43;133:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="12">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:2;135:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:4;136:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:5;137:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:6;138:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:13;142:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:44;143:42" colname="col1" dita-ot:x="1" dita-ot:y="13">
+									<xref format="dita" href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:7;144:75" type="div"><?ditaot usertext?>BPDR</xref>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:45;146:16" colname="col2" dita-ot:x="2" dita-ot:y="13">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:46;147:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="13">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:47;148:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="13">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:3;149:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:14;152:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:48;153:42" colname="col1" dita-ot:x="1" dita-ot:y="14">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:49;155:16" colname="col2" dita-ot:x="2" dita-ot:y="14">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:50;156:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="14">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:51;157:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="14"> The quick brown fox does something similar
+            </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:15;160:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:52;161:42" colname="col1" dita-ot:x="1" dita-ot:y="15">
+									<p outputclass="bold" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:4;162:32">
+										<image href="Content/Images/yellow.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:5;163:52" dita-ot:image-width="20" dita-ot:image-height="19"/>
+										Unk BBA
+									</p>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:53;167:16" colname="col2" dita-ot:x="2" dita-ot:y="15">25 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:54;168:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="15">H1</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:55;169:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="15">
+									CBR 34 with 
+									<b outputclass="colorBlue" class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:4;171:37">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:16;175:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:56;176:42" colname="col1" dita-ot:x="1" dita-ot:y="16">
+                Unk BBA
+              </entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:57;179:16" colname="col2" dita-ot:x="2" dita-ot:y="16">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:58;180:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="16">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:59;181:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="16">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ph:2;183:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:5;184:14">in
+                bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:17;190:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:60;191:42" colname="col1" dita-ot:x="1" dita-ot:y="17">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:61;193:16" colname="col2" dita-ot:x="2" dita-ot:y="17">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:62;194:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="17">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:63;195:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="17">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:3;197:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:7;198:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:8;199:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:9;200:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:18;204:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:64;205:42" colname="col1" dita-ot:x="1" dita-ot:y="18">BR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:65;206:16" colname="col2" dita-ot:x="2" dita-ot:y="18">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:66;207:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="18">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:67;208:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="18">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:5;209:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:19;212:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:68;213:42" colname="col1" dita-ot:x="1" dita-ot:y="19">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:69;215:16" colname="col2" dita-ot:x="2" dita-ot:y="19">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:70;216:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="19">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:71;217:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="19"> The quick brown fox does something similar
+                </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:20;220:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:72;221:42" colname="col1" dita-ot:x="1" dita-ot:y="20">
+									<p outputclass="bold" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:6;222:32">
+										<image href="Content/Images/yellow.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:6;223:52" dita-ot:image-width="20" dita-ot:image-height="19"/>
+										Unk BBA
+									</p>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:73;227:16" colname="col2" dita-ot:x="2" dita-ot:y="20">25 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:74;228:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="20">H1</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:75;229:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="20">
+									CBR 34 with 
+									<b outputclass="colorBlue" class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:6;231:37">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:21;235:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:76;236:42" colname="col1" dita-ot:x="1" dita-ot:y="21">
+                    Unk BBA
+                  </entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:77;239:16" colname="col2" dita-ot:x="2" dita-ot:y="21">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:78;240:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="21">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:79;241:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="21">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ph:3;243:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:7;244:14">in
+                    bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:22;250:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:80;251:42" colname="col1" dita-ot:x="1" dita-ot:y="22">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:81;253:16" colname="col2" dita-ot:x="2" dita-ot:y="22">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:82;254:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="22">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:83;255:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="22">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:4;257:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:10;258:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:11;259:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:12;260:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:23;264:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:84;265:42" colname="col1" dita-ot:x="1" dita-ot:y="23">BR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:85;266:16" colname="col2" dita-ot:x="2" dita-ot:y="23">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:86;267:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="23">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:87;268:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="23">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:7;269:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:24;272:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:88;273:42" colname="col1" dita-ot:x="1" dita-ot:y="24">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:89;275:16" colname="col2" dita-ot:x="2" dita-ot:y="24">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:90;276:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="24">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:91;277:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="24"> The quick brown fox does something similar
+                    </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:25;280:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:92;281:42" colname="col1" dita-ot:x="1" dita-ot:y="25">
+									<p outputclass="bold" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:8;282:32">
+										<image href="Content/Images/yellow.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:7;283:52" dita-ot:image-width="20" dita-ot:image-height="19"/>
+										Unk BBA
+									</p>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:93;287:16" colname="col2" dita-ot:x="2" dita-ot:y="25">25 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:94;288:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="25">H1</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:95;289:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="25">
+									CBR 34 with 
+									<b outputclass="colorBlue" class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:8;291:37">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:26;295:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:96;296:42" colname="col1" dita-ot:x="1" dita-ot:y="26">
+                        Unk BBA
+                      </entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:97;299:16" colname="col2" dita-ot:x="2" dita-ot:y="26">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:98;300:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="26">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:99;301:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="26">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ph:4;303:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:9;304:14">in
+                        bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:27;310:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:100;311:42" colname="col1" dita-ot:x="1" dita-ot:y="27">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:101;313:16" colname="col2" dita-ot:x="2" dita-ot:y="27">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:102;314:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="27">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:103;315:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="27">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:5;317:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:13;318:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:14;319:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:15;320:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:28;324:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:104;325:42" colname="col1" dita-ot:x="1" dita-ot:y="28">BR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:105;326:16" colname="col2" dita-ot:x="2" dita-ot:y="28">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:106;327:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="28">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:107;328:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="28">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:9;329:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:29;332:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:108;333:42" colname="col1" dita-ot:x="1" dita-ot:y="29">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:109;335:16" colname="col2" dita-ot:x="2" dita-ot:y="29">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:110;336:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="29">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:111;337:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="29"> The quick brown fox does something similar
+                        </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:30;340:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:112;341:42" colname="col1" dita-ot:x="1" dita-ot:y="30">
+									<p outputclass="bold" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:10;342:32">
+										<image href="Content/Images/yellow.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:8;343:52" dita-ot:image-width="20" dita-ot:image-height="19"/>
+										Unk BBA
+									</p>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:113;347:16" colname="col2" dita-ot:x="2" dita-ot:y="30">25 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:114;348:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="30">H1</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:115;349:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="30">
+									CBR 34 with 
+									<b outputclass="colorBlue" class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:10;351:37">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:31;355:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:116;356:42" colname="col1" dita-ot:x="1" dita-ot:y="31">
+                            Unk BBA
+                          </entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:117;359:16" colname="col2" dita-ot:x="2" dita-ot:y="31">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:118;360:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="31">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:119;361:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="31">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ph:5;363:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:11;364:14">in
+                            bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:32;370:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:120;371:42" colname="col1" dita-ot:x="1" dita-ot:y="32">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:121;373:16" colname="col2" dita-ot:x="2" dita-ot:y="32">S12</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:122;374:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="32">H1-4</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:123;375:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="32">
+									Discrete. Doublets common
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:6;377:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:16;378:15">Total control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:17;379:15">Intermediate control</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:18;380:15">Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:33;384:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:124;385:42" colname="col1" dita-ot:x="1" dita-ot:y="33">BR</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:125;386:16" colname="col2" dita-ot:x="2" dita-ot:y="33">S5</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:126;387:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="33">H1</entry>
+								<entry align="left" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:127;388:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="33">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:11;389:13">Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:34;392:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:128;393:42" colname="col1" dita-ot:x="1" dita-ot:y="34">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:129;395:16" colname="col2" dita-ot:x="2" dita-ot:y="34">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:130;396:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="34">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:131;397:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="34"> The quick brown fox does something similar
+                            </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:35;400:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:132;401:42" colname="col1" dita-ot:x="1" dita-ot:y="35">
+                                Unk BBA
+                              </entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:133;404:16" colname="col2" dita-ot:x="2" dita-ot:y="35">135 &amp; CSR</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:134;405:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="35">H1 &amp; 2</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:135;406:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="35">
+									CBR 54334. And some
+									<ph class="- topic/ph " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ph:6;408:14">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:12;409:14">in
+                                bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:36;415:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:136;416:42" colname="col1" dita-ot:x="1" dita-ot:y="36">
+</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:137;418:16" colname="col2" dita-ot:x="2" dita-ot:y="36">2-100.4, 112, 132</entry>
+								<entry nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:138;419:41" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="36">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:139;420:41" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="36"> The quick brown fox does something similar
+                                </entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:37;423:13">
+								<entry morerows="1" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:140;424:55" colname="col1" dita-ot:x="1" dita-ot:y="37">Unk BBA</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:141;425:16" colname="col2" dita-ot:x="2" dita-ot:y="37">135 &amp; CSR (high)</entry>
+								<entry morerows="1" nameend="col4" namest="col3" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:142;426:54" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="37">H1 &amp; 2</entry>
+								<entry morerows="1" nameend="col6" namest="col5" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:143;427:54" colname="col5" dita-ot:morecols="1" dita-ot:x="5" dita-ot:y="37">CBR 54334</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:38;429:13">
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:144;430:16" colname="col2" dita-ot:x="2" dita-ot:y="38">124 &amp; CSR (low)</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+			<div id="layer3" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="div:3;436:21">
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="table:2;437:46">
+					<tgroup cols="2" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tgroup:2;438:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:7;439:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:8;440:30" colnum="2"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tbody:2;441:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:39;442:13">
+								<entry align="center" nameend="col2" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:145;443:56" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:13;444:13">Unit Anchors Temps</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:40;447:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:146;448:57" colname="col1" dita-ot:x="1" dita-ot:y="2">Temperature (C)</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:147;449:57" colname="col2" dita-ot:x="2" dita-ot:y="2">Friction (km/m2)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:41;451:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:148;452:31" colname="col1" dita-ot:x="1" dita-ot:y="3">1-4</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:149;453:31" colname="col2" dita-ot:x="2" dita-ot:y="3">16-25</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:42;455:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:150;456:31" colname="col1" dita-ot:x="1" dita-ot:y="4">5-15</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:151;457:31" colname="col2" dita-ot:x="2" dita-ot:y="4">30-65</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:43;459:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:152;460:31" colname="col1" dita-ot:x="1" dita-ot:y="5">16-27 (Unbalanced)</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:153;461:31" colname="col2" dita-ot:x="2" dita-ot:y="5">70+</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:44;463:13">
+								<entry align="center" nameend="col2" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:154;464:56" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:14;465:13">Unit Anchors (Improved) Temps</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:45;468:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:155;469:57" colname="col1" dita-ot:x="1" dita-ot:y="7">Temperature (C)</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:156;470:57" colname="col2" dita-ot:x="2" dita-ot:y="7">Friction (km/m2)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:46;472:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:157;473:31" colname="col1" dita-ot:x="1" dita-ot:y="8">1-4</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:158;474:31" colname="col2" dita-ot:x="2" dita-ot:y="8">16-25</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:47;476:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:159;477:31" colname="col1" dita-ot:x="1" dita-ot:y="9">5-15</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:160;478:31" colname="col2" dita-ot:x="2" dita-ot:y="9">30-65</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:48;480:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:161;481:31" colname="col1" dita-ot:x="1" dita-ot:y="10">16-27 (Unbalanced)</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:162;482:31" colname="col2" dita-ot:x="2" dita-ot:y="10">70+</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:49;484:13">
+								<entry align="center" nameend="col2" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:163;485:56" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="11">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:15;486:13">Unit Anchors (Previous) Temps</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:50;489:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:164;490:57" colname="col1" dita-ot:x="1" dita-ot:y="12">Temperature (C)</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:165;491:57" colname="col2" dita-ot:x="2" dita-ot:y="12">Friction (km/m2)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:51;493:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:166;494:31" colname="col1" dita-ot:x="1" dita-ot:y="13">1-4</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:167;495:31" colname="col2" dita-ot:x="2" dita-ot:y="13">16-25</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:52;497:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:168;498:31" colname="col1" dita-ot:x="1" dita-ot:y="14">5-15</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:169;499:31" colname="col2" dita-ot:x="2" dita-ot:y="14">30-65</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:53;501:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:170;502:31" colname="col1" dita-ot:x="1" dita-ot:y="15">16-27 (Unbalanced)</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:171;503:31" colname="col2" dita-ot:x="2" dita-ot:y="15">70+</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+			<div id="layer4" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="div:4;509:21">
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="table:3;510:46">
+					<tgroup cols="2" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tgroup:3;511:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:9;512:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:10;513:30" colnum="2"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tbody:3;514:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:54;515:13">
+								<entry align="center" nameend="col2" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:172;516:56" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:16;517:13">Unit Anchors Power Consumption</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:55;520:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:173;521:57" colname="col1" dita-ot:x="1" dita-ot:y="2">Operating Speed (Hz)</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:174;522:57" colname="col2" dita-ot:x="2" dita-ot:y="2">Power Usage (watts/hr)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:56;524:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:175;525:31" colname="col1" dita-ot:x="1" dita-ot:y="3">5-15</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:176;526:31" colname="col2" dita-ot:x="2" dita-ot:y="3">30-65</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:57;528:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:177;529:31" colname="col1" dita-ot:x="1" dita-ot:y="4">16-27 (Unbalanced)</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:178;530:31" colname="col2" dita-ot:x="2" dita-ot:y="4">70+</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:58;532:13">
+								<entry align="center" nameend="col2" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:179;533:56" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:17;534:13">Unit Anchors (Improved) Consumption</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:59;537:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:180;538:57" colname="col1" dita-ot:x="1" dita-ot:y="6">Operating Speed (Hz)</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:181;539:57" colname="col2" dita-ot:x="2" dita-ot:y="6">Power Usage (watts/hr)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:60;541:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:182;542:31" colname="col1" dita-ot:x="1" dita-ot:y="7">5-15</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:183;543:31" colname="col2" dita-ot:x="2" dita-ot:y="7">30-65</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:61;545:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:184;546:31" colname="col1" dita-ot:x="1" dita-ot:y="8">16-27 (Unbalanced)</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:185;547:31" colname="col2" dita-ot:x="2" dita-ot:y="8">70+</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:62;549:13">
+								<entry align="center" nameend="col2" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:186;550:56" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="9">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:18;551:13">Unit Anchors (Previous) Consumption</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:63;554:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:187;555:57" colname="col1" dita-ot:x="1" dita-ot:y="10">Operating Speed (Hz)</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:188;556:57" colname="col2" dita-ot:x="2" dita-ot:y="10">Power Usage (watts/hr)</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:64;558:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:189;559:31" colname="col1" dita-ot:x="1" dita-ot:y="11">5-15</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:190;560:31" colname="col2" dita-ot:x="2" dita-ot:y="11">30-65</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:65;562:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:191;563:31" colname="col1" dita-ot:x="1" dita-ot:y="12">16-27 (Unbalanced)</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:192;564:31" colname="col2" dita-ot:x="2" dita-ot:y="12">70+</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="table:4;569:46">
+					<tgroup cols="4" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tgroup:4;570:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:11;571:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:12;572:30" colnum="2"/>
+						<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:13;573:30" colnum="3"/>
+						<colspec colname="col4" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:14;574:30" colnum="4"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tbody:4;575:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:66;576:13">
+								<entry align="center" nameend="col4" namest="col1" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:193;577:56" colname="col1" dita-ot:morecols="3" dita-ot:x="1" dita-ot:y="1">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:19;578:13">Unit Anchors Resolved Bands</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:67;581:13">
+								<entry align="center" nameend="col2" namest="col1" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:194;582:82" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:20;583:13">Version 1</b>
+								</entry>
+								<entry align="center" nameend="col4" namest="col3" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:195;585:82" colname="col3" dita-ot:morecols="1" dita-ot:x="3" dita-ot:y="2">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:21;586:13">Version 2</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:68;589:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:196;590:57" colname="col1" dita-ot:x="1" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:22;591:13">Designed</b>
+								</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:197;593:57" colname="col2" dita-ot:x="2" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:23;594:13">Measured</b>
+								</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:198;596:57" colname="col3" dita-ot:x="3" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:24;597:13">Designed</b>
+								</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:199;599:57" colname="col4" dita-ot:x="4" dita-ot:y="3">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:25;600:13">Measured</b>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:69;603:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:200;604:57" colname="col1" dita-ot:x="1" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:26;605:13">1-4</b>
+								</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:201;607:31" colname="col2" dita-ot:x="2" dita-ot:y="4">5-12</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:202;608:57" colname="col3" dita-ot:x="3" dita-ot:y="4">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:27;609:13">16-25</b>
+								</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:203;611:31" colname="col4" dita-ot:x="4" dita-ot:y="4">5-12</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:70;613:13">
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:204;614:57" colname="col1" dita-ot:x="1" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:28;615:13">1-9</b>
+								</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:205;617:31" colname="col2" dita-ot:x="2" dita-ot:y="5">5-12</entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:206;618:57" colname="col3" dita-ot:x="3" dita-ot:y="5">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:29;619:13">16-45</b>
+								</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:207;621:31" colname="col4" dita-ot:x="4" dita-ot:y="5">5-12</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:71;623:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:208;624:31" colname="col1" dita-ot:x="1" dita-ot:y="6"> </entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:209;625:31" colname="col2" dita-ot:x="2" dita-ot:y="6"> </entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:210;626:57" colname="col3" dita-ot:x="3" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:30;627:13">16-55</b>
+								</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:211;629:31" colname="col4" dita-ot:x="4" dita-ot:y="6">5-12</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:72;631:13">
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:212;632:31" colname="col1" dita-ot:x="1" dita-ot:y="7"> </entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:213;633:31" colname="col2" dita-ot:x="2" dita-ot:y="7"> </entry>
+								<entry align="center" outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:214;634:57" colname="col3" dita-ot:x="3" dita-ot:y="7">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:31;635:13">16-65</b>
+								</entry>
+								<entry align="center" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:215;637:31" colname="col4" dita-ot:x="4" dita-ot:y="7">5-12</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="section:2;644:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="title:3;645:12"/>
+			<div id="BottomLayer2" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="div:5;646:27">
+				<p id="number3" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:12;647:22"/>
+				<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="table:5;648:46">
+					<tgroup cols="2" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tgroup:5;649:23">
+						<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:15;650:30" colnum="1"/>
+						<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="colspec:16;651:30" colnum="2"/>
+						<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="tbody:5;652:14">
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:73;653:13">
+								<entry align="center" nameend="col2" namest="col1" outputclass="bkDarkGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:216;654:81" colname="col1" dita-ot:morecols="1" dita-ot:x="1" dita-ot:y="1">
+									<p outputclass="h1" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:13;655:30">Unit Anchors Signature &amp; Characteristics</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:74;658:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:217;659:42" colname="col1" dita-ot:x="1" dita-ot:y="2">Secondary Filtration</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:218;660:16" colname="col2" dita-ot:x="2" dita-ot:y="2">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:14;661:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:32;662:14">2 bihedral autoclave units</b>
+										,   These twin systems offer Ut Lorem voluptate nostrud enim culpa aute ad excepteur enim occaecat id minim. Qui magna mollit est labore ea proident nostrud amet aliqua consectetur qui aliqua labore quis. Culpa labore veniam non in.
+									</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:75;667:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:219;668:42" colname="col1" dita-ot:x="1" dita-ot:y="3">Emergency Flush</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:220;669:16" colname="col2" dita-ot:x="2" dita-ot:y="3">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:15;670:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:33;671:14">Halon Drench</b>
+										,  The halon drench is particularly fragile while Veniam enim eu velit tempor excepteur pariatur magna et laboris. Sit do ipsum exercitation sint occaecat. Ad consectetur sit aliqua eiusmod magna officia velit duis mollit fugiat. Elit non reprehenderit sunt et aliquip sint laborum pariatur non. Qui sunt duis exercitation irure deserunt minim dolore..
+									</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:76;676:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:221;677:42" colname="col1" dita-ot:x="1" dita-ot:y="4">Weak Points</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:222;678:16" colname="col2" dita-ot:x="2" dita-ot:y="4">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:16;679:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:34;680:14">0 - 10 degs C</b>
+										  The halon drench is particularly fragile while Veniam enim eu velit tempor excepteur pariatur magna et laboris. Sit do ipsum exercitation sint occaecat. Ad consectetur sit aliqua eiusmod magna officia velit duis mollit fugiat. Elit non reprehenderit sunt et aliquip sint laborum pariatur non. Qui sunt duis exercitation irure deserunt minim dolore..
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:17;683:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:35;684:14">11 - 20 degs C</b>
+										  The halon drench is particularly fragile while Veniam enim eu velit tempor excepteur pariatur magna et laboris. Sit do ipsum exercitation sint occaecat. 
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:36;686:14">Click</b>
+										<xref format="jpg" href="Content/Images/cooling_unit.jpg" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:8;687:69"><?ditaot usertext?>
+											<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:37;688:15">Here</b>
+										</xref>
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:38;690:14"> for a screenshot of the diagnostic panel for this</b>
+										 Ad consectetur sit aliqua eiusmod magna officia velit duis mollit fugiat. Elit non reprehenderit sunt et aliquip sint laborum pariatur non. Qui sunt duis exercitation irure deserunt minim dolore. Click
+									</p>
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:18;693:13">
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:39;694:14">Above 20 degs C</b>
+										  The halon drench is particularly fragile while Veniam enim eu velit tempor excepteur pariatur magna et laboris. Sit do ipsum exercitation sint occaecat. Ad consectetur sit aliqua eiusmod magna officia velit duis mollit fugiat. Elit non reprehenderit sunt et aliquip sint laborum pariatur non. Qui sunt duis exercitation irure deserunt minim dolore..
+									</p>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:77;699:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:223;700:42" colname="col1" dita-ot:x="1" dita-ot:y="5">Dominant freqs</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:224;701:16" colname="col2" dita-ot:x="2" dita-ot:y="5">
+									<ul class="- topic/ul " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="ul:7;702:14">
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:19;703:15">
+											<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:19;704:15">
+												<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:40;705:16">1000, 2000, 3500 series when cold</b>
+											</p>
+										</li>
+										<li class="- topic/li " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="li:20;708:15">
+											<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:20;709:15">
+												<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:41;710:16">2000, 4000, 6000 series at working temperature</b>
+											</p>
+										</li>
+									</ul>
+								</entry>
+							</row>
+							<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="row:78;716:13">
+								<entry outputclass="bkLightGray" class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:225;717:42" colname="col1" dita-ot:x="1" dita-ot:y="6">
+									<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:42;718:13">Measured</b>
+								</entry>
+								<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="entry:226;720:16" colname="col2" dita-ot:x="2" dita-ot:y="6">
+									<p class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:21;721:13">
+										During maintenance periods these signatures may be encountered - 
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:43;723:15"/>
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:44;724:14">
+											<xref format="dita" href="anchor_pics.dita#anchor_pics/number4" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:9;725:78" type="p"><?ditaot usertext?>Scope Example</xref>
+										</b>
+										 . 
+										<b class="+ topic/ph hi-d/b " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="b:45;728:15"/>
+										<xref format="wav" href="Content/CantinaBand3.wav" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="xref:10;729:62"><?ditaot usertext?>Aural Example</xref>
+										.  Amet aute et et eiusmod enim. Proident minim quis dolor laboris consectetur ea id eiusmod esse tempor culpa est Lorem aliqua. Nulla officia sint ea incididunt fugiat laborum ullamco incididunt et aliquip nisi veniam ad nulla. Est irure sunt consectetur reprehenderit cupidatat aute deserunt deserunt reprehenderit fugiat Lorem. Duis proident elit officia et nulla ad mollit ipsum duis nisi officia velit sit. Sint pariatur sit eu minim. Minim ipsum proident est pariatur incididunt minim amet laborum adipisicing.
+									</p>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+		<section class="- topic/section " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="section:3;739:12">
+			<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="title:4;740:12"/>
+			<div id="image4" class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="div:6;741:21">
+				<p id="number2" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="p:22;742:22"/>
+				<image href="Content/Images/system_layout.jpg" placement="inline" class="- topic/image " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="image:9;743:53" dita-ot:image-width="860" dita-ot:image-height="658" dita-ot:horizontal-dpi="96" dita-ot:vertical-dpi="96"/>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages" class="- topic/related-links " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="related-links:1;747:36">
+		<link format="dita" href="#unit_anchors/number3" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:1;748:52" type="p"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:1;749:14">Signature</linktext></link>
+		<link href="Phase_F_Size.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:2;751:36" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:2;752:14">Remarks</linktext></link>
+		<link href="Phase_F_Size.dita#Phase_F_Size/prop" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:3;754:54" type="div"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:3;755:14">Systems</linktext></link>
+		<link href="../QuickLinksData/VanesandCranes.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:4;757:54" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:4;758:14">Vanity Sources</linktext></link>
+		<link href="anchor_trans_fit.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:5;760:40" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:5;761:14">Trans Fit</linktext></link>
+		<link format="xlsx" href="Content/Complex_HeatCalculator.xlsx" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:6;763:66"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:6;764:14">Heat calculator</linktext></link>
+		<link href="Phase_F.dita#Phase_F/number2" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:7;766:47" type="p"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:7;767:14">Phase F Residue</linktext></link>
+		<link href="Phase_F.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:8;769:31" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:8;770:14">Phase F Overview</linktext></link>
+		<link href="WA_transducers.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:9;772:38" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:9;773:14">Transducers</linktext></link>
+		<link href="unit_anchors.dita" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:10;775:36" type="reference"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:10;776:14">Overview</linktext></link>
+		<link format="pdf" href="Content/Images/dummy_reference.pdf" class="- topic/link " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="link:11;778:64"><?ditaot usertext?><linktext class="- topic/linktext " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/Wales_Cmplx/unit_anchors.dita" xtrc="linktext:11;779:14">Unit Anchors Study</linktext></link>
+	</related-links>
+</reference>

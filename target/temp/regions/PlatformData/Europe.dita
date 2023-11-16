@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Users/ian/git/LegacyMan/target/temp/regions/PlatformData?><?workdir-uri file:/Users/ian/git/LegacyMan/target/temp/regions/PlatformData/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Topic//EN?><?doctype-system topic.dtd?><topic xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Europe" ditaarch:DITAArchVersion="1.3" domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="topic:1;5:20" specializations="@props/deliveryTarget">
+	<title class="- topic/title " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="title:1;6:9">Regions</title>
+	<body class="- topic/body " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="body:1;7:8">
+		<div class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="div:1;8:8">
+			<p outputclass="h1" class="- topic/p " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="p:1;9:24">Europe &amp; Mediterranean</p>
+		</div>
+		<div class="- topic/div " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="div:2;11:8">
+			<table colsep="1" frame="all" rowsep="1" class="- topic/table " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="table:1;12:45">
+				<tgroup cols="3" class="- topic/tgroup " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="tgroup:1;13:22">
+					<colspec colname="col1" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="colspec:1;14:29" colnum="1"/>
+					<colspec colname="col2" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="colspec:2;15:29" colnum="2"/>
+					<colspec colname="col3" class="- topic/colspec " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="colspec:3;16:29" colnum="3"/>
+					<tbody class="- topic/tbody " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="tbody:1;17:13">
+						<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="row:1;18:12">
+							<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="entry:1;19:15" colname="col1" dita-ot:x="1" dita-ot:y="1">
+								<xref href="#" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="xref:1;20:24" type="topic"><?ditaot usertext?>Narnia</xref>
+							</entry>
+							<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="entry:2;22:15" colname="col2" dita-ot:x="2" dita-ot:y="1">
+								<xref format="dita" href="../Wales/Wales1.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="xref:2;23:57" type="rich-collection"><?ditaot usertext?>Wales</xref>
+							</entry>
+							<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="entry:3;25:15" colname="col3" dita-ot:x="3" dita-ot:y="1">
+								<xref format="dita" href="../WightandMan/WightandM.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="xref:3;26:66" type="reference"><?ditaot usertext?>Isles of Wight &amp; Man</xref>
+							</entry>
+						</row>
+						<row class="- topic/row " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="row:2;29:12">
+							<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="entry:4;30:15" colname="col1" dita-ot:x="1" dita-ot:y="2">
+								<xref format="dita" href="../France1/France1.1.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="xref:4;31:62" type="reference"><?ditaot usertext?>France</xref>
+							</entry>
+							<entry class="- topic/entry " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="entry:5;33:15" colname="col2" dita-ot:x="2" dita-ot:y="2">
+								<xref format="dita" href="../Spain/Spain.dita" class="- topic/xref " xtrf="file:/Users/ian/git/LegacyMan/target/dita/regions/PlatformData/Europe.dita" xtrc="xref:5;34:56" type="reference"><?ditaot usertext?>Spain</xref>
+							</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</div>
+	</body>
+</topic>
