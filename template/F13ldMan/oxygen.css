@@ -52,7 +52,7 @@ https://stackoverflow.com/a/51557550/92441
 /* reduce the padding around the header links */
 .wh_top_menu ul li a {
   padding: 0.5em 0.5em;
-  transition: background 0.5s; /* For modern browsers */
+  transition: background 0.5s; /* this attribute animates the `hover` behaviour */
 }
 
 /* reduce the padding around the header links */
