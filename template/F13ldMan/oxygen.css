@@ -104,6 +104,14 @@
   display: block;
 }
 
+.fullWidthTable {
+    display: block;
+    width: 100%;
+}
+
+.wh_tiles {
+    background-image: url('resources/images/industrial-plant-machinery.jpg');
+}
 
 
 /* ------------------------------------------- */
@@ -179,7 +187,7 @@
 }
 
 .bold {
-    font-weight: 200%
+    font-weight: 200
 }
 
 /* artificially support headings */
@@ -487,8 +495,8 @@ Example:
     display:block;
     margin:0;
     position:relative;
-/*    background: url('resources/images/bgr_right_small.png') right no-repeat #2771bb;
-    padding: 40px 0; */
+/*    background: url('resources/images/bgr_right_small.png') right no-repeat #2771bb; */
+    padding: 0 0;
 }
 
 .wh_welcome:not(:empty){
@@ -710,6 +718,20 @@ Example:
 
 .filepath {
     color: #c7254e;
+}
+
+.enterBtn {
+    font: bold 28px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    display: block;
+    text-align: center;
 }
 
 /*
