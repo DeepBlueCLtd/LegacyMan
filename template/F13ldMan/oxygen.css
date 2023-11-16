@@ -45,7 +45,7 @@
 https://stackoverflow.com/a/51557550/92441
 */
 .wh_top_menu ul li a.current {
-  color:#222;
+  color:#000;
   background-color: #ccc;
 }
 
@@ -55,15 +55,9 @@ https://stackoverflow.com/a/51557550/92441
   transition: background 0.5s; /* this attribute animates the `hover` behaviour */
 }
 
-/* reduce the padding around the header links */
 .wh_top_menu ul li a:hover {
-  color: #000;
+  color: #222;
   background-color: #ccc;
-}
-
-/* reduce the padding around the header links */
-.wh_top_menu ul li a:active {
-  color: #ccc;
 }
 
 /* styling for headers and footers, to show protection */
