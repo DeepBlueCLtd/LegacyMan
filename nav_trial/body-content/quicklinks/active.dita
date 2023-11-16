@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="Untitled">
-    <title>What's New</title>
-    <shortdesc></shortdesc>
+<reference id="active">
+    <title>Active Transducers</title>
+    <shortdesc>Summary of active transducers, ordered by frequency</shortdesc>
     <refbody> </refbody>
 </reference>

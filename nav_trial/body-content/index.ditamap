@@ -2,7 +2,8 @@
 <!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
 <map>
     <title>Contents</title>
-<!--    <topicref href="regions.dita"/> -->
+    <topicref outputclass="regionsBtn" href="regions.dita"/>
+    <topicref href="security.dita"/>
     <topicref href="quicklinks/contents.dita"/>
     <topicref href="quicklinks/active.dita"/>
     <topicref href="quicklinks/shaft-rates.dita"/>

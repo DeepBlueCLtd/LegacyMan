@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="welcome">
+    <title>Welcome</title>
+    <shortdesc>Releasability and sharing details for this document</shortdesc>
+    <refbody>
+        <section><title>Security Blurb</title>
+            <p>Sit duis in consectetur quis veniam ut duis sunt velit exercitation sint. Labore
+                Lorem est in magna ea quis ullamco adipisicing commodo qui minim. Incididunt
+                consequat pariatur laboris laborum incididunt non aute ullamco adipisicing ea
+                cupidatat incididunt cillum. Amet ut non Lorem laboris ut tempor qui velit velit.
+                Duis veniam quis officia est do. </p>
+            <p>Sit duis in consectetur quis veniam ut duis sunt velit exercitation sint. Labore
+                Lorem est in magna ea quis ullamco adipisicing commodo qui minim. Incididunt
+                consequat pariatur laboris laborum incididunt non aute ullamco adipisicing ea
+                cupidatat incididunt cillum. Amet ut non Lorem laboris ut tempor qui velit velit.
+                Duis veniam quis officia est do.</p>
+            <p><xref outputclass="enterBtn" href="index.ditamap">View Data</xref></p>
+        </section>
+    </refbody>
+    <related-links>
+        <link href="home.html" format="html"><linktext>Cover Page</linktext></link>
+        <link href="whats-new.dita"/>
+        <link href="quality.dita"/>
+        <link href="distribution.dita"/>
+        <link href="guide.dita"/>
+        <link href="feedback.dita"/>
+    </related-links>
+</reference>
