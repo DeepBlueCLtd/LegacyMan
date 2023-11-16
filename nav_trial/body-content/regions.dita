@@ -8,6 +8,9 @@
     <section>
       <title>MAP OF THE WORLD</title>
       <p>The map of the world goes in here</p>
+      <p>
+        <image placement="break" href="Content/images/WorldMap.jpg" id="image_fmc_xqs_lzb"/>
+      </p>
     </section>
   </body>
 </topic>
