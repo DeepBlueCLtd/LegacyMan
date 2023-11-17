@@ -47,6 +47,7 @@ https://stackoverflow.com/a/51557550/92441
 .wh_top_menu ul li a.current {
   color:#000;
   background-color: #ccc;
+  pointer-events: none; /* disable clicking on current link */
 }
 
 /* reduce the padding around the header links */
