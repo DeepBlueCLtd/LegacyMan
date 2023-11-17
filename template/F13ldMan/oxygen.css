@@ -6,59 +6,180 @@
 
 /* user-defined CSS */
 
+/* styling to make the `REGIONS` button twice the width of the others */
 
-.wh_footer_commercial{
-    text-align: center;
-    padding: 1em;
-    position:relative;
-    bottom: 0;
+.wh_tiles-container {
+  padding: 5% 15%;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen {
+  .wh_tiles-item {
+    display: flex;
     width: 100%;
-    color: #000;
-    background: none #bfebb9;
-    top: 2em;
+
+    & > div {
+      width: 50%;
+    }
+  }
 }
 
-.wh_footer_commercial span{
-    font-family: Arial;
-    font-size: 14px;
+@media only screen and (min-width: 985px) {
+  .wh_tiles-item {
+    flex-direction: row;
+  }
 }
 
-.wh_header_commercial{
-    background: #bfebb9 none;
-    color: #000;
-    text-align: center;
+@media only screen and (max-width: 985px) {
+  .wh_tiles-item {
+    flex-direction: column;
+  }
 }
 
-.wh_header_commercial span{
-    font-family: Arial;
-    font-size: 14px;
+[data-id="PD_1"] {
+  width: 100% !important;
 }
 
+/* style the current page link. Note: relies on JS code here:
+https://stackoverflow.com/a/51557550/92441
+*/
+.wh_top_menu ul li a.current {
+  color:#000;
+  background-color: #ccc;
+  pointer-events: none; /* disable clicking on current link */
+}
 
+/* reduce the padding around the header links */
+.wh_top_menu ul li a {
+  padding: 0.5em 0.5em;
+  transition: background 0.5s; /* this attribute animates the `hover` behaviour */
+}
+
+.wh_top_menu ul li a:hover {
+  color: #222;
+  background-color: #ccc;
+}
+
+/* styling for headers and footers, to show protection */
+.wh_footer_protection {
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  color: #000;
+  background: none #bfebb9;
+  top: 2em;
+}
+
+.wh_footer_protection span {
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.wh_header_protection {
+  background: #bfebb9 none;
+  color: #000;
+  text-align: center;
+}
+
+.wh_header_protection span {
+  font-family: Arial;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 1350px) {
+  .c-no-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: unset;
+  }
+
+  #searchForm > div {
+    width: 100%;
+    min-width: 300px;
+    max-width: 700px;
+    padding-left: 8px;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 1350px) {
+  .c-no-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: unset;
+  }
+
+  .c-menu > ul {
+    padding: 0 10px;
+    display: flex;
+    word-break: unset;
+    justify-content: flex-end;
+  }
+
+  #searchForm > div {
+    width: 100%;
+    min-width: 300px;
+  }
+}
+
+.c-nav-bar {
+  z-index: unset;
+}
+
+.c-menu {
+  min-width: 710px;
+  text-align: start;
+}
+
+.c-full-width {
+  max-width: unset;
+}
+
+.wh_logo_and_publication_title {
+  width: max-content;
+  padding: 0 10px;
+}
+
+#searchForm {
+  width: 100%;
+}
+
+#searchForm > div > button {
+  display: block;
+}
 
 /* ------------------------------------------- */
 
-
 /* don't show section title anchro */
 .permalink {
-    display: none
+  display: none;
 }
 
 /* make related pages show as a list of items */
 .related-pages .xref {
-    display: list-item
+  display: list-item;
 }
 
 /* hide borders for image link table  */
-.rich-collection .table-container table,  .rich-collection .table-container table td.entry {
-    border: none;
+.rich-collection .table-container table,
+.rich-collection .table-container table td.entry {
+  border: none;
 }
 
 /* show borders for tables */
-.classlistbody .table .entry, .class .table .entry{ 
-    border: 1px solid black !important;
-    border-collapse: collapse;
- }
+.classlistbody .table .entry,
+.class .table .entry {
+  border: 1px solid black !important;
+  border-collapse: collapse;
+}
 
 /* text label for category image links
 .xref .b {
@@ -69,102 +190,100 @@
 
 /* make table separators more prominent */
 .table-separator {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 .colorRed {
-    color: #F00;
+  color: #f00;
 }
 
 .colorBlue {
-    color: #00F;
+  color: #00f;
 }
 
 .colorGray {
-    color: #777;
+  color: #777;
 }
 
 .placeholder {
-    background-color: #FF0;
+  background-color: #ff0;
 }
 
 .bkLightGray {
-    background-color: #CCC;    
+  background-color: #ccc;
 }
 
 .bkDarkGray {
-    background-color: #999;    
+  background-color: #999;
 }
 
 .bkYellow {
-    background-color: #ffff00;    
+  background-color: #ffff00;
 }
 
 .bkBlue {
-    background-color: #0000ff;    
+  background-color: #0000ff;
 }
 
 .bkRed {
-    background-color: #ff0000;    
+  background-color: #ff0000;
 }
 
 .bold {
-    font-weight: 200%
+  font-weight: 200%;
 }
 
 /* artificially support headings */
-.h1, .h2 {
-    font-size: 2em;
+.h1,
+.h2 {
+  font-size: 2em;
 }
 
 /* float the related link, if the screen is wide enough */
 @media screen and (min-width: 692px) {
-    /* pad the right-hand side of hte content, to make space for hte
+  /* pad the right-hand side of hte content, to make space for hte
     floating table of contents */
-    .body {
-        padding-right: 200px;
-    }
-    
-    /* make the related links float */
-    .wh_related_links {
-        background-color: #EFEFFA; 
-        position:fixed;
-        width: 200px;
-        right:0;
-        top:200px;
-        z-index: 1000;
-    }
+  .body {
+    padding-right: 200px;
+  }
 
-    /** the next blocks are for plain DITA-OT export
-    /* make the related links float */
-    .relref {
-        background-color: #EFEFFA; 
-        position:fixed;
-        width: 200px;
-        right:200px;
-        top:200px;
-        z-index: 1000;
-    }
+  /* make the related links float */
+  .wh_related_links {
+    background-color: #efeffa;
+    position: fixed;
+    width: 200px;
+    right: 0;
+    top: 200px;
+    z-index: 1000;
+  }
 
+  /** the next blocks are for plain DITA-OT export
     /* make the related links float */
-    .relinfo {
-        background-color: #EFEFFA; 
-        position:fixed;
-        width: 200px;
-        right:0;
-        top:200px;
-        z-index: 1000;
-    }
+  .relref {
+    background-color: #efeffa;
+    position: fixed;
+    width: 200px;
+    right: 200px;
+    top: 200px;
+    z-index: 1000;
+  }
 
+  /* make the related links float */
+  .relinfo {
+    background-color: #efeffa;
+    position: fixed;
+    width: 200px;
+    right: 0;
+    top: 200px;
+    z-index: 1000;
+  }
 }
-
-
 
 /* text label for category image links (FONT-SIZE REMOVED) */
 .xref .b {
-    display:block;
-    text-align: center;
-    /* font-size: 2em; */
+  display: block;
+  text-align: center;
+  /* font-size: 2em; */
 }
 
 /*
@@ -180,65 +299,65 @@
  *  
  */
 @font-face {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 100;
-    src: url(resources/fonts/Roboto-Thin.ttf);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 100;
+  src: url(resources/fonts/Roboto-Thin.ttf);
 }
 @font-face {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    src: url(resources/fonts/Roboto-Light.ttf);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: url(resources/fonts/Roboto-Light.ttf);
 }
 @font-face {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    src: url(resources/fonts/Roboto-Regular.ttf);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: url(resources/fonts/Roboto-Regular.ttf);
 }
 @font-face {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 700;
-    src: url(resources/fonts/Roboto-Bold.ttf);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: url(resources/fonts/Roboto-Bold.ttf);
 }
 
-html, body {
-    min-width:100%;
+html,
+body {
+  min-width: 100%;
 }
 
-body{
-    font-family: Roboto, sans-serif;
+body {
+  font-family: Roboto, sans-serif;
 }
 
-    /*
+/*
      * ------------------------------------------------------------------
      *
      * Fight with bootstrap
      *
      */
-.navbar-brand{
-    height:auto;
+.navbar-brand {
+  height: auto;
 }
 .navbar {
-    border:none;
-    border-radius:0;
-    margin:0;
+  border: none;
+  border-radius: 0;
+  margin: 0;
 }
-.wh_header{
-    background: #000 none;
-    color: #ffffff;
+.wh_header {
+  background: #000 none;
+  color: #ffffff;
 }
 a,
 a:hover,
-a:visited{
-    color: #337ab7;
+a:visited {
+  color: #337ab7;
 }
-a:hover{
-    text-decoration: none;
+a:hover {
+  text-decoration: none;
 }
-
 
 /*
  * ------------------------------------------------------------------
@@ -246,11 +365,9 @@ a:hover{
  * Publication titles
  *  
  */
- .wh_publication_title > a{
-     color:#fff;
+.wh_publication_title > a {
+  color: #fff;
 }
-
-
 
 /*
  * ------------------------------------------------------------------
@@ -259,44 +376,44 @@ a:hover{
  *  
  */
 .wh_top_menu {
-    text-transform: uppercase;
-    margin: .4em 0;
-    font-size: 0.9em;
+  text-transform: uppercase;
+  margin: 0.4em 0;
+  font-size: 0.9em;
 }
-.wh_top_menu a{
-    color: #fff;
-    line-height: 2em;
+.wh_top_menu a {
+  color: #fff;
+  line-height: 2em;
 }
 
 /* The submenus */
 .wh_top_menu ul ul {
-    background-color: #333;
+  background-color: #333;
 }
 
 .wh_top_menu:not(.activated-on-click) ul:hover li,
 .wh_top_menu:not(.activated-on-click) ul li:hover {
-    /* WH-2521 Change the background color imediatelly when the current menu item (li) or other menu item is hovered. */
-    transition: none; 
+  /* WH-2521 Change the background color imediatelly when the current menu item (li) or other menu item is hovered. */
+  transition: none;
 }
 
 .wh_top_menu:not(.activated-on-click) ul li {
-    /* WH-2521 Delay the background color change on hover off. */
-    transition: background-color 0.2s 1s;
+  /* WH-2521 Delay the background color change on hover off. */
+  transition: background-color 0.2s 1s;
 }
 
 .wh_top_menu ul li:hover,
 .wh_top_menu.activated-on-click ul li.active {
-    background-color: #333;
+  background-color: #333;
 }
 .wh_top_menu ul ul li a:hover {
-    background: #000;
+  background: #000;
 }
 .wh_top_menu ul ul li {
-    border-top-color: #000;
-    width: 270px;
-    text-transform: capitalize;
+  border-top-color: #000;
+  width: 270px;
+  text-transform: capitalize;
 }
-.wh_top_menu ul ul li.has-children:after{
+.wh_top_menu ul ul li.has-children:after {
 }
 
 /*
@@ -305,13 +422,12 @@ a:hover{
  * Link to the index.
  * 
  */
- .wh_indexterms_link a span{
-    display:none;
+.wh_indexterms_link a span {
+  display: none;
 }
-.wh_indexterms_link a:before{
-    color:#fff;
+.wh_indexterms_link a:before {
+  color: #fff;
 }
-
 
 /*
  * ------------------------------------------------------------------
@@ -320,15 +436,14 @@ a:hover{
  *  
  */
 .wh_breadcrumb ol {
-    color: #878787;
+  color: #878787;
 }
 .wh_breadcrumb ol a {
-    color:inherit;
+  color: inherit;
 }
 .wh_breadcrumb ol .active {
-    color: #5185cb;
+  color: #5185cb;
 }
-
 
 /*
  * ------------------------------------------------------------------
@@ -336,15 +451,15 @@ a:hover{
  * Tools and navigation
  * 
  */
-.wh_tools{
-    background-color: #ECF2F9;
-    margin: 1em 0 2em;
+.wh_tools {
+  background-color: #ecf2f9;
+  margin: 1em 0 2em;
 }
 
 .wh_print_link,
 .wh_navigation_links,
 .wh_navigation_links .navnext,
-.wh_navigation_links .navprev{
+.wh_navigation_links .navprev {
 }
 
 .webhelp_expand_collapse_sections,
@@ -359,11 +474,10 @@ a:hover{
 .wh_navigation_links a:before,
 .wh_navigation_links a:hover:before,
 .wh_navigation_links a:active:before,
-.wh_navigation_links a:visited:before{
-    color: #347bb7;
-    text-decoration: none;
+.wh_navigation_links a:visited:before {
+  color: #347bb7;
+  text-decoration: none;
 }
-
 
 /*
  * ------------------------------------------------------------------
@@ -372,30 +486,34 @@ a:hover{
  * 
  */
 .wh_tile {
-    background-color: #ECF2F9;
-    font-weight: 300;
+  background-color: #ecf2f9;
+  font-weight: 300;
 }
-.wh_tile_shortdesc{
-    margin-top:1em;
-    text-align: center;
-    color: #0D1A2B;
-    font-size:1.1em;
+.wh_tile_shortdesc {
+  margin-top: 1em;
+  text-align: center;
+  color: #0d1a2b;
+  font-size: 1.1em;
 }
-.wh_tile_text:after{
-    background: linear-gradient(to bottom, rgba(236, 242, 249, 0), rgba(236, 242, 249, 1) 75%);
+.wh_tile_text:after {
+  background: linear-gradient(
+    to bottom,
+    rgba(236, 242, 249, 0),
+    rgba(236, 242, 249, 1) 75%
+  );
 }
-.wh_tile_title{
-    font-size:1.7em;
-    text-align: center;
-    text-decoration: none;
+.wh_tile_title {
+  font-size: 1.7em;
+  text-align: center;
+  text-decoration: none;
 }
-.wh_tile_title a{
-    color: #3077be;
+.wh_tile_title a {
+  color: #3077be;
 }
 @media only screen and (max-width: 767px) {
-    .wh_tile > div {
-        height: auto;
-    }
+  .wh_tile > div {
+    height: auto;
+  }
 }
 
 /* 
@@ -406,86 +524,85 @@ Example:
 }
 */
 
-
 /*
  * ------------------------------------------------------------------
  *  
  * Search area
  * 
  */
-.wh_search_input{
-    display:block;
-    margin:0;
-    position:relative;
-    background: url('resources/images/bgr_right_small.png') right no-repeat #2771bb;
-    padding: 40px 0;
+.wh_search_input {
+  display: block;
+  margin: 0;
+  position: relative;
+  /*    background: url('resources/images/bgr_right_small.png') right no-repeat #2771bb; */
+  padding: 0 0;
 }
 
-.wh_welcome:not(:empty){
-    font-size: 2.9em;
-    margin: 0 auto;
-    font-family: Roboto, sans-serif;
-    padding: 0 0 0.5em 0;
-    text-shadow: none;
-    font-weight: 300;
-    line-height: 1.2em;
+.wh_welcome:not(:empty) {
+  font-size: 2.9em;
+  margin: 0 auto;
+  font-family: Roboto, sans-serif;
+  padding: 0 0 0.5em 0;
+  text-shadow: none;
+  font-weight: 300;
+  line-height: 1.2em;
 }
-
+/*
 .wh_main_page .wh_search_input{
     padding: 115px 0;
-    background: url('resources/images/bgr_right.png') right no-repeat #2771bb;
-
+    background: url('resources/images/bgr_right.png') right no-repeat #2771bb;  
 }
-.wh_search_textfield{
-    border: solid 1px #CCC;
-    border-radius: 5px;
-    padding: 0 .5em;
-    position: relative;
-    height: 2.8em;
+*/
+.wh_search_textfield {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  padding: 0 0.5em;
+  position: relative;
+  height: 2.8em;
 }
-.wh_search_button{
-    border: solid 1px #CCC;
-    border-radius: 0 5px 5px 0;
-    padding: 0.6em 1em;
-    color:#fff;
-    background-color: #C93416;
-    height: 2.8em;
+.wh_search_button {
+  border: solid 1px #ccc;
+  border-radius: 0 5px 5px 0;
+  padding: 0.6em 1em;
+  color: #fff;
+  background-color: #c93416;
+  height: 2.8em;
 }
 
 /* Search autocomplete icons */
 .search-autocomplete-proposal-type-history a,
 .search-autocomplete-proposal-type-history a:hover,
 .search-autocomplete-proposal-type-history a:visited,
-.search-autocomplete-proposal-type-history a:active{
-    text-decoration: none;
-    color:inherit;
-    font-size: 0.8em;
+.search-autocomplete-proposal-type-history a:active {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.8em;
 }
 .ui-state-active .search-autocomplete-proposal-type-history a,
 .ui-state-active .search-autocomplete-proposal-type-history a:hover,
 .ui-state-active .search-autocomplete-proposal-type-history a:visited,
-.ui-state-active .search-autocomplete-proposal-type-history a:active{
-    color: #fff;
+.ui-state-active .search-autocomplete-proposal-type-history a:active {
+  color: #fff;
 }
 
 /* Active search page */
 #wh-search-pagination > ul > li.active > a {
-    background-color: #346ec5;
+  background-color: #346ec5;
 }
 
 /*@media only screen and (max-width: 999px) {*/
-    /*.wh_search_input:after{*/
-        /*display:none;*/
-    /*}*/
+/*.wh_search_input:after{*/
+/*display:none;*/
+/*}*/
 
 /*}*/
+/*
 @media only screen and (max-width: 767px) {
     .wh_main_page .wh_search_input,
     .wh_search_input {
         padding: 3em 0;
     }
-}
-
+} */
 
 /*
  * ------------------------------------------------------------------
@@ -493,75 +610,79 @@ Example:
  * Publication TOC
  * 
  */
-.wh_publication_toc{
-    border-radius: 3px;
-    padding: 1.5em .5em;
-    background-color: #f8f8f8
+.wh_publication_toc {
+  border-radius: 3px;
+  padding: 1.5em 0.5em;
+  background-color: #f8f8f8;
 }
 .wh_publication_toc .active > .topicref a {
-    color: #5185cb;
-    font-weight: normal;
+  color: #5185cb;
+  font-weight: normal;
 }
-.wh_publication_toc div, .wh_publication_toc a, .wh_publication_toc a:visited, .wh_publication_toc a:hover {
-    color: #878787;
+.wh_publication_toc div,
+.wh_publication_toc a,
+.wh_publication_toc a:visited,
+.wh_publication_toc a:hover {
+  color: #878787;
 }
 .wh_publication_toc a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.wh_publication_toc ul li, #wh_topic_toc ul li{
-    margin-top: .7em;
+.wh_publication_toc ul li,
+#wh_topic_toc ul li {
+  margin-top: 0.7em;
 }
 
 @media only screen and (max-width: 767px) {
-    .wh_publication_toc {
-        border-radius: 0;
-        padding: 1em 0.5em;
-        margin-top: 10px;
-        border: 1px solid #e0e0e0;
-    }
+  .wh_publication_toc {
+    border-radius: 0;
+    padding: 1em 0.5em;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+  }
 
-    .wh_related_links,
-    .wh_child_links,
-    .wh_topic_content .related-links{
-        border: 1px solid #e0e0e0;
-    }
+  .wh_related_links,
+  .wh_child_links,
+  .wh_topic_content .related-links {
+    border: 1px solid #e0e0e0;
+  }
 }
 
 /* Publication TOC tooltip */
 .wh_breadcrumb .topicref .wh-tooltip,
 .wh-toc-tooltip {
-    background-color: #5185cb;
-    color: #fff;
-    font-size: 1.4rem;
+  background-color: #5185cb;
+  color: #fff;
+  font-size: 1.4rem;
 }
 
 .wh_breadcrumb .topicref .wh-tooltip a,
 .wh-toc-tooltip a {
-    color: #fff;
-    text-decoration: underline;
+  color: #fff;
+  text-decoration: underline;
 }
 
 /* Tooltip arrow. */
 
 [data-tooltip-position="left"] .topicref .wh-tooltip::before,
 [data-tooltip-position="left"] .wh-toc-tooltip::before {
-    border-left-color: #5185cb;
+  border-left-color: #5185cb;
 }
 
 [data-tooltip-position="right"] .topicref .wh-tooltip::before,
 [data-tooltip-position="right"] .wh-toc-tooltip::before {
-    border-right-color: #5185cb;
+  border-right-color: #5185cb;
 }
 
 [data-tooltip-position="bottom"] .topicref .wh-tooltip::before,
 [data-tooltip-position="bottom"] .wh-toc-tooltip::before {
-    border-bottom-color: #5185cb;
+  border-bottom-color: #5185cb;
 }
 
 [data-tooltip-position="top"] .topicref .wh-tooltip::before,
 [data-tooltip-position="top"] .wh-toc-tooltip::before {
-    border-top-color: #5185cb;
+  border-top-color: #5185cb;
 }
 
 /*
@@ -570,19 +691,19 @@ Example:
  * Footer
  * 
  */
-.wh_footer{
-    text-align: center;
-    padding: 1em;
-    position:relative;
-    bottom: 0;
-    width: 100%;
-    color: #ffffff;
-    background: none #255B90;
-    margin-top: 2em;
+.wh_footer {
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  color: #ffffff;
+  background: none #255b90;
+  margin-top: 2em;
 }
 
-.wh_footer a{
-    color: #CCE2F1;
+.wh_footer a {
+  color: #cce2f1;
 }
 
 /*
@@ -591,54 +712,55 @@ Example:
  * Topic content
  * 
  */
-.wh_topic_content,.wh_content_area {
-    color: #000000;
-    line-height: 1.7em;
-    margin-bottom: 80px;
+.wh_topic_content,
+.wh_content_area {
+  color: #000000;
+  line-height: 1.7em;
+  margin-bottom: 80px;
 }
 .wh_main_page .wh_content_area {
-    margin: 40px 0;
+  margin: 40px 0;
 }
 .wh_topic_content .title.topictitle1 {
-    font-size: 2em;
-    line-height: 1.1em;
+  font-size: 2em;
+  line-height: 1.1em;
 }
 
 .topictitle3,
 .topictitle4,
 .topictitle5,
 .topictitle6 {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .wh_related_links .related-links,
 .wh_topic_content .related-links,
-.wh_child_links{
-    border-top: 1px solid #ccc;
-    padding-top: 7px;
-    margin-top: 0;
+.wh_child_links {
+  border-top: 1px solid #ccc;
+  padding-top: 7px;
+  margin-top: 0;
 }
 
 .wh_related_links .related-links,
-.wh_topic_content .related-links{
-    padding: .5em 1.5em ;
+.wh_topic_content .related-links {
+  padding: 0.5em 1.5em;
 }
 
 .wh_child_links {
-    padding: 1.5em ;
+  padding: 1.5em;
 }
 
-.related-links strong{
-    font-weight: 700;
+.related-links strong {
+  font-weight: 700;
 }
 
 .related-links a,
 .related-links a:visited {
-    color: #5185cb;
+  color: #5185cb;
 }
 
 .filepath {
-    color: #c7254e;
+  color: #c7254e;
 }
 
 /*
@@ -648,40 +770,39 @@ Example:
  * 
  */
 .searchresult {
-    list-style: none;
+  list-style: none;
 }
 
 .searchresult li a {
-    color:#346ec5;
+  color: #346ec5;
 }
 .searchresult .shortdesclink {
-    margin: .3em .5em 0 0;
+  margin: 0.3em 0.5em 0 0;
 }
-.wh_search_expression{
-    font-weight:bold;
+.wh_search_expression {
+  font-weight: bold;
 }
 
 /* Search relative path */
 .searchresult li .relativePath a {
-    color: #006621;
+  color: #006621;
 }
 
 /*--------- Search results breadcrumb ----------*/
 .search-breadcrumb li a {
-    background: #ECF2F9;
+  background: #ecf2f9;
 }
 .search-breadcrumb li .title:before,
 .search-breadcrumb li .title:after {
-    border-color: #ECF2F9;
+  border-color: #ecf2f9;
 }
 .search-breadcrumb li .title:before {
-    border-left-color: transparent;
+  border-left-color: transparent;
 }
 .search-breadcrumb li .title:after {
-    border-color: transparent;
-    border-left-color: #ECF2F9;
+  border-color: transparent;
+  border-left-color: #ecf2f9;
 }
-
 
 /*
  * ------------------------------------------------------------------
@@ -690,13 +811,11 @@ Example:
  * 
  */
 .wh_index_terms span.wh_first_letter {
-    color: #346ec5;
+  color: #346ec5;
 }
-.wh_index_terms #indexList{
-    padding:0;
+.wh_index_terms #indexList {
+  padding: 0;
 }
-
-
 
 /*
  * ------------------------------------------------------------------
@@ -704,12 +823,14 @@ Example:
  * Tree TOC for the main page.
  * 
  */
-.wh_main_page_toc{
+.wh_main_page_toc {
 }
 
-
-.wh_main_page_toc .expanded, .wh_main_page_toc .wh_main_page_toc_accordion_header:hover, .wh_main_page_toc>.wh_main_page_toc_entry:hover, .wh_main_page_toc_accordion_entries{
-    background-color: #F2F8FF;
+.wh_main_page_toc .expanded,
+.wh_main_page_toc .wh_main_page_toc_accordion_header:hover,
+.wh_main_page_toc > .wh_main_page_toc_entry:hover,
+.wh_main_page_toc_accordion_entries {
+  background-color: #f2f8ff;
 }
 
 /**
@@ -717,8 +838,7 @@ Example:
  * Styles used for RTL pages
  *
  */
-html[dir='rtl'] .wh_top_menu:not(.activated-on-click) ul li:hover > ul,
-html[dir='rtl'] .wh_top_menu.activated-on-click ul li.active > ul {
-    max-width: 270px;
+html[dir="rtl"] .wh_top_menu:not(.activated-on-click) ul li:hover > ul,
+html[dir="rtl"] .wh_top_menu.activated-on-click ul li.active > ul {
+  max-width: 270px;
 }
-
