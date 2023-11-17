@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+   <appContext helpID="regions" path="regions.html"/>
+   <appContext helpID="welcome" path="security.html"/>
+   <appContext helpID="contents" path="quicklinks/contents.html"/>
+   <appContext helpID="active" path="quicklinks/active.html"/>
+   <appContext helpID="shaft_rates" path="quicklinks/shaft-rates.html"/>
+   <appContext helpID="tarpaulin" path="quicklinks/tarpauline.html"/>
+   <appContext helpID="pneumatic" path="quicklinks/pneumatic.html"/>
+</map>
