@@ -10,6 +10,11 @@
             <page-layout-file page="main" file="page-templates/wt_index.html"/>
             <page-layout-file page="index-terms" file="page-templates/wt_terms.html"/>
         </html-page-layout-files>
+        <html-fragments>
+            <fragment 
+                file="page-templates-fragments/libraries/topic-page-libraries.xml" 
+                placeholder="webhelp.fragment.welcome"/>
+        </html-fragments>
         <parameters>
             <parameter name="webhelp.show.protection" value="yes"/>
             <parameter name="webhelp.protection.text" value="COMMERCIALLY SENSITIVE"/>
