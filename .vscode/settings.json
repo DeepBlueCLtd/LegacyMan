@@ -3,4 +3,5 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true
       },
+      "search.useIgnoreFiles": false,
 }
