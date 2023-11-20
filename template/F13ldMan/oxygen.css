@@ -113,6 +113,10 @@
     background-image: url('resources/images/WorldMap.jpg');
 }
 
+/** hide the sticky floating breadcrumb bar */
+.breadcrumb-sticky {
+    display: none;
+}
 
 /* ------------------------------------------- */
 
