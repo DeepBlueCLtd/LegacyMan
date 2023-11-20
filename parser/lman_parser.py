@@ -119,6 +119,13 @@ class Parser:
         dita_topic["id"] = "PD_1"
 
         dita_topic.append(dita_title)
+
+        dita_shortdesc = dita_soup.new_tag("shortdesc")
+        shortdesc = soup.find(id="short-description")
+        if shortdesc:
+            dita_shortdesc.string = shortdesc.text.strip()
+
+        dita_topic.append(dita_shortdesc)
         dita_topic.append(dita_body)
 
         # Append the <topic> element to the BeautifulSoup object
@@ -365,6 +372,8 @@ class Parser:
         dita_emptytitle = dita_soup.new_tag("title")
         dita_emptytitle2 = dita_soup.new_tag("title")
 
+        dita_shortdesc = dita_soup.new_tag("shortdesc")
+
         # Create dita elements for <tgroup>,<table>, <tbody> ...
         dita_tbody = dita_soup.new_tag("tbody")
         dita_tgroup = dita_soup.new_tag("tgroup")
@@ -373,6 +382,10 @@ class Parser:
         dita_title = dita_soup.new_tag("title")
         dita_image = dita_soup.new_tag("image")
         dita_fig = dita_soup.new_tag("fig")
+
+        shortdesc = soup.find(id="short-description")
+        if shortdesc:
+            dita_shortdesc.string = shortdesc.text.strip()
 
         # Get table columns <td> from the second row <tr> (the first <tr> is used for title so we can't get the column count from it)
         parent_table = td.find_parent("table")
@@ -459,6 +472,7 @@ class Parser:
 
         dita_reference["id"] = sanitise_filename(title.text)
         dita_reference.append(dita_title)
+        dita_reference.append(dita_shortdesc)
         dita_reference.append(dita_refbody)
 
         # Find all the QuickLinks tables and extract their link text and href
@@ -571,6 +585,8 @@ class Parser:
                     continue
                 if is_skippable_div_id(div_id):
                     continue
+                if div.has_attr("style") and "hidden" in div["style"]:
+                    continue
 
                 image_tags = div.find_all("img")
                 div_text = div.get_text().strip()
@@ -582,7 +598,6 @@ class Parser:
                 logging.debug(
                     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
                 )
-                # breakpoint()
                 text = div.get_text().strip()
                 if len(image_tags) > 0:
                     page = div
@@ -636,6 +651,13 @@ class Parser:
                     logging.warning(f"Could not extract title from {input_file_path}")
 
         dita_reference.append(dita_title)
+
+        dita_shortdesc = dita_soup.new_tag("shortdesc")
+        shortdesc = html_soup.find(id="short-description")
+        if shortdesc:
+            dita_shortdesc.string = shortdesc.text.strip()
+
+        dita_reference.append(dita_shortdesc)
         dita_ref_body = dita_soup.new_tag("refbody")
 
         if self.write_generic_files:
