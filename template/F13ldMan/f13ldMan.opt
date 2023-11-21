@@ -42,6 +42,7 @@
         <resources>
             <css file="oxygen.css"/>
             <css file="notes.css"/>
+            <css file="f13ldman.css"/>
             <fileset>
                 <include name="resources/**/*"/>
                 <exclude name="resources/**/*.svn"/>
