@@ -442,6 +442,7 @@
         <folder masterFiles="true" name="Main Files">
             <file name="target/dita/index.ditamap"/>
         </folder>
+        <folder path="../../../../../Program%20Files/Oxygen%20XML%20Editor%2026/frameworks/dita/DITA-OT/plugins/com.oxygenxml.webhelp.responsive/"/>
         <folder path="."/>
     </projectTree>
 </project>
