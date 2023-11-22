@@ -178,6 +178,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             for child in img.children:
                 img.insert_after(child)
 
+    # 3a. Replace font elements with p elements
+    for font_el in soup.find_all("font"):
+        font_el.name = "p"
+        del font_el["size"]
+
     # 4. We can't handle headings in paragraphs. So, first search for, and fix
     # headings in paragraphs
     for p in soup.find_all("p"):
