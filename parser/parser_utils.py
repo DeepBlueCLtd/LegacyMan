@@ -164,7 +164,7 @@ def generate_top_to_div_mapping(
 
         top_value = get_top_value(bottom_layer_div["style"])
 
-        if top_value:
+        if top_value is not None:
             while top_value in top_to_div_mapping.keys():
                 top_value += 1
             top_to_div_mapping[top_value] = bottom_layer_div
