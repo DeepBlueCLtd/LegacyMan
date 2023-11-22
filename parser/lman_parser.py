@@ -720,6 +720,8 @@ class Parser:
                             continue
                         # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
+                        # print(f"Enclosing div ID = {enclosing_div.get('id')}")
+                        # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         for top_value, bottom_layer_div in top_to_div_mapping:
                             div_id = bottom_layer_div.get("id")
                             if div_id:
@@ -732,6 +734,14 @@ class Parser:
                                 ):
                                     continue
                             # print(f"top_value = {top_value}")
+                            # Skip any divs whose content is just a single img tag with the corporate logo in it
+                            img_tags = bottom_layer_div.find_all("img")
+                            if (
+                                img_tags is not None
+                                and len(img_tags) == 1
+                                and "image020" in img_tags[0]["src"]
+                            ):
+                                continue
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
                                 if top_value - enclosing_div_top_value < 800:
