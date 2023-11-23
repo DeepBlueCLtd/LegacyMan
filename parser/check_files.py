@@ -21,6 +21,14 @@ def search_for_strings(html_soup, output):
             search_for_strings(element, output)
 
 
+def random_substring(s, n=30):
+    length = len(s)
+
+    start_char = random.randint(0, length - 30)
+
+    return s[start_char : start_char + n]
+
+
 def select_random_text_from_file(path, n):
     html = Path(path).read_text()
     html_soup = BeautifulSoup(html, "html.parser")
@@ -29,6 +37,9 @@ def select_random_text_from_file(path, n):
     search_for_strings(html_soup, output)
 
     output = list(filter(lambda x: len(x) > 40, output))
+
+    # Get a random substring of each string
+    output = list(map(random_substring, output))
 
     if n == "all":
         return output
