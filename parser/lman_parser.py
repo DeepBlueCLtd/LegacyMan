@@ -8,6 +8,7 @@ import re
 import os
 import subprocess
 from urllib.parse import urlparse
+import bs4
 from bs4 import BeautifulSoup
 from pprint import pprint, pformat
 from html_to_dita import htmlToDITA
@@ -564,6 +565,39 @@ class Parser:
 
         # insert rest of converted content
         dita_section.extend(converted_bits)
+
+        def is_empty_p_element(el):
+            if el is None:
+                return False
+            elif el.name == "p" and el.text.strip() == "" and len(el.find_all()) == 0:
+                return True
+            else:
+                return False
+
+        def next_sibling_tag(el):
+            next_sib = el.next_sibling
+            while type(next_sib) is bs4.element.NavigableString:
+                next_sib = next_sib.next_sibling
+
+            return next_sib
+
+        # Check for repeated <p>&nbsp;</p> elements
+        p_elements = page.find_all("p")
+        empty_p_elements = list(filter(is_empty_p_element, p_elements))
+
+        found = False
+        for el in empty_p_elements:
+            count = 0
+            while is_empty_p_element(next_sibling_tag(el)):
+                count += 1
+                if count >= 4:
+                    found = True
+                    break
+            if found:
+                logging.warning(
+                    f"Found string of repeated <p>&nbsp;</p> elements in div with ID {page.get('id')} in file {filename}"
+                )
+                break
 
         return dita_section
 
