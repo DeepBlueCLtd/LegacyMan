@@ -341,7 +341,7 @@ class Parser:
         handle_as_generic_div = soup.find_all("div", id="handle_as_generic")
         if len(handle_as_generic_div) == 1:
             path = f"{self.root_path}/{remove_leading_slashes(category_page_link)}"
-            filepath = self.make_relative_to_data_dir(Path(path))
+            filepath = self.make_relative_to_data_dir(Path(path)).resolve()
             self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
             self.process_generic_file(path)
             return
@@ -696,9 +696,8 @@ class Parser:
 
         if self.write_generic_files:
             sections = []
-            anchors_to_export = self.link_tracker[
-                str(Path(input_file_path).relative_to(self.root_path))
-            ]
+            key = str(Path(input_file_path).resolve().relative_to(self.root_path))
+            anchors_to_export = self.link_tracker[key]
             pages_to_process = set()
             top_to_div_mapping = generate_top_to_div_mapping(
                 html_soup, recursive=True, filename=input_file_path
@@ -919,7 +918,7 @@ class Parser:
                 if filepath.suffix != ".html":
                     continue
             else:
-                filepath = input_file_path
+                filepath = input_file_path.resolve()
 
             filepath = self.make_relative_to_data_dir(filepath)
 
