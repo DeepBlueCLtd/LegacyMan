@@ -940,9 +940,9 @@ class Parser:
             relative_input_file_directory, directory=True
         )
 
-        output_dita_path = target_path / sanitise_filename(
-            input_file_path.with_suffix(".dita").name
-        )
+        output_dita_path = (
+            target_path / sanitise_filename(input_file_path.with_suffix(".dita").name)
+        ).resolve()
 
         # Check to see if we have the relevant Content/Images folder for this file
         # and if not, then copy it over
