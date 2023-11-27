@@ -18,30 +18,23 @@ def parse_single_file(root_path, file_path, target_path):
     os.makedirs("target", exist_ok=True)
     target_dir = os.path.join("target", "dita")
 
-    # copy index.dita and welcome.dita from data dir to target/dita
-
+    time1 = time.time()
     parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
     parser.only_process_single_file = True
-
-    time1 = time.time()
-    parser.write_generic_files = False
-    parser.process_regions()
-    time2 = time.time()
-    logging.info("Done run 1")
-    logging.info(f"Run 1 took {time2-time1:.2} seconds")
-
-    parser.files_already_processed = set()
     parser.write_generic_files = True
+    ret_val = parser.load_link_tracker()
+    if not ret_val:
+        sys.exit()
 
     output_dita_filename = parser.process_generic_file(Path(file_path).resolve())
-    time3 = time.time()
+    time2 = time.time()
     logging.info("Done run 2 for single file")
-    logging.info(f"Run 2 took {time3-time2:.2} seconds")
+    logging.info(f"Run 2 took {time2-time1:.2} seconds")
 
     parser.run_dita_command(output_dita_filename, run_validator=False)
-    time4 = time.time()
+    time3 = time.time()
 
-    logging.info(f"Running DITA to HTML conversion took {time4-time3:.2} seconds")
+    logging.info(f"Running DITA to HTML conversion took {time3-time2:.2} seconds")
 
 
 if __name__ == "__main__":

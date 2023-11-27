@@ -14,6 +14,9 @@ from pprint import pprint, pformat
 from html_to_dita import htmlToDITA
 import time
 import logging
+import json
+import argparse
+
 
 from parser_utils import (
     delete_directory,
@@ -40,6 +43,7 @@ class Parser:
         self.link_tracker = defaultdict(set)
         self.files_already_processed = set()
         self.only_process_single_file = False
+        self.warn_on_blank_runs = False
 
     def process_regions(self):
         # copy the world-map.gif file
@@ -593,7 +597,7 @@ class Parser:
                 if count >= 4:
                     found = True
                     break
-            if found:
+            if found and self.warn_on_blank_runs:
                 logging.warning(
                     f"Found string of repeated <p>&nbsp;</p> elements in div with ID {page.get('id')} in file {filename}"
                 )
@@ -1091,15 +1095,45 @@ class Parser:
     def process_contents_page(self):
         self.process_generic_file(self.root_path / "Introduction" / "ContentsPage.html")
 
-    def run(self):
+    def store_link_tracker(self):
+        links_without_sets = {key: list(value) for key, value in self.link_tracker.items()}
+        with open("link_tracker.json", "w") as f:
+            json.dump(links_without_sets, f)
+
+    def load_link_tracker(self):
+        if not os.path.exists("link_tracker.json"):
+            print("Error: link_tracker.json does not exist. Run a full parse first.")
+            return False
+
+        with open("link_tracker.json") as f:
+            links_without_sets = json.load(f)
+
+        self.link_tracker = defaultdict(set)
+        for key, value in links_without_sets.items():
+            self.link_tracker[key] = set(value)
+
+        return True
+
+    def run(self, skip_first_run=False):
         time1 = time.time()
         self.write_generic_files = True
         self.process_contents_page()
-        self.write_generic_files = False
-        self.process_regions()
+
+        if not skip_first_run:
+            self.write_generic_files = False
+            self.process_regions()
+            self.store_link_tracker()
+            logging.info("Done run 1")
+        else:
+            result = self.load_link_tracker()
+            if not result:
+                sys.exit()
+
         time2 = time.time()
-        logging.info("Done run 1")
-        logging.info(f"Run 1 took {time2-time1:.1f} seconds")
+        if not skip_first_run:
+            logging.info(f"Run 1 took {time2-time1:.1f} seconds")
+        else:
+            logging.info("Starting run 2")
         self.write_generic_files = True
         self.files_already_processed = set()
         self.process_regions()
@@ -1111,19 +1145,55 @@ class Parser:
         validator_time, publish_time = self.run_dita_command()
         time4 = time.time()
         logging.info("Timings:")
-        logging.info(f"Run 1: {time2-time1:.1f} seconds")
+        if not skip_first_run:
+            logging.info(f"Run 1: {time2-time1:.1f} seconds")
         logging.info(f"Run 2: {time3-time2:.1f} seconds")
         logging.info(f"DITA validator: {validator_time:.1f} seconds")
         logging.info(f"DITA publish: {publish_time:.1f} seconds")
         logging.info(f"Total: {time4-time1:.1f} seconds")
 
 
-def parse_from_root(root_path, target_path):
-    """
-    this function will parse a body of HTML, writing to DITA format
-    :param root_path: the location of the source data
-    :param target_path: where to write the results
-    """
+def init_argparse():
+    parser = argparse.ArgumentParser(usage="%(prog)s [OPTION] DATA_PATH [LOGGING_LEVEL]")
+    parser.add_argument("DATA_PATH", help="Path to the source data")
+    parser.add_argument(
+        "LOGGING_LEVEL",
+        default="info",
+        nargs="?",
+        help="Debug level - must be one of debug, warning or info",
+    )
+    parser.add_argument(
+        "--skip-first-run",
+        action=argparse.BooleanOptionalAction,
+        help="Skip Run 1, loading the shopping list from the link_tracker.json file",
+    )
+    parser.add_argument(
+        "--warn-on-blank-runs",
+        action=argparse.BooleanOptionalAction,
+        help="Print warning messages whenever runs of blank paragraphs are found",
+    )
+    return parser
+
+
+if __name__ == "__main__":
+    parser = init_argparse()
+
+    args = parser.parse_args()
+
+    root_path = args.DATA_PATH
+    logging_format = "%(levelname)s:  %(message)s"
+    logging_level = args.LOGGING_LEVEL.lower()
+    if logging_level == "debug":
+        logging.basicConfig(level=logging.DEBUG, format=logging_format)
+        logging.info("Logging level set to DEBUG")
+    elif logging_level == "info":
+        logging.basicConfig(level=logging.INFO, format=logging_format)
+        logging.info("Logging level set to INFO")
+    elif logging_level == "warning":
+        logging.basicConfig(level=logging.WARNING, format=logging_format)
+        logging.info("Logging level set to WARNING")
+
+    target_path = "./target/html"
     logging.info(f"LegacyMan parser running, with these arguments: {root_path} {target_path}")
 
     # remove existing target directory and recreate it
@@ -1137,26 +1207,6 @@ def parse_from_root(root_path, target_path):
     copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
     parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
+    parser.warn_on_blank_runs = args.warn_on_blank_runs
 
-    parser.run()
-
-
-if __name__ == "__main__":
-    root_path = sys.argv[1]
-    logging_format = "%(levelname)s:  %(message)s"
-    if len(sys.argv) == 3:
-        logging_level = sys.argv[2].lower()
-        if logging_level == "debug":
-            logging.basicConfig(level=logging.DEBUG, format=logging_format)
-            logging.info("Logging level set to DEBUG")
-        elif logging_level == "info":
-            logging.basicConfig(level=logging.INFO, format=logging_format)
-            logging.info("Logging level set to INFO")
-        elif logging_level == "warning":
-            logging.basicConfig(level=logging.WARNING, format=logging_format)
-            logging.info("Logging level set to WARNING")
-    else:
-        logging.basicConfig(level=logging.INFO, format=logging_format)
-        logging.info("Logging level set to INFO")
-    target_path = "./target/html"
-    parse_from_root(root_path, target_path)
+    parser.run(args.skip_first_run)
