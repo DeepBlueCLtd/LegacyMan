@@ -1114,7 +1114,7 @@ class Parser:
 
         return True
 
-    def run(self, skip_first_run=False):
+    def run(self, skip_first_run=False, run_validation=False):
         time1 = time.time()
         self.write_generic_files = True
         self.process_contents_page()
@@ -1142,13 +1142,14 @@ class Parser:
         logging.info(f"Run 2 took {time3-time2:.1f} seconds")
         logging.debug("Dictionary of links:")
         logging.debug(pformat(self.link_tracker))
-        validator_time, publish_time = self.run_dita_command()
+        validator_time, publish_time = self.run_dita_command(run_validator=run_validation)
         time4 = time.time()
         logging.info("Timings:")
         if not skip_first_run:
             logging.info(f"Run 1: {time2-time1:.1f} seconds")
         logging.info(f"Run 2: {time3-time2:.1f} seconds")
-        logging.info(f"DITA validator: {validator_time:.1f} seconds")
+        if run_validation:
+            logging.info(f"DITA validator: {validator_time:.1f} seconds")
         logging.info(f"DITA publish: {publish_time:.1f} seconds")
         logging.info(f"Total: {time4-time1:.1f} seconds")
 
@@ -1171,6 +1172,11 @@ def init_argparse():
         "--warn-on-blank-runs",
         action=argparse.BooleanOptionalAction,
         help="Print warning messages whenever runs of blank paragraphs are found",
+    )
+    parser.add_argument(
+        "--run-validation",
+        action=argparse.BooleanOptionalAction,
+        help="Run the DITA validation step",
     )
     return parser
 
@@ -1209,4 +1215,4 @@ if __name__ == "__main__":
     parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
     parser.warn_on_blank_runs = args.warn_on_blank_runs
 
-    parser.run(args.skip_first_run)
+    parser.run(args.skip_first_run, args.run_validation)
