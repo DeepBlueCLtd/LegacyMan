@@ -3,7 +3,7 @@ import logging
 import os
 from bs4 import BeautifulSoup
 import bs4
-from pathlib import Path
+from pathlib import Path, PurePath
 import cssutils
 import re
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
@@ -158,7 +158,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             div.decompose()
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
-    for img in soup.find_all("img"):
+    if soup.name.lower() == "img":
+        imgItems = [soup]
+    else:
+        imgItems = soup.find_all("img")
+    for img in imgItems:
         img.name = "image"
         img["href"] = img["src"]
         if "image020" in img["href"]:
@@ -308,14 +312,19 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 p.name = "li"
 
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
-    for span in soup.find_all("span", recursive=True):
+    if soup.name.lower() == "span":
+        # create an array with just the soup
+        spanItems = [soup]
+    else:
+        spanItems = soup.find_all("span", recursive=True)
+    for span in spanItems:
         if span.has_attr("style"):
             style = span["style"].lower()
             if "color:" in style:
                 span.name = "ph"
-                if "#F00" in style:
+                if "#f00" in style:
                     span["outputclass"] = "colorRed"
-                elif "#00F" in style:
+                elif "#00f" in style:
                     span["outputclass"] = "colorBlue"
                 elif "#777" in style:
                     span["outputclass"] = "colorGray"
@@ -346,9 +355,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     ):  # note: strong has already been converted to `b`
         if strong.has_attr("style"):
             if "color:" in strong["style"]:
-                if "#F00" in strong["style"]:
+                if "#f00" in strong["style"].lower():
                     strong["outputclass"] = "colorRed"
-                elif "#00F" in strong["style"]:
+                elif "#00f" in strong["style"].lower():
                     strong["outputclass"] = "colorBlue"
             del strong["style"]
 
