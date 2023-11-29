@@ -29,6 +29,14 @@ def random_substring(s, n=30):
     return s[start_char : start_char + n]
 
 
+def chunk_before_nbsp(s):
+    char_index = s.find("&nbsp;")
+    if char_index != -1:
+        return s[: char_index - 1]
+    else:
+        return s
+
+
 def select_random_text_from_file(path, n):
     html = Path(path).read_text()
     html_soup = BeautifulSoup(html, "html.parser")
@@ -40,6 +48,9 @@ def select_random_text_from_file(path, n):
 
     # Get a random substring of each string
     output = list(map(random_substring, output))
+
+    # Split chunks as nbsps
+    output = list(map(chunk_before_nbsp, output))
 
     if n == "all":
         return output
