@@ -61,18 +61,31 @@ Execute the following command from the project root directory to run program. Th
 ### Run the parser
 
 ```
-python parser/parser.py data
+python parser/lman_parser.py data
 
 ```
 
-The arguments that can be passed to the parser.py script are as follows:
+There are a number of arguments that can be passed to the parser script. Run with `--help` to see them:
 
 ```
-python parser/parser.py INPUT_FOLDER LOGGING_LEVEL
+python parser/lman_parser.py --help
+usage: lman_parser.py [OPTION] DATA_PATH [LOGGING_LEVEL]
+
+positional arguments:
+  DATA_PATH             Path to the source data
+  LOGGING_LEVEL         Debug level - must be one of debug, warning or info
+
+options:
+  -h, --help            show this help message and exit
+  --skip-first-run, --no-skip-first-run
+                        Skip Run 1, loading the shopping list from the link_tracker.json file
+  --warn-on-blank-runs, --no-warn-on-blank-runs
+                        Print warning messages whenever runs of blank paragraphs are found
+  --run-validation, --no-run-validation
+                        Run the DITA validation step
 ```
 
-- `INPUT_FOLDER` is the folder containing the input data (`data` usually)
-- `LOGGING LEVEL` is a string giving the level of logs to display. This defaults to `info` which displays informational messages, but can be set to `warning` to just display warnings, or `debug` to display lots of debugging information.
+These allow you to skip the first run, warn about sequences of blank paragraphs or run the DITA validation. 
 
 There is a separate script to run the parser for a single file. Run:
 
