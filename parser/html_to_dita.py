@@ -213,7 +213,18 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             h_tag["outputclass"] = tag
 
     # 5a. Fix hyperlinks (a with href attribute)
-    for a in soup.find_all("a", {"href": True}):
+
+    # First deal with the fact that the whole thing passed to this function
+    # might just be an a tag
+    if soup.name == "a":
+        if soup.has_attr("href"):
+            all_a_tags = [soup]
+        else:
+            all_a_tags = []
+    else:
+        all_a_tags = soup.find_all("a", {"href": True})
+    # Then go through all the a tags we've got from the above
+    for a in all_a_tags:
         a.name = "xref"
         if "(-1)" in a["href"]:
             a.decompose()
