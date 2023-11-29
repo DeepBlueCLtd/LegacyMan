@@ -257,9 +257,13 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             del a["name"]
         a.name = "b"
 
-    # 6. Remove <br> newlines
+    # 6. Replace <br> newlines with the linebreak processing instruction
+    # todo: this converts the brackets to &lt; and &gt;.
+    # we need to find a way to make BS4 generate the processing instruction
     for br in soup.find_all("br"):
         br.decompose()
+    if soup.name.lower() == "br":
+        return "<?linebreak?>"
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
