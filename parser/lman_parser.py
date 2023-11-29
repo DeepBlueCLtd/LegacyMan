@@ -383,6 +383,11 @@ class Parser:
         dita_tbody = dita_soup.new_tag("tbody")
         dita_tgroup = dita_soup.new_tag("tgroup")
         dita_table = dita_soup.new_tag("table")
+        # format attributes to show table borders
+        dita_table["colsep"] = "1"
+        dita_table["rowsep"] = "1"
+        dita_table["frame"] = "all"
+        dita_table["outputclass"] = "category"
 
         dita_title = dita_soup.new_tag("title")
         dita_image = dita_soup.new_tag("image")
