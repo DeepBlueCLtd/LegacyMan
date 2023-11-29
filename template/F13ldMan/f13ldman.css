@@ -1,0 +1,257 @@
+
+/* user-defined CSS */
+
+
+.wh_footer_protection{
+  text-align: center;
+  padding: 1em;
+  position:relative;
+  bottom: 0;
+  width: 100%;
+  color: #000;
+  background: none #bfebb9;
+  top: 2em;
+}
+
+.wh_footer_protection span{
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.wh_header_protection{
+  background: #bfebb9 none;
+  color: #000;
+  text-align: center;
+}
+
+.wh_header_protection span{
+  font-family: Arial;
+  font-size: 14px;
+}
+
+
+
+@media only screen and (max-width: 1350px) {
+.c-no-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  flex-wrap: unset;
+}
+
+#searchForm > div {
+  width: 100%;
+  min-width: 300px;
+  max-width: 700px;
+  padding-left: 8px;
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+}
+
+@media only screen and (min-width: 1350px) {
+.c-no-wrap {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: unset;
+}
+
+.c-menu > ul {
+  padding: 0 10px;
+  display: flex;
+  word-break: unset;
+  justify-content: flex-end;
+}
+
+#searchForm > div {
+  width: 100%;
+ min-width: 300px;
+}
+
+}
+
+.c-nav-bar {
+z-index: unset;
+}
+
+.c-menu {
+min-width: 710px;
+text-align: start;
+}
+
+.c-full-width {
+max-width: unset;
+}
+
+.wh_logo_and_publication_title {
+width: max-content;
+padding: 0 10px;
+}
+
+#searchForm {
+width: 100%;
+}
+
+#searchForm > div > button {
+display: block;
+}
+
+.fullWidthTable {
+  display: block;
+  width: 100%;
+}
+
+.wh_tiles {
+  background-image: url('resources/images/WorldMap.jpg');
+}
+
+/** hide the sticky floating breadcrumb bar */
+.breadcrumb-sticky {
+  display: none;
+}
+
+/* ------------------------------------------- */
+
+
+/* don't show section title anchro */
+.permalink {
+  display: none
+}
+
+/* make related pages show as a list of items */
+.related-pages .xref {
+  display: list-item
+}
+
+/* hide borders for image link table  */
+.rich-collection .table-container table,  .rich-collection .table-container table td.entry {
+  border: none;
+}
+
+/* show borders for tables */
+.classlistbody .table .entry, .class .table .entry{ 
+  border: 1px solid black !important;
+  border-collapse: collapse;
+}
+
+/* text label for category image links
+.xref .b {
+  display:block;
+  text-align: center;
+  font-size: 2em;
+} */
+
+/* make table separators more prominent */
+.table-separator {
+  font-size: 1.5em;
+}
+
+.colorRed {
+  color: #F00;
+}
+
+.colorBlue {
+  color: #00F;
+}
+
+.colorGray {
+  color: #777;
+}
+
+.placeholder {
+  background-color: #FF0;
+}
+
+.bkLightGray {
+  background-color: #CCC;    
+}
+
+.bkDarkGray {
+  background-color: #999;    
+}
+
+.bkYellow {
+  background-color: #ffff00;    
+}
+
+.bkBlue {
+  background-color: #0000ff;    
+}
+
+.bkRed {
+  background-color: #ff0000;    
+}
+
+.bold {
+  font-weight: 200
+}
+
+/* artificially support headings */
+.h1, .h2 {
+  font-size: 2em;
+}
+
+/* float the related link, if the screen is wide enough */
+@media screen and (min-width: 692px) {
+  /* pad the right-hand side of hte content, to make space for hte
+  floating table of contents */
+  .body {
+      padding-right: 200px;
+  }
+  
+  /* make the related links float */
+  .wh_related_links {
+      background-color: #EFEFFA; 
+      position:fixed;
+      width: 200px;
+      right:0;
+      top:200px;
+      z-index: 1000;
+  }
+
+  /** the next blocks are for plain DITA-OT export
+  /* make the related links float */
+  .relref {
+      background-color: #EFEFFA; 
+      position:fixed;
+      width: 200px;
+      right:200px;
+      top:200px;
+      z-index: 1000;
+  }
+
+  /* make the related links float */
+  .relinfo {
+      background-color: #EFEFFA; 
+      position:fixed;
+      width: 200px;
+      right:0;
+      top:200px;
+      z-index: 1000;
+  }
+
+}
+
+/* text label for category image links (FONT-SIZE REMOVED) */
+.xref .b {
+  display:block;
+  text-align: center;
+  /* font-size: 2em; */
+}
+
+.wh_search_input{
+  display:block;
+  margin:0;
+  position:relative;
+  background:none;
+  padding: 0 0;
+}
+
+/*
+* ==============================================
+* Style changes for Fi3ldMan project above this block
+* ==============================================
+*/
