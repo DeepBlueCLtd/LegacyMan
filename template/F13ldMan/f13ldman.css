@@ -30,47 +30,67 @@
 }
 
 
-
-@media only screen and (max-width: 1350px) {
-.c-no-wrap {
-  display: flex;
+/* styling to make the `REGIONS` button twice the width of the others */
+.wh_tiles-container {
+  padding: 5% 15%;
   flex-direction: column;
-  width: 100%;
-  align-items: flex-start;
-  flex-wrap: unset;
+  align-items: center;
 }
+
+@media only screen {
+  .wh_tiles-item {
+    display: flex;
+    width: 100%;
+    & > div {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (min-width: 985px) {
+  .wh_tiles-item {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 985px) {
+  .wh_tiles-item {
+    flex-direction: column;
+  }
+}
+
+[data-id="PD_1"] {
+  width: 100% !important;
+}
+
+/** styling for global search text box */
 
 #searchForm > div {
   width: 100%;
-  min-width: 300px;
-  max-width: 700px;
+  min-width: 200px;
+  max-width: 400px;
   padding-left: 8px;
   display: flex;
   align-items: flex-start;
   margin: 0;
 }
+
+.wh_main_page .wh_search_input {
+  display:inline;
+  margin:0;
+  position:relative;
+  background:none;
+  border: none;
+  padding: 0 0;
 }
 
-@media only screen and (min-width: 1350px) {
-.c-no-wrap {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  flex-wrap: unset;
-}
+/** other UI changes */
 
 .c-menu > ul {
   padding: 0 10px;
   display: flex;
   word-break: unset;
   justify-content: flex-end;
-}
-
-#searchForm > div {
-  width: 100%;
- min-width: 300px;
-}
-
 }
 
 .c-nav-bar {
@@ -89,14 +109,6 @@ max-width: unset;
 .wh_logo_and_publication_title {
 width: max-content;
 padding: 0 10px;
-}
-
-#searchForm {
-width: 100%;
-}
-
-#searchForm > div > button {
-display: block;
 }
 
 .fullWidthTable {
@@ -232,7 +244,6 @@ display: block;
       top:200px;
       z-index: 1000;
   }
-
 }
 
 /* text label for category image links (FONT-SIZE REMOVED) */
@@ -240,14 +251,6 @@ display: block;
   display:block;
   text-align: center;
   /* font-size: 2em; */
-}
-
-.wh_search_input{
-  display:block;
-  margin:0;
-  position:relative;
-  background:none;
-  padding: 0 0;
 }
 
 /*
