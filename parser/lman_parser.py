@@ -231,16 +231,18 @@ class Parser:
             raise ValueError("ImageLinksTable not found in the HTML file")
 
         # Create the DITA document type declaration string
-        dita_doctype = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">'
+        dita_doctype = (
+            '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        )
         dita_soup = BeautifulSoup(dita_doctype, "xml")
 
-        # Create dita elements: <rich-collection>,<title>,<table>,<tbody>,<tgroup>...
-        dita_rich_collection = dita_soup.new_tag("rich-collection")
-        dita_rich_collection["id"] = country
+        # Create dita elements: <reference>,<title>,<table>,<tbody>,<tgroup>...
+        dita_reference = dita_soup.new_tag("reference")
+        dita_reference["id"] = country
 
         dita_title = dita_soup.new_tag("title")
         dita_title.string = country
-        dita_rich_collection.append(dita_title)
+        dita_reference.append(dita_title)
 
         # Create DITA elements tbody,row,xref,b,table
         dita_tbody = dita_soup.new_tag("tbody")
@@ -248,7 +250,7 @@ class Parser:
         dita_tgroup["cols"] = "2"
 
         dita_table = dita_soup.new_tag("table")
-        dita_body = dita_soup.new_tag("body")
+        dita_body = dita_soup.new_tag("refbody")
 
         # Create the dir to store the content and the dita files for countries
         regions_path = f"target/dita/regions"
@@ -306,10 +308,10 @@ class Parser:
         dita_tgroup.append(dita_tbody)
         dita_table.append(dita_tgroup)
         dita_body.append(dita_table)
-        dita_rich_collection.append(dita_body)
+        dita_reference.append(dita_body)
 
-        # Append the rich-collection element to the dita_soup object
-        dita_soup.append(dita_rich_collection)
+        # Append the reference element to the dita_soup object
+        dita_soup.append(dita_reference)
 
         # Copy each country images to /dita/regions/$Country_name/Content/Images dir
         source_dir = f"{self.root_path}/{country_name}/Content/Images"
@@ -471,7 +473,7 @@ class Parser:
         dita_section.append(dita_table)
         dita_refbody.append(dita_section)
 
-        # Append the <title>,<flag> and <classlistbody> elements in the <classlist>
+        # Append the <title>,<flag> and <refbody> elements in the <reference>
         dita_title.string = title.text.strip()
 
         dita_fig.append(dita_image)
