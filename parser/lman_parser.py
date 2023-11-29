@@ -425,12 +425,13 @@ class Parser:
         # We have replaced that with the convert_html_table_to_dita_table as it deals with all the edge cases
         # and then taken this part out and run it separately
         for a in parent_table.find_all("a"):
-            href = a.get("href")
-            href = href.split(".html")[0] + ".html"
-            class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
+            if a.has_attr("href"):
+                href = a.get("href")
+                href = href.split(".html")[0] + ".html"
+                class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
-            if not self.only_process_single_file:
-                self.process_generic_file(class_file_src_path)
+                if not self.only_process_single_file:
+                    self.process_generic_file(class_file_src_path)
 
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
