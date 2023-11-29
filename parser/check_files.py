@@ -121,6 +121,10 @@ if __name__ == "__main__":
 
     all_html_files = list(source_root.rglob("*.html"))
 
+    all_html_files = list(
+        filter(lambda filename: not str(filename).startswith("Blank"), all_html_files)
+    )
+
     if args.files == "all":
         chosen_html_files = all_html_files
     else:
