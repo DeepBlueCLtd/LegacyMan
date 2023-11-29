@@ -16,6 +16,7 @@ import time
 import logging
 import json
 import argparse
+from html_to_dita import convert_html_table_to_dita_table
 
 
 from parser_utils import (
@@ -416,59 +417,21 @@ class Parser:
         category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
-        # Read the parent <table> element
-        for tr in parent_table.find_all("tr"):
-            dita_row = dita_soup.new_tag("row")
+        dita_table = convert_html_table_to_dita_table(parent_table, dita_soup, "")
 
-            for td_count, td in enumerate(tr.find_all("td")):
-                dita_entry = dita_soup.new_tag("entry")
-                dita_entry.string = td.text.strip()
+        # Go through the original HTML table and process all the links
+        # by calling process_generic_file on them
+        # Note: This is what was done by the original manual table parsing code here
+        # We have replaced that with the convert_html_table_to_dita_table as it deals with all the edge cases
+        # and then taken this part out and run it separately
+        for a in parent_table.find_all("a"):
+            href = a.get("href")
+            href = href.split(".html")[0] + ".html"
+            class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
-                # Add "namest" and "nameend" attributes to rows with a colspan of 7,
-                # (which includes the first row)
-                if td.get("colspan") == "7":
-                    dita_entry["namest"] = "col1"
-                    dita_entry["nameend"] = f"col{len(table_columns)}"
-                    dita_entry["align"] = "center"
-                    dita_entry["outputclass"] = "table-separator"
+            if not self.only_process_single_file:
+                self.process_generic_file(class_file_src_path)
 
-                # If there is a link element in the <tr> append it to <entry>
-                for a in td.find_all("a"):
-                    # Process links to class files (not anchors)
-                    href = a.get("href")
-                    if href is not None:
-                        dita_xref = dita_soup.new_tag("xref")
-
-                        # Remove any #anchor_id value after the href
-                        href = href.split(".html")[0] + ".html"
-                        file_name = os.path.basename(href.replace(".html", ""))
-                        class_name = a.text
-                        class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
-
-                        if not self.only_process_single_file:
-                            self.process_generic_file(class_file_src_path)
-
-                        file_link = href.replace(".html", ".dita")
-                        dita_xref["href"] = sanitise_filename(file_link)
-                        dita_xref["format"] = "dita"
-
-                        dita_xref.string = a.text.strip()
-                        dita_entry.string = ""
-                        dita_entry.append(dita_xref)
-
-                dita_row.append(dita_entry)
-
-            dita_tbody.append(dita_row)
-
-        # Generate <colspec> elements based on the <td> elements count
-        for count, td in enumerate(table_columns):
-            dita_colspec = dita_soup.new_tag("colspec")
-            dita_colspec["colnum"] = count + 1
-            dita_colspec["colname"] = f"col{count + 1}"
-            dita_tgroup.append(dita_colspec)
-
-        dita_tgroup.append(dita_tbody)
-        dita_table.append(dita_tgroup)
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
         dita_refbody.append(dita_section)
