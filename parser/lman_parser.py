@@ -360,6 +360,7 @@ class Parser:
         # Find a <td> with colspan=7, this indicates that the page is a category page
         td = soup.find("td", {"colspan": "7"})
         title = soup.find("h2")
+        topic_id = sanitise_filename(title.text)
 
         if td is None:
             # This used to be a workaround for not dealing with a page without a <td> with colspan 7,
@@ -417,7 +418,7 @@ class Parser:
         category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
-        dita_table = convert_html_table_to_dita_table(parent_table, dita_soup, "")
+        dita_table = convert_html_table_to_dita_table(parent_table, dita_soup, topic_id)
 
         # Go through the original HTML table and process all the links
         # by calling process_generic_file on them
@@ -425,12 +426,13 @@ class Parser:
         # We have replaced that with the convert_html_table_to_dita_table as it deals with all the edge cases
         # and then taken this part out and run it separately
         for a in parent_table.find_all("a"):
-            href = a.get("href")
-            href = href.split(".html")[0] + ".html"
-            class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
+            if a.has_attr("href"):
+                href = a.get("href")
+                href = href.split(".html")[0] + ".html"
+                class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
-            if not self.only_process_single_file:
-                self.process_generic_file(class_file_src_path)
+                if not self.only_process_single_file:
+                    self.process_generic_file(class_file_src_path)
 
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
@@ -445,7 +447,7 @@ class Parser:
         dita_flagsection.append(dita_fig)
         dita_refbody.insert(0, dita_flagsection)
 
-        dita_reference["id"] = sanitise_filename(title.text)
+        dita_reference["id"] = topic_id
         dita_reference.append(dita_title)
         dita_reference.append(dita_shortdesc)
         dita_reference.append(dita_refbody)
