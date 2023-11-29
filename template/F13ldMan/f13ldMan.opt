@@ -41,6 +41,7 @@
         </xslt>
         <resources>
             <css file="oxygen.css"/>
+            <css file="f13ldman.css"/>
             <css file="notes.css"/>
             <fileset>
                 <include name="resources/**/*"/>
