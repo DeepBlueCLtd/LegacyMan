@@ -8,11 +8,16 @@ import re
 import os
 import subprocess
 from urllib.parse import urlparse
+import bs4
 from bs4 import BeautifulSoup
 from pprint import pprint, pformat
 from html_to_dita import htmlToDITA
 import time
 import logging
+import json
+import argparse
+from html_to_dita import convert_html_table_to_dita_table
+
 
 from parser_utils import (
     delete_directory,
@@ -39,6 +44,7 @@ class Parser:
         self.link_tracker = defaultdict(set)
         self.files_already_processed = set()
         self.only_process_single_file = False
+        self.warn_on_blank_runs = False
 
     def process_regions(self):
         # copy the world-map.gif file
@@ -119,6 +125,13 @@ class Parser:
         dita_topic["id"] = "PD_1"
 
         dita_topic.append(dita_title)
+
+        dita_shortdesc = dita_soup.new_tag("shortdesc")
+        shortdesc = soup.find(id="short-description")
+        if shortdesc:
+            dita_shortdesc.string = shortdesc.text.strip()
+
+        dita_topic.append(dita_shortdesc)
         dita_topic.append(dita_body)
 
         # Append the <topic> element to the BeautifulSoup object
@@ -219,16 +232,18 @@ class Parser:
             raise ValueError("ImageLinksTable not found in the HTML file")
 
         # Create the DITA document type declaration string
-        dita_doctype = '<!DOCTYPE rich-collection SYSTEM "../../../../dtd/rich-collection.dtd">'
+        dita_doctype = (
+            '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
+        )
         dita_soup = BeautifulSoup(dita_doctype, "xml")
 
-        # Create dita elements: <rich-collection>,<title>,<table>,<tbody>,<tgroup>...
-        dita_rich_collection = dita_soup.new_tag("rich-collection")
-        dita_rich_collection["id"] = country
+        # Create dita elements: <reference>,<title>,<table>,<tbody>,<tgroup>...
+        dita_reference = dita_soup.new_tag("reference")
+        dita_reference["id"] = country
 
         dita_title = dita_soup.new_tag("title")
         dita_title.string = country
-        dita_rich_collection.append(dita_title)
+        dita_reference.append(dita_title)
 
         # Create DITA elements tbody,row,xref,b,table
         dita_tbody = dita_soup.new_tag("tbody")
@@ -236,7 +251,7 @@ class Parser:
         dita_tgroup["cols"] = "2"
 
         dita_table = dita_soup.new_tag("table")
-        dita_body = dita_soup.new_tag("body")
+        dita_body = dita_soup.new_tag("refbody")
 
         # Create the dir to store the content and the dita files for countries
         regions_path = f"target/dita/regions"
@@ -294,10 +309,10 @@ class Parser:
         dita_tgroup.append(dita_tbody)
         dita_table.append(dita_tgroup)
         dita_body.append(dita_table)
-        dita_rich_collection.append(dita_body)
+        dita_reference.append(dita_body)
 
-        # Append the rich-collection element to the dita_soup object
-        dita_soup.append(dita_rich_collection)
+        # Append the reference element to the dita_soup object
+        dita_soup.append(dita_reference)
 
         # Copy each country images to /dita/regions/$Country_name/Content/Images dir
         source_dir = f"{self.root_path}/{country_name}/Content/Images"
@@ -333,7 +348,7 @@ class Parser:
         handle_as_generic_div = soup.find_all("div", id="handle_as_generic")
         if len(handle_as_generic_div) == 1:
             path = f"{self.root_path}/{remove_leading_slashes(category_page_link)}"
-            filepath = self.make_relative_to_data_dir(Path(path))
+            filepath = self.make_relative_to_data_dir(Path(path)).resolve()
             self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
             self.process_generic_file(path)
             return
@@ -345,6 +360,7 @@ class Parser:
         # Find a <td> with colspan=7, this indicates that the page is a category page
         td = soup.find("td", {"colspan": "7"})
         title = soup.find("h2")
+        topic_id = sanitise_filename(title.text)
 
         if td is None:
             # This used to be a workaround for not dealing with a page without a <td> with colspan 7,
@@ -365,14 +381,25 @@ class Parser:
         dita_emptytitle = dita_soup.new_tag("title")
         dita_emptytitle2 = dita_soup.new_tag("title")
 
+        dita_shortdesc = dita_soup.new_tag("shortdesc")
+
         # Create dita elements for <tgroup>,<table>, <tbody> ...
         dita_tbody = dita_soup.new_tag("tbody")
         dita_tgroup = dita_soup.new_tag("tgroup")
         dita_table = dita_soup.new_tag("table")
+        # format attributes to show table borders
+        dita_table["colsep"] = "1"
+        dita_table["rowsep"] = "1"
+        dita_table["frame"] = "all"
+        dita_table["outputclass"] = "category"
 
         dita_title = dita_soup.new_tag("title")
         dita_image = dita_soup.new_tag("image")
         dita_fig = dita_soup.new_tag("fig")
+
+        shortdesc = soup.find(id="short-description")
+        if shortdesc:
+            dita_shortdesc.string = shortdesc.text.strip()
 
         # Get table columns <td> from the second row <tr> (the first <tr> is used for title so we can't get the column count from it)
         parent_table = td.find_parent("table")
@@ -391,64 +418,27 @@ class Parser:
         category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
-        # Read the parent <table> element
-        for tr in parent_table.find_all("tr"):
-            dita_row = dita_soup.new_tag("row")
+        dita_table = convert_html_table_to_dita_table(parent_table, dita_soup, topic_id)
 
-            for td_count, td in enumerate(tr.find_all("td")):
-                dita_entry = dita_soup.new_tag("entry")
-                dita_entry.string = td.text.strip()
+        # Go through the original HTML table and process all the links
+        # by calling process_generic_file on them
+        # Note: This is what was done by the original manual table parsing code here
+        # We have replaced that with the convert_html_table_to_dita_table as it deals with all the edge cases
+        # and then taken this part out and run it separately
+        for a in parent_table.find_all("a"):
+            if a.has_attr("href"):
+                href = a.get("href")
+                href = href.split(".html")[0] + ".html"
+                class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
-                # Add "namest" and "nameend" attributes to rows with a colspan of 7,
-                # (which includes the first row)
-                if td.get("colspan") == "7":
-                    dita_entry["namest"] = "col1"
-                    dita_entry["nameend"] = f"col{len(table_columns)}"
-                    dita_entry["align"] = "center"
-                    dita_entry["outputclass"] = "table-separator"
+                if not self.only_process_single_file:
+                    self.process_generic_file(class_file_src_path)
 
-                # If there is a link element in the <tr> append it to <entry>
-                for a in td.find_all("a"):
-                    # Process links to class files (not anchors)
-                    href = a.get("href")
-                    if href is not None:
-                        dita_xref = dita_soup.new_tag("xref")
-
-                        # Remove any #anchor_id value after the href
-                        href = href.split(".html")[0] + ".html"
-                        file_name = os.path.basename(href.replace(".html", ""))
-                        class_name = a.text
-                        class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
-
-                        if not self.only_process_single_file:
-                            self.process_generic_file(class_file_src_path)
-
-                        file_link = href.replace(".html", ".dita")
-                        dita_xref["href"] = sanitise_filename(file_link)
-                        dita_xref["format"] = "dita"
-
-                        dita_xref.string = a.text.strip()
-                        dita_entry.string = ""
-                        dita_entry.append(dita_xref)
-
-                dita_row.append(dita_entry)
-
-            dita_tbody.append(dita_row)
-
-        # Generate <colspec> elements based on the <td> elements count
-        for count, td in enumerate(table_columns):
-            dita_colspec = dita_soup.new_tag("colspec")
-            dita_colspec["colnum"] = count + 1
-            dita_colspec["colname"] = f"col{count + 1}"
-            dita_tgroup.append(dita_colspec)
-
-        dita_tgroup.append(dita_tbody)
-        dita_table.append(dita_tgroup)
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
         dita_refbody.append(dita_section)
 
-        # Append the <title>,<flag> and <classlistbody> elements in the <classlist>
+        # Append the <title>,<flag> and <refbody> elements in the <reference>
         dita_title.string = title.text.strip()
 
         dita_fig.append(dita_image)
@@ -457,8 +447,9 @@ class Parser:
         dita_flagsection.append(dita_fig)
         dita_refbody.insert(0, dita_flagsection)
 
-        dita_reference["id"] = sanitise_filename(title.text)
+        dita_reference["id"] = topic_id
         dita_reference.append(dita_title)
+        dita_reference.append(dita_shortdesc)
         dita_reference.append(dita_refbody)
 
         # Find all the QuickLinks tables and extract their link text and href
@@ -551,6 +542,39 @@ class Parser:
         # insert rest of converted content
         dita_section.extend(converted_bits)
 
+        def is_empty_p_element(el):
+            if el is None:
+                return False
+            elif el.name == "p" and el.text.strip() == "" and len(el.find_all()) == 0:
+                return True
+            else:
+                return False
+
+        def next_sibling_tag(el):
+            next_sib = el.next_sibling
+            while type(next_sib) is bs4.element.NavigableString:
+                next_sib = next_sib.next_sibling
+
+            return next_sib
+
+        # Check for repeated <p>&nbsp;</p> elements
+        p_elements = page.find_all("p")
+        empty_p_elements = list(filter(is_empty_p_element, p_elements))
+
+        found = False
+        for el in empty_p_elements:
+            count = 0
+            while is_empty_p_element(next_sibling_tag(el)):
+                count += 1
+                if count >= 4:
+                    found = True
+                    break
+            if found and self.warn_on_blank_runs:
+                logging.warning(
+                    f"Found string of repeated <p>&nbsp;</p> elements in div with ID {page.get('id')} in file {filename}"
+                )
+                break
+
         return dita_section
 
     def find_first_page_layer(self, top_to_div_mapping, html_soup):
@@ -571,6 +595,8 @@ class Parser:
                     continue
                 if is_skippable_div_id(div_id):
                     continue
+                if div.has_attr("style") and "hidden" in div["style"]:
+                    continue
 
                 image_tags = div.find_all("img")
                 div_text = div.get_text().strip()
@@ -582,7 +608,6 @@ class Parser:
                 logging.debug(
                     f"top_value = {top_value}, div_id = {div_id}, n_image_tags = {len(image_tags)}"
                 )
-                # breakpoint()
                 text = div.get_text().strip()
                 if len(image_tags) > 0:
                     page = div
@@ -636,13 +661,19 @@ class Parser:
                     logging.warning(f"Could not extract title from {input_file_path}")
 
         dita_reference.append(dita_title)
+
+        dita_shortdesc = dita_soup.new_tag("shortdesc")
+        shortdesc = html_soup.find(id="short-description")
+        if shortdesc:
+            dita_shortdesc.string = shortdesc.text.strip()
+
+        dita_reference.append(dita_shortdesc)
         dita_ref_body = dita_soup.new_tag("refbody")
 
         if self.write_generic_files:
             sections = []
-            anchors_to_export = self.link_tracker[
-                str(Path(input_file_path).relative_to(self.root_path))
-            ]
+            key = str(Path(input_file_path).resolve().relative_to(self.root_path))
+            anchors_to_export = self.link_tracker[key]
             pages_to_process = set()
             top_to_div_mapping = generate_top_to_div_mapping(
                 html_soup, recursive=True, filename=input_file_path
@@ -698,6 +729,8 @@ class Parser:
                             continue
                         # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         page = None
+                        # print(f"Enclosing div ID = {enclosing_div.get('id')}")
+                        # print(f"Enclosing div top value = {enclosing_div_top_value}")
                         for top_value, bottom_layer_div in top_to_div_mapping:
                             div_id = bottom_layer_div.get("id")
                             if div_id:
@@ -710,6 +743,14 @@ class Parser:
                                 ):
                                     continue
                             # print(f"top_value = {top_value}")
+                            # Skip any divs whose content is just a single img tag with the corporate logo in it
+                            img_tags = bottom_layer_div.find_all("img")
+                            if (
+                                img_tags is not None
+                                and len(img_tags) == 1
+                                and "image020" in img_tags[0]["src"]
+                            ):
+                                continue
                             if top_value > enclosing_div_top_value:
                                 # Check that the difference isn't too big
                                 if top_value - enclosing_div_top_value < 800:
@@ -853,7 +894,7 @@ class Parser:
                 if filepath.suffix != ".html":
                     continue
             else:
-                filepath = input_file_path
+                filepath = input_file_path.resolve()
 
             filepath = self.make_relative_to_data_dir(filepath)
 
@@ -874,9 +915,9 @@ class Parser:
             relative_input_file_directory, directory=True
         )
 
-        output_dita_path = target_path / sanitise_filename(
-            input_file_path.with_suffix(".dita").name
-        )
+        output_dita_path = (
+            target_path / sanitise_filename(input_file_path.with_suffix(".dita").name)
+        ).resolve()
 
         # Check to see if we have the relevant Content/Images folder for this file
         # and if not, then copy it over
@@ -1026,15 +1067,45 @@ class Parser:
     def process_contents_page(self):
         self.process_generic_file(self.root_path / "Introduction" / "ContentsPage.html")
 
-    def run(self):
+    def store_link_tracker(self):
+        links_without_sets = {key: list(value) for key, value in self.link_tracker.items()}
+        with open("link_tracker.json", "w") as f:
+            json.dump(links_without_sets, f)
+
+    def load_link_tracker(self):
+        if not os.path.exists("link_tracker.json"):
+            print("Error: link_tracker.json does not exist. Run a full parse first.")
+            return False
+
+        with open("link_tracker.json") as f:
+            links_without_sets = json.load(f)
+
+        self.link_tracker = defaultdict(set)
+        for key, value in links_without_sets.items():
+            self.link_tracker[key] = set(value)
+
+        return True
+
+    def run(self, skip_first_run=False, run_validation=False):
         time1 = time.time()
         self.write_generic_files = True
         self.process_contents_page()
-        self.write_generic_files = False
-        self.process_regions()
+
+        if not skip_first_run:
+            self.write_generic_files = False
+            self.process_regions()
+            self.store_link_tracker()
+            logging.info("Done run 1")
+        else:
+            result = self.load_link_tracker()
+            if not result:
+                sys.exit()
+
         time2 = time.time()
-        logging.info("Done run 1")
-        logging.info(f"Run 1 took {time2-time1:.1f} seconds")
+        if not skip_first_run:
+            logging.info(f"Run 1 took {time2-time1:.1f} seconds")
+        else:
+            logging.info("Starting run 2")
         self.write_generic_files = True
         self.files_already_processed = set()
         self.process_regions()
@@ -1043,22 +1114,64 @@ class Parser:
         logging.info(f"Run 2 took {time3-time2:.1f} seconds")
         logging.debug("Dictionary of links:")
         logging.debug(pformat(self.link_tracker))
-        validator_time, publish_time = self.run_dita_command()
+        validator_time, publish_time = self.run_dita_command(run_validator=run_validation)
         time4 = time.time()
         logging.info("Timings:")
-        logging.info(f"Run 1: {time2-time1:.1f} seconds")
+        if not skip_first_run:
+            logging.info(f"Run 1: {time2-time1:.1f} seconds")
         logging.info(f"Run 2: {time3-time2:.1f} seconds")
-        logging.info(f"DITA validator: {validator_time:.1f} seconds")
+        if run_validation:
+            logging.info(f"DITA validator: {validator_time:.1f} seconds")
         logging.info(f"DITA publish: {publish_time:.1f} seconds")
         logging.info(f"Total: {time4-time1:.1f} seconds")
 
 
-def parse_from_root(root_path, target_path):
-    """
-    this function will parse a body of HTML, writing to DITA format
-    :param root_path: the location of the source data
-    :param target_path: where to write the results
-    """
+def init_argparse():
+    parser = argparse.ArgumentParser(usage="%(prog)s [OPTION] DATA_PATH [LOGGING_LEVEL]")
+    parser.add_argument("DATA_PATH", help="Path to the source data")
+    parser.add_argument(
+        "LOGGING_LEVEL",
+        default="info",
+        nargs="?",
+        help="Debug level - must be one of debug, warning or info",
+    )
+    parser.add_argument(
+        "--skip-first-run",
+        action=argparse.BooleanOptionalAction,
+        help="Skip Run 1, loading the shopping list from the link_tracker.json file",
+    )
+    parser.add_argument(
+        "--warn-on-blank-runs",
+        action=argparse.BooleanOptionalAction,
+        help="Print warning messages whenever runs of blank paragraphs are found",
+    )
+    parser.add_argument(
+        "--run-validation",
+        action=argparse.BooleanOptionalAction,
+        help="Run the DITA validation step",
+    )
+    return parser
+
+
+if __name__ == "__main__":
+    parser = init_argparse()
+
+    args = parser.parse_args()
+
+    root_path = args.DATA_PATH
+    logging_format = "%(levelname)s:  %(message)s"
+    logging_level = args.LOGGING_LEVEL.lower()
+    if logging_level == "debug":
+        logging.basicConfig(level=logging.DEBUG, format=logging_format)
+        logging.info("Logging level set to DEBUG")
+    elif logging_level == "info":
+        logging.basicConfig(level=logging.INFO, format=logging_format)
+        logging.info("Logging level set to INFO")
+    elif logging_level == "warning":
+        logging.basicConfig(level=logging.WARNING, format=logging_format)
+        logging.info("Logging level set to WARNING")
+
+    target_path = "./target/html"
     logging.info(f"LegacyMan parser running, with these arguments: {root_path} {target_path}")
 
     # remove existing target directory and recreate it
@@ -1072,26 +1185,6 @@ def parse_from_root(root_path, target_path):
     copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
 
     parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
+    parser.warn_on_blank_runs = args.warn_on_blank_runs
 
-    parser.run()
-
-
-if __name__ == "__main__":
-    root_path = sys.argv[1]
-    logging_format = "%(levelname)s:  %(message)s"
-    if len(sys.argv) == 3:
-        logging_level = sys.argv[2].lower()
-        if logging_level == "debug":
-            logging.basicConfig(level=logging.DEBUG, format=logging_format)
-            logging.info("Logging level set to DEBUG")
-        elif logging_level == "info":
-            logging.basicConfig(level=logging.INFO, format=logging_format)
-            logging.info("Logging level set to INFO")
-        elif logging_level == "warning":
-            logging.basicConfig(level=logging.WARNING, format=logging_format)
-            logging.info("Logging level set to WARNING")
-    else:
-        logging.basicConfig(level=logging.INFO, format=logging_format)
-        logging.info("Logging level set to INFO")
-    target_path = "./target/html"
-    parse_from_root(root_path, target_path)
+    parser.run(args.skip_first_run, args.run_validation)

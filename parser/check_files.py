@@ -13,12 +13,32 @@ def search_for_strings(html_soup, output):
     for element in html_soup.children:
         if type(element) is NavigableString:
             s = str(element).strip().replace("&", "&amp;")
-            if s.startswith("Click the picture") or s.startswith("LIMIT OF THE PAGE"):
+            if (
+                s.startswith("Click the picture")
+                or s.startswith("LIMIT OF THE PAGE")
+                or "THIS IS THE LIMIT" in s
+            ):
                 continue
             if len(s) > 0:
                 output.append(s)
         else:
             search_for_strings(element, output)
+
+
+def random_substring(s, n=30):
+    length = len(s)
+
+    start_char = random.randint(0, length - 30)
+
+    return s[start_char : start_char + n]
+
+
+def chunk_before_nbsp(s):
+    char_index = s.find("&nbsp;")
+    if char_index != -1:
+        return s[: char_index - 1]
+    else:
+        return s
 
 
 def select_random_text_from_file(path, n):
@@ -29,6 +49,12 @@ def select_random_text_from_file(path, n):
     search_for_strings(html_soup, output)
 
     output = list(filter(lambda x: len(x) > 40, output))
+
+    # Get a random substring of each string
+    output = list(map(random_substring, output))
+
+    # Split chunks as nbsps
+    output = list(map(chunk_before_nbsp, output))
 
     if n == "all":
         return output
@@ -94,6 +120,10 @@ if __name__ == "__main__":
     print()
 
     all_html_files = list(source_root.rglob("*.html"))
+
+    all_html_files = list(
+        filter(lambda filename: not str(filename).startswith("Blank"), all_html_files)
+    )
 
     if args.files == "all":
         chosen_html_files = all_html_files

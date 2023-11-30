@@ -3,7 +3,7 @@ import logging
 import os
 from bs4 import BeautifulSoup
 import bs4
-from pathlib import Path
+from pathlib import Path, PurePath
 import cssutils
 import re
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
@@ -158,7 +158,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             div.decompose()
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
-    for img in soup.find_all("img"):
+    if soup.name.lower() == "img":
+        imgItems = [soup]
+    else:
+        imgItems = soup.find_all("img")
+    for img in imgItems:
         img.name = "image"
         img["href"] = img["src"]
         if "image020" in img["href"]:
@@ -177,6 +181,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
         if len(list(img.children)) > 0:
             for child in img.children:
                 img.insert_after(child)
+
+    # 3a. Replace font elements with p elements
+    for font_el in soup.find_all("font"):
+        font_el.name = "p"
+        del font_el["size"]
 
     # 4. We can't handle headings in paragraphs. So, first search for, and fix
     # headings in paragraphs
@@ -208,7 +217,18 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             h_tag["outputclass"] = tag
 
     # 5a. Fix hyperlinks (a with href attribute)
-    for a in soup.find_all("a", {"href": True}):
+
+    # First deal with the fact that the whole thing passed to this function
+    # might just be an a tag
+    if soup.name == "a":
+        if soup.has_attr("href"):
+            all_a_tags = [soup]
+        else:
+            all_a_tags = []
+    else:
+        all_a_tags = soup.find_all("a", {"href": True})
+    # Then go through all the a tags we've got from the above
+    for a in all_a_tags:
         a.name = "xref"
         if "(-1)" in a["href"]:
             a.decompose()
@@ -232,16 +252,22 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
     # 5b. Fix anchors (a without href attribute)
     # TODO: handle this instance in Issue #288
-    # We actually convert them to <div> elements now, in case they have something inside them
+    # We actually convert them to <b> elements now, in case they have something inside them
     # (which they do in Phase_F_Size.html (ref a3b) - where a heading and more is inside)
     for a in soup.find_all("a", {"href": False}):
-        a.name = "div"
-        a["id"] = a["name"]
-        del a["name"]
+        # move name to id, if present - that's the modern structure of an href
+        if a.has_attr("name"):
+            a["id"] = a["name"]
+            del a["name"]
+        a.name = "b"
 
-    # 6. Remove <br> newlines
+    # 6. Replace <br> newlines with the linebreak processing instruction
+    # todo: this converts the brackets to &lt; and &gt;.
+    # we need to find a way to make BS4 generate the processing instruction
     for br in soup.find_all("br"):
         br.decompose()
+    if soup.name.lower() == "br":
+        return "<?linebreak?>"
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
@@ -286,14 +312,19 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 p.name = "li"
 
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
-    for span in soup.find_all("span", recursive=True):
+    if soup.name.lower() == "span":
+        # create an array with just the soup
+        spanItems = [soup]
+    else:
+        spanItems = soup.find_all("span", recursive=True)
+    for span in spanItems:
         if span.has_attr("style"):
             style = span["style"].lower()
             if "color:" in style:
                 span.name = "ph"
-                if "#F00" in style:
+                if "#f00" in style:
                     span["outputclass"] = "colorRed"
-                elif "#00F" in style:
+                elif "#00f" in style:
                     span["outputclass"] = "colorBlue"
                 elif "#777" in style:
                     span["outputclass"] = "colorGray"
@@ -324,9 +355,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     ):  # note: strong has already been converted to `b`
         if strong.has_attr("style"):
             if "color:" in strong["style"]:
-                if "#F00" in strong["style"]:
+                if "#f00" in strong["style"].lower():
                     strong["outputclass"] = "colorRed"
-                elif "#00F" in strong["style"]:
+                elif "#00f" in strong["style"].lower():
                     strong["outputclass"] = "colorBlue"
             del strong["style"]
 

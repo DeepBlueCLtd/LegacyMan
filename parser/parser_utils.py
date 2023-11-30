@@ -164,7 +164,7 @@ def generate_top_to_div_mapping(
 
         top_value = get_top_value(bottom_layer_div["style"])
 
-        if top_value:
+        if top_value is not None:
             while top_value in top_to_div_mapping.keys():
                 top_value += 1
             top_to_div_mapping[top_value] = bottom_layer_div
@@ -191,9 +191,9 @@ def generate_top_to_div_mapping(
     # exited in an earlier if statement), so we check if there are some elements without top values
     # and raise a warning if so
     if len(elements_without_top_value) > 0 and len(html_soup.find_all(recursive=False)) > 1:
-        logging.warning(
-            f"Elements with no top value found inside element with ID {html_soup.get('id')} in file {filename}"
-        )
+        # logging.warning(
+        #     f"Elements with no top value found inside element with ID {html_soup.get('id')} in file {filename}"
+        # )
         return [(0, html_soup)]
 
     return top_to_div_mapping

@@ -1,0 +1,260 @@
+
+/* user-defined CSS */
+
+
+.wh_footer_protection{
+  text-align: center;
+  padding: 1em;
+  position:relative;
+  bottom: 0;
+  width: 100%;
+  color: #000;
+  background: none #bfebb9;
+  top: 2em;
+}
+
+.wh_footer_protection span{
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.wh_header_protection{
+  background: #bfebb9 none;
+  color: #000;
+  text-align: center;
+}
+
+.wh_header_protection span{
+  font-family: Arial;
+  font-size: 14px;
+}
+
+
+/* styling to make the `REGIONS` button twice the width of the others */
+.wh_tiles-container {
+  padding: 5% 15%;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen {
+  .wh_tiles-item {
+    display: flex;
+    width: 100%;
+    & > div {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (min-width: 985px) {
+  .wh_tiles-item {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 985px) {
+  .wh_tiles-item {
+    flex-direction: column;
+  }
+}
+
+[data-id="PD_1"] {
+  width: 100% !important;
+}
+
+/** styling for global search text box */
+
+#searchForm > div {
+  width: 100%;
+  min-width: 200px;
+  max-width: 400px;
+  padding-left: 8px;
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.wh_main_page .wh_search_input {
+  display:inline;
+  margin:0;
+  position:relative;
+  background:none;
+  border: none;
+  padding: 0 0;
+}
+
+/** other UI changes */
+
+.c-menu > ul {
+  padding: 0 10px;
+  display: flex;
+  word-break: unset;
+  justify-content: flex-end;
+}
+
+.c-nav-bar {
+z-index: unset;
+}
+
+.c-menu {
+min-width: 710px;
+text-align: start;
+}
+
+.c-full-width {
+max-width: unset;
+}
+
+.wh_logo_and_publication_title {
+width: max-content;
+padding: 0 10px;
+}
+
+.fullWidthTable {
+  display: block;
+  width: 100%;
+}
+
+.wh_tiles {
+  background-image: url('resources/images/WorldMap.jpg');
+}
+
+/** hide the sticky floating breadcrumb bar */
+.breadcrumb-sticky {
+  display: none;
+}
+
+/* ------------------------------------------- */
+
+
+/* don't show section title anchro */
+.permalink {
+  display: none
+}
+
+/* make related pages show as a list of items */
+.related-pages .xref {
+  display: list-item
+}
+
+/* hide borders for image link table  */
+.rich-collection .table-container table,  .rich-collection .table-container table td.entry {
+  border: none;
+}
+
+/* show borders for tables */
+.classlistbody .table .entry, .class .table .entry{ 
+  border: 1px solid black !important;
+  border-collapse: collapse;
+}
+
+/* text label for category image links
+.xref .b {
+  display:block;
+  text-align: center;
+  font-size: 2em;
+} */
+
+/* make table separators more prominent */
+.table-separator {
+  font-size: 1.5em;
+}
+
+.colorRed {
+  color: #F00;
+}
+
+.colorBlue {
+  color: #00F;
+}
+
+.colorGray {
+  color: #777;
+}
+
+.placeholder {
+  background-color: #FF0;
+}
+
+.bkLightGray {
+  background-color: #CCC;    
+}
+
+.bkDarkGray {
+  background-color: #999;    
+}
+
+.bkYellow {
+  background-color: #ffff00;    
+}
+
+.bkBlue {
+  background-color: #0000ff;    
+}
+
+.bkRed {
+  background-color: #ff0000;    
+}
+
+.bold {
+  font-weight: 200
+}
+
+/* artificially support headings */
+.h1, .h2 {
+  font-size: 2em;
+}
+
+/* float the related link, if the screen is wide enough */
+@media screen and (min-width: 692px) {
+  /* pad the right-hand side of hte content, to make space for hte
+  floating table of contents */
+  .body {
+      padding-right: 200px;
+  }
+  
+  /* make the related links float */
+  .wh_related_links {
+      background-color: #EFEFFA; 
+      position:fixed;
+      width: 200px;
+      right:0;
+      top:200px;
+      z-index: 1000;
+  }
+
+  /** the next blocks are for plain DITA-OT export
+  /* make the related links float */
+  .relref {
+      background-color: #EFEFFA; 
+      position:fixed;
+      width: 200px;
+      right:200px;
+      top:200px;
+      z-index: 1000;
+  }
+
+  /* make the related links float */
+  .relinfo {
+      background-color: #EFEFFA; 
+      position:fixed;
+      width: 200px;
+      right:0;
+      top:200px;
+      z-index: 1000;
+  }
+}
+
+/* text label for category image links (FONT-SIZE REMOVED) */
+.xref .b {
+  display:block;
+  text-align: center;
+  /* font-size: 2em; */
+}
+
+/*
+* ==============================================
+* Style changes for Fi3ldMan project above this block
+* ==============================================
+*/
