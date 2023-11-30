@@ -267,6 +267,11 @@ padding: 0 10px;
   display: block;
   text-align: center;
 }
+
+.enterBtn:visited {
+  color: #333333;
+} 
+
 /*
 * ==============================================
 * Style changes for Fi3ldMan project above this block
