@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="welcome">
-    <title>Cover Page</title>
-    <shortdesc>logos, title, image, link to warning page</shortdesc>
-    <refbody> </refbody>
+<reference outputclass="home-page" id="home">
+    <title></title>
+    <refbody>
+        <section>
+            <title>Pub 22A Nov 22</title>
+            <p><image href="Content/images/corp_logo.png"></image></p>
+            <p><xref href="index.ditamap"> <image href="Content/images/industrial-plant-machinery.jpg"></image></xref></p>
+            <p>The content:
+            <ul>
+                <li>Version: 22A</li>
+                <li>Date: Nov 22</li>
+            </ul></p>
+            <p><xref href="security.dita">Enter Document</xref></p>
+        </section>
+    </refbody>
 </reference>
