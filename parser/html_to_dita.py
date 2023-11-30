@@ -158,10 +158,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             div.decompose()
 
     # 3. For img elements, rename it to image, and rename the src attribute to href
+    imgItems = soup.find_all("img")
     if soup.name.lower() == "img":
-        imgItems = [soup]
-    else:
-        imgItems = soup.find_all("img")
+        imgItems.append(soup)
     for img in imgItems:
         img.name = "image"
         img["href"] = img["src"]
@@ -312,11 +311,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 p.name = "li"
 
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
+    spanItems = soup.find_all("span", recursive=True)
     if soup.name.lower() == "span":
-        # create an array with just the soup
-        spanItems = [soup]
-    else:
-        spanItems = soup.find_all("span", recursive=True)
+        # append the soup to the list of spans
+        spanItems.append(soup)
+
     for span in spanItems:
         if span.has_attr("style"):
             style = span["style"].lower()
