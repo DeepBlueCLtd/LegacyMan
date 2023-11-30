@@ -20,7 +20,7 @@
                 <tgroup cols="2">
                     <tbody>
                         <row>
-                            <entry><xref outputclass="enterBtn" href="home.html" format="html">Cover Page</xref></entry>
+                            <entry><xref outputclass="enterBtn" href="home.dita">Cover Page</xref></entry>
                             <entry><xref outputclass="enterBtn" href="whats-new.dita"></xref></entry>
                         </row>
                         <row>
