@@ -207,7 +207,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
             else:
                 # check it's not a p that we have generated earlier
                 if not pp.has_attr("outputclass"):
-                    pp.name = "b"
+                    # don't need to rename if parent is a div
+                    if pp.parent.name != "div":
+                        pp.name = "b"
 
     # 4b. replace h1, h2, h3 with paragraph with correct outputClasses
     for tag in ["h1", "h2", "h3"]:
