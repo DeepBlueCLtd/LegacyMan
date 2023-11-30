@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+    <title>Navigation Trial</title>
+    <topicref outputclass="regionsBtn" href="regions.dita"/>
+    <topicref href="security.dita"/>
+    <topicref href="quicklinks/contents.dita"/>
+    <topicref href="quicklinks/active.dita"/>
+    <topicref href="quicklinks/shaft-rates.dita"/>
+    <topicref href="quicklinks/tarpauline.dita"/>
+    <topicref href="quicklinks/pneumatic.dita"/>
+</map>

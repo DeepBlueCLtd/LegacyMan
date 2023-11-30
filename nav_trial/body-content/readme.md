@@ -1,0 +1,1 @@
+This is a folder being used to experiment with DITA navigation structures for the non-regional data content and general welcome bumf.

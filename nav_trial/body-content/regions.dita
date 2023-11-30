@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="PD_1">
+  <title>Regions</title>
+  <shortdesc>Platform data, organised by region and country</shortdesc>
+  <body>
+    <section>
+      <title>MAP OF THE WORLD</title>
+      <p>The map of the world goes in here</p>
+      <p>
+        <image placement="break" href="Content/images/WorldMap.jpg" id="image_fmc_xqs_lzb"/>
+      </p>
+    </section>
+  </body>
+</topic>

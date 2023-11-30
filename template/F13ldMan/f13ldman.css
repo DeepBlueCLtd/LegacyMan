@@ -75,13 +75,13 @@
   margin: 0;
 }
 
-.wh_main_page .wh_search_input {
+.wh_search_input {
   display:inline;
   margin:0;
   position:relative;
-  background:none;
+  background:none !important;
   border: none;
-  padding: 0 0;
+  padding: 0 0 !important;
 }
 
 /** other UI changes */
@@ -252,6 +252,25 @@ padding: 0 10px;
   text-align: center;
   /* font-size: 2em; */
 }
+
+/* style for large link buttons */
+.enterBtn {
+  font: bold 28px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  display: block;
+  text-align: center;
+}
+
+.enterBtn:visited {
+  color: #333333;
+} 
 
 /*
 * ==============================================
