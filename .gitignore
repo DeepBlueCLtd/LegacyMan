@@ -137,3 +137,4 @@ dmypy.json
 node_modules/
 /nav_trial/temp/
 /link_tracker.json
+/nav_trial/body-content/out/
