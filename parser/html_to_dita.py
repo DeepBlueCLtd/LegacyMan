@@ -451,6 +451,9 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
     if source_html.has_attr("border") and source_html["border"] == "1":
         dita_table_element["frame"] = "all"
 
+    if source_html.has_attr("outputclass"):
+        dita_table_element["outputclass"] = source_html["outputclass"]
+
     # Get max number of columns in all rows
     max_num_columns = 0
     for tr in source_html.find_all("tr"):
