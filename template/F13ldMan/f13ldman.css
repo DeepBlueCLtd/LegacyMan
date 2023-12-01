@@ -281,7 +281,7 @@ padding: 0 10px;
   font: bold 20px Arial;
 }
 
-/** just shrink the buttons on the contents page, since there are lots of them */
+/** make the contents index go full width */
 .contents-index {
   width: 100%;
 }
