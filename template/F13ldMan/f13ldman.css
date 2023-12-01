@@ -274,7 +274,17 @@ padding: 0 10px;
 
 .enterBtn:visited {
   color: #333333;
-} 
+}
+
+/** just shrink the buttons on the contents page, since there are lots of them */
+.contents-index .enterBtn {
+  font: bold 20px Arial;
+}
+
+/** just shrink the buttons on the contents page, since there are lots of them */
+.contents-index {
+  width: 100%;
+}
 
 /*
 * ==============================================
