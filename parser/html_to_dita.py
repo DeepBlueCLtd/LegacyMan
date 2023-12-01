@@ -546,6 +546,8 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
                 dita_cell_element["outputclass"] = "bkBlue"
             elif bgcolor == "#ff0000":
                 dita_cell_element["outputclass"] = "bkRed"
+            elif bgcolor == "#00ff00":
+                dita_cell_element["outputclass"] = "bkGreen"
 
             style = html_cell_element.get("style", "").lower()
             if style == "color: #f00":
