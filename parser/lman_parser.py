@@ -134,6 +134,33 @@ class Parser:
         dita_topic.append(dita_shortdesc)
         dita_topic.append(dita_body)
 
+        # Find all the QuickLinks tables and extract their link text and href
+        # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
+        # and get all their links
+        ql_divs = soup.findAll("div", id=re.compile("QuickLinksTable"))
+        links = []
+
+        for ql_div in ql_divs:
+            links.extend(ql_div.findAll("a"))
+
+        quicklinks = {l.text: l["href"] for l in links}
+
+        related_links = self.process_quicklinks_table(dita_soup, quicklinks, dita_topic["id"])
+        if related_links:
+            dita_topic.append(related_links)
+
+        bodylink_hrefs = []
+        a_tags = soup.find_all("a")
+        for a_tag in a_tags:
+            parent_pagelayer = a_tag.find_parent("div", id=re.compile("PageLayer"))
+            parent_layer = a_tag.find_parent("div", id=re.compile("^layer"))
+            if parent_pagelayer or parent_layer:
+                if a_tag.get("href"):
+                    bodylink_hrefs.append(a_tag["href"])
+
+        all_links = list(quicklinks.values()) + bodylink_hrefs
+        self.track_all_links(all_links, Path(f"{self.root_path}/PlatformData/PD_1.html"))
+
         # Append the <topic> element to the BeautifulSoup object
         dita_soup.append(dita_topic)
 
