@@ -34,6 +34,12 @@
 }
 
 
+/* hide the `short-desc` from topic pages, since we
+  only want them on the home page */
+.shortdesc {
+  display: none;
+}  
+
 /* styling to make the `REGIONS` button twice the width of the others */
 .wh_tiles-container {
   padding: 5% 15%;
