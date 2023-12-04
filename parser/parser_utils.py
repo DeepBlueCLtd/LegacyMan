@@ -161,6 +161,8 @@ def generate_top_to_div_mapping(
         style_attrib = bottom_layer_div.get("style")
         if style_attrib is None:
             continue
+        if "hidden" in style_attrib:
+            continue
 
         top_value = get_top_value(bottom_layer_div["style"])
 
