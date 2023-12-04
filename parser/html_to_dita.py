@@ -74,7 +74,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # It remains a `TODO:` - since in the last time I checked, I don't think we're doing an actual clone,
     # I think we're still manipulating the original soup
 
-    # 0. Replace the tables with a placeholder tag like "<p> There is a table here </p>""
+    # 0. Parse the tables
     for tb in soup.find_all("table"):
         converted_table = convert_html_table_to_dita_table(tb, dita_soup, topic_id)
         tb.replace_with(converted_table)
@@ -94,6 +94,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
         if div_id is not None and is_button_id(div_id):
             soup.decompose()
             return None
+        style_string = soup.get("style")
+        if style_string and "hidden" in style_string:
+            soup.decompose()
+            return None
 
     # 1a. swap spans inside td's for a p tag
     if soup.name == "td":
@@ -105,6 +109,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
     # 2. Replace child divs with a paragraph element
     for div in soup.find_all("div"):
+        style_string = div.get("style")
+        if style_string and "hidden" in style_string:
+            div.decompose()
+            continue
         # see if this is an image placeholder
         if div.has_attr("align") and div["align"] == "center" and div.find("img"):
             div.name = "fig"
@@ -436,10 +444,6 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 
         mmap.replace_with(dita_imagemap)
     return soup
-
-
-def processLinkedPage(href):
-    print(f"%% TODO: Process linked page: {href}")
 
 
 def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
