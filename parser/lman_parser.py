@@ -338,6 +338,21 @@ class Parser:
         dita_body.append(dita_table)
         dita_reference.append(dita_body)
 
+        # Find all the QuickLinks tables and extract their link text and href
+        # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
+        # and get all their links
+        ql_divs = soup.findAll("div", id=re.compile("QuickLinksTable"))
+        links = []
+
+        for ql_div in ql_divs:
+            links.extend(ql_div.findAll("a"))
+
+        quicklinks = {l.text: l["href"] for l in links}
+
+        related_links = self.process_quicklinks_table(dita_soup, quicklinks, dita_reference["id"])
+        if related_links:
+            dita_reference.append(related_links)
+
         # Append the reference element to the dita_soup object
         dita_soup.append(dita_reference)
 
