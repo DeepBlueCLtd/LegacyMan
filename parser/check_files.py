@@ -80,7 +80,7 @@ def check_file(source_path, source_root, target_root, text_n=10):
         print()
         return
 
-    target_content = target_path.read_text()
+    target_content = target_path.read_text(encoding="utf8")
 
     for t in text:
         if t not in target_content:
