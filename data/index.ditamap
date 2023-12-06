@@ -6,7 +6,7 @@
     <topicref href="./regions/PlatformData/PD_1.dita" format="dita">
         <topicmeta/>
     </topicref>
-    <topicref href="./welcome.dita" format="dita">
+    <topicref href="./regions/Introduction/Warning.dita" format="dita">
         <topicmeta/>
     </topicref>
     <topicref href="./regions/QuickLinksData/Contents_Index.dita" format="dita">
