@@ -69,8 +69,16 @@
   }
 }
 
+
+/** this is instruction to make the `Regions` button full width.  It
+    relies on DITA putting the filename prefix into the data-id attribute */
 [data-id="PD_1"] {
   width: 100% !important;
+}
+
+/** background color of link boxes on home page */
+.wh_tile {
+  background-color: rgba(171, 199, 192, 0.419);
 }
 
 /** styling for global search text box */
@@ -124,10 +132,6 @@ padding: 0 10px;
 .fullWidthTable {
   display: block;
   width: 100%;
-}
-
-.wh_tiles {
-  background-image: url('resources/images/WorldMap.jpg');
 }
 
 /** hide the sticky floating breadcrumb bar */
