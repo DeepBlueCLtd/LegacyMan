@@ -254,6 +254,9 @@ def sanitise_filename(filename, remove_extension=False, directory=False):
     p = Path(filename)
     basename = str(p.name)
 
+    if basename == "":
+        return str(p).replace("\\", "/")
+
     # print(f"Sanitising filename {basename}")
 
     if basename[0].isdigit():
