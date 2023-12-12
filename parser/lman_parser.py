@@ -1224,7 +1224,7 @@ if __name__ == "__main__":
     # copy index.dita and welcome.dita from data dir to target/dita
     source_dir = root_path
     target_dir = os.path.join("target", "dita")
-    copy_files(source_dir, target_dir, ["index.ditamap", "welcome.dita"])
+    copy_files(source_dir, target_dir, ["index.ditamap"])
 
     parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
     parser.warn_on_blank_runs = args.warn_on_blank_runs
