@@ -172,7 +172,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     for img in imgItems:
         img.name = "image"
         img["href"] = img["src"]
-        if "image020" in img["href"]:
+        if "image020." in img["href"]:
             # Ignore this image
             img.decompose()
             continue
