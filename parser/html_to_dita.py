@@ -449,11 +449,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
 def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
     # Create a new DITA table element.
     dita_table_element = target_soup.new_tag("table")
-    dita_table_element["colsep"] = "1"
-    dita_table_element["rowsep"] = "1"
 
     if source_html.has_attr("border") and source_html["border"] == "1":
         dita_table_element["frame"] = "all"
+        dita_table_element["colsep"] = "1"
+        dita_table_element["rowsep"] = "1"
 
     if source_html.has_attr("outputclass"):
         dita_table_element["outputclass"] = source_html["outputclass"]
