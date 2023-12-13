@@ -285,7 +285,7 @@ class Parser:
         country_path = f"{regions_path}/{country_name}"
         os.makedirs(country_path, exist_ok=True)
 
-        for tr in img_links_table.find_all("tr"):
+        for index, tr in enumerate(img_links_table.find_all("tr")):
             dita_row = dita_soup.new_tag("row")
 
             for a in tr.find_all("a"):
@@ -299,9 +299,10 @@ class Parser:
                 dita_bold.string = a.text.strip()
 
                 dita_img = dita_soup.new_tag("image")
-                dita_img["width"] = "400px"
 
-                dita_xref.append(dita_bold)
+                # if we're in second row, put text label after image
+                if index == 0:
+                    dita_xref.append(dita_bold)
 
                 dita_entry = dita_soup.new_tag("entry")
                 dita_entry.append(dita_xref)
@@ -329,7 +330,15 @@ class Parser:
                     dita_img["href"] = sanitise_filename(
                         f'../{category}/Content/Images/{os.path.basename(a.img["src"])}'
                     )
+                    if a.img.has_attr("height"):
+                        dita_img["height"] = a.img["height"]
+                    if a.img.has_attr("width"):
+                        dita_img["width"] = a.img["width"]
                     dita_xref.append(dita_img)
+
+                    # if we're in second row, put text label after image
+                    if index == 1:
+                        dita_xref.append(dita_bold)
 
             dita_tbody.append(dita_row)
 
