@@ -278,6 +278,7 @@ class Parser:
         dita_tgroup["cols"] = "2"
 
         dita_table = dita_soup.new_tag("table")
+        dita_table["outputclass"] = "ImageLinksTable"
         dita_body = dita_soup.new_tag("refbody")
 
         # Create the dir to store the content and the dita files for countries
