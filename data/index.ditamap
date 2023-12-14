@@ -3,22 +3,22 @@
 <map>
     <title>Field Manual v4 Feb 2022</title>
     <topicmeta/>
-    <topicref href="./regions/PlatformData/PD_1.dita" format="dita">
+    <topicref href="./PlatformData/PD_1.dita" format="dita">
         <topicmeta/>
     </topicref>
-    <topicref href="./regions/Britain_Cmplx/unit_anchors.dita" format="dita"> 
+    <topicref href="./Britain_Cmplx/unit_anchors.dita" format="dita"> 
         <topicmeta/>
     </topicref> 
-    <topicref href="./regions/Britain_Cmplx/Phase_F.dita" format="dita"> 
+    <topicref href="./Britain_Cmplx/Phase_F.dita" format="dita"> 
         <topicmeta/>
     </topicref> 
-    <topicref href="./regions/QuickLinksData/Abbreviations.dita" format="dita">
+    <topicref href="./QuickLinksData/Abbreviations.dita" format="dita">
         <topicmeta/>
     </topicref>
-    <topicref href="./regions/Introduction/Warning.dita" format="dita">
+    <topicref href="./Introduction/Warning.dita" format="dita">
         <topicmeta/>
     </topicref>
-    <topicref href="./regions/QuickLinksData/Contents_Index.dita" format="dita">
+    <topicref href="./QuickLinksData/Contents_Index.dita" format="dita">
         <topicmeta/>
     </topicref>
 </map>

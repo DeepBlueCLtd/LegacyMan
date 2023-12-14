@@ -49,7 +49,7 @@ class Parser:
     def process_regions(self):
         # copy the world-map.gif file
         source_dir = f"{self.root_path}/PlatformData/Content/Images/"
-        target_dir = "target/dita/regions/PlatformData/Content/Images"
+        target_dir = "target/dita/PlatformData/Content/Images"
         worldMapFile = "WorldMap.jpg"
         copy_files(source_dir, target_dir, [worldMapFile])
 
@@ -165,7 +165,7 @@ class Parser:
         dita_soup.append(dita_topic)
 
         # create /target/dita/regions dir
-        regions_path = "target/dita/regions"
+        regions_path = "target/dita/"
         os.makedirs(regions_path, exist_ok=True)
 
         write_prettified_xml(dita_soup, f"{regions_path}/PlatformData/PD_1.dita")
@@ -281,7 +281,7 @@ class Parser:
         dita_body = dita_soup.new_tag("refbody")
 
         # Create the dir to store the content and the dita files for countries
-        regions_path = f"target/dita/regions"
+        regions_path = f"target/dita/"
         country_path = f"{regions_path}/{country_name}"
         os.makedirs(country_path, exist_ok=True)
 
@@ -320,7 +320,7 @@ class Parser:
                     country_flag,
                 )
 
-                # Copy each category images to /dita/regions/$Category_Name/Content/Images dir
+                # Copy each category images to /dita/$Category_Name/Content/Images dir
                 if a.find("img") is not None:
                     src_img_file = os.path.basename(a.find("img")["src"])
                     img_src_dir = f"{self.root_path}/{os.path.dirname(category_page_link.replace('../', ''))}/Content/Images"
@@ -365,7 +365,7 @@ class Parser:
         # Append the reference element to the dita_soup object
         dita_soup.append(dita_reference)
 
-        # Copy each country images to /dita/regions/$Country_name/Content/Images dir
+        # Copy each country images to /dita/$Country_name/Content/Images dir
         source_dir = f"{self.root_path}/{country_name}/Content/Images"
         copy_files(source_dir, f"{country_path}/Content/Images")
 
@@ -466,7 +466,7 @@ class Parser:
         dita_image["id"] = "flag"
 
         # create folder for category pages
-        category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
+        category_path = f"target/dita/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
         dita_table = convert_html_table_to_dita_table(parent_table, dita_soup, topic_id)
@@ -535,7 +535,7 @@ class Parser:
         # Append the whole page to the dita soup
         dita_soup.append(dita_reference)
 
-        # Copy the category images to /dita/regions/$category_name/Content/Images folder
+        # Copy the category images to /dita/$category_name/Content/Images folder
         category_page_link = remove_leading_slashes(category_page_link.replace(".html", ".dita"))
         source_img_dir = f"{self.root_path}/{os.path.dirname(category_page_link)}/Content/Images"
         target_img_dir = f"{category_path}/Content/Images"
@@ -1235,7 +1235,7 @@ if __name__ == "__main__":
     target_dir = os.path.join("target", "dita")
     copy_files(source_dir, target_dir, ["index.ditamap"])
 
-    parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
+    parser = Parser(Path(root_path).resolve(), Path(target_dir))
     parser.warn_on_blank_runs = args.warn_on_blank_runs
 
     parser.run(args.skip_first_run, args.run_validation)
