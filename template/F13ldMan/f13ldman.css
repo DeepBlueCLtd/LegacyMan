@@ -2,8 +2,8 @@
 /* user-defined CSS */
 
 
-/* hide header in welcome page */
-body[id="Welcome"] header.wh_header {
+/* hide web-help header bar in welcome page */
+body#Welcome header.wh_header {
     display:none;
 }
 
