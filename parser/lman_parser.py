@@ -32,6 +32,8 @@ from parser_utils import (
     is_button_id,
     is_skippable_div_id,
     does_image_links_table_exist,
+    get_top_value_for_page,
+    append_caption_if_needed,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -737,6 +739,7 @@ class Parser:
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = self.find_first_page_layer(top_to_div_mapping, html_soup)
+                    append_caption_if_needed(page, top_to_div_mapping)
                     if page:
                         logging.debug(
                             f"Selected page for First Page Layer with id {page.get('id')}"
@@ -855,21 +858,14 @@ class Parser:
                         anchor_div["id"] = anchor["name"]
                         logging.debug(f"Inserting {anchor_div}")
                         page.insert(0, anchor_div)
+
+                    append_caption_if_needed(page, top_to_div_mapping)
+
                     pages_to_process = add_if_not_a_child_or_parent_of_existing(
                         pages_to_process, page
                     )
                 else:
                     logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
-
-            def get_top_value_for_page(page):
-                style = page.get("style")
-                if style:
-                    top = get_top_value(style)
-
-                if top:
-                    return top
-                else:
-                    return 0
 
             pages_to_process = sorted(
                 list(pages_to_process), key=lambda x: get_top_value_for_page(x)
