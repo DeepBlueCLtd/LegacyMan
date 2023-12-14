@@ -216,7 +216,7 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 # check it's not a p that we have generated earlier
                 if not pp.has_attr("outputclass"):
                     # don't need to rename if parent is a div
-                    if pp.parent.name != "div":
+                    if pp.parent is not None and pp.parent.name != "div":
                         pp.name = "b"
 
     # 4b. replace h1, h2, h3 with paragraph with correct outputClasses
@@ -255,8 +255,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                 a["format"] = "dita"
         del a["target"]
         if a.has_attr("style") and "font-weight: bold" in a["style"]:
-            bold = dita_soup.new_tag("b")
-            a.wrap(bold)
+            # IM commented these two lines out, they were crashing on target content,
+            # but couldn't find reason
+            # bold = dita_soup.new_tag("b")
+            # a.wrap(bold)
             del a["style"]
 
     # 5b. Fix anchors (a without href attribute)
