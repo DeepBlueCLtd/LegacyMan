@@ -68,9 +68,7 @@ def select_random_text_from_file(path, n):
 def check_file(source_path, source_root, target_root, text_n=10):
     text = select_random_text_from_file(source_path, n=text_n)
 
-    target_path = (
-        target_root / "dita" / "regions" / source_path.relative_to(source_root)
-    ).with_suffix(".dita")
+    target_path = (target_root / "dita" / source_path.relative_to(source_root)).with_suffix(".dita")
     target_path = Path(sanitise_filename(target_path))
 
     if not target_path.exists():

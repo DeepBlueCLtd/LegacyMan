@@ -19,7 +19,7 @@ def parse_single_file(root_path, file_path, target_path):
     target_dir = os.path.join("target", "dita")
 
     time1 = time.time()
-    parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
+    parser = Parser(Path(root_path).resolve(), Path(target_dir))
     parser.only_process_single_file = True
     parser.write_generic_files = True
     ret_val = parser.load_link_tracker()

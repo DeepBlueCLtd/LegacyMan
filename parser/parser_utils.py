@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 import xml.dom.minidom
 import os
 import copy
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 from pathlib import Path
 import cssutils
 import logging
@@ -305,3 +305,55 @@ def is_skippable_div_id(div_id):
             return True
 
     return False
+
+
+def get_top_value_for_page(page):
+    style = page.get("style")
+    if style:
+        top = get_top_value(style)
+
+    if top:
+        return top
+    else:
+        return 0
+
+
+def append_caption_if_needed(page, top_to_div_mapping):
+    if page is None:
+        return
+
+    CLICK_PICTURE_TEXT = "Click the picture to return to the previous page."
+    if page.name == "div" and page.has_attr("id") and page["id"].startswith("image"):
+        # If it's just an image div then look for an associated caption div and add it
+        page_top_value = get_top_value_for_page(page)
+        # Get a mapping just for potential caption divs
+        caption_top_to_div_mapping = {
+            int(key): value
+            for key, value in top_to_div_mapping
+            if value.has_attr("id") and "clickOnThePic" in value.get("id")
+        }
+        selected_caption = None
+        # Loop through until we find a relative top value (relative to the page top value)
+        # that is greater than 0 (ie. after it in the page, as captions always come below the image)
+        # and not more than 1000 pixels below it
+        for key, value in caption_top_to_div_mapping.items():
+            rel_top_value = key - page_top_value
+            if rel_top_value < 0:
+                continue
+            elif rel_top_value >= 0 and rel_top_value < 1000:
+                selected_caption = value
+
+        # Replace the "Click the picture..." text if it exists in the caption
+        if selected_caption is not None and CLICK_PICTURE_TEXT in selected_caption.get_text():
+            for el in selected_caption.find_all():
+                if el.string is not None:
+                    if CLICK_PICTURE_TEXT in el.string:
+                        el.string = el.string.replace(CLICK_PICTURE_TEXT, "")
+                else:
+                    for c in el.contents:
+                        if type(c) is NavigableString:
+                            if CLICK_PICTURE_TEXT in c.string:
+                                c.string.replace_with(c.string.replace(CLICK_PICTURE_TEXT, ""))
+
+        if selected_caption is not None:
+            page.append(selected_caption)

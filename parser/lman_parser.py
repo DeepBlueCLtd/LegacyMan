@@ -32,6 +32,8 @@ from parser_utils import (
     is_button_id,
     is_skippable_div_id,
     does_image_links_table_exist,
+    get_top_value_for_page,
+    append_caption_if_needed,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -49,7 +51,7 @@ class Parser:
     def process_regions(self):
         # copy the world-map.gif file
         source_dir = f"{self.root_path}/PlatformData/Content/Images/"
-        target_dir = "target/dita/regions/PlatformData/Content/Images"
+        target_dir = "target/dita/PlatformData/Content/Images"
         worldMapFile = "WorldMap.jpg"
         copy_files(source_dir, target_dir, [worldMapFile])
 
@@ -165,7 +167,7 @@ class Parser:
         dita_soup.append(dita_topic)
 
         # create /target/dita/regions dir
-        regions_path = "target/dita/regions"
+        regions_path = "target/dita/"
         os.makedirs(regions_path, exist_ok=True)
 
         write_prettified_xml(dita_soup, f"{regions_path}/PlatformData/PD_1.dita")
@@ -278,10 +280,11 @@ class Parser:
         dita_tgroup["cols"] = "2"
 
         dita_table = dita_soup.new_tag("table")
+        dita_table["outputclass"] = "ImageLinksTable"
         dita_body = dita_soup.new_tag("refbody")
 
         # Create the dir to store the content and the dita files for countries
-        regions_path = f"target/dita/regions"
+        regions_path = f"target/dita/"
         country_path = f"{regions_path}/{country_name}"
         os.makedirs(country_path, exist_ok=True)
 
@@ -320,7 +323,7 @@ class Parser:
                     country_flag,
                 )
 
-                # Copy each category images to /dita/regions/$Category_Name/Content/Images dir
+                # Copy each category images to /dita/$Category_Name/Content/Images dir
                 if a.find("img") is not None:
                     src_img_file = os.path.basename(a.find("img")["src"])
                     img_src_dir = f"{self.root_path}/{os.path.dirname(category_page_link.replace('../', ''))}/Content/Images"
@@ -365,7 +368,7 @@ class Parser:
         # Append the reference element to the dita_soup object
         dita_soup.append(dita_reference)
 
-        # Copy each country images to /dita/regions/$Country_name/Content/Images dir
+        # Copy each country images to /dita/$Country_name/Content/Images dir
         source_dir = f"{self.root_path}/{country_name}/Content/Images"
         copy_files(source_dir, f"{country_path}/Content/Images")
 
@@ -466,7 +469,7 @@ class Parser:
         dita_image["id"] = "flag"
 
         # create folder for category pages
-        category_path = f"target/dita/regions/{sanitise_filename(category, directory=True)}"
+        category_path = f"target/dita/{sanitise_filename(category, directory=True)}"
         os.makedirs(category_path, exist_ok=True)
 
         dita_table = convert_html_table_to_dita_table(parent_table, dita_soup, topic_id)
@@ -487,6 +490,10 @@ class Parser:
 
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
+
+        for el in parent_table.next_siblings:
+            dita_section.append(htmlToDITA(el, dita_soup, topic_id))
+
         dita_refbody.append(dita_section)
 
         # Append the <title>,<flag> and <refbody> elements in the <reference>
@@ -535,7 +542,7 @@ class Parser:
         # Append the whole page to the dita soup
         dita_soup.append(dita_reference)
 
-        # Copy the category images to /dita/regions/$category_name/Content/Images folder
+        # Copy the category images to /dita/$category_name/Content/Images folder
         category_page_link = remove_leading_slashes(category_page_link.replace(".html", ".dita"))
         source_img_dir = f"{self.root_path}/{os.path.dirname(category_page_link)}/Content/Images"
         target_img_dir = f"{category_path}/Content/Images"
@@ -732,6 +739,7 @@ class Parser:
             for anchor in anchors_to_export:
                 if anchor == FIRST_PAGE_LAYER_MARKER:
                     page = self.find_first_page_layer(top_to_div_mapping, html_soup)
+                    append_caption_if_needed(page, top_to_div_mapping)
                     if page:
                         logging.debug(
                             f"Selected page for First Page Layer with id {page.get('id')}"
@@ -850,21 +858,14 @@ class Parser:
                         anchor_div["id"] = anchor["name"]
                         logging.debug(f"Inserting {anchor_div}")
                         page.insert(0, anchor_div)
+
+                    append_caption_if_needed(page, top_to_div_mapping)
+
                     pages_to_process = add_if_not_a_child_or_parent_of_existing(
                         pages_to_process, page
                     )
                 else:
                     logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
-
-            def get_top_value_for_page(page):
-                style = page.get("style")
-                if style:
-                    top = get_top_value(style)
-
-                if top:
-                    return top
-                else:
-                    return 0
 
             pages_to_process = sorted(
                 list(pages_to_process), key=lambda x: get_top_value_for_page(x)
@@ -1235,7 +1236,7 @@ if __name__ == "__main__":
     target_dir = os.path.join("target", "dita")
     copy_files(source_dir, target_dir, ["index.ditamap"])
 
-    parser = Parser(Path(root_path).resolve(), Path(target_dir) / "regions")
+    parser = Parser(Path(root_path).resolve(), Path(target_dir))
     parser.warn_on_blank_runs = args.warn_on_blank_runs
 
     parser.run(args.skip_first_run, args.run_validation)
