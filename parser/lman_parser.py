@@ -487,6 +487,10 @@ class Parser:
 
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
+
+        for el in parent_table.next_siblings:
+            dita_section.append(htmlToDITA(el, dita_soup, topic_id))
+
         dita_refbody.append(dita_section)
 
         # Append the <title>,<flag> and <refbody> elements in the <reference>
