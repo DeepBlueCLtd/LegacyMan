@@ -271,11 +271,10 @@ padding: 0 10px;
   }
 }
 
-/* text label for category image links (FONT-SIZE REMOVED) */
-.xref .b {
+/* text label for category image links */
+.ImageLinksTable .xref .b {
   display:block;
   text-align: center;
-  /* font-size: 2em; */
 }
 
 /* style for large link buttons */
