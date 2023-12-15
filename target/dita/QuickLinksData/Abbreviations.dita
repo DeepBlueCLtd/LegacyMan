@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Abbreviations">
+	<title>Abbrevs</title>
+	<shortdesc>Useful abbreviations</shortdesc>
+	<refbody>
+		<section>
+			<title/>
+			<div id="table">
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="6">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<colspec colname="c5"/>
+						<colspec colname="c6"/>
+						<tbody>
+							<row>
+								<entry align="left">
+									<ph>
+										<b>ABC</b>
+									</ph>
+								</entry>
+								<entry nameend="c3" namest="c2">
+									<ph>
+										<b>Alpha Bravo Charlie%TEST-30%</b>
+									</ph>
+								</entry>
+								<entry align="left">
+									<ph>
+										<b>MGM</b>
+									</ph>
+								</entry>
+								<entry nameend="c6" namest="c5">
+									<ph>
+										<b>Metro Goldwyn Mayer</b>
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry>
+									<ph>
+										<b>BBC</b>
+									</ph>
+								</entry>
+								<entry nameend="c3" namest="c2">
+									<ph>
+										<b>Bravo Bravo Charlie</b>
+									</ph>
+								</entry>
+								<entry>
+									<ph>
+										<b>M/M</b>
+									</ph>
+								</entry>
+								<entry nameend="c6" namest="c5">
+									<ph>
+										<b>Master Musician</b>
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry nameend="c6" namest="c1">HEADING SPACER</entry>
+							</row>
+							<row>
+								<entry align="left" nameend="c6" namest="c1">
+									<ph>
+										<b>                           Decode of standard plant safety markers can be found in CTM-12/23</b>
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry> </entry>
+								<entry> </entry>
+								<entry> </entry>
+								<entry> </entry>
+								<entry> </entry>
+								<entry> </entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="./VanesandCranes.dita">
+			<linktext>Vanes &amp; Cranes</linktext>
+		</link>
+		<link href="../Introduction/ContentsPage.dita">
+			<linktext>Contents</linktext>
+		</link>
+	</related-links>
+</reference>

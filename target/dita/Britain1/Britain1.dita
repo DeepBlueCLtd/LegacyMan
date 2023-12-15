@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Britain">
+	<title>Britain</title>
+	<refbody>
+		<table outputclass="ImageLinksTable">
+			<tgroup cols="2">
+				<tbody>
+					<row>
+						<entry>
+							<xref format="dita" href="../Britain_Cmplx/Britain_Cmplx1.dita">
+								<b>Complex</b>
+								<image height="150px" href="../Britain_Cmplx/Content/Images/daf_1b.jpeg" width="400px"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Britain.Legacy/Britain_Legacy.dita">
+								<b>Legacy</b>
+								<image href="../Britain.Legacy/Content/Images/leyland_2.jpg"/>
+							</xref>
+						</entry>
+					</row>
+					<row>
+						<entry>
+							<xref format="dita" href="../Britain.Legacy/Britain_Legacy.dita">
+								<image href="../Britain.Legacy/Content/Images/leyland_2.jpg"/>
+								<b>Legacy</b>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Britain_Cmplx/Britain_Cmplx1.dita">
+								<image height="150px" href="../Britain_Cmplx/Content/Images/daf_1b.jpeg" width="400px"/>
+								<b>Complex</b>
+							</xref>
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="../QuickLinksData/VanesandCranes.dita#VanesandCranes/number2">
+			<linktext>Vanes</linktext>
+		</link>
+		<link href="../QuickLinksData/Abbreviations.dita">
+			<linktext>Abbreviations</linktext>
+		</link>
+		<link href="./Britain_Measuring.dita">
+			<linktext>British Measuring Standards</linktext>
+		</link>
+	</related-links>
+</reference>

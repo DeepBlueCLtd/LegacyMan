@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="FR_charlie_pics">
+	<title>
+Charlie Pics
+</title>
+	<shortdesc/>
+	<refbody>
+		<section>
+			<title/>
+			<div id="image14">
+      1
+				<xref format="dita" href="../Fr_Legacy/FR_100_unit_charlie.dita">
+					<image href="Content/Images/daf_1.jpeg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="image15">
+				<p id="number2"/>
+      2
+				<xref format="dita" href="./FR_100_unit_charlie.dita">
+					<image href="Content/Images/daf_2.jpeg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="image16">
+				<p id="number3"/>
+      3
+				<xref format="dita" href="./FR_100_unit_charlie.dita">
+					<image href="Content/Images/daf_3.jpeg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="image17">
+				<p id="number4"/>
+     4 
+				<xref format="dita" href="./FR_100_unit_charlie.dita">
+					<image href="Content/Images/daf_1b.jpeg"/>
+				</xref>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="BottomLayer">
+				<p id="number5"/>
+				<p outputclass="h1">RATCHETING</p>
+				<p> </p>
+				<p> </p>
+				<p>
+					1.     
+					<b>Ratcheting is the term used to describe the oxidation that occurs
+            on the outer edges of the dipole planar surfaces. It is caused by a combination of vertical
+            and forward momentum through the air.
+          </b>
+				</p>
+				<p>
+					   a. 
+					<b>
+						    Aural 
+						<xref format="wav" href="Content/CantinaBand3.wav">Example
+              1</xref>
+					</b>
+				</p>
+				<p>
+					   a. 
+					<b>
+						    Aural 
+						<xref format="wav" href="Content/CantinaBand3.wav">Example
+              2</xref>
+					</b>
+				</p>
+				<p>
+					   a. 
+					<b>
+						    Video 
+						<xref format="avi" href="Content/Wavs/world.avi">Example</xref>
+					</b>
+				</p>
+			</div>
+		</section>
+	</refbody>
+</reference>

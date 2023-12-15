@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Wales_-_Complex">
+	<title>Wales - Complex</title>
+	<shortdesc/>
+	<refbody>
+		<section id="flag-section">
+			<title/>
+			<fig>
+				<image href="../Wales/Content/Images/welsh_flag.jpg" id="flag"/>
+			</fig>
+		</section>
+		<section>
+			<title/>
+			<table colsep="1" frame="all" rowsep="1">
+				<tgroup cols="7">
+					<colspec colname="c1"/>
+					<colspec colname="c2"/>
+					<colspec colname="c3"/>
+					<colspec colname="c4"/>
+					<colspec colname="c5"/>
+					<colspec colname="c6"/>
+					<colspec colname="c7"/>
+					<tbody>
+						<row>
+							<entry nameend="c7" namest="c1">Details of Legacy in Wales</entry>
+						</row>
+						<row>
+							<entry>Class</entry>
+							<entry>Designator</entry>
+							<entry>Propulsion</entry>
+							<entry>Shaft x Blade</entry>
+							<entry>Max Speed</entry>
+							<entry>Av TPK</entry>
+							<entry>Reduction Ratio</entry>
+						</row>
+						<row>
+							<entry nameend="c7" namest="c1">Steam Driven</entry>
+						</row>
+						<row>
+							<entry>Unit_a</entry>
+							<entry>PB</entry>
+							<entry>2 * V8 Diesel</entry>
+							<entry>3 x 3</entry>
+							<entry>34 Kts</entry>
+							<entry>Unk</entry>
+							<entry>Unk</entry>
+						</row>
+						<row>
+							<entry>
+								<xref format="dita" href="./_100_unit_charlie.dita">Unit WA Charlie</xref>
+							</entry>
+							<entry>PBF</entry>
+							<entry>2 * V6 Diesel</entry>
+							<entry>2 * 4 (FPP)</entry>
+							<entry>16.6</entry>
+							<entry>Est 1000</entry>
+							<entry>BWW</entry>
+						</row>
+						<row>
+							<entry nameend="c7" namest="c1">Hydraulic</entry>
+						</row>
+						<row>
+							<entry>
+								<xref format="dita" href="./unit_delta12.dita">Unit Delta</xref>
+							</entry>
+							<entry>DFD</entry>
+							<entry>2 * V6 Diesel</entry>
+							<entry>12 x 4</entry>
+							<entry>21 Kts</entry>
+							<entry>Unk</entry>
+							<entry>Unk</entry>
+						</row>
+						<row>
+							<entry>Unit Foxtrot Alpha</entry>
+							<entry>PBF</entry>
+							<entry>2 * V6 Diesel</entry>
+							<entry>2 * 4 (FPP)</entry>
+							<entry>16.6</entry>
+							<entry>Est 2000</entry>
+							<entry>BWW 4</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="./WA_transducers.dita">
+			<linktext>WA Transducers</linktext>
+		</link>
+		<link href="../QuickLinksData/Abbreviations.dita">
+			<linktext>Abbreviations</linktext>
+		</link>
+		<link href="../QuickLinksData/VanesandCranes.dita">
+			<linktext>Vanes &amp; Cranes</linktext>
+		</link>
+	</related-links>
+</reference>

@@ -1,0 +1,430 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="FR_100_unit_charlie">
+	<title>
+Charlie
+</title>
+	<shortdesc/>
+	<refbody>
+		<section>
+			<title/>
+			<div id="image7">
+				<xref format="dita" href="./FR_charlie_pics.dita">
+					<image height="177" href="Content/Images/daf_1.jpeg" width="203"/>
+				</xref>
+			</div>
+			<div id="image8">
+				<xref format="dita" href="./FR_charlie_pics.dita#FR_charlie_pics/number2">
+					<image height="177" href="Content/Images/daf_2.jpeg" width="190"/>
+				</xref>
+			</div>
+			<div id="image14">
+				<xref format="dita" href="./FR_charlie_pics.dita#FR_charlie_pics/number3">
+					<image height="177" href="Content/Images/daf_3.jpeg" width="302"/>
+				</xref>
+			</div>
+			<div id="image9">
+				<xref format="dita" href="./FR_charlie_pics.dita#FR_charlie_pics/number4">
+					<image height="177" href="Content/Images/daf_1b.jpeg" width="320"/>
+				</xref>
+			</div>
+			<div id="Table">
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="6">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<colspec colname="c5"/>
+						<colspec colname="c6"/>
+						<tbody>
+							<row>
+								<entry outputclass="bkDarkGray">Drive</entry>
+								<entry outputclass="bkDarkGray">Mode</entry>
+								<entry outputclass="bkDarkGray">Shaft x Blade</entry>
+								<entry outputclass="bkDarkGray">R:R</entry>
+								<entry outputclass="bkDarkGray">Max Speed (Guide)</entry>
+								<entry outputclass="bkDarkGray">Av TPK (Guide)</entry>
+							</row>
+							<row>
+								<entry>4 Diesel</entry>
+								<entry>PTR</entry>
+								<entry>2 * 4 (GRR)</entry>
+								<entry>412.8:1</entry>
+								<entry>40 kts</entry>
+								<entry>~14</entry>
+							</row>
+							<row>
+								<entry nameend="c6" namest="c1" outputclass="bkLightGray">
+									<b>Commonly Detected Sources</b>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">Source</entry>
+								<entry outputclass="bkLightGray">Ratio/Freq</entry>
+								<entry nameend="c4" namest="c3" outputclass="bkLightGray">Harmonics</entry>
+								<entry nameend="c6" namest="c5" outputclass="bkLightGray">Remarks</entry>
+							</row>
+							<row>
+								<entry nameend="c6" namest="c1" outputclass="bkLightGray">Propulsion Related</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray"> 
+            </entry>
+								<entry>S12</entry>
+								<entry nameend="c4" namest="c3">H1-4</entry>
+								<entry nameend="c6" namest="c5">
+									Discrete. Doublets common, particularly with 
+									<xref format="dita" href="./FR_charlie_pics.dita#FR_charlie_pics/number5">Ratcheting</xref>
+									<ul>
+										<li>Total control</li>
+										<li>Intermediate control</li>
+										<li>Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">BR</entry>
+								<entry>S5</entry>
+								<entry nameend="c4" namest="c3">H1</entry>
+								<entry align="left" nameend="c6" namest="c5">
+									<p>Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<xref format="dita" href="../France1/FR_Phase_G_Size.dita#FR_Phase_G_Size/number2">Cat b Engine R</xref>
+								</entry>
+								<entry>2-100.4, 112, 132</entry>
+								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="c6" namest="c5">
+									 The quick brown fox does 
+									<i>something</i>
+									 similar
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<p outputclass="bold">
+										<image href="Content/Images/yellow.jpg"/>
+										Unk Banjo
+									</p>
+								</entry>
+								<entry>25 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 34 with 
+									<b outputclass="colorBlue">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<xref format="dita" href="../France1/FR_Phase_G_Size.dita#FR_Phase_G_Size/number2">Unk BBA</xref>
+								</entry>
+								<entry>135 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1 &amp; 2</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 54334. And some
+									<ph>
+										<b>in
+                  bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<xref format="dita" href="../France1/FR_Phase_G_Size.dita#FR_Phase_G_Size/number2">SPDR</xref>
+								</entry>
+								<entry>S12</entry>
+								<entry nameend="c4" namest="c3">H1-4</entry>
+								<entry nameend="c6" namest="c5">
+									Discrete. Doublets common
+									<ul>
+										<li>Total control</li>
+										<li>Intermediate control</li>
+										<li>Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<xref format="dita" href="../France1/FR_Phase_G_Size.dita#FR_Phase_G_Size/number2">BPDR</xref>
+								</entry>
+								<entry>S5</entry>
+								<entry nameend="c4" namest="c3">H1</entry>
+								<entry align="left" nameend="c6" namest="c5">
+									<p>Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+</entry>
+								<entry>2-100.4, 112, 132</entry>
+								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
+            </entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<p outputclass="bold">
+										<image href="Content/Images/yellow.jpg"/>
+										Unk BBA
+									</p>
+								</entry>
+								<entry>25 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 34 with 
+									<b outputclass="colorBlue">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+              Unk BBA
+            </entry>
+								<entry>135 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1 &amp; 2</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 54334. And some
+									<ph>
+										<b>in
+                  bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+</entry>
+								<entry>S12</entry>
+								<entry nameend="c4" namest="c3">H1-4</entry>
+								<entry nameend="c6" namest="c5">
+									Discrete. Doublets common
+									<ul>
+										<li>Total control</li>
+										<li>Intermediate control</li>
+										<li>Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">BR</entry>
+								<entry>S5</entry>
+								<entry nameend="c4" namest="c3">H1</entry>
+								<entry align="left" nameend="c6" namest="c5">
+									<p>Discrete. Doublets common</p>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+</entry>
+								<entry>2-100.4, 112, 132</entry>
+								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
+            </entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+									<p outputclass="bold">
+										<image href="Content/Images/yellow.jpg"/>
+										Unk BBA
+									</p>
+								</entry>
+								<entry>25 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 34 with 
+									<b outputclass="colorBlue">*</b>
+									P-Gears
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+              Unk BBA
+            </entry>
+								<entry>135 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1 &amp; 2</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 54334. And some
+									<ph>
+										<b>in
+                  bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+</entry>
+								<entry>S12</entry>
+								<entry nameend="c4" namest="c3">H1-4</entry>
+								<entry nameend="c6" namest="c5">
+									Discrete. Doublets common
+									<ul>
+										<li>Total control</li>
+										<li>Intermediate control</li>
+										<li>Not under control</li>
+									</ul>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+              Unk BBA
+            </entry>
+								<entry>135 &amp; CSR</entry>
+								<entry nameend="c4" namest="c3">H1 &amp; 2</entry>
+								<entry nameend="c6" namest="c5">
+									CBR 54334. And some
+									<ph>
+										<b>in
+                  bold</b>
+										.
+									</ph>
+								</entry>
+							</row>
+							<row>
+								<entry outputclass="bkLightGray">
+</entry>
+								<entry>2-100.4, 112, 132</entry>
+								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
+								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
+            </entry>
+							</row>
+							<row>
+								<entry morerows="1" outputclass="bkLightGray">Unk BBA</entry>
+								<entry>135 &amp; CSR (high)</entry>
+								<entry morerows="1" nameend="c4" namest="c3">H1 &amp; 2</entry>
+								<entry morerows="1" nameend="c6" namest="c5">CBR 54334</entry>
+							</row>
+							<row>
+								<entry>124 &amp; CSR (low)</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+		<section>
+			<title/>
+			<div id="BottomLayer4">
+				<p id="number3"/>
+				<table colsep="1" frame="all" rowsep="1">
+					<tgroup cols="4">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<colspec colname="c3"/>
+						<colspec colname="c4"/>
+						<tbody>
+							<row>
+								<entry nameend="c4" namest="c1">
+									<b>Unit delta</b>
+								</entry>
+							</row>
+							<row>
+								<entry>
+									<b>Cruise Plant</b>
+								</entry>
+								<entry>
+            4 * PR32 Diesel Engines %TEST#150 - Update values from tonal split page%
+          </entry>
+								<entry>
+									<b>Shaft x Blade</b>
+								</entry>
+								<entry>2 * 4 (GRR)</entry>
+							</row>
+							<row>
+								<entry morerows="1">
+									<b>Boost Plant</b>
+								</entry>
+								<entry morerows="1">4 DEW Alpha Batteries</entry>
+								<entry>
+									<b>Range</b>
+								</entry>
+								<entry>N/A</entry>
+							</row>
+							<row>
+								<entry>
+									<b>Max Speed</b>
+								</entry>
+								<entry>22 kts</entry>
+							</row>
+							<row>
+								<entry>
+									<b>Reduction Ratio</b>
+								</entry>
+								<entry>Unk1</entry>
+								<entry>
+									<b>Av TPK</b>
+								</entry>
+								<entry>~14</entry>
+							</row>
+							<row>
+								<entry>
+									<b>ERPM</b>
+								</entry>
+								<entry>400-1400</entry>
+								<entry>
+									<b>Max SRPM</b>
+								</entry>
+								<entry>1600</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				<p>Table 1: Unit Charlie Proponents Table
+      </p>
+				<p>  1. When in DD mode Non eu amet ad consectetur sint laborum aliqua. Et laboris ipsum officia
+        deserunt amet nulla Lorem sit. Ex nisi officia aliqua ut voluptate duis Lorem consectetur adipisicing aliquip
+        est pariatur incididunt qui. Amet voluptate sint ad id aliqua anim nostrud fugiat consequat quis nostrud dolor.
+        Dolor commodo laboris commodo irure consectetur. </p>
+				<p>  2. When in CD mode Non eu amet ad consectetur sint laborum aliqua. Et laboris ipsum officia
+        deserunt amet nulla Lorem sit. Ex nisi officia aliqua ut voluptate duis Lorem consectetur adipisicing aliquip
+        est pariatur incididunt qui. Amet voluptate sint ad id aliqua anim nostrud fugiat consequat quis nostrud dolor.
+        Dolor commodo laboris commodo irure consectetur. </p>
+				<p>  3. When in AD mode Non eu amet ad consectetur sint laborum aliqua. Et laboris ipsum officia
+        deserunt amet nulla Lorem sit. Ex nisi officia aliqua ut voluptate duis Lorem consectetur adipisicing aliquip
+        est pariatur incididunt qui. Amet voluptate sint ad id aliqua anim nostrud fugiat consequat quis nostrud dolor.
+        Dolor commodo laboris commodo irure consectetur. </p>
+				<p outputclass="h1">Auxiliary Systems</p>
+				<p>  4. Nisi consequat occaecat pariatur velit. Qui anim laboris est aliqua deserunt id laboris ex ea ut
+        nostrud. Nostrud amet ea dolor tempor tempor ex tempor veniam irure eiusmod anim in anim labore. Commodo
+        exercitation irure reprehenderit eu exercitation occaecat. Fugiat pariatur non culpa reprehenderit pariatur est.
+      </p>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link format="dita" href="#FR_100_unit_charlie/number3">
+			<linktext>Signature</linktext>
+		</link>
+		<link href="../France1/FR_Phase_G_Size.dita">
+			<linktext>Remarks</linktext>
+		</link>
+		<link href="../France1/FR_Phase_G_Size.dita#FR_Phase_G_Size/number2">
+			<linktext>Systems</linktext>
+		</link>
+		<link href="../QuickLinksData/VanesandCranes.dita">
+			<linktext>Vanity Sources</linktext>
+		</link>
+		<link format="xlsx" href="Content/France_HeatCalculator.xlsx">
+			<linktext>Heat calculator</linktext>
+		</link>
+		<link href="../France1/FR_Phase_G.dita#FR_Phase_G/number2">
+			<linktext>Phase G Residue</linktext>
+		</link>
+		<link href="../France1/FR_Phase_G.dita">
+			<linktext>Phase G Overview</linktext>
+		</link>
+		<link href="../France1/FR_Transducers.dita">
+			<linktext>Transducers</linktext>
+		</link>
+		<link href="./FR_100_unit_charlie.dita">
+			<linktext>Overview</linktext>
+		</link>
+	</related-links>
+</reference>

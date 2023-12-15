@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Britain_Measuring">
+	<title>British Measuring Standards</title>
+	<shortdesc/>
+	<refbody>
+		<section>
+			<title/>
+			<div id="PageLayer">
+				<p>
+					<table colsep="1" frame="all" rowsep="1">
+						<tgroup cols="4">
+							<colspec colname="c1"/>
+							<colspec colname="c2"/>
+							<colspec colname="c3"/>
+							<colspec colname="c4"/>
+							<tbody>
+								<row>
+									<entry align="center" outputclass="bkDarkGray">
+										<b>Property</b>
+									</entry>
+									<entry align="center" outputclass="bkDarkGray">
+										<b>Units</b>
+									</entry>
+									<entry align="center" outputclass="bkDarkGray">
+										<b>Sample</b>
+									</entry>
+									<entry align="center" outputclass="bkDarkGray">
+										<b>Most recent update</b>
+									</entry>
+								</row>
+								<row>
+									<entry align="center" outputclass="bkLightGray">
+										<b>Temperature</b>
+									</entry>
+									<entry>Degs</entry>
+									<entry>
+</entry>
+									<entry>Dec 2022</entry>
+								</row>
+								<row>
+									<entry align="center" outputclass="bkLightGray">
+										<b>Length</b>
+									</entry>
+									<entry>Metres</entry>
+									<entry>
+</entry>
+									<entry>Mar 2022</entry>
+								</row>
+								<row>
+									<entry align="center" outputclass="bkLightGray">
+										<b>Mass</b>
+									</entry>
+									<entry>Kg</entry>
+									<entry>
+										<xref format="dita" href="../Britain_Cmplx/unit_anchors.dita">Anchors</xref>
+									</entry>
+									<entry>Dec 2022</entry>
+								</row>
+								<row>
+									<entry nameend="c4" namest="c1" outputclass="bkLightGray">
+										<b>Legacy</b>
+									</entry>
+								</row>
+								<row>
+									<entry align="center" outputclass="bkLightGray">
+										<b>Mass</b>
+									</entry>
+									<entry>Pounds</entry>
+									<entry>
+										<xref format="dita" href="../Britain_Cmplx/unit_banjo.dita">Banjo</xref>
+									</entry>
+									<entry>Dec 2006</entry>
+								</row>
+							</tbody>
+						</tgroup>
+					</table>
+				</p>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="../QuickLinksData/Abbreviations.dita">
+			<linktext>Abbreviations</linktext>
+		</link>
+		<link href="./Britain1.dita">
+			<linktext>Britain Overview</linktext>
+		</link>
+	</related-links>
+</reference>

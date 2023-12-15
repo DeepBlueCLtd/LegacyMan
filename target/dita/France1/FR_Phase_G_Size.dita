@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="FR_Phase_G_Size">
+	<title>
+Phase G SYSTEMS
+</title>
+	<shortdesc/>
+	<refbody>
+		<section>
+			<title/>
+			<div id="layer1">
+				<p outputclass="h1">REMARKS</p>
+				<p>1.   Currently the following installations for this type of plant are in use by Petroleum Luxe</p>
+				<ul>
+					<li>La Boheme (P432)</li>
+					<li>Le Figaro (P765)</li>
+					<li>Vive La Chance (P123)</li>
+					<li>
+						Vive La Choix 
+						<b>Belgium</b>
+						 (P453)
+					</li>
+					<li>A bientot (P532)</li>
+					<li>Croque Madames (P534)</li>
+					<li>
+						Bon Chance
+						<ul>
+							<li>In addition to Bon Chance, La Bonne Chance is still running in the Netherlands</li>
+						</ul>
+					</li>
+					<li>Vive la difference (P433)</li>
+				</ul>
+				<p>2.   The unit anchor was designed in France as an after school project, no-one intended it for mainstream use. ∏Laborum incididunt exercitation fugiat est veniam deserunt labore proident voluptate commodo. Esse fugiat eu veniam amet dolore. Aliqua quis nostrud pariatur amet nisi incididunt tempor qui sint. Adipisicing ad dolore est et cupidatat duis eiusmod et laborum est officia enim ullamco. Aliqua nostrud eu eiusmod consequat consectetur labore aliqua proident nulla pariatur.</p>
+				<p>3.   One of the more notable features of this installation is the chimney height, intended to avoid pollutant spread over staff car parks.</p>
+				<p>4.   Reprehenderit nisi est labore ut anim. Elit sit nulla consectetur nostrud nulla officia ea consectetur. Veniam aliquip labore pariatur cupidatat dolor dolor consectetur ex ullamco sit tempor amet ipsum.</p>
+				<fig outputclass="center">
+					<image href="Content/Images/cooling_unit.jpg"/>
+					<p outputclass="figtitle">
+                    Figure 1. Charlie cooling units
+</p>
+				</fig>
+				<p>5.   One of the distinguishing features of later Charlie units Amet commodo exercitation eiusmod reprehenderit mollit eiusmod excepteur consectetur aute consequat. Aliqua ullamco duis voluptate duis reprehenderit commodo officia minim dolor sunt duis reprehenderit. Laboris ullamco magna consequat incididunt non qui pariatur pariatur fugiat laborum Lorem. Excepteur nostrud laborum nisi officia irure sint nisi quis ea dolore proident exercitation. Anim do ea ad consequat elit non irure excepteur.</p>
+				<fig outputclass="center">
+					<image href="Content/Images/oscill_c.jpg"/>
+					<p outputclass="figtitle">
+                Figure 2. Charlie extractor fan resonance
+</p>
+				</fig>
+				<!-- the next link is a real instance of an anchor target being placed within the relevant content.
+        The fact the anchor overlaps with the next h1 is true, too.-->
+				<b id="number2"/>
+				<p outputclass="h1">
+					<b>ANCHOR PROPULSION SYSTEM</b>
+				</p>
+				<p>9.   Nisi anim nisi ea ad est nostrud elit velit exercitation labore ipsum cillum labore. Consectetur minim elit ipsum qui consectetur occaecat. Est sit reprehenderit adipisicing reprehenderit officia aute et do dolor sunt Lorem amet. Labore sint laboris ullamco velit laborum officia aliqua proident aliquip.</p>
+				<p>
+					10.   
+					<b>Multi-Phase polarity decoupling</b>
+					 Veniam incididunt adipisicing ex cupidatat. Et sit ad Lorem ad eiusmod exercitation Lorem quis nulla. Dolore ullamco sunt eiusmod commodo anim eiusmod irure duis cillum incididunt elit adipisicing ad. Eiusmod veniam labore occaecat minim voluptate Lorem cupidatat. Magna non ad veniam enim consequat labore eu.
+				</p>
+				<p>
+					11.   
+					<b>Cat b Engine R</b>
+					 This type of engine repeatedly incididunt adipisicing ex cupidatat. Et sit ad Lorem ad eiusmod exercitation Lorem quis nulla. Dolore ullamco sunt eiusmod commodo anim eiusmod irure duis cillum incididunt elit adipisicing ad. Eiusmod veniam labore occaecat minim voluptate Lorem cupidatat. Magna non ad veniam enim consequat labore eu.
+				</p>
+				<p>
+					12.   
+					<b>Unk BBA</b>
+					 Unk BBA tends to ute tempor quis sit mollit qui excepteur officia laborum non aute pariatur aliquip. Minim est enim elit culpa velit. Pariatur tempor ullamco nisi velit in labore cillum sit sit. Laborum laborum minim reprehenderit qui commodo cillum cupidatat sit duis velit.
+				</p>
+				<p outputclass="h1">
+					<b>ENVIRONMENTAL PROTECTION SYSTEM IN UNIT ANCHOR</b>
+				</p>
+				<p>
+					13.   
+					<b>SPDR</b>
+					 This type of engine repeatedly incididunt adipisicing ex cupidatat. Et sit ad Lorem ad eiusmod exercitation Lorem quis nulla. Dolore ullamco sunt eiusmod commodo anim eiusmod irure duis cillum incididunt elit adipisicing ad. Eiusmod veniam labore occaecat minim voluptate Lorem cupidatat. Magna non ad veniam enim consequat labore eu.
+				</p>
+				<p>
+					14.   
+					<b>BPDR</b>
+					 This type of engine repeatedly incididunt adipisicing ex cupidatat. Et sit ad Lorem ad eiusmod exercitation Lorem quis nulla. Dolore ullamco sunt eiusmod commodo anim eiusmod irure duis cillum incididunt elit adipisicing ad. Eiusmod veniam labore occaecat minim voluptate Lorem cupidatat. Magna non ad veniam enim consequat labore eu.
+				</p>
+			</div>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link format="xlsx" href="Content/France_HeatCalculator.xlsx">
+			<linktext>Heat calculator</linktext>
+		</link>
+		<link href="./FR_Phase_G_Size.dita">
+			<linktext>Remarks</linktext>
+		</link>
+		<link format="dita" href="#FR_Phase_G_Size/number2">
+			<linktext>Systems</linktext>
+		</link>
+		<link href="../QuickLinksData/VanesandCranes.dita">
+			<linktext>Vanity Sources</linktext>
+		</link>
+		<link href="./FR_Phase_G.dita">
+			<linktext>Phase G Overview</linktext>
+		</link>
+		<link href="./FR_Phase_G.dita#FR_Phase_G/number2">
+			<linktext>Phase G Residue</linktext>
+		</link>
+		<link href="./FR_Transducers.dita">
+			<linktext>Transducers</linktext>
+		</link>
+	</related-links>
+</reference>

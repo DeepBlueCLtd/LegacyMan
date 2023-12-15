@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Britain_Legacy_delta">
+	<title>Britain Legacy delta</title>
+	<shortdesc/>
+	<refbody>
+		<section id="flag-section">
+			<title/>
+			<fig>
+				<image href="../Britain1/Content/Images/Flag.jpg" id="flag"/>
+			</fig>
+		</section>
+		<section>
+			<title/>
+			<table colsep="1" frame="all" rowsep="1">
+				<tgroup cols="7">
+					<colspec colname="c1"/>
+					<colspec colname="c2"/>
+					<colspec colname="c3"/>
+					<colspec colname="c4"/>
+					<colspec colname="c5"/>
+					<colspec colname="c6"/>
+					<colspec colname="c7"/>
+					<tbody>
+						<row>
+							<entry nameend="c7" namest="c1">Details of Legacy in Britain</entry>
+						</row>
+						<row>
+							<entry>Class</entry>
+							<entry>Designator</entry>
+							<entry>Propulsion</entry>
+							<entry>Shaft x Blade</entry>
+							<entry>Max Speed</entry>
+							<entry>Av TPK</entry>
+							<entry>Reduction Ratio</entry>
+						</row>
+						<row>
+							<entry nameend="c7" namest="c1">Steam Driven</entry>
+						</row>
+						<row>
+							<entry>Unit_a</entry>
+							<entry>PB</entry>
+							<entry>2 * V8 Diesel</entry>
+							<entry>3 x 3</entry>
+							<entry>34 Kts</entry>
+							<entry>Unk</entry>
+							<entry>Unk</entry>
+						</row>
+						<row>
+							<entry>
+								<xref format="dita" href="./_100_unit_charlie.dita">Unit Charlie</xref>
+							</entry>
+							<entry>PBF</entry>
+							<entry>2 * V6 Diesel</entry>
+							<entry>2 * 4 (FPP)</entry>
+							<entry>16.6</entry>
+							<entry>Est 1000</entry>
+							<entry>BWW</entry>
+						</row>
+						<row>
+							<entry nameend="c7" namest="c1">Hydraulic</entry>
+						</row>
+						<row>
+							<entry>
+								<xref format="dita" href="./unit_delta13.dita">Unit Delta</xref>
+							</entry>
+							<entry>DFD</entry>
+							<entry>2 * V6 Diesel</entry>
+							<entry>12 x 4</entry>
+							<entry>21 Kts</entry>
+							<entry>Unk</entry>
+							<entry>Unk</entry>
+						</row>
+						<row>
+							<entry>Unit Foxtrot Alpha</entry>
+							<entry>PBF</entry>
+							<entry>2 * V6 Diesel</entry>
+							<entry>2 * 4 (FPP)</entry>
+							<entry>16.6</entry>
+							<entry>Est 2000</entry>
+							<entry>BWW 1</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+			<p>1. This type of Elit velit nostrud consectetur esse adipisicing id dolore proident commodo consequat enim adipisicing adipisicing nostrud. Fugiat commodo deserunt culpa nostrud et amet ipsum amet. Ipsum nulla amet incididunt voluptate officia commodo culpa sunt in ipsum. Esse minim exercitation deserunt est velit dolor pariatur qui ipsum aliqua.</p>
+			<p>2. Always think of Anim amet voluptate occaecat exercitation laborum eu magna occaecat cupidatat enim. Consectetur et consectetur duis adipisicing voluptate fugiat nisi. Commodo ex cillum minim occaecat id elit exercitation irure aute ipsum.</p>
+			<p>
+				3. If you don't try to Duis ipsum ut mollit occaecat deserunt tempor est esse labore irure non voluptate. Aliqua aliquip ea ullamco consectetur irure esse adipisicing duis reprehenderit mollit. Reprehenderit laboris laboris eu eu ut voluptate aliqua in culpa. Fugiat nostrud amet ipsum ut. Nisi amet id ullamco adipisicing excepteur et qui quis pariatur. Duis ad ex consectetur id dolore esse labore.
+				<ul>
+					<li>January. Commodo esse consequat id Lorem excepteur.</li>
+					<li>February. Sunt eiusmod reprehenderit eu ut in excepteur officia pariatur irure tempor quis voluptate.</li>
+					<li>March. Ex ullamco proident mollit eiusmod.</li>
+					<li>April. Elit culpa Lorem mollit excepteur et excepteur aute.</li>
+					<li>May. Dolore aliqua laborum dolore minim in quis velit est commodo.</li>
+				</ul>
+			</p>
+			<p>4. Don't forget that Incididunt proident magna excepteur labore irure do. Esse excepteur et pariatur elit ea esse amet fugiat in do dolore velit consequat id. Adipisicing quis labore incididunt ex ullamco consectetur voluptate. Consequat qui velit cupidatat enim nisi ipsum excepteur commodo fugiat veniam veniam tempor exercitation occaecat. Commodo deserunt non ex nostrud id non nulla voluptate. Quis irure dolor ipsum qui sunt.</p>
+		</section>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="../Britain1/Britain_Measuring.dita">
+			<linktext>Measuring</linktext>
+		</link>
+		<link href="./BR_transducers.dita">
+			<linktext>Transducers</linktext>
+		</link>
+		<link href="../QuickLinksData/VanesandCranes.dita">
+			<linktext>Vanity Sources</linktext>
+		</link>
+	</related-links>
+</reference>

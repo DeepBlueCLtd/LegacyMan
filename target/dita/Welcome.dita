@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Welcome">
+	<title>Cover Page 1</title>
+	<shortdesc>Cover Page for document set</shortdesc>
+	<refbody>
+		<section>
+			<title/>
+			<div id="Body">
+				<table>
+					<tgroup cols="2">
+						<colspec colname="c1"/>
+						<colspec colname="c2"/>
+						<tbody>
+							<row>
+								<entry nameend="c2" namest="c1">
+									<p outputclass="h1">Cover Page 1</p>
+								</entry>
+							</row>
+							<row>
+								<entry>
+									<image href="Content/Images/image020_safe.png"/>
+								</entry>
+								<entry>
+									<p outputclass="h1">Cover Page 2</p>
+								</entry>
+							</row>
+							<row>
+								<entry>
+									<p>Version: 3.2</p>
+									<p>Date: Nov 2019</p>
+									<p>
+										<xref format="dita" href="./Introduction/Warning.dita" outputclass="enterBtn">Next Page</xref>
+									</p>
+								</entry>
+								<entry>
+									<image href="Content/Images/industrial-plant-machinery.jpg"/>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</div>
+		</section>
+	</refbody>
+</reference>

@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<!DOCTYPE reference
+  PUBLIC '-//OASIS//DTD DITA Reference//EN'
+  'reference.dtd'>
+<reference id="Wales">
+	<title>Wales</title>
+	<refbody>
+		<table outputclass="ImageLinksTable">
+			<tgroup cols="2">
+				<tbody>
+					<row>
+						<entry>
+							<xref format="dita" href="../Wales_Cmplx/Wales_Cmplx1.dita">
+								<b>Complex</b>
+								<image href="../Wales_Cmplx/Content/Images/daf_1b.jpeg"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Wales.Legacy/Wales_Legacy.dita">
+								<b>Legacy</b>
+								<image href="../Wales.Legacy/Content/Images/leyland_2.jpg"/>
+							</xref>
+						</entry>
+						<entry>
+							<xref format="dita" href="../Wales_Composite/Wales_Composite.dita">
+								<b>Composite</b>
+								<image href="../Wales_Composite/Content/Images/unit_da.jpg"/>
+							</xref>
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</refbody>
+	<related-links id="related-pages">
+		<link href="../QuickLinksData/VanesandCranes.dita">
+			<linktext>Vanes</linktext>
+		</link>
+		<link href="../Wales.Legacy/Wales_Legacy.dita">
+			<linktext>Legacy</linktext>
+		</link>
+		<link href="../QuickLinksData/Abbreviations.dita">
+			<linktext>Abbreviations</linktext>
+		</link>
+		<link href="./Wales_Measuring.dita">
+			<linktext>Welsh Measuring Standards</linktext>
+		</link>
+		<link href="../Wales_Cmplx/Wales_Cmplx1.dita">
+			<linktext>Complex</linktext>
+		</link>
+	</related-links>
+</reference>

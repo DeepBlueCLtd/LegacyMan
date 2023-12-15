@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+   <appContext helpID="PD_1" path="PlatformData/PD_1.html"/>
+   <appContext helpID="unit_anchors" path="Britain_Cmplx/unit_anchors.html"/>
+   <appContext helpID="Phase_F" path="Britain_Cmplx/Phase_F.html"/>
+   <appContext helpID="Abbreviations" path="QuickLinksData/Abbreviations.html"/>
+   <appContext helpID="Warning" path="Introduction/Warning.html"/>
+   <appContext helpID="Contents_Index" path="QuickLinksData/Contents_Index.html"/>
+</map>
