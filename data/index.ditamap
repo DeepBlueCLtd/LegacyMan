@@ -3,24 +3,22 @@
 <map>
     <title>Field Manual v4 Feb 2022</title>
     <topicmeta/>
-    <topicref href="./welcome.dita" format="dita">
+    <topicref href="./PlatformData/PD_1.dita" format="dita">
         <topicmeta/>
     </topicref>
-    <topicref href="./regions/QuickLinksData/Contents_Index.dita" format="dita">
-        <topicmeta/>
-    </topicref>
-    <topicref href="./regions/regions.dita" format="dita">
-        <topicmeta/>
-    </topicref>
-    <topicref href="./regions/Britain_Cmplx/unit_anchors.dita" format="dita"> 
+    <topicref href="./Britain_Cmplx/unit_anchors.dita" format="dita"> 
         <topicmeta/>
     </topicref> 
-    <topicref href="./regions/Britain_Cmplx/Phase_F.dita" format="dita"> 
+    <topicref href="./Britain_Cmplx/Phase_F.dita" format="dita"> 
         <topicmeta/>
     </topicref> 
-    <topicref scope="external" href="https://deepbluecltd.github.io/LegacyMan/data/Introduction/ContentsPage.html" format="html">
-        <topicmeta>
-            <linktext>Legacy Content</linktext>
-        </topicmeta>
+    <topicref href="./QuickLinksData/Abbreviations.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+    <topicref href="./Introduction/Warning.dita" format="dita">
+        <topicmeta/>
+    </topicref>
+    <topicref href="./QuickLinksData/Contents_Index.dita" format="dita">
+        <topicmeta/>
     </topicref>
 </map>

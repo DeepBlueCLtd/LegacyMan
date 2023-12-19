@@ -32,7 +32,13 @@
       <input type="hidden" name="version" value="3">
     </form>
   </div>
-  
+  <div id="short-description" style="visibility: hidden;">
+    List of supporting documents
+  </div>
+  <div id="robin" style="visibility: hidden;">
+    This is some text by Robin that should be hidden!
+  </div>
+
   <div id="GrayLayer" style="position: absolute; width: 1024px; height: 49px; z-index: 2; left: 0px; top: 20px; background-color: #999999; layer-background-color: #999999; border: 1 none #000;">
     <div id="ReturnNav2" style="position: absolute; visibility: visible; left: 4px; top: 50px; width: 99px; height: 45px;">
       <a href="../Introduction/ContentsPage.html" target="main">Return to Contents</a>
@@ -44,7 +50,7 @@
       <a href="../PlatformData/PD_1.html" target="main">Logo 1</a>
     </div>
     <div id="Title" style="position: absolute; visibility: visible; left:402px; top: 12px; width: 236px">
-      <h2>CONTENTS INDEX</h2>
+      <h2>Contents</h2>
     </div>
   </div>
   
@@ -53,24 +59,16 @@
       <h1>&nbsp;</h1>
       <div style="position: absolute; visibility: visible; left: 21px; top: 1px; width: 906px;">
         <div align="center">
-          <table width="50%" border="1">
+          <div id="robin" style="visibility: hidden;">
+            This is some more text by Robin that should be hidden!
+          </div>
+          <table outputclass="contents-index" width="50%" border="0">
             <TR>
-              <TD width="26%" bgcolor="#999999"><strong>SUBJECT</strong></TD>
-              <TD width="11%" bgcolor="#999999"><strong>LINK</strong></TD>
-            </TR>
-            <TR>
-              <TD bgcolor="#999999"><strong>Abbreviations</strong></TD>
-              <TD><a href="../QuickLinksData/Abbreviations.html">Go To</a></TD>
-            </TR>
-            <TR>
-              <TD bgcolor="#999999"><strong>Brush Noise</strong></TD>
-              <TD><a href="../Brush Noise/Brush_Noise.html">Go to</a>
-              </TD>
-            </TR>
-            <TR>
-              <TD bgcolor="#999999"><strong>Vanes & Cranes</strong></TD>
-              <TD><a href="Vanes&Cranes.html">Go to</a>
-              </TD>
+              <TD><a outputclass="enterBtn" href="../QuickLinksData/Abbreviations.html">Abbreviations</a></TD>
+              <TD><a outputclass="enterBtn" href="../Brush Noise/Brush_Noise.html">Brush Noise</a></TD>
+              <TD><a outputclass="enterBtn" href="Vanes&Cranes.html">Vanes & Cranes</a></TD>
+              <TD><a outputclass="enterBtn" href="../Introduction/Warning.html">Warnings</a></TD>
+              <TD><a outputclass="enterBtn" href="../Welcome.html">Welcome</a></TD>
             </TR>
           </table>
         </div>
