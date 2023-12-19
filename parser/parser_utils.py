@@ -299,6 +299,7 @@ def is_skippable_div_id(div_id):
         "Layer",
         "GrayLayer",
         "header",
+        "ClickOnThePic",
     ]
     for skip_id in SKIPPABLE_DIV_IDS:
         if div_id.startswith(skip_id):
