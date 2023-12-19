@@ -331,17 +331,29 @@ def append_caption_if_needed(page, top_to_div_mapping):
         caption_top_to_div_mapping = {
             int(key): value
             for key, value in top_to_div_mapping
-            if value.has_attr("id") and "clickOnThePic" in value.get("id")
+            if value.has_attr("id") and "ClickOnThePic" in value.get("id")
         }
         selected_caption = None
         # Loop through until we find a relative top value (relative to the page top value)
-        # that is greater than 0 (ie. after it in the page, as captions always come below the image)
+        # that is greater than -100 (ie. shortly before it, or after it on the page)
         # and not more than 1000 pixels below it
+        # print(f"items:{caption_top_to_div_mapping}")
+        caption_before = False
         for key, value in caption_top_to_div_mapping.items():
             rel_top_value = key - page_top_value
-            if rel_top_value < 0:
+            # print(f"key:{key} {page_top_value} {rel_top_value}")
+            if rel_top_value < -100:
+                # caption too far above
+                # print("too far above")
                 continue
-            elif rel_top_value >= 0 and rel_top_value < 1000:
+            elif rel_top_value < 0:
+                # caption could be above image
+                # print("immediately above")
+                selected_caption = value
+                caption_before = True
+            elif rel_top_value < 700:
+                # print("below")
+                # caption not too far below image
                 selected_caption = value
 
         # Replace the "Click the picture..." text if it exists in the caption
@@ -357,4 +369,7 @@ def append_caption_if_needed(page, top_to_div_mapping):
                                 c.string.replace_with(c.string.replace(CLICK_PICTURE_TEXT, ""))
 
         if selected_caption is not None:
-            page.append(selected_caption)
+            if caption_before:
+                page.insert(0, selected_caption)
+            else:
+                page.append(selected_caption)
