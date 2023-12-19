@@ -92,8 +92,12 @@ Anchor
 								</entry>
 								<entry>2-100.4, 112, 132</entry>
 								<entry nameend="c4" namest="c3">H1, 3, 21 - 45, 55</entry>
-								<entry nameend="c6" namest="c5"> The quick brown fox does something similar
-            </entry>
+								<entry nameend="c6" namest="c5">
+									 The quick brown fox does something similar with a link for 
+									<xref format="dita" href="./BR_transducers.dita">
+										<b>Transducers</b>
+									</xref>
+								</entry>
 							</row>
 							<row>
 								<entry outputclass="bkLightGray">
