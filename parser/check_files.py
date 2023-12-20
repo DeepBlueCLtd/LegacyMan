@@ -42,7 +42,7 @@ def chunk_before_nbsp(s):
 
 
 def select_random_text_from_file(path, n):
-    html = Path(path).read_text()
+    html = Path(path).read_text(encoding="utf8")
     html_soup = BeautifulSoup(html, "html.parser")
 
     output = []

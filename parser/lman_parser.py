@@ -982,7 +982,7 @@ class Parser:
             return output_dita_path
 
         # Parse the HTML
-        html = input_file_path.read_text()
+        html = input_file_path.read_text(encoding="utf8")
         html_soup = BeautifulSoup(html, "html.parser")
 
         # Find all the QuickLinks tables and extract their link text and href
