@@ -608,7 +608,7 @@ class Parser:
                 imageList.append(element)
             else:
                 # finished processing images
-                continue
+                break
 
         # 2. was there more than one image in the list?
         if len(imageList) > 1:
