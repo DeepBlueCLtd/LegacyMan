@@ -597,6 +597,36 @@ class Parser:
         # insert title
         dita_section.append(dita_section_title)
 
+        # Fix something found in #606
+        # see if the content starts with a series of images in their own divs.  If they are, put
+        # them into one div, so they get displayed inline.
+        # 1. Collate images at start of element
+        imageList = []
+        for element in converted_bits:
+            if element.has_attr("id") and element["id"].startswith("image"):
+                # ok, it's an image
+                imageList.append(element)
+            else:
+                # finished processing images
+                continue
+
+        # 2. was there more than one image in the list?
+        if len(imageList) > 1:
+            # get the first div - since that is wherewe will put them.
+            firstImageDiv = imageList[0]
+            # loop through images
+            for index, image in enumerate(imageList):
+                # we leave the first image unchanged
+                if index > 0:
+                    # find children of this div
+                    for child in image.children:
+                        # if it's a tag, append it to the parent item
+                        if type(child) is bs4.element.Tag:
+                            firstImageDiv.append(child)
+            # lastly, remove the other images from the list
+            imagesToRemove = len(imageList)
+            del converted_bits[1:imagesToRemove]
+
         # insert rest of converted content
         dita_section.extend(converted_bits)
 
