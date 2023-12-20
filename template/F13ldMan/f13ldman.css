@@ -11,6 +11,7 @@ body#Welcome header.wh_header {
 /* put some whitespace between the sections. LM issue #581 */
 .section {
   padding-bottom: 200px;
+  border-top: 8px solid #448;
 }
 
 .wh_footer_protection{
