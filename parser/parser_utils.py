@@ -323,7 +323,7 @@ def append_caption_if_needed(page, top_to_div_mapping):
     if page is None:
         return
 
-    CLICK_PICTURE_TEXT = "Click the picture to return to the previous page."
+    CLICK_PICTURE_TEXT = "Click the picture to return to previous page."
     if page.name == "div" and page.has_attr("id") and page["id"].startswith("image"):
         # If it's just an image div then look for an associated caption div and add it
         page_top_value = get_top_value_for_page(page)
