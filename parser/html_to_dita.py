@@ -150,7 +150,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     isAbsolute = position == "absolute"
 
                 if isPageLayer or isAbsolute:
-                    div.unwrap()
+                    if len(div.contents) and div.parent is not None:
+                        div.unwrap()
                 else:
                     div.name = "p"
                     # TODO: verify if real HTML has divs with names
