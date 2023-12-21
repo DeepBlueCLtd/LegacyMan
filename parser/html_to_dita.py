@@ -68,6 +68,8 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
         return soup
     elif type(soup) is bs4.Comment:
         return None
+    elif type(soup) is bs4.ProcessingInstruction:
+        return soup
 
     # TODO: take clone of soup before we process it, since other high-level processing may be applied to the original
     # HTML content, which could rely on it not being transformed.
@@ -566,7 +568,6 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
             # dita_cell_element = htmlToDITA(html_cell_element, target_soup, "topic")
             # Convert all the children of the <td> element to DITA, one at a time
             for index, child in enumerate(html_cell_element.contents):
-                print(f"1 {type(child)} {len(html_cell_element.contents)} {child}")
                 if index == 0 and len(html_cell_element.contents) == 1:
                     # ok, just one child. Is it a `p`?
                     if child.name == "p":
@@ -574,9 +575,8 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
                             item = child.contents[0]
                             if type(item) is bs4.element.NavigableString:
                                 # ok, replace the paragraph with its contents
-                                print(f"1a {type(child)} {child} {type(item)} {item}")
-                                child.replace_with(item)
-                                print(f"2 {type(child)} {child}")
+                                child = item
+
                 converted_child = htmlToDITA(child, target_soup, topic_id)
                 if converted_child is not None:
                     dita_cell_element.append(converted_child)
