@@ -8,10 +8,11 @@ body#Welcome header.wh_header {
 }
 
 /* when a paragraph is inside a cell, we don't need to provide vertical padding */
-.topic\/table .p {
+/* commented out, since we should not need it */
+/* .topic\/table .p {
   margin-top: 0;
   margin-bottom: 0;
-}
+} */
 
 
 /* put some whitespace between the sections. LM issue #581 */
