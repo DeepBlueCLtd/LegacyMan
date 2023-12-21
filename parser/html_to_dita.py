@@ -565,7 +565,18 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
 
             # dita_cell_element = htmlToDITA(html_cell_element, target_soup, "topic")
             # Convert all the children of the <td> element to DITA, one at a time
-            for child in html_cell_element.contents:
+            for index, child in enumerate(html_cell_element.contents):
+                print(f"1 {type(child)} {len(html_cell_element.contents)} {child}")
+                if index == 0 and len(html_cell_element.contents) == 1:
+                    # ok, just one child. Is it a `p`?
+                    if child.name == "p":
+                        if len(child.contents) == 1:
+                            item = child.contents[0]
+                            if type(item) is bs4.element.NavigableString:
+                                # ok, replace the paragraph with its contents
+                                print(f"1a {type(child)} {child} {type(item)} {item}")
+                                child.replace_with(item)
+                                print(f"2 {type(child)} {child}")
                 converted_child = htmlToDITA(child, target_soup, topic_id)
                 if converted_child is not None:
                     dita_cell_element.append(converted_child)
