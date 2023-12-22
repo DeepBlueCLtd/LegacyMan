@@ -351,10 +351,12 @@ def append_caption_if_needed(page, top_to_div_mapping):
                 # print("immediately above")
                 selected_caption = value
                 caption_before = True
+                break
             elif rel_top_value < 700:
                 # print("below")
                 # caption not too far below image
                 selected_caption = value
+                break
 
         # Replace the "Click the picture..." text if it exists in the caption
         if selected_caption is not None and CLICK_PICTURE_TEXT in selected_caption.get_text():
