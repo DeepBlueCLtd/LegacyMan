@@ -1,9 +1,7 @@
 import copy
 import logging
-import os
 from bs4 import BeautifulSoup
 import bs4
-from pathlib import Path, PurePath
 import cssutils
 import re
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
@@ -568,8 +566,34 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
 
             # dita_cell_element = htmlToDITA(html_cell_element, target_soup, "topic")
             # Convert all the children of the <td> element to DITA, one at a time
-            for index, child in enumerate(html_cell_element.contents):
-                if index == 0 and len(html_cell_element.contents) == 1:
+
+            elements = html_cell_element.contents
+
+            # see if the cell contains a simple paragraph object (possibly wrapped
+            # in navigable strings)
+            def isParaOrNav(item):
+                isPara = type(item) is bs4.element.Tag and item.name == "p"
+                isNav = type(item) is bs4.element.NavigableString
+                return isPara or isNav
+
+            # does the object just contain paras or nav elements
+            hasPara = list(filter(isParaOrNav, elements))
+            if len(hasPara) == len(elements):
+                if len(hasPara) == 2 or len(hasPara) == 3:
+                    # remove the empty navigable strings
+                    def notEmptyNavStrings(item):
+                        if type(item) is bs4.element.NavigableString:
+                            return len(item.strip()) > 1
+                        return type(item) is bs4.element.Tag
+
+                    paras = list(filter(notEmptyNavStrings, elements))
+                    # ok, over-write the elements array with this simple item
+                    elements = paras
+            for index, child in enumerate(elements):
+                # print(f"in:{child.name} {child} {len(elements)}")
+                # note: if it is 2 or 3 elements long, one or two of them may be empty
+                # navigable strings
+                if index == 0 and len(elements) == 1:
                     # ok, just one child. Is it a `p`?
                     if child.name == "p":
                         if len(child.contents) == 1:
