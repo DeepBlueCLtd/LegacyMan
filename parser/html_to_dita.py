@@ -1,9 +1,7 @@
 import copy
 import logging
-import os
 from bs4 import BeautifulSoup
 import bs4
-from pathlib import Path, PurePath
 import cssutils
 import re
 from parser_utils import convert_html_href_to_dita_href, sanitise_filename, is_button_id
@@ -279,9 +277,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # todo: this converts the brackets to &lt; and &gt;.
     # we need to find a way to make BS4 generate the processing instruction
     for br in soup.find_all("br"):
-        br.decompose()
+        br.replace_with(BeautifulSoup("<?linebreak?>", "lxml"))
+        # br.decompose()
     if soup.name.lower() == "br":
-        return "<?linebreak?>"
+        return BeautifulSoup("<?linebreak?>", "lxml")
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
@@ -567,8 +566,22 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
 
             # dita_cell_element = htmlToDITA(html_cell_element, target_soup, "topic")
             # Convert all the children of the <td> element to DITA, one at a time
-            for index, child in enumerate(html_cell_element.contents):
-                if index == 0 and len(html_cell_element.contents) == 1:
+
+            elements = html_cell_element.contents
+
+            # strip out empty navigable strings,
+            def notEmptyNav(item):
+                if type(item) is bs4.element.NavigableString:
+                    return len(item) > 1
+                return True
+
+            elements = list(filter(notEmptyNav, elements))
+
+            for index, child in enumerate(elements):
+                # print(f"in:{child.name} {child} {len(elements)}")
+                # note: if it's only one element long, and that's a paragraph,
+                # remove the paragraph wrapper.
+                if index == 0 and len(elements) == 1:
                     # ok, just one child. Is it a `p`?
                     if child.name == "p":
                         if len(child.contents) == 1:
