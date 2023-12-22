@@ -569,30 +569,18 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
 
             elements = html_cell_element.contents
 
-            # see if the cell contains a simple paragraph object (possibly wrapped
-            # in navigable strings)
-            def isParaOrNav(item):
-                isPara = type(item) is bs4.element.Tag and item.name == "p"
-                isNav = type(item) is bs4.element.NavigableString
-                return isPara or isNav
+            # strip out empty navigable strings,
+            def notEmptyNav(item):
+                if type(item) is bs4.element.NavigableString:
+                    return len(item) > 1
+                return True
 
-            # does the object just contain paras or nav elements
-            hasPara = list(filter(isParaOrNav, elements))
-            if len(hasPara) == len(elements):
-                if len(hasPara) == 2 or len(hasPara) == 3:
-                    # remove the empty navigable strings
-                    def notEmptyNavStrings(item):
-                        if type(item) is bs4.element.NavigableString:
-                            return len(item.strip()) > 1
-                        return type(item) is bs4.element.Tag
+            elements = list(filter(notEmptyNav, elements))
 
-                    paras = list(filter(notEmptyNavStrings, elements))
-                    # ok, over-write the elements array with this simple item
-                    elements = paras
             for index, child in enumerate(elements):
                 # print(f"in:{child.name} {child} {len(elements)}")
-                # note: if it is 2 or 3 elements long, one or two of them may be empty
-                # navigable strings
+                # note: if it's only one element long, and that's a paragraph,
+                # remove the paragraph wrapper.
                 if index == 0 and len(elements) == 1:
                     # ok, just one child. Is it a `p`?
                     if child.name == "p":
