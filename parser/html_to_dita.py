@@ -279,9 +279,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # todo: this converts the brackets to &lt; and &gt;.
     # we need to find a way to make BS4 generate the processing instruction
     for br in soup.find_all("br"):
-        br.decompose()
+        br.replace_with(BeautifulSoup("<?linebreak?>", "lxml"))
+        # br.decompose()
     if soup.name.lower() == "br":
-        return "<?linebreak?>"
+        return BeautifulSoup("<?linebreak?>", "lxml")
 
     # 8. Replace <strong> with <bold>
     for strong in soup.find_all("strong"):
