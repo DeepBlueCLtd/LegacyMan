@@ -67,7 +67,7 @@
     </div>
     <!-- note: Changed "top" in next line from 13px to -3px, so the quick links are editable -->
     <div id="Title3" style="position: absolute; visibility: visible; left: 328px; top: 3px; width:370px">
-      <h2>Unit A28 Remarks</h2>
+      <h2>Unit A28 Title</h2>
     </div>
     <div name="BritainFlag" id="image10"
       style="position: absolute; visibility: visible; left: 5px; top: 6px; width: 66px; height: 37px"><a
@@ -299,6 +299,9 @@
     <div id="PageLayer2" style="position: absolute; width: 993px; height: 677px; left: 40px; top: 0px">
       <h1>Unit A28 Remarks b</h1>
       <p>&nbsp;</p>
+      <!-- note from Ian: the following pattern does appear in the wild.  The image is in the correct logical order for the content, but uses absolute positioning to put it at the top of a block of whitespace. The 
+      correct way to handle it is to remove the parent element (so it's a plain old image), and then
+    remove the following whitespace -->
       <p><span
           style="position: absolute; width:398px; height: 240px; z-index: 2; left: 271px; top: 73px; overflow: auto;"><img
             src="./Content/Images/leyland_3(a).jpg" name="image5" width="415" height="234" /></span></p>
