@@ -982,24 +982,26 @@ class Parser:
         # 3. order floating div/span contents by top
         floating_elements = get_floating_elements(html)
 
-        print([(fe.element.name, fe.element.get("id"), fe.top) for fe in floating_elements])
+        # print([(fe.element.name, fe.element.get("id"), fe.top) for fe in floating_elements])
 
         # 4. create list of whitespace blocks within page elements of the the file
         # 5. create list of top level elements that contain whitespace, generate the top for these parent elements
         blank_elements = get_blank_spaces(html)
 
-        print([(len(bse.elements), bse.top) for bse in blank_elements])
+        # print([(len(bse.elements), bse.top) for bse in blank_elements])
 
         # print([el.sourceline for el in blank_elements[1].elements])
 
+        # 6. for each top level elements, find images with top value >= that element top, but < the next element top
+        # 7. sequentially insert grouped images/tables into whitespace for top level blocks, ensuring the calculated top of the image is greater than or equal to the top of the closest absolute-positioned parent of the whitespace.
         for blank_space in blank_elements:
             suitable_floating_elements = [
                 fe
                 for fe in floating_elements
                 if fe.top > blank_space.top and fe.top < blank_space.top + 200
             ]
-            print(len(suitable_floating_elements))
-            print((suitable_floating_elements[0].element.name, suitable_floating_elements[0].top))
+            # print(len(suitable_floating_elements))
+            # print((suitable_floating_elements[0].element.name, suitable_floating_elements[0].top))
             if len(suitable_floating_elements) == 1:
                 first_el = blank_space.elements[0]
                 first_el.name = "div"
@@ -1008,8 +1010,6 @@ class Parser:
                 for el in blank_space.elements[1:]:
                     el.decompose()
 
-        # 6. for each top level elements, find images with top value >= that element top, but < the next element top
-        # 7. sequentially insert grouped images/tables into whitespace for top level blocks, ensuring the calculated top of the image is greater than or equal to the top of the closest absolute-positioned parent of the whitespace.
         return html
 
     def process_generic_file(self, input_file_path):
@@ -1044,7 +1044,7 @@ class Parser:
 
         # NEW
         # Deal with the floating tables/images in this document by putting them in the correct chunk of whitespace
-        self.process_floating_parts(html_soup)
+        html_soup = self.process_floating_parts(html_soup)
 
         # Find all the QuickLinks tables and extract their link text and href
         # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)

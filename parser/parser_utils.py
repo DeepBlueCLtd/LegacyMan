@@ -418,6 +418,8 @@ def get_whole_page_top_value(el):
             if top_value is not None:
                 running_top_value += top_value
         el = el.parent
+        if el is None:
+            break
 
     return running_top_value
 
@@ -456,7 +458,7 @@ def get_blank_spaces(html):
             el = next_sibling_tag(el)
         if count > 0:
             i += count
-        if count >= 4:
+        if count >= 3:
             # print(f"i = {i}, count = {count}, start = {i - (count)}, end = {i + 1}")
             chosen_elements = p_elements[i - (count) : i]
             top_value = get_whole_page_top_value(chosen_elements[0])
