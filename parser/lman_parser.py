@@ -17,7 +17,7 @@ import logging
 import json
 import argparse
 from html_to_dita import convert_html_table_to_dita_table
-
+import copy
 
 from parser_utils import (
     delete_directory,
@@ -978,7 +978,7 @@ class Parser:
             else:
                 self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
 
-    def process_floating_parts(self, html):
+    def process_floating_parts(self, html, input_file_path):
         # 1. find all floating divs/spans (where they are not blacklisted either by the div name or image filename)
         # 2. walk back up parent tree to generate top coord in the whole-page coord space
         # 3. order floating div/span contents by top
@@ -992,27 +992,31 @@ class Parser:
 
         # print([(len(bse.elements), bse.top) for bse in blank_elements])
 
-        # print([el.sourceline for el in blank_elements[1].elements])
-
-        # 6. for each top level elements, find images with top value >= that element top, but < the next element top
-        # 7. sequentially insert grouped images/tables into whitespace for top level blocks, ensuring the calculated top of the image is greater than or equal to the top of the closest absolute-positioned parent of the whitespace.
         for blank_space in blank_elements:
             suitable_floating_elements = [
                 fe
                 for fe in floating_elements
-                if fe.top > blank_space.top and fe.top < blank_space.top + 200
+                if fe.top > blank_space.top and fe.top < blank_space.top + 1000
+                # if fe.top > blank_space.top
             ]
             # print(len(suitable_floating_elements))
             # print((suitable_floating_elements[0].element.name, suitable_floating_elements[0].top))
-            if len(suitable_floating_elements) == 1:
+            # if len(suitable_floating_elements) == 1:
+            if len(suitable_floating_elements) > 0:
+                floating_elements.remove(suitable_floating_elements[0])
+
                 first_el = blank_space.elements[0]
                 first_el.name = "div"
                 first_el.append(suitable_floating_elements[0].element)
                 del suitable_floating_elements[0].element["style"]
                 for el in blank_space.elements[1:]:
                     el.decompose()
+            else:
+                print(
+                    f"Warning: no suitable floating elements for blank space at line {blank_space.elements[0].sourceline} of {str(input_file_path)}"
+                )
 
-        return html
+        return BeautifulSoup(str(html), "html.parser")
 
     def process_generic_file(self, input_file_path):
         if "PD_1" in str(input_file_path):
@@ -1046,7 +1050,7 @@ class Parser:
 
         # NEW
         # Deal with the floating tables/images in this document by putting them in the correct chunk of whitespace
-        html_soup = self.process_floating_parts(html_soup)
+        html_soup = self.process_floating_parts(html_soup, input_file_path)
 
         # Find all the QuickLinks tables and extract their link text and href
         # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)
