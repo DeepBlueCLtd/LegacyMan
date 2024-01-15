@@ -643,11 +643,13 @@ class Parser:
         found = False
         for el in empty_p_elements:
             count = 0
-            while is_empty_p_element(next_sibling_tag(el)):
+            while is_empty_p_element(el):
                 count += 1
                 if count >= 4:
                     found = True
                     break
+                el = next_sibling_tag(el)
+
             if found and self.warn_on_blank_runs:
                 logging.warning(
                     f"Found string of repeated <p>&nbsp;</p> elements in div with ID {page.get('id')} in file {filename}"
