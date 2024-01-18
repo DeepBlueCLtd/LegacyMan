@@ -327,10 +327,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     spanItems = soup.find_all("span", recursive=True)
     if soup.name.lower() == "span":
-        child_paras = soup.find_all("p", recursive=True)
+        child_paras = soup.find_all("p", recursive=False)
         if len(child_paras) == 1:
             # it contains a single para, drop the span
-            print(f"span:{soup} // .{soup.contents[0]}. //  {soup.contents[1]}")
+            # print(f"span:{soup} // .{soup.contents[0]}. //  {soup.contents[1]}")
             para = child_paras[0]
             if para.has_attr("id") and not soup.has_attr("id"):
                 # copy the id to the span
