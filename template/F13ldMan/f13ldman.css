@@ -12,7 +12,7 @@
 }
 
 .related-links a {
-  background: #fff url(resources/images/external_link.svg) center right no-repeat;
+  background: transparent url(resources/images/external_link.svg) center right no-repeat;
   padding-right: 22px;
 }
 
