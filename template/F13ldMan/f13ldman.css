@@ -1,6 +1,21 @@
 
 /* user-defined CSS */
 
+/* styling for related links */
+.related-links a[href$='.xls'], a[href$='.xlsx'] {
+  background: transparent url(resources/images/icon_excel.gif) center right no-repeat !important;
+  padding-right: 22px;
+}
+
+.related-links a[href^="#"] {
+  background: transparent;
+}
+
+.related-links a {
+  background: #fff url(resources/images/external_link.svg) center right no-repeat;
+  padding-right: 22px;
+}
+
 
 /* hide web-help header bar in welcome page */
 body#Welcome header.wh_header {
