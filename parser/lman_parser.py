@@ -1014,9 +1014,11 @@ class Parser:
                 for el in blank_space.elements[1:]:
                     el.decompose()
             else:
-                print(
-                    f"Warning: no suitable floating elements for blank space at line {blank_space.elements[0].sourceline} of {str(input_file_path)}"
-                )
+                pic_layer_elements = html.find_all(id=re.compile("PicLayer"))
+                if len(pic_layer_elements) == 0:
+                    print(
+                        f"Warning: no suitable floating elements for blank space at line {blank_space.elements[0].sourceline} of {str(input_file_path)}"
+                    )
 
         return BeautifulSoup(str(html), "html.parser")
 
