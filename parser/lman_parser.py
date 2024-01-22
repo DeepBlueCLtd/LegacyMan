@@ -40,6 +40,8 @@ from parser_utils import (
     get_whole_page_top_value,
     get_blank_spaces,
     get_floating_elements,
+    remove_style_recursively,
+    FloatingElement,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -992,6 +994,23 @@ class Parser:
 
         # print([(len(bse.elements), bse.top) for bse in blank_elements])
 
+        # This is some horrible code to deal with a nasty situation
+        # The situation is one like the table at the bottom of unit_banjo.html, where there isn't a PageLayer
+        # inside the BottomLayer, and instead there is a div that could be found as a suitable div to move to a set
+        # of blank elements. However, the relevant blank elements are inside the div, and we end up with a circular reference
+        # (we try and replace a blank element with one of the divs that contains that blank element).
+        # There may be other ways of solving this, but if not I imagine I can clean it up and (hopefully) make it more efficient
+        # but for the moment I just want to see if it works on the real data
+        for i in range(len(floating_elements)):
+            fe = floating_elements[i]
+            children = fe.element.find_all()
+            for be in blank_elements:
+                for el in be.elements:
+                    if el in children:
+                        floating_elements[i] = FloatingElement(
+                            element=fe.element.find_all("div")[0], top=fe.top
+                        )
+
         for blank_space in blank_elements:
             suitable_floating_elements = [
                 fe
@@ -1003,18 +1022,26 @@ class Parser:
             ]
             # print(len(suitable_floating_elements))
             # print((suitable_floating_elements[0].element.name, suitable_floating_elements[0].top))
-            # if len(suitable_floating_elements) == 1:
+            # print((suitable_floating_elements[1].element.name, suitable_floating_elements[1].top))
+
+            # print(suitable_floating_elements[0].element)
             if len(suitable_floating_elements) > 0:
                 floating_elements.remove(suitable_floating_elements[0])
 
+                selected_el = suitable_floating_elements[0].element
+
+                # print(selected_el)
+
                 first_el = blank_space.elements[0]
                 first_el.name = "div"
-                first_el.append(suitable_floating_elements[0].element)
-                del suitable_floating_elements[0].element["style"]
+                first_el.append(selected_el)
+
+                remove_style_recursively(selected_el)
                 for el in blank_space.elements[1:]:
                     el.decompose()
             else:
                 pic_layer_elements = html.find_all(id=re.compile("PicLayer"))
+                # Only warn if this isn't a pics file
                 if len(pic_layer_elements) == 0:
                     print(
                         f"Warning: no suitable floating elements for blank space at line {blank_space.elements[0].sourceline} of {str(input_file_path)}"

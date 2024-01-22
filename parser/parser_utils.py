@@ -400,13 +400,21 @@ def next_sibling_tag(el):
 
 def is_floating_div_or_span(el):
     if el.name in ("div", "span") and el.has_attr("style"):
-        bl_parents = el.find_parents(id=re.compile("PageLayer"))
+        bl_parents = el.find_parents(id=re.compile("BottomLayer"))
         if len(bl_parents) > 0:
+            if el.has_attr("id") and "PageLayer" in el["id"]:
+                return False
             css = el.get("style")
             top_value = get_top_value(css)
             if top_value is not None:
                 return True
     return False
+
+
+def remove_style_recursively(el):
+    del el["style"]
+    for child_el in el.find_all(recursive=False):
+        del child_el["style"]
 
 
 def get_whole_page_top_value(el):
