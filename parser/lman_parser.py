@@ -996,8 +996,10 @@ class Parser:
             suitable_floating_elements = [
                 fe
                 for fe in floating_elements
-                if fe.top > blank_space.top and fe.top < blank_space.top + 1000
-                # if fe.top > blank_space.top
+                # The basic criteria is this is looking for floating elements whose top value is greater than the top of a blank space element,
+                # but not more than 1000 pixels greater. The 'top - 10' bit is because a few of the image divs have a small negative top value
+                # (like -2) which means they end up not quite fitting the basic criteria
+                if fe.top > (blank_space.top - 10) and fe.top < blank_space.top + 1000
             ]
             # print(len(suitable_floating_elements))
             # print((suitable_floating_elements[0].element.name, suitable_floating_elements[0].top))
