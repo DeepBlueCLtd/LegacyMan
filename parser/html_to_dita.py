@@ -572,7 +572,7 @@ def convert_html_table_to_dita_table(source_html, target_soup, topic_id):
             # strip out empty navigable strings,
             def notEmptyNav(item):
                 if type(item) is bs4.element.NavigableString:
-                    return len(item) > 1
+                    return not item.isspace() or len(item) > 1
                 return True
 
             elements = list(filter(notEmptyNav, elements))
