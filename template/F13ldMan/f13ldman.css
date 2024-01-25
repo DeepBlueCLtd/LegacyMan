@@ -12,7 +12,7 @@
 }
 
 .related-links a {
-  background: #fff url(resources/images/External_link.svg) center right no-repeat;
+  background: transparent url(resources/images/external_link.svg) center right no-repeat;
   padding-right: 22px;
 }
 
@@ -44,7 +44,6 @@ body#Welcome header.wh_header {
   width: 100%;
   color: #000;
   background: none #bfebb9;
-  top: 2em;
 }
 
 .wh_footer_protection span{
