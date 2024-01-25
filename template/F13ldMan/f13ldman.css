@@ -36,6 +36,11 @@ body#Welcome header.wh_header {
   border-top: 8px solid #448;
 }
 
+/* but not for the flag */
+.section[id$="flag-section"] {
+  padding-bottom: 0; 
+}
+
 .wh_footer_protection{
   text-align: center;
   padding: 1em;
