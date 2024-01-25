@@ -39,6 +39,12 @@ body#Welcome header.wh_header {
 /* but not for the flag */
 .section[id$="flag-section"] {
   padding-bottom: 0; 
+  border-top: none;
+}
+
+/* hide the section title */
+.section[id$="flag-section"] .sectiontitle {
+  display: none;
 }
 
 .wh_footer_protection{
