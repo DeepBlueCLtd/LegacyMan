@@ -299,11 +299,12 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 9a. For top-level block-quotes that contain child block-quotes
     for bq in soup.find_all("blockquote", recursive=False):
         if bq.find("blockquote"):
+            bq.decompose()
             # blockquotes used for padding. replace with placeholder
-            para = dita_soup.new_tag("p")
-            para.string = "[WHITESPACE FOR TABLE]"
-            para["outputclass"] = "placeholder"
-            bq.replace_with(para)
+            # para = dita_soup.new_tag("p")
+            # para.string = "[WHITESPACE FOR TABLE]"
+            # para["outputclass"] = "placeholder"
+            # bq.replace_with(para)
 
     # 9b. For remaining block-quotes check for lists
     for bq in soup.find_all("blockquote", recursive=True):
