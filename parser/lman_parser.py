@@ -893,7 +893,7 @@ class Parser:
                     logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
 
             pages_to_process = sorted(
-                list(pages_to_process), key=lambda x: get_top_value_for_page(x)
+                list(pages_to_process), key=lambda x: get_whole_page_top_value(x)
             )
 
             for page in pages_to_process:
