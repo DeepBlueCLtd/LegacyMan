@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 from pathlib import Path
 import platform
 import shutil
@@ -17,7 +17,7 @@ import logging
 import json
 import argparse
 from html_to_dita import convert_html_table_to_dita_table
-
+import copy
 
 from parser_utils import (
     delete_directory,
@@ -34,6 +34,14 @@ from parser_utils import (
     does_image_links_table_exist,
     get_top_value_for_page,
     append_caption_if_needed,
+    is_empty_p_element,
+    next_sibling_tag,
+    is_floating_div_or_span,
+    get_whole_page_top_value,
+    get_blank_spaces,
+    get_floating_elements,
+    remove_style_recursively,
+    FloatingElement,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -630,21 +638,6 @@ class Parser:
         # insert rest of converted content
         dita_section.extend(converted_bits)
 
-        def is_empty_p_element(el):
-            if el is None:
-                return False
-            elif el.name == "p" and el.text.strip() == "" and len(el.find_all()) == 0:
-                return True
-            else:
-                return False
-
-        def next_sibling_tag(el):
-            next_sib = el.next_sibling
-            while type(next_sib) is bs4.element.NavigableString:
-                next_sib = next_sib.next_sibling
-
-            return next_sib
-
         # Check for repeated <p>&nbsp;</p> elements
         p_elements = page.find_all("p")
         empty_p_elements = list(filter(is_empty_p_element, p_elements))
@@ -652,11 +645,13 @@ class Parser:
         found = False
         for el in empty_p_elements:
             count = 0
-            while is_empty_p_element(next_sibling_tag(el)):
+            while is_empty_p_element(el):
                 count += 1
                 if count >= 4:
                     found = True
                     break
+                el = next_sibling_tag(el)
+
             if found and self.warn_on_blank_runs:
                 logging.warning(
                     f"Found string of repeated <p>&nbsp;</p> elements in div with ID {page.get('id')} in file {filename}"
@@ -898,7 +893,7 @@ class Parser:
                     logging.warning(f"Multiple matches for anchor {anchor} in {input_file_path}")
 
             pages_to_process = sorted(
-                list(pages_to_process), key=lambda x: get_top_value_for_page(x)
+                list(pages_to_process), key=lambda x: get_whole_page_top_value(x)
             )
 
             for page in pages_to_process:
@@ -985,6 +980,75 @@ class Parser:
             else:
                 self.link_tracker[str(filepath)].add(FIRST_PAGE_LAYER_MARKER)
 
+    def process_floating_parts(self, html, input_file_path):
+        # 1. find all floating divs/spans (where they are not blacklisted either by the div name or image filename)
+        # 2. walk back up parent tree to generate top coord in the whole-page coord space
+        # 3. order floating div/span contents by top
+        floating_elements = get_floating_elements(html)
+
+        # print([(fe.element.name, fe.element.get("id"), fe.top) for fe in floating_elements])
+
+        # 4. create list of whitespace blocks within page elements of the the file
+        # 5. create list of top level elements that contain whitespace, generate the top for these parent elements
+        blank_elements = get_blank_spaces(html)
+
+        # print([(len(bse.elements), bse.top) for bse in blank_elements])
+
+        # This is some horrible code to deal with a nasty situation
+        # The situation is one like the table at the bottom of unit_banjo.html, where there isn't a PageLayer
+        # inside the BottomLayer, and instead there is a div that could be found as a suitable div to move to a set
+        # of blank elements. However, the relevant blank elements are inside the div, and we end up with a circular reference
+        # (we try and replace a blank element with one of the divs that contains that blank element).
+        # There may be other ways of solving this, but if not I imagine I can clean it up and (hopefully) make it more efficient
+        # but for the moment I just want to see if it works on the real data
+        for i in range(len(floating_elements)):
+            fe = floating_elements[i]
+            children = fe.element.find_all()
+            for be in blank_elements:
+                for el in be.elements:
+                    if el in children:
+                        floating_elements[i] = FloatingElement(
+                            element=fe.element.find_all("div")[0], top=fe.top
+                        )
+
+        for blank_space in blank_elements:
+            suitable_floating_elements = [
+                fe
+                for fe in floating_elements
+                # The basic criteria is this is looking for floating elements whose top value is greater than the top of a blank space element,
+                # but not more than 1000 pixels greater. The 'top - 10' bit is because a few of the image divs have a small negative top value
+                # (like -2) which means they end up not quite fitting the basic criteria
+                if fe.top > (blank_space.top - 10) and fe.top < blank_space.top + 1000
+            ]
+            # print(len(suitable_floating_elements))
+            # print((suitable_floating_elements[0].element.name, suitable_floating_elements[0].top))
+            # print((suitable_floating_elements[1].element.name, suitable_floating_elements[1].top))
+
+            # print(suitable_floating_elements[0].element)
+            if len(suitable_floating_elements) > 0:
+                floating_elements.remove(suitable_floating_elements[0])
+
+                selected_el = suitable_floating_elements[0].element
+
+                # print(selected_el)
+
+                first_el = blank_space.elements[0]
+                first_el.name = "div"
+                first_el.append(selected_el)
+
+                remove_style_recursively(selected_el)
+                for el in blank_space.elements[1:]:
+                    el.decompose()
+            else:
+                pic_layer_elements = html.find_all(id=re.compile("PicLayer"))
+                # Only warn if this isn't a pics file
+                if len(pic_layer_elements) == 0:
+                    print(
+                        f"Warning: no suitable floating elements for blank space at line {blank_space.elements[0].sourceline} of {str(input_file_path)}"
+                    )
+
+        return BeautifulSoup(str(html), "html.parser")
+
     def process_generic_file(self, input_file_path):
         if "PD_1" in str(input_file_path):
             return
@@ -1014,6 +1078,10 @@ class Parser:
         # Parse the HTML
         html = input_file_path.read_text(encoding="utf8")
         html_soup = BeautifulSoup(html, "html.parser")
+
+        # NEW
+        # Deal with the floating tables/images in this document by putting them in the correct chunk of whitespace
+        html_soup = self.process_floating_parts(html_soup, input_file_path)
 
         # Find all the QuickLinks tables and extract their link text and href
         # We find them by finding all divs with an id that includes the text QuickLinksTable (gets QLT, QLT1, QLT2 etc)

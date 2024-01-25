@@ -327,8 +327,19 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
     # 10a. Replace `span` or `strong` used for red-formatting with a <ph> equivalent
     spanItems = soup.find_all("span", recursive=True)
     if soup.name.lower() == "span":
-        # append the soup to the list of spans
-        spanItems.append(soup)
+        child_paras = soup.find_all("p", recursive=False)
+        if len(child_paras) == 1:
+            # it contains a single para, drop the span
+            # print(f"span:{soup} // .{soup.contents[0]}. //  {soup.contents[1]}")
+            para = child_paras[0]
+            if para.has_attr("id") and not soup.has_attr("id"):
+                # copy the id to the span
+                soup["id"] = para["id"]
+            soup.contents[1].unwrap()
+            soup.name = "p"
+        else:
+            # append the soup to the list of spans
+            spanItems.append(soup)
 
     for span in spanItems:
         if span.has_attr("style"):
@@ -357,6 +368,9 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
         if span.name == "span":
             # If it's still a span element by the time we get here
             # then just change it to a ph element with no output class
+
+            # note: we can't have a 'p' inside a 'ph'. So
+            # if the span contains a p, drop the span
             span.name = "ph"
             del span["align"]
             # span may be used to position image. remove style

@@ -1,3 +1,4 @@
+from collections import namedtuple
 import shutil
 from urllib.parse import urlparse
 import xml.dom.minidom
@@ -8,6 +9,7 @@ from pathlib import Path
 import cssutils
 import logging
 import re
+import bs4
 
 # package of utility helpers that are not specific to the task of LegacyMan
 
@@ -375,3 +377,103 @@ def append_caption_if_needed(page, top_to_div_mapping):
                 page.insert(0, selected_caption)
             else:
                 page.append(selected_caption)
+
+
+def is_empty_p_element(el):
+    if el is None:
+        return False
+    elif el.name == "p" and el.text.strip() == "" and len(el.find_all()) == 0:
+        return True
+    elif el.name == "br":
+        return True
+    else:
+        return False
+
+
+def next_sibling_tag(el):
+    next_sib = el.next_sibling
+    while type(next_sib) is bs4.element.NavigableString:
+        next_sib = next_sib.next_sibling
+
+    return next_sib
+
+
+def is_floating_div_or_span(el):
+    if el.name in ("div", "span") and el.has_attr("style"):
+        bl_parents = el.find_parents(id=re.compile("BottomLayer"))
+        if len(bl_parents) > 0:
+            if el.has_attr("id") and "PageLayer" in el["id"]:
+                return False
+            css = el.get("style")
+            top_value = get_top_value(css)
+            if top_value is not None:
+                return True
+    return False
+
+
+def remove_style_recursively(el):
+    del el["style"]
+    for child_el in el.find_all(recursive=False):
+        del child_el["style"]
+
+
+def get_whole_page_top_value(el):
+    running_top_value = 0
+
+    while el.name != "body":
+        if el.has_attr("style"):
+            top_value = get_top_value(el["style"])
+            if top_value is not None:
+                running_top_value += top_value
+        el = el.parent
+        if el is None:
+            break
+
+    return running_top_value
+
+
+FloatingElement = namedtuple("FloatingElement", ["element", "top"])
+BlankSpaceElements = namedtuple("BlankSpaceElements", ["elements", "top"])
+
+
+def get_floating_elements(html):
+    floating_elements = html.find_all(is_floating_div_or_span)
+
+    floating_elements = [
+        FloatingElement(element=el, top=get_whole_page_top_value(el)) for el in floating_elements
+    ]
+
+    floating_elements = sorted(floating_elements, key=lambda el: el.top)
+
+    return floating_elements
+
+
+def get_blank_spaces(html):
+    p_elements = html.find_all("p")
+
+    blank_elements = []
+    i = 0
+    while i < len(p_elements):
+        el = p_elements[i]
+        count = 0
+        # If it's not an empty p element then skip to next one in the list
+        if not is_empty_p_element(el):
+            i += 1
+            continue
+        # If we've got here then it is an empty p element
+        while is_empty_p_element(next_sibling_tag(el)):
+            count += 1
+            el = next_sibling_tag(el)
+        if count > 0:
+            i += count
+        if count >= 3:
+            # print(f"i = {i}, count = {count}, start = {i - (count)}, end = {i + 1}")
+            chosen_elements = p_elements[i - (count) : i]
+            top_value = get_whole_page_top_value(chosen_elements[0])
+            if top_value != 0:
+                bse = BlankSpaceElements(elements=chosen_elements, top=top_value)
+
+                blank_elements.append(bse)
+        else:
+            i += 1
+    return blank_elements
