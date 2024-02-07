@@ -61,8 +61,8 @@ def remove_leading_slashes(path):
 
 
 def write_prettified_xml(dita_soup, target_file_path):
-    prettified_code = prettify_xml(str(dita_soup))
-    # prettified_code = str(dita_soup)
+    # prettified_code = prettify_xml(str(dita_soup))
+    prettified_code = str(dita_soup)
 
     target_file_path = Path(sanitise_filename(target_file_path))
     target_file_path.parent.mkdir(parents=True, exist_ok=True)
