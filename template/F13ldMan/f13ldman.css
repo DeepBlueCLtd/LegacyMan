@@ -29,6 +29,11 @@ body#Welcome header.wh_header {
   margin-bottom: 0;
 } */
 
+/** centre figures on the page */
+figure {
+  margin: auto;
+  width: 90%;
+}
 
 /* put some whitespace between the sections. LM issue #581 */
 .section {
