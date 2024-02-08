@@ -622,6 +622,9 @@ class Parser:
         if len(imageList) > 1:
             # get the first div - since that is wherewe will put them.
             firstImageDiv = imageList[0]
+            # set an output class. In the future this may help us
+            # to use an image gallery component
+            firstImageDiv["outputclass"] = "imageList"
             # loop through images
             for index, image in enumerate(imageList):
                 # we leave the first image unchanged
