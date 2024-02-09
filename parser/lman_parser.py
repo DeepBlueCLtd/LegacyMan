@@ -191,6 +191,17 @@ class Parser:
         dita_doctype = '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">'
         dita_soup = BeautifulSoup(dita_doctype, "xml")
 
+        h1 = html_soup.find("h1")
+        if h1 is not None:
+            title_string = h1.string
+            h1.decompose()
+        else:
+            title_string = "Regions"
+            print("Couldn't find H1 in regions file")
+
+        dita_title = dita_soup.new_tag("title")
+        dita_title.string = title_string
+
         divs_with_no_id = html_soup.find_all("div", id="")
         table = None
         for div in divs_with_no_id:
@@ -223,9 +234,6 @@ class Parser:
 
         dita_topic = dita_soup.new_tag("topic")
         dita_topic["id"] = Path(sanitise_filename(Path(link).name, remove_extension=True))
-
-        dita_title = dita_soup.new_tag("title")
-        dita_title.string = "Regions"
 
         dita_body = dita_soup.new_tag("body")
 
