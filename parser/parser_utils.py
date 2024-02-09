@@ -477,3 +477,6 @@ def get_blank_spaces(html):
         else:
             i += 1
     return blank_elements
+
+
+CountryFlag = namedtuple("CountryFlag", ["path", "width", "height"])

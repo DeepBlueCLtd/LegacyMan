@@ -19,6 +19,7 @@ import argparse
 from html_to_dita import convert_html_table_to_dita_table
 import copy
 
+
 from parser_utils import (
     delete_directory,
     copy_files,
@@ -42,6 +43,7 @@ from parser_utils import (
     get_floating_elements,
     remove_style_recursively,
     FloatingElement,
+    CountryFlag,
 )
 
 FIRST_PAGE_LAYER_MARKER = "##### First Page Layer"
@@ -261,7 +263,8 @@ class Parser:
         # Parse the HTML string, parser the <map> and the <img> elements
         img_links_table = soup.find("div", {"id": "ImageLinksTable"})
         title = soup.find("h2")
-        country_flag = title.find_next("img")["src"]
+        flag_img = title.find_next("img")
+        country_flag = CountryFlag(flag_img["src"], flag_img.get("width"), flag_img.get("height"))
 
         if img_links_table is None:
             # terminate early. Our high level processing has gone wrong
@@ -392,10 +395,10 @@ class Parser:
         category_page_link,
         category,
         country_name,
-        country_flag_link,
+        country_flag,
     ):
         logging.debug(
-            f"Called process_category_pages with category_page_link = {category_page_link}, country_flag_link = {country_flag_link}"
+            f"Called process_category_pages with category_page_link = {category_page_link}, country_flag = {country_flag}"
         )
         # read the category page
         with open(f"{self.root_path}/{remove_leading_slashes(category_page_link)}", "r") as f:
@@ -415,9 +418,12 @@ class Parser:
             self.process_generic_file(path)
             return
 
-        if country_flag_link == "" or country_flag_link is None:
+        if country_flag == "" or country_flag is None:
             title = soup.find("h2")
-            country_flag_link = title.find_next("img")["src"]
+            flag_img = title.find_next("img")
+            country_flag = CountryFlag(
+                flag_img["src"], flag_img.get("width"), flag_img.get("height")
+            )
 
         # Find a <td> with colspan=7, this indicates that the page is a category page
         td = soup.find("td", {"colspan": "7"})
@@ -472,9 +478,14 @@ class Parser:
 
         # TODO: change the href of the image
         dita_image["href"] = sanitise_filename(
-            f"../{country_name}/{remove_leading_slashes(country_flag_link)}"
+            f"../{country_name}/{remove_leading_slashes(country_flag.path)}"
         )
         dita_image["id"] = "flag"
+
+        if country_flag.width is not None:
+            dita_image["width"] = country_flag.width
+        if country_flag.height is not None:
+            dita_image["height"] = country_flag.height
 
         # create folder for category pages
         category_path = f"target/dita/{sanitise_filename(category, directory=True)}"
