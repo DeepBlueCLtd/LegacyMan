@@ -197,7 +197,7 @@ class Parser:
             h1.decompose()
         else:
             title_string = "Regions"
-            print("Couldn't find H1 in regions file")
+            print(f"WARNING: Couldn't find H1 in regions file: {link}")
 
         dita_title = dita_soup.new_tag("title")
         dita_title.string = title_string
