@@ -264,7 +264,14 @@ class Parser:
         img_links_table = soup.find("div", {"id": "ImageLinksTable"})
         title = soup.find("h2")
         flag_img = title.find_next("img")
-        country_flag = CountryFlag(flag_img["src"], flag_img.get("width"), flag_img.get("height"))
+
+        if flag_img is not None:
+            country_flag = CountryFlag(
+                flag_img["src"], flag_img.get("width"), flag_img.get("height")
+            )
+        else:
+            logging.warning(f"Cannot find flag image in page {category_page_link}")
+            country_flag = CountryFlag("FlagImageNotFound.jpg", None, None)
 
         if img_links_table is None:
             # terminate early. Our high level processing has gone wrong
@@ -421,9 +428,13 @@ class Parser:
         if country_flag == "" or country_flag is None:
             title = soup.find("h2")
             flag_img = title.find_next("img")
-            country_flag = CountryFlag(
-                flag_img["src"], flag_img.get("width"), flag_img.get("height")
-            )
+            if flag_img is not None:
+                country_flag = CountryFlag(
+                    flag_img["src"], flag_img.get("width"), flag_img.get("height")
+                )
+            else:
+                logging.warning(f"Cannot find flag image in page {category_page_link}")
+                country_flag = CountryFlag("FlagImageNotFound.jpg", None, None)
 
         # Find a <td> with colspan=7, this indicates that the page is a category page
         td = soup.find("td", {"colspan": "7"})

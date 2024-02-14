@@ -242,8 +242,6 @@ def does_image_links_table_exist(path):
 
     # Parse the HTML string, parser the <map> and the <img> elements
     img_links_table = soup.find("div", {"id": "ImageLinksTable"})
-    title = soup.find("h2")
-    country_flag = title.find_next("img")["src"]
 
     if img_links_table is None:
         return False
