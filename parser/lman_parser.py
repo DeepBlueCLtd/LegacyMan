@@ -90,6 +90,7 @@ class Parser:
         # Create a body,title and imagemap elements
         dita_body = dita_soup.new_tag("body")
         dita_imagemap = dita_soup.new_tag("imagemap")
+        dita_imagemap["outputclass"] = "region-map"
         dita_title = dita_soup.new_tag("title")
         dita_title.string = "Regions"
 
@@ -133,6 +134,7 @@ class Parser:
         # Create a <topic> element in the DITA file and append the <map> and the <image> elements
         dita_topic = dita_soup.new_tag("topic")
         dita_topic["id"] = "PD_1"
+        dita_topic["outputclass"] = "regions"
 
         dita_topic.append(dita_title)
 
@@ -234,6 +236,7 @@ class Parser:
 
         dita_topic = dita_soup.new_tag("topic")
         dita_topic["id"] = Path(sanitise_filename(Path(link).name, remove_extension=True))
+        dita_topic["outputclass"] = "region"
 
         dita_body = dita_soup.new_tag("body")
 
@@ -285,6 +288,7 @@ class Parser:
         # Create dita elements: <reference>,<title>,<table>,<tbody>,<tgroup>...
         dita_reference = dita_soup.new_tag("reference")
         dita_reference["id"] = country
+        dita_reference["outputclass"] = "country ns-country"
 
         dita_title = dita_soup.new_tag("title")
         dita_title.string = country
@@ -324,9 +328,8 @@ class Parser:
                     dita_xref.append(dita_bold)
 
                 dita_entry = dita_soup.new_tag("entry")
-                dita_entry.append(dita_xref)
-
                 dita_row.append(dita_entry)
+                dita_entry.append(dita_xref)
 
                 # Process category pages from this file
                 category_page_link = a["href"]
@@ -446,6 +449,7 @@ class Parser:
         dita_soup = BeautifulSoup(dita_doctype, "xml")
         dita_refbody = dita_soup.new_tag("refbody")
         dita_reference = dita_soup.new_tag("reference")
+        dita_reference["outputclass"] = "category-list"
         dita_section = dita_soup.new_tag("section")
         dita_flagsection = dita_soup.new_tag("section")
         dita_emptytitle = dita_soup.new_tag("title")
@@ -502,7 +506,7 @@ class Parser:
                 class_file_src_path = f"{self.root_path}/{os.path.dirname(remove_leading_slashes(category_page_link))}/{href}"
 
                 if not self.only_process_single_file:
-                    self.process_generic_file(class_file_src_path)
+                    self.process_generic_file(class_file_src_path, "class-file")
 
         dita_section.append(dita_emptytitle)
         dita_section.append(dita_table)
@@ -718,7 +722,7 @@ class Parser:
 
         return page
 
-    def process_generic_file_content(self, html_soup, input_file_path, quicklinks):
+    def process_generic_file_content(self, html_soup, input_file_path, quicklinks, outputclass=""):
         # Create the DITA document type declaration string
         dita_doctype = (
             '<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">'
@@ -731,6 +735,9 @@ class Parser:
             sanitise_filename(input_file_path.name, remove_extension=True)
         )  # remove spaces, to make legal ID value
         dita_reference["id"] = topic_id
+        if len(outputclass) > 0:
+            dita_reference["outputclass"] = outputclass
+
         dita_title = dita_soup.new_tag("title")
 
         # Try and extract the title from a div with an id of Title*
@@ -1060,7 +1067,7 @@ class Parser:
 
         return BeautifulSoup(str(html), "html.parser")
 
-    def process_generic_file(self, input_file_path):
+    def process_generic_file(self, input_file_path, outputclass=""):
         if "PD_1" in str(input_file_path):
             return
 
@@ -1121,7 +1128,9 @@ class Parser:
             logging.debug(
                 f"Processing generic file {input_file_path} to output at {output_dita_path}"
             )
-            dita_soup = self.process_generic_file_content(html_soup, input_file_path, quicklinks)
+            dita_soup = self.process_generic_file_content(
+                html_soup, input_file_path, quicklinks, outputclass
+            )
             write_prettified_xml(dita_soup, output_dita_path)
         else:
             logging.debug(f"Processing generic file {input_file_path} to store link information")
