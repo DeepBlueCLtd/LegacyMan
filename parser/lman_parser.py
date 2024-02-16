@@ -1048,7 +1048,7 @@ class Parser:
                 for el in be.elements:
                     if el in children:
                         floating_elements[i] = FloatingElement(
-                            element=fe.element.find_all("div")[0], top=fe.top
+                            element=fe.element.find_all()[0], top=fe.top
                         )
 
         for blank_space in blank_elements:
