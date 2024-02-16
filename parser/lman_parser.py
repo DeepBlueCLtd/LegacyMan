@@ -468,9 +468,7 @@ class Parser:
         dita_reference = dita_soup.new_tag("reference")
         dita_reference["outputclass"] = "category-list"
         dita_section = dita_soup.new_tag("section")
-        dita_flagsection = dita_soup.new_tag("section")
         dita_emptytitle = dita_soup.new_tag("title")
-        dita_emptytitle2 = dita_soup.new_tag("title")
 
         dita_shortdesc = dita_soup.new_tag("shortdesc")
 
@@ -486,7 +484,6 @@ class Parser:
 
         dita_title = dita_soup.new_tag("title")
         dita_image = dita_soup.new_tag("image")
-        dita_fig = dita_soup.new_tag("fig")
 
         shortdesc = soup.find(id="short-description")
         if shortdesc:
@@ -539,13 +536,11 @@ class Parser:
         dita_refbody.append(dita_section)
 
         # Append the <title>,<flag> and <refbody> elements in the <reference>
-        dita_title.string = title.text.strip()
-
-        dita_fig.append(dita_image)
-        dita_flagsection["id"] = "flag-section"
-        dita_flagsection.append(dita_emptytitle2)
-        dita_flagsection.append(dita_fig)
-        dita_refbody.insert(0, dita_flagsection)
+        dita_title_image_holder = dita_soup.new_tag("ph")
+        dita_title_image_holder["outputclass"] = "title-country"
+        dita_title_image_holder.append(dita_image)
+        dita_title.append(dita_title_image_holder)
+        dita_title.append(title.text.strip())
 
         dita_reference["id"] = topic_id
         dita_reference.append(dita_title)
