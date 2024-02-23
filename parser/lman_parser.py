@@ -183,7 +183,7 @@ class Parser:
         os.makedirs(regions_path, exist_ok=True)
 
         write_prettified_xml(dita_soup, f"{regions_path}/PlatformData/PD_1.dita")
-        self.files_already_processed.add(f"{regions_path}/PlatformData/PD_1.dita")
+        self.files_already_processed.add(Path(f"{regions_path}/PlatformData/PD_1.dita").resolve())
 
     def process_sub_region(self, link):
         with open(link, "r") as f:
@@ -252,7 +252,7 @@ class Parser:
 
         output_path = Path(self.make_relative_to_data_dir(Path(link))).with_suffix(".dita")
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
-        self.files_already_processed.add(self.target_path_base / output_path)
+        self.files_already_processed.add((self.target_path_base / output_path).resolve())
 
         # note: on MS-Win, the path generator produces windows slashes, but
         # DITA expects URL-style slashes
@@ -403,7 +403,7 @@ class Parser:
 
         output_path = str(Path(link).with_suffix(".dita"))
         write_prettified_xml(dita_soup, self.target_path_base / output_path)
-        self.files_already_processed.add(self.target_path_base / output_path)
+        self.files_already_processed.add((self.target_path_base / output_path).resolve())
 
         # note: on MS-Windows a MS-Win slash is generated, but DITA requires URL-style slashes
         return output_path.replace("\\", "/")
@@ -587,6 +587,7 @@ class Parser:
 
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
+        category_file_path = Path(category_file_path).resolve()
         self.files_already_processed.add(category_file_path)
 
         input_file_path = Path(f"{self.root_path}/{remove_leading_slashes(category_page_link)}")
