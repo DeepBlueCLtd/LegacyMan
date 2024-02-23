@@ -587,6 +587,7 @@ class Parser:
 
         category_file_path = f"{category_path}/{os.path.basename(category_page_link)}"
         write_prettified_xml(dita_soup, category_file_path)
+        category_file_path = Path(category_file_path).resolve()
         self.files_already_processed.add(category_file_path)
 
         input_file_path = Path(f"{self.root_path}/{remove_leading_slashes(category_page_link)}")
