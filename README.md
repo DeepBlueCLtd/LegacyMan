@@ -118,7 +118,7 @@ From tests, an absolute path `c:\real_data` works more reliably than using a rel
 
 ```
 
-python parser./parser.py < data directory > < target directory >
+python parser\lman_parser.py < data directory > < target directory >
 
 ```
 
