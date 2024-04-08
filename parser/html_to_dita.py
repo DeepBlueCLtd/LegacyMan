@@ -359,6 +359,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     span["outputclass"] = "colorDarkBlue"
                 elif "#663300" in style:
                     span["outputclass"] = "colorDarkBrown"
+                elif "#fc0" in style:
+                    span["outputclass"] = "colorOrange"
+                elif "#0ff" in style:
+                    span["outputclass"] = "colorLightBlue"
                 del span["style"]
             elif "font-style: italic" in style:
                 span.name = "i"
