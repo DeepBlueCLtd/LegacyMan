@@ -359,6 +359,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     span["outputclass"] = "colorDarkBlue"
                 elif "#663300" in style:
                     span["outputclass"] = "colorDarkBrown"
+                elif "#fc0" in style:
+                    span["outputclass"] = "colorOrange"
+                elif "#0ff" in style:
+                    span["outputclass"] = "colorLightBlue"
                 del span["style"]
             elif "font-style: italic" in style:
                 span.name = "i"
@@ -391,6 +395,10 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     strong["outputclass"] = "colorBlue"
                 elif "#f0f" in strong["style"].lower():
                     strong["outputclass"] = "colorPink"
+                elif "#fc0" in strong["style"].lower():
+                    strong["outputclass"] = "colorOrange"
+                elif "#0ff" in strong["style"].lower():
+                    strong["outputclass"] = "colorLightBlue"
             del strong["style"]
 
     if soup.name == "b":
@@ -402,6 +410,11 @@ def htmlToDITA(soup_in, dita_soup, topic_id, div_replacement="span", wrap_string
                     soup["outputclass"] = "colorBlue"
                 elif "#F0F" in soup["style"]:
                     soup["outputclass"] = "colorPink"
+                elif "#FC0" in soup["style"]:
+                    soup["outputclass"] = "colorOrange"
+                elif "#0FF" in soup["style"]:
+                    soup["outputclass"] = "colorLightBlue"
+
             del soup["style"]
 
     # 11. Put loose text into a paragraph

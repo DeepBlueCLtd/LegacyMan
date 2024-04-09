@@ -249,6 +249,15 @@ padding: 0 10px;
   color: #777;
 }
 
+.colorOrange {
+  color: #FC0;
+}
+
+.colorLightBlue {
+  color: #0FF;
+}
+
+
 .placeholder {
   background-color: #FF0;
 }
