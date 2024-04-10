@@ -257,6 +257,14 @@ padding: 0 10px;
   color: #0FF;
 }
 
+.colorDarkBlue {
+  color: #006;
+}
+
+.colorBrown {
+  color: #630;
+}
+
 
 .placeholder {
   background-color: #FF0;
