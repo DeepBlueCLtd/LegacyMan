@@ -301,7 +301,18 @@ class Parser:
         dita_reference["outputclass"] = "country ns-country"
 
         dita_title = dita_soup.new_tag("title")
-        dita_title.string = country
+        dita_image = dita_soup.new_tag("image")
+        dita_image["href"] = country_flag.path
+        if country_flag.width is not None:
+            dita_image["width"] = country_flag.width
+        if country_flag.height is not None:
+            dita_image["height"] = country_flag.height
+        dita_title_image_holder = dita_soup.new_tag("ph")
+        dita_title_image_holder["outputclass"] = "title-country"
+        dita_title_image_holder.append(dita_image)
+        dita_title.append(dita_title_image_holder)
+        dita_title.append(title.text.strip())
+
         dita_reference.append(dita_title)
 
         # Create DITA elements tbody,row,xref,b,table
