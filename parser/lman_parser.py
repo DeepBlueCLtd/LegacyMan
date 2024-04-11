@@ -278,11 +278,11 @@ class Parser:
 
         if flag_img is not None:
             country_flag = CountryFlag(
-                flag_img["src"], flag_img.get("width"), flag_img.get("height")
+                None, flag_img["src"], flag_img.get("width"), flag_img.get("height")
             )
         else:
-            logging.warning(f"Cannot find flag image in page {category_page_link}")
-            country_flag = CountryFlag("FlagImageNotFound.jpg", None, None)
+            logging.warning(f"Cannot find flag image in ns-country {category_page_link}")
+            country_flag = CountryFlag(None, "FlagImageNotFound.jpg", None, None)
 
         if img_links_table is None:
             # terminate early. Our high level processing has gone wrong
@@ -309,7 +309,10 @@ class Parser:
             dita_image["height"] = country_flag.height
         dita_title_image_holder = dita_soup.new_tag("ph")
         dita_title_image_holder["outputclass"] = "title-country"
-        dita_title_image_holder.append(dita_image)
+        dita_title_link = dita_soup.new_tag("xref")
+        dita_title_link["href"] = Path(link).with_suffix(".dita").name
+        dita_title_link.append(dita_image)
+        dita_title_image_holder.append(dita_title_link)
         dita_title.append(dita_title_image_holder)
         dita_title.append(title.text.strip())
 
@@ -447,16 +450,31 @@ class Parser:
             self.process_generic_file(path)
             return
 
+        # forget country_flag, take it from this page
+        country_flag = None
         if country_flag == "" or country_flag is None:
             title = soup.find("h2")
             flag_img = title.find_next("img")
             if flag_img is not None:
-                country_flag = CountryFlag(
-                    flag_img["src"], flag_img.get("width"), flag_img.get("height")
-                )
+                flag_link = flag_img.find_parent("a")
+                if flag_link is not None:
+                    country_flag_link = flag_link["href"]
+                    country_flag = CountryFlag(
+                        Path(sanitise_filename(country_flag_link)).with_suffix(".dita"),
+                        flag_img["src"],
+                        flag_img.get("width"),
+                        flag_img.get("height"),
+                    )
+                else:
+                    country_flag = CountryFlag(
+                        None,
+                        flag_img["src"],
+                        flag_img.get("width"),
+                        flag_img.get("height"),
+                    )
             else:
-                logging.warning(f"Cannot find flag image in page {category_page_link}")
-                country_flag = CountryFlag("FlagImageNotFound.jpg", None, None)
+                logging.warning(f"Cannot find flag image in category {category_page_link}")
+                country_flag = CountryFlag(None, "FlagImageNotFound.jpg", None, None)
 
         # Find a <td> with colspan=7, this indicates that the page is a category page
         td = soup.find("td", {"colspan": "7"})
@@ -549,7 +567,13 @@ class Parser:
         # Append the <title>,<flag> and <refbody> elements in the <reference>
         dita_title_image_holder = dita_soup.new_tag("ph")
         dita_title_image_holder["outputclass"] = "title-country"
-        dita_title_image_holder.append(dita_image)
+        if country_flag.country_url is not None:
+            dita_title_link = dita_soup.new_tag("xref")
+            dita_title_link["href"] = country_flag.country_url
+            dita_title_link.append(dita_image)
+            dita_title_image_holder.append(dita_title_link)
+        else:
+            dita_title_image_holder.append(dita_image)
         dita_title.append(dita_title_image_holder)
         dita_title.append(title.text.strip())
 
@@ -767,30 +791,77 @@ class Parser:
         if len(outputclass) > 0:
             dita_reference["outputclass"] = outputclass
 
-        dita_title = dita_soup.new_tag("title")
-
         # Try and extract the title from a div with an id of Title*
         title_tags = html_soup.find_all(id=re.compile("Title"))
         title_tags = sorted(title_tags, key=lambda tag: tag.get("id"))
+        dita_title_string = ""
         try:
-            dita_title.string = title_tags[0].get_text()
+            dita_title_string = title_tags[0].get_text()
         except Exception:
             # If we fail then take the first div we can find that just has one h2 child
             h2s = html_soup.select("div > h2")
             for h2 in h2s:
                 children_of_parent = h2.parent.find_all()
                 if len(children_of_parent) == 1:
-                    dita_title.string = h2.get_text()
+                    dita_title_string = h2.get_text()
                     break
             else:
                 # If that also fails, then take the first h1 and use that, giving an error if there aren't any
                 h1s = html_soup.find_all("h1")
                 if len(h1s) >= 1:
-                    dita_title.string = h1s[0].get_text()
+                    dita_title_string = h1s[0].get_text()
                 else:
                     logging.warning(f"Could not extract title from {input_file_path}")
 
-        dita_reference.append(dita_title)
+        # see if there is a flag
+        title = html_soup.find("h2")
+        country_flag = None
+        if title is not None:
+            flag_img = title.find_next("img")
+            if flag_img is not None:
+                flag_link = flag_img.find_parent("a")
+                if flag_link is not None:
+                    country_flag_link = flag_link["href"]
+                    country_flag = CountryFlag(
+                        Path(sanitise_filename(country_flag_link)).with_suffix(".dita"),
+                        flag_img["src"],
+                        flag_img.get("width"),
+                        flag_img.get("height"),
+                    )
+                else:
+                    logging.warning(
+                        f"Could not find parent link for image {flag_img['src']} in {input_file_path}"
+                    )
+            else:
+                logging.warning(f"Cannot find flag image in generic {input_file_path}")
+        else:
+            logging.warning(f"Could not find h2 title for {input_file_path}")
+
+        dita_title = dita_soup.new_tag("title")
+        if country_flag is not None:
+            dita_title_image_holder = dita_soup.new_tag("ph")
+            dita_title_image_holder["outputclass"] = "title-country"
+            dita_image = dita_soup.new_tag("image")
+            dita_image["href"] = country_flag.path
+            dita_image["id"] = "flag"
+            if country_flag.width is not None:
+                dita_image["width"] = country_flag.width
+            if country_flag.height is not None:
+                dita_image["height"] = country_flag.height
+            if country_flag.country_url is not None:
+                dita_title_link = dita_soup.new_tag("xref")
+                dita_title_link["href"] = country_flag.country_url
+
+                dita_title_link.append(dita_image)
+                dita_title_image_holder.append(dita_title_link)
+            else:
+                dita_title_image_holder.append(dita_title_image_holder)
+            dita_title.append(dita_title_image_holder)
+            dita_title.append(dita_title_string)
+            dita_reference.append(dita_title)
+        else:
+            dita_title.append(dita_title_string)
+            dita_reference.append(dita_title)
 
         dita_shortdesc = dita_soup.new_tag("shortdesc")
         shortdesc = html_soup.find(id="short-description")
