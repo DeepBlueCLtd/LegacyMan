@@ -281,7 +281,7 @@ class Parser:
                 None, flag_img["src"], flag_img.get("width"), flag_img.get("height")
             )
         else:
-            logging.warning(f"Cannot find flag image in page {category_page_link}")
+            logging.warning(f"Cannot find flag image in ns-country {category_page_link}")
             country_flag = CountryFlag(None, "FlagImageNotFound.jpg", None, None)
 
         if img_links_table is None:
@@ -473,7 +473,7 @@ class Parser:
                         flag_img.get("height"),
                     )
             else:
-                logging.warning(f"Cannot find flag image in page {category_page_link}")
+                logging.warning(f"Cannot find flag image in category {category_page_link}")
                 country_flag = CountryFlag(None, "FlagImageNotFound.jpg", None, None)
 
         # Find a <td> with colspan=7, this indicates that the page is a category page
@@ -833,7 +833,7 @@ class Parser:
                         f"Could not find parent link for image {flag_img['src']} in {input_file_path}"
                     )
             else:
-                logging.warning(f"Cannot find flag image in page {input_file_path}")
+                logging.warning(f"Cannot find flag image in generic {input_file_path}")
         else:
             logging.warning(f"Could not find h2 title for {input_file_path}")
 
