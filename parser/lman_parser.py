@@ -311,6 +311,7 @@ class Parser:
         dita_title_image_holder["outputclass"] = "title-country"
         dita_title_link = dita_soup.new_tag("xref")
         dita_title_link["href"] = Path(link).with_suffix(".dita").name
+        dita_title_link["id"] = "flag-link"
         dita_title_link.append(dita_image)
         dita_title_image_holder.append(dita_title_link)
         dita_title.append(dita_title_image_holder)
@@ -570,6 +571,7 @@ class Parser:
         if country_flag.country_url is not None:
             dita_title_link = dita_soup.new_tag("xref")
             dita_title_link["href"] = country_flag.country_url
+            dita_title_link["id"] = "flag-link"
             dita_title_link.append(dita_image)
             dita_title_image_holder.append(dita_title_link)
         else:
@@ -851,7 +853,7 @@ class Parser:
             if country_flag.country_url is not None:
                 dita_title_link = dita_soup.new_tag("xref")
                 dita_title_link["href"] = country_flag.country_url
-
+                dita_title_link["id"] = "flag-link"
                 dita_title_link.append(dita_image)
                 dita_title_image_holder.append(dita_title_link)
             else:
