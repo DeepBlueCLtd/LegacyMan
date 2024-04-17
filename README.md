@@ -1,3 +1,9 @@
+## Update - Repo archived
+
+The code and logic in this repo has done it's job, and successfully scraped the legacy HTML content, resulting in structured DITA.
+
+After approaching 18 months of development, the code was run once "for real", and will now be archived.
+
 # LegacyMan
 
 Legacy content for Field Service Manual, a digital twin that we are going to develop against.
